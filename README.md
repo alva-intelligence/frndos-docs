@@ -17,7 +17,7 @@ npm run build-local       # one-shot production build with TinaCMS local mode
 npm run dev:local         # dev server (Docusaurus + TinaCMS) with local content
 ```
 
-Open <http://localhost:3000> for the site, <http://localhost:3000/admin> for the TinaCMS editor.
+Open <http://localhost:3333> for the site, <http://localhost:3333/admin> for the TinaCMS editor.
 
 > If you hit a Node OOM during Tina build, the npm scripts already set `NODE_OPTIONS=--max-old-space-size=8192`. Increase further if needed.
 
