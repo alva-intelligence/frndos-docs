@@ -1,0 +1,53 @@
+{
+  "label": "Settings",
+  "navbar": [
+    {
+      "label": "Guides",
+      "link": "doc",
+      "docLink": "docs/intro.mdx",
+      "position": "left"
+    },
+    {
+      "label": "What's New",
+      "link": "blog",
+      "position": "left"
+    }
+  ],
+  "logo": {
+    "alt": "frndOS Help Center",
+    "src": "/img/logo.png",
+    "srcDark": "/img/logo-dark.png"
+  },
+  "title": "Help Center",
+  "footer": {
+    "style": "dark",
+    "links": [
+      {
+        "title": "Help Center",
+        "items": [
+          {
+            "label": "Getting Started",
+            "to": "docs/intro.mdx",
+            "_template": "internal"
+          },
+          {
+            "label": "What's New",
+            "_template": "blog"
+          }
+        ]
+      },
+      {
+        "title": "frndOS",
+        "items": [
+          {
+            "label": "Back to frndOS",
+            "href": "https://frnd.io",
+            "_template": "external"
+          }
+        ]
+      }
+    ],
+    "copyright": "frnd. Built with Docusaurus + TinaCMS."
+  },
+  "url": "https://help.frnd.io"
+}
