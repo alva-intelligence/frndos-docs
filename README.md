@@ -12,7 +12,7 @@ Self-service product guidance for all frndOS end users. Built with [Docusaurus](
 Prerequisites: Node 22+, npm.
 
 ```bash
-npm install
+npm ci
 npm run build-local       # one-shot production build with TinaCMS local mode
 npm run dev:local         # dev server (Docusaurus + TinaCMS) with local content
 ```
