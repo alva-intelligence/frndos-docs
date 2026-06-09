@@ -14,17 +14,17 @@
       "items": [
         {
           "title": "Searchable",
-          "description": "Find answers fast across every guide and changelog entry — press ⌘K from anywhere on the site.",
+          "description": "Find answers fast across every guide and changelog entry — press ⌘K from anywhere on the site.\n",
           "image": "/img/undraw_docusaurus_mountain.svg"
         },
         {
           "title": "Always Up to Date",
-          "description": "What's New keeps you informed of every product change — from new features to improvements and deprecations.",
+          "description": "What's New keeps you informed of every product change — from new features to improvements and deprecations.\n",
           "image": "/img/undraw_docusaurus_tree.svg"
         },
         {
           "title": "AI-Powered",
-          "description": "Ask AskFrnd directly inside frndOS — an AI assistant that understands your brand, tools, and product usage.",
+          "description": "Ask AskFrnd directly inside frndOS — an AI assistant that understands your brand, tools, and product usage.\n",
           "image": "/img/undraw_docusaurus_react.svg"
         }
       ],
