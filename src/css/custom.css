@@ -122,7 +122,8 @@ h1, h2, h3, h4, h5, h6,
   color: var(--frnd-primary);
 }
 
-/* Doc content main area — match page background (#111111) */
+/* Main content wrapper (docs, blog, pages) — match page background (#111111) */
+[data-theme="dark"] #__docusaurus_skipToContent_fallback,
 [data-theme="dark"] [class*="docMainContainer"] {
   background-color: var(--frnd-background);
 }
