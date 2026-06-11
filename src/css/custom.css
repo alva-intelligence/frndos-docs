@@ -109,6 +109,13 @@ h1, h2, h3, h4, h5, h6,
   background-color: var(--frnd-surface-lowest);
   border-right: 1px solid var(--frnd-outline);
 }
+/* Symmetric horizontal padding — Docusaurus drops right padding to 0 when
+ * scrollbar-gutter is stable; restore it to match the 0.5rem left padding. */
+@media (min-width: 997px) {
+  .theme-doc-sidebar-container .menu.thin-scrollbar {
+    padding-right: 0.5rem;
+  }
+}
 .menu__link {
   border-radius: var(--frnd-radius-sm);
   transition: background-color var(--frnd-duration-fast) var(--frnd-ease-standard),
