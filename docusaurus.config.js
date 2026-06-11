@@ -153,6 +153,10 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      colorMode: {
+        defaultMode: "dark",
+        respectPrefersColorScheme: false,
+      },
       navbar: {
         title: docusaurusData.title || "",
         logo: {
