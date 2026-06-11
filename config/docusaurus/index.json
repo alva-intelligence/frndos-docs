@@ -1,5 +1,12 @@
 {
   "label": "Settings",
+  "logo": {
+    "alt": "frndOS Help Center",
+    "src": "/img/logo.png",
+    "srcDark": "/img/logo-dark.png"
+  },
+  "title": "Help Center",
+  "url": "https://help.frndos.com",
   "navbar": [
     {
       "label": "Guides",
@@ -13,14 +20,8 @@
       "position": "left"
     }
   ],
-  "logo": {
-    "alt": "frndOS Help Center",
-    "src": "/img/logo.png",
-    "srcDark": "/img/logo-dark.png"
-  },
-  "title": "Help Center",
   "footer": {
-    "style": "dark",
+    "style": "light",
     "links": [
       {
         "title": "Help Center",
@@ -41,13 +42,12 @@
         "items": [
           {
             "label": "Back to frndOS",
-            "href": "https://frnd.io",
+            "href": "https://frndos.com",
             "_template": "external"
           }
         ]
       }
     ],
-    "copyright": "frnd. Built with Docusaurus + TinaCMS."
-  },
-  "url": "https://help.frnd.io"
+    "copyright": "frndOS. Built with Docusaurus + TinaCMS."
+  }
 }

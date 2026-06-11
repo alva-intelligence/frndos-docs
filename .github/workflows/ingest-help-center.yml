@@ -1,0 +1,60 @@
+name: Ingest Help Center to AskFrnd
+
+# Re-index Help Center content into the AskFrnd knowledge base (frnd-ai-services)
+# whenever docs change on the tracked branch. Ingestion is incremental + idempotent
+# (the service skips unchanged docs by content hash), so re-running is cheap and safe.
+#
+# Required repo secrets:
+#   AI_SERVICE_URL          base URL of frnd-ai-services (e.g. https://ai.frnd.io)
+#   HELP_CENTER_INGEST_TOKEN  shared secret sent as X-Internal-Token
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/**"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Ingest mode"
+        type: choice
+        default: incremental
+        options:
+          - incremental
+          - full
+
+concurrency:
+  group: help-center-ingest
+  cancel-in-progress: false
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger ingest
+        env:
+          AI_SERVICE_URL: ${{ secrets.AI_SERVICE_URL }}
+          INGEST_TOKEN: ${{ secrets.HELP_CENTER_INGEST_TOKEN }}
+          MODE: ${{ github.event.inputs.mode || 'incremental' }}
+        run: |
+          set -euo pipefail
+          if [ -z "${AI_SERVICE_URL:-}" ] || [ -z "${INGEST_TOKEN:-}" ]; then
+            echo "::error::Missing AI_SERVICE_URL or HELP_CENTER_INGEST_TOKEN secret"
+            exit 1
+          fi
+          echo "Ingesting Help Center (mode=${MODE}) → ${AI_SERVICE_URL%/}/api/help-center/ingest"
+          http_code=$(curl --silent --show-error \
+            --retry 3 --retry-delay 5 --retry-all-errors \
+            --max-time 300 \
+            -o response.json -w "%{http_code}" \
+            -X POST "${AI_SERVICE_URL%/}/api/help-center/ingest" \
+            -H "Content-Type: application/json" \
+            -H "X-Internal-Token: ${INGEST_TOKEN}" \
+            -d "{\"mode\":\"${MODE}\"}")
+          echo "HTTP ${http_code}"
+          cat response.json || true
+          echo ""
+          if [ "${http_code}" -lt 200 ] || [ "${http_code}" -ge 300 ]; then
+            echo "::error::Ingest failed (HTTP ${http_code})"
+            exit 1
+          fi
