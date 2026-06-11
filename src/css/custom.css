@@ -122,6 +122,11 @@ h1, h2, h3, h4, h5, h6,
   color: var(--frnd-primary);
 }
 
+/* Doc content main area — match page background (#111111) */
+[data-theme="dark"] [class*="docMainContainer"] {
+  background-color: var(--frnd-background);
+}
+
 /* Footer */
 [data-theme="dark"] .footer {
   border-top: 1px solid var(--frnd-outline);
