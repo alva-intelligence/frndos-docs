@@ -1,13 +1,22 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
-
 .heroBanner {
   padding: 4rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    var(--frnd-brand-gradient-start) 0%,
+    var(--frnd-brand-gradient-end) 100%
+  );
+}
+
+[data-theme="light"] .heroBanner {
+  background: var(--frnd-surface, #f6f6f6);
+}
+
+.heroBanner :global(.hero__title) {
+  font-family: var(--frnd-font-display);
+  letter-spacing: -0.02em;
 }
 
 @media screen and (max-width: 996px) {

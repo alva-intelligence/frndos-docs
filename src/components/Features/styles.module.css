@@ -9,3 +9,12 @@
   height: 200px;
   width: 200px;
 }
+
+.features :global(.col) {
+  padding: var(--frnd-space-lg);
+}
+
+.features :global(h3) {
+  font-family: var(--frnd-font-display);
+  letter-spacing: -0.01em;
+}
