@@ -1,10 +1,32 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * Global CSS. Infima base + frndOS Command Studio design system.
+ * Token literal di tokens.css; @font-face di fonts.css.
  */
+@import "./tokens.css";
+@import "./fonts.css";
 
-/* frnd brand — light mode primary */
+/* ===== Typography base ===== */
+:root {
+  --ifm-font-family-base: var(--frnd-font-body);
+  --ifm-heading-font-family: var(--frnd-font-display);
+  --ifm-heading-font-weight: 600;
+  --ifm-font-weight-bold: 600;
+  --ifm-global-radius: var(--frnd-radius-sm);
+  --ifm-code-font-size: 95%;
+  --ifm-transition-fast: var(--frnd-duration-fast);
+  --ifm-transition-slow: var(--frnd-duration-smooth);
+  --ifm-transition-timing-default: var(--frnd-ease-standard);
+}
+
+h1, h2, h3, h4, h5, h6,
+.hero__title,
+.markdown > h1,
+.markdown > h2 {
+  font-family: var(--frnd-font-display);
+  letter-spacing: -0.01em;
+}
+
+/* ===== LIGHT MODE (turunan — DESIGN.md murni dark) ===== */
 :root {
   --ifm-color-primary: #3a7ff7;
   --ifm-color-primary-dark: #1c6ef5;
@@ -13,36 +35,61 @@
   --ifm-color-primary-light: #5890f8;
   --ifm-color-primary-lighter: #6798f9;
   --ifm-color-primary-lightest: #93b6fb;
-  --ifm-code-font-size: 95%;
+
+  --ifm-background-color: #ffffff;
+  --ifm-background-surface-color: #f6f6f6;
+  --ifm-font-color-base: #111111;
+  --ifm-heading-color: #111111;
+  --ifm-color-emphasis-300: #d1d1d1;
+
+  --ifm-code-background: #f0f0f0;
+  --ifm-global-shadow-lw: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
-/* Navbar logo sizing — align with title text */
+/* ===== DARK MODE (default — DESIGN.md command-center) ===== */
+[data-theme="dark"] {
+  --ifm-color-primary: #4e9ef8;
+  --ifm-color-primary-dark: #3a7ff7;
+  --ifm-color-primary-darker: #2f74ed;
+  --ifm-color-primary-darkest: #224eb0;
+  --ifm-color-primary-light: #6db0f9;
+  --ifm-color-primary-lighter: #8fc3fb;
+  --ifm-color-primary-lightest: #c2ddfd;
+
+  --ifm-background-color: var(--frnd-background);
+  --ifm-background-surface-color: var(--frnd-surface);
+  --ifm-font-color-base: var(--frnd-on-surface);
+  --ifm-heading-color: var(--frnd-on-surface);
+  --ifm-color-content-secondary: var(--frnd-on-surface-muted);
+
+  --ifm-color-emphasis-0: var(--frnd-surface-lowest);
+  --ifm-color-emphasis-100: var(--frnd-surface-low);
+  --ifm-color-emphasis-200: var(--frnd-surface-container);
+  --ifm-color-emphasis-300: var(--frnd-outline);
+
+  --ifm-navbar-background-color: var(--frnd-surface);
+  --ifm-footer-background-color: var(--frnd-surface-lowest);
+  --ifm-background-color-secondary: var(--frnd-surface-low);
+
+  --ifm-code-background: var(--frnd-surface-low);
+  --ifm-global-shadow-md: var(--frnd-shadow-panel);
+  --ifm-global-shadow-tl: var(--frnd-shadow-panel);
+  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.08);
+}
+
+/* ===== Navbar logo (preserved) ===== */
 .navbar__logo {
   height: 1.5rem;
   margin-right: 0.5rem;
   display: flex;
   align-items: center;
 }
-
 .navbar__logo img {
   height: 100%;
   width: auto;
   object-fit: contain;
 }
-
 .navbar__brand {
   align-items: center;
-}
-
-/* Dark mode primary */
-[data-theme='dark'] {
-  --ifm-color-primary: #6dbef9;
-  --ifm-color-primary-dark: #4aabf7;
-  --ifm-color-primary-darker: #38a2f6;
-  --ifm-color-primary-darkest: #0c87ec;
-  --ifm-color-primary-light: #90cffb;
-  --ifm-color-primary-lighter: #a2d7fb;
-  --ifm-color-primary-lightest: #d6ecfd;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
