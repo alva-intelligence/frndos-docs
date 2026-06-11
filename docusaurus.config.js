@@ -108,31 +108,18 @@ const config = {
     [
       "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
-      (() => {
-        const productionBaseUrl = process.env.VERCEL_URL
-          ? `https://${process.env.VERCEL_URL}`
-          : docusaurusData.url;
-        const adminBaseUrl =
-          process.env.NODE_ENV === "production"
-            ? productionBaseUrl
-            : `http://localhost:${process.env.PORT || 3333}`;
-        return {
-          docs: {
-            sidebarPath: require.resolve("./sidebars.js"),
-            exclude: ["**/.*", "**/_*.{md,mdx}"],
-            editUrl: ({ docPath }) =>
-              `${adminBaseUrl}/admin/index.html#/collections/edit/doc/${docPath.replace(/\.mdx?$/, "")}`,
-          },
-          blog: {
-            showReadingTime: true,
-            editUrl: ({ blogPath }) =>
-              `${adminBaseUrl}/admin/index.html#/collections/edit/post/${blogPath.replace(/\.mdx?$/, "")}`,
-          },
-          theme: {
-            customCss: require.resolve("./src/css/custom.css"),
-          },
-        };
-      })(),
+      ({
+        docs: {
+          sidebarPath: require.resolve("./sidebars.js"),
+          exclude: ["**/.*", "**/_*.{md,mdx}"],
+        },
+        blog: {
+          showReadingTime: true,
+        },
+        theme: {
+          customCss: require.resolve("./src/css/custom.css"),
+        },
+      }),
     ],
   ],
 
