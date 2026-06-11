@@ -135,3 +135,91 @@ h1, h2, h3, h4, h5, h6,
 [data-theme="dark"] .table-of-contents {
   border-left-color: var(--frnd-outline);
 }
+
+/* ===== Code ===== */
+[data-theme="dark"] pre,
+[data-theme="dark"] .prism-code,
+[data-theme="dark"] div[class*="codeBlockContainer"] {
+  background-color: var(--frnd-surface-lowest) !important;
+}
+div[class*="codeBlockContainer"] {
+  border-radius: var(--frnd-radius-md);
+}
+code {
+  border-radius: var(--frnd-radius-xs);
+}
+[data-theme="dark"] :not(pre) > code {
+  background-color: var(--frnd-surface-low);
+  border: 1px solid var(--frnd-outline);
+}
+
+/* ===== Prism tune → palet frnd (dark) ===== */
+[data-theme="dark"] .token.comment,
+[data-theme="dark"] .token.prolog,
+[data-theme="dark"] .token.doctype,
+[data-theme="dark"] .token.cdata {
+  color: var(--frnd-on-surface-dim);
+}
+[data-theme="dark"] .token.keyword,
+[data-theme="dark"] .token.tag,
+[data-theme="dark"] .token.operator {
+  color: var(--frnd-primary);
+}
+[data-theme="dark"] .token.string,
+[data-theme="dark"] .token.char,
+[data-theme="dark"] .token.attr-value,
+[data-theme="dark"] .token.inserted {
+  color: var(--frnd-positive);
+}
+[data-theme="dark"] .token.function,
+[data-theme="dark"] .token.class-name {
+  color: var(--frnd-tertiary-soft);
+}
+[data-theme="dark"] .token.number,
+[data-theme="dark"] .token.boolean,
+[data-theme="dark"] .token.constant {
+  color: var(--frnd-warning);
+}
+
+/* ===== Admonitions (semantic) ===== */
+[data-theme="dark"] .theme-admonition {
+  border-radius: var(--frnd-radius-md);
+}
+.alert--info { --ifm-alert-background-color: rgba(58, 127, 247, 0.12); --ifm-alert-border-color: var(--frnd-primary); }
+.alert--success { --ifm-alert-background-color: rgba(14, 187, 139, 0.12); --ifm-alert-border-color: var(--frnd-positive); }
+.alert--warning { --ifm-alert-background-color: rgba(251, 205, 40, 0.12); --ifm-alert-border-color: var(--frnd-warning); }
+.alert--danger { --ifm-alert-background-color: rgba(231, 65, 54, 0.12); --ifm-alert-border-color: var(--frnd-negative); }
+
+/* ===== Cards (style existing, jangan tambah baru) ===== */
+[data-theme="dark"] .card {
+  background-color: var(--frnd-surface-low);
+  border: 1px solid var(--frnd-outline);
+  border-radius: var(--frnd-radius-md);
+}
+
+/* ===== Buttons ===== */
+.button {
+  border-radius: var(--frnd-radius-sm);
+  transition: background-color var(--frnd-duration-fast) var(--frnd-ease-standard);
+}
+[data-theme="dark"] .button--primary {
+  background-color: var(--frnd-primary-inverse);
+  color: var(--frnd-inverse-on-surface);
+  border-color: var(--frnd-primary-inverse);
+}
+[data-theme="dark"] .button--primary:hover {
+  background-color: var(--frnd-on-surface);
+  color: var(--frnd-inverse-on-surface);
+}
+[data-theme="dark"] .button--secondary {
+  background-color: var(--frnd-surface-container);
+  color: var(--frnd-on-surface);
+  border-color: var(--frnd-outline);
+}
+
+/* ===== Search (@easyops-cn local) ===== */
+[data-theme="dark"] .DocSearch-Button,
+[data-theme="dark"] .navbar__search-input {
+  background-color: var(--frnd-surface-low);
+  border-radius: var(--frnd-radius-md);
+}
