@@ -1,0 +1,86 @@
+/* frndOS Command Studio — raw design tokens (literal dari DESIGN.md).
+ * Jangan map ke Infima di sini; itu tugas custom.css. */
+:root {
+  /* Colors — core */
+  --frnd-primary: #3a7ff7;
+  --frnd-primary-hover: #4e9ef8;
+  --frnd-primary-active: #224eb0;
+  --frnd-primary-inverse: #ffffff;
+
+  --frnd-tertiary: #00ffdd;
+  --frnd-on-tertiary: #004655;
+  --frnd-tertiary-muted: #008090;
+  --frnd-tertiary-soft: #c2fff7;
+
+  --frnd-background: #111111;
+  --frnd-surface: #141414;
+  --frnd-surface-lowest: #0a0a0a;
+  --frnd-surface-low: #1a1a1a;
+  --frnd-surface-container: #252525;
+  --frnd-surface-high: #3d3d3d;
+  --frnd-surface-highest: #454545;
+
+  --frnd-on-surface: #f6f6f6;
+  --frnd-on-surface-subtle: #d1d1d1;
+  --frnd-on-surface-muted: #b0b0b0;
+  --frnd-on-surface-dim: #888888;
+
+  --frnd-outline: #2b2b2b;
+  --frnd-outline-strong: #777777;
+
+  --frnd-inverse-surface: #f6f6f6;
+  --frnd-inverse-on-surface: #111111;
+  --frnd-overlay: #000000;
+
+  /* Semantic */
+  --frnd-positive: #0ebb8b;
+  --frnd-on-positive: #ecfdf6;
+  --frnd-positive-container: #054f3f;
+  --frnd-warning: #fbcd28;
+  --frnd-on-warning: #421f06;
+  --frnd-warning-container: #713d12;
+  --frnd-negative: #e74136;
+  --frnd-on-negative: #fff1f1;
+  --frnd-negative-container: #861616;
+
+  /* Atmospheric / brand */
+  --frnd-brand-gradient-start: #761d3b;
+  --frnd-brand-gradient-end: #002c33;
+
+  /* Radius */
+  --frnd-radius-none: 0px;
+  --frnd-radius-xs: 8px;
+  --frnd-radius-sm: 12px;
+  --frnd-radius-md: 16px;
+  --frnd-radius-lg: 24px;
+  --frnd-radius-xl: 32px;
+  --frnd-radius-full: 9999px;
+
+  /* Spacing */
+  --frnd-space-xs: 4px;
+  --frnd-space-sm: 8px;
+  --frnd-space-md: 12px;
+  --frnd-space-lg: 16px;
+  --frnd-space-xl: 24px;
+  --frnd-space-2xl: 32px;
+  --frnd-space-3xl: 40px;
+  --frnd-space-4xl: 48px;
+
+  /* Shadows */
+  --frnd-shadow-panel: 0px 16px 24px 0px #000000cc;
+  --frnd-shadow-dropdown: 0px 16px 24px 0px #000000cc;
+  --frnd-shadow-artboard: 0px 24px 48px 0px #00000099;
+  --frnd-shadow-content-card: 0px 32px 32px 0px #00000066;
+
+  /* Motion */
+  --frnd-duration-fast: 100ms;
+  --frnd-duration-base: 150ms;
+  --frnd-duration-smooth: 300ms;
+  --frnd-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --frnd-ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Font families */
+  --frnd-font-display: "General Sans", system-ui, sans-serif;
+  --frnd-font-body: "Geist", system-ui, -apple-system, sans-serif;
+  --frnd-font-support: "Funnel Sans", system-ui, sans-serif;
+}
