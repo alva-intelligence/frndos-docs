@@ -11,7 +11,7 @@
 }
 
 [data-theme="light"] .heroBanner {
-  background: var(--frnd-surface, #f6f6f6);
+  background: #f6f6f6;
 }
 
 .heroBanner :global(.hero__title) {
