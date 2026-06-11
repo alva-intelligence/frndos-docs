@@ -127,11 +127,18 @@ h1, h2, h3, h4, h5, h6,
   background-color: var(--frnd-background);
 }
 
-/* Footer — match navbar surface. .footer--dark sets its own bg var, so set
- * background-color directly to win over it. */
+/* Footer — match navbar in both modes. Config uses footer style "dark" so the
+ * .footer--dark class is always present; override background + text per theme. */
 [data-theme="dark"] .footer {
   background-color: var(--frnd-surface);
   border-top: 1px solid var(--frnd-outline);
+}
+[data-theme="light"] .footer {
+  background-color: var(--ifm-background-surface-color);
+  border-top: 1px solid var(--ifm-color-emphasis-300);
+  --ifm-footer-color: var(--ifm-font-color-base);
+  --ifm-footer-link-color: var(--ifm-font-color-base);
+  --ifm-footer-title-color: var(--ifm-font-color-base);
 }
 
 /* Table of contents */
