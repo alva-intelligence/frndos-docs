@@ -127,8 +127,10 @@ h1, h2, h3, h4, h5, h6,
   background-color: var(--frnd-background);
 }
 
-/* Footer */
+/* Footer — match navbar surface. .footer--dark sets its own bg var, so set
+ * background-color directly to win over it. */
 [data-theme="dark"] .footer {
+  background-color: var(--frnd-surface);
   border-top: 1px solid var(--frnd-outline);
 }
 
