@@ -115,6 +115,38 @@ const config = {
         },
         blog: {
           showReadingTime: true,
+          feedOptions: {
+            type: "all",
+            title: "frndOS What's New",
+            description: "Product updates and changelog for frndOS",
+            limit: 20,
+            // Surface each post's `image` frontmatter as an <enclosure> in the
+            // feed so the frndOS app home "What's New" list can render a
+            // thumbnail. Docusaurus' default feed drops custom frontmatter.
+            createFeedItems: async ({
+              blogPosts,
+              defaultCreateFeedItems,
+              ...rest
+            }) => {
+              const items = await defaultCreateFeedItems({ blogPosts, ...rest });
+              const siteUrl = rest.siteConfig?.url ?? "";
+              return items.map((item) => {
+                const post = blogPosts.find(
+                  (p) =>
+                    p.metadata.permalink &&
+                    item.link &&
+                    item.link.endsWith(p.metadata.permalink)
+                );
+                const image = post?.metadata?.frontMatter?.image;
+                if (image) {
+                  item.image = image.startsWith("http")
+                    ? image
+                    : `${siteUrl}${image.startsWith("/") ? "" : "/"}${image}`;
+                }
+                return item;
+              });
+            },
+          },
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),

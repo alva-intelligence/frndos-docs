@@ -106,6 +106,13 @@ const PostCollection = {
       ui: { component: "textarea" },
     },
     {
+      type: "image",
+      name: "image",
+      label: "Thumbnail",
+      description:
+        "Shown as the thumbnail on the frndOS app home 'What's New' list. Recommended ~16:9 (e.g. 800x450).",
+    },
+    {
       label: "Tags",
       name: "tags",
       type: "string",
