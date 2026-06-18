@@ -120,6 +120,11 @@ When adding a new module category, keep the folder name, `_category_.json` label
 - **New category:** create `docs/<module>/` + `_category_.json` (`label`, `position`, `link.type: "generated-index"`), and add the matching option to the `frndOS Module` select in `tina/config.jsx`.
 - **New changelog entry:** create `blog/YYYY-MM-DD-<slug>.mdx`, reference an author key from `blog/authors.yml`, and put a `<!-- truncate -->` after the summary line.
 
+### Image assets — no spaces / unsafe chars in names
+Docusaurus' mdx-loader resolves **absolute** image paths (`/img/...`) without `decodeURIComponent`, so a space in a folder or file name becomes `%20` and the loader fails with `Image ... not found` — breaking the build. TinaCMS lets authors create spaced folders / upload spaced filenames (e.g. `DEV local/alva logo.jpeg`), and dragged macOS screenshots (`Screenshot at ....png`) hit the same trap.
+
+Guard: `scripts/normalize-assets.js` walks `static/img/`, renames any unsafe segment to a build-safe slug (spaces → `-`, case & camelCase preserved), and rewrites the matching refs in `docs/` + `blog/`. It runs automatically via `predev` / `predev:local` / `prebuild` (npm pre-hooks) and is idempotent. To run manually: `npm run normalize-assets`. Keep asset names URL-safe to begin with and this is a no-op.
+
 ### Bilingual status (IMPORTANT — do not assume i18n works)
 The README describes a bilingual ID/EN setup with default locale `id`, but the **actual** `docusaurus.config.js` ships `locales: ["en"]`, `defaultLocale: "en"`, and there is **no `i18n/` folder**. The site is currently **English-only**. If asked to add Indonesian, the config and an `i18n/` tree must be created from scratch — don't presume existing scaffolding.
 

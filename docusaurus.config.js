@@ -137,6 +137,27 @@ const config = {
     ],
   ],
 
+  plugins: [
+    // Suppress a cosmetic webpack warning from @easyops-cn/docusaurus-search-local:
+    // its `proxiedGenerated` barrel re-exports via `export *` from a virtual
+    // `@generated` module, which webpack's static analysis can't see through, so it
+    // wrongly reports `removeDefaultStopWordFilter` as "not found". The export exists
+    // at runtime (see .docusaurus/.../generated.js) — search works fine.
+    () => ({
+      name: "suppress-search-local-export-warning",
+      configureWebpack() {
+        return {
+          ignoreWarnings: [
+            (warning) =>
+              warning.module?.resource?.includes(
+                "@easyops-cn/docusaurus-search-local",
+              ) && /removeDefaultStopWordFilter/.test(warning.message),
+          ],
+        };
+      },
+    }),
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({

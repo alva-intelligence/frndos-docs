@@ -69,56 +69,33 @@ const PostCollection = {
     {
       name: "authors",
       label: "Authors",
-      type: "object",
+      type: "string",
       list: true,
-      ui: {
-        itemProps: (item) => {
-          return { label: item?.name };
-        },
-      },
-      fields: [
-        {
-          name: "name",
-          label: "Name",
-          type: "string",
-          isTitle: true,
-          required: true,
-        },
-        {
-          name: "title",
-          label: "Title",
-          type: "string",
-        },
-        {
-          name: "url",
-          label: "URL",
-          type: "string",
-        },
-        {
-          name: "image_url",
-          label: "Image URL",
-          type: "string",
-        },
+      description: "Author keys defined in blog/authors.yml.",
+      options: [
+        { label: "Nop", value: "nop" },
+        { label: "frndOS Team", value: "team" },
+        { label: "frndOS Team (Product)", value: "frndos-team" },
       ],
     },
     {
       name: "date",
       label: "Date",
       type: "string",
-      required: true,
       ui: {
-        dateFormat: "MMM D, yyyy",
+        dateFormat: "MMM D, YYYY",
         component: "date",
         parse: (val) => {
-          return docusaurusDate(val);
+          return val ? docusaurusDate(new Date(val)) : val;
         },
       },
     },
     {
       type: "string",
       name: "description",
-      label: "Summary",
-      description: "Short summary shown on the changelog list.",
+      label: "SEO Description",
+      description:
+        "For search engines & link previews only — NOT shown on the changelog list. To set the list excerpt, write it at the top of the Body and add a '<!-- truncate -->' marker after it.",
       ui: { component: "textarea" },
     },
     {

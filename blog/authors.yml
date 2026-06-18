@@ -1,15 +1,17 @@
 nop:
   name: Nop
-  title: Product, frnd
-  url: https://frnd.io
+  title: Product, frndOS
+  url: https://frndos.com
   image_url: https://github.com/onafy.png
 
 team:
   name: frndOS Team
-  title: frnd
-  url: https://frnd.io
+  title: frndOS
+  url: https://frndos.com
+  image_url: https://frndos.com/icon.png
 
 frndos-team:
   name: frndOS Team
-  title: Product, frnd
-  url: https://frnd.io
+  title: Product, frndOS
+  url: https://frndos.com
+  image_url: https://frndos.com/icon.png
