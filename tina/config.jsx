@@ -67,6 +67,13 @@ const PostCollection = {
       required: true,
     },
     {
+      type: "string",
+      name: "slug",
+      label: "URL Slug",
+      description:
+        "The permalink for this entry, e.g. 'brand-insights-self-serve' → /blog/brand-insights-self-serve. Keep it stable once published — changing it breaks existing links. Without it, the URL is derived from the filename.",
+    },
+    {
       name: "authors",
       label: "Authors",
       type: "string",
