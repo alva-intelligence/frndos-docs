@@ -24,13 +24,17 @@ on:
           - full
 
 concurrency:
-  group: help-center-ingest
+  group: help-center-ingest-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
   ingest:
     runs-on: ubuntu-latest
-    environment: staging
+    strategy:
+      fail-fast: false
+      matrix:
+        environment: [staging, Production]
+    environment: ${{ matrix.environment }}
     steps:
       - name: Trigger ingest
         env:
