@@ -1,0 +1,142 @@
+---
+title: Core vs Extended Connections
+sidebar_position: 8
+description: Understand the two connection types in Insights — Core connections for a brand's own data, and Extended connections to reuse data from other brands in your workspace.
+---
+
+# Core vs Extended Connections
+
+When you connect a data source in Insights, you now choose between two connection types: **Core** and **Extended**. Understanding the difference saves you time, cost, and duplicate data.
+
+This is an upgrade to the original connection flow. If you've connected data before, the basics are the same — there's just a new choice when you click **Connect**.
+
+## The Two Connection Types
+
+| Type | What It Does | When to Use |
+|---|---|---|
+| **Core Connection** | Connects a data source **directly** to this brand | The data source belongs to this brand |
+| **Extended Connection** | **Reuses** data already connected to another brand in your workspace | You want to combine or reference data from other brands |
+
+## Core Connections
+
+A **Core connection** is a direct integration between a platform and the brand you're working on — the standard way to bring in data.
+
+- One Core connection **per platform, per brand** for the primary account
+- Use it when the social account or ad account genuinely belongs to this brand
+- Example: connecting **@indihome's official Instagram** to the IndiHome brand
+
+This is what you set up when following the standard connection guides:
+
+👉 [Connecting Paid Media](./connecting-paid-media)
+👉 [Connecting Owned Media](./connecting-owned-media)
+
+## Extended Connections
+
+An **Extended connection** lets you pull in data that's **already connected to another brand in the same workspace** — without re-connecting or re-syncing it.
+
+There are two flavors of Extended connection:
+
+### 1. Reference Data from Another Brand
+
+Bring data from another brand's existing connection into this brand's dashboard. The data is **merged**, not duplicated.
+
+**Why this matters:** No new integration, no re-sync, no duplicate cost. You're reusing data that already exists in your workspace.
+
+### 2. Add Another Connection of the Same Type
+
+Previously, each brand could only have **one** connection per platform (one Instagram, one Meta Ads, etc.). Now, if you need to add a **second** account of the same type, you do it as an Extended (Other) connection.
+
+> **Example:** A brand already has one Meta Ads account connected as Core. To track a second Meta Ads account, you add it as an Extended/Other connection.
+
+## A Real Use Case: Roll-Up Brands
+
+The most powerful use of Extended connections is building **roll-up brands** that aggregate performance across sub-brands.
+
+### Scenario
+
+Imagine a large corporation (let's call it "Unilever") with multiple sub-brands:
+- Home Care division → Sunlight, Rinso, Pepsodent
+- Food & Beverage division → various brands
+
+You want to see **overall Home Care performance** — but Sunlight, Rinso, and Pepsodent are three separate brands with their own connections.
+
+### Solution
+
+1. Create a new brand: **"Unilever Home Care"**
+2. Instead of connecting fresh data sources, use **Extended connections** to pull in the existing connections from Sunlight, Rinso, and Pepsodent
+3. frndOS **merges** the metrics so you can see aggregate Home Care performance
+
+No duplicate syncing. No tripled cost. Just a unified view built from data that already exists.
+
+### Core vs Extended in This Scenario
+
+| Connection | Type | Example |
+|---|---|---|
+| Unilever's official corporate Instagram | **Core** | Direct connection to the corporate brand |
+| Sunlight, Rinso, Pepsodent data rolled into "Home Care" | **Extended** | Reused from existing sub-brand connections |
+
+## Important Rules & Limitations
+
+### You Need a Core Connection First (Usually)
+
+To add an **Other connection** (a second same-type connection), the brand must already have a **Core connection** of that type.
+
+**Exception:** For pure roll-up brands that only reference other brands' data, you can use Extended connections **even without any Core connection** — the brand displays data entirely borrowed from other brands.
+
+### Extended Data is Read-Only
+
+Data brought in via Extended connection **can't be managed from this brand**. You can't:
+- Pause it
+- Delete it
+- Re-sync it
+
+All of those actions must be done from the **original (parent) brand** that owns the Core connection. From the roll-up brand, the data is display-and-merge only.
+
+### Same Workspace Only
+
+Extended connections only work **within the same workspace**. You can reference data from another brand, but only if that brand lives in your current workspace.
+
+## Cost & Performance Benefits
+
+The biggest wins of Extended connections:
+
+**No duplicate sync cost.** Connecting the same Facebook Page to multiple brands the old way meant syncing (and paying for) the same data repeatedly. Extended connections reuse existing data.
+
+**Instant display.** A fresh connection can take time to sync — sometimes up to two days for large data volumes. Extended connections show data **instantly** because the data already exists.
+
+**Cleaner user journey.** No repeated authorization flows for data you've already connected.
+
+## A Known Edge Case
+
+If you connect the **same account** as a Core connection on two different brands (instead of using Extended), frndOS currently **doesn't prevent it** — it will sync the data twice.
+
+This is a known behavior. If you're building roll-up views, prefer **Extended connections** to avoid duplicate syncing. When in doubt, check whether the data already exists in another brand before creating a new Core connection.
+
+## FAQ
+
+**Q: How do I choose Core vs Extended?**
+When you click **Connect** in Insights, you'll see both options. Choose **Core** for a brand's own direct data, **Extended** to reuse data from another brand in your workspace.
+
+**Q: Can I have multiple connections of the same platform now?**
+Yes. The first is a Core connection; additional same-type connections are added as Extended/Other connections.
+
+**Q: If I delete the original Core connection, what happens to brands referencing it via Extended?**
+The Extended references depend on the original. Managing or removing the source connection affects the brands that reference it. Coordinate changes from the parent brand.
+
+**Q: Does Extended connection data count against my sync limits or cost?**
+No — that's the main benefit. Extended connections reuse existing synced data, so there's no duplicate sync cost.
+
+**Q: Can I roll up brands across different workspaces?**
+No. Extended connections work only within the same workspace.
+
+**Q: I referenced another brand's data but can't pause or edit it. Is that a bug?**
+No, that's intended. Extended (borrowed) data is read-only here. Manage it from the brand that owns the Core connection.
+
+---
+
+## Related Articles
+
+- [Insights Overview](./overview)
+- [Connecting Paid Media](./connecting-paid-media)
+- [Connecting Owned Media](./connecting-owned-media)
+- [Managing Multiple Brands](../brand-setup/multiple-brands)

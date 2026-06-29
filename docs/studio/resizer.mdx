@@ -30,8 +30,21 @@ Resize Mode takes your source KV and produces variants at different dimensions:
 1. **Open your finalized KV** in the KV Generator
 2. Switch to **Resize Mode**
 3. Select the platform sizes or aspect ratios you need
-4. Generate the resized variants
-5. Download or send to the next step in your workflow
+4. Optionally, add a **specific instruction** for how the resize should be handled (see below)
+5. Generate the resized variants
+6. Download or send to the next step in your workflow
+
+### Adding Custom Resize Instructions
+
+When you resize, you can give the AI **specific instructions** for that resize — not just the target dimensions.
+
+For example, when a resized variant needs adjusting, you can add a prompt like *"keep the logo in the top-right and preserve all text components"* and the AI will regenerate the variant from the base image with that guidance applied to the chosen aspect ratio.
+
+### Interactive Chat in Resize
+
+Resize now supports **interactive chat**. Previously, chat was only active in the Sketch and Craft stages — now you can also chat during resize. When you want to retry or refine a resize, add a follow-up prompt and the AI regenerates from the base image at your target ratio.
+
+> **Note:** Resize uses a fixed engine — you don't choose a model for resizing. Just describe what you want and let it handle the adaptation.
 
 ## Common Use Cases
 
@@ -50,10 +63,13 @@ Resize Mode adapts the visual to the target dimensions — not a simple crop. Im
 The Resizer is built into the KV Generator workflow, so the source visual should be a KV you've created in frndOS.
 
 **Q: Can I customize the resize per platform?**
-Resize behavior depends on the source KV and target dimensions. For platform-specific tweaks, you can return to Craft mode for that variant.
+Yes. You can add specific resize instructions per variant and use interactive chat to refine. For deeper edits, you can also return to Craft mode for that variant.
+
+**Q: Can I set a fully custom size?**
+Custom sizes are being rolled out. Note that the underlying model has its own aspect-ratio and resolution limits (a minimum and maximum), so very large or unusual custom sizes may be handled by generating at a supported size and then upscaling. If a custom dimension isn't directly supported, frndOS works toward the closest valid output.
 
 **Q: What platforms are supported?**
-Common social and ad platform dimensions are pre-configured. Check inside Resize Mode for the current list.
+Common social and ad platform dimensions are pre-configured. Check inside Resize Mode for the current list. Print-specific specifications (e.g., CMYK, print-ready output) are not part of the current social-media-focused resize flow.
 
 ---
 

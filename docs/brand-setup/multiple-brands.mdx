@@ -10,7 +10,7 @@ If you're working at an agency, chances are you handle more than one brand. frnd
 
 ## How Multiple Brands Work
 
-When you log in to frndOS, all brands assigned to your account appear in the **brand selector** at the top-left of the dashboard.
+When you log in to frndOS, all brands assigned to your account appear in the **brand switcher** in the sidebar.
 
 Each brand has its own:
 - **Brand Knowledge** (DNA, Identity, Tonality)
@@ -18,13 +18,21 @@ Each brand has its own:
 - **Generated assets** and history
 - **Brand-specific templates**
 
-Switching brands is just one click — no need to log out or change workspaces.
-
 ## How to Switch Between Brands
 
-1. Click the **brand selector** in the top-left of the dashboard
+1. Click the **brand switcher** in the sidebar
 2. Choose the brand you want to work in
 3. The entire workspace (projects, assets, Brand Knowledge) updates to that brand's context
+
+Switching is just one click — selecting a brand makes it active immediately. From there you can open its **brand settings**, jump into a pillar (Studio, Insights), or review its assets, all in that brand's context.
+
+## Creating a New Brand
+
+Creating a brand is a more deliberate flow than switching to one. Rather than a single click, brand creation is being given a proper guided setup so your Brand Knowledge is configured correctly from the start.
+
+When you create a brand, plan to set up its [Brand DNA](./brand-profile), [Brand Identity](./brand-identity), and [Tone of Voice](./tone-of-voice) as part of onboarding it — that's what makes everything downstream work.
+
+> **Heads-up:** The exact brand-creation entry point and steps are evolving. Look for the **add brand** option in the brand switcher, and expect a short setup flow rather than an instant create.
 
 ## Best Practices
 
@@ -47,10 +55,22 @@ Always check which brand is selected before generating. Brand context determines
 - Where generated assets are saved
 - Which projects you can see
 
+## Combining Data Across Brands (Roll-Up Brands)
+
+If you manage several related brands (for example, multiple sub-brands under one corporate parent), you can build a **roll-up brand** that aggregates performance data from the others — without re-connecting or duplicating data.
+
+This is done in Insights using **Extended connections**, which reuse data already connected to other brands in your workspace.
+
+**Example:** Create a "Home Care" brand and pull in the existing connections from Sunlight, Rinso, and Pepsodent to see combined performance — no duplicate syncing, no extra cost.
+
+👉 See: [Core vs Extended Connections](../insights/core-extended-connections)
+
+> **Note:** Data brought in via Extended connection is read-only from the roll-up brand. Managing or removing it must be done from the original brand that owns the connection.
+
 ## FAQ
 
-**Q: How do I get a new brand added to my account?**
-Contact your frndOS account representative. New brands are provisioned by the frndOS team.
+**Q: How do I add a new brand to my workspace?**
+You can create a brand yourself — look for the **add brand** option in the sidebar brand switcher. Brand creation uses a short guided setup so you can configure Brand Knowledge from the start. See [Creating a New Brand](#creating-a-new-brand) above.
 
 **Q: Can I copy Brand Knowledge from one brand to another?**
 This is not currently a standard self-serve feature. Reach out to your frndOS team if you have a specific use case.
@@ -67,3 +87,4 @@ You can recreate the KV under the correct brand. There's no automatic move featu
 
 - [Setting Up Your Brand Profile (Brand DNA)](./brand-profile)
 - [Creating & Managing Projects](../projects/managing-projects)
+- [Core vs Extended Connections](../insights/core-extended-connections)

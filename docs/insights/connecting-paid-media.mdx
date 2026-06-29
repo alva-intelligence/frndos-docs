@@ -18,7 +18,7 @@ The connection flow uses **OAuth** — you grant frndOS access using your own pl
 You need:
 - **Login access** to the ad account you want to connect (Meta Business or TikTok Ads Manager)
 - **Full access** role for the brand in frndOS (view-only users cannot connect data)
-- The correct brand selected in the **top-left brand selector**
+- The correct brand selected in the sidebar **brand switcher**
 
 ## How to Connect Meta Business
 
@@ -27,6 +27,8 @@ You need:
 1. Log in to **frndOS** and select your brand
 2. Navigate to **Insights → Paid Media**
 3. Click **Connect** and choose **Meta Business**
+
+> **Core or Extended?** When you connect, you'll be asked whether this is a **Core** connection (the brand's own account) or an **Extended** connection (reusing data from another brand). For a brand's primary account, choose **Core**. See [Core vs Extended Connections](./core-extended-connections).
 
 ### Step 2 — Authorize Access
 
@@ -56,13 +58,13 @@ The flow is similar to Meta:
 
 ## Important Notes & Limitations
 
-### One Connection Per Platform Per Brand (Current State)
+### One Core Connection Per Platform Per Brand
 
-Currently, each brand supports:
-- **One** Meta Business connection
-- **One** TikTok Ads connection
+Each brand has **one Core connection** per platform for its primary account (one Meta Business Core, one TikTok Ads Core).
 
-If you have multiple ad accounts under one brand, you can only connect one at a time. **Multi-account support is in development.**
+If you need to connect **additional accounts** of the same type — or reuse data already connected to another brand in your workspace — use **Extended connections** instead. This avoids duplicate syncing and cost.
+
+👉 See: [Core vs Extended Connections](./core-extended-connections)
 
 ### TikTok: Organic + Paid Data Mix
 
@@ -113,3 +115,4 @@ You don't have Full Access for this brand. Contact your workspace admin to upgra
 - [Insights Overview](./overview)
 - [Connecting Owned Media](./connecting-owned-media)
 - [Connecting Earned Media & ATL](./connecting-earned-atl)
+- [Core vs Extended Connections](./core-extended-connections)
