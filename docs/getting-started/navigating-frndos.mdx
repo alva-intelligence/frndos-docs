@@ -8,19 +8,39 @@ description: frndOS now uses a left sidebar for navigation. Learn how to move be
 
 frndOS navigation lives in a **left sidebar**. This is where you move between your main areas, switch brands, and open AskFrnd. This guide covers what's in the sidebar and how to get around.
 
-> **Coming from the old layout?** Navigation used to sit in a top bar with thumbnail icons. It's now consolidated into the left sidebar, and the brand switcher has moved there too. Everything you used before is still here — just in a cleaner, more familiar place.
+> **Coming from the old layout?** Navigation used to sit in a top bar with thumbnail icons. It's now consolidated into the left sidebar — brands now live in a **Brands** list there too. Everything you used before is still here — just in a cleaner, more familiar place.
 
-## What's in the Sidebar
+## Two Sidebar States: Home vs. Inside a Brand
 
-The left sidebar gives you quick access to your main navigation areas:
+This is the most important thing to understand about frndOS navigation: **the sidebar changes shape depending on whether you're at Home or inside a specific brand.** Pillars (Studio, Insights, Research, etc.) only appear once you've entered a brand — they're not available at the Home level.
+
+### Home Sidebar
+
+When you log in, you land on **Home** with this sidebar:
 
 | Item | What It's For |
 |---|---|
 | **Home** | Your overview — all activity and files across the brands you have access to |
 | **Search** | Find brands, files, projects, and pages across your workspace |
-| **Chat (AskFrnd)** | Open your AI assistant — see the two modes below |
-| **Brand Switcher** | Switch between the brands you work on |
-| **Pillars** | Access Studio, Insights, Research, and other pillars |
+| **Agents** | AI agents (beta) |
+| **Inbox / Playground / Pitch** | Upcoming areas, still being built |
+| **Brands** | A list of every brand you have access to — click one to enter it |
+| **Chat** | Your recent AskFrnd conversations not tied to any brand, plus **New Chat** |
+
+> **Note:** There are no pillars (Studio, Insights, etc.) visible at this level. To reach them, click into a brand from the **Brands** list.
+
+### Brand Sidebar
+
+Once you click a brand under **Brands**, the entire sidebar transforms to that brand's context:
+
+| Item | What It's For |
+|---|---|
+| **Brand name + settings gear** | Replaces the frndOS logo at the top — confirms which brand is active |
+| **Back to Home** | Returns you to the Home sidebar |
+| **Pillars** (Insights, Studio, Research, Growth, Loyalty) | Each pillar expands to show its tools — e.g., Insights expands into Overview, Campaigns, Ads, Social Media, Influencer, ATL, Trend Signals, Social Listening |
+| **Chat** | Recent AskFrnd conversations scoped to **this brand only**, plus **New Chat** |
+
+> **Heads-up:** Pillars are **brand-gated** — you must have a brand open to access Studio, Insights, Research, Growth, or Loyalty. There's no "pillar view" that works across all brands at once; each brand has its own Studio, its own Insights, and so on.
 
 > **Note:** The sidebar is actively evolving as frndOS grows. Some entries may appear or change as new capabilities roll out. This guide focuses on the stable, everyday navigation you'll use most.
 
@@ -30,41 +50,47 @@ The left sidebar gives you quick access to your main navigation areas:
 
 From Home you can search and navigate to other areas of frndOS.
 
-## Switching Brands
+## Entering and Switching Brands
 
-The **brand switcher** lives in the sidebar. It shows the brands you have access to and lets you switch the active brand with a click.
+To work on a brand, click it under **Brands** in the Home sidebar. This takes you into that brand's dedicated sidebar (Pillars, Chat scoped to that brand, etc.) — see [Brand Sidebar](#brand-sidebar) above.
 
-Switching brands changes your whole context:
+Entering a brand changes your whole context:
 - Which projects and files you see
 - Which Brand Knowledge applies
 - Which Insights data loads
 - Which credit context is active
 
+**To switch to a different brand**, click **Back to Home** at the top of the Brand Sidebar, then pick another brand from the **Brands** list.
+
 > **Heads-up:** Creating a new brand is intentionally being given a more guided flow. Don't expect to spin up a brand in a single click — brand setup is a deliberate process so your Brand Knowledge is configured properly. See [Setting Up Your Brand Profile](../brand-setup/brand-profile).
 
 ## Two Ways to Use Chat (AskFrnd)
 
-One of the most useful things to understand about the new navigation: **AskFrnd has two modes**, and which one you get depends on how you open it.
+One of the most useful things to understand about the new navigation: **AskFrnd has two access points, and they show different chat history.**
 
-### Mode 1 — Side Panel
+### Mode 1 — Side Panel (FAB)
 
-Open AskFrnd from the **right side** of any page and it appears as a **panel** alongside your current view. This is the context-aware mode — it knows which pillar and data you're looking at, so it's ideal for asking questions about what's on screen.
+Open AskFrnd from the **floating button (FAB) in the bottom-right corner** of any page and it appears as a panel alongside your current view. This mode is context-aware — it knows which pillar and data you're looking at. Its history view shows **every chat you've had, across every brand and pillar** — useful when you can't remember which brand a past conversation happened in.
 
-### Mode 2 — Full Screen
+### Mode 2 — Full Screen (Sidebar)
 
-Open Chat from the **left sidebar** and you get a **full-screen chat view** — a dedicated space for longer conversations, with your chat history accessible.
+Open **Chat** from the **left sidebar** for a dedicated, full-screen conversation view. Its history is **scoped to where you currently are**: from Home, you'll see chats not tied to any brand; from inside a brand, you'll see only that brand's chats.
 
-> **Which should I use?** Use the **side panel** when you want to ask about what you're currently viewing (e.g., analyzing an Insights dashboard). Use the **full-screen view** when you want a focused, standalone chat session.
+> **Which should I use?** Use the **FAB** when you want to ask about what you're currently viewing, or when you need to find a chat regardless of which brand it was in. Use the **sidebar Chat** when you want a focused session scoped to your current brand (or Home).
 
-Both modes share your conversation history. See [AskFrnd Overview](../askfrnd/overview) for more.
+👉 See: [AskFrnd Overview](../askfrnd/overview) for the full breakdown of history scope per access point.
 
 ## Pillars
 
-The pillars — **Studio**, **Insights**, **Research**, and others — are accessible from the sidebar. Each pillar is a workspace for a different kind of work:
+The pillars — **Insights**, **Studio**, **Research**, **Growth**, and **Loyalty** — are each a workspace for a different kind of work. **You can only access them from inside a brand** (see [Brand Sidebar](#brand-sidebar) above):
 
+- **Insights** → performance tracking and dashboards (expands into Overview, Campaigns, Ads, Social Media, Influencer, ATL, Trend Signals, Social Listening)
 - **Studio** → creative production (KV Generator, Resizer)
-- **Insights** → performance tracking and dashboards
 - **Research** → audience understanding and customer intelligence
+- **Growth** → growth and campaign tools
+- **Loyalty** → loyalty program tools
+
+Every pillar is scoped to whichever brand is currently active. There's no cross-brand pillar view — switch brands to switch which brand's Studio, Insights, etc. you're looking at.
 
 👉 See: [Welcome to frndOS](./welcome) for an overview of the pillars.
 
@@ -74,10 +100,13 @@ The pillars — **Studio**, **Insights**, **Research**, and others — are acces
 The new sidebar navigation is now in production. If you see an older layout, try refreshing or clearing your cache. If it persists, report it through your agency support group.
 
 **Q: Where did the brand switcher go?**
-It moved into the sidebar. Look for your brand list there instead of the old top-left dropdown.
+There isn't a quick dropdown switcher — brands live in the **Brands** list on the Home sidebar. Click a brand to enter it; click **Back to Home** to pick a different one.
+
+**Q: I can't find Studio or Insights in the sidebar. Where are they?**
+Pillars only appear once you're inside a brand. From Home, click a brand under **Brands**, and the sidebar will switch to show Insights, Studio, Research, Growth, and Loyalty for that brand.
 
 **Q: What's the difference between Chat in the sidebar and the AskFrnd panel?**
-Same assistant, two modes. Sidebar Chat opens full-screen; the right-side panel opens alongside your current view and is context-aware. History is shared between them.
+Same assistant, different history scope. The **FAB** (bottom-right) shows history across every brand and pillar. **Sidebar Chat** shows history scoped to where you are — Home-only, or that specific brand only.
 
 **Q: Some sidebar items look empty or unfinished.**
 A few areas are still being built out. This guide focuses on the stable navigation. New capabilities will be documented as they ship.

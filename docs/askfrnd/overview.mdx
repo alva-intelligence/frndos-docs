@@ -10,16 +10,36 @@ description: 'AskFrnd is your AI assistant inside frndOS — context-aware, avai
 
 If you used the old standalone chat page in v1, AskFrnd is what replaces it — and it's smarter, more accessible, and aware of where you are.
 
-## Where to Find AskFrnd
+## Where to Find AskFrnd — and What History You'll See
 
-AskFrnd is available in **two modes**, depending on how you open it:
+There are two ways to open AskFrnd, and **the chat history you see depends on where you access it from**:
 
-- **Side panel** — open AskFrnd from the **right side** of any page and it appears alongside your current view. This mode is context-aware (it knows which pillar and data you're looking at).
-- **Full screen** — open **Chat** from the **left sidebar** for a dedicated, full-screen conversation view with your history.
+### 1. From the Sidebar — Scoped to Your Current Context
 
-Both modes share the same assistant and the same conversation history. Pick whichever fits the moment.
+Click **Chat** in the left sidebar. What you see depends on where you are:
 
-👉 See: [Navigating frndOS — The Sidebar](../getting-started/navigating-frndos) for how the two entry points work.
+- **From Home** → clicking **See all** shows chat history that **isn't tied to any specific brand** — chats created while you were in Home context. These are tagged **Home**.
+- **From inside a Brand** → clicking **See all** shows chat history **tied to that specific brand only**. Each entry is tagged with the brand name (and the module it came from, e.g. "Insights").
+
+In other words, sidebar history is **scoped to wherever you currently are** — Home or a specific brand.
+
+### 2. From the Floating AskFrnd Button (FAB) — Everything, Everywhere
+
+The sparkle icon in the **bottom-right corner** is available from any page. Open it and check its history — it shows **every chat you've had, across every brand and every pillar**, regardless of where you currently are.
+
+> **Why does the FAB show everything?** If you manage several brands, you might not remember which brand a past conversation happened in. Rather than opening each brand one by one to search, the FAB's history gives you one place to find any chat across your whole account.
+
+### Quick Reference
+
+| Access Point | History Scope | Tagged By |
+|---|---|---|
+| Sidebar Chat → Home | Chats not tied to a brand | "Home" |
+| Sidebar Chat → inside a Brand | Chats tied to that brand only | Brand name + module |
+| FAB (bottom-right, anywhere) | All chats, every brand, every pillar | Brand name or "Home" + module |
+
+> **Filter tip:** All history views let you filter by **Your chat** and **Your module**. The FAB's global view adds a third filter, **Your Brand**, since it spans multiple brands — the sidebar-scoped views don't need it.
+
+👉 See: [Navigating frndOS — The Sidebar](../getting-started/navigating-frndos) for more on the sidebar layout.
 
 ## What Makes AskFrnd Different
 
@@ -37,7 +57,7 @@ This means:
 
 ### Conversation History
 
-AskFrnd **saves your chat history**. You can browse past conversations from the panel, pick up where you left off, or reference previous Q&As when you need them.
+AskFrnd **saves your chat history** — but what you see depends on your access point. See [Where to Find AskFrnd](#where-to-find-askfrnd--and-what-history-youll-see) above for the full breakdown: Home-scoped, brand-scoped, or everything via the FAB.
 
 ### Model Choice
 
@@ -91,17 +111,18 @@ Think of AskFrnd as the **sketchpad** and KV Generator as the **studio**. Both a
 
 AskFrnd has access to:
 
-* Your **active brand** (whichever brand is selected in the sidebar brand switcher)
+* Your **active brand** (whichever brand you currently have open — see [Navigating frndOS](../getting-started/navigating-frndos) for how brand context works)
 * The **current page context** (which pillar, which data, which view)
-* Your **conversation history** in that session
+* Your **conversation history**, scoped to your access point (see above)
 
 > **Heads-up:** Brand Knowledge (DNA, Identity, Tonality) is currently **only fully consumed by the KV Generator**, not yet by AskFrnd's chat-based generation. This is being worked on. For now, if you need brand-perfect output, use the KV Generator or include brand specifics in your prompt.
 
 ## Privacy & History
 
-* Your AskFrnd conversations are stored in your account
-* Workspace admins can see usage analytics (how many credits, which features), but **not the content** of your conversations
-* You can review your own history at any time from the AskFrnd panel
+- Your AskFrnd conversations are stored in your account
+- Workspace admins can see usage analytics (how many credits, which features), but **not the content** of your conversations
+- Where you can **see** a given conversation depends on your access point — see [Where to Find AskFrnd](#where-to-find-askfrnd--and-what-history-youll-see) above
+- Use the **FAB's global history** (bottom-right) when you're not sure which brand a past conversation happened in
 
 ## FAQ
 
@@ -118,7 +139,13 @@ Yes, when you open AskFrnd from inside the Insights pillar — it can analyze th
 Check the model selector in the AskFrnd panel. Behavior may vary based on the specific implementation.
 
 **Q: My AskFrnd panel is gone — where did it go?**
-The side panel is collapsible — look for the AskFrnd icon on the right side of the screen to reopen it. You can also open Chat full-screen from the left sidebar.
+The FAB (floating button) is always available in the bottom-right corner — click it to reopen the panel. You can also open **Chat** from the left sidebar for the full-screen view.
+
+**Q: Why does my chat history look different depending on where I open it?**
+History scope depends on your access point. Sidebar Chat shows history scoped to where you are (Home-only or that specific brand). The FAB (bottom-right) always shows everything — every brand, every pillar. See [Where to Find AskFrnd](#where-to-find-askfrnd--and-what-history-youll-see) above.
+
+**Q: I can't find a chat I had last week — where should I look?**
+If you're not sure which brand it happened in, use the **FAB's history** (bottom-right corner) — it searches across all your brands and pillars at once, so you don't have to check each brand individually.
 
 **Q: Can AskFrnd use custom brand fonts in generated visuals?**
 Not yet — Brand Knowledge fonts are currently only used by the KV Generator. For chat-based generation, you can upload custom fonts directly into your prompt or context.

@@ -76,10 +76,12 @@ When inviting, you assign a role. Roles control what the user can do inside the 
 
 | Role | What They Can Do |
 |---|---|
-| **Owner** | Full control — workspace settings, billing, member management, all content |
-| **Admin** | Manage members, approve requests, manage brands and projects |
-| **Editor** | Create and edit content (brands, projects, KVs, etc.) |
+| **Owner** | Full control — workspace settings, billing, member management, all content, **can create brands** |
+| **Admin** | Manage members, approve requests, manage projects, **can create brands** |
+| **Editor** | Create and edit content within existing brands (projects, KVs, Brand Knowledge, etc.) — cannot create new brands |
 | **Viewer / Guest** | View-only access — useful for clients and stakeholders who only need visibility |
+
+> **Brand creation is admin-only.** Only **Owner** and **Admin** roles can create new brands in a workspace. Any member with access to a brand — including Editors — can configure that brand's Brand Knowledge (DNA, Identity, Tone of Voice). See [Managing Multiple Brands](../brand-setup/multiple-brands) for details.
 
 > **Note:** Specific role names and capabilities may evolve. Check workspace settings for the current options.
 
