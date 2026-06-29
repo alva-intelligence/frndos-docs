@@ -211,10 +211,9 @@ const NewsletterCollection = {
     {
       type: "reference",
       name: "related_doc",
-      label: "Related Help Articles",
-      description: "Help articles this email deep-links to.",
+      label: "Related Help Article",
+      description: "Primary help article this email links to (optional).",
       collections: ["doc"],
-      list: true,
     },
     {
       label: "Tags",
