@@ -138,6 +138,100 @@ const PostCollection = {
   ],
 };
 
+const NewsletterCollection = {
+  name: "newsletter",
+  label: "Onboarding Newsletter",
+  path: "newsletter",
+  format: "mdx",
+  ui: {
+    defaultItem: () => {
+      return {
+        sequence_day: 0,
+        variant: "basic",
+      };
+    },
+    filename: {
+      readonly: false,
+      slugify: (values) => {
+        const day = String(values?.sequence_day ?? 0).padStart(2, "0");
+        const variant = values?.variant ?? "basic";
+        return `day-${day}-${variant}`;
+      },
+    },
+  },
+  fields: [
+    {
+      type: "string",
+      name: "title",
+      label: "Subject Line",
+      description: "The email subject line (becomes the email's Subject header).",
+      isTitle: true,
+      required: true,
+    },
+    {
+      type: "number",
+      name: "sequence_day",
+      label: "Send Day",
+      description:
+        "Days after signup this email sends. One of: 0, 3, 6, 9, 12, 15, 18, 21.",
+      required: true,
+    },
+    {
+      type: "string",
+      name: "variant",
+      label: "Variant",
+      description:
+        "basic = teaching version (user hasn't done the step yet); done_it = 'go deeper' version (user already did it). Day 0 only ever sends basic — its done_it entry exists for schema completeness and never sends.",
+      required: true,
+      options: [
+        { label: "Basic", value: "basic" },
+        { label: "Go Deeper (done_it)", value: "done_it" },
+      ],
+    },
+    {
+      type: "string",
+      name: "summary",
+      label: "Preheader / Preview Text",
+      description: "Inbox preview text shown after the subject line.",
+      ui: { component: "textarea" },
+    },
+    {
+      type: "string",
+      name: "cta_label",
+      label: "CTA Label",
+      description: "Primary button text, e.g. 'Set Up Your First Brand'.",
+    },
+    {
+      type: "string",
+      name: "cta_url",
+      label: "CTA URL (path only)",
+      description:
+        "App or doc path only, e.g. /home or /workspace-settings. Do NOT add UTM parameters — the backend appends utm_source/medium/campaign at send time.",
+    },
+    {
+      type: "reference",
+      name: "related_doc",
+      label: "Related Help Article",
+      description: "Primary help article this email links to (optional).",
+      collections: ["doc"],
+    },
+    {
+      label: "Tags",
+      name: "tags",
+      type: "string",
+      list: true,
+      ui: { component: "tags" },
+    },
+    {
+      type: "rich-text",
+      name: "body",
+      label: "Body",
+      isBody: true,
+      templates: [...MDXTemplates],
+    },
+  ],
+};
+
 const DocsCollection = {
   name: "doc",
   label: "Help Articles",
@@ -873,6 +967,7 @@ export default defineConfig({
     collections: [
       DocsCollection,
       PostCollection,
+      NewsletterCollection,
       HomepageCollection,
       PagesCollection,
       SidebarCollection,
