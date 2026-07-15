@@ -1,0 +1,80 @@
+---
+sidebar_position: 7
+title: Exploring Customers & Segments
+description: Browse, search, and filter your enriched customers, open a full profile for any one of them, and work with AI-generated and manual segments.
+---
+
+# Exploring Customers & Segments
+
+Once your customers are imported and enriched, two tabs let you explore them: **Customer Table View** (every customer, searchable and filterable) and **Segment List** (your audience grouped into segments).
+
+> Haven't imported yet? See [Importing & Enriching Customers](./importing-customers).
+
+## Customer Table View
+
+The **Customer Table View** lists every enriched customer for the active brand. Each row shows:
+
+| Column | What it shows |
+| ------------------- | ---------------------------------------------- |
+| **Customer Name** | The customer's name |
+| **Description** | A short AI description of the customer |
+| **AI Segment** | AI-assigned segment tags |
+| **Status** | Active, Risk, or Churned |
+| **Processing Status** | Whether the customer is enriched yet |
+| **Passion Points** | The customer's interests |
+| **Brand Product** | Your products the customer engages with |
+| **Other Product** | Other (competitor / adjacent) products |
+| **Intent** | Purchase-intent score |
+| **CLV** | Customer lifetime value |
+
+<!-- TODO: add screenshot of the Customer Table View → /img/guides-asset/<name>.jpeg -->
+
+### Search and Filter
+
+- **Search** — use the search box (_"Search customers…"_) to find a customer by name.
+- **Filters** — narrow the list by:
+  - **Status** — Active, Risk, Churned
+  - **Processing Status** — Unprocessed, Processing, Processed, Error
+
+When no customers exist yet, the tab shows **"No Customer Data Available"** — import a CSV first.
+
+### Opening a Customer Profile
+
+Open any customer to see their full profile, including enriched detail such as:
+
+- **Social profiles** — platform handles, followers, posts, content themes
+- **Sentiment** — brand affinity, brand sentiment (per platform), competitor sentiment
+- **Scores** — confidence, quality, and accuracy of the enrichment
+
+<!-- TODO: confirm the exact profile-drawer layout and section names with a screenshot. -->
+
+## Segment List
+
+The **Segment List** groups your customers into segments. Each segment card is one of two types:
+
+- **AI Generated Segments** — segments frndOS builds automatically from your data
+- **Manual Segment** — segments you define yourself
+
+The top of the tab summarizes your segments with **Total Segments** and **Top Segments**. Open any segment (**View Segment**) to see the customers inside it.
+
+<!-- TODO: add screenshot of the Segment List → /img/guides-asset/<name>.jpeg -->
+
+<!-- TODO: confirm how a user CREATES a manual segment (the exact action/flow) — not fully readable from the list view code. -->
+
+## FAQ
+
+**Q: What does Processing Status mean?**
+It tells you whether a customer has been enriched yet — Unprocessed, Processing, Processed, or Error. Only enriched customers have full profile detail.
+
+**Q: What's the difference between AI Segment and Segment List?**
+The **AI Segment** column tags an individual customer. The **Segment List** tab groups customers into named segments (AI-generated or manual).
+
+**Q: A customer shows no interests or scores.**
+They likely haven't been enriched yet (check Processing Status), or enrichment failed for that record. See [Importing & Enriching Customers](./importing-customers).
+
+---
+
+## Next Steps
+
+- [Getting Customer Insights →](./customer-insights)
+- [Importing & Enriching Customers →](./importing-customers)

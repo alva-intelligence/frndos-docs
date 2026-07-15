@@ -1,7 +1,7 @@
 ---
 title: Managing Workspace Credits
 sidebar_position: 3
-description: How credits work in frndOS — workspace pools, per-user allocation, usage tracking, and the self-serve request flow.
+description: How credits work in frndOS — workspace pools, per-user allocation, usage tracking, the self-serve request flow, and buying Extra Credit.
 ---
 
 # Managing Workspace Credits
@@ -97,6 +97,61 @@ Your request goes to the workspace admin as a notification.
 
 > **Tip:** Adding a clear note speeds up approval. Admins are more likely to approve quickly if they understand the use case.
 
+## Buying Extra Credit (Top-up)
+
+When your workspace pool isn't enough, admins and owners can **buy Extra Credit** — a top-up that adds to your balance on top of the monthly plan. You buy it from **Workspace Settings → Credit Usage**.
+
+> **Who can buy:** Only workspace **owners and admins**, on a **paid plan** (not a trial), in a **team workspace**. Extra Credit is rolled out gradually — if you don't see the option, it isn't enabled for your workspace yet.
+
+### How to Buy Extra Credit
+
+1. Go to **Workspace Settings → Credit Usage**
+2. Open **Buy Extra Credit** (from the Extra Credit section or the low-balance banner)
+3. Choose how much:
+   - Pick a **pack**, or
+   - Enter a **custom amount** (minimum **500 credits**)
+4. Review the cost breakdown — **Subtotal**, **Transaction fee**, **VAT**, and **Total**
+5. Click **Continue to payment** and complete checkout with the payment provider (Xendit)
+
+<!-- TODO: add screenshot of the Buy Extra Credit modal (packs + custom amount + cost breakdown) → /img/guides-asset/<name>.jpeg -->
+
+> **Heads-up:** The larger packs show a **Save %** — the price per credit drops as the amount goes up.
+
+After payment you're returned to the Credit Usage page, which confirms the result (success, still-pending, or failed). If a payment is left unfinished, a **Pending payment** banner lets you **Continue payment** or resume it later.
+
+### Auto-use Extra Credit
+
+Next to Extra Credit is an **Auto-use Extra Credit** toggle (owner/admin only):
+
+- **On** — frndOS automatically draws from Extra Credit when your subscription credits run out, so work doesn't stop.
+- **Off** — Extra Credit is only used when you choose.
+
+> **Heads-up:** While Auto-use is on, buying Extra Credit also **pays off any outstanding member debt** first. If a top-up would settle debt, frndOS asks you to confirm before enabling.
+
+### When Extra Credit Expires
+
+Extra Credit **never expires while your subscription is active**. It **pauses** if your subscription lapses and **resumes** when you reactivate.
+
+### Viewing Your Extra Credit Purchases
+
+Every Extra Credit purchase is recorded in **Workspace Settings → Billing**, under **Extra Credit Purchases** (admin/owner only).
+
+<!-- TODO: add screenshot of the Extra Credit Purchases table in Billing → /img/guides-asset/<name>.jpeg -->
+
+The table lists each purchase with:
+
+| Column | What it shows |
+| ----------- | ---------------------------------------------------- |
+| **Date** | When the purchase was made (with its invoice number) |
+| **Credits** | How many credits were bought |
+| **Amount** | What you paid |
+| **Status** | `pending`, `paid`, `expired`, or `failed` |
+| **Invoice** | For **paid** purchases, download the invoice as **PDF**; for **pending** ones, **Continue** the payment |
+
+If you haven't bought any Extra Credit yet, the table shows _"No Extra Credit purchases yet."_
+
+> **Tip:** Use the **PDF** link on a paid row to download the invoice for your records or finance team.
+
 ## Tracking Credit Usage
 
 Workspace admins can see usage analytics in workspace settings:
@@ -120,7 +175,19 @@ This helps you allocate the budget more accurately over time.
 ## FAQ
 
 **Q: What happens when our workspace runs out of credits?**
-You can request a plan upgrade or wait for the next billing cycle when credits reset. Reach out to your frndOS account representative to top up.
+You have a few options: wait for the next billing cycle when credits reset, upgrade your plan, or — if you're an owner/admin on a paid plan — **buy Extra Credit** as a top-up. See [Buying Extra Credit](#buying-extra-credit-top-up).
+
+**Q: Who can buy Extra Credit?**
+Only workspace owners and admins, on a paid plan, in a team workspace. It's also rolled out gradually, so it may not be enabled for your workspace yet.
+
+**Q: Does Extra Credit expire?**
+Not while your subscription is active. It pauses if your subscription lapses and resumes when you reactivate.
+
+**Q: What is Auto-use Extra Credit?**
+A toggle that lets frndOS automatically use your Extra Credit once subscription credits run out. While it's on, buying Extra Credit also pays off any outstanding member debt first.
+
+**Q: Where do I find invoices for my Extra Credit purchases?**
+In **Workspace Settings → Billing**, under **Extra Credit Purchases**. Each paid purchase has a **PDF** invoice link. See [Viewing Your Extra Credit Purchases](#viewing-your-extra-credit-purchases).
 
 **Q: Do credits roll over to the next month?**
 Rollover policy depends on your subscription plan. Check your plan details for specifics.

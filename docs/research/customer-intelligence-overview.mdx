@@ -1,0 +1,84 @@
+---
+sidebar_position: 5
+title: Customer Intelligence Overview
+description: Turn your customer list into an enriched, AI-segmented view of who your audience really is — imports, segments, insights, and per-customer profiles, all per brand.
+---
+
+# Customer Intelligence Overview
+
+**Customer Intelligence** turns a raw customer list into an enriched, AI-understood view of your audience. You bring your customers in (via CSV), frndOS enriches each one — social profiles, interests, sentiment, lifetime value, purchase intent — and you explore them as individuals, as segments, and as insights.
+
+Everything is **scoped per brand**: the brand active in the sidebar decides which customers and segments you see, and gives the AI the brand context it needs for sentiment analysis.
+
+> **Availability:** Customer Intelligence is rolled out gradually behind a feature flag. If you don't see it for your brand, it isn't enabled for your workspace yet.
+
+## The At-a-Glance Overview
+
+When your brand has data, the top of the page shows four summary cards:
+
+| Card | What it shows |
+| ------------------------ | ------------------------------------- |
+| **Total Customer** | How many customers you've imported |
+| **Active Segments** | How many segments are active |
+| **Avg. Lifetime Value** | Average customer lifetime value (CLV) |
+| **Avg. Purchase Intent** | Average purchase-intent score |
+
+The overview can also surface **suggested actions** — click one to open AskFrnd with a prompt already filled in, so you can dig deeper in chat.
+
+Use **Run History** (top-right) to see past enrichment runs.
+
+<!-- TODO: add screenshot of the Customer Intelligence overview (four cards + tabs) → /img/guides-asset/<name>.jpeg -->
+
+## How It's Organized
+
+Customer Intelligence has four tabs:
+
+| Tab | What it's for |
+| ------------------------ | ---------------------------------------------------------- |
+| **Integrations** | Bring customers in — upload a CSV and enrich their profiles |
+| **Customer Table View** | Browse, search, and filter every enriched customer |
+| **Segment List** | See AI-generated and manual segments of your audience |
+| **Customer Insights** | Ask questions of your customer base and get AI insights |
+
+New brands with no data yet start on **Integrations** — that's where you begin.
+
+## Before You Start
+
+1. ✅ **Open the right brand** — from Home, click it under **Brands** in the sidebar. Customers, segments, and insights are all scoped to the active brand.
+2. ✅ **Customer Intelligence is enabled** for your workspace (see availability note above).
+3. ✅ **Enough credits** — enriching customer profiles is paid from your credit balance. See [Managing Workspace Credits](../workspace/managing-credits).
+
+<!-- TODO: confirm how a user navigates to Customer Intelligence (which sidebar/menu entry opens it) — the entry point isn't readable from the page code. Add the exact path + screenshot. -->
+
+## The Workflow
+
+```
+1. Import customers (Integrations → Upload CSV)
+        ↓
+2. Enrich profiles (AI fills in social, interests, sentiment, CLV, intent)
+        ↓
+3. Explore (Customer Table View + per-customer profiles)
+        ↓
+4. Segment (Segment List — AI-generated + manual)
+        ↓
+5. Get insights (Customer Insights)
+```
+
+## FAQ
+
+**Q: I don't see Customer Intelligence for my brand.**
+It's rolled out gradually behind a feature flag. If it isn't visible, it hasn't been enabled for your workspace yet.
+
+**Q: Does it cost credits?**
+Yes — enriching customer profiles is billable, charged from your workspace credit balance. See [Importing & Enriching Customers](./importing-customers).
+
+**Q: Is my data separated per brand?**
+Yes. Everything is scoped to the brand active in the sidebar. Switch brands to see a different customer base.
+
+---
+
+## Next Steps
+
+- [Importing & Enriching Customers →](./importing-customers)
+- [Exploring Customers & Segments →](./exploring-customers-and-segments)
+- [Getting Customer Insights →](./customer-insights)

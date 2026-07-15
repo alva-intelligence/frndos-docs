@@ -1,0 +1,88 @@
+---
+sidebar_position: 2
+title: Setting the Workspace AskFRND Tools
+description: Admins set which AskFRND tools are available by default across the workspace — the baseline every member inherits until they override it in their own Chat Settings.
+---
+
+# Setting the Workspace AskFRND Tools
+
+**AskFRND Tools** (in Workspace Settings) is where an admin sets the **default tool set** for AskFRND across the whole workspace. Whatever you enable here is the **baseline** every member starts from — until they save their own selection in **Chat Settings → Tools**.
+
+Think of it as the workspace-wide "what AskFRND is allowed to do here" switchboard.
+
+## Before You Start
+
+1. ✅ **You're an admin** — this page needs the **workspace settings** permission (`workspace.settings.write`). Members without it don't see it, and the server enforces the same rule.
+2. ✅ **You're in a team workspace** — the page isn't available in a Personal workspace.
+
+## Step 1 — Open AskFRND Tools
+
+Go to **Workspace Settings** and open **AskFRND Tools** from the settings sidebar.
+
+You'll see the heading _"AskFRND Tools"_ and the note: _"The default tool set for AskFRND in this workspace. Members follow these settings until they save their own in Chat Settings → Tools."_
+
+<!-- TODO: add screenshot of the Workspace Settings → AskFRND Tools page → /img/guides-asset/<name>.jpeg -->
+
+## Step 2 — Turn Tools On or Off
+
+Each tool has its own toggle, grouped into sections. Flip a toggle to enable or disable that tool for the workspace baseline.
+
+> **Heads-up:** Changes **save instantly** — there's no separate Save button. Toggle a tool and it's applied.
+
+### The tool sections
+
+| Section | Tool | What it lets AskFRND do |
+| ------------------------ | --------------------------- | ------------------------------------------------------------------ |
+| **Agents & Automation**¹ | **Workspace agents** | Orchestrate and delegate to workspace agents |
+| | **Agent teams** | Coordinate multi-agent teams on complex tasks |
+| | **Agent workflows** | Trigger and run agent workflows |
+| **Creation** | **Image generation & editing** | Create and edit images |
+| | **Video generation** | Create videos from a prompt |
+| | **Key Visuals** | Generate brand key visuals for campaigns |
+| **Knowledge** | **Brand Knowledge** | Look up the workspace's brand knowledge |
+| **Research** | **Customer Intelligence** | Access customer segments, insights, and AI-generated overviews |
+
+¹ The **Agents & Automation** section only appears when the experimental Agents feature is enabled for your workspace. If you don't see it, agents aren't turned on yet.
+
+## Step 3 — Use "Enable all" (optional)
+
+At the top is an **Enable all tools** switch:
+
+- Turn it **on** to enable every visible tool at once.
+- Turn it **off** to restore your previous selection (what was set just before you enabled all).
+
+> **Heads-up:** If everything was already on when you opened the page, switching "Enable all" off falls back to turning everything off — so the switch is never a silent no-op.
+
+## Always-On Tools
+
+**Web search** and **file downloads** are always available to AskFRND and **can't be turned off** — you won't find toggles for them here.
+
+## How Members Inherit This
+
+- The workspace baseline you set here applies to **every member** by default.
+- A member can override it for themselves in **Chat Settings → Tools**. Once they save a personal selection, they follow their own settings instead of the workspace baseline.
+- Members who never touch their Chat Settings keep following whatever you set here.
+
+## FAQ
+
+**Q: I don't see the AskFRND Tools page.**
+It's admin-only (needs workspace settings permission) and team-only. If you're not an admin, or you're in a Personal workspace, it won't appear. Ask a workspace admin.
+
+**Q: Do my changes need saving?**
+No — every toggle saves instantly.
+
+**Q: I turned a tool off but a member still uses it.**
+That member likely set their own tool selection in **Chat Settings → Tools**, which overrides the workspace baseline for them.
+
+**Q: Why can't I disable web search or file downloads?**
+Those are always-on capabilities for AskFRND and aren't configurable here.
+
+**Q: Some tools (agents, teams, workflows) aren't listed.**
+The **Agents & Automation** section only shows when the experimental Agents feature is enabled for your workspace.
+
+---
+
+## Next Steps
+
+- [Settings & Administration Overview →](./overview)
+- [Inviting Team Members →](../workspace/inviting-team-members)

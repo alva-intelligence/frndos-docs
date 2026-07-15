@@ -1,0 +1,85 @@
+---
+sidebar_position: 4
+title: Connecting Lark (AskFrnd Plugins)
+description: Connect your Lark account so AskFrnd can work with your Lark Docs, Base, Drive, Wiki, and Tasks on your behalf — with read/write control per service.
+---
+
+# Connecting Lark (AskFrnd Plugins)
+
+**Plugins** let you connect external accounts so **AskFrnd can act on your behalf**. The first plugin is **Lark** — connect it and AskFrnd can work with your Lark content (Docs, Base, Drive, Wiki, Tasks), with you deciding read or write access per service.
+
+> **Availability:** Plugins is a beta feature, rolled out gradually. If you don't see the **Plugins** tab in Chat Settings, it isn't enabled for you yet.
+
+## Where to Find Plugins
+
+Plugins live in **AskFrnd → Chat Settings → Plugins**:
+
+1. Open **AskFrnd**
+2. Open **Chat Settings**
+3. Go to the **Plugins** tab
+
+<!-- TODO: confirm the exact way to open Chat Settings from the AskFrnd panel and add a screenshot → /img/guides-asset/<name>.jpeg -->
+
+The tab is headed **Plugins** — _"Connect external accounts so AskFRND can act on your behalf."_ Each plugin row shows its name, a short description, and a status badge:
+
+- **Active** — connected and working
+- **Action needed** — installed but needs attention (e.g. reconnect)
+- **Soon** — listed but not available yet
+
+## Step 1 — Install & Connect Lark
+
+1. On the **Plugins** tab, find **Lark** and click **Install**
+2. You're taken to **Lark to authorize** access — sign in and grant permission
+3. After authorizing, you're returned to frndOS with Lark connected
+
+<!-- TODO: add screenshot of the Plugins list with Lark → /img/guides-asset/<name>.jpeg -->
+
+> **Heads-up:** Installing starts the connection with a default permission (Docs read). You fine-tune what AskFrnd can access in the next step.
+
+## Step 2 — Set Permissions Per Service
+
+Open the connected Lark plugin to manage it. Under **Permissions**, each Lark service (such as **Docs**, **Base**, **Drive**, **Wiki**, and **Tasks**) has its own access control:
+
+- **Read** — AskFrnd can read that service's content
+- **Write** — AskFrnd can read **and** change that service's content
+
+> **Heads-up:** Read and Write are a single choice per service — picking **Write** already includes reading. Click the active level again to clear it (no access).
+
+<!-- TODO: confirm the exact Lark service display names shown in the Permissions list (they come from the server) with a screenshot. -->
+
+## Step 3 — Reauthorize After Changing Permissions
+
+Whenever you change permissions — or when your token expires — you need to **Reauthorize** so Lark re-grants access for your current Read/Write choices.
+
+- The plugin detail view shows the status: **Active**, **Token Expired**, or **Not authorized**.
+- Click **Reauthorize** (it's only enabled when a re-auth is actually needed) — this opens Lark to re-grant access.
+
+> **Heads-up:** If your token has expired, you'll see a banner: _"Your Lark token has expired. Click Reauthorize below to reconnect."_
+
+## Disconnecting Lark
+
+To remove the connection, open the plugin and click **Revoke Plugin**. AskFrnd will no longer be able to access your Lark content.
+
+## FAQ
+
+**Q: I don't see the Plugins tab.**
+Plugins is a beta feature rolled out gradually. If it isn't in Chat Settings yet, it isn't enabled for you — check back later.
+
+**Q: What can AskFrnd do with my Lark account?**
+Only what you allow. You grant **Read** or **Write** per service (Docs, Base, Drive, Wiki, Tasks). With Read it can look things up; with Write it can also make changes.
+
+**Q: Why do I have to Reauthorize?**
+Lark only grants AskFrnd the permissions you authorized. If you change your Read/Write choices, or the token expires, you re-grant them by reauthorizing.
+
+**Q: How do I stop AskFrnd from accessing Lark?**
+Open the Lark plugin and click **Revoke Plugin** to disconnect it.
+
+**Q: A plugin shows "Soon" — can I use it?**
+Not yet. "Soon" means it's listed but not available to install at the moment.
+
+---
+
+## Next Steps
+
+- [AskFrnd Overview →](./overview)
+- [Using AskFrnd Skills →](./skills)

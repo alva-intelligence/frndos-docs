@@ -75,6 +75,10 @@ Module folders: `getting-started`, `brand-setup`, `studio`, `insights`, `researc
 - `tina/__generated__` and `static/admin` are generated — never hand-edit, never commit (gitignored).
 - Without TinaCloud creds in `.env`, the `/admin` editor is read-only in production (local-editing pattern).
 
+## Skills
+
+- **`writing-help-docs-from-code`** (`.claude/skills/`) — given a frndOS feature keyword, generates/updates Help Center guides grounded in the `frnd-web` codebase. Reads real UI/behavior from code, marks unreadable parts (vendor iframes, retired routes) as `TODO` rather than guessing, and validates with a build. Use it whenever docs are requested from just a keyword.
+
 ## Rules
 
 - No AI attribution in commit messages.

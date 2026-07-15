@@ -1,0 +1,84 @@
+---
+sidebar_position: 4
+title: Customizing Insights Tabs
+description: Admins can rename and show/hide the Insights tabs across the workspace — set the defaults every brand inherits, from Workspace Settings → Insights Tabs.
+---
+
+# Customizing Insights Tabs
+
+**Insights Tabs** (in Workspace Settings) lets an admin set the **default labels and visibility** for the tabs inside Insights — for the whole workspace. Rename a tab to match your team's language, or hide tabs you don't use. Every brand in the workspace **inherits** these defaults unless it overrides them individually.
+
+## Before You Start
+
+1. ✅ **You're an admin** — this page needs the **workspace settings** permission. Members without it don't see it, and the server enforces the same rule.
+2. ✅ **You're in a team workspace** — the page isn't available in a Personal workspace.
+
+## Step 1 — Open Insights Tabs
+
+Go to **Workspace Settings** and open **Insights Tabs** from the settings sidebar.
+
+You'll see the section **"Insights tab labels & visibility"** with the note: _"Set workspace-wide default tab labels and visibility. Brands in this workspace inherit these unless they override individually."_
+
+<!-- TODO: add screenshot of the Workspace Settings → Insights Tabs editor → /img/guides-asset/<name>.jpeg -->
+
+## Step 2 — Rename or Hide Each Tab
+
+Each Insights tab is a row you can edit. The tabs and their default names are:
+
+| Tab | Default Label |
+| ---------------- | -------------- |
+| Overview | **Overview** |
+| Campaigns | **Campaigns** |
+| Paid Media | **Ads** |
+| Owned Media | **Social Media** |
+| Earned Media | **Influencer** |
+| ATL | **ATL** |
+| Signals | **Trend Signals** |
+| Social Listening | **Social Listening** |
+
+For each row you can:
+
+- **Rename it** — type a custom **label** (up to **24 characters**; a counter shows how many you've used). Leave the field empty to keep the default.
+- **Show or hide it** — flip the **Visible** toggle. Hidden tabs don't appear in Insights.
+
+> **Heads-up:** Each row also shows the tab's original name and its internal id, so you always recognize which tab you're editing — even after you rename it.
+
+## Step 3 — Save Your Changes
+
+When you've made a change, a **Save changes** button appears at the bottom of the page. Click it to apply. You'll get a confirmation: _"Workspace Insights tab defaults saved."_
+
+> **Heads-up:** A label can't be blank while its tab is visible. If you clear a label but keep the tab shown, frndOS asks you to enter one (or falls back to the default).
+
+## Resetting to Defaults
+
+- **Reset (per tab)** — a **Reset** control appears on a row only when it differs from the default. It clears that row's custom label and visibility.
+- **Reset all** — the button at the top reverts **every** tab back to the defaults. It's only enabled when at least one tab has been changed.
+
+## How Brands Inherit This
+
+- What you set here is the **workspace default**. Every brand in the workspace follows it automatically.
+- A brand can still override its own Insights tabs in **Brand Settings → Insights Tabs**. When it does, that brand uses its own labels/visibility; brands that don't override keep following the workspace default.
+
+## FAQ
+
+**Q: I don't see the Insights Tabs page.**
+It's admin-only (needs workspace settings permission) and team-only. If you're not an admin, or you're in a Personal workspace, it won't appear. Ask a workspace admin.
+
+**Q: How long can a tab label be?**
+Up to 24 characters.
+
+**Q: I hid a tab — is the data gone?**
+No. Hiding a tab only removes it from view. Turn **Visible** back on to show it again.
+
+**Q: I renamed a tab but a specific brand still shows the old name.**
+That brand likely set its own override in **Brand Settings → Insights Tabs**, which takes precedence over the workspace default for that brand.
+
+**Q: How do I undo my changes?**
+Use **Reset** on a single tab, or **Reset all** to revert everything to the defaults.
+
+---
+
+## Next Steps
+
+- [Settings & Administration Overview →](./overview)
+- [Insights Overview →](../insights/overview)

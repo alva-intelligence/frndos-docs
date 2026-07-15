@@ -149,6 +149,10 @@ Without both, builds fall back to `build:local` (admin is built but read-only in
 - **Phase 2** — Integration with the frndOS app (entry point, announcement ↔ changelog cross-linking).
 - **Phase 3** — AskFrnd knowledge ingestion (markdown → vector DB → product Q&A).
 
+## Skills
+
+- **`writing-help-docs-from-code`** (`.claude/skills/`) — use when given a frndOS feature keyword (e.g. "research surveys") and asked to create/update Help Center guides. It reads real feature behavior from the `frnd-web` codebase, marks anything unreadable (third-party iframes, retired routes) as `TODO` instead of guessing, and validates with a build. Invoke it before writing docs from a keyword.
+
 ## Rules
 
 - No AI attribution in commit messages (no co-author, no "Generated with Claude Code").

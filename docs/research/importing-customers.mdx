@@ -1,0 +1,99 @@
+---
+sidebar_position: 6
+title: Importing & Enriching Customers
+description: Bring your customer list into frndOS with a CSV upload, choose how many to enrich, and track the enrichment run — all from the Integrations tab.
+---
+
+# Importing & Enriching Customers
+
+The **Integrations** tab is where Customer Intelligence begins. You upload a customer list as a CSV, and frndOS **enriches** each customer — building out social profiles, interests, sentiment, and scores — so you can explore them as real people, not just rows.
+
+> New to this module? Start with the [Customer Intelligence Overview](./customer-intelligence-overview).
+
+## Before You Start
+
+1. ✅ **Open the right brand** — enrichment uses the active brand's context for sentiment analysis. Uploading without an active brand is blocked.
+2. ✅ **Enough credits** — enrichment is always billable. If your workspace is out of credits, the upload area is replaced by a **"Workspace credits exhausted"** message. See [Managing Workspace Credits](../workspace/managing-credits).
+
+## Step 1 — Open the Integrations Tab
+
+In Customer Intelligence, open the **Integrations** tab. You'll see a drop area titled **"Select a CSV file to import."**
+
+<!-- TODO: add screenshot of the Integrations tab upload area → /img/guides-asset/<name>.jpeg -->
+
+## Step 2 — Add Your CSV
+
+Two ways to add a file:
+
+- Click **Upload CSV** and pick a file, or
+- **Drag and drop** the file onto the drop area
+
+Accepted file types are **`.csv`** and **`.txt`**.
+
+> **Heads-up:** If no brand is active, you'll see a reminder to pick an active brand first — enrichment needs brand context for sentiment analysis.
+
+## Step 3 — Choose How Many to Enrich
+
+After you confirm the file, frndOS counts the rows and opens a **sampling** step. Here you choose **how many customers to enrich** — frndOS suggests a recommended sample size.
+
+> **How sampling works:** **All rows are imported**, but only the sample you choose is **enriched and charged**. Enriching a smaller sample costs fewer credits.
+
+Then click **Upload & Enrich** to start the run.
+
+<!-- TODO: confirm the sampling modal's exact fields (custom count vs. percentage, credit cost display) with a screenshot. -->
+
+## Step 4 — Track the Enrichment Run
+
+While a run is active, the upload area shows progress (e.g. _"Run in progress · X/Y done"_), and **new uploads are disabled until the current job finishes**.
+
+Completed and in-flight imports appear under **Recent Uploads**:
+
+| Column | What it shows |
+| -------------- | ---------------------------------- |
+| **Integrations** | The imported file |
+| **Created By** | Who ran the import |
+| **Date Created** | When it was uploaded |
+| **File Size** | Size of the file |
+| **Status** | Where the import stands |
+
+Import status can be:
+
+- **Queued** — waiting to start
+- **Processing** — enrichment running
+- **Completed** — all records processed
+- **Partially Completed** — some records processed, some failed
+- **Failed** — the import didn't complete
+
+> **Tip:** If some records fail, a **Download error report** link appears on that import so you can see which rows had problems.
+
+## Credits & the Paywall
+
+Enrichment always costs credits. When your workspace has run out:
+
+- The upload area is replaced by **"Workspace credits exhausted."**
+- If you can manage billing, you'll see **Top up credits**.
+- If you can't, you'll see **Request credits** to ask a workspace admin.
+
+See [Managing Workspace Credits](../workspace/managing-credits).
+
+## FAQ
+
+**Q: Are all my customers imported, or only the sample?**
+All rows are imported. Only the sample you choose is enriched (and charged). You can enrich more later.
+
+**Q: Why can't I upload another file?**
+A new upload is disabled while an enrichment run is in progress. Wait for the current run to finish, then upload again.
+
+**Q: Some of my records failed. What now?**
+Open the import in Recent Uploads and use **Download error report** to see which rows failed and why.
+
+**Q: Why do I need a brand selected to upload?**
+Enrichment analyzes sentiment against your brand, so it needs the active brand's context. Pick a brand before uploading.
+
+---
+
+## Next Steps
+
+- [Exploring Customers & Segments →](./exploring-customers-and-segments)
+- [Getting Customer Insights →](./customer-insights)
+- [Managing Workspace Credits →](../workspace/managing-credits)
