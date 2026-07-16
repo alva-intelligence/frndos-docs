@@ -123,6 +123,12 @@ _Last updated: 2026-07-16_
 | 35 | 📸 | Screenshot: Plugins list with Lark |
 | 48 | ✍️ | Confirm exact Lark service display names in the Permissions list (server-driven) + screenshot |
 
+## docs/askfrnd/tools.mdx
+
+| Line | Type | What to do |
+| ---- | ---- | ---------- |
+| 48 | ✍️📸 | Confirm how to open Chat Settings from the AskFrnd panel (button/menu location) + screenshot of the Tools tab (per-user tool toggles, Enable all, section groups) |
+
 ## docs/workspace/managing-credits.mdx
 
 | Line | Type | What to do |

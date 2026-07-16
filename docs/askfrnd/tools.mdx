@@ -1,0 +1,97 @@
+---
+sidebar_position: 5
+title: How AskFrnd Uses Tools
+description: AskFrnd calls tools — web search, image and video generation, Brand Knowledge, agents, and more — to answer you. See what it's doing while it works, and choose which tools it's allowed to use in Chat Settings → Tools.
+---
+
+# How AskFrnd Uses Tools
+
+AskFrnd doesn't just write text back — it **calls tools** to get things done. When you ask it to generate an image, look something up on the web, or check your Brand Knowledge, it picks the right tool, runs it, and folds the result into its answer. You see each tool as it runs, right in the conversation.
+
+You control which tools AskFrnd is allowed to use in **Chat Settings → Tools**.
+
+## Seeing Tools Run
+
+While AskFrnd answers, each tool it uses appears as its own row in the reply:
+
+- **Running** — a pulsing icon with the tool name and what it's doing (e.g. _"Web Search: best coffee shops"_), plus a live timer
+- **Completed** — the row collapses to a dim summary with a green **· Completed** and how long it took
+- **Failed** — a red **· Failed** with an error you can expand
+
+Click a finished tool row to **expand** it and see the full detail (the exact search, the generated prompt, or the error message).
+
+> **Delegation to agents:** When AskFrnd hands part of a task to a [workspace agent](../early-access/agents), you'll see a **"Delegate to [agent]"** card. Expand it to see the steps that agent ran underneath.
+
+## What Tools AskFrnd Can Use
+
+AskFrnd's tools are grouped into sections:
+
+| Section | Tool | What it lets AskFrnd do |
+|---------|------|-------------------------|
+| **Creation** | **Image generation & editing** | Create and edit images |
+| | **Video generation** | Create videos from a prompt |
+| | **Key Visuals** | Generate brand key visuals for campaigns |
+| **Knowledge** | **Brand Knowledge** | Look up the workspace's brand knowledge |
+| **Research** | **Customer Intelligence** | Access customer segments, insights, and AI-generated overviews for your brands |
+| **Agents & Automation**¹ | **Workspace agents** | Orchestrate and delegate to workspace agents |
+| | **Agent teams** | Coordinate multi-agent teams on complex tasks |
+| | **Agent workflows** | Trigger and run agent workflows |
+
+¹ The **Agents & Automation** section only appears when the experimental [Agents](../early-access/agents) feature is enabled for your workspace.
+
+> **Always-on tools:** **Web search** and **file downloads** are always available to AskFrnd — there's no toggle for them, and they can't be turned off.
+
+## Choosing Which Tools AskFrnd Uses
+
+You can turn individual tools on or off for yourself in **Chat Settings → Tools**.
+
+<!-- TODO: confirm the exact way to open Chat Settings from the AskFrnd panel (button/menu location) and add a screenshot of the Tools tab → /img/guides-asset/<name>.jpeg -->
+
+1. Open **AskFrnd** (from the sidebar or the floating button)
+2. Open **Chat Settings**
+3. Go to the **Tools** tab
+
+The tab reads _"Choose which tools AskFRND can use in this chat."_ Each tool has its own toggle, grouped into the sections above.
+
+### Enable all tools
+
+At the top is an **Enable all tools** switch — turn it on to enable every visible tool at once. Switching it off restores your previously saved selection (not everything-off), so flicking it on and back off doesn't lose your choices.
+
+### Personal settings vs. the workspace baseline
+
+Your workspace admin sets a **default tool set** for everyone (see [Setting the Workspace AskFRND Tools](../settings/askfrnd-tools)). Your Tools tab starts from that baseline:
+
+- **Following the workspace** — until you change anything, you follow the workspace default. The tab notes: _"Following your workspace's settings — changing anything here saves a personal override."_
+- **Your own override** — the moment you toggle a tool and save, you get a **personal selection** that overrides the workspace baseline for you.
+- **Going back** — once you have a personal override, a **Use workspace settings** link appears. Click it (then save) to drop your personal selection and follow the workspace defaults again.
+
+> **Changes save when you save.** Unlike the workspace admin page (which saves instantly), the Tools tab is a save-on-confirm surface — your changes apply when you save Chat Settings.
+
+## FAQ
+
+**Q: What does it mean when AskFrnd shows a tool running?**
+AskFrnd is calling a tool to answer you — searching the web, generating an image, looking up Brand Knowledge, and so on. The row shows what it's doing live, then collapses to a summary when done. Click it to expand the detail.
+
+**Q: Can I stop AskFrnd from using a specific tool?**
+Yes — turn it off in **Chat Settings → Tools**. Note that **web search** and **file downloads** are always on and can't be disabled.
+
+**Q: I turned a tool off but AskFrnd still seems to use one I didn't expect.**
+Your personal Tools selection overrides the workspace baseline. Check the **Tools** tab — if you're still _following the workspace_, the admin's defaults apply. Save your own selection to control it yourself.
+
+**Q: Why don't I see the Agents, Teams, or Workflows tools?**
+The **Agents & Automation** section only appears when the experimental Agents feature is enabled for your workspace. See [Agents & Teams (Beta)](../early-access/agents).
+
+**Q: What's the difference between this and the workspace AskFRND Tools page?**
+The [workspace page](../settings/askfrnd-tools) is admin-only and sets the **default** for everyone. **Chat Settings → Tools** is your **personal** override on top of that default.
+
+**Q: Do my tool changes affect other people?**
+No. Chat Settings → Tools is personal to you. The workspace-wide default is set by an admin on the [AskFRND Tools](../settings/askfrnd-tools) page.
+
+---
+
+## Related Articles
+
+- [AskFrnd Overview](./overview)
+- [Using AskFrnd Skills](./skills)
+- [Setting the Workspace AskFRND Tools](../settings/askfrnd-tools)
+- [Agents & Teams (Beta)](../early-access/agents)
