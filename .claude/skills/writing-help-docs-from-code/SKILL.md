@@ -34,20 +34,26 @@ The frndOS repos are the source of truth in this order:
 digraph flow {
   rankdir=TB;
   "1. Locate feature in frnd-web" [shape=box];
+  "1.5. Liveness gate" [shape=diamond];
+  "1.6. Cek existing docs (update vs create)" [shape=diamond];
   "2. Read behavior from code" [shape=box];
   "3. Classify: readable vs iframe/unknown" [shape=diamond];
   "4. Study doc pattern (neighbor module)" [shape=box];
   "5. Propose doc structure, confirm split" [shape=box];
+  "5a. Module placement (offer new pillar?)" [shape=diamond];
   "6. Write .mdx grounded in code" [shape=box];
   "7. Fix internal links + update overview" [shape=box];
   "8. Validate build (0 broken links)" [shape=box];
   "9. updateOrCreate DOCS_TODO.md" [shape=box];
 
-  "1. Locate feature in frnd-web" -> "2. Read behavior from code";
+  "1. Locate feature in frnd-web" -> "1.5. Liveness gate";
+  "1.5. Liveness gate" -> "1.6. Cek existing docs (update vs create)";
+  "1.6. Cek existing docs (update vs create)" -> "2. Read behavior from code";
   "2. Read behavior from code" -> "3. Classify: readable vs iframe/unknown";
   "3. Classify: readable vs iframe/unknown" -> "4. Study doc pattern (neighbor module)";
   "4. Study doc pattern (neighbor module)" -> "5. Propose doc structure, confirm split";
-  "5. Propose doc structure, confirm split" -> "6. Write .mdx grounded in code";
+  "5. Propose doc structure, confirm split" -> "5a. Module placement (offer new pillar?)";
+  "5a. Module placement (offer new pillar?)" -> "6. Write .mdx grounded in code";
   "6. Write .mdx grounded in code" -> "7. Fix internal links + update overview";
   "7. Fix internal links + update overview" -> "8. Validate build (0 broken links)";
   "8. Validate build (0 broken links)" -> "9. updateOrCreate DOCS_TODO.md";
@@ -93,6 +99,29 @@ Then classify the feature's **liveness state**:
 
 **When in doubt, ask the user rather than assume live.** A wizard full of readable steps is worthless as a guide if the user can't reach the feature.
 
+### 1.6. Cek existing docs untuk fitur ini (sebelum menulis apapun)
+
+Sebelum membuat file baru, cari dulu apakah doc sudah ada:
+
+```bash
+cd ../frndos-docs
+# Cari file yang sudah cover fitur ini
+find docs/ -name "*<keyword>*"
+grep -ril "<keyword>" docs/ --include="*.mdx"
+```
+
+Klasifikasi hasilnya:
+
+| Temuan | Action |
+| ------- | ------ |
+| **Tidak ada file relevan** | Buat file baru (lanjut ke step 2) |
+| **Ada file yang sudah cover fitur ini** | **Default: UPDATE file itu**, bukan buat baru |
+| **Ada file tapi scope terlalu kecil / akan bloat jika di-update** | Buat file baru + cross-link dari file yang ada |
+
+**Update adalah default.** Buat file baru hanya jika fitur benar-benar belum ada coverage-nya, atau jika menambahkan ke file yang ada akan membuat satu file terlalu panjang dan multi-topik.
+
+Jika memutuskan update: baca dulu isi file yang ada secara penuh sebelum lanjut ke step 2 — ini menjadi "doc pattern" sekaligus target update.
+
 ### 2. Read behavior from the code (facts only)
 
 Read the page(s), components, types, services. Extract **verbatim** what the end user sees and does:
@@ -131,9 +160,20 @@ The house pattern (match it): frontmatter (`title`, `description`, `sidebar_posi
 
 Map readable behavior to docs. A feature with a big native surface usually splits into: create/start, manage/track, and configure/share. Show the user the proposed file list + what's fact vs. TODO, and let them pick the split granularity before writing.
 
+**5a. Decide module placement — and offer a new pillar when the keyword signals one.** Before writing, state which docs module the guide will live in and why. Two triggers mean you must PAUSE and ask the user whether they want a **new pillar** instead of filing under an existing one:
+
+- **The keyword names a pillar-level grouping.** A keyword shaped like `<Grouping> -> <Feature>` (e.g. `Early Access Feature -> Agents`, `Labs -> Motion`) is a hint that `<Grouping>` may be its own pillar. Don't silently absorb `<Feature>` into the module where it happens to be _invoked_ — surface the choice.
+- **The feature is a cross-cutting surface, not a natural child of one module.** Beta/experimental features, admin-only surfaces, or things reachable from several pillars often read better as their own category than buried under the nearest existing one.
+
+When either trigger fires, present both options with the trade-off, and let the user pick:
+
+> "Agents is invoked inside AskFRND, so it could live under the **askfrnd** module. But your keyword frames it as an **Early Access Feature** — that could be its own pillar (🧪 Early Access Features) grouping all beta features. Which do you want?"
+
+A new pillar is a real cost: it needs `docs/<module>/` + `_category_.json` (with a `position`) + a matching option in `tina/config.jsx`, **all three in sync** (see step 6 + Notes). Worth it when a grouping will hold several guides or is a distinct user-facing concept; overkill for a one-off that fits an existing module. Default to an existing module ONLY when neither trigger fires; otherwise ask.
+
 ### 6. Write the `.mdx`, grounded in code
 
-- **Pick the docs module by user-facing area, not frnd-web's folder grouping.** frnd-web's code layout (`tools/`, `research/`, `studio/`) does NOT map 1:1 to the docs modules. The docs modules are fixed: `getting-started`, `brand-setup`, `studio`, `insights`, `research`, `askfrnd`, `growth`, `collaboration`, `projects`, `workspace`, `settings`. Place the doc where an end user would look for it (e.g. a survey tool under frnd-web `research/surveys` → docs `research/`). If nothing fits, STOP and ask the user before inventing a new category — a new module means a new `docs/<module>/` folder + `_category_.json` + a matching option in `tina/config.jsx` (all three in sync), which is a bigger decision than one doc.
+- **Pick the docs module by user-facing area, not frnd-web's folder grouping.** frnd-web's code layout (`tools/`, `research/`, `studio/`) does NOT map 1:1 to the docs modules. The **existing** docs modules are: `getting-started`, `brand-setup`, `studio`, `insights`, `research`, `askfrnd`, `growth`, `collaboration`, `projects`, `workspace`, `settings` (plus any pillar the user has since added). Place the doc where an end user would look for it (e.g. a survey tool under frnd-web `research/surveys` → docs `research/`). **This list is not immutable** — if the keyword signals a pillar-level grouping or the feature is cross-cutting, you should already have offered a new pillar in step 5a. Never silently invent a new category, and never silently bury a pillar-signalling feature under an existing module — resolve the placement with the user in step 5a first. A new module means a new `docs/<module>/` folder + `_category_.json` + a matching option in `tina/config.jsx` (all three in sync).
 - One `.mdx` file per guide; filename is a URL-safe slug (no spaces).
 - `sidebar_position` orders within the category; overview stays position 1.
 - Cross-link siblings with relative paths.
@@ -205,8 +245,10 @@ This ledger is the single answer to "what do I still have to do by hand?" Keep i
 ## Red Flags — STOP
 
 - Writing a UI step you did not read in frnd-web
+- **Filing a pillar-signalling feature under an existing module without offering a new pillar** — a keyword shaped `<Grouping> -> <Feature>`, or a cross-cutting/beta/admin surface, means you PAUSE and ask (step 5a) before writing
 - Describing what happens inside a third-party iframe
 - Documenting a feature whose route redirects away or is `isLive: false` / `isComingSoon` — verify liveness (step 1.5) first
+- **Creating a new file without first checking if an existing doc already covers the feature** (step 1.6)
 - Translating or paraphrasing a UI label instead of copying it
 - Declaring done without a passing build (`broken=0`)
 - A relative link whose target file you haven't confirmed exists

@@ -268,6 +268,7 @@ const DocsCollection = {
         { label: "📁 Projects & Workflows", value: "projects" },
         { label: "👥 Workspace & Members", value: "workspace" },
         { label: "⚙️ Settings & Administration", value: "settings" },
+        { label: "🧪 Early Access Features", value: "early-access" },
       ],
     },
     {

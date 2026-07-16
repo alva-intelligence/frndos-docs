@@ -32,42 +32,32 @@ Without these, the AI won't have the context it needs to generate on-brand visua
 Choose your canvas settings:
 
 * **Canvas size**: Landscape, Portrait, or Square
-* **Output type**:
-  * **Sketch** — rough concept, early-stage ideation (no final design polish)
-  * **Craft** — refined output, closer to production-ready
+* **Canvas mode** (top nav tabs):
+  * **Concept** — AI-guided creative exploration: generate multiple concept boards across creative territories, with the Conceptor agent as your partner (see [Concepting Mode](./concepting-mode))
+  * **Craft** — refined output, closer to production-ready; use after choosing a concept direction
 
-> **When to use Sketch vs. Craft:** Start with Sketch when exploring directions. Switch to Craft once you've locked a concept and need to refine it.
+> **When to use Concept vs. Craft:** Start with Concept when exploring directions. Switch to Craft (or use **Start designing** on a concept board) once you've locked a direction and need to refine it.
 
-## Step 3 — Input Your Idea or Use AI Suggestions
+## Step 3 — Explore in Concept Mode
 
-You have two ways to start:
+Start by generating concept boards with the **Conceptor** agent. Two ways to begin:
 
-**Option A — Direct prompt**
-If you have a clear concept, type it into the prompt field.
+**Type a direct prompt**
+If you have a specific idea, type it directly into the Conceptor chat.
 
-**Option B — AI suggestions**
-If you need inspiration, use the **AI suggestion feature** to get direction ideas based on your project brief and Brand Knowledge.
+**Use territory chips**
+If you need inspiration, click one of the six territory chips (Product Hero, Human Ritual, Unexpected Subject, Benefit Metaphor, Brand World, Graphic Device). The Conceptor will discuss the direction first (Brainstorm run mode) or immediately generate a concept board (Design run mode).
 
-## Step 4 — Use Bounding Box for Targeted Edits
+👉 See: [Concepting Mode — AI-Guided Visual Exploration](./concepting-mode) for a full breakdown of agents, run modes, territories, and style presets.
 
-The **Bounding Box tool** lets you select a specific area of the canvas and request targeted changes.
+## Step 4 — Refine in Craft Mode
 
-**Example:**
-
-1. Select the background area
-2. Prompt: *"Change to a plastic bottle"*
-3. The AI regenerates only that area
-
-You can stack multiple bounding box edits for incremental refinement.
-
-## Step 5 — Refine in Craft Mode
-
-Once you have a concept you like, switch to **Craft Mode** for detailed refinement.
+Once you have a concept you like, right-click the concept board → **Start designing** to promote it to Craft mode. Or click the **Craft** tab in the top nav.
 
 ### What you can do in Craft Mode:
 
-**Edit specific areas**
-Use the Bounding Box tool to target changes.
+**Edit specific areas with Bounding Box**
+The **Bounding Box tool** lets you select a specific area of the canvas and request targeted changes. Example: select the background → prompt _"Change to a plastic bottle"_ → AI regenerates only that area. Stack multiple edits for incremental refinement.
 
 **Add image references**
 Attach a reference photo to guide character likeness, composition, or specific angles.
@@ -94,8 +84,40 @@ Once uploaded, the image behaves like a generated KV:
 
 > **Why this matters:** You no longer need to generate something in frndOS just to use Resizer or Craft's editing tools. Bring in any image you already have and let frndOS handle the adaptation and refinement.
 
+**Creativity level**
+The **Creativity** control in the bottom bar sets how far the AI may drift from the source image during a polish or variant. Default is Low (faithful). See [Craft Mode → Creativity Level](./craft-mode#creativity-level) for details.
+
+**Transform Panel**
+Open the **Layers** panel (Stack icon, bottom nav) to bring up a **Transform** panel in the bottom-right corner. Select a single overlay to edit its exact Position (X/Y), Size (W/H with optional aspect-ratio lock), and Rotation (°) numerically. See [Craft Mode → The Transform Panel](./craft-mode#the-transform-panel) for full details.
+
 **Save as Template**
 If you have a recurring layout (logo placement, footer style), save it as a Template so you don't repeat the setup for every KV.
+
+### Creating a Variant
+
+A **variant** is an alternate version of an existing Craft board — it inherits the source's aspect ratio and generation context, but takes a new creative direction you describe.
+
+**Two ways to start:**
+
+- **"+" button** — When a Craft board is selected, a **`+`** button appears pinned to the right edge of the board. Click it to open the variant prompt.
+- **Context menu** → **Create variant** — Right-click any Craft board and select "Create variant".
+
+**The variant prompt popover:**
+
+A compact popover appears anchored to the right of the source board with the header **"Describe your variant"**. Type any creative direction — examples from the placeholder: _"warmer palette, add the tagline…"_ — then press **Enter** or click **Create variant** to start generation. Press **Escape** or click **Cancel** to dismiss.
+
+You can leave the prompt empty to generate a variant without a specific direction.
+
+**What happens next:**
+
+1. A ghost placeholder appears immediately in the slot adjacent to the source board — same aspect ratio as the source.
+2. The Crafter generates the variant in Craft mode, using the source board as context.
+3. The finished variant lands in the reserved slot.
+4. The variant is auto-named from the prompt direction (e.g. "Warmer palette") or falls back to **Variant N** if the prompt is empty or uninformative.
+
+> **Heads-up:** Variant generation is blocked while another generation is in progress. Wait for the current generation to finish before creating a variant.
+
+> **Extreme aspect ratio warning:** If your source board is wider than 3:1 or taller than 1:3, the Crafter will generate the variant at 3:1 and extend it to fill. You'll see a notice: _"This board is [wider/taller] than the AI's 3:1 limit — the variant will be generated at 3:1 and extended to fill."_
 
 ### Viewing Version History
 
@@ -104,6 +126,53 @@ Every generation is saved. To browse previous versions:
 1. Open the version history panel
 2. Select any past iteration
 3. Restore or branch from it
+
+---
+
+## Board Actions — The Right-Click Menu {#board-context-menu}
+
+Right-clicking any board on the canvas opens a context menu with actions for that board. Right-clicking on an empty part of the canvas (no board) does nothing — the browser's native menu is suppressed.
+
+The menu closes when you click anywhere outside it or press **Escape**.
+
+<!-- TODO: screenshot of the right-click context menu on a Concept board — showing "Start designing", copy actions, Duplicate, Rename, Reset position, Remove from canvas → /img/guides-asset/<name>.jpeg -->
+
+<!-- TODO: screenshot of the right-click context menu on a Craft board — showing craft-only items (Set as master, Version history…, Create variant, Send to Motion, Send to Resize) → /img/guides-asset/<name>.jpeg -->
+
+### On a Concept board
+
+| Action | What it does |
+|--------|-------------|
+| **Start designing** | Promotes this concept to Craft mode — opens the board as the Craft master |
+| **Copy image to clipboard** | Copies the board image to your clipboard (best-effort — see note below) |
+| **Copy image link** | Copies a direct URL to the board image |
+| **Copy prompt** | Copies the prompt that generated this board (only shown when a prompt exists) |
+| **Duplicate** | Adds a copy of the board to the canvas |
+| **Rename** | Opens an inline text field to rename the board |
+| **Reset position** | Moves the board back to its auto-layout position on the canvas |
+| **Remove from canvas** | Removes the artboard from the canvas — see note below |
+
+### On a Craft board
+
+Craft boards have the same Copy, Duplicate, Rename, and Reset actions above, plus:
+
+| Action | What it does |
+|--------|-------------|
+| **Set as master** | Marks this board as the master (only shown on non-master boards) |
+| **Version history…** | Opens the version history panel for this board |
+| **Create variant** | Opens the variant prompt popover — see [Creating a Variant](#creating-a-variant) |
+| **Send to Motion** | Switches to Motion mode with this board as the source (requires KV Motion enabled in Labs) |
+| **Send to Resize** | Switches to Resize mode with this board as the source |
+
+> **"Start designing" is not shown on Craft boards.** It only appears on Concept boards (Sketch mode).
+
+### Notes on specific actions
+
+**Copy image to clipboard**
+The image copy is best-effort. If CORS prevents a direct clipboard write, frndOS falls back to copying the image link instead and shows a toast: _"Image copy needs CORS — copied the link instead."_ A direct copy shows _"Image copied to clipboard."_
+
+**Remove from canvas**
+This action removes the artboard entry from the canvas. It does **not** delete the generation — the generation stays in your history and can be accessed via Version History. Use this to declutter the canvas without losing work.
 
 ## Step 6 — Resize for Multiple Platforms
 
@@ -119,10 +188,12 @@ Currently, angle adjustments are done via prompt + reference image. Describe the
 **Q: Can I override the brand tone for a specific KV?**
 Yes, but it's done at the **Project level**, not the KV level. In your Project Brief, set a custom tonality and toggle off the default Brand Knowledge. All KVs under that project will use the override.
 
-**Q: What's the difference between Sketch and Craft mode?**
+**Q: What's the difference between Concept and Craft mode?**
 
-* **Sketch** = early ideation, intentionally rough, prioritizes concept exploration
+* **Concept** = AI-guided ideation, generate multiple concept boards across creative territories, explore directions fast
 * **Craft** = refinement mode, more control, production-ready output
+
+👉 See: [Concepting Mode — AI-Guided Visual Exploration](./concepting-mode) for the full Concept mode workflow.
 
 **Q: Can I reuse layouts across multiple KVs?**
 Yes — save your layout as a **Template** in Craft Mode. Apply it to future KVs without repeating the setup.
@@ -133,9 +204,19 @@ Use the **version history panel** to restore any previous iteration. No work is 
 **Q: Can I use an image I already have instead of generating one?**
 Yes. In Craft mode, use **Upload Image** to bring in any existing image — no generation required. From there you can resize it across platforms or refine it using Craft's editing tools (Bounding Box, image references, static elements).
 
+**Q: What is a variant and how is it different from a duplicate?**
+A variant is an AI-generated alternate version of an existing Craft board — it re-runs generation with the source as context and a new direction you describe. A duplicate copies the board as-is (no new generation). Use variants to explore alternatives; use duplicates to preserve a baseline before editing.
+
+**Q: Can I create a variant from a Concept board?**
+No. Variants are a Craft-mode feature only. To branch from a Concept board, promote it to Craft first (right-click → **Start designing**), then create variants from the resulting Craft board.
+
+**Q: Can I create multiple variants at once?**
+No. Variant generation is blocked while any other generation is in progress — finish the current one before starting the next.
+
 ---
 
 ## Next Steps
 
+* [Concepting Mode — AI-Guided Visual Exploration →](./concepting-mode)
 * [Resizing Visuals for Different Platforms →](./resizer)
 * [Creating & Managing Projects →](../projects/managing-projects)

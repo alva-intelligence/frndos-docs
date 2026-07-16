@@ -1,0 +1,197 @@
+---
+sidebar_position: 1
+title: Agents & Teams (Beta)
+description: Build specialized AI assistants — each with its own instructions, skills, tools, and model — then call them in AskFRND by @mention. Group several into a Team that works under a coordinator.
+---
+
+# Agents & Teams (Beta)
+
+**Agents** are specialized AI assistants you configure for one job — each with its own instructions, skills, tools, and model. Once you've built one, you call it inside AskFRND by typing **`@`** and picking it, or just ask AskFRND normally and let it delegate to the right agent for you.
+
+A **Team** groups several agents under a coordinator that delegates each step of a multi-step request to the right member, then synthesizes one answer.
+
+> **Experimental / Beta feature:** Agents is a Labs feature, gated per workspace. If you don't see **Agents** in the sidebar, it isn't enabled for your workspace yet — see [Turning It On](#turning-it-on) below.
+
+## Before You Start
+
+1. ✅ **Agents enabled for your workspace** — an admin turns it on in **Workspace Settings → Experimental** (see [Turning It On](#turning-it-on))
+2. ✅ **You're in the workspace** where you want the agents to live — agents are workspace-scoped and shared with everyone in that workspace
+
+## Turning It On
+
+Agents is a beta feature enabled at the **workspace** level:
+
+1. A workspace admin opens **Workspace Settings → Experimental**
+2. They toggle on the Agents beta feature
+3. Once on, **Agents** appears in the left sidebar (marked **Beta**) for everyone in the workspace
+
+See [Turning On Experimental Features](../settings/experimental-features) for the full admin flow.
+
+> **Heads-up:** Beta features may change, break, or disappear without notice. Turn Agents on knowing it's not final.
+
+## Opening Agents
+
+Click **Agents** in the left sidebar (it carries a **Beta** badge). This opens the Agents page, which has two sections:
+
+- **Agents** — your workspace's individual agents
+- **Teams** — groups of agents that work together
+
+<!-- TODO: add screenshot of the Agents page — Agents grid + Teams section, each with the blue "Experiment" badge → /img/guides-asset/<name>.jpeg -->
+
+Each agent card shows its icon, name, description, an **on/off toggle**, and a **Manage Agent** button. Team cards show the same plus the member avatars.
+
+> **FRnD default agent:** Every workspace ships with a built-in **FRnD** agent (marked with an **FRnD** badge). You can edit it, but it can't be turned off, deleted, or shared.
+
+---
+
+## Creating an Agent
+
+On the Agents page, click **Create Agent**. You'll configure the agent across a set of tabs:
+
+### Overview
+
+- **Agent Name** — e.g. _"Research Expert"_
+- **Description** — a short tagline shown on the agent card
+- **Icon** — pick an icon and color, or upload an image avatar
+
+### Instructions
+
+The agent's **system prompt** — describe how this agent should behave. This is required.
+
+### Skills
+
+Attach reusable instruction packs (skills) the agent can use:
+
+- Your **workspace skills** appear as a list, each with a toggle — turn one on to let this agent use it
+- Click **Browse directory** to install canonical skills into your workspace first
+
+See [Using AskFrnd Skills](../askfrnd/skills) for how skills work.
+
+### Tools
+
+Choose which capabilities the agent can use — each is a toggle:
+
+| Tool | What it does |
+|------|-------------|
+| **Web search** | Search the web for current info |
+| **Image generation & editing** | Create and edit images |
+| **Video generation & editing** | Create and edit videos |
+| **Generate file** | Produce downloadable files (md/csv/xlsx/pdf) |
+| **Brand knowledge** | Look up the workspace's brand knowledge |
+| **Receive files** | Accept file/media inputs (image, pdf, docs, csv, txt, md, json) in workflows |
+
+There's also a **Thinking** toggle under **Reasoning** — turn it on to let the agent reason step-by-step before answering (uses the model's default effort).
+
+### Models
+
+Pick the models that power the agent:
+
+- **Chat model** — the model behind the agent's responses
+- **Image model** — used when the agent generates images
+- **Video model** — used when the agent generates videos
+
+### Knowledge _(coming soon)_
+
+The **Knowledge** tab is marked **Soon** — it isn't available yet.
+
+---
+
+**To save:** an agent needs at least a **Name** and **Instructions**. Click **Create Agent** — you're taken to the agent's manage page, where a live **test chat** lets you try it immediately.
+
+## Managing an Agent
+
+Open any agent with **Manage Agent**. The manage page shows the same settings tabs on the left and, on the right, an **Overview rail** plus a live **test chat panel** for trying the agent as you edit.
+
+At the top you'll see an **Active** / **Disabled** label, a **Delete** button (not shown for the FRnD default agent), and **Save Changes**.
+
+The **Overview rail** gives you:
+
+- **Agent Enabled** — toggle whether the agent is available in AskFRND, plus its created / last-modified dates
+- **Usage Statistics** — **Requests** (every time the agent ran in AskFRND, whether @mentioned or delegated) and **Installs** (directory copies into other workspaces)
+- **Model Settings** — a summary of the chat / image / video models, with **Edit Model Configuration**
+- **Require Mention** — when on, _"AskFRND won't run this agent automatically — it only responds when a user explicitly @mentions it."_
+- **Discoverable** — when on, the agent is _"Listed in the Agent Directory — anyone in another workspace can install a copy."_
+
+> **Deleting an agent can't be undone.** You'll be asked to confirm first.
+
+## Browsing & Installing Shared Agents
+
+Click **Browse Agents** on the Agents page to open the **Agent Directory** — discoverable agents shared across workspaces.
+
+<!-- TODO: add screenshot of the Browse Agents directory modal — search + agent cards with Install / Installed / Owned states → /img/guides-asset/<name>.jpeg -->
+
+- **Search** by name
+- Each card shows the agent's creator, install count, and originating workspace
+- Click **Install** to copy the agent into your workspace — it becomes a new agent you own
+- Agents already in your workspace show **Installed**; ones you created show **Owned**
+
+> **Heads-up:** If an installed agent used skills that couldn't be copied, you'll see a notice listing which ones were skipped.
+
+---
+
+## Creating a Team
+
+A **Team** is a group of agents that work together under a coordinator. Click **Create Team** on the Agents page.
+
+> **You need at least one agent first.** The **Create Team** button is disabled until your workspace has an agent to add.
+
+Configure the team across its tabs:
+
+- **Overview** — **Team Name**, **Description**, **Leader Instructions** (how the coordinator should delegate — optional), and an icon
+- **Members** — pick **at least one** agent; the team leader delegates to these members
+- **Tools** — capabilities for the team leader (same list as an agent)
+- **Models** — the model powering the team leader
+
+A team needs a **Name** and **at least one member** to save. Teams don't have their own Skills or Knowledge tabs — skills live on the member agents.
+
+Once saved, the manage page gives you a live **test chat** to try the whole team, a **Delete** button, and **Save Changes**.
+
+---
+
+## Using Agents & Teams in AskFRND
+
+Agents and teams run inside AskFRND. Two ways to call one:
+
+**@mention it directly**
+Type **`@`** in the AskFRND message box. A popover lists your workspace's enabled **Agents**, **Teams**, and **Workflows** — start typing to filter. Pick one and it's attached as a chip (e.g. `@Research Expert`) on your next message. Clear it with the **×** on the chip.
+
+**Let AskFRND delegate**
+Just ask normally. Unless an agent has **Require Mention** turned on, AskFRND can pick the right agent for your request, ask before delegating, and fold the result back into its answer.
+
+> **Only enabled agents appear.** An agent or team that's toggled off won't show in the `@` list and won't be auto-delegated to. Turn it on from the Agents page or its manage view.
+
+---
+
+## FAQ
+
+**Q: I don't see Agents in the sidebar.**
+Agents is a beta feature gated per workspace. Ask a workspace admin to enable it in **Workspace Settings → Experimental**. Once on, it appears in the sidebar (marked Beta) for everyone in the workspace.
+
+**Q: What's the difference between an Agent and a Team?**
+An **agent** is one specialized assistant with its own instructions, skills, tools, and model. A **team** groups several agents under a coordinator that delegates parts of a multi-step request to the right members and combines their work into one answer.
+
+**Q: What's the difference between a skill and an agent?**
+A **skill** is a reusable instruction pack (see [Using AskFrnd Skills](../askfrnd/skills)). An **agent** is a configured assistant that can _use_ skills, along with its own instructions, tools, and model. You attach skills to an agent on its **Skills** tab.
+
+**Q: When does an agent run automatically vs. only on @mention?**
+By default AskFRND may auto-delegate to any enabled agent. Turn on **Require Mention** (on the agent's Overview rail) to make it run only when someone explicitly `@mentions` it.
+
+**Q: Who can use an agent I create?**
+Agents are workspace-scoped — everyone in your workspace can use an enabled agent. To share it beyond your workspace, turn on **Discoverable** so others can install a copy from the Agent Directory.
+
+**Q: Can I edit the built-in FRnD agent?**
+You can edit its settings, but it can't be turned off, deleted, or shared — it ships with every workspace.
+
+**Q: What do the Requests and Installs numbers mean?**
+**Requests** counts every time the agent ran in AskFRND (via @mention or delegation). **Installs** counts how many times it's been copied from the directory into other workspaces.
+
+---
+
+## Related Articles
+
+- [Workflows (Beta)](./workflows)
+- [Pitch (Beta)](./pitch)
+- [AskFrnd Overview](../askfrnd/overview)
+- [Using AskFrnd Skills](../askfrnd/skills)
+- [Generating Images & Videos via AskFrnd](../askfrnd/generating-with-chat)
+- [Turning On Experimental Features](../settings/experimental-features)

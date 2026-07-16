@@ -1,0 +1,175 @@
+---
+sidebar_position: 2
+title: Workflows (Beta)
+description: Chain agents, teams, and logic into an automated pipeline on a visual canvas — build it by dragging nodes or by asking the AI copilot, then run it manually, on a schedule, or by @mention in AskFRND.
+---
+
+# Workflows (Beta)
+
+**Workflows** let you chain agents, teams, and logic steps into one automated pipeline. You build a workflow on a visual canvas — dragging in nodes and connecting them, or describing what you want to the AI copilot — then run it manually, on a schedule, or by calling it from AskFRND.
+
+Think of it as wiring several [Agents](./agents) together (plus branching, loops, and document generation) so a multi-step job runs end to end on its own.
+
+> **Experimental / Beta feature:** Workflows is a Labs feature that shares the **same toggle as Agents** — the `show-agents` early-access enrollment turns on Agents, Teams, **and** Workflows together. If you don't see **Workflow** in the sidebar, it isn't enabled for your workspace yet — see [Turning It On](#turning-it-on).
+
+## Before You Start
+
+1. ✅ **The Agents / Workflows beta enabled for your workspace** — an admin turns it on in **Workspace Settings → Experimental** (see [Turning It On](#turning-it-on))
+2. ✅ **At least one agent or team exists** — Agent and Team nodes run the agents you've built. Create them first on the [Agents](./agents) page
+
+## Turning It On
+
+Workflows rides the same beta enrollment as Agents:
+
+1. A workspace admin opens **Workspace Settings → Experimental**
+2. They toggle on the Agents beta feature (one toggle covers Agents, Teams, and Workflows)
+3. Once on, **Workflow** appears in the left sidebar (marked **Beta**) for everyone in the workspace
+
+See [Turning On Experimental Features](../settings/experimental-features) for the full admin flow.
+
+> **Heads-up:** Beta features may change, break, or disappear without notice.
+
+## The Workflows List
+
+Click **Workflow** in the sidebar to open the Workflows page (titled **Workflows**, with an **Experiment** badge). It lists every workflow in your workspace in a table:
+
+<!-- TODO: add screenshot of the Workflows list page — table with the Experiment badge + New Workflow button → /img/guides-asset/<name>.jpeg -->
+
+| Column | Shows |
+|--------|-------|
+| **Name** | The workflow name (and description, if set) |
+| **Owner** | Who created it |
+| **Nodes** | How many nodes the workflow has |
+| **Schedule Run** | When it's next due to run on a schedule (or —) |
+| **Last Run** | The status of the most recent run (click it to open that run) |
+| **Created** / **Updated** | Relative timestamps |
+| **Enabled** | A toggle — turn the workflow on or off |
+| **Actions** | A menu: **View workflow**, **View runs**, **Delete** |
+
+Click any row to open the workflow's canvas. If you have none yet, the page reads _"No workflows yet. Create one to get started."_
+
+To make a new one, click **New Workflow** — an "Untitled Workflow" is created and its canvas opens immediately.
+
+---
+
+## Building a Workflow on the Canvas
+
+The workflow canvas is a full-screen builder. The workflow name sits top-left (click to rename); the action cluster sits top-right.
+
+<!-- TODO: add screenshot of the workflow canvas builder — node palette, a few connected nodes, top action bar (Notify / Schedule / Validate / Save / Run) → /img/guides-asset/<name>.jpeg -->
+
+### Two ways to build
+
+**Drag nodes from the palette**
+Drag a node type from the palette onto the canvas, then connect nodes by dragging between their handles. Click a node to open its configuration panel.
+
+**Ask the AI copilot**
+A floating chat panel (AskFRND Flow) lets you build by describing what you want — e.g. _"Add an agent that summarizes the input, then a condition on its score, true → an artifact, false → stop."_ The copilot adds and connects nodes for you as it works. The composer placeholder reads _"Build or edit this workflow…"_
+
+### Node types
+
+Drag any of these from the palette:
+
+| Node | What it does |
+|------|-------------|
+| **Input** | Capture the run's input |
+| **Agent** | Run a workspace agent |
+| **Team** | Run an agent team |
+| **Function** | A built-in transform (echo, uppercase, lowercase, template, json extract) |
+| **Condition** | Branch on a rule |
+| **Parallel** | Fork concurrent branches |
+| **Artifact** | Generate a document (HTML, PDF, DOCX, MD, TXT, or JSON) |
+| **Loop** | Repeat a body a set number of times |
+
+> **Agent and Team nodes need agents.** They run the agents and teams you've built on the [Agents](./agents) page — create those first.
+
+Node configuration varies by type. Common options include a **user message**, an **instructions override**, an **output schema**, **retry on failure** (with a max-retry count), model overrides, and **Require confirmation** — which pauses the run to ask a person before that step proceeds (see [Runs that pause for input](#runs-that-pause-for-input-hitl)).
+
+### The action bar
+
+Top-right of the canvas:
+
+- **Notify** — pick who gets notified _"when a run completes or fails"_
+- **Schedule** — set up automatic runs (see [Scheduling Runs](#scheduling-runs))
+- **Validate** — check the graph; any problems show inline as a red error list
+- **Save** — saves the workflow. A draft saves even if it isn't valid yet — validation only gates **Run**. If there are issues, you'll see _"Draft saved — N validation issues to fix before running."_
+- **Run** — validate, then start a run (see [Running a Workflow](#running-a-workflow))
+
+An **Unsaved changes** indicator appears while you have unsaved edits, and frndOS warns you before you leave the page with unsaved work.
+
+---
+
+## Running a Workflow
+
+Click **Run** on the canvas. frndOS saves the canvas, validates it, and starts a run.
+
+> **A workflow needs an output-producing node to run.** You need at least one **Agent**, **Team**, or **Function** node — logic-only nodes (Condition, Parallel) and the Artifact node don't qualify on their own. If none is present, Run is disabled with the hint _"Add an agent, team, or function node to run this workflow."_
+
+Once running:
+
+- A live **status pill** appears in the action bar, and each node shows its live status as the run progresses
+- **View run** opens the full run detail page
+- Click **Cancel Run** to stop an in-progress run
+
+A run moves through these statuses: **pending**, **running**, **completed**, **failed**, **cancelling**, **cancelled**, **paused**, and **awaiting input**.
+
+### Runs that pause for input (HITL)
+
+If a step is set to **Require confirmation**, the run pauses at **awaiting input** and asks a person to respond before continuing. Open the run and provide the requested input, then **Resume run** to continue. This is how a workflow keeps a human in the loop for approvals or missing details.
+
+### The run detail page
+
+Opening a run shows each step in order with its status, plus cost, token usage, and duration. Any **Artifact** nodes produce documents you can open full-screen, open on their own page, or download.
+
+---
+
+## Scheduling Runs
+
+Click **Schedule** on the canvas to set the workflow to run automatically. Two schedule types:
+
+- **One-shot** — pick a date and time (in your timezone) to run once
+- **Recurring** — pick a cadence. Presets: **Every hour**, **Every day at 09:00**, **Every Monday 09:00**, **1st of month 09:00**, or **Custom…** (your own cron expression)
+
+When a workflow has an active schedule, the **Schedule Run** column on the list shows its next due time.
+
+---
+
+## Running a Workflow from AskFRND
+
+Workflows can also be called straight from AskFRND. Type **`@`** in the AskFRND message box — the popover lists your enabled **Agents**, **Teams**, and **Workflows**. Pick a workflow to run it in the conversation.
+
+> **Only enabled workflows appear** in the `@` list. Toggle a workflow on from the Workflows list or its canvas.
+
+---
+
+## FAQ
+
+**Q: I don't see Workflow in the sidebar.**
+Workflows shares the Agents beta enrollment. Ask a workspace admin to enable it in **Workspace Settings → Experimental** — the same toggle turns on Agents, Teams, and Workflows.
+
+**Q: What's the difference between an Agent and a Workflow?**
+An [agent](./agents) is a single assistant that answers a request. A **workflow** chains several steps — agents, teams, and logic like conditions, loops, and parallel branches — into one automated pipeline that can run on a schedule or unattended.
+
+**Q: Do I need agents before building a workflow?**
+For Agent and Team nodes, yes — they run agents and teams you've already created on the [Agents](./agents) page. Other node types (Input, Function, Condition, Parallel, Artifact, Loop) don't require an agent.
+
+**Q: Why is the Run button disabled?**
+A workflow needs at least one Agent, Team, or Function node — a node that actually produces output. Add one and Run enables.
+
+**Q: My workflow saved but shows validation issues — is that a problem?**
+Saving keeps a draft regardless. Validation issues only block **Run**, not Save. Fix the listed errors (via **Validate**) before running.
+
+**Q: Can a workflow ask me something mid-run?**
+Yes. A node set to **Require confirmation** pauses the run at **awaiting input** — open the run, answer, and **Resume run** to continue.
+
+**Q: How do I run a workflow automatically?**
+Use **Schedule** on the canvas — a one-shot date/time, or a recurring cadence (hourly, daily, weekly, monthly, or a custom cron).
+
+---
+
+## Related Articles
+
+- [Agents & Teams (Beta)](./agents)
+- [Pitch (Beta)](./pitch)
+- [AskFrnd Overview](../askfrnd/overview)
+- [Turning On Experimental Features](../settings/experimental-features)

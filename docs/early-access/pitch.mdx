@@ -1,0 +1,171 @@
+---
+sidebar_position: 3
+title: Pitch (Beta)
+description: Turn a client brief into a structured pitch — upload or paste the brief, let AI decode it, review the frame and plan, then work through each deliverable step in a guided runner.
+---
+
+# Pitch (Beta)
+
+**Pitch** turns a client brief into a structured, AI-assisted pitch. You bring in a brief (upload a file, paste text, or link a Lark doc), the AI **decodes** it into audience, decision-makers, and a winning angle, you **review** that frame and the plan, then work through each deliverable step in a guided **runner** — running an agent per step and approving the output as you go.
+
+> **Experimental / Beta feature:** Pitch is a Labs feature gated per workspace by its own toggle (`show-pitch`). In the app it appears in the sidebar as **Projects** with a **Beta** badge. If you don't see it, it isn't enabled for your workspace yet — see [Turning It On](#turning-it-on).
+
+> **Naming note:** In the product UI this feature is labelled **Projects** (sidebar entry, page title). This guide calls it **Pitch** to match the feature name — they're the same thing. It is a different surface from the campaign **Projects** used with the KV Generator (see [Creating & Managing Projects](../projects/managing-projects)).
+
+## Before You Start
+
+1. ✅ **Pitch enabled for your workspace** — an admin turns it on in **Workspace Settings → Experimental** (see [Turning It On](#turning-it-on))
+2. ✅ **A brief to work from** — a PDF/DOCX file, brief text you can paste, or a Lark document URL
+
+## Turning It On
+
+Pitch is a beta feature enabled at the workspace level:
+
+1. A workspace admin opens **Workspace Settings → Experimental**
+2. They toggle on the Pitch (Projects) beta feature
+3. Once on, **Projects** appears in the left sidebar (marked **Beta**)
+
+See [Turning On Experimental Features](../settings/experimental-features) for the full admin flow.
+
+> **Heads-up:** Beta features may change, break, or disappear without notice.
+
+---
+
+## Projects and Pitches
+
+Pitch organizes work as **Projects** (folders) that each hold one or more **pitches**:
+
+- A **Project** is a folder — usually one client or prospect
+- A **pitch** is one brief worked through the runner, living inside a project folder
+
+The Projects page lists your project folders. You can sort them by **Recent activity**, **Name A→Z**, or **Created**.
+
+<!-- TODO: add screenshot of the Projects list — folder grid, sort dropdown, New Project button → /img/guides-asset/<name>.jpeg -->
+
+If you have none yet, the page invites you to _"Start your first project."_
+
+---
+
+## Creating a Pitch
+
+Click **New Project** (or **New Pitch** from inside an existing folder). A modal opens:
+
+<!-- TODO: add screenshot of the New Project modal — name, prospect/brand, deadline, Brief source segmented control (Upload / Paste text / Lark URL) → /img/guides-asset/<name>.jpeg -->
+
+1. **Name** — the project (or pitch) name — a client pitch, RFP name, or working title
+2. **Prospect / brand** — who the pitch is for (e.g. Alfamart, Cimory, Nike). *(When you start from a brand's own Projects tab, the brand is already set and this field is hidden.)*
+3. **Deadline** *(optional)* — a target date
+4. **Brief source** — pick one:
+   - **Upload** — a PDF or DOCX (max 25 MB). _"We'll extract and decode the brief."_
+   - **Paste text** — paste the raw brief text
+   - **Lark URL** — link a Lark document (`https://<workspace>.larksuite.com/docx/…`)
+5. Click **Create Project** (or **Create Pitch**)
+
+The pitch is created and opens full-screen, and the AI starts decoding your brief.
+
+---
+
+## Decoding the Brief
+
+After creation, frndOS reads your brief and turns it into a structured setup. A progress view shows the stages:
+
+| Stage | What it does |
+|-------|-------------|
+| **Parsing brief** | Extracting text and structure from the upload |
+| **Chunking sections** | Breaking the brief into semantic sections |
+| **Decoding intent** | Reading between the lines — audience, pain, opportunity |
+| **Structuring plan** | Drafting the deliverable tree and phase scope |
+| **Ready for review** | Setup complete — jump into the review flow |
+
+> This usually takes **30–90 seconds**. You can leave and come back — frndOS notifies you when it's ready.
+
+**If decoding fails:** the view shows the error and lets you **paste the brief text instead** and retry, in case the uploaded file keeps failing.
+
+---
+
+## Reviewing the Pitch
+
+Once decoded, the **Review your pitch** wizard opens — a two-column view:
+
+<!-- TODO: add screenshot of the Review wizard — left "The Pitch" cards (Brief / Audience / Decision-makers / Winning Strategy), right "The Plan" scope strip + preview, Confirm & Start button → /img/guides-asset/<name>.jpeg -->
+
+**Left — The Pitch** (the frame the AI decoded):
+
+- **Brief**
+- **Audience**
+- **Decision-makers**
+- **Winning Strategy**
+
+Each card has an inline **✨ Ask-AI** affordance to refine it.
+
+**Right — The Plan** — a scope strip and a preview of what the runner will scaffold when you start.
+
+When the frame and plan look right, click **Confirm & Start**. This locks in the setup and builds the runner.
+
+---
+
+## The Runner — Working Through Deliverables
+
+After Confirm & Start, the pitch opens in the **runner** — a full-screen workspace with a step rail on the left and a canvas on the right.
+
+<!-- TODO: add screenshot of the runner — left step rail (deliverables grouped by phase), center step canvas, top chrome (back, pipeline toggle, context vault, comments, progress) → /img/guides-asset/<name>.jpeg -->
+
+**The step rail** groups deliverable steps by phase so you read the pitch at the right altitude. Pinned frames at the top (**Brief**, **Winning Strategy**) open a read-only **Context vault**.
+
+**Each step** moves through a lifecycle:
+
+| Status | What you do |
+|--------|-------------|
+| **Locked** | Waiting on an earlier step — not actionable yet |
+| **Ready** | Click **Run Step** to have its agent generate the output |
+| **Running** | The agent is working — watch progress |
+| **Awaiting review** | Review the draft — click **Approve** to lock it in |
+| **Approved** | Done — click **Re-open** to revise or re-run |
+
+Some steps let you **Change agent** before running, swapping which agent handles that deliverable.
+
+**Top chrome** (always available):
+
+- **Back** to the project list
+- **Pipeline** toggle — show/hide the step rail
+- **Context vault** (brain icon) — the read-only Brief + decisions + linked files
+- **Comments** (chat icon) — step-anchored comments, with an unresolved-count badge
+- **Progress** — an _"N/M approved"_ capsule and bar
+
+There's also a floating **assistant** (bottom-right) bound to the selected step's agent, for asking questions or requesting changes in context.
+
+> **Real-time:** If teammates are in the same pitch, their presence chips appear in the top chrome, and step updates stream in live.
+
+---
+
+## FAQ
+
+**Q: I don't see Pitch — where is it?**
+It's gated by its own beta toggle and appears in the sidebar as **Projects** (with a Beta badge). Ask a workspace admin to enable it in **Workspace Settings → Experimental**.
+
+**Q: Is this the same as the Projects I use with the KV Generator?**
+No. This Pitch feature (labelled **Projects** in the beta) is about turning a brief into a structured pitch with a step-by-step runner. The campaign **Projects** used to give the KV Generator context are a separate thing — see [Creating & Managing Projects](../projects/managing-projects).
+
+**Q: What brief formats can I use?**
+A PDF or DOCX upload (max 25 MB), pasted text, or a Lark document URL.
+
+**Q: How long does decoding take?**
+Usually 30–90 seconds. You can leave and come back — you'll be notified when it's ready. If it fails, you can paste the brief text and retry.
+
+**Q: What's the difference between a Project and a pitch?**
+A **Project** is a folder (usually one client/prospect) that holds one or more **pitches**. Each pitch is one brief worked through the runner.
+
+**Q: Do I have to run steps in order?**
+Steps unlock as their dependencies complete. A **locked** step isn't actionable yet; once **ready**, run it, review the draft, and approve. You can **re-open** an approved step to revise or re-run it.
+
+**Q: Can I change which agent handles a step?**
+Yes — a ready step lets you **Change agent** before running it.
+
+---
+
+## Related Articles
+
+- [Agents & Teams (Beta)](./agents)
+- [Workflows (Beta)](./workflows)
+- [Creating & Managing Projects](../projects/managing-projects)
+- [Turning On Experimental Features](../settings/experimental-features)

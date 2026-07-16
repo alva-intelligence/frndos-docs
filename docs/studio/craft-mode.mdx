@@ -1,0 +1,230 @@
+---
+sidebar_position: 4
+title: Craft Mode — Refining with the Crafter Agent
+description: Use Craft mode in KV Generator to refine a chosen concept into a production-ready Key Visual with the Crafter agent — chat-first workflow, precise bounding box edits, and AI variants.
+---
+
+# Craft Mode — Refining with the Crafter Agent
+
+**Craft mode** is the refinement phase in KV Generator. After exploring directions in Concept mode and choosing one to develop, Craft mode gives you focused, deep control — with the **Crafter** as your AI partner for polishing, editing, and generating variants.
+
+> **Where Craft fits:** Concept mode = diverge (many directions, rough boards). Craft mode = converge (one direction, production-quality output). See [Concepting Mode — AI-Guided Visual Exploration](./concepting-mode) for the Concept phase.
+
+---
+
+## The Crafter Agent
+
+The Crafter takes over in Craft mode. It is visible in the chat panel header as a **tinted orb** with the agent's name, live status, and the current file title as a subtitle.
+
+- **Icon**: paint brush (pink orb, `#EC4899`)
+- **Status**: _Polishing master + variants_
+- **Chat placeholder**: _Describe an edit…_
+
+### Agent Thinking Indicator
+
+While the Crafter is processing your message, the chat panel shows a **pulsing orb** (pink) alongside a rotating characteristic phrase:
+
+_"Crafter is studying the master"_ · _"Crafter is picking up brushes"_ · _"Crafter is checking composition"_ · _"Crafter is tuning the finish"_ · _"Crafter is preserving what works"_
+
+The phrase rotates every 1.6 seconds until the response arrives.
+
+<!-- TODO: add screenshot of the Craft mode chat panel with Crafter header identity and a generate bar → /img/guides-asset/<name>.jpeg -->
+
+---
+
+## How Craft Mode Chat Works
+
+Craft mode is **chat-first**. Unlike Concept mode's Brainstorm/Design toggle, Craft mode has no run mode switch — every send goes to the Crafter as a chat turn first.
+
+**The typical flow:**
+
+1. You describe what you want to change, refine, or try: _"Make the lighting warmer and remove the background figure"_
+2. The Crafter responds with its plan — proposing how it would approach the edit, what it would preserve, and what it would change
+3. After the Crafter's reply, a **Generate bar** and contextual chips appear so you can either render the idea or keep discussing
+
+> **Why chat-first?** In Craft mode, skipping discussion and jumping straight to rendering often produces unexpected results. The Crafter's chat-first approach lets it verify its interpretation of your instruction before spending credits on a render.
+
+---
+
+## The Generate Bar
+
+After every Crafter text reply, a **Generate bar** appears below the response:
+
+> ✦ **Generate with [model name] · ~N credits**
+
+Clicking it fires the render based on the Crafter's last discussion. In Craft mode, renders are locked to **gpt-image-2** (server-enforced, regardless of the image model picker in the composer). The credit estimate in the Generate bar always reflects this locked model.
+
+Next to the Generate bar, a **Keep brainstorming** button lets you continue the chat without rendering — useful when you want to push the idea further before committing credits.
+
+---
+
+## Creativity Level
+
+The **Creativity** control in the bottom bar lets you set how far the Crafter may drift from the source image when polishing or generating a variant. It is a **Craft-only control** — it replaces the Style pill in the bottom bar when you enter Craft mode.
+
+<!-- TODO: add screenshot of the Creativity control in the Craft mode bottom bar (Raw · Low · Medium · High, "Low" selected) → /img/guides-asset/<name>.jpeg -->
+
+There are four levels:
+
+| Level | What It Does |
+|-------|-------------|
+| **Raw** | Minimal guidance — the AI stays as close as possible to the source pixels |
+| **Low** | Faithful polish — subtle refinements while preserving the original composition (default) |
+| **Medium** | Moderate creative latitude — noticeably improves and reinterprets the image |
+| **High** | High creative freedom — significant departure from the source, stronger reinterpretation |
+
+**Default is Low.** The setting resets to Low every time you refresh or reopen KV Generator — it is not saved between sessions.
+
+> **When to raise Creativity:** if you want the Crafter to actively improve the image rather than just polish it, increase to Medium or High. Use Raw when you need the AI to stay as faithful as possible to the existing composition — for example, when making a precise localized edit.
+
+The Creativity level applies to every Craft render you trigger while it is set — both full polishes (via the Start Crafting overlay or Generate bar) and variant generations.
+
+---
+
+## Quick-Action Chips
+
+After a Crafter text reply, two types of chips appear:
+
+### Contextual suggestions (dynamic)
+
+LLM-generated chips tuned to the current conversation — they change each turn based on what was just discussed. Clicking one sends the suggestion as your next message to the Crafter.
+
+### Static quick actions
+
+Three persistent chips always available while Craft mode is active and a conversation is underway:
+
+| Chip | What it sends to the Crafter |
+|------|------------------------------|
+| **Critique the master** | _"Critique the master and suggest craft improvements before we render."_ |
+| **Plan a variant** | _"Plan a variant with a different subject treatment but the same brand world."_ |
+| **Sharper finish** | _"Suggest how to make this feel more premium and intentional without changing the idea."_ |
+
+---
+
+## The "Editing [board]" Chip
+
+When you click a specific board on the canvas (pinning it) or use the Bounding Box tool to select an area, the composer shows a small **"Editing [board name]"** chip. This tells the Crafter exactly which board and area your next message targets.
+
+- **With a pinned board**: the chip shows the board name and a ✕ to clear the target. Removing it returns to editing the latest board.
+- **With bounding boxes**: the chip shows alongside the boxes in the composer; clearing boxes dismisses the chip.
+
+---
+
+## Entering Craft Mode
+
+There are two ways to enter Craft mode:
+
+**From Concept mode (recommended):**
+1. Right-click any concept board → **Start designing**
+2. KV Generator switches to Craft automatically
+3. The Crafter sends an **opening analysis** — reading the promoted concept and proposing how it would approach crafting it into a polished Key Visual
+
+**Directly via the Craft tab:**
+- Click the **Craft** tab in the top nav at any time (no concept board required)
+- Useful when starting from an uploaded image or jumping straight to production without Concept mode
+
+---
+
+## What You Can Do in Craft Mode
+
+Beyond chat, Craft mode offers hands-on tools directly on the canvas:
+
+**Bounding Box** — draw a selection on the canvas, then send a targeted prompt. The AI regenerates only the selected area, leaving the rest untouched. Stack multiple boxes for incremental layered edits.
+
+**Image references** — attach a photo to guide character likeness, composition, or perspective. Useful for precise angle or look-and-feel adjustments the Crafter can't infer from text alone.
+
+**Static elements** — add logos, footers, or brand marks the AI shouldn't generate. Use the **Add Image** tool to upload and position them on the canvas.
+
+**Variants** — right-click any Craft board → **Create variant** (or click the **+** button to the right of an active board) to generate an alternate version. See [Creating Your First Key Visual → Creating a Variant](./kv-generator#creating-a-variant) for the full variant flow.
+
+**Templates** — save a recurring layout (logo placement, footer style) so future KVs start from it instead of a blank canvas.
+
+👉 See [Creating Your First Key Visual](./kv-generator#step-4--refine-in-craft-mode) for the full step-by-step Craft workflow including Bounding Box and static elements.
+
+---
+
+## The Transform Panel
+
+When the **Layers panel** is open, a **Transform** panel appears anchored to the **bottom-right corner** of the canvas. It lets you read and edit an overlay's exact position, size, and rotation numerically — without guessing from the canvas.
+
+> **Available in:** Concept, Craft, and Motion modes. Hidden during Resize mode (Resize has its own per-tile transform controls) and when Version History is open.
+
+<!-- TODO: add screenshot of the Transform panel (Position / Size / Rotate sections visible, single overlay selected) → /img/guides-asset/<name>.jpeg -->
+
+### Opening the Transform Panel
+
+1. Click the **Layers** icon (Stack icon, bottom-left of the bottom nav) to open the Layers panel
+2. Select a single overlay on the canvas — the Transform panel populates with its values
+
+> **Tip:** The Layers panel and the chat panel are mutually exclusive — opening one closes the other.
+
+### Sections
+
+| Section | Fields | What it controls |
+|---------|--------|-----------------|
+| **Position** | X · Y | Top-left of the overlay's bounding box, in pixels from the canvas origin |
+| **Size** | W · H | Width and height in pixels |
+| **Rotate** | ° | Rotation in degrees (−360 to 360) |
+
+**Aspect ratio lock:** The **lock icon** between W and H links them so that changing W updates H automatically (and vice versa) to preserve the current ratio. The lock resets to off on page refresh — it is not saved between sessions.
+
+**X/Y coordinate system:** X and Y show the top-left corner of the **rotated bounding box** (AABB) — the same behavior as Figma and Sketch. Coordinates describe where the visual bounds start after rotation, not the pre-rotation corner.
+
+### Editing and Validation
+
+| Action | Behavior |
+|--------|----------|
+| Press **Enter** or click away | Commits the new value |
+| Press **Escape** | Reverts to the last committed value |
+| Enter a non-integer or out-of-range value | Input flashes a **red ring for 1 second**; no change is applied |
+
+When no overlay is selected, or when multiple overlays are selected at once, all fields show `—` and are not editable. Select a single overlay to enable the panel. The panel works on both **text** and **image** overlays.
+
+---
+
+## FAQ
+
+**Q: What is the Creativity control and what do its levels mean?**
+The Creativity control (bottom bar, Craft mode only) sets how far the AI may drift from the source image when polishing or creating a variant. Raw = closest to original; Low = faithful polish (default); Medium = moderate reinterpretation; High = significant creative departure. The setting resets to Low each session.
+
+**Q: Why is there no Brainstorm/Design toggle in Craft mode?**
+Craft mode is always chat-first by design — the Crafter discusses and plans before rendering. Triggering a render happens via the Generate bar that appears after a chat reply, not a mode toggle. This ensures the Crafter understands your intent before spending credits.
+
+**Q: Can I skip the Crafter's opening message and render immediately?**
+Yes. After the Crafter sends its opening analysis, the Generate bar appears. Click it to render without further discussion.
+
+**Q: Why does the Generate bar show a specific model and credit estimate?**
+Craft renders are locked to gpt-image-2 server-side — the credit estimate reflects this fixed model regardless of what the image model picker shows. The quote is live and updates with the locked model's actual credit cost.
+
+**Q: What is the "Editing [board]" chip in the composer?**
+It's the Crafter's targeting context — it shows which board your next message applies to. Click a board on the canvas to pin it, or use the Bounding Box tool to scope your edit to a specific area. Clear it with ✕ to return to targeting the latest board.
+
+**Q: Can I use Craft mode without going through Concept mode first?**
+Yes. Click the **Craft** tab directly. If you have an existing image, use **Upload Image** to bring it in. See [Creating Your First Key Visual → Use Your Own Image](./kv-generator#step-4--refine-in-craft-mode).
+
+**Q: What is the pulsing orb while the Crafter is thinking?**
+It's the Crafter's thinking indicator — a pulsing pink orb with a rotating phrase (e.g., _"Crafter is studying the master"_). It appears while your message is being processed and disappears when the reply arrives.
+
+**Q: What's the difference between the static quick-action chips and the contextual suggestions?**
+Static chips (Critique the master, Plan a variant, Sharper finish) are always the same — they're hardcoded prompts for common Craft tasks. Contextual suggestions are generated by the AI based on your current conversation and change each turn to reflect what was just discussed.
+
+**Q: How do I open the Transform panel?**
+Click the **Layers** icon (Stack icon, bottom-left of the bottom nav) to open the Layers panel — the Transform panel appears automatically in the bottom-right corner. Select a single overlay on the canvas to populate its Position, Size, and Rotate values.
+
+**Q: What do the X and Y coordinates in the Transform panel refer to?**
+X and Y show the top-left corner of the overlay's **rotated bounding box** — the same coordinate convention used by Figma and Sketch. If you rotate an overlay, X/Y shift to track the new bounding box origin, not the pre-rotation corner.
+
+**Q: Why is the Transform panel hidden?**
+Two conditions hide it: (1) the Layers panel is closed, or (2) the Version History panel is open. In Resize mode the main Transform panel is also hidden — Resize has its own per-tile transform controls. Reopen the Layers panel to bring it back.
+
+**Q: Can I lock the aspect ratio when resizing an overlay?**
+Yes. Click the **lock icon** between W and H in the Size section. While locked, changing W updates H automatically (and vice versa). The lock resets to off on page refresh — it is not saved between sessions.
+
+---
+
+## Related Articles
+
+- [Concepting Mode — AI-Guided Visual Exploration](./concepting-mode)
+- [Creating Your First Key Visual (KV Generator)](./kv-generator)
+- [Resizing Visuals for Different Platforms](./resizer)
+- [Studio Overview](./overview)

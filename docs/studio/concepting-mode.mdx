@@ -1,0 +1,240 @@
+---
+sidebar_position: 3
+title: Concepting Mode — AI-Guided Visual Exploration
+description: Use Concept mode in KV Generator to explore creative territories with the Conceptor agent, generate parallel concept boards, then promote your chosen concept to Craft.
+---
+
+# Concepting Mode — AI-Guided Visual Exploration
+
+**Concept mode** is the ideation phase in KV Generator. Instead of starting from a blank prompt, you work with the **Conceptor** — an AI creative partner that helps you explore, diverge, and converge before committing to a final Key Visual.
+
+## How Canvas Modes Work
+
+KV Generator has two primary canvas modes, accessible from the tabs at the top of the screen:
+
+| Tab | What It's For |
+|-----|---------------|
+| **Concept** | Explore ideas — generate concept boards across multiple creative directions |
+| **Craft** | Refine one chosen concept into a production-ready Key Visual |
+
+> **Why the split?** Concept mode keeps you divergent — generating many directions quickly. Craft mode keeps you convergent — polishing one direction deeply. Work in Concept first, then promote to Craft.
+
+After leaving Concept, two more tabs appear: **Resize** and **Motion** — for platform adaptation and animation.
+
+<!-- TODO: add screenshot of the top nav showing Concept/Craft tabs, Brand Identity pill, and Style pill → /img/guides-asset/<name>.jpeg -->
+
+---
+
+## The Two Agents
+
+KV Generator has two distinct AI agents — one per canvas mode. Each is visible in the chat panel header as a **tinted orb** with the agent's name, live status, and the current file title as a subtitle.
+
+### Conceptor (Concept mode)
+
+The Conceptor guides creative territory exploration.
+
+- **Icon**: lightbulb (amber orb, `#F5A623`)
+- **Status**: _Exploring concepts_
+- **Chat placeholder**: _Generate 3 alternative ideas…_
+- **Primary affordance**: the **"Explore a territory"** row — six territory chips that let you pick a creative direction (see [Exploring a Territory](#exploring-a-territory))
+
+> **Heads-up:** The Conceptor's territory row is the main quick-action surface in Concept mode. Static quick-suggestion chips are intentionally hidden there to reduce clutter — they appear only in Craft mode under the Crafter.
+
+### Crafter (Craft mode)
+
+The Crafter takes over once a concept is promoted to design.
+
+- **Icon**: paint brush (pink orb, `#EC4899`)
+- **Status**: _Polishing master + variants_
+- **Chat placeholder**: _Describe an edit…_
+- **Quick suggestions after each response**: Critique the master · Plan a variant · Sharper finish
+
+When you promote a concept from Concept to Craft, the Crafter automatically sends an opening message — analyzing the promoted concept and proposing how it would approach crafting it into a polished Key Visual.
+
+👉 See [Craft Mode — Refining with the Crafter Agent](./craft-mode) for the full Crafter workflow: chat-first interaction, Generate bar, quick-action chips, bounding box edits, and variants.
+
+### Agent Thinking Indicator
+
+While either agent is processing your message, the chat panel shows a **pulsing orb** (in the agent's color) alongside a rotating characteristic phrase:
+
+- **Conceptor phrases**: _"Conceptor is reading between the lines"_ · _"Conceptor is looking for tension"_ · _"Conceptor is opening up territories"_ · _"Conceptor is testing creative devices"_ · _"Conceptor is choosing sharper routes"_
+- **Crafter phrases**: _"Crafter is studying the master"_ · _"Crafter is picking up brushes"_ · _"Crafter is checking composition"_ · _"Crafter is tuning the finish"_ · _"Crafter is preserving what works"_
+
+### Handoff Banner
+
+When you switch canvas modes (Concept↔Craft), a transient banner appears in the chat panel for 4 seconds, making the agent handoff legible:
+
+- **Concept → Craft**: _"Conceptor handed this direction to Crafter — polishing"_
+- **Craft → Concept**: _"Crafter stepped back — Conceptor is exploring new routes"_
+
+The direction matters: Concept→Craft is a converging handoff (promoting an idea to be polished); Craft→Concept is a diverging step back (opening up fresh exploration).
+
+---
+
+## Run Modes — Brainstorm vs Design
+
+Inside the chat, a dropdown next to the composer lets you choose how the agent responds:
+
+| Run Mode | What Happens |
+|----------|-------------|
+| **Brainstorm** | The Conceptor discusses, proposes ideas, and asks before generating anything |
+| **Design** | The Conceptor immediately fires a concept board generation on every send |
+
+Switch freely — you don't have to pick one for the whole session.
+
+---
+
+## Brand Identity Toggle
+
+The **Brand Identity pill** in the top-left of the canvas shows your active brand name. Click the toggle to turn brand context on or off.
+
+- **On** (default): every send includes your brand's DNA, Identity, and Tonality context
+- **Off**: sends without brand context — useful when exploring a generic direction first
+
+---
+
+## Empty State — Getting Started
+
+When you open KV Generator with no messages yet, the chat shows a **personalized greeting**:
+
+- **Greeting line**: _"Good morning, [First Name]"_ (or "Good evening" / "Good afternoon" depending on time of day), or a plain greeting if your name isn't loaded yet
+- **Subtitle**: _"How do you want to make today?"_
+
+Below the greeting, four **quick-start chips** appear:
+
+| Chip | What it does |
+|------|-------------|
+| _Brainstorm an idea for this project_ | Opens a general ideation conversation with the Conceptor |
+| _Start making a key visual from a sketch_ | Prompts you to describe or upload a sketch to build from |
+| _Brainstorm a campaign for [brand name]_ | Brand-aware chip — uses your active brand name; shows _"Explore brand ideas"_ if no brand is set |
+| _(Dynamic AI suggestion)_ | A fourth chip generated by AI based on your project context — appears after a short loading moment; may not appear if the AI has no suggestion |
+
+Clicking any chip sends that text as your first message to the Conceptor.
+
+---
+
+## Exploring a Territory
+
+The fastest way to start Concept mode is to click one of the six **territory chips** in the chat panel. Each represents a distinct creative direction:
+
+| Territory | What It Explores |
+|-----------|-----------------|
+| **Product Hero** | The product itself — form, features, prominence |
+| **Human Ritual** | A human moment or behavior where the product plays a role |
+| **Unexpected Subject** | A surprising or counterintuitive subject as the visual hook |
+| **Benefit Metaphor** | An abstract metaphor for the core product benefit |
+| **Brand World** | The brand's aesthetic universe, without a hard product push |
+| **Graphic Device** | Typographic or graphic elements as the dominant visual system |
+
+> Territory chips only appear in **Concept mode**.
+
+### What Happens Next
+
+Depends on your active run mode:
+
+**Brainstorm run mode:**
+1. The Conceptor discusses the territory — explains what it means for your brief
+2. It proposes one or more concept ideas
+3. It offers to render them — confirm to fire the generation
+
+**Design run mode:**
+1. Selecting a territory immediately fires a concept board generation — no discussion first
+2. The board appears on the canvas as generation completes
+3. You can trigger multiple territories in sequence — each fires **in parallel** and lands independently on the canvas as it finishes
+
+<!-- TODO: add screenshot of the territory chips in the chat panel and a concept board on the canvas → /img/guides-asset/<name>.jpeg -->
+
+---
+
+## Style Presets
+
+The **Style pill** in the bottom bar lets you control the artistic treatment of concept board generations. It is only visible in **Concept mode**:
+
+| Preset | Look |
+|--------|------|
+| **Pen Sketch** | Hand-drawn sketch style — the default |
+| **Outline Toon** | Clean line art, toon-style outlines |
+| **Wireframe** | Structural, architectural wireframe rendering |
+| **Ink Wash** | Expressive ink wash / watercolor treatment |
+
+> Style presets do not carry over to Craft mode. When you switch to Craft, the style resets — Craft renders in full photorealistic quality regardless of which preset you used in Concept.
+
+---
+
+## Creative Rationale Cards
+
+Below each concept board on the canvas, a **Creative Rationale card** shows:
+
+- **Header**: _Creative rationale · [creative device]_ (or just _Creative rationale_ if no device is set)
+- **Body**: A short rationale explaining what the concept is doing creatively and why
+
+The rationale and device are generated alongside the image — they communicate the _intent_ behind the visual, which is useful for aligning with clients or your team before committing to a direction.
+
+<!-- TODO: add screenshot of a creative rationale card below a concept board → /img/guides-asset/<name>.jpeg -->
+
+---
+
+## Promoting to Craft ("Start designing")
+
+Once you have a concept board you want to develop:
+
+1. **Right-click** the concept board on the canvas to open its context menu
+2. Select **Start designing**
+3. KV Generator switches to **Craft mode** automatically
+4. The **Crafter** immediately sends an opening analysis of your promoted concept — proposing how it would approach crafting it into a polished Key Visual
+
+From here, use Craft mode's full toolkit: bounding box edits, image references, static elements, and the Crafter agent. See [Creating Your First Key Visual](./kv-generator#step-4--refine-in-craft-mode) for the full Craft workflow.
+
+---
+
+## The "Start Crafting" Overlay
+
+In Craft mode, a **"✦ Start Crafting"** button overlays the canvas. Clicking it fires the full-resolution polish render — the Crafter takes the promoted concept and outputs a production-quality image.
+
+States:
+- **Ready** → "✦ Start Crafting" button — click to begin
+- **Polishing** → spinner with _Polishing…_ label + elapsed timer
+- **Disabled** → muted, not clickable (e.g., render already running)
+
+---
+
+## FAQ
+
+**Q: What's the difference between Concept mode and Craft mode?**
+Concept → diverge: explore multiple creative directions as rough concept boards. Craft → converge: refine one chosen concept into a production-ready Key Visual.
+
+**Q: What's the difference between Brainstorm and Design run modes?**
+In Brainstorm, the Conceptor discusses and proposes ideas before generating. In Design, it fires a concept board immediately on every send. Use Brainstorm when you want to think through a direction first; use Design when you're ready to see options fast.
+
+**Q: Can I generate multiple territories at the same time?**
+Yes — in Design run mode, selecting multiple territories fires them in parallel. Each generates independently and lands on the canvas as it completes. You don't have to wait for one before triggering the next.
+
+**Q: Do style presets affect Craft mode?**
+No. Presets only apply in Concept mode. Craft always renders at full photorealistic quality.
+
+**Q: Can I go back to Concept after promoting to Craft?**
+Yes — click the **Concept** tab in the top nav. Your existing concept boards stay on the canvas.
+
+**Q: What is the creative rationale card?**
+An AI-generated note below each concept board that explains the creative intent and device behind the image. Useful for quickly communicating direction to clients or your team before committing to a concept.
+
+**Q: What if I want to start from a prompt instead of a territory chip?**
+Type directly into the Conceptor chat — territory chips are a shortcut, not required. In Brainstorm mode, the Conceptor responds with ideas and offers to render. In Design mode, it generates immediately.
+
+**Q: Why don't I see quick-suggestion chips (Compare territories, Find the subject, Sharpen rationale) in Concept mode?**
+Those chips are intentionally hidden in Concept mode to avoid clutter — the "Explore a territory" row is the primary quick-action surface there. The chips appear in Craft mode under the Crafter (Critique the master, Plan a variant, Sharper finish).
+
+**Q: What is the pulsing orb that appears while the agent is thinking?**
+It's the agent's thinking indicator — a pulsing version of the agent's tinted orb with a rotating phrase (e.g., _"Conceptor is reading between the lines"_). It shows while the agent is processing your message and disappears when the response arrives.
+
+**Q: What does the message that appears when I switch modes mean?**
+It's a handoff banner — a short note that makes the agent transition explicit. Concept→Craft says _"Conceptor handed this direction to Crafter — polishing"_; Craft→Concept says _"Crafter stepped back — Conceptor is exploring new routes"_. It fades after 4 seconds.
+
+---
+
+## Related Articles
+
+- [Creating Your First Key Visual (KV Generator)](./kv-generator)
+- [Resizing Visuals for Different Platforms](./resizer)
+- [Brand Setup Guide](../brand-setup/brand-profile)
+- [Studio Overview](./overview)

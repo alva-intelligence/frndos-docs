@@ -1,0 +1,181 @@
+---
+title: Motion Mode — Animating Your Key Visual
+sidebar_position: 8
+description: Turn a finished Key Visual into a short animated video using Motion Mode — choose a model, pick a preset, and generate in one click.
+---
+
+# Motion Mode — Animating Your Key Visual
+
+**Motion Mode** takes a finished Key Visual and turns it into a short animated video. Select a motion preset or describe how you want the image to move, choose a model, and generate — the AI animates your KV without any manual timeline work.
+
+> **Experimental feature:** Motion Mode is currently in Labs — it must be enabled per workspace in **Workspace Settings → Labs** before the Motion tab appears.
+
+## Before You Start
+
+You need:
+- A finalized Craft board (KV generated or uploaded in Craft mode) — see [Creating Your First Key Visual](./kv-generator)
+- Motion Mode enabled for your workspace (Workspace Settings → Labs → **KV Motion**)
+
+Motion works on Craft boards only. Concept boards do not have a "Send to Motion" option.
+
+## Opening Motion Mode
+
+Two ways to enter Motion Mode:
+
+**Via the Motion tab in the top nav**
+1. Open a KV file with at least one Craft board
+2. Click the **Motion** tab in the top nav (film slate icon with an amber dot)
+3. The canvas switches to a first-frame preview of the currently selected board
+
+**Via the board context menu**
+1. Right-click any Craft board on the canvas
+2. Select **Send to Motion** from the context menu
+3. The board becomes the Motion source and the mode switches automatically
+
+> **Note:** The Motion tab appears only when the `show-kv-motion` feature flag is on for your workspace. If you don't see it, ask your workspace admin to enable KV Motion in Labs.
+
+---
+
+## The Motion Panel
+
+<!-- TODO: add screenshot of the Motion panel — Model, Motion preset chips, Duration/Ratio/Audio sections, prompt textarea, "Generate motion" button → /img/guides-asset/<name>.jpeg -->
+
+When Motion Mode is active, a **Motion** panel appears in the **bottom-left corner** of the canvas, anchored at `left: 24px, bottom: 96px`. The panel has a header showing the label **Motion** with an **Experimental** amber badge.
+
+The panel is organized into the following sections:
+
+### Model
+
+A dropdown lists all available image-to-video models, each identified by its name and provider logo. The default model is pre-selected based on the registry.
+
+> **Tip:** Different models have different capabilities — the Duration, Ratio, and Audio sections update automatically when you switch models to reflect what that model supports. If a previously selected value is out of range for the new model, the panel adjusts it and shows a one-line amber hint explaining what changed.
+
+### Motion Preset
+
+Five hardcoded preset chips:
+
+| Preset | What it does |
+|--------|-------------|
+| **Subtle Zoom** | Slow, gentle zoom in or out |
+| **Parallax** | Layered depth movement |
+| **Product Spin** | Rotational animation centered on the product |
+| **Camera Pan** | Horizontal or vertical camera movement |
+| **Cinematic Push-in** | Slow, dramatic push toward the subject |
+
+Click a chip to select it; click again to deselect. You can combine a preset with a written prompt, or use either alone.
+
+### Duration
+
+Chips showing available durations in seconds (e.g. `4s`, `6s`, `8s`). The available options depend on the selected model. The default is set from the model's configuration.
+
+### Ratio
+
+Chips showing aspect ratios the selected model supports (e.g. `16:9`, `9:16`, `1:1`). The Motion panel tries to match the ratio of the source KV when the model supports it; otherwise it falls back to the model's default ratio.
+
+### Audio (model-dependent)
+
+Appears when the selected model supports audio generation:
+
+| Audio mode | What you see |
+|-----------|-------------|
+| **Always on** | "Audio included" label — audio always generated, toggle not shown |
+| **Optional** | **Generate audio** toggle (on by default) — turn off to skip audio |
+| **None** | Audio section not shown |
+
+### Prompt textarea
+
+A free-text field (max 1000 characters) for additional motion direction:
+
+> **Placeholder:** _Optional motion detail… (or pick a preset)_
+
+You must provide either a preset or a prompt (or both) before generating — the **Generate motion** button is disabled and a hint appears when both are empty: _"Pick a preset or add a motion detail to generate."_
+
+---
+
+## Generating a Motion
+
+Once you've configured the settings:
+
+1. Optionally type a motion detail in the textarea (or pick a preset, or both)
+2. Click **Generate motion**
+3. The request is sent; a result row appears in the **Results** section with a spinning indicator
+
+The panel polls for updates every 4 seconds while any generation is in progress. Once done, the video renders inline in the result row.
+
+> **Note:** The panel is disabled when no board is selected. If you switch away from the board that was the motion source, configure the panel again after selecting a new source board.
+
+---
+
+## Results
+
+<!-- TODO: add screenshot of the Results section — one done row (video player visible) + metadata line showing model/preset/duration/ratio → /img/guides-asset/<name>.jpeg -->
+
+Generated motions appear in a **Results** section in the panel, sorted newest first. Each result row shows:
+
+| Element | Description |
+|---------|-------------|
+| **Video player** | Inline `<video>` element when status is `done` |
+| **Spinner** | "Generating…" placeholder when status is `pending` or `generating` |
+| **Error message** | Red warning icon + error text when status is `failed` |
+| **Metadata line** | Model name · Preset · Duration · Ratio (and audio icon if applicable) |
+| **Timestamp** | Relative time (e.g. _just now_, _3m ago_, _2h ago_) |
+
+### Actions on a result row
+
+| Action | How |
+|--------|-----|
+| **Download** | Click **Download** link (appears on done rows) — opens the video URL in a new tab and triggers download |
+| **Regenerate** | Click **Regenerate** — pre-fills the panel with that row's settings (model, preset, prompt, duration, ratio, audio), letting you tweak and re-run from the same base |
+| **Delete** | Click the trash icon — removes the result permanently |
+
+---
+
+## Canvas in Motion Mode
+
+<!-- TODO: add screenshot of the canvas in Motion mode — first-frame preview centered, Motion panel bottom-left → /img/guides-asset/<name>.jpeg -->
+
+When Motion Mode is active:
+
+- The canvas shows a **first-frame preview** of the source KV (the board that was selected when you entered Motion Mode), centered with a **"First frame"** caption beneath it
+- If no board is selected: the canvas shows _"Generate or select a KV first to animate it."_
+- The **Chat panel** and **chat toggle** are hidden in Motion Mode — chat is not available here
+- The **Layers panel** (Stack icon) is hidden in Motion Mode — overlays are not editable in this view
+- The **Style pill** and tool cluster are hidden in Motion Mode
+- Share and Download actions in the top-right are hidden in Motion Mode (download is available per-result in the panel)
+
+---
+
+## FAQ
+
+**Q: Why don't I see the Motion tab?**
+The Motion tab is gated by the `show-kv-motion` experimental flag. It only appears when KV Motion is enabled for your workspace. Contact your workspace admin to turn it on in **Workspace Settings → Labs**.
+
+**Q: What's the difference between a preset and a prompt?**
+A preset is a named motion style (Subtle Zoom, Parallax, etc.) — a structured instruction the model understands well. A prompt is free text for describing motion behavior the presets don't cover, or for combining with a preset for more specific direction. You need at least one of the two to generate.
+
+**Q: Can I animate a Concept board?**
+No. Motion works on Craft boards only. The "Send to Motion" option in the context menu is hidden for Concept boards. Promote a concept to Craft first (right-click → **Start designing**), then send it to Motion.
+
+**Q: Why did my Duration or Ratio change when I switched models?**
+Each model has its own set of supported durations, ratios, and audio modes. When you switch models, the panel clamped your previous values to the nearest valid option for the new model and showed a hint describing what changed.
+
+**Q: How long does generation take?**
+It varies by model and duration. The panel polls for updates every 4 seconds while a generation is in progress. There is no maximum wait time listed in the UI — generation time is model-dependent.
+
+**Q: Can I have multiple motions per KV?**
+Yes. You can generate multiple motions for the same board (each with different settings) — all appear in the Results section. Use the Delete action to remove results you no longer need.
+
+**Q: Can I download the generated video?**
+Yes. Click **Download** on any done result row. The video opens in a new browser tab and downloads automatically.
+
+**Q: Is there a chat assistant in Motion Mode?**
+No. Motion Mode does not have an AI chat panel — there is no agent in this mode. All controls are in the Motion panel on the left.
+
+---
+
+## Related Articles
+
+- [Creating Your First Key Visual (KV Generator)](./kv-generator)
+- [Craft Mode — Refining with the Crafter Agent](./craft-mode)
+- [Resizing Visuals for Different Platforms](./resizer)
+- [Studio Overview](./overview)

@@ -1,0 +1,121 @@
+---
+sidebar_position: 2
+title: Collaborating in Real-Time
+description: See your teammates live as they work — presence avatars, live cursors, cursor chat, and soft locks in the KV Generator.
+---
+
+# Collaborating in Real-Time
+
+When two or more people open the same KV file, frndOS shows you where everyone is and what they're doing — no refresh needed. You see teammates' cursors move, their names appear when they're online, and a colored outline marks the element a peer is working on so you don't edit the same thing at the same time.
+
+## What You'll See
+
+### Presence Avatars
+
+<!-- TODO: screenshot of KV Generator top nav showing 3–4 presence avatar chips + overflow "+N" chip — /img/guides-asset/<name>.jpeg -->
+
+A row of avatar chips appears in the top-right of the KV Generator, next to the Share and Download buttons. Each chip is a small circle filled with your teammate's color:
+
+- **Photo** — shows their frndOS profile photo if they have one
+- **Initials** — falls back to the first letter(s) of their name if no photo is set
+- **Hover tooltip** — `"{Name} — live"`
+
+Up to **4 chips** are shown. If more people are viewing, an overflow chip shows the count (e.g. `+3`).
+
+Avatars are **file-scoped** — they appear regardless of which mode (Concept, Craft, Resize, Motion) you or your teammates are in. Everyone viewing the same KV file shows up here.
+
+> **Two tabs, two chips:** If a teammate opens the same file in two browser windows, they appear twice — same name and photo, but each tab gets its own color. This is intentional (same as Figma) so you can tell which instance is which.
+
+### Live Cursors
+
+<!-- TODO: screenshot of the canvas showing a live cursor from a remote peer — arrow + colored name pill — /img/guides-asset/<name>.jpeg -->
+
+On the **canvas** (Concept mode and Craft mode), you can see your teammates' cursors move in real time. Each cursor is:
+
+- An arrow in the peer's assigned color
+- A colored name pill just below it
+
+Cursors update about **25 times per second** so they feel smooth.
+
+**Cursors are mode-scoped.** If you're in Concept mode, you only see cursors of teammates who are also in Concept mode. Teammates in Craft mode have their own cursor view. This keeps each mode's canvas uncluttered.
+
+> Live cursors are only visible on the interactive canvas (Concept and Craft modes). They are not shown in Resize mode or Motion mode.
+
+### Cursor Chat
+
+Press **`/`** while hovering over the canvas to open a floating message anchored to your cursor:
+
+1. A text input appears at your cursor position with the placeholder _"Say something…"_
+2. Type your message — it appears for all teammates in the same mode immediately
+3. The message **fades automatically 3.5 seconds** after you stop typing
+4. To close early: press **Enter**, **Escape**, or click away from the input
+
+> **Note:** The `/` shortcut only works when your mouse is over the canvas. If you press `/` while your cursor is outside the canvas area, nothing happens.
+
+Peer messages appear as a colored speech bubble (their color) anchored just below their cursor. Bubbles also fade after 3.5 seconds of inactivity.
+
+> Cursor chat is ephemeral — messages are not saved and disappear when they fade. Use project comments for persistent feedback.
+
+### Soft Locks — "is editing"
+
+When a teammate selects an element on the canvas, a **colored outline** appears around that element on your screen with a label showing **"[Name] is editing"** above it.
+
+The outline matches the peer's color. It disappears as soon as they deselect.
+
+This prevents the most common collaboration clash: two people editing the same element at the same time without knowing it. When you see the outline, wait for your teammate to finish or coordinate with them first.
+
+---
+
+## Colors and Identity
+
+Each teammate is assigned a color from a fixed palette of 6 tints. The color is **stable per session** (same person, same tab, same color) but can change if they close and reopen the tab.
+
+If you want to know whose color is whose, hover over their avatar chip in the top nav — the tooltip shows their name.
+
+---
+
+## Coming Soon
+
+### Invite Teammates
+
+A **Share** button in the top nav opens a panel where you'll be able to invite teammates by name or email. This is currently in development — the form is visible but disabled. When available, invited teammates will have access to the file within your workspace.
+
+> The panel shows "Anyone in [workspace name] can edit" as the default — sharing within a workspace will not require individual invites.
+
+### Public View-Only Link
+
+A **view-only link** feature will let you share a read-only version of a KV with people outside your workspace — no sign-in required. You'll be able to choose which boards the link shows. This is also in development and not yet available.
+
+---
+
+## FAQ
+
+**Q: Do I need to do anything to turn on live collaboration?**
+No. If multiple people open the same KV file, they appear to each other automatically. There's no "start collaboration" step.
+
+**Q: Why do I see two chips for the same person?**
+They have the same KV file open in two browser tabs or windows. Each tab appears as a separate presence entry with its own color.
+
+**Q: Can I hide my cursor from teammates?**
+Not currently. If you're in the file, your presence is visible.
+
+**Q: I'm in Craft mode but I can't see my teammate's cursor.**
+Check that they're also in Craft mode. Cursors are filtered by mode — if they're in Concept mode, you won't see their cursor in your Craft canvas and vice versa.
+
+**Q: What happens to a cursor when a teammate closes the tab?**
+It disappears immediately when they disconnect.
+
+**Q: Is cursor chat saved anywhere?**
+No. Cursor chat is ephemeral — messages fade after 3.5 seconds and are not stored.
+
+**Q: Can I edit the same element as a teammate at the same time?**
+The soft-lock outline is a visual signal to avoid this, but it's not a hard block — frndOS shows you the conflict. Coordinate with your teammate before editing an element they're currently working on.
+
+---
+
+## Related Articles
+
+- [Creating Your First Key Visual (KV Generator)](../studio/kv-generator)
+- [Concepting Mode — AI-Guided Visual Exploration](../studio/concepting-mode)
+- [Craft Mode — Refining with the Crafter Agent](../studio/craft-mode)
+- [Collaboration Overview](./overview)

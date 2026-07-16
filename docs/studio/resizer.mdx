@@ -23,28 +23,72 @@ You need:
 - A finalized KV from the KV Generator (in Craft mode) **or** your own image uploaded into Craft mode — see [Creating Your First Key Visual](./kv-generator)
 - Knowledge of which platforms/sizes you're targeting
 
-## How Resize Mode Works
+## How to Resize
 
-Resize Mode takes your source image and produces variants at different dimensions:
+### Step 1 — Open Resize Mode
 
-1. **Open your finalized KV — or your uploaded image — in Craft mode**
-2. Switch to **Resize Mode**
-3. Select the platform sizes or aspect ratios you need
-4. Optionally, add a **specific instruction** for how the resize should be handled (see below)
-5. Generate the resized variants
-6. Download or send to the next step in your workflow
+Switch to the **Resize** tab in the top nav. The canvas switches to a vertical list view showing your source image and any completed resize tiles below it.
 
-### Adding Custom Resize Instructions
+### Step 2 — Select Platforms from the Platform Panel
 
-When you resize, you can give the AI **specific instructions** for that resize — not just the target dimensions.
+A **Platform** panel appears on the left side of the canvas. Platforms are grouped into three collapsible sections:
 
-For example, when a resized variant needs adjusting, you can add a prompt like *"keep the logo in the top-right and preserve all text components"* and the AI will regenerate the variant from the base image with that guidance applied to the chosen aspect ratio.
+| Group | Default state |
+|-------|---------------|
+| **Social Media** | Expanded |
+| **Print** | Collapsed |
+| **Digital** | Collapsed |
 
-### Interactive Chat in Resize
+Click any platform row to toggle it. Each row shows the platform name and its pixel dimensions. The **Start Resizing** button at the bottom of the panel updates with the count and estimated credit cost as you select:
 
-Resize now supports **interactive chat**. Previously, chat was only active in the Sketch and Craft stages — now you can also chat during resize. When you want to retry or refine a resize, add a follow-up prompt and the AI regenerates from the base image at your target ratio.
+> `Resize · N selected · ~X credits`
 
-> **Note:** Resize uses a fixed engine — you don't choose a model for resizing. Just describe what you want and let it handle the adaptation.
+### Step 3 — (Optional) Add Resize Instructions
+
+Below the platform list, a **text area** lets you add a prompt that applies to the entire batch:
+
+> **Placeholder:** _Any specific instructions? (Optional)_
+
+Use this to guide the AI on how to handle the adaptation — for example: _"keep the logo in the top-right and preserve all text"_ or _"extend the sky at the top"_. The instruction is sent alongside every platform in this batch. Maximum 1000 characters.
+
+If you leave it empty, the AI adapts freely from the source image.
+
+<!-- TODO: add screenshot of the Platform panel — platform list (Social Media expanded) + batch instruction textarea below it → /img/guides-asset/<name>.jpeg -->
+
+### Step 4 — Generate
+
+Click **Start Resizing** to kick off the batch. Each selected platform generates independently:
+
+| Row state | What you see |
+|-----------|-------------|
+| **Queued** | Checkbox checked — will run when you click Start Resizing |
+| **In progress** | Spinner + **Cancel** button |
+| **Done** | Green check — click the row to jump to that tile on the canvas |
+| **Failed** | Red warning icon — click the row to retry immediately; or click **Discard** to remove it |
+
+> **Note:** Resize uses a fixed model — no model picker. Just describe what you want and let the AI handle the adaptation.
+
+When a tile is done, a **download** option appears in its tile toolbar on the canvas so you can export that size individually.
+
+---
+
+## Refining a Specific Tile (Per-Tile Regenerate)
+
+After a tile is done, you can regenerate it with a new prompt — without touching the other tiles.
+
+1. Hover over a completed tile on the canvas — a toolbar appears with action buttons
+2. Click the **Regenerate** button (circular arrows icon, `⟳`) to arm that tile
+3. A chip appears in the chat composer showing the platform name, dimensions, and a thumbnail of the current result
+4. Type your instruction in the chat input and press **Enter** (or click **Send**)
+5. The AI regenerates that tile from the source image, applying your new instruction
+
+To cancel without regenerating: click **✕** on the chip in the chat composer (or the same Regenerate button again — it toggles).
+
+> **Example:** After resizing to Stories 9:16, you notice the product is cropped. Click ⟳ on that tile → type _"ensure the full product is visible, don't crop the packaging"_ → Send.
+
+> **Note:** The chat input in Resize mode does not go to an AI agent — it fires a direct regenerate call on the selected tile. Attachments and model selection are not available in this mode.
+
+---
 
 ## Common Use Cases
 
@@ -54,6 +98,8 @@ Resize now supports **interactive chat**. Previously, chat was only active in th
 | Square social post | Story format (9:16), portrait feed (4:5) |
 | Portrait launch visual | Landscape thumbnail, square feed post |
 
+---
+
 ## FAQ
 
 **Q: Does Resize Mode just crop, or does it intelligently adapt?**
@@ -62,18 +108,25 @@ Resize Mode adapts the visual to the target dimensions — not a simple crop. Im
 **Q: Can I resize an externally-made image?**
 Yes. In Craft mode, use **Upload Image** to bring in any image you already have — no generation required. Once uploaded, it behaves like a generated KV, so you can send it straight to Resize Mode.
 
+**Q: What's the difference between the batch instruction and the per-tile regenerate prompt?**
+The **batch instruction** (textarea in the Platform panel) applies to all selected platforms when you click Start Resizing — it guides the initial adaptation for the whole batch. The **per-tile prompt** (via the ⟳ button on a done tile) regenerates just one tile with a new instruction, without touching the others. Use the batch instruction when you have a general rule for all sizes; use per-tile when a specific format needs an adjustment.
+
 **Q: Can I customize the resize per platform?**
-Yes. You can add specific resize instructions per variant and use interactive chat to refine. For deeper edits, you can also return to Craft mode for that variant.
+Yes. Use the per-tile regenerate (⟳ button) to refine any individual tile after the initial batch run. Each tile can be retried with different instructions independently.
 
 **Q: Can I set a fully custom size?**
-Custom sizes are being rolled out. Note that the underlying model has its own aspect-ratio and resolution limits (a minimum and maximum), so very large or unusual custom sizes may be handled by generating at a supported size and then upscaling. If a custom dimension isn't directly supported, frndOS works toward the closest valid output.
+Custom sizes are being rolled out. Note that the underlying model has its own aspect-ratio and resolution limits, so very large or unusual custom sizes may be handled by generating at a supported size and then upscaling. If a custom dimension isn't directly supported, frndOS works toward the closest valid output.
 
 **Q: What platforms are supported?**
-Common social and ad platform dimensions are pre-configured. Check inside Resize Mode for the current list. Print-specific specifications (e.g., CMYK, print-ready output) are not part of the current social-media-focused resize flow.
+Common social and ad platform dimensions are pre-configured under Social Media, Print, and Digital groups. Check inside Resize Mode for the current list. Print-specific specifications (e.g., CMYK, print-ready output) are not part of the current social-media-focused resize flow.
+
+**Q: Can I download just one resized tile?**
+Yes. Once a tile is done, hover over it on the canvas — a download button appears in its toolbar so you can export that size individually. To download all tiles at once, use the **Download All** option in the canvas toolbar.
 
 ---
 
 ## Related Articles
 
 - [Creating Your First Key Visual](./kv-generator)
+- [Craft Mode — Refining with the Crafter Agent](./craft-mode)
 - [Studio Overview](./overview)
