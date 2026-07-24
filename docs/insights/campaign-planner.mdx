@@ -1,0 +1,134 @@
+---
+title: How the Campaign Planner Works — Methodology
+sidebar_position: 7
+description: A plain-language explanation of how the Campaign Planner estimates revenue, ROI, and ROAS for a planned campaign — where the numbers come from, and what the method does and doesn't claim.
+---
+
+# How the Campaign Planner Works
+
+The **Campaign Planner** (Insights → Campaigns → **Planner**) estimates what a
+campaign could return *before* you run it. This page explains how it gets to a
+number — and, just as importantly, what it does and does not claim. It's written
+to be shared with clients.
+
+## In one sentence
+
+The Planner estimates what a campaign could return by taking **how efficiently
+each channel has historically turned spend into revenue** — for *your* brand
+where we have the data, and for the wider industry where we don't — and applying
+that efficiency to the budget you plan to spend, adjusted for seasonality.
+
+## Where the numbers come from
+
+For every channel in your plan, we need one input: its **ROAS** (revenue per
+1 currency unit of spend). We source it in a strict order of preference:
+
+1. **Your own logged results first.** Once you close a campaign and log its
+   actual revenue, those outcomes become the primary signal for your next plan.
+   This is the learning loop — the tool gets more *yours* over time.
+2. **Your own platform history.** For paid search and paid social, we read your
+   connected ad accounts (Google, Meta, TikTok) and compute the 25th / 50th /
+   75th percentile of your historical ROAS.
+3. **Industry benchmarks.** Where you don't yet have enough of your own data —
+   or for offline channels that don't yet carry attributed revenue (TV, radio,
+   OOH, cinema) — we use an industry reference range. *(We may still track your
+   spend and reach on those channels; we just don't yet infer a return-on-spend
+   for them until you log actual results.)*
+4. **A sensible default.** As a last resort, so the tool always shows something,
+   we use a conservative typical value.
+
+We always tell you which of these a number came from, on-screen.
+
+:::info Benchmark window
+Your own-history ROAS is read from a recent, reliable window of your paid data
+(current period), so a prediction reflects how your campaigns perform **now** —
+not stale historical periods.
+:::
+
+## How a prediction is built
+
+For each channel:
+
+> **planned spend × that channel's ROAS × a seasonality adjustment = predicted revenue**
+
+We sum this across all channels to get total predicted revenue, then derive ROI
+and blended ROAS. That's the whole calculation — deliberately transparent, no
+black box.
+
+## Three scenarios, not one number
+
+We never show a single false-precision figure. Every plan produces:
+
+- **Conservative** — the lower quartile (25th percentile) of historical efficiency.
+- **Typical** — the median (50th percentile).
+- **Strong** — the upper quartile (75th percentile).
+
+This range *is* the honest expression of uncertainty: it's the spread of how your
+(or the industry's) campaigns have actually performed.
+
+## Confidence levels
+
+The tool grades each channel's prediction by how much of *your* data backs it:
+
+| Badge | Meaning |
+|---|---|
+| **Solid** | 8+ of your own campaigns support this — it's mostly your data. |
+| **Limited** | 3–7 campaigns — we blend your data with the industry benchmark and widen the range to reflect the thinner sample. |
+| **Benchmark** | Fewer than 3 — this is an industry reference, not your history yet. |
+
+As you run and log more campaigns, channels move up this ladder automatically.
+
+## What this method is — and is not
+
+We believe in being explicit about this, because clients rightly ask.
+
+**It is:** a transparent, data-grounded **planning aid**. Every figure traces
+back to a real historical distribution — your own where possible — and the
+assumptions are visible, not hidden in a model.
+
+**It is not** (yet) a causal forecast. Specifically:
+
+- **It assumes efficiency stays roughly constant as you scale.** In reality,
+  channels saturate — the tenth million spent rarely works as hard as the first.
+  Predictions are most reliable near budgets you've actually run before;
+  aggressive scale-ups should be read as optimistic.
+- **It treats channels independently.** It does not yet model how ATL (TV/radio/
+  OOH) can lift the performance of your digital channels, or how upper-funnel
+  activity feeds lower-funnel conversion.
+- **It describes efficiency, not proven incremental lift.** A high historical
+  ROAS tells you spend *correlated* with revenue; it is not a controlled proof
+  that the spend *caused* it. Measuring true incrementality requires holdout
+  testing (on our roadmap).
+- **Offline & organic channels lean on benchmarks.** Until you log actuals for
+  them, TV, radio, OOH, cinema, owned and earned use industry references rather
+  than your measured results.
+
+## Your data stays yours
+
+All of your own-history calculations run inside **per-workspace isolation
+enforced at the database layer** — one client's data is never mixed into another
+client's numbers. Within your own workspace, figures are scoped to the brand
+you're planning for (or shared deliberately via
+[Extended Connections](./core-extended-connections)). Industry benchmarks are
+aggregate, third-party reference ranges.
+
+## Where this is heading
+
+Two planned enhancements deepen the rigor:
+
+1. **Validation & calibration.** Using your logged actuals, we back-test the
+   Planner's own predictions against what really happened and report the accuracy
+   openly — including whether the Conservative–Strong range reliably brackets
+   real outcomes.
+2. **Marketing-mix modelling.** A statistical model of how each channel's spend
+   drives revenue — including diminishing returns and cross-channel halo effects —
+   which will let us answer questions like *"is our ATL spend actually moving the
+   revenue needle?"* with measured elasticities rather than assumptions.
+
+---
+
+**Related:** [Creating & Managing Campaigns in Insights](./campaigns) ·
+[Connecting Paid Media](./connecting-paid-media)
+
+*You can also ask **AskFRND** to explain any part of this — the "How does this
+work?" panel under the Planner opens a chat prefilled with common questions.*
