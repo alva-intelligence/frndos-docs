@@ -71,6 +71,28 @@ For elements AI shouldn't generate (footers, logos, brand marks):
 2. Upload your logo or static element
 3. Position it on the canvas
 
+**Add shapes**
+You can draw vector shapes directly on the canvas. Click the **Shape** icon (diamond icon) in the center tool palette at the bottom of the canvas to open the shape picker:
+
+**Basic shapes:**
+- **Rectangle** (Square icon)
+- **Ellipse** (Circle icon)
+- **Triangle**
+- **Polygon** (Pentagon icon)
+- **Star**
+- **Diamond**
+- **Chevron**
+
+**Lines:**
+- **Line** — a straight line segment
+- **Arrow** — a line with an arrowhead at one end
+
+After selecting a shape kind, click and drag on the canvas to draw it. The shape is placed as an overlay on the board and can be resized, rotated, recolored, or deleted just like any other overlay.
+
+> **Keyboard shortcut:** Press **S** (Shape) on the canvas to activate the shape tool, then pick a kind from the popover. Press **Esc** to return to the Move tool.
+
+Once placed, edit the shape's fill, stroke, arrowheads, and opacity in the properties panel. See [Overlay Properties](#overlay-properties) below.
+
 **Use Your Own Image (No Generation Needed)**
 Craft mode isn't limited to images generated inside KV Generator. If you already have a finished image — from a previous shoot, a stock photo, or any external source — you can upload it directly into Craft and work with it like any other KV:
 
@@ -90,6 +112,116 @@ The **Creativity** control in the bottom bar sets how far the AI may drift from 
 **Transform Panel**
 Open the **Layers** panel (Stack icon, bottom nav) to bring up a **Transform** panel in the bottom-right corner. Select a single overlay to edit its exact Position (X/Y), Size (W/H with optional aspect-ratio lock), and Rotation (°) numerically. See [Craft Mode → The Transform Panel](./craft-mode#the-transform-panel) for full details.
 
+### Overlay Properties
+
+Selecting an overlay (text, shape, or image) on a Craft board opens its properties panel. The available controls depend on the overlay type. The panel sits in the bottom-right area of the canvas, replacing the chat panel when an overlay is selected.
+
+#### Fill Controls (Text & Shape Overlays)
+
+Text and shape overlays have a **Fill** section with two modes:
+
+**Solid** — A single flat color:
+
+- Click the color swatch to open the color picker popover, which contains:
+  - A grid of preset colors (shared across all KV tools)
+  - Recent colors used during this session
+  - A saturation/hue picker for custom colors
+  - A hex input field for exact color codes
+  - An eyedropper tool to sample a color from anywhere on screen
+- The color swatch updates live as you pick.
+
+**Gradient** — A smooth transition between two colors:
+
+- **Linear gradient** — Colors blend along a straight line at a configurable angle (0–360°, default 90°).
+- **Radial gradient** — Colors radiate outward from a center point.
+- Use the **From** and **To** color swatches to set the start and end colors.
+- The **Angle** field (linear only) controls the gradient direction. Type a value and press Enter or blur the field to commit.
+
+Toggle between Solid and Gradient using the segmented control at the top of the Fill section.
+
+> **Gradient support:** Only available on **shape** overlays (rectangles, ellipses, diamonds) and **text** overlays — image overlays do not have a fill section.
+
+#### Stroke Controls (Shape Overlays Only)
+
+Shape overlays can have a **Stroke** — an outline drawn along the shape's edge:
+
+- Toggle stroke on/off with the checkbox.
+- **Color** — Click the swatch to open the same color picker.
+- **Width** — Numeric input for stroke thickness (0–1, normalized).
+
+Arrows and lines also have **Arrowhead** controls:
+
+- **Arrowhead at start / end** — Show an arrowhead on one or both ends.
+- **Head size** — Numeric input for arrowhead length.
+
+#### Opacity
+
+Every overlay has an **Opacity** slider (0–100%) in its properties panel, shared by text, shape, and image overlays:
+
+- Drag the slider for a live canvas preview. The overlay's transparency updates in real time.
+- Type an exact percentage in the number field beside the slider.
+- Press Enter or blur the field to commit the value.
+- The slider defaults to **100%** (fully opaque) for new overlays.
+
+#### Text Alignment
+
+When a text overlay is selected, the Text properties section includes an **Alignment** segmented control with four options:
+
+- **Align left** — Text lines up against the left edge of the text box.
+- **Align center** — Text is centered horizontally.
+- **Align right** — Text lines up against the right edge.
+- **Justify** — Text is spaced so each line fills the full width.
+
+The default alignment for imported PSD text layers is **left** (matching the source file). The default for text placed directly on the canvas is **center**, matching common design tool conventions.
+
+#### Custom Fonts
+
+Text overlays can use any font — either one of the built-in fonts or a custom font you upload.
+
+**Built-in fonts:** The canvas comes with six built-in font families:
+
+- Geist (default)
+- Neue Montreal
+- Space Grotesk
+- Archivo
+- Funnel Sans
+- General Sans
+
+Select a font from the font dropdown in the Text properties section. A preview of each font family is shown in the dropdown menu.
+
+**Uploading custom fonts:**
+
+1. In the font dropdown, select **Upload font** at the bottom of the menu.
+2. Choose a `.ttf` or `.otf` file from your computer (max 5 MB).
+3. The font is uploaded to your brand's font library and registered on the canvas immediately.
+4. The uploaded font appears under the "Brand fonts" group at the top of the dropdown in future sessions.
+
+To **delete** a custom font, click the trash icon beside its name in the dropdown (only fonts uploaded through Studio can be deleted).
+
+> **Font licensing:** Only upload fonts you have the rights to use. Uploaded fonts become available to all brand members across all KV files in the brand.
+
+#### Hide & Lock Overlays
+
+Each overlay in the Layers panel has two toggle controls on the right side of its row:
+
+**Hide** (eye icon) — Toggle an overlay's visibility on the canvas:
+
+- **Eye open** (default) — The overlay is visible on the canvas.
+- **Eye closed** — The overlay is hidden from view but still exists in the layer list. It won't render in exports or downloads.
+- Use this to temporarily remove an overlay from view without deleting it.
+
+**Lock** (lock icon) — Prevent an overlay from being selected or moved:
+
+- **Unlocked** (open lock, default) — The overlay can be selected, dragged, resized, and edited.
+- **Locked** (closed lock) — The overlay cannot be selected on the canvas or edited in the Transform panel. The Transform panel shows "Locked — unlock in the Layers panel to edit." Click the lock icon in the Layers panel to unlock it.
+
+Both states are immediately reflected on the canvas and persist across sessions.
+
+> **Tip:** Use Hide to declutter the canvas while editing specific layers, and Lock to protect elements (like logos or footers) from accidental edits.
+
+<!-- TODO: add screenshot of the overlay properties panel — Fill section (Solid/Gradient toggle, color swatch, gradient From/To/Angle), Stroke section (toggle, color swatch, width), Opacity slider, text alignment buttons → /img/guides-asset/<name>.jpeg -->
+
+---
 **Save as Template**
 If you have a recurring layout (logo placement, footer style), save it as a Template so you don't repeat the setup for every KV.
 
@@ -173,6 +305,118 @@ The image copy is best-effort. If CORS prevents a direct clipboard write, frndOS
 
 **Remove from canvas**
 This action removes the artboard entry from the canvas. It does **not** delete the generation — the generation stays in your history and can be accessed via Version History. Use this to declutter the canvas without losing work.
+
+## Import PSD Files
+
+If you have an existing Adobe Photoshop design (`.psd`), you can import it directly into KV Generator — no need to redo your layout from scratch. Each import converts visible PSD layers into editable overlays on the canvas.
+
+**How it works:**
+
+All processing happens **on your device** (client-side) using the `ag-psd` library. No PSD data is sent to the server during parsing — only the raster layer images are uploaded afterward as overlay assets.
+
+### Drop a PSD on an empty canvas
+
+When you drop a `.psd` file onto an empty KV Generator canvas:
+
+1. The flattened composite image is uploaded as the first base board.
+2. Every visible layer in the PSD becomes an overlay on that board, preserving their positions and stacking order.
+3. **Raster layers** (pixel images, photos) are converted to PNG and uploaded as image overlays.
+4. **Text layers** are extracted as editable text overlays — content, color, font size, alignment, line height, letter spacing, and opacity are all preserved.
+
+The result is a board where you can continue editing each layer independently — move, resize, recolor, or replace the text just as if you'd created it inside KV Generator.
+
+> **Text layers stay editable.** Even when the PSD font isn't available on your canvas, the text content and style are preserved and remain editable. You'll see a font-missing prompt before import completes (see below).
+
+### Drop a PSD on an existing board
+
+If you already have boards on the canvas, drop a `.psd` directly onto any board. The PSD layers are placed as overlays on that specific board — useful when you want to bring PSD assets into an existing KV.
+
+### What happens during import
+
+1. **Parsing** — The PSD is read entirely on your device. This can take a few seconds for large, highly layered files.
+2. **Font matching** — Text layers are matched against your available fonts (built-in fonts + brand fonts). Unmatched fonts are flagged.
+3. **Upload** — Raster layers are uploaded to frndOS (4 at a time) as overlay image assets.
+4. **Placement** — All layers are placed on the board in their original positions and stacking order.
+
+<!-- TODO: add screenshot of the PSD import overlay showing "Importing PSD…" → /img/guides-asset/<name>.jpeg -->
+
+### Missing fonts dialog
+
+If your PSD uses fonts that aren't available on the canvas, a dialog appears listing the missing font names:
+
+- **Upload fonts** — Select `.ttf` or `.otf` font files (max 5 MB each) from your computer. Uploaded fonts are added to the brand's font library and registered immediately.
+- **Use default font** — Continue the import without the missing fonts. The text layers stay fully editable but render in the default font.
+
+The import resumes automatically after you upload fonts or choose to skip.
+
+> **Font licensing:** Only upload fonts you have the rights to use. Uploaded fonts become available to other brand members.
+
+### Overlay limit
+
+A single KV file supports up to **100 overlays**. If the PSD has more layers than the remaining space, the bottom layers win — the extra top layers are skipped and reported in the completion notice.
+
+### File format tips
+
+- Save your PSD with **"Maximize Compatibility"** enabled in Photoshop for the best composite preview.
+- Hidden layers are skipped during import.
+- Adjustment layers and empty groups (layers with no pixel data or text) are skipped and counted in the notice.
+- Composite images larger than 4096 px on the longest edge are downscaled automatically.
+- Each raster layer is compressed as PNG (or JPEG fallback) to stay within the 10 MB upload limit.
+
+---
+
+## Ruler, Grid & Smart Guides
+
+Two alignment overlays and a drag-time smart guide system help you position overlays and boards precisely on the canvas.
+
+### Ruler
+
+Toggle the ruler on/off from the **ruler icon** (`⊥`) in the bottom toolbar, or press **Shift+R** (macOS / Windows) anywhere on the canvas (outside editable text fields).
+
+When enabled, ruler bars appear at the **top** and **left** edges of the viewport:
+
+- **Tick marks** show pixel positions relative to the canvas origin (image pixels).
+- **Major ticks** (every 5th division) display a numeric label.
+- **Minor ticks** (every division in between) provide finer reference.
+
+The tick step adapts to your current zoom level — zoom in for finer subdivisions, zoom out for coarser ones. The ruler sits above the Konva canvas but is **pointer-events-none**, so it never intercepts clicks or drags.
+
+<!-- TODO: add screenshot of the ruler bars at top and left edges of the viewport, with tick marks and numeric labels → /img/guides-asset/<name>.jpeg -->
+
+### Grid
+
+The background grid is controlled from the same bottom toolbar. Click the ruler icon to open the **Grid & Ruler popup**, where you can:
+
+| Control | What it does |
+|---------|-------------|
+| **Ruler toggle** | Show/hide both ruler bars |
+| **Grid opacity** | Slider 0–100%. Default 13%. At 0 the grid is invisible; at 100 it shows full white lines. |
+| **Grid size** | Cell size in image pixels. Default 35 px. Smaller values pack cells tighter; larger values space them further apart. |
+
+The grid renders as white CSS lines behind the Konva canvas stage at `z-index: 1`. It uses a coarser step than the ruler ticks so cells are large enough to sight against.
+
+> **Grid opacity and size persist** across page reloads and between files (saved to browser localStorage).
+
+<!-- TODO: add screenshot of the Grid & Ruler popup showing the ruler toggle, opacity slider, and grid size slider → /img/guides-asset/<name>.jpeg -->
+
+### Smart Drag Guides
+
+When you drag an overlay on a Craft board, **smart guides** appear to help you align it:
+
+**Distance measurements** — orange connector lines from each edge of the dragged overlay to the corresponding edge of its host board, with a pill badge showing the pixel distance:
+
+- Top edge → board top
+- Bottom edge → board bottom
+- Left edge → board left
+- Right edge → board right
+
+**Alignment lines** — red guide lines that appear when the overlay's edge or center aligns with the board's edge/center or a sibling overlay's, within a matching threshold.
+
+The guides are purely visual and never intercept pointer events. They track canvas pan/zoom so they stay accurate regardless of your viewport position.
+
+> **Smart guides only appear while actively dragging an overlay.** They disappear once you release the mouse.
+
+---
 
 ## Step 6 — Resize for Multiple Platforms
 

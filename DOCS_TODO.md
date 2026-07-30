@@ -19,12 +19,16 @@ _Last updated: 2026-07-16_
 | 14 | 📸 | Screenshot: KV Generator top nav — presence avatar chips (3–4 users) + overflow "+N" chip, adjacent to Share/Download buttons |
 | 30 | 📸 | Screenshot: canvas in Concept or Craft mode — remote peer cursor (arrow + colored name pill) visible on canvas |
 
-## docs/studio/kv-generator.mdx — board context menu section
+## docs/studio/kv-generator.mdx — board context menu + PSD import + overlay properties + shapes + fonts + hide/lock
 
 | Line | Type | What to do |
 | ---- | ---- | ---------- |
-| (after "Viewing Version History" section) | 📸 | Screenshot: right-click menu on a Concept board — showing "Start designing", copy actions, Duplicate, Rename, Reset position, Remove from canvas |
-| (after "Viewing Version History" section) | 📸 | Screenshot: right-click menu on a Craft board — showing Set as master, Version history…, Create variant, Send to Motion, Send to Resize alongside copy/rename/duplicate/reset/remove |
+| ~222 | 📸 | Screenshot: overlay properties panel — Fill (Solid/Gradient toggle, color swatch, gradient From/To/Angle), Stroke (toggle, color swatch, width), Opacity slider, text alignment buttons |
+| ~270 | 📸 | Screenshot: right-click menu on a Concept board — showing "Start designing", copy actions, Duplicate, Rename, Reset position, Remove from canvas |
+| ~272 | 📸 | Screenshot: right-click menu on a Craft board — showing Set as master, Version history…, Create variant, Send to Motion, Send to Resize alongside copy/rename/duplicate/reset/remove |
+| ~341 | 📸 | Screenshot: PSD import blocking overlay — "Importing PSD…" spinner message + "This can take a moment for large files." subtitle, full-viewport dark blur backdrop |
+| ~384 | 📸 | Screenshot: ruler bars at top and left edges of viewport — tick marks with numeric labels |
+| ~400 | 📸 | Screenshot: Grid & Ruler popup — ruler toggle, grid opacity slider, grid size slider |
 
 ## docs/studio/motion-mode.mdx
 
