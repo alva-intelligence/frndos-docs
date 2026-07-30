@@ -266,6 +266,7 @@ const DocsCollection = {
         { label: "📢 Growth & Campaigns", value: "growth" },
         { label: "🤝 Collaboration", value: "collaboration" },
         { label: "📁 Projects & Workflows", value: "projects" },
+        { label: "📚 Library", value: "library" },
         { label: "👥 Workspace & Members", value: "workspace" },
         { label: "⚙️ Settings & Administration", value: "settings" },
         { label: "🧪 Early Access Features", value: "early-access" },

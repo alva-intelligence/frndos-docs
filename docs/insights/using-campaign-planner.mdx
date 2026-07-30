@@ -1,0 +1,181 @@
+---
+sidebar_position: 2
+title: Using the Campaign Planner
+description: Step-by-step guide to planning a campaign — from naming and budgeting to saving, sharing, and logging actuals.
+---
+
+# Using the Campaign Planner
+
+The **Campaign Planner** helps you model a campaign before you spend. Set your budget, objective, and channel mix, then review the predicted ROAS before committing. Once the campaign runs, log the real numbers and compare plan vs. actual.
+
+## Before You Start
+
+1. ✅ **Select a brand** — Plans are scoped per brand. Make sure the correct brand is active in the sidebar.
+2. ✅ **Connected data sources** — The Planner uses your brand's own campaign data alongside frndOS industry benchmarks. Plans work without connected data (using benchmarks), but predictions are more accurate with your own history.
+
+## Opening the Planner
+
+1. From Home, click a brand under **Brands** in the sidebar.
+2. Inside the brand, click **Insight** → **Campaigns**.
+3. Click **New Plan** (or **Plan a campaign**).
+
+The Planner opens as a full-page wizard. Click **Back** (top-left) to return to the campaigns list. Your progress is not saved until you click **Save plan** in the final step.
+
+## Step 1 — Campaign Basics
+
+Start by describing the campaign:
+
+- **Campaign name** — A descriptive name, e.g. "Roamax Haji 2026" or "Brand Awareness Q3".
+- **Seasonality** — How seasonal is this period? Choose one of four presets:
+  - **Soft** (−10%) — Low season, weaker expected response.
+  - **Normal** (baseline) — Average seasonality. The default.
+  - **High** (+8%) — Peak season (e.g. Ramadan, year-end holidays).
+  - **Peak** (+15%) — Major event-driven surge.
+- **Campaign dates** — Optional start and end dates. Used to scope benchmark comparisons against similar-timed campaigns.
+
+Seasonality directly adjusts the revenue prediction — picking the right level keeps your forecast realistic.
+
+Click **Next** when ready.
+
+## Step 2 — Budget & Objective
+
+Define the campaign's goal and total spend.
+
+**Campaign objective** — Pick what the campaign is designed to achieve:
+
+| Objective | When to use |
+|-----------|-------------|
+| **Awareness** | Maximise reach and impressions |
+| **Consideration** | Drive engagement and traffic |
+| **Conversion** | Generate sales or leads |
+| **Retention** | Re-engage existing customers |
+| **Balanced** | Mixed goals (default) |
+
+The objective changes the recommended channel mix and prediction multiplier.
+
+**Budget** — Use the slider to set total spend (up to IDR 10B per step). The live prediction panel updates as you adjust.
+
+**Diminishing returns** — Toggle the saturation model on/off:
+- **On** (recommended) — Accounts for diminishing returns at higher spend. More realistic for large budgets.
+- **Off** — Straight linear projection. Simpler but can over-estimate at scale.
+
+**Live prediction preview:** As you adjust, a panel shows three scenarios:
+
+- **Conservative** (P25) — Lower quartile estimate.
+- **Typical** (P50) — Median estimate.
+- **Strong** (P75) — Upper quartile estimate.
+
+Each shows predicted ROAS and reach. Channels are marked with a confidence badge:
+
+- **Solid** — 8+ of your own campaigns back this.
+- **Limited** — 3–7 campaigns; blended with benchmarks.
+- **Benchmark** — Industry reference, no own data yet.
+
+Click **Next** to proceed.
+
+## Step 3 — Channel Allocation
+
+Distribute your budget across channels with percentage sliders:
+
+| Channel | Group | Description |
+|---------|-------|-------------|
+| **ATL Radio** | ATL | Radio advertising |
+| **Digital Paid** | Digital | Search, display, programmatic |
+| **Paid Social** | Paid social | Meta, TikTok, LinkedIn ads |
+| **Owned Social** | Owned | Organic social posts |
+| **Earned UGC** | Earned | Influencer / UGC campaigns |
+
+**Adjusting allocation:** Drag any slider — the others rebalance automatically so the total always sums to 100%.
+
+**ROAS source** — Per channel, pick where the prediction basis comes from:
+
+- **Your data** — Your brand's own campaign history (shown when available).
+- **Benchmark** — Industry average from frndOS benchmarks.
+- **Manual** — Type a custom ROAS value.
+
+**Optimize mix** — Click **Optimize** to let frndOS suggest an allocation based on your objective and available data.
+
+As you adjust, the live impact panel updates each channel's predicted ROAS, reach, and ROI.
+
+> **Tip:** Channels with a "Solid" confidence badge give the most reliable predictions. Channels marked "Benchmark" are estimated from industry data and may vary.
+
+Click **Next** to review.
+
+## Step 4 — Review & Save
+
+See the full plan before saving:
+
+- **Three scenario cards** — Conservative, Typical, and Strong, each showing predicted ROAS, reach, and ROI.
+- **Channel mix summary** — Visual breakdown of allocation percentages.
+- **Key numbers** — Total budget, predicted reach, ROAS range.
+
+Click **Save plan** to persist. The plan appears in the **Saved** tab on the Campaigns page.
+
+## After Saving
+
+### Share
+
+Open the saved plan and click the **Share** button:
+
+- **Share link** — Toggle to create a public read-only URL (`{origin}/plans/preview/{token}`). Anyone with the link can view — no frndOS login needed.
+- **Copy link** — Copy the public URL.
+- **Download image** — Export the plan as a PNG.
+- **Save as PDF** — Print or save the plan as a PDF.
+- **Export to Excel** — Download as `.xlsx` spreadsheet.
+
+### Generate a Brief
+
+From the Share dialog, click **Generate brief**. frndOS writes an AI-generated plan brief covering:
+
+- Executive summary
+- Budget & objective rationale
+- Channel strategy
+- Methodology
+- Risks & caveats
+- Campaign background
+
+Download the brief as HTML or save it as PDF.
+
+### Turn into a Deck
+
+Click **Send to Deck** to create a presentation from your plan data.
+
+### Edit a Saved Plan
+
+In the **Saved** tab, find your plan and click **Edit**. The Planner re-opens pre-filled with your saved data — adjust any step and re-save.
+
+### Log Actuals
+
+Once the campaign has run, return to the plan and click **Log actuals**. Enter the real spend and results for each channel. The Planner then shows a **Predicted vs. Actual** comparison:
+
+- Plan accuracy scorecard
+- Per-channel ROAS comparison
+- Variance indicators (how far off the prediction was)
+
+This helps you calibrate future plans based on actual outcomes.
+
+> **Link a report:** If you have a Paid Media report for this campaign, link it to the plan. The actuals can then be pre-filled from the report data instead of manual entry.
+
+## FAQ
+
+**Q: Can I use the Planner without connected ad accounts?**
+Yes. The Planner falls back to industry benchmarks — predictions are still useful, just less precise. Your own channels will upgrade from "Benchmark" to "Limited" or "Solid" once you've logged enough campaigns.
+
+**Q: What does the "Coverage" section below the wizard mean?**
+It shows what percentage of your prediction is powered by your brand's own data vs. industry benchmarks. Higher own-data coverage = more reliable predictions.
+
+**Q: Can I delete a plan?**
+Yes. From the Saved tab, find the plan and use the delete action. Deleted plans are removed permanently.
+
+**Q: Is the public share link secure?**
+Anyone with the URL can view the plan. Treat it like a shared document link — share only with trusted recipients. You can toggle the link off at any time to revoke access.
+
+**Q: Why do my own channels show "Limited" or "Benchmark"?**
+The confidence tier depends on how many of your own campaigns we have data for. "Solid" requires 8+ campaigns. As you run and log more campaigns, channels move up automatically.
+
+---
+
+## Next Steps
+
+- [How the Campaign Planner Works — Methodology →](./campaign-planner) — Deep dive into the prediction model and how numbers are calculated.
+- [Insights Overview →](./overview)

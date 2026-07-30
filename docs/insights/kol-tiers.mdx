@@ -1,0 +1,76 @@
+---
+sidebar_position: 8
+title: KOL Tiers — Custom Follower Ranges
+description: Define your own nano, micro, macro, and mega follower ranges for influencer reporting.
+---
+
+# KOL Tiers — Custom Follower Ranges
+
+KOL (Key Opinion Leader) tiers let you categorise influencers by follower count. frndOS comes with a default 4-tier scheme (nano, micro, macro, mega) — but you can **customise the names and follower ranges** to match your agency's own classification.
+
+Once saved, every earned media report and table across frndOS uses your custom ranges instead of the defaults.
+
+## Default Tiers
+
+| Tier | Followers |
+|------|-----------|
+| **Nano** | 0 – 10,000 |
+| **Micro** | 10,000 – 100,000 |
+| **Macro** | 100,000 – 1,000,000 |
+| **Mega** | 1,000,000+ (unbounded) |
+
+## Editing Tiers
+
+1. Go to **Settings → Earned Media** inside a brand.
+2. Open the **KOL Tiers** tab (the third tab after Integrations and KPI Setup).
+3. You'll see a table with editable rows:
+
+### Each row has:
+
+| Field | Description |
+|-------|-------------|
+| **Tier Name** | A label for the tier (e.g. "nano", "micro", "mega"). Names must be non-empty and unique. |
+| **Min Followers** | Automatically derived from the previous tier's max. Read-only. |
+| **Max Followers** | The exclusive upper bound. Required for every tier except the last (which is always unbounded). |
+
+### Actions:
+
+- **Edit** — Type directly into the tier name or max followers fields. Min followers update automatically.
+- **Add Tier** — Click **Add Tier** to append a new unbounded top tier. The previous top tier gains a max field you must fill.
+- **Remove** — Click the ✕ button to delete a tier. At least one tier must remain.
+- **Reset to Default** — Revert the editor to the default 4-tier scheme (Nano / Micro / Macro / Mega).
+
+### Rules & Validation:
+
+- Tiers are **contiguous** — each tier's min is the previous tier's max.
+- Max followers must be **greater than** the tier's min.
+- Tier names are **case-insensitive** and trimmed before saving.
+- Only the last tier can be **unbounded** (no max).
+
+## How Tiers Affect Reporting
+
+Saving custom tiers creates a **brand-specific override**:
+
+- All earned media reports, influencer lists, and KOL summary tiles re-compute their tier labels based on the new follower ranges.
+- The change is **instant** — reports behind the modal refresh automatically.
+- Different brands can have different tier schemes under the same workspace.
+
+> **Doesn't change the default for other brands.** Each brand sets its own tiers independently through its own Earned Media Settings.
+
+## FAQ
+
+**Q: What happens if I leave the KOL Tiers tab without saving?**
+Nothing. The editor saves only when you click the parent modal's **Save** button. An unsaved editor does not affect any report.
+
+**Q: Can I revert to the original default tiers after saving?**
+Yes. Open the KOL Tiers tab and click **Reset to Default**, then save. This restores the 4-tier scheme (Nano 0–10K, Micro 10K–100K, Macro 100K–1M, Mega 1M+).
+
+**Q: Does this affect how frndOS categorises creators in benchmark data?**
+No. Custom tiers are a per-brand override for display and filtering only. The underlying performance data and benchmark percentiles are unchanged.
+
+---
+
+## Next Steps
+
+- [Earned Media Overview →](../insights/overview)
+- [Connecting Earned Media & ATL →](./connecting-earned-atl)

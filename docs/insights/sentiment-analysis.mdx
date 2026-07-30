@@ -1,0 +1,110 @@
+---
+sidebar_position: 6
+title: Sentiment Analysis — Per-Post Audience Reaction
+description: See how audiences reacted to each owned media post, drill into individual comments, and correct the AI sentiment when needed.
+---
+
+# Sentiment Analysis — Per-Post Audience Reaction
+
+Sentiment Analysis shows how audiences are reacting to your owned media posts — per post, per campaign, and per comment. Instead of just seeing overall account sentiment, you can see which specific posts and comments drive positive, neutral, or negative reactions.
+
+## Where to Find It
+
+Navigate to **Insights → Owned Media**. The Sentiment section appears on the page alongside the post table and performance metrics.
+
+## Overview Cards
+
+At the top of the Sentiment section, three metric cards show the aggregate breakdown for the selected platform and time period:
+
+| Card | Description |
+|------|-------------|
+| **Positive** | Total positive comments and percentage breakdown |
+| **Neutral** | Total neutral comments |
+| **Negative** | Total negative comments |
+
+Each card includes a **Source** indicator showing how the sentiment was determined. Click the card to open the **detail dialog** for that bucket.
+
+## Sentiment Detail Dialog
+
+Clicking any sentiment card opens a full-screen dialog showing every comment that was classified into that bucket:
+
+### Top Topics
+Relevant keywords or themes extracted from the comments in this bucket — shown as chips at the top of the dialog.
+
+### Comment Table
+A paginated table with columns like:
+
+- **Platform** — Where the comment was posted (Facebook, Instagram, etc.)
+- **Brand** — The brand the comment belongs to
+- **Creation Date** — When the comment was posted
+- **Participant Name** — The comment author
+- **Topic** — Auto-tagged topic for this comment
+- **Comment Text** — The comment content (truncated, with tooltip on hover)
+- **Comment Permalink** — Direct link to the live comment on the platform (opens in new tab)
+- **Post Reaction Count** — Reactions on the parent post
+- **Sentiment** — The current sentiment classification (see below)
+
+### Search & Pagination
+
+- **Search bar** — Filter comments by text across all columns
+- **Page size selector** — Choose rows per page (defaults to 30)
+- **Pagination controls** — Navigate between pages
+
+## Per-Comment Sentiment Editing
+
+Within the detail dialog, each comment row shows its current sentiment classification as a colored badge.
+
+**To change a comment's sentiment:**
+
+1. Click the **sentiment badge** next to the comment. A dropdown opens with three options:
+   - **Positive** — Green badge
+   - **Neutral** — Outline badge
+   - **Negative** — Red badge
+2. Select the correct sentiment. The change applies instantly (optimistic update) and syncs to the server.
+3. A small **dot indicator** appears beside manually-set sentiments to distinguish them from AI-classified ones.
+
+**To revert a manual override back to the AI's classification:**
+
+1. Open the sentiment dropdown for the overridden comment.
+2. Click **Reset to AI** at the bottom of the dropdown.
+
+> **Manual overrides are per-user and session-local.** The server persists your correction, but the small dot indicator helps you see which values you've changed. After the page refreshes, previously overridden comments still show the corrected value with the dot marker.
+
+### Who can edit sentiment
+
+Editing sentiment requires:
+- An **internal workspace member** (not external/guest)
+- **Write access** to Brand Insights (`brand.insight` permission)
+
+Public share view and external users see sentiment badges as read-only.
+
+## Campaign-Filtered Sentiment
+
+When a campaign is selected in the Owned Media campaign filter, the Sentiment section re-fetches data scoped to that campaign. You can:
+
+- Select a campaign from the **campaign dropdown** above the sentiment cards.
+- Choose **All Posts** to return to the unfiltered view.
+- Posts tagged as **"Unassigned"** (no campaign label) are available as a separate option.
+
+The campaign filter also updates a **word cloud** showing the most frequent terms used in comments for that campaign, with positive terms highlighted in green and negative terms in red.
+
+## FAQ
+
+**Q: Is the initial sentiment always accurate?**
+The AI classifies sentiment automatically. Accuracy depends on language nuance, sarcasm, and context. For high-stakes reporting, review the sentiment and correct it manually where needed.
+
+**Q: Do manual corrections affect aggregate metrics?**
+Yes. When you change a comment's sentiment, the aggregate counts on the overview cards update on the next data refresh.
+
+**Q: Can Client users correct sentiment?**
+Yes — client accounts can now open the Sentiment Detail Dialog and make corrections, matching the same permissions as internal workspace members.
+
+**Q: Do sentiment changes affect other team members?**
+Yes. Sentiment corrections are persisted server-side. Everyone viewing the same brand will see the corrected values.
+
+---
+
+## Next Steps
+
+- [Understanding Owned Media & Content Labels →](./owned-media)
+- [Insights Overview →](./overview)
