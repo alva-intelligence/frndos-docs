@@ -20,6 +20,38 @@ The frndOS repos are the source of truth in this order:
 
 **Ignore third-party iframes/vendors** (e.g. Populix survey builder). Code inside frnd-web stops at "open the iframe" — the steps inside are NOT in any repo. Mark them `TODO`, never guess.
 
+## Lark Doc as Navigation Map
+
+When the user provides a **Lark doc URL** (e.g. `https://*.larksuite.com/docx/...`) alongside a feature keyword, the Lark doc should be treated as a **navigation map / changelog** — it tells you what changed and where to look, but **every claim must still be verified against the code**.
+
+**Workflow when a Lark doc URL is given:**
+
+```dot
+digraph lark {
+  rankdir=LR;
+  "0a. WebFetch Lark doc" [shape=box];
+  "0b. Extract changed features + file hints" [shape=box];
+  "1. Locate & verify in frnd-web" [shape=box];
+  "2. Write docs (grounded in code)" [shape=box];
+
+  "0a. WebFetch Lark doc" -> "0b. Extract changed features + file hints";
+  "0b. Extract changed features + file hints" -> "1. Locate & verify in frnd-web";
+  "1. Locate & verify in frnd-web" -> "2. Write docs (grounded in code)";
+}
+```
+
+Steps:
+
+1. **WebFetch** the Lark doc URL to get the list of feature changes.
+2. From the content, extract:
+   - **Feature keywords** to search for in frnd-web (routes, components, labels).
+   - **File hints** if the doc mentions specific directories or files.
+   - **Changed behavior** — note these as hypotheses to verify.
+3. Continue from **Step 1** (locate in frnd-web) — treat the Lark doc output as clues only.
+4. **Never copy-paste** Lark doc content into the help doc. Every sentence must still trace to code.
+
+The existing workflow (Steps 1 → 9, 1.5, 1.6) is unchanged — this is simply an **alternative entry** when a Lark doc URL is provided.
+
 ## When to Use
 
 - User gives a feature keyword and asks to create/update Help Center docs
