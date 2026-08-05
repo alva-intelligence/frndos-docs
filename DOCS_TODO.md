@@ -8,7 +8,7 @@
 >
 > Legend — **Type:** 📸 screenshot · ✍️ confirm-from-live-UI · 🔒 third-party/iframe (outside repo)
 
-_Last updated: 2026-07-16_
+_Last updated: 2026-08-05_
 
 
 
@@ -132,6 +132,13 @@ _Last updated: 2026-07-16_
 | Line | Type | What to do |
 | ---- | ---- | ---------- |
 | 48 | ✍️📸 | Confirm how to open Chat Settings from the AskFrnd panel (button/menu location) + screenshot of the Tools tab (per-user tool toggles, Enable all, section groups) |
+
+## docs/workspace/inviting-team-members.mdx
+
+| Line | Type | What to do |
+| ---- | ---- | ---------- |
+| 27–28 | 📸 | Screenshot: Workspace Settings → People page — "People" header, Search box, Invite button, Members/Requests pill tabs, member table |
+| 74–75 | 📸 | Screenshot: Invite dialog — email chips, "You're inviting N guests as [Member ▾]", brand access cascade picker open (brand column + role column) |
 
 ## docs/workspace/managing-credits.mdx
 

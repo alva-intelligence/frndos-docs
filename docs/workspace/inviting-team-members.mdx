@@ -1,124 +1,194 @@
 ---
 title: Inviting Team Members
 sidebar_position: 1
-description: Invite new and existing users to your workspace as members or guests, with the right role and email-locked security.
+description: Invite people to your workspace from Workspace Settings → People, set them as Member or Admin, give per-brand access, and track invited, expired, and active members.
 ---
 
 # Inviting Team Members
 
-As a workspace owner or admin, you can invite people to join your workspace directly — without waiting for them to sign up and request access themselves.
+Invitations are sent from **Workspace Settings → People**. You enter one or more email addresses, choose whether each person joins as **Member** or **Admin**, and — for Members — pick which brands they can open and with what permission role.
 
-This is the right flow for **stakeholders** (clients, brand reps, leadership) who you want to bring in proactively, instead of asking them to discover the workspace on their own.
-
-## When to Invite vs. Let Users Request to Join
-
-| Use **Invite** when… | Use **Request to Join** when… |
-|---|---|
-| You're proactively adding stakeholders or clients | A new team member should self-serve |
-| The user shouldn't have to find the workspace | The user knows the workspace name |
-| You want to pre-assign their role | The default role is fine |
-| The user doesn't have time to sign up themselves | Discovery is enabled and onboarding is open |
+This is the proactive path. The other way in is [Approving Join Requests](./approving-join-requests), where people find the workspace themselves and ask to join.
 
 ## Before You Start
 
-You need:
-- **Owner** or **Admin** role in the workspace
-- The **email address** of the person you want to invite
-- The **role** you want to assign them
+1. ✅ **You can manage the team** — the **Invite** button only appears if your role has full access to workspace team management. If you only see the member list without the button, ask an owner or admin.
+2. ✅ **You're in an organization workspace** — **People** is not available in a personal workspace; opening workspace settings there sends you to **Credit Usage** instead.
+3. ✅ **You have the email addresses** of the people you want to invite.
+4. ✅ **Brands already exist** (optional) — brand access is assigned during the invite, so create the brand first if you want the invitee to land with access. See [Managing Multiple Brands](../brand-setup/multiple-brands).
 
-## How to Invite a User
+## Step 1 — Open the People Page
 
-### Step 1 — Open Workspace Settings
+1. Open **Workspace Settings** from your profile menu
+2. In the left settings sidebar, under **Workspace**, click **People**
 
-1. Open the workspace switcher and confirm you're in the right workspace
-2. Go to **Workspace Settings → Members**
-3. Click **Invite Member** (or similar)
+The page header is **People**. You'll see the member table, a **Search** box, and — if you can manage the team — the **Invite** button.
 
-### Step 2 — Enter Their Details
+<!-- TODO: add screenshot — Workspace Settings → People page: header "People", Search box, Invite button, Members/Requests pill tabs, member table -->
+_[TODO: screenshot of the People page — needed from the live UI]_
 
-Provide:
-- **Email address** of the person you're inviting
-- **Role** you're assigning them (see roles below)
-- Optional: a message that goes in the invitation email
+Two pill tabs sit above the table for admins:
 
-### Step 3 — Send
-
-frndOS sends an invitation email to the address you provided.
-
-## What the Invited User Sees
-
-The invitation experience depends on whether the invited user **already has a frndOS account** or not.
-
-### Case 1 — Existing User
-
-If the invited user already has a frndOS account:
-
-1. They get an email saying they've been invited to your workspace
-2. They open frndOS and see the invitation as a pending notification
-3. They click **Accept** and immediately join the workspace
-
-### Case 2 — New User
-
-If the invited user does not have a frndOS account yet:
-
-1. They get an email inviting them to join
-2. Clicking the link takes them to a **sign-up form**
-3. The email field is **locked** — they can't change it. This ensures the invitation stays tied to the intended person.
-4. They complete sign-up (set password, etc.)
-5. After signing up, they're automatically taken to accept the invitation
-6. Once accepted, they're inside the workspace
-
-> **Why is the email locked?** Security. The invitation is bound to that specific email address. If users could change it during sign-up, invitations could be transferred to unintended people.
-
-## Roles You Can Assign
-
-When inviting, you assign a role. Roles control what the user can do inside the workspace.
-
-| Role | What They Can Do |
+| Tab | What it shows |
 |---|---|
-| **Owner** | Full control — workspace settings, billing, member management, all content, **can create brands** |
-| **Admin** | Manage members, approve requests, manage projects, **can create brands** |
-| **Editor** | Create and edit content within existing brands (projects, KVs, Brand Knowledge, etc.) — cannot create new brands |
-| **Viewer / Guest** | View-only access — useful for clients and stakeholders who only need visibility |
+| **Members** | Everyone in the workspace, plus anyone with an outstanding invitation |
+| **Requests** | Pending requests to join. The label carries a live count, e.g. **Requests (3)** |
 
-> **Brand creation is admin-only.** Only **Owner** and **Admin** roles can create new brands in a workspace. Any member with access to a brand — including Editors — can configure that brand's Brand Knowledge (DNA, Identity, Tone of Voice). See [Managing Multiple Brands](../brand-setup/multiple-brands) for details.
+## Step 2 — Send the Invitation
 
-> **Note:** Specific role names and capabilities may evolve. Check workspace settings for the current options.
+Click **Invite**. A dialog opens titled **Invite to \{your workspace name\}**.
 
-## Inviting Clients & External Stakeholders
+### Enter the email addresses
 
-For clients or external stakeholders who shouldn't create or edit content:
+1. Type an address into the **Email Address** field — the placeholder reads `emails, comma separated`
+2. Press **Enter**, or type a comma, to turn it into a chip
+3. Repeat for as many people as you want — every chip has an **×** to remove it
 
-- Use the **Viewer** or **Guest** role
-- This gives them read-only access to the dashboards and assets you've made
-- They can't change anything, so there's no risk of accidental edits
+Invalid input is caught before sending:
 
-## Bulk Inviting
+- `Please enter a valid email address` — the address isn't a valid email format
+- `This email has already been added` — that address is already a chip in this dialog
 
-If you have many team members to invite at once, look for the **bulk invite** option in workspace settings (where supported). Otherwise, send invitations one by one — the process is fast.
+### Choose the role
+
+Under the email field you'll see a line like **You're inviting 3 guests as [Member ▾]**. The dropdown has exactly two options:
+
+| Role | Access |
+|---|---|
+| **Member** | Workspace access, plus whatever per-brand access you assign in the next step |
+| **Admin** | Full workspace management — and full access to every brand automatically |
+
+Pick **Admin** and the dialog states it directly: _Admins have full access to every brand in this workspace._ There is no brand picker for Admins because there's nothing to narrow down.
+
+> **Owner isn't an invite option.** The **Owner** role exists in the member list (the person who created the workspace) but can't be assigned from the invite dialog.
+
+### Assign brand access (Member only)
+
+With **Member** selected, the line continues **with brand access [No brand access ▾]**. Open it and you get a two-column picker:
+
+1. **Left column** — every brand in the workspace. Brands you've already given a role to are listed first with their role underneath; the rest follow.
+2. **Right column** — the permission roles available in this workspace. Pick one to assign it, or choose **Remove access** to take the brand back off the list.
+
+The button label summarizes your picks: **No brand access**, the brand's name when there's one, or **N brands** when there are several.
+
+<!-- TODO: add screenshot — Invite dialog: email chips, "You're inviting N guests as Member", role dropdown, brand access cascade picker open -->
+_[TODO: screenshot of the invite dialog with the brand access picker open — needed from the live UI]_
+
+> **A member holds one role per brand.** Assigning a second role to the same brand replaces the first.
+
+### Send
+
+Click **Send Invite** (it reads **Sending Invite…** while it works). On success you get the toast **Invitation sent successfully!** and the dialog closes.
+
+Two rejections come back from the server, named per address:
+
+- `<email> is already a member of this workspace`
+- `<email> already has a pending invitation to this workspace`
+
+## Step 3 — What the Invited Person Does
+
+The invitation email links to an invitation page in frndOS. What happens next depends on whether they already have an account.
+
+### They already have a frndOS account
+
+1. If they're not signed in, they're sent to the login page first, then back to the invitation
+2. Once signed in, they see the workspace logo and **\{Inviter\} invited you to join \{workspace\}** — or **You're invited to join \{workspace\}** if the inviter's name isn't available
+3. The screen explains: _Accept to join the workspace and switch into it, or reject to keep your current workspace._
+4. **Accept invitation** → toast **Invitation accepted**, and they land on Home already switched into your workspace
+5. **Reject invitation** → toast **Invitation declined**, and they stay in their current workspace
+
+### They don't have an account yet
+
+1. The invitation page detects there's no account and sends them straight to the sign-up form
+2. The email field is **pre-filled and locked** — it can't be edited, so the invitation stays tied to the address you invited
+3. After signing up, they're taken back to the invitation to accept it
+
+> **Why is the email locked?** The invitation is bound to that address. Accepting from a different account returns the error _This invitation is for a different email address._
+
+## Step 4 — Track and Manage Invitations
+
+Back on **People**, the table has these columns:
+
+| Column | What it shows |
+|---|---|
+| **Member** | Avatar and email address |
+| **Status** | **Owner**, **Invited**, **Expired**, or **Active** |
+| **Role** | Owner, Admin, or Member |
+| **Brand access** | The brand name, **N+ access** for several brands, or **—** for none |
+| **Last Active** | Relative time since their last activity |
+
+Click any row to open the member detail panel — **Status**, **Role**, **Brand access**, **Job title**, **Last active**, **Joined date**, and **Remaining credits** when a credit allocation exists.
+
+From that panel, if you can manage the team and the row isn't the Owner:
+
+- **Resend invitation** — shown for **Invited** and **Expired** rows. Resending an expired invitation issues a fresh link.
+- **Remove member** — opens the **Remove Team Member** confirmation. The dialog warns that the action can't be undone; confirm with **Remove Member**.
+
+Role, brand access, and job title are editable in this panel for **Active** members who aren't the Owner.
+
+> **Invitations expire after 24 hours.** After that the row flips to **Expired** and the old link stops working — the invitee sees _Your invitation link has either expired or is invalid._ Use **Resend invitation** to issue a new one.
+
+## Assigning Brand Access to Several Members at Once
+
+If people are already in the workspace, you don't have to edit them one by one:
+
+1. On **People**, click **Assign brand access**
+2. Tick the members you want — only **Active** members that aren't the Owner can be selected. The header checkbox selects all of them.
+3. Pick a role from the **Role…** dropdown
+4. Pick one or more brands from the **Brands…** dropdown
+5. Click **Assign**
+
+The bar shows **N members selected** as you go. Close it with the **×** on the right.
+
+## Permission Roles for Brands
+
+The roles you assign per brand are defined in **Workspace Settings → Permission Role** (visible to admins who can write to team settings). The page describes them as _permission sets that can be assigned to workspace members per brand_, split into two groups:
+
+| Group | Behavior |
+|---|---|
+| **System Roles** | Built-in, fixed permissions. Marked **Locked** — you can view them but not edit or delete them. |
+| **Workspace Roles** | Available in this workspace, and editable or deletable by admins. |
+
+Every workspace starts with **Manager** and **Viewer** as locked system roles, plus **Data Analyst** and **Creative** as editable workspace roles. **Manager** grants full access across the brand; **Viewer** is view-only everywhere; **Data Analyst** covers the Insights surfaces; **Creative** covers the Studio generators.
+
+To build your own, click **New Role**, give it a name (description optional), and set each brand feature to **No access**, **View only**, or **Full access** in the permission matrix. A workspace can hold up to **20 custom roles** — at the limit the **New Role** button is disabled.
+
+> **Deleting a role removes access.** If the role is assigned, the confirmation tells you how many members across how many brands are affected — including members who haven't accepted their invitation yet.
+
+## Inviting Someone to a Single Brand
+
+You don't have to grant workspace-wide reach:
+
+- **At invite time** — invite as **Member** and assign a role for just that one brand.
+- **After they've joined** — open the brand's **Settings → Members** page. It has **Brand Members** and **Workspace Admins** tabs, and a **+ Add Member** button that pairs an existing workspace member with a permission role for that brand.
+
+Workspace admins and owners always show as **All brands (Manager)** — the tooltip states _Workspace admins always have Manager access to all brands_ — so they can't be narrowed to a subset.
 
 ## FAQ
 
-**Q: What happens if I invite someone who already has a different account?**
-The invitation still goes to the email address. They can accept it through their existing account — they don't need a new one.
+**Q: Can I invite several people at once?**
+Yes. Add as many email chips as you need in one dialog. Everyone in that batch gets the same role and the same brand access.
 
-**Q: Can I revoke an invitation?**
-Yes. Pending invitations can be revoked from the workspace members settings before the user accepts.
+**Q: Can I give different people different brand access in one go?**
+No. One invite dialog sends one role plus one set of brand assignments. Send a separate invite for a different combination, or adjust brand access afterwards from the member's detail panel.
 
-**Q: Can I change a user's role after they join?**
-Yes — workspace admins can change member roles at any time from workspace settings.
+**Q: The person I invited already has an account somewhere else — do they need a new one?**
+No. The invitation is tied to the email address. They sign in with their existing account and accept, and accepting switches them into your workspace.
 
-**Q: How long does an invitation stay valid?**
-Invitations don't typically expire on a short timer like sign-up OTPs, but check workspace settings for current behavior.
+**Q: Can I cancel an invitation before it's accepted?**
+Yes. Open the **Invited** row and use **Remove member** — that clears the pending invitation.
 
-**Q: The user I invited never received the email.**
-- Have them check spam/junk
-- Confirm you sent it to the right email
-- Resend the invitation if needed
-- If their org email blocks frndOS senders, ask them to whitelist or use a personal email instead
+**Q: How long is an invitation valid?**
+24 hours. After that the row shows **Expired**; use **Resend invitation** to send a fresh link.
 
-**Q: Can I invite someone to a specific brand, not the whole workspace?**
-Brand-level permissions are not currently a granular self-serve feature. Members are added at the workspace level. For client access, use Viewer/Guest role to limit edit rights.
+**Q: They never got the email.**
+Check the address on the **Invited** row, have them look in spam, then use **Resend invitation**. If their mail server blocks it, invite a different address instead.
+
+**Q: Can I change someone's role after they join?**
+Yes. Click their row on **People** and change **Role** (Member ↔ Admin) or **Brand access** in the detail panel. This is limited to **Active** members other than the Owner.
+
+**Q: What about credits for new members?**
+Credit allocation is handled separately, in the credits section of workspace settings. See [Managing Workspace Credits](./managing-credits).
 
 ---
 
@@ -127,3 +197,5 @@ Brand-level permissions are not currently a granular self-serve feature. Members
 - [Approving Join Requests](./approving-join-requests)
 - [Setting Workspace Visibility](./workspace-visibility)
 - [Managing Workspace Credits](./managing-credits)
+- [Managing Multiple Brands](../brand-setup/multiple-brands)
+- [Joining or Creating a Workspace](../getting-started/joining-or-creating-workspace)
