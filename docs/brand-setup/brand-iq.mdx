@@ -1,0 +1,151 @@
+---
+title: Brand IQ — Your Brand's Knowledge Home
+sidebar_position: 1
+description: Brand IQ is where a brand's Strategy, Identity and Tone live, alongside its sources and templates. Track readiness across three pillars and ground every AI output in your brand.
+---
+
+# Brand IQ — Your Brand's Knowledge Home
+
+**Brand IQ** is the single surface that holds everything frndOS knows about a brand. It's what makes generated work sound and look like *your* brand instead of a generic one.
+
+> **Naming update:** what used to be called **Brand Knowledge** — and lived scattered across brand settings — is now **Brand IQ**, with its own top-level page per brand. Old links to the individual settings pages still resolve, but they no longer appear in the Settings sidebar.
+
+## Where to Find It
+
+Open a brand, then click the **Brand IQ** card in the sidebar. The card shows live status under its name:
+
+| Card status | Meaning |
+|---|---|
+| **Ready · 3 pillars** | All three pillars complete (green dot) |
+| **N of 3 pillars set** | Partly configured (amber dot) |
+| **Not set up yet** | No pillar configured (amber dot) |
+| **Not available** | Brand IQ isn't available for this brand |
+| **Checking…** | Status still loading |
+
+If your role doesn't include Brand IQ access, the card is greyed out with the tooltip _You don't have access to Brand IQ_, and opening the page sends you back to Brand Home. See [Inviting Team Members](../workspace/inviting-team-members) for how per-brand roles are assigned.
+
+## Before You Start
+
+1. ✅ **A brand exists** — Brand IQ is per brand. See [Managing Multiple Brands](./multiple-brands).
+2. ✅ **You can read Brand IQ for this brand** — otherwise the page redirects to Brand Home.
+3. ✅ **You can write to it** to edit — without write access the pillar editors are read-only and the **Add source** button is disabled.
+
+## The Six Tabs
+
+The page header reads **Brand IQ**, with a tab bar underneath. Every tab is deep-linkable via `?section=`.
+
+| Tab | What it's for |
+|---|---|
+| **Overview** | Readiness at a glance — pillar status, knowledge chunks, what Brand IQ powers |
+| **Strategy** | The strategic foundation (formerly **Brand DNA**) |
+| **Identity** | Visual rules — colors, typography, visual do's and don'ts |
+| **Tone** | Voice and personality (formerly **Brand Tonality**) |
+| **Sources** | Reference material that grounds the AI — see [Brand IQ Sources](./brand-iq-sources) |
+| **Templates** | Reusable deck templates for this brand |
+
+> **Only the three pillar tabs save.** Strategy, Identity and Tone share a save bar that appears at the bottom once you have unsaved changes. Overview, Sources and Templates have no save action.
+
+## Reading the Overview Tab
+
+### Status banner
+
+At the top, a dot plus a headline:
+
+- **Brand IQ ready** (green) — _Every summary, KV and answer speaks in \{brand\}'s voice — grounded across all three pillars._
+- **N of 3 pillars set** (amber) — _Complete each pillar so every summary, KV and answer speaks in \{brand\}'s voice._
+
+When reference material has been processed, the banner also shows a count of **knowledge chunks** on the right.
+
+### Pillar cards
+
+Three cards, one per pillar:
+
+| Card | What's inside (as shown on the card) | Tab it opens |
+|---|---|---|
+| **Strategy** | Positioning, single-minded proposition & benefit ladder. | Strategy |
+| **Identity** | Logo, colors, typography & visual do's and don'ts. | Identity |
+| **Tone** | Voice, personality & words to use or avoid. | Tone |
+
+Each card carries a badge — **Ready** when complete, otherwise **N of M** or **Not set** — and lists up to three of its own checklist items with a tick or a dot. The button reads **Review** when the pillar is ready, or **Complete \{pillar\}** when it isn't. With read-only access, no button is shown.
+
+<!-- TODO: add screenshot — Brand IQ Overview tab: status banner with knowledge-chunk count, three pillar cards (Strategy/Identity/Tone), Knowledge Vault card, Brand IQ powers strip -->
+_[TODO: screenshot of the Brand IQ Overview tab — needed from the live UI]_
+
+### Knowledge Vault card
+
+Below the pillars sits the **Knowledge Vault** card. It reads _\{N\} knowledge chunks grounding every answer._ once material has been processed, or _Reference material grounding every answer in \{brand\}'s facts._ when it hasn't. **Manage sources** takes you to the Sources tab.
+
+### What Brand IQ powers
+
+The bottom strip is labelled **Brand IQ powers** and lists exactly what a complete Brand IQ feeds:
+
+- Daily brief
+- KV generation
+- Chat answers
+- Campaign concepts
+- Insight narratives
+
+## The Three Pillars
+
+Each pillar is a form with its own fields. Edit, then use the save bar.
+
+| Tab | Fields |
+|---|---|
+| **Strategy** | Mission, Vision, Target Audience, Competitors, Market Positioning, Brand Purpose, Brand Pillars |
+| **Identity** | Color palettes, typography (including uploaded fonts), visual do's and visual don'ts |
+| **Tone** | Brand Archetype, Target Audience Context, Key Phrases, Voice Tone, Tone Descriptors, Forbidden Words |
+
+Detailed field-by-field guidance lives in the pillar guides:
+
+- 👉 [Strategy (Brand DNA)](./brand-profile)
+- 👉 [Identity](./brand-identity)
+- 👉 [Tone of Voice](./tone-of-voice)
+
+> **Tone has a Vibe Check.** The Tone tab ends with a **Generate Vibe Check** panel — _Generated from all 6 tonality fields_ — that produces a sample post so you can sanity-check the voice before relying on it.
+
+## Prompts You'll See Elsewhere
+
+Brand IQ status surfaces outside the page too:
+
+- **Brand Home banner** — when a pillar is missing you get a **Brand IQ** banner reading **Finish setting up \{brand\}**, with a **Complete Brand IQ** button that deep-links to the first incomplete pillar. Without write access the banner reads _\{brand\}'s Brand IQ is incomplete_ with a **Remind Admin** button instead.
+- **Brand Home chip** — once ready, a quiet row: **Brand IQ ready** · grounded across 3 pillars, with **Manage →**.
+- **Studio** — an incomplete brand shows as **Brand IQ Incomplete** / **Brand IQ — Not configured** before you generate.
+
+## Templates
+
+The **Templates** tab is described as _Reusable deck templates that keep this brand's decks on brand._ Click **New template** to create one (it opens as **Untitled template** in the deck editor). With none yet, the tab shows **No templates yet** — _Create one to keep your team on brand._ Click any card to open it.
+
+## FAQ
+
+**Q: Is Brand IQ the same thing as Brand Knowledge?**
+Yes — it's the current name for the same thing, now with a dedicated page per brand. You'll still see "Brand Knowledge" in a few places, such as the AskFRND tool of that name.
+
+**Q: What happened to Brand DNA and Tonality?**
+They're still there, renamed in this surface: **Brand DNA → Strategy**, **Tonality → Tone**. The forms and fields are unchanged; the older headings still appear inside some flows.
+
+**Q: My old bookmark to brand settings still works — is that expected?**
+Yes. The old settings routes for DNA, Identity, Tonality and Knowledge Vault are deliberately kept so existing deep links resolve. They're just no longer listed in the Settings sidebar — Brand IQ is the place to go.
+
+**Q: Do I need all three pillars before generating?**
+No, but partial setup means partial grounding. The Overview banner and the Studio label both flag an incomplete brand precisely because output quality depends on it.
+
+**Q: What counts as "ready"?**
+The brand reaches **ready** once its knowledge is in place across the pillars; short of that you'll see **N of 3 pillars set**, or **Not set up yet** at zero.
+
+**Q: Someone on my team can't open Brand IQ.**
+Their brand role doesn't include it. A workspace admin can assign a role with Brand IQ access — see [Inviting Team Members](../workspace/inviting-team-members).
+
+---
+
+## Next Steps
+
+- [Brand IQ Sources — Grounding Your Brand](./brand-iq-sources)
+- [Strategy (Brand DNA)](./brand-profile)
+- [Identity](./brand-identity)
+- [Tone of Voice](./tone-of-voice)
+
+## Related Articles
+
+- [Managing Multiple Brands](./multiple-brands)
+- [Navigating frndOS](../getting-started/navigating-frndos)
+- [Studio Overview](../studio/overview)

@@ -8,7 +8,7 @@ description: Use Projects in frndOS to organize campaigns, briefs, and assets �
 
 In frndOS, a **Project** is a container for everything related to a single campaign — the brief, the direction, and all the generated assets that come out of it.
 
-Every KV you create needs to live inside a Project. This is what gives the AI campaign-level context (beyond just brand-level Brand Knowledge).
+Every KV you create needs to live inside a Project. This is what gives the AI campaign-level context (beyond brand-level [Brand IQ](../brand-setup/brand-iq)).
 
 ## When to Use Projects
 
@@ -25,7 +25,7 @@ A Project holds:
 |---|---|
 | **Project Brief** | Campaign-level direction (audience, tone, visual direction) |
 | **Project KVs** | All Key Visuals generated under this project |
-| **Project Settings** | Toggles for Brand Knowledge, custom tonality, etc. |
+| **Project Settings** | The **Use Brand Knowledge** toggle, custom tonality, etc. |
 
 ## How to Create a Project
 
@@ -37,14 +37,14 @@ A Project holds:
    - **Target audience** for this specific campaign
    - **Visual direction** and tone
    - **Campaign objective** and messaging
-6. Configure project-level settings (Brand Knowledge toggle, custom tonality if needed)
+6. Configure project-level settings (the **Use Brand Knowledge** toggle, custom tonality if needed)
 7. Save
 
 The Project is now ready to host your Key Visuals.
 
 ## The Project Brief
 
-The Project Brief is the most important part of project setup. It gives the AI campaign-specific context that goes beyond your brand's default Brand Knowledge.
+The Project Brief is the most important part of project setup. It gives the AI campaign-specific context that goes beyond your brand's default Brand IQ.
 
 **Recommended fields to fill in:**
 
@@ -55,18 +55,18 @@ The Project Brief is the most important part of project setup. It gives the AI c
 
 > **The more you put in the Project Brief, the more on-target your AI generations will be.**
 
-## Overriding Brand Knowledge at the Project Level
+## Overriding Brand IQ at the Project Level
 
 This is one of the most powerful features of Projects.
 
-By default, every project uses your brand's global Brand Knowledge (DNA, Identity, Tonality). But you can override at the project level:
+By default, every project uses your brand's global Brand IQ (Strategy, Identity, Tone). The project settings rail carries a **Use Brand Knowledge** toggle — described in the app as _Use \{brand\}'s brand knowledge for all the files created in this project_ — which you can switch off to override:
 
 ### Use Case 1 — Experimental Campaign
 
 Your brand normally has a formal, corporate tone. But this campaign targets Gen-Z with a bold, experimental direction.
 
 **How to override:**
-1. In Project settings, **disable the default Brand Knowledge** for this project
+1. In Project settings, switch **Use Brand Knowledge** off for this project
 2. In the Project Brief, **add a custom tonality** describing the experimental direction
 3. Generate KVs — they'll use the campaign-specific tonality, not the global one
 
@@ -75,17 +75,17 @@ Your brand normally has a formal, corporate tone. But this campaign targets Gen-
 You want to keep your brand's visual identity but try a different communication tone for one campaign.
 
 **How to override:**
-1. Keep Brand Knowledge **enabled**
+1. Keep **Use Brand Knowledge** on
 2. In the Project Brief, **add a custom tonality** that complements the override
 3. The visual identity stays consistent; only the communication tone shifts
 
-> See [Setting Your Brand's Tone of Voice](../brand-setup/tone-of-voice) for more on tonality control.
+> See [Brand IQ Tone (Tone of Voice)](../brand-setup/tone-of-voice) for more on tone control.
 
 ## How Projects Affect Generation
 
 Every KV generated under a project inherits:
 
-- **Brand Knowledge** (unless toggled off)
+- **Brand IQ** (unless **Use Brand Knowledge** is toggled off)
 - **Project Brief** context
 - **Custom tonality** if defined
 - **Project-specific references** uploaded to the project
@@ -113,6 +113,6 @@ Duplication features depend on your workspace tier. Check with your frndOS accou
 
 ## Related Articles
 
-- [Setting Up Your Brand Profile (Brand DNA)](../brand-setup/brand-profile)
-- [Setting Your Brand's Tone of Voice](../brand-setup/tone-of-voice)
+- [Brand IQ Strategy (Brand DNA)](../brand-setup/brand-profile)
+- [Brand IQ Tone (Tone of Voice)](../brand-setup/tone-of-voice)
 - [Creating Your First Key Visual](../studio/kv-generator)

@@ -1,0 +1,152 @@
+---
+title: Brand IQ Sources — Grounding Your Brand
+sidebar_position: 2
+description: Upload a brand guideline PDF, deck or link into Brand IQ → Sources, review what the AI extracted, and activate it so every answer is grounded in your brand's facts.
+---
+
+# Brand IQ Sources — Grounding Your Brand
+
+Instead of typing every field by hand, you can hand frndOS a brand guideline document and let it extract the Strategy, Identity and Tone fields for you. That's what the **Sources** tab in [Brand IQ](./brand-iq) is for.
+
+The tab describes itself as: _Reference material that grounds every AI answer in this brand's facts._
+
+## Before You Start
+
+1. ✅ **Write access to Brand IQ for this brand** — without it the **Add source** button is disabled and there's no **Activate** button on the review form.
+2. ✅ **A file or link to add** — a PDF or deck (`.pdf`, `.ppt`, `.pptx`), or an `http(s)` URL.
+3. ✅ **Enough text in the file** — a thin file extracts thin results (see the warning below).
+
+## Step 1 — Open Sources
+
+Open the brand → **Brand IQ** → **Sources** tab.
+
+At the top you'll see one of two things:
+
+- **A coverage strip** once material has been processed: _\{N\} knowledge chunks grounding this brand_, plus a pill per pillar — **Strategy N**, **Identity N**, **Tone N**. A pillar sitting at zero turns amber and reads **· add more**.
+- **No coverage yet**: _No reference material has grounded this brand yet._
+
+With no source at all, the body shows **No sources yet** — _Add brand guidelines, decks or research to ground the AI in this brand's facts._
+
+## Step 2 — Add a Source
+
+Click **Add source** (it reads **Replace source** when one already exists). The menu has four entries:
+
+| Option | Description in the menu | Status |
+|---|---|---|
+| **Upload files** | PDF or deck | Available |
+| **Add link** | Add a URL | Available |
+| **Connect Lark** | Folder or wiki, synced | **Soon** |
+| **From Files** | Pick an existing frndOS file | **Soon** |
+
+The two marked **Soon** aren't wired up yet — choosing one shows a "coming soon" toast.
+
+### Upload a file
+
+**Upload files** opens the file picker. Accepted extensions are `.pdf`, `.ppt` and `.pptx`.
+
+### Add a link
+
+**Add link** opens an inline field with the placeholder `https://example.com/brand-guidelines`. Paste the URL and press Enter or click **Add link**. Only `http` and `https` links are accepted:
+
+- `Enter a valid URL` — the text isn't a URL at all
+- `Enter an http(s) link` — the URL uses another scheme
+
+> **One source at a time.** If a source is already processing or waiting for review, adding a new one asks _You have an unactivated draft. Discard and start a new one?_ Confirming discards the old draft.
+
+## Step 3 — Wait for Processing
+
+While the file is read, a progress panel titled **Processing Brand Knowledge** walks through the stages:
+
+| Stage | What it shows |
+|---|---|
+| Parsing | Reading file... |
+| Extracting | Extracting Brand DNA, Identity, and Tonality... |
+| Embedding | Saving to Knowledge Vault... |
+| Clustering | Clustering chunks... |
+| Done | Done! |
+
+The panel notes it _usually takes 1-3 minutes_ and that you can close it — you'll be notified when it's finished.
+
+Each source row shows the source name, its type and date, and a status badge:
+
+| Badge | Meaning |
+|---|---|
+| **Processing** | Still being read |
+| **Needs review** | Extraction finished, waiting for you |
+| **Processed** | Activated and in use |
+| **Failed** | Extraction didn't complete |
+
+The **⋯** menu on the row offers **Open** (for link sources) and **Remove**.
+
+<!-- TODO: add screenshot — Brand IQ → Sources tab: coverage strip with per-pillar chips, Add source dropdown open showing Upload files / Add link / Connect Lark (Soon) / From Files (Soon) -->
+_[TODO: screenshot of the Sources tab with the Add source menu open — needed from the live UI]_
+
+## Step 4 — Review What Was Extracted
+
+Once the status is **Needs review**, the review form appears below the source row, grouped into three collapsible sections — **Brand DNA**, **Brand Identity**, **Brand Tonality** — each with a **N/M fields** counter.
+
+A section can carry a tag:
+
+- **Empty — optional** — nothing extracted and nothing existing. The note says you can fill it in manually later in that tab.
+- **Existing preserved** — nothing new extracted, so _your existing \{pillar\} will be kept on activate_.
+
+For every field where the AI found something *and* you already had a value, you choose between two cards:
+
+| Choice | When to use it |
+|---|---|
+| **Keep existing** | Your current value is correct |
+| **Use AI suggestion** | The extracted value is better — you can edit it before accepting, and the label then reads **Use AI suggestion (edited)** |
+
+Fields that still need an explicit choice are highlighted, so nothing is silently overwritten.
+
+Each field also carries a confidence badge — **High**, **Medium** or **Low** — so you know how much to trust the extraction.
+
+> **Thin files get flagged.** If the file has little text, a warning appears: _File contains limited text (~N words). Extraction results may be incomplete. You can complete it manually after activation._
+
+The Tone section includes the **Generate Vibe Check** panel, so you can produce a sample post from the extracted tone before committing to it.
+
+<!-- TODO: add screenshot — Sources review form: a field showing the "Keep existing" vs "Use AI suggestion" cards side by side with a confidence badge -->
+_[TODO: screenshot of the review form's Keep existing / Use AI suggestion choice — needed from the live UI]_
+
+## Step 5 — Activate
+
+When you're happy with the review, click **Activate** (it reads **Activating…** while it runs). The extracted values are written into the pillars, and the source row flips to **Processed**.
+
+After activation, go back to the [Brand IQ Overview](./brand-iq) — the pillar cards and the knowledge-chunk count should reflect the new material.
+
+## FAQ
+
+**Q: Which file types can I upload?**
+`.pdf`, `.ppt` and `.pptx`. Links must be `http` or `https`.
+
+**Q: Can I keep several sources at once?**
+The tab works with one source at a time — adding another while one is unactivated prompts you to discard the draft first. Use **Replace source** to swap it out.
+
+**Q: Will uploading a document overwrite my existing fields?**
+Not without your say-so. Where a field already has a value, you explicitly pick **Keep existing** or **Use AI suggestion** during review. Pillars with nothing new extracted are marked **Existing preserved**.
+
+**Q: What are "knowledge chunks"?**
+Pieces of the processed source material, counted per pillar in the coverage strip and totalled on the Overview tab. They're what grounds AI answers in your brand's facts.
+
+**Q: A pillar chip is amber and says "add more".**
+That pillar has no chunks. Add material covering it, or fill the pillar in by hand in its tab.
+
+**Q: Extraction failed — what now?**
+Remove the source from the **⋯** menu and try again with a text-based file. Scanned or image-only PDFs give the AI very little to read.
+
+**Q: Can I skip sources entirely?**
+Yes. Filling Strategy, Identity and Tone by hand works fine — sources are a shortcut, not a requirement.
+
+---
+
+## Next Steps
+
+- [Brand IQ — Your Brand's Knowledge Home](./brand-iq)
+- [Strategy (Brand DNA)](./brand-profile)
+- [Identity](./brand-identity)
+- [Tone of Voice](./tone-of-voice)
+
+## Related Articles
+
+- [Managing Multiple Brands](./multiple-brands)
+- [Inviting Team Members](../workspace/inviting-team-members)

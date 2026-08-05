@@ -12,6 +12,19 @@ _Last updated: 2026-08-05_
 
 
 
+## docs/brand-setup/brand-iq.mdx
+
+| Line | Type | What to do |
+| ---- | ---- | ---------- |
+| 71–72 | 📸 | Screenshot: Brand IQ Overview tab — status banner with knowledge-chunk count, three pillar cards (Strategy/Identity/Tone), Knowledge Vault card, "Brand IQ powers" strip |
+
+## docs/brand-setup/brand-iq-sources.mdx
+
+| Line | Type | What to do |
+| ---- | ---- | ---------- |
+| 81–82 | 📸 | Screenshot: Brand IQ → Sources tab — coverage strip with per-pillar chips, **Add source** dropdown open (Upload files / Add link / Connect Lark `Soon` / From Files `Soon`) |
+| 108–109 | 📸 | Screenshot: Sources review form — one field showing **Keep existing** vs **Use AI suggestion** cards side by side with a confidence badge |
+
 ## docs/collaboration/real-time-collaboration.mdx
 
 | Line | Type | What to do |
