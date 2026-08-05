@@ -29,20 +29,64 @@ When the user provides a **Lark doc URL** (e.g. `https://*.larksuite.com/docx/..
 ```dot
 digraph lark {
   rankdir=LR;
-  "0a. WebFetch Lark doc" [shape=box];
-  "0b. Extract changed features + file hints" [shape=box];
+  "0a. Lark MCP available?" [shape=diamond];
+  "0b. Read doc via lark_docx_v1_document_rawContent" [shape=box];
+  "0c. Fallback: web fetch" [shape=box];
+  "0d. Auth wall / empty?" [shape=diamond];
+  "0e. STOP - ask user to paste content" [shape=box];
+  "0f. Extract changed features + file hints" [shape=box];
   "1. Locate & verify in frnd-web" [shape=box];
   "2. Write docs (grounded in code)" [shape=box];
 
-  "0a. WebFetch Lark doc" -> "0b. Extract changed features + file hints";
-  "0b. Extract changed features + file hints" -> "1. Locate & verify in frnd-web";
+  "0a. Lark MCP available?" -> "0b. Read doc via lark_docx_v1_document_rawContent" [label="yes (normal)"];
+  "0a. Lark MCP available?" -> "0c. Fallback: web fetch" [label="no"];
+  "0b. Read doc via lark_docx_v1_document_rawContent" -> "0f. Extract changed features + file hints";
+  "0c. Fallback: web fetch" -> "0d. Auth wall / empty?";
+  "0d. Auth wall / empty?" -> "0e. STOP - ask user to paste content" [label="yes"];
+  "0d. Auth wall / empty?" -> "0f. Extract changed features + file hints" [label="no"];
+  "0e. STOP - ask user to paste content" -> "0f. Extract changed features + file hints";
+  "0f. Extract changed features + file hints" -> "1. Locate & verify in frnd-web";
   "1. Locate & verify in frnd-web" -> "2. Write docs (grounded in code)";
 }
 ```
 
 Steps:
 
-1. **WebFetch** the Lark doc URL to get the list of feature changes.
+0. **Read the doc through the Lark MCP server.** Lark docs are auth-gated — an anonymous web fetch returns a login wall or an empty shell, and treating that as "the doc" is a silent failure. This repo ships a `lark` MCP server (`.pi/mcp.json`, OAuth, lazy-started), so the MCP path is the norm and the web fetch is only a fallback.
+
+   ```
+   mcp({ server: "lark" })        # confirm it's connected; if absent, mcp({ search: "lark" }) / "feishu"
+   ```
+
+   **Extract the document ID from the URL** — it's the segment after `/docx/`:
+   `https://<tenant>.larksuite.com/docx/`**`Abc123XyzDoc456`**`?from=...` → `document_id = Abc123XyzDoc456`.
+   For a `/wiki/<node_token>` URL, resolve it first with `lark_wiki_v2_space_getNode` → use the returned `obj_token`.
+
+   Then fetch the content:
+
+   ```
+   mcp({ tool: "lark_docx_v1_document_rawContent",
+         args: { path: { document_id: "<doc-id>" }, useUAT: true } })
+   ```
+
+   | Tool | Use for |
+   | ---- | ------- |
+   | `lark_docx_v1_document_rawContent` | **Default.** Plain text of the whole doc — enough to extract feature names + file hints. |
+   | `lark_docx_v1_documentBlock_list` | Only when you need block structure (tables, nesting) that raw text flattens away. |
+   | `lark_wiki_v2_space_getNode` | Turn a `/wiki/` URL into the underlying doc token. |
+   | `lark_docx_builtin_search` / `lark_wiki_v1_node_search` | User names a doc by title instead of URL. |
+
+   `useUAT: true` runs as the signed-in user (OAuth) rather than the app — needed for docs shared with a person, not with the bot. First call opens a browser consent flow; that's expected.
+
+   | Result | Action |
+   | ------ | ------ |
+   | **Content returned** | Continue to step 2 (extract clues). |
+   | **Permission error / empty** | The app or your account lacks access. Don't retry blindly — tell the user and ask them to share the doc or paste the content. |
+   | **`lark` server missing/unreachable** | Fall back to a generic web fetch (step 1), then apply the auth-wall check below. |
+
+1. **Fetch** the Lark doc URL to get the list of feature changes. Use whichever web-fetch tool the harness exposes — `ninerouter_web_fetch` (pi) or `WebFetch` (Claude Code).
+
+   **Verify the fetch actually returned document content.** Login/permission page, an empty app shell, or a body with no feature text = **fetch failed**. Do NOT proceed on it and do NOT reconstruct the doc from the URL slug or memory. Tell the user the doc is auth-gated and ask them to paste the content (or install a Lark MCP). Working from a failed fetch is the same class of error as guessing UI steps.
 2. From the content, extract:
    - **Feature keywords** to search for in frnd-web (routes, components, labels).
    - **File hints** if the doc mentions specific directories or files.
@@ -255,7 +299,7 @@ Every `TODO` marker you left in a doc is a task only a human can finish (screens
    - **Marker gone** (not in grep) → remove that row; the user resolved it.
    - **New marker** → add a row (read the doc for its Type + text, per step 1).
    - Preserve the human-written "what to do" wording on rows you're keeping — only the line number is machine-refreshed.
-3. One section per doc file, **sections ordered by `sidebar_position`** (same order the guides appear in the sidebar) so the ledger reads top-to-bottom like the docs. A table row per marker with **line**, **type** (📸 screenshot · ✍️ confirm-from-live-UI · 🔒 third-party/iframe), and **what to do**. Update the `_Last updated:_` date (ask the user for today's date if unknown — `new Date()` is not available).
+3. One section per doc file, **sections ordered by `sidebar_position`** (same order the guides appear in the sidebar) so the ledger reads top-to-bottom like the docs. A table row per marker with **line**, **type** (📸 screenshot · ✍️ confirm-from-live-UI · 🔒 third-party/iframe), and **what to do**. Update the `_Last updated:_` date (get it with `date +%F`; if the shell is unavailable, ask the user).
 4. If the reconcile leaves a doc with zero markers, drop its whole section. If every section is gone, keep the file with a one-line "_All docs complete — no manual follow-ups._" so the user sees the ledger is intentionally empty, not lost.
 
 This ledger is the single answer to "what do I still have to do by hand?" Keep it in sync on every docs run.
@@ -273,10 +317,12 @@ This ledger is the single answer to "what do I still have to do by hand?" Keep i
 | "Close enough on the link path" | `onBrokenLinks: throw` fails the build. Verify the target file exists. |
 | "I'll just document all sub-features as live" | Check `isComingSoon` / feature flags. Don't present coming-soon as available. |
 | "The wizard code is rich, so I'll document it" | Rich code ≠ reachable feature. If the route redirects or `isLive: false`, it's retired — STOP and ask the user (see step 1.5). |
+| "The Lark fetch returned *something*, close enough" | A login wall is not the doc. Check for real feature content; if absent, ask the user to paste it. |
 
 ## Red Flags — STOP
 
 - Writing a UI step you did not read in frnd-web
+- **Acting on a Lark fetch that returned a login/permission page or empty shell** — use the `lark` MCP server first (step 0); a plain web fetch of a Lark URL is the fallback, not the default. If the fallback is auth-walled, STOP and ask the user for the content
 - **Filing a pillar-signalling feature under an existing module without offering a new pillar** — a keyword shaped `<Grouping> -> <Feature>`, or a cross-cutting/beta/admin surface, means you PAUSE and ask (step 5a) before writing
 - **Adding a pillar option to `tina/config.jsx` without mirroring it into `tina/tina-lock.json`** — stale lock → Vercel build fails `local Tina schema doesn't match remote`. A passing `build-local` does NOT catch this (see Notes)
 - Describing what happens inside a third-party iframe
