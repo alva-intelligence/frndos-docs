@@ -263,7 +263,7 @@ const DocsCollection = {
         { label: "📊 Insights", value: "insights" },
         { label: "🔍 Research", value: "research" },
         { label: "💬 AskFrnd", value: "askfrnd" },
-        { label: "📢 Growth & Campaigns", value: "growth" },
+        { label: "📢 Growth (Coming Soon)", value: "growth" },
         { label: "🤝 Collaboration", value: "collaboration" },
         { label: "📁 Projects & Workflows", value: "projects" },
         { label: "📚 Library", value: "library" },
