@@ -4,6 +4,7 @@ Manual follow-ups left in the Help Center guides — screenshots, flows only vis
 
 _Last updated: 2026-08-25_
 
+
 | Legend | Meaning |
 |---|---|
 | 📸 screenshot | An image is needed; capture it and drop it in `static/img/guides-asset/` |
@@ -19,6 +20,13 @@ _Last updated: 2026-08-25_
 |---|---|---|
 | 72 | 📸 screenshot | add screenshot of the redesigned Home — briefing hero with composer, Continue Working, Team activity rail, Recent Campaigns → `/img/guides-asset/` |
 
+### `docs/getting-started/your-first-brand.mdx` — Setting Up Your First Brand
+
+| Line | Type | What to do |
+|---|---|---|
+| 35 | 📸 screenshot | add screenshot of the Add New Brand dialog — title, Fill with Smart Creation button, Brand Name / Description / Logo fields → `/img/guides-asset/` |
+| 67 | 📸 screenshot | add screenshot of the Smart Creation dialog — Brand Website field + Language dropdown → `/img/guides-asset/` |
+
 ### `docs/getting-started/myfrnd.mdx` — myFRND — Making Your Assistant More Capable
 
 | Line | Type | What to do |
@@ -33,16 +41,13 @@ _Last updated: 2026-08-25_
 | Line | Type | What to do |
 |---|---|---|
 | 71 | 📸 screenshot | add screenshot — Brand IQ Overview tab: status banner with knowledge-chunk count, three pillar cards (Strategy/Identity/Tone), Knowledge Vault card, Brand IQ powers strip |
-| 72 | 📸 screenshot | screenshot of the Brand IQ Overview tab — needed from the live UI |
 
 ### `docs/brand-setup/brand-iq-sources.mdx` — Brand IQ Sources — Grounding Your Brand
 
 | Line | Type | What to do |
 |---|---|---|
 | 81 | 📸 screenshot | add screenshot — Brand IQ → Sources tab: coverage strip with per-pillar chips, Add source dropdown open showing Upload files / Add link / Connect Lark (Soon) / From Files (Soon) |
-| 82 | 📸 screenshot | screenshot of the Sources tab with the Add source menu open — needed from the live UI |
-| 108 | 📸 screenshot | add screenshot — Sources review form: a field showing the "Keep existing" vs "Use AI suggestion" cards side by side with a confidence badge |
-| 109 | 📸 screenshot | screenshot of the review form's Keep existing / Use AI suggestion choice — needed from the live UI |
+| 107 | 📸 screenshot | add screenshot — Sources review form: a field showing the "Keep existing" vs "Use AI suggestion" cards side by side with a confidence badge |
 
 ### `docs/brand-setup/deck-templates.mdx` — Brand Deck Templates
 
@@ -113,7 +118,7 @@ _Last updated: 2026-08-25_
 |---|---|---|
 | 35 | 📸 screenshot | add screenshot of the General Survey card in the Research hub → `/img/guides-asset/` |
 | 43 | 🔒 third-party | The survey builder itself runs inside an embedded survey tool (Populix), which is outside the frndOS app. Confirm the actual in-builder steps (question types, target respondent count, respondent criteria, duration) with a screenshot before publishing this section. Do not guess. |
-| 51 | 🔒 third-party | confirm exact fields, question types, and respondent options from the live builder — these live in the embedded survey tool and aren't documented from the app code. |
+| 53 | 🔒 third-party | confirm exact fields, question types, and respondent options from the live builder — these live in the embedded survey tool (Populix) and aren't readable from the app code. Screenshot needed. |
 
 ### `docs/research/managing-surveys.mdx` — Managing & Tracking Your Surveys
 
@@ -121,7 +126,7 @@ _Last updated: 2026-08-25_
 |---|---|---|
 | 17 | 📸 screenshot | add screenshot of the Surveys list → `/img/guides-asset/` |
 | 65 | 📸 screenshot | add screenshot of the Overview metrics cards → `/img/guides-asset/` |
-| 95 | 🔒 third-party | Open the survey and use its Detail view. The response breakdown is shown in the embedded survey tool. _[TODO: confirm what the response/results view shows once available — screenshot needed. |
+| 97 | 🔒 third-party | confirm what the response/results view shows once available — lives in the embedded survey tool, screenshot needed |
 
 ### `docs/research/assigning-brand-and-sharing.mdx` — Assigning a Brand & Sharing Surveys
 
@@ -238,9 +243,7 @@ _Last updated: 2026-08-25_
 | Line | Type | What to do |
 |---|---|---|
 | 27 | 📸 screenshot | add screenshot — Workspace Settings → People page: header "People", Search box, Invite button, Members/Requests pill tabs, member table |
-| 28 | 📸 screenshot | screenshot of the People page — needed from the live UI |
-| 74 | 📸 screenshot | add screenshot — Invite dialog: email chips, "You're inviting N guests as Member", role dropdown, brand access cascade picker open |
-| 75 | 📸 screenshot | screenshot of the invite dialog with the brand access picker open — needed from the live UI |
+| 73 | 📸 screenshot | add screenshot — Invite dialog: email chips, "You're inviting N guests as Member", role dropdown, brand access cascade picker open |
 
 ### `docs/workspace/managing-credits.mdx` — Managing Workspace Credits
 

@@ -1,17 +1,128 @@
 ---
 title: Setting Up Your First Brand
-description: Create your first brand profile in frndOS.
-sidebar_position: 4
+description: Create your first brand in frndOS — manually or with Smart Creation from a website — and know what to configure next.
+sidebar_position: 5
 ---
 
 # Setting Up Your First Brand
 
-To create your first brand:
+A **brand** is the container everything else in frndOS hangs off — Insights data, Studio output, Research, and Brand IQ are all scoped to one brand. Until a brand exists, most of the platform has nothing to work with.
 
-1. Click **+ New Brand** on the dashboard
-2. Fill in the brand name and industry
-3. Upload your logo and key assets
-4. Define a short tone of voice
-5. Save and continue to [Brand Setup](../brand-setup/brand-profile) for the full setup
+This guide covers creating the brand itself. Configuring its knowledge comes after — see [Brand IQ](../brand-setup/brand-iq).
 
-[Placeholder — to be written by content author via TinaCMS]
+## Before You Start
+
+1. ✅ **You're in an organization workspace.** Brands don't exist in personal workspaces — the create option is hidden there entirely. See [Joining or Creating a Workspace](./joining-or-creating-workspace).
+2. ✅ **You have brand-create permission.** Creating a brand needs write access to workspace brands, which normally means a workspace **admin** or **owner**. Without it, the create controls simply don't render — there's no greyed-out button to click.
+3. ✅ **You know the brand name.** Name is the only required field. Description and logo can be added later.
+4. ✅ **Optional: the brand's website URL** if you want [Smart Creation](#step-2-optional--fill-with-smart-creation) to pre-fill the form for you.
+
+> **Heads-up:** if you're a member rather than an admin, empty screens tell you so instead of offering a create button — for example Insights shows _"You haven't been added to a brand yet"_ with a **Waiting Invitation** label, and Home shows a **Remind Admin** button. Ask your admin to create the brand, then to give you access.
+
+## Where to Create a Brand
+
+There is no dedicated "new brand" page — creation always opens the same **Add New Brand** dialog, from any of these places:
+
+| Entry point | Where you'll find it |
+|---|---|
+| **+** button next to **Brands** | The **Brands** section header in the sidebar (labelled _Create new brand_) |
+| **Add new brand** | Bottom of the brand switcher list — open the brand list, the row sits under **Pinned** / **All Brands** |
+| **Create Brand** | The empty state you get when the workspace has no brands yet (Home shows **No Brands Yet**, Insights shows _"Create a brand to unlock Insights"_, Studio and Research show their own versions) |
+| **Create brand** | The **Get started with _your workspace_** onboarding checklist, first item: **Create your first brand** |
+
+All four open the same dialog, so it doesn't matter which one you use.
+
+<!-- TODO: add screenshot of the Add New Brand dialog — title, Fill with Smart Creation button, Brand Name / Description / Logo fields → /img/guides-asset/<name>.jpeg -->
+
+## Step 1 — Fill In the Brand Basics
+
+The **Add New Brand** dialog has three fields:
+
+| Field | Required | Notes |
+|---|---|---|
+| **Brand Name** | Yes | Placeholder: _Enter brand name_. The **Add New Brand** button stays disabled until this has content. |
+| **Description** | No | Placeholder: _Describe the brand_. A short paragraph describing the brand. |
+| **Logo** | No | Click or drag onto the **Brand Logo** tile. |
+
+For the logo, the dialog states the rules directly: _"Upload a JPG or PNG image under 1MB. The logo will be cropped into a 1:1 aspect ratio."_ Only JPEG and PNG are accepted — anything else is rejected with the error _"Invalid file format. Only JPEG and PNG are allowed."_
+
+When you're ready, click **Add New Brand**. The button reads **Creating...** while it works, and the dialog stays locked until it finishes (clicking outside or pressing Esc won't close it mid-create).
+
+> **Heads-up:** there's no banner field in this dialog. Only name, description and logo are set at creation time.
+
+## Step 2 (optional) — Fill with Smart Creation
+
+If the brand has a public website, you can let frndOS pre-fill the form instead of typing it.
+
+1. In the **Add New Brand** dialog, click **Fill with Smart Creation** (top-right, sparkles icon)
+2. The **Smart Creation** dialog opens with two fields:
+   - **Brand Website** — placeholder `https://brand.com`. A full URL including `http://` or `https://` is required; anything else shows _"Please enter a valid URL (e.g., https://example.com)"_ and blocks the button.
+   - **Language** — the language for the generated content. Options: **English** (default), **Indonesian**, **Spanish**, **French**, **German**, **Japanese**, **Korean**, **Chinese**. The list is searchable.
+3. Click **Continue**. The button reads **Processing...** while frndOS reads the site.
+
+Smart Creation **creates the brand** — it doesn't just fill in the form and hand it back. When it finishes, you land on the new brand directly, with name, description and logo already populated from the website.
+
+> **Note:** review what Smart Creation produced. It's generated from a website, so the description and logo are a starting point, not a final answer — edit them in the brand's settings if they're off.
+
+<!-- TODO: add screenshot of the Smart Creation dialog — Brand Website field + Language dropdown → /img/guides-asset/<name>.jpeg -->
+
+## Step 3 — After the Brand Is Created
+
+Either path ends the same way:
+
+1. A success toast confirms the brand was created
+2. The dialog closes
+3. You're taken straight into the new brand's **Insights** area
+
+At this point the brand exists but knows nothing about itself. That's the next job.
+
+## What to Configure Next
+
+Brand creation captures a name, a description, and a logo — nothing about strategy, visuals, or voice. All of that lives in **Brand IQ**, per brand, in three pillars:
+
+| Pillar | What it covers | Guide |
+|---|---|---|
+| **Strategy** | Brand personality, target audience, competitors | [Brand IQ Strategy](../brand-setup/brand-profile) |
+| **Identity** | Visual rules — colors, typography, do's and don'ts | [Brand IQ Identity](../brand-setup/brand-identity) |
+| **Tone** | Voice and personality | [Brand IQ Tone](../brand-setup/tone-of-voice) |
+
+Open a brand and click the **Brand IQ** card in the sidebar to get there. The card shows readiness at a glance — **Ready · 3 pillars**, **N of 3 pillars set**, or **Not set up yet**.
+
+> **Shortcut:** if the brand already has a brand guideline deck or PDF, upload it under **Brand IQ → Sources** and let frndOS extract the pillar fields for you — you review each suggestion before it's applied. See [Brand IQ Sources](../brand-setup/brand-iq-sources).
+
+## FAQ
+
+**Q: I can't find any way to add a brand. Why?**
+Two common reasons. Either you're in a **personal workspace** — brands only exist in organization workspaces — or your role doesn't include brand-create permission. In the second case the controls are hidden rather than disabled, so there's nothing to click. Ask a workspace admin or owner.
+
+**Q: Is the logo required?**
+No. Only **Brand Name** is required. Description and logo can be added later from the brand's settings.
+
+**Q: My logo was rejected.**
+Only JPG/JPEG and PNG are accepted, and the dialog asks for a file under 1MB. Convert or compress and try again. The logo is cropped to a 1:1 square.
+
+**Q: Does Smart Creation replace setting up Brand IQ?**
+No. Smart Creation fills in the brand's basics (name, description, logo) from its website. Strategy, Identity and Tone still need to be configured in [Brand IQ](../brand-setup/brand-iq).
+
+**Q: Can I edit the name or description after creating?**
+Yes — open the brand's settings from the gear icon beside the brand in the sidebar.
+
+**Q: Can I create more than one brand?**
+Yes. Each brand gets its own Brand IQ, projects, and assets. See [Managing Multiple Brands](../brand-setup/multiple-brands).
+
+**Q: I made the brand — how do others get access?**
+Brand access is assigned per person through workspace settings. See [Inviting Team Members](../workspace/inviting-team-members).
+
+---
+
+## Next Steps
+
+- [Brand IQ — Your Brand's Knowledge Home](../brand-setup/brand-iq)
+- [Brand IQ Strategy (Brand DNA)](../brand-setup/brand-profile)
+- [Navigating frndOS — The Sidebar](./navigating-frndos)
+
+## Related Articles
+
+- [Joining or Creating a Workspace](./joining-or-creating-workspace)
+- [Managing Multiple Brands](../brand-setup/multiple-brands)
+- [Inviting Team Members](../workspace/inviting-team-members)
