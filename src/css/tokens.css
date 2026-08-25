@@ -79,8 +79,8 @@
   --frnd-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
   --frnd-ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* Font families */
-  --frnd-font-display: "General Sans", system-ui, sans-serif;
+  /* Font families — Geist untuk semua peran */
   --frnd-font-body: "Geist", system-ui, -apple-system, sans-serif;
-  --frnd-font-support: "Funnel Sans", system-ui, sans-serif;
+  --frnd-font-display: var(--frnd-font-body);
+  --frnd-font-support: var(--frnd-font-body);
 }

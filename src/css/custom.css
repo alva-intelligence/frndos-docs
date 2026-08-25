@@ -16,6 +16,13 @@
   --ifm-transition-fast: var(--frnd-duration-fast);
   --ifm-transition-slow: var(--frnd-duration-smooth);
   --ifm-transition-timing-default: var(--frnd-ease-standard);
+
+  /* Sidebar collapse caret — Phosphor CaretDown (regular, MIT).
+   * Dark-filled; Infima inverts it via --ifm-menu-link-sublist-icon-filter in dark mode. */
+  --ifm-menu-link-sublist-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16px" height="16px" fill="rgba(0,0,0,0.5)"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></svg>');
+
+  /* Search magnifier — Phosphor MagnifyingGlass (regular, MIT). */
+  --ifm-navbar-search-input-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16px" height="16px" fill="rgba(0,0,0,0.5)"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></svg>');
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -248,5 +255,5 @@ code {
 /* Magnifier icon is a data-URI background (currentColor doesn't resolve there),
  * so ship a white-filled SVG for dark mode. */
 [data-theme="dark"] .navbar__search-input {
-  --ifm-navbar-search-input-icon: url('data:image/svg+xml;utf8,<svg fill="%23ffffff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="16px" width="16px"><path d="M6.02945,10.20327a4.17382,4.17382,0,1,1,4.17382-4.17382A4.15609,4.15609,0,0,1,6.02945,10.20327Zm9.69195,4.2199L10.8989,9.59979A5.88021,5.88021,0,0,0,12.058,6.02856,6.00467,6.00467,0,1,0,9.59979,10.8989l4.82338,4.82338a.89729.89729,0,0,0,1.29912,0,.89749.89749,0,0,0-.00087-1.29909Z" /></svg>');
+  --ifm-navbar-search-input-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16px" height="16px" fill="%23ffffff"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></svg>');
 }

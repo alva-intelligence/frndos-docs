@@ -1,23 +1,14 @@
 /* Self-hosted fonts — frndOS Command Studio
  * Paths resolve from site root (Docusaurus serves static/ at /). */
 
-/* General Sans — variable (heading) */
+/* Geist — satu-satunya typeface: display, body/UI, dan support text */
 @font-face {
-  font-family: "General Sans";
-  src: url("/fonts/general-sans/GeneralSans-Variable.ttf") format("truetype-variations");
-  font-weight: 200 700;
+  font-family: "Geist";
+  src: url("/fonts/geist/Geist-Light.ttf") format("truetype");
+  font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
-@font-face {
-  font-family: "General Sans";
-  src: url("/fonts/general-sans/GeneralSans-VariableItalic.ttf") format("truetype-variations");
-  font-weight: 200 700;
-  font-style: italic;
-  font-display: swap;
-}
-
-/* Geist — body / UI (static weights) */
 @font-face {
   font-family: "Geist";
   src: url("/fonts/geist/Geist-Regular.ttf") format("truetype");
@@ -43,29 +34,6 @@
   font-family: "Geist";
   src: url("/fonts/geist/Geist-Bold.ttf") format("truetype");
   font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Funnel Sans — helper text (selektif) */
-@font-face {
-  font-family: "Funnel Sans";
-  src: url("/fonts/funnel/FunnelSans-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Funnel Sans";
-  src: url("/fonts/funnel/FunnelSans-Medium.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Funnel Sans";
-  src: url("/fonts/funnel/FunnelSans-SemiBold.ttf") format("truetype");
-  font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
