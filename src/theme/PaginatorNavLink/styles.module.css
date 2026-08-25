@@ -1,0 +1,20 @@
+.label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Next link is right-aligned, so push its content to the end. */
+:global(.pagination-nav__link--next) .label {
+  justify-content: flex-end;
+}
+
+.caret {
+  flex-shrink: 0;
+}
+
+/* Infima appends « / » via pseudo-elements; the SVG carets replace them. */
+:global(.pagination-nav__link--prev) .label::before,
+:global(.pagination-nav__link--next) .label::after {
+  content: none;
+}

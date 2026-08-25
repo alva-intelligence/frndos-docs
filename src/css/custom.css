@@ -257,3 +257,31 @@ code {
 [data-theme="dark"] .navbar__search-input {
   --ifm-navbar-search-input-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="16px" height="16px" fill="%23ffffff"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></svg>');
 }
+
+/* ===== Doc paginator (prev/next) — borderless, surface-filled like the footer ===== */
+.pagination-nav__link {
+  border: none;
+  border-radius: var(--frnd-radius-md);
+  background-color: var(--ifm-background-surface-color);
+  transition: background-color var(--ifm-transition-fast)
+    var(--ifm-transition-timing-default);
+}
+.pagination-nav__link:hover {
+  background-color: var(--ifm-color-emphasis-200);
+}
+.pagination-nav__sublabel {
+  color: var(--ifm-color-content-secondary);
+}
+
+[data-theme="dark"] .pagination-nav__link {
+  background-color: var(--frnd-surface);
+}
+[data-theme="dark"] .pagination-nav__link:hover {
+  background-color: var(--frnd-surface-container);
+}
+[data-theme="dark"] .pagination-nav__label {
+  color: var(--frnd-on-surface);
+}
+[data-theme="dark"] .pagination-nav__sublabel {
+  color: var(--frnd-on-surface-muted);
+}
