@@ -1,0 +1,126 @@
+---
+title: Reading Data States & Sync Warnings
+description: What frndOS is telling you when a connection says Setting up, Delayed, or Error Sync — and what a sync warning means for the numbers on your dashboard.
+sidebar_position: 11
+---
+
+# Reading Data States & Sync Warnings
+
+Insights numbers depend on connections that sync on a schedule. Sometimes data is **still arriving**, sometimes it's **partly there**, and sometimes a connection needs your attention. frndOS says which — this guide translates those messages.
+
+**The short version:** if a number looks wrong, check the connection's status first. Most surprises are a state, not a bug.
+
+## Before You Start
+
+1. ✅ **A brand with connections set up** — see [Core & Extended Connections](./core-extended-connections)
+
+## Connection Statuses
+
+Each account on the brand's Integrations page carries a status. These are the ones you'll see:
+
+| Status | Subtitle | What it means |
+|---|---|---|
+| **Connected** | **Last update &lt;date&gt;** | Working normally |
+| **Connected** | **Delayed — Last update &lt;date&gt;** | Working, but the latest data is behind |
+| **First syncing** | **Syncing for &lt;time&gt;** | The first pull is running — numbers aren't complete yet |
+| **Daily syncing** | **Syncing for &lt;time&gt;** | A routine sync is in progress |
+| **Setting up…** | | Connected, but no sync has finished yet |
+| **Paused** | **Last update &lt;date&gt;** | Someone paused the daily sync |
+| **Click to authorize** | | The connection was never finished — it needs authorizing |
+| **Error Sync** | **Error while syncing your data, please re-sync.** | A sync failed; it will be retried |
+| **Error Sync** | The specific error | The connection is broken and needs fixing |
+
+For a Google Sheets connection you may also see:
+
+| Status | Meaning |
+|---|---|
+| **Discovering schema** — _"Discovering for &lt;time&gt;"_ | frndOS is reading the sheet's columns |
+| **Setting up Integration** — _"Click to configure column mapping."_ | It needs you to map the columns |
+
+> **Heads-up:** **Setting up…** and **First syncing** both mean *data is still on its way*. A dashboard that looks empty during either is not broken — it hasn't been filled yet.
+
+## Core vs Extended Warnings
+
+Some platforms have a **Core** connection and one or more **Extended** ones. When the Core connection breaks, the dashboard says so inline rather than silently showing less:
+
+| Message | What happened |
+|---|---|
+| **Core &lt;Platform&gt; data is unavailable. Showing Extended data only.** | The Core connection is broken, but Extended sources are still contributing — you're seeing a partial picture |
+| **No &lt;Platform&gt; data available.** | The Core connection is broken and nothing else is contributing |
+
+> **Note:** having no Core connection at all is not an error and shows no banner. This warning only appears when a Core connection exists and is **broken**.
+
+See [Core & Extended Connections](./core-extended-connections) for what the two tiers are.
+
+## Sync Warnings
+
+A **sync warning** is different from an error. The sync ran — it just skipped or limited some data.
+
+You'll see a small **⚠ warning icon** on the account row rather than a banner. Hover it:
+
+> _"Some data was skipped on the last sync, so part of this period may be incomplete."_
+
+This is deliberately quiet. Dozens of these can be live at once, and a banner for each would drown out the ones that matter.
+
+### Warning history
+
+Open an account's detail view and, if there were warnings in the last 30 days, a **Sync Warnings** section appears:
+
+> _"Syncs still ran on these days, but some data was skipped or limited — N of the last 30 days affected."_
+
+It lists each affected day and what happened, so you can tell whether the period you're analysing was one of them.
+
+Warning types:
+
+| Type | Meaning |
+|---|---|
+| **Authentication failed** | The account's authorization stopped working |
+| **Insufficient permissions** | The connected account can't read something it needs |
+| **Account restricted** | The platform restricted the account |
+| **Data pipeline issue** | A fault on the frndOS side — not yours to fix |
+| **Sync warning** | An unclassified upstream issue |
+
+> **Heads-up:** the icon on the row only reflects the **latest** warning and clears after the next clean sync. The 30-day history is where you see which days were actually affected.
+
+> **Note:** for a connection shared from another brand, warnings come from the original connection — the panel says which brand.
+
+## No Brand Yet
+
+If Insights shows **You haven't been added to a brand yet**:
+
+> _"Insights requires brand access. Your workspace admin needs to add you to a brand before you can see performance data here."_
+
+This is a permissions state, not a data one — ask a workspace admin to add you. See [Inviting Team Members](../workspace/inviting-team-members).
+
+## FAQ
+
+**Q: My dashboard is empty but the connection says Connected.**
+Check the date range first, then the subtitle. **Delayed — Last update &lt;date&gt;** means the latest data hasn't landed yet, so a recent window can legitimately be empty.
+
+**Q: What's the difference between an error and a warning?**
+An error blocks syncing and gets a banner plus an action. A warning means the sync ran but skipped some data — it gets an icon only.
+
+**Q: My numbers changed between yesterday and today for the same period.**
+A sync that previously skipped data may have filled it in since. Check the **Sync Warnings** history for that account.
+
+**Q: It says "Data pipeline issue" — what do I do?**
+Nothing. That's the catch-all for faults on the frndOS side. It carries no infrastructure detail on purpose, because it isn't yours to fix.
+
+**Q: Why does it say "Showing Extended data only"?**
+The platform's Core connection is broken. You're seeing whatever the Extended connections contribute, which is less than the full picture — reconnect the Core one.
+
+**Q: An account says "Click to authorize".**
+The connection was started but never finished. Click it and complete the authorization.
+
+**Q: How long does "First syncing" take?**
+It varies by platform and history depth. The subtitle shows how long it's been running.
+
+---
+
+## Related Articles
+
+- [Core & Extended Connections](./core-extended-connections)
+- [Insights Overview](./overview)
+- [Connecting Paid Media](./connecting-paid-media)
+- [Connecting Owned Media](./connecting-owned-media)
+- [Collaborating on Insights](./collaborating-on-insights)

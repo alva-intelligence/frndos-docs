@@ -1,210 +1,311 @@
-# Docs TODO — Manual Follow-ups
+# Docs TODO Ledger
 
-> Auto-maintained by the `writing-help-docs-from-code` skill. Lists every part of a Help Center guide that a human must finish because it **couldn't be read from the frnd-web codebase** — third-party iframes, screenshots, or flows the code doesn't reveal.
->
-> **How to use:** work through each item, edit the referenced `docs/**` file, remove the `<!-- TODO ... -->` / `_[TODO ...]_` marker there, then delete the row here. When all rows for a file are gone, the guide is publish-ready.
->
-> **Do not hand-invent these.** They're open precisely because guessing would be wrong. Confirm each from the live app (screenshot / walkthrough) before filling it in.
->
-> Legend — **Type:** 📸 screenshot · ✍️ confirm-from-live-UI · 🔒 third-party/iframe (outside repo)
+Manual follow-ups left in the Help Center guides — screenshots, flows only visible in the live UI, and steps that live inside third-party tools. Every row maps to a `TODO` marker in an `.mdx` file.
 
-_Last updated: 2026-08-05_
+_Last updated: 2026-08-25_
+
+| Legend | Meaning |
+|---|---|
+| 📸 screenshot | An image is needed; capture it and drop it in `static/img/guides-asset/` |
+| ✍️ confirm | A detail must be verified against the live UI before it can be written |
+| 🔒 third-party | The steps live inside a vendor tool and are in no frndOS repo |
 
 
+## 🚀 Getting Started
 
-## docs/brand-setup/brand-iq.mdx
-
-| Line | Type | What to do |
-| ---- | ---- | ---------- |
-| 71–72 | 📸 | Screenshot: Brand IQ Overview tab — status banner with knowledge-chunk count, three pillar cards (Strategy/Identity/Tone), Knowledge Vault card, "Brand IQ powers" strip |
-
-## docs/brand-setup/brand-iq-sources.mdx
+### `docs/getting-started/navigating-frndos.mdx` — Navigating frndOS — The Sidebar
 
 | Line | Type | What to do |
-| ---- | ---- | ---------- |
-| 81–82 | 📸 | Screenshot: Brand IQ → Sources tab — coverage strip with per-pillar chips, **Add source** dropdown open (Upload files / Add link / Connect Lark `Soon` / From Files `Soon`) |
-| 108–109 | 📸 | Screenshot: Sources review form — one field showing **Keep existing** vs **Use AI suggestion** cards side by side with a confidence badge |
+|---|---|---|
+| 72 | 📸 screenshot | add screenshot of the redesigned Home — briefing hero with composer, Continue Working, Team activity rail, Recent Campaigns → `/img/guides-asset/` |
 
-## docs/collaboration/real-time-collaboration.mdx
-
-| Line | Type | What to do |
-| ---- | ---- | ---------- |
-| 14 | 📸 | Screenshot: KV Generator top nav — presence avatar chips (3–4 users) + overflow "+N" chip, adjacent to Share/Download buttons |
-| 30 | 📸 | Screenshot: canvas in Concept or Craft mode — remote peer cursor (arrow + colored name pill) visible on canvas |
-
-## docs/studio/kv-generator.mdx — board context menu + PSD import + overlay properties + shapes + fonts + hide/lock
+### `docs/getting-started/myfrnd.mdx` — myFRND — Making Your Assistant More Capable
 
 | Line | Type | What to do |
-| ---- | ---- | ---------- |
-| ~222 | 📸 | Screenshot: overlay properties panel — Fill (Solid/Gradient toggle, color swatch, gradient From/To/Angle), Stroke (toggle, color swatch, width), Opacity slider, text alignment buttons |
-| ~270 | 📸 | Screenshot: right-click menu on a Concept board — showing "Start designing", copy actions, Duplicate, Rename, Reset position, Remove from canvas |
-| ~272 | 📸 | Screenshot: right-click menu on a Craft board — showing Set as master, Version history…, Create variant, Send to Motion, Send to Resize alongside copy/rename/duplicate/reset/remove |
-| ~341 | 📸 | Screenshot: PSD import blocking overlay — "Importing PSD…" spinner message + "This can take a moment for large files." subtitle, full-viewport dark blur backdrop |
-| ~384 | 📸 | Screenshot: ruler bars at top and left edges of viewport — tick marks with numeric labels |
-| ~400 | 📸 | Screenshot: Grid & Ruler popup — ruler toggle, grid opacity slider, grid size slider |
+|---|---|---|
+| 26 | 📸 screenshot | add screenshot of the myFRND page — heading with Experimental badge, four tabs, Discover shelf → `/img/guides-asset/` |
 
-## docs/studio/motion-mode.mdx
+
+## 🏢 Brand Setup & Brand IQ
+
+### `docs/brand-setup/brand-iq.mdx` — Brand IQ — Your Brand's Knowledge Home
 
 | Line | Type | What to do |
-| ---- | ---- | ---------- |
-| 41 | 📸 | Screenshot: Motion panel — Model dropdown, preset chips (Subtle Zoom highlighted), Duration/Ratio chips, Audio toggle, prompt textarea, "Generate motion" button |
-| 111 | 📸 | Screenshot: Results section — one done row with inline video player, metadata line (model · preset · duration · ratio), Regenerate + Download + Delete actions |
-| 135 | 📸 | Screenshot: Canvas in Motion mode — first-frame preview centered with "First frame" caption, Motion panel visible in bottom-left |
+|---|---|---|
+| 71 | 📸 screenshot | add screenshot — Brand IQ Overview tab: status banner with knowledge-chunk count, three pillar cards (Strategy/Identity/Tone), Knowledge Vault card, Brand IQ powers strip |
+| 72 | 📸 screenshot | screenshot of the Brand IQ Overview tab — needed from the live UI |
 
-## docs/studio/resizer.mdx
-
-| Line | Type | What to do |
-| ---- | ---- | ---------- |
-| 54 | 📸 | Screenshot: Platform panel — Social Media group expanded showing platform rows, batch instruction textarea below ("Any specific instructions? (Optional)"), Start Resizing button with credit count |
-
-## docs/studio/craft-mode.mdx
+### `docs/brand-setup/brand-iq-sources.mdx` — Brand IQ Sources — Grounding Your Brand
 
 | Line | Type | What to do |
-| ---- | ---- | ---------- |
-| 31 | 📸 | Screenshot: Craft mode chat panel — Crafter header (pink orb, "Polishing master + variants" status), Generate bar, and quick-action chips |
-| 65 | 📸 | Screenshot: Creativity control in the Craft mode bottom bar — segmented pill with Raw · Low · Medium · High, "Low" selected (default state) |
-| 167 | 📸 | Screenshot: Transform panel (bottom-right corner) alongside the Layers panel (bottom-left) — Position X/Y, Size W/H with lock icon, Rotate ° sections visible, single overlay selected |
+|---|---|---|
+| 81 | 📸 screenshot | add screenshot — Brand IQ → Sources tab: coverage strip with per-pillar chips, Add source dropdown open showing Upload files / Add link / Connect Lark (Soon) / From Files (Soon) |
+| 82 | 📸 screenshot | screenshot of the Sources tab with the Add source menu open — needed from the live UI |
+| 108 | 📸 screenshot | add screenshot — Sources review form: a field showing the "Keep existing" vs "Use AI suggestion" cards side by side with a confidence badge |
+| 109 | 📸 screenshot | screenshot of the review form's Keep existing / Use AI suggestion choice — needed from the live UI |
 
-## docs/studio/concepting-mode.mdx
-
-| Line | Type | What to do |
-| ---- | ---- | ---------- |
-| 24 | 📸 | Screenshot: top nav showing Concept/Craft tabs, Brand Identity pill (left), and Style pill (bottom) |
-| 143 | 📸 | Screenshot: territory chips in the Conceptor chat panel + a concept board on the canvas |
-| 171 | 📸 | Screenshot: creative rationale card below a concept board (showing header + rationale text) |
-
-## docs/research/creating-a-general-survey.mdx
+### `docs/brand-setup/deck-templates.mdx` — Brand Deck Templates
 
 | Line | Type | What to do |
-| ---- | ---- | ---------- |
-| 35 | 📸 | Screenshot: General Survey card in the Research hub |
-| 43 | 🔒 | Survey builder runs in embedded Populix (outside repo). Confirm in-builder steps (question types, target respondents, criteria, duration) — do not guess |
-| 51 | ✍️🔒 | Confirm exact builder fields, question types, and respondent options (live Populix tool) |
+|---|---|---|
+| 28 | 📸 screenshot | add screenshot of Brand IQ → Templates — template grid + New template button → `/img/guides-asset/` |
+| 39 | 📸 screenshot | add screenshot of the Start with your brand chooser — Accent swatches, Fonts pairings, live layout grid → `/img/guides-asset/` |
 
-## docs/research/managing-surveys.mdx
 
-| Line | Type | What to do |
-| ---- | ---- | ---------- |
-| 17 | 📸 | Screenshot: Surveys list |
-| 65 | 📸 | Screenshot: survey Overview metrics cards |
-| 95 | ✍️🔒 | Confirm what the response/results view shows (embedded survey tool) |
+## 🎨 Studio
 
-## docs/research/assigning-brand-and-sharing.mdx
+### `docs/studio/kv-generator.mdx` — Creating Your First Key Visual (KV Generator)
 
 | Line | Type | What to do |
-| ---- | ---- | ---------- |
-| 25 | 📸 | Screenshot: Brand dropdown on the Detail tab |
+|---|---|---|
+| 222 | 📸 screenshot | add screenshot of the overlay properties panel — Fill section (Solid/Gradient toggle, color swatch, gradient From/To/Angle), Stroke section (toggle, color swatch, width), Opacity slider, text alignment buttons → `/img/guides-asset/` |
+| 270 | 📸 screenshot | screenshot of the right-click context menu on a Concept board — showing "Start designing", copy actions, Duplicate, Rename, Reset position, Remove from canvas → `/img/guides-asset/` |
+| 272 | 📸 screenshot | screenshot of the right-click context menu on a Craft board — showing craft-only items (Set as master, Version history…, Create variant, Send to Motion, Send to Resize) → `/img/guides-asset/` |
+| 342 | 📸 screenshot | add screenshot of the PSD import overlay showing "Importing PSD…" → `/img/guides-asset/` |
+| 348 | 📸 screenshot | add screenshot of the Review PSD import dialog — layer tree with checkboxes, warning labels, missing-fonts block, footer count → `/img/guides-asset/` |
+| 415 | 📸 screenshot | add screenshot of the ruler bars at top and left edges of the viewport, with tick marks and numeric labels → `/img/guides-asset/` |
+| 431 | 📸 screenshot | add screenshot of the Grid & Ruler popup showing the ruler toggle, opacity slider, and grid size slider → `/img/guides-asset/` |
 
-## docs/research/customer-intelligence-overview.mdx
-
-| Line | Type | What to do |
-| ---- | ---- | ---------- |
-| 30 | 📸 | Screenshot: Customer Intelligence overview (four cards + tabs) |
-| 51 | ✍️ | Confirm how a user navigates to Customer Intelligence (sidebar/menu entry) — not readable from page code. Add exact path + screenshot |
-
-## docs/research/importing-customers.mdx
-
-| Line | Type | What to do |
-| ---- | ---- | ---------- |
-| 22 | 📸 | Screenshot: Integrations tab upload area |
-| 43 | ✍️ | Confirm sampling modal fields (custom count vs. percentage, credit cost display) |
-
-## docs/research/exploring-customers-and-segments.mdx
+### `docs/studio/concepting-mode.mdx` — Concepting Mode — AI-Guided Visual Exploration
 
 | Line | Type | What to do |
-| ---- | ---- | ---------- |
-| 30 | 📸 | Screenshot: Customer Table View |
-| 49 | ✍️ | Confirm profile-drawer layout and section names |
-| 60 | 📸 | Screenshot: Segment List |
-| 62 | ✍️ | Confirm how a user CREATES a manual segment (exact action/flow) |
+|---|---|---|
+| 24 | 📸 screenshot | add screenshot of the top nav showing Concept/Craft tabs, Brand Identity pill, and Style pill → `/img/guides-asset/` |
+| 145 | 📸 screenshot | add screenshot of the territory chips in the chat panel and a concept board on the canvas → `/img/guides-asset/` |
+| 173 | 📸 screenshot | add screenshot of a creative rationale card below a concept board → `/img/guides-asset/` |
 
-## docs/research/customer-insights.mdx
-
-| Line | Type | What to do |
-| ---- | ---- | ---------- |
-| 23 | 📸 | Screenshot: Customer Insights filter prompt |
-| 35 | ✍️ | Confirm full set of result sections + exact labels (some are data-driven) |
-
-## docs/askfrnd/skills.mdx
+### `docs/studio/craft-mode.mdx` — Craft Mode — Refining with the Crafter Agent
 
 | Line | Type | What to do |
-| ---- | ---- | ---------- |
-| 23 | ✍️ | Confirm how to open Chat Settings from the AskFrnd panel (button/menu) + screenshot |
-| 40 | 📸 | Screenshot: Skills Directory |
+|---|---|---|
+| 31 | 📸 screenshot | add screenshot of the Craft mode chat panel with Crafter header identity and a generate bar → `/img/guides-asset/` |
+| 65 | 📸 screenshot | add screenshot of the Creativity control in the Craft mode bottom bar (Raw · Low · Medium · High, "Low" selected) → `/img/guides-asset/` |
+| 187 | 📸 screenshot | add screenshot of the Transform panel (Position / Size / Rotate sections visible, single overlay selected) → `/img/guides-asset/` |
 
-## docs/askfrnd/lark-plugins.mdx
-
-| Line | Type | What to do |
-| ---- | ---- | ---------- |
-| 21 | ✍️ | Confirm how to open Chat Settings from the AskFrnd panel + screenshot |
-| 35 | 📸 | Screenshot: Plugins list with Lark |
-| 48 | ✍️ | Confirm exact Lark service display names in the Permissions list (server-driven) + screenshot |
-
-## docs/askfrnd/tools.mdx
+### `docs/studio/resizer.mdx` — Resizing Visuals for Different Platforms
 
 | Line | Type | What to do |
-| ---- | ---- | ---------- |
-| 48 | ✍️📸 | Confirm how to open Chat Settings from the AskFrnd panel (button/menu location) + screenshot of the Tools tab (per-user tool toggles, Enable all, section groups) |
+|---|---|---|
+| 72 | 📸 screenshot | add screenshot of the Platform panel — platform list (Social Media expanded) + batch instruction textarea below it → `/img/guides-asset/` |
 
-## docs/workspace/inviting-team-members.mdx
-
-| Line | Type | What to do |
-| ---- | ---- | ---------- |
-| 27–28 | 📸 | Screenshot: Workspace Settings → People page — "People" header, Search box, Invite button, Members/Requests pill tabs, member table |
-| 74–75 | 📸 | Screenshot: Invite dialog — email chips, "You're inviting N guests as [Member ▾]", brand access cascade picker open (brand column + role column) |
-
-## docs/workspace/managing-credits.mdx
+### `docs/studio/motion-mode.mdx` — Motion — Animating Your Key Visual
 
 | Line | Type | What to do |
-| ---- | ---- | ---------- |
-| 116 | 📸 | Screenshot: Buy Extra Credit modal (packs + custom amount + cost breakdown) |
-| 139 | 📸 | Screenshot: Extra Credit Purchases table in Billing |
+|---|---|---|
+| 29 | 📸 screenshot | add screenshot of the Motion projects panel — New motion button, project rows with exports toggle → `/img/guides-asset/` |
+| 53 | 📸 screenshot | add screenshot of the motion editor — layers rail, canvas tiles, properties panel, timeline dock → `/img/guides-asset/` |
 
-## docs/settings/askfrnd-tools.mdx
 
-| Line | Type | What to do |
-| ---- | ---- | ---------- |
-| 24 | 📸 | Screenshot: Workspace Settings → AskFRND Tools page |
+## 📊 Insights
 
-## docs/settings/insights-tabs.mdx
+### `docs/insights/collaborating-on-insights.mdx` — Collaborating on Insights
 
 | Line | Type | What to do |
-| ---- | ---- | ---------- |
-| 22 | 📸 | Screenshot: Workspace Settings → Insights Tabs editor |
+|---|---|---|
+| 77 | 📸 screenshot | add screenshot of the Insights comment rail — This page / All pages tabs, All / Unresolved / @me filters, a thread → `/img/guides-asset/` |
 
-## docs/settings/experimental-features.mdx
 
-| Line | Type | What to do |
-| ---- | ---- | ---------- |
-| 24 | 📸 | Screenshot: Workspace Settings → Experimental page |
+## 🔍 Research
 
-## docs/settings/data-privacy.mdx
+### `docs/research/creating-a-general-survey.mdx` — Creating a General Survey
 
 | Line | Type | What to do |
-| ---- | ---- | ---------- |
-| 23 | 📸 | Screenshot: Your Rights section with the two cards (Export My Data + Delete My Account) |
-| 39 | 📸 | Screenshot: Export My Data confirmation dialog |
-| 60 | 📸 | Screenshot: Request Account Deletion dialog (before submission, showing form fields) |
+|---|---|---|
+| 35 | 📸 screenshot | add screenshot of the General Survey card in the Research hub → `/img/guides-asset/` |
+| 43 | 🔒 third-party | The survey builder itself runs inside an embedded survey tool (Populix), which is outside the frndOS app. Confirm the actual in-builder steps (question types, target respondent count, respondent criteria, duration) with a screenshot before publishing this section. Do not guess. |
+| 51 | 🔒 third-party | confirm exact fields, question types, and respondent options from the live builder — these live in the embedded survey tool and aren't documented from the app code. |
 
-## docs/early-access/agents.mdx
-
-| Line | Type | What to do |
-| ---- | ---- | ---------- |
-| 39 | 📸 | Screenshot: Agents page — Agents grid + Teams section, each with the blue "Experiment" badge (sidebar Agents entry marked Beta) |
-| 121 | 📸 | Screenshot: Browse Agents directory modal — search + agent cards showing Install / Installed / Owned states |
-
-## docs/early-access/workflows.mdx
+### `docs/research/managing-surveys.mdx` — Managing & Tracking Your Surveys
 
 | Line | Type | What to do |
-| ---- | ---- | ---------- |
-| 36 | 📸 | Screenshot: Workflows list page — table (Name/Owner/Nodes/Schedule/Last Run/Enabled/Actions) with the "Experiment" badge + New Workflow button |
-| 59 | 📸 | Screenshot: Workflow canvas builder — node palette, a few connected nodes, top action bar (Notify / Schedule / Validate / Save / Run) |
+|---|---|---|
+| 17 | 📸 screenshot | add screenshot of the Surveys list → `/img/guides-asset/` |
+| 65 | 📸 screenshot | add screenshot of the Overview metrics cards → `/img/guides-asset/` |
+| 95 | 🔒 third-party | Open the survey and use its Detail view. The response breakdown is shown in the embedded survey tool. _[TODO: confirm what the response/results view shows once available — screenshot needed. |
 
-## docs/early-access/pitch.mdx
+### `docs/research/assigning-brand-and-sharing.mdx` — Assigning a Brand & Sharing Surveys
 
 | Line | Type | What to do |
-| ---- | ---- | ---------- |
-| 43 | 📸 | Screenshot: Projects list (Pitch beta) — folder grid, sort dropdown, New Project button |
-| 53 | 📸 | Screenshot: New Project modal — name, prospect/brand, deadline, Brief source segmented control (Upload / Paste text / Lark URL) |
-| 90 | 📸 | Screenshot: Review wizard — left "The Pitch" cards (Brief / Audience / Decision-makers / Winning Strategy), right "The Plan" scope strip + preview, Confirm & Start |
-| 111 | 📸 | Screenshot: Runner — left step rail (deliverables by phase), center step canvas, top chrome (back, pipeline toggle, context vault, comments, progress) |
+|---|---|---|
+| 25 | 📸 screenshot | add screenshot of the Brand dropdown on the Detail tab → `/img/guides-asset/` |
+
+### `docs/research/customer-intelligence-overview.mdx` — Customer Intelligence Overview
+
+| Line | Type | What to do |
+|---|---|---|
+| 30 | 📸 screenshot | add screenshot of the Customer Intelligence overview (four cards + tabs) → `/img/guides-asset/` |
+| 51 | 📸 screenshot · ✍️ confirm | confirm how a user navigates to Customer Intelligence (which sidebar/menu entry opens it) — the entry point isn't readable from the page code. Add the exact path + screenshot. |
+
+### `docs/research/importing-customers.mdx` — Importing & Enriching Customers
+
+| Line | Type | What to do |
+|---|---|---|
+| 22 | 📸 screenshot | add screenshot of the Integrations tab upload area → `/img/guides-asset/` |
+| 43 | 📸 screenshot · ✍️ confirm | confirm the sampling modal's exact fields (custom count vs. percentage, credit cost display) with a screenshot. |
+
+### `docs/research/exploring-customers-and-segments.mdx` — Exploring Customers & Segments
+
+| Line | Type | What to do |
+|---|---|---|
+| 30 | 📸 screenshot | add screenshot of the Customer Table View → `/img/guides-asset/` |
+| 49 | 📸 screenshot · ✍️ confirm | confirm the exact profile-drawer layout and section names with a screenshot. |
+| 60 | 📸 screenshot | add screenshot of the Segment List → `/img/guides-asset/` |
+| 62 | ✍️ confirm | confirm how a user CREATES a manual segment (the exact action/flow) — not fully readable from the list view code. |
+
+### `docs/research/customer-insights.mdx` — Getting Customer Insights
+
+| Line | Type | What to do |
+|---|---|---|
+| 23 | 📸 screenshot | add screenshot of the Customer Insights filter prompt → `/img/guides-asset/` |
+| 35 | 📸 screenshot · ✍️ confirm | confirm the full set of result sections and their exact labels with a screenshot (some section titles are data-driven). |
+
+### `docs/research/audience-personas.mdx` — Audience Personas — From Followers to People
+
+| Line | Type | What to do |
+|---|---|---|
+| 31 | 📸 screenshot | add screenshot of the Audience Personas page — three tabs, Segments/Personas metric cards, persona grid → `/img/guides-asset/` |
+
+
+## 💬 AskFrnd
+
+### `docs/askfrnd/skills.mdx` — Using AskFrnd Skills
+
+| Line | Type | What to do |
+|---|---|---|
+| 23 | 📸 screenshot · ✍️ confirm | confirm the exact way to open Chat Settings from the AskFrnd panel (button/menu location) and add a screenshot → `/img/guides-asset/` |
+| 40 | 📸 screenshot | add screenshot of the Skills Directory → `/img/guides-asset/` |
+
+### `docs/askfrnd/lark-plugins.mdx` — Connecting Lark (AskFrnd Plugins)
+
+| Line | Type | What to do |
+|---|---|---|
+| 21 | 📸 screenshot · ✍️ confirm | confirm the exact way to open Chat Settings from the AskFrnd panel and add a screenshot → `/img/guides-asset/` |
+| 35 | 📸 screenshot | add screenshot of the Plugins list with Lark → `/img/guides-asset/` |
+| 48 | 📸 screenshot · ✍️ confirm | confirm the exact Lark service display names shown in the Permissions list (they come from the server) with a screenshot. |
+
+### `docs/askfrnd/tools.mdx` — How AskFrnd Uses Tools
+
+| Line | Type | What to do |
+|---|---|---|
+| 48 | 📸 screenshot · ✍️ confirm | confirm the exact way to open Chat Settings from the AskFrnd panel (button/menu location) and add a screenshot of the Tools tab → `/img/guides-asset/` |
+
+
+## 🤝 Collaboration
+
+### `docs/collaboration/real-time-collaboration.mdx` — Collaborating in Real-Time
+
+| Line | Type | What to do |
+|---|---|---|
+| 15 | 📸 screenshot | screenshot of KV Generator top nav showing 3–4 presence avatar chips + overflow "+N" chip — /img/guides-asset/<name>.jpeg |
+| 31 | 📸 screenshot | screenshot of the canvas showing a live cursor from a remote peer — arrow + colored name pill — /img/guides-asset/<name>.jpeg |
+
+
+## 📁 Projects & Workflows
+
+### `docs/projects/project-rooms.mdx` — Project Rooms — Keeping Work Together
+
+| Line | Type | What to do |
+|---|---|---|
+| 25 | 📸 screenshot | add screenshot of a project room — title row, composer, Tasks, Proposal Assistants, Files, right rail → `/img/guides-asset/` |
+
+
+## 🖼️ Decks
+
+### `docs/decks/overview.mdx` — Decks Overview — Building Presentations in frndOS
+
+| Line | Type | What to do |
+|---|---|---|
+| 41 | 📸 screenshot | add screenshot of the New deck chooser (Start blank / Import a file / template grid) → `/img/guides-asset/` |
+| 47 | 📸 screenshot | add screenshot of the deck editor — top bar, slide rail, canvas, right rail, bottom dock → `/img/guides-asset/` |
+
+### `docs/decks/importing-a-deck.mdx` — Importing a PowerPoint or PDF
+
+| Line | Type | What to do |
+|---|---|---|
+| 56 | 📸 screenshot | add screenshot of the import preview sheet — thumbnail grid with checkboxes, Select all / Select none, footer buttons → `/img/guides-asset/` |
+
+### `docs/decks/story-view.mdx` — Writing the Story
+
+| Line | Type | What to do |
+|---|---|---|
+| 22 | 📸 screenshot | add screenshot of Story view — chapter rail, prose document, top actions row → `/img/guides-asset/` |
+
+
+## 👥 Workspace & Members
+
+### `docs/workspace/inviting-team-members.mdx` — Inviting Team Members
+
+| Line | Type | What to do |
+|---|---|---|
+| 27 | 📸 screenshot | add screenshot — Workspace Settings → People page: header "People", Search box, Invite button, Members/Requests pill tabs, member table |
+| 28 | 📸 screenshot | screenshot of the People page — needed from the live UI |
+| 74 | 📸 screenshot | add screenshot — Invite dialog: email chips, "You're inviting N guests as Member", role dropdown, brand access cascade picker open |
+| 75 | 📸 screenshot | screenshot of the invite dialog with the brand access picker open — needed from the live UI |
+
+### `docs/workspace/managing-credits.mdx` — Managing Workspace Credits
+
+| Line | Type | What to do |
+|---|---|---|
+| 116 | 📸 screenshot | add screenshot of the Buy Extra Credit modal (packs + custom amount + cost breakdown) → `/img/guides-asset/` |
+| 139 | 📸 screenshot | add screenshot of the Extra Credit Purchases table in Billing → `/img/guides-asset/` |
+
+
+## ⚙️ Settings & Administration
+
+### `docs/settings/askfrnd-tools.mdx` — Setting the Workspace AskFRND Tools
+
+| Line | Type | What to do |
+|---|---|---|
+| 24 | 📸 screenshot | add screenshot of the Workspace Settings → AskFRND Tools page → `/img/guides-asset/` |
+
+### `docs/settings/experimental-features.mdx` — Turning On Experimental Features
+
+| Line | Type | What to do |
+|---|---|---|
+| 24 | 📸 screenshot | add screenshot of the Workspace Settings → Experimental page → `/img/guides-asset/` |
+
+### `docs/settings/insights-tabs.mdx` — Customizing Insights Tabs
+
+| Line | Type | What to do |
+|---|---|---|
+| 22 | 📸 screenshot | add screenshot of the Workspace Settings → Insights Tabs editor → `/img/guides-asset/` |
+
+### `docs/settings/data-privacy.mdx` — Your Data Rights — Export & Deletion
+
+| Line | Type | What to do |
+|---|---|---|
+| 23 | 📸 screenshot | add screenshot of the Your Rights section with the two cards → `/img/guides-asset/` |
+| 39 | 📸 screenshot · ✍️ confirm | add screenshot of the Export My Data confirmation dialog → `/img/guides-asset/` |
+| 60 | 📸 screenshot | add screenshot of the Request Account Deletion dialog (before submission) → `/img/guides-asset/` |
+
+### `docs/settings/notifications.mdx` — Notification Settings
+
+| Line | Type | What to do |
+|---|---|---|
+| 21 | 📸 screenshot | add screenshot of Workspace Settings → Notifications — the four sections (How much you hear, Where it reaches you, Digest, Quiet hours) → `/img/guides-asset/` |
+
+
+## 🧪 Early Access Features
+
+### `docs/early-access/agents.mdx` — Agents & Teams (Beta)
+
+| Line | Type | What to do |
+|---|---|---|
+| 39 | 📸 screenshot | add screenshot of the Agents page — Agents grid + Teams section, each with the blue "Experiment" badge → `/img/guides-asset/` |
+| 121 | 📸 screenshot | add screenshot of the Browse Agents directory modal — search + agent cards with Install / Installed / Owned states → `/img/guides-asset/` |
+
+### `docs/early-access/workflows.mdx` — Workflows (Beta)
+
+| Line | Type | What to do |
+|---|---|---|
+| 36 | 📸 screenshot | add screenshot of the Workflows list page — table with the Experiment badge + New Workflow button → `/img/guides-asset/` |
+| 59 | 📸 screenshot | add screenshot of the workflow canvas builder — node palette, a few connected nodes, top action bar (Notify / Schedule / Validate / Save / Run) → `/img/guides-asset/` |
+
+### `docs/early-access/pitch.mdx` — Pitch (Beta)
+
+| Line | Type | What to do |
+|---|---|---|
+| 43 | 📸 screenshot | add screenshot of the Projects list — folder grid, sort dropdown, New Project button → `/img/guides-asset/` |
+| 53 | 📸 screenshot | add screenshot of the New Project modal — name, prospect/brand, deadline, Brief source segmented control (Upload / Paste text / Lark URL) → `/img/guides-asset/` |
+| 90 | 📸 screenshot · ✍️ confirm | add screenshot of the Review wizard — left "The Pitch" cards (Brief / Audience / Decision-makers / Winning Strategy), right "The Plan" scope strip + preview, Confirm & Start button → `/img/guides-asset/` |
+| 111 | 📸 screenshot | add screenshot of the runner — left step rail (deliverables grouped by phase), center step canvas, top chrome (back, pipeline toggle, context vault, comments, progress) → `/img/guides-asset/` |

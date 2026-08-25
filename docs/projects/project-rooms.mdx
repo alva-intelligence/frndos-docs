@@ -1,0 +1,181 @@
+---
+title: Project Rooms — Keeping Work Together
+description: A project room holds the chats, files, campaigns, context, and people for one piece of work — so nothing lives in someone's private history.
+sidebar_position: 2
+---
+
+# Project Rooms — Keeping Work Together
+
+A **project room** is the page for one project: the chats about it, the files made for it, the campaigns it reports on, the sources frnd learned it from, and the people who work on it — all on one screen instead of scattered across private chat histories and personal folders.
+
+> **Beta feature:** project rooms are gated per workspace (`show-project-rooms-web`). If you open a project and don't see the composer or the **Chats** card, the room features aren't enabled for your workspace yet — see [Turning On Experimental Features](../settings/experimental-features).
+
+## Before You Start
+
+1. ✅ **A project to open** — see [Creating & Managing Projects](./managing-projects)
+2. ✅ **Room features enabled for your workspace** — see the note above
+3. ✅ **Edit access to the project** — viewers see everything but can't change it
+
+## Opening a Room
+
+Click **Projects** in the sidebar, then open a project. That page is the room.
+
+Its URL is `/projects/folder/<id>` — or, inside a brand, `/brands/<brand>/projects/folder/<id>`.
+
+<!-- TODO: add screenshot of a project room — title row, composer, Tasks, Proposal Assistants, Files, right rail → /img/guides-asset/<name>.jpeg -->
+
+The header shows the project name, its status, the brand it belongs to (or **Pitch · &lt;prospect name&gt;** for a project with no brand yet), and two buttons: **New file** and **New proposal**.
+
+> **Heads-up:** if you only have view access, a **Viewer · read-only** badge appears next to the title and every edit control is disabled with the tooltip _"You have view-only access to this project"_.
+
+## Chatting in the Room
+
+The composer at the top of the room is an ordinary AskFRND chat, bound to this project. Its placeholder reads **Ask &lt;project name&gt;…**.
+
+The chip below it is a **selector**, not a label — pick a different project there and the composer retargets without leaving the page.
+
+**Chats started here are shared with the room.** That's the point: a private chat inside a shared room is invisible to everyone but its author. You can still flip one of your own to **Only you**.
+
+### The Chats card
+
+The right rail's **Chats** card lists the conversations filed into this room, newest first. Each row shows a **🌐 globe** for a shared chat or a **🔒 lock** for a private one, plus when it was last touched. Click a row to open it.
+
+When it's empty it explains the rule: _"Chats started here are shared with the room — flip any of yours to Only you."_
+
+### Filing an existing chat
+
+Already had the conversation somewhere else? Use the **+** on the Chats card to open **Link existing chats**:
+
+1. Search your chats
+2. Tick the ones to file here
+3. Choose **Shared with the project** or **Only you**
+4. Click **Link to project**
+
+> **Note:** two people in the same room can legitimately see different chat lists — you see the shared chats plus your own.
+
+## Tasks
+
+The **Tasks** section is a simple checklist. Click **Add task**, type a title, press Enter or click **Add**. Tick a task to complete it.
+
+## Proposal Assistants
+
+If the project runs a [Pitch](../early-access/pitch) proposal, each assistant appears as a card with the outputs it owns nested underneath. Live work sorts first; resolved and archived work sinks to the bottom. When there are more than a few, **Show all N** expands the list.
+
+Click **New proposal** in the header to start another.
+
+## Files
+
+**Files** holds the decks, key visuals, and documents that belong to this project but aren't owned by an assistant.
+
+| Action | What it does |
+|---|---|
+| **New file** | Creates a new deck in this project and opens it |
+| **Add existing** | Pulls a deck or studio file made elsewhere into this room |
+| **Remove from project** | Unlinks an adopted file — it isn't deleted, just removed from the room |
+
+**Add existing** opens **Add existing work**, described as _"Pull a deck or studio file into &lt;project name&gt;."_ Search, tick what you want, then click **Add N to room**.
+
+> **Heads-up:** adopting a file into a room is a link, not a move. Removing it from the room never deletes the file.
+
+## Project Knowledge (the right rail)
+
+Everything under the **PROJECT KNOWLEDGE** heading is what frnd knows about this project.
+
+| Card | What it holds |
+|---|---|
+| **Members** | Who's on the project, and the **Share** sheet |
+| **Context** | Sources — files, pasted text, and Lark folders |
+| **Instructions** | Free text that tailors how frnd works on this project |
+| **Memory** | What frnd has built up from the sources, marked **Team** |
+| **Chats** | Conversations filed into the room |
+| **Campaigns** | Campaign reports linked to the project |
+| **Decisions & meetings** | Minutes of meetings and decision notes |
+
+### Adding context
+
+Click **+** on the **Context** card, or one of the shortcut buttons — **Files**, **Google Drive**, or **Lark folder**. A sheet titled **Add a source** opens with three methods:
+
+| Method | Use for |
+|---|---|
+| **Upload** | `.pdf`, `.doc`, `.docx`, `.ppt`, `.pptx`, `.txt`, `.md` |
+| **Paste** | Text pasted straight in |
+| **Link** | A Lark document or folder URL |
+
+Once frnd has processed them, a line shows **Digested N sources**.
+
+> **Heads-up:** the **Google Drive** button is present but disabled — the Drive picker isn't integrated yet.
+
+### Decisions & meetings
+
+Same **+**, different sheet: **Add a decision or meeting**, with **Upload MoM** and **Write note**. Its empty state explains why it exists — _"Add a minutes-of-meeting or a decision note so frnd tracks how the project moves."_
+
+### Instructions
+
+A plain text box on the **Instructions** card: _"Add instructions to tailor how frnd works on this project."_ It saves when you click away.
+
+### Campaigns
+
+The **Campaigns** card links campaign reports to the project. A campaign you don't have brand access to still appears — as a locked row labelled **You don't have access to this campaign** — so the room's contents don't silently differ per person.
+
+> **Note:** linking a campaign is a reference. Removing it from the room never deletes the campaign, and one campaign can serve several rooms.
+
+## Who Can See the Room
+
+Open the **Members** card's **+**, or **Manage members**, to reach the **Share** sheet.
+
+### Access
+
+Access reads as a sentence — for example, _"Everyone with access to Garuda can view this project."_ Owners get dropdowns inside that sentence; everyone else sees the same sentence as plain text, so the rule is always legible to the people it constrains.
+
+| Audience | Who that is |
+|---|---|
+| **Invited only** | Just the people on the roster |
+| **Everyone with access to &lt;brand&gt;** | Anyone who can read that brand's projects |
+| **Everyone in &lt;workspace&gt;** | Everyone in the workspace |
+
+For the two wider rungs you also choose **view** or **edit**.
+
+> **Note:** a project with no brand yet (a prospect) has no **brand** rung — only **Invited only** and the workspace.
+
+Copying the share link tells you what the recipient will get — for example, _"Link copied · only invited people can open it."_ When a room is **Invited only**, an owner gets a one-click **Open it to &lt;workspace&gt;** shortcut on the notice.
+
+### Members and roles
+
+Owners can **Add member** — pick a person, pick a role, add them. Three roles exist:
+
+| Role | Can |
+|---|---|
+| **Owner** | Everything, including managing access and the roster |
+| **Editor** | Change the project's contents |
+| **Viewer** | Read only |
+
+Every member, whatever their role, gets a **Leave project** action on their own row.
+
+## FAQ
+
+**Q: I opened a project and there's no composer or Chats card.**
+Room features are gated per workspace. Ask an admin to enable them — see [Turning On Experimental Features](../settings/experimental-features).
+
+**Q: Is a chat I start in the room private?**
+No — chats started in a room are shared with the room by default, so the room can actually show them. You can flip one of your own to **Only you**.
+
+**Q: My teammate sees a different list of chats.**
+That's expected. Everyone sees the room's shared chats plus their own private ones.
+
+**Q: Does "Add existing" move the file into the project?**
+No, it links it. **Remove from project** unlinks it again and never deletes anything.
+
+**Q: Why is a campaign row locked?**
+You don't have access to that campaign's brand. The row is still shown, deliberately — a room whose contents silently differ per person is worse than one that says a row is locked.
+
+**Q: Everything is greyed out and says "You have view-only access".**
+You're a viewer on this project, or the room's audience capability is set to **view**. An owner can change either from the **Share** sheet.
+
+---
+
+## Related Articles
+
+- [Creating & Managing Projects](./managing-projects)
+- [Decks Overview](../decks/overview)
+- [Pitch (Beta)](../early-access/pitch)
+- [Turning On Experimental Features](../settings/experimental-features)

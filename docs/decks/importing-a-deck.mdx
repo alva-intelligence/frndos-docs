@@ -1,0 +1,113 @@
+---
+title: Importing a PowerPoint or PDF
+description: Bring an existing .pptx or .pdf into frndOS — as a whole new deck, or as extra slides inside a deck you're already working in.
+sidebar_position: 2
+---
+
+# Importing a PowerPoint or PDF
+
+You don't have to start from a blank canvas. frndOS reads a **PowerPoint (`.pptx`)** or **PDF** file and turns its pages into real, editable slides — so an old client deck can become the starting point for a new one.
+
+## Before You Start
+
+1. ✅ **A `.pptx` or `.pdf` file** — those are the two formats the importer accepts
+2. ✅ **The deck editor available in your workspace** — see [Decks Overview](./overview)
+
+## Two Ways to Import
+
+| You want | Do this |
+|---|---|
+| A **brand-new deck** made from the file | **Library → New file → Deck → Import a file** |
+| To **add the file's slides** to a deck you're already in | Open the deck, then **Deck menu → Import…**, or drag the file onto the canvas |
+
+The difference matters: importing into a new deck takes everything, because there's nothing to choose between. Importing into an existing deck asks you which slides you actually want.
+
+## Import Into a New Deck
+
+1. Open the [Library](../library/overview)
+2. Click **New file → Deck** — the **New deck** chooser opens
+3. Click the **Import a file** tile
+4. Pick your `.pptx` or `.pdf`
+5. frndOS creates the deck and opens it with the slides already in
+
+There's no preview step here — the deck is brand new and empty, so every slide is wanted.
+
+## Import Into the Deck You're In
+
+1. Open the deck
+2. **Deck menu → Import…** (or drag the file straight onto the canvas)
+3. Watch the status pill while it works
+4. Choose which slides to keep in the preview sheet
+5. Click **Import**
+
+### While it's working
+
+A pill appears with the current phase:
+
+| Phase | What you see |
+|---|---|
+| Uploading | **Uploading &lt;filename&gt;** with a percentage, and a **Cancel** button |
+| Reading | **Reading PowerPoint…** / **Reading PDF…** |
+| Slow | **This PowerPoint is taking longer than usual…** |
+| Failed | The error message, plus **Try again** |
+
+### The preview sheet
+
+<!-- TODO: add screenshot of the import preview sheet — thumbnail grid with checkboxes, Select all / Select none, footer buttons → /img/guides-asset/<name>.jpeg -->
+
+Once the file is read, a sheet titled **Import &lt;filename&gt;** opens showing every slide as a real rendered thumbnail — not a guess, the same renderer the editor uses. Its subtitle tells you the slide count and where they'll land.
+
+- Click any thumbnail to include or exclude it — the checkbox under each one shows its state
+- **Select all** / **Select none** for bulk changes
+- The footer summarises the result: _"Everything came across as editable content"_, or _"N slides needed a change to come across. You can review them after importing."_
+- It may also tell you the source deck's aspect ratio and how many colours and fonts it uses
+
+Buttons at the bottom:
+
+| Button | What it does |
+|---|---|
+| **Cancel** | Drops the import; nothing is added |
+| **Place as an image** | Only for a single full-page import — drops the page onto the current slide as one picture instead of editable content |
+| **Import N slides** / **Import N of M** | Adds the slides you kept |
+
+> **Heads-up:** the button label changes with your selection — it reads **Import 12 slides** when everything is kept, and **Import 4 of 12** when it isn't.
+
+## The Import Report
+
+After the import, a report opens titled **Imported &lt;filename&gt;**, summarised as _"N slides · X clean, Y flagged"_.
+
+Each flagged item is one row telling you what changed — a substituted font, a diagram that became a picture. Rows carry either a **⚠ warning** or an **ℹ info** marker, and a **Show me** button that jumps to the slide in question. Deck-wide notes (like a letterboxed aspect ratio) are listed first, before per-slide ones.
+
+If a source deck brought its own colours and fonts, a line at the bottom says so — and names any font frndOS can't paint, which was substituted.
+
+Click **Done** to close it. You can reopen it later from **Deck menu → Import report**.
+
+> **Heads-up:** the report is kept for the current editing session only. Reload the page and it's gone — so read it before you refresh.
+
+## FAQ
+
+**Q: Which file types can I import?**
+`.pptx` and `.pdf`. Other formats aren't accepted by the file picker.
+
+**Q: Will my slides look exactly the same?**
+Mostly, but not always. The PowerPoint export note says it plainly: some elements may render differently. The import report lists everything that had to change.
+
+**Q: I only want four slides out of forty.**
+Import into an existing deck rather than a new one — the preview sheet lets you deselect the rest before anything is added.
+
+**Q: The import is taking a long time.**
+A long PDF is a lot of pages to render. The pill switches to _"This PowerPoint is taking longer than usual…"_ rather than failing. **Cancel** stops it.
+
+**Q: What is "Place as an image"?**
+For a single page that came back as one full-bleed picture, this drops it onto your current slide as an image instead of importing it as a slide. It only appears when that's genuinely what the page is.
+
+**Q: Can I get the import report back after a reload?**
+No. It survives only the current editing session.
+
+---
+
+## Related Articles
+
+- [Decks Overview](./overview)
+- [Writing the Story](./story-view)
+- [Library Overview](../library/overview)

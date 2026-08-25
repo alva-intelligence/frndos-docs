@@ -143,6 +143,41 @@ Beyond chat, Craft mode offers hands-on tools directly on the canvas:
 
 ---
 
+## Separating a Flat Image Into Layers
+
+A finished image is one flat picture — you can't move the product without moving the background with it. **Separate layers** lifts the elements apart so each one becomes its own editable layer.
+
+> **Experimental feature:** layer separation is enabled per workspace. If neither entry point below appears, it isn't turned on yet — see [Turning On Experimental Features](../settings/experimental-features).
+
+Two ways in:
+
+| Entry point | Where |
+|---|---|
+| **Separate layers** | Right-click a board on the canvas |
+| **Upload and separate layers** | The upload block on an empty Craft canvas |
+
+### What happens
+
+1. The job starts and a panel opens — **Separating layers… this usually takes about two minutes.**
+2. An overlay reminds you: _"This usually takes about two minutes. Please keep this tab open."_
+3. When it's done, the **Separated layers** panel lists what it found
+4. Untick anything you don't want as its own layer
+5. Click **Add to canvas**
+
+The panel explains the rule for what you leave unticked:
+
+> _"Unchecked layers are merged into the background of the new board — nothing is lost."_
+
+A **Base** row sits at the bottom of the list — the _"background once every layer above is lifted out."_ It's always kept.
+
+> **Heads-up:** the result lands as a **new board**. Your original stays as it was.
+
+If it fails, the panel says **Separation failed.** with a **Try again** action.
+
+> **Note:** each run is a real job, so both entry points stop offering themselves while one is in flight — the upload button reads **Separating…** until it settles.
+
+---
+
 ## The Transform Panel
 
 When the **Layers panel** is open, a **Transform** panel appears anchored to the **bottom-right corner** of the canvas. It lets you read and edit an overlay's exact position, size, and rotation numerically — without guessing from the canvas.
@@ -198,6 +233,15 @@ Craft renders are locked to gpt-image-2 server-side — the credit estimate refl
 
 **Q: What is the "Editing [board]" chip in the composer?**
 It's the Crafter's targeting context — it shows which board your next message applies to. Click a board on the canvas to pin it, or use the Bounding Box tool to scope your edit to a specific area. Clear it with ✕ to return to targeting the latest board.
+
+**Q: How long does separating layers take?**
+About two minutes. Keep the tab open while it runs — the overlay says so.
+
+**Q: What happens to layers I untick before adding to canvas?**
+They're merged into the background of the new board. Nothing is lost — they just aren't separately editable.
+
+**Q: Does separating layers replace my original board?**
+No. The separated result is added as a new board; the original is untouched.
 
 **Q: Can I use Craft mode without going through Concept mode first?**
 Yes. Click the **Craft** tab directly. If you have an existing image, use **Upload Image** to bring it in. See [Creating Your First Key Visual → Use Your Own Image](./kv-generator#step-4--refine-in-craft-mode).

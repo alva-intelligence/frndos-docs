@@ -266,6 +266,7 @@ const DocsCollection = {
         { label: "📢 Growth (Coming Soon)", value: "growth" },
         { label: "🤝 Collaboration", value: "collaboration" },
         { label: "📁 Projects & Workflows", value: "projects" },
+        { label: "🖼️ Decks", value: "decks" },
         { label: "📚 Library", value: "library" },
         { label: "👥 Workspace & Members", value: "workspace" },
         { label: "⚙️ Settings & Administration", value: "settings" },

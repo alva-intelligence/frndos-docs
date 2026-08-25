@@ -21,13 +21,32 @@ When you log in, you land on **Home** with this sidebar:
 | Item | What It's For |
 |---|---|
 | **Home** | Your overview — all activity and files across the brands you have access to |
+| **Projects** | Your projects and [project rooms](../projects/project-rooms) |
+| **Files** | The files your team has made, scoped to your access — see [Library](../library/overview) |
+| **myFRND** _(beta)_ | Plugins, skills, and agents that extend AskFRND — see [myFRND](./myfrnd) |
+| **Workflows** _(beta)_ | The agent workflow builder |
 | **Search** | Find brands, files, projects, and pages across your workspace |
-| **Agents** | AI agents (beta) |
-| **Inbox / Playground / Pitch** | Upcoming areas, still being built |
 | **Brands** | A list of every brand you have access to — click one to enter it |
 | **Chat** | Your recent AskFrnd conversations not tied to any brand, plus **New Chat** |
 
 > **Note:** There are no pillars (Studio, Insights, etc.) visible at this level. To reach them, click into a brand from the **Brands** list.
+
+> **Heads-up:** **myFRND** and **Workflows** only appear when the experimental Agents toggle is on for your workspace — see [Turning On Experimental Features](../settings/experimental-features). **Playground** is listed but not usable yet.
+
+### Creating Something New
+
+The sidebar footer carries a **New Chat** pill and a **+** button. The **+** opens a create menu naming the artifact you want:
+
+| Row | Creates |
+|---|---|
+| **Key Visual** | A KV in [Studio](../studio/overview) |
+| **Presentation Deck** | A [deck](../decks/overview) |
+| **Campaign Report** | A report in Insights |
+| **Survey** | A [survey](../research/creating-a-general-survey) |
+| **Persona** | A persona in Research |
+| **Image Generation** | An AI-generated image |
+
+Rows that need a brand ask you to pick one first.
 
 ### Brand Sidebar
 
@@ -50,7 +69,27 @@ Once you click a brand under **Brands**, the entire sidebar transforms to that b
 
 **Home** is your starting point. It shows all the activity and files related to the brands you have access to — so even if you've just joined a workspace, you can see what's happening across your brands at a glance.
 
-From Home you can search and navigate to other areas of frndOS.
+<!-- TODO: add screenshot of the redesigned Home — briefing hero with composer, Continue Working, Team activity rail, Recent Campaigns → /img/guides-asset/<name>.jpeg -->
+
+### The Briefing Hero
+
+Home opens with a **briefing** — labelled **Morning briefing**, **Midday briefing**, or **Evening briefing** depending on the time of day. It's a short written summary of what needs your attention, with an ask box directly under it (_"How can I help you today?"_) so you can start working without going anywhere else.
+
+When there's nothing pressing, it says so: _"Nothing needs your attention right now. What are we working on today?"_ If you don't have brand access yet, it explains that instead — _"You don't have access to any brands yet. Ask your workspace admin to grant you brand access."_
+
+### Continue Working
+
+A row of cards for the work you touched most recently — KVs, decks, research, workflows. Click one to pick up where you left off. **See all** takes you to **Files**.
+
+### Team activity
+
+A rail beside Continue Working showing who changed what, and when. Empty states are explicit: _"No activity yet — edits from your team will show up here"_, and _"Team activity shows up in an organization workspace"_ if you're in a personal one.
+
+### Recent Campaigns
+
+A band of campaign cards, each showing the brand, an **On Track** or **Needs Attention** pill, and its key numbers. Search the band to narrow it down.
+
+> **Note:** the Home redesign rolls out per workspace. If your Home looks different from this, it hasn't reached your workspace yet.
 
 ## Entering and Switching Brands
 
@@ -139,5 +178,7 @@ A few areas are still being built out. This guide focuses on the stable navigati
 ## Related Articles
 
 - [Welcome to frndOS](./welcome)
+- [myFRND — Making Your Assistant More Capable](./myfrnd)
 - [AskFrnd Overview](../askfrnd/overview)
 - [Managing Multiple Brands](../brand-setup/multiple-brands)
+- [Library Overview](../library/overview)

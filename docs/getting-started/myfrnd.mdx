@@ -1,0 +1,142 @@
+---
+title: myFRND — Making Your Assistant More Capable
+description: One page for everything that extends AskFRND — plugins and MCP servers, skills, and agents — plus a two-minute setup checklist.
+sidebar_position: 5
+---
+
+# myFRND — Making Your Assistant More Capable
+
+**myFRND** is one home for everything that makes your assistant more capable. Connect the tools your team already uses, add skills, and enable agents — all in one place instead of hunting through chat modals and workspace settings.
+
+The page describes itself as _"Everything that makes your assistant more capable."_
+
+> **Experimental feature:** myFRND is gated per workspace by the same Labs toggle as Agents. If **myFRND** isn't in your sidebar, it isn't enabled yet — see [Turning On Experimental Features](../settings/experimental-features).
+
+## Before You Start
+
+1. ✅ **myFRND enabled for your workspace** — an admin turns it on in **Workspace Settings → Labs**
+2. ✅ **Nothing else.** The Discover tab walks you through the rest
+
+## Opening myFRND
+
+Click **myFRND** in the left sidebar (the sparkle icon). It sits under **Files**, alongside **Workflows**.
+
+The page has four tabs: **Discover**, **Plugins**, **Skills**, **Agents**.
+
+<!-- TODO: add screenshot of the myFRND page — heading with Experimental badge, four tabs, Discover shelf → /img/guides-asset/<name>.jpeg -->
+
+> **Tip:** each tab is linkable — the Chat Settings modal deep-links straight to a specific shelf, so a bookmark to one tab keeps working.
+
+## Discover — Start Here
+
+**Discover** is the front door. The other tabs are directories, and a directory only helps if you already know what you're looking for.
+
+### Set up in 2 minutes
+
+A three-step checklist, computed from what your workspace actually has:
+
+1. **Connect a plugin**
+2. **Turn on a skill**
+3. **Enable an agent**
+
+Each step is a button that takes you to the right tab. Completed steps turn green with a checkmark, and the whole checklist disappears once all three are done.
+
+### Recommended for you
+
+Below the checklist, **Recommended for you** — _"Picked from what your workspace already has — not ranked by popularity."_ Each card says **why** it's there, not just what it is. Click **Connect** or **Add** to act on one.
+
+## Plugins — Connecting Your Tools
+
+**Plugins** holds first-party integrations and MCP servers in one place, in three sections:
+
+| Section | What's in it |
+|---|---|
+| **First-party** | _"Built and maintained by frndOS — deeper integrations with fine-grained permissions, ready to use without setup of your own."_ |
+| **MCP servers** | _"Remote servers speaking the Model Context Protocol. Any streamable-HTTP URL can be added — it gets probed before it is saved."_ |
+| **Your servers** | _"The MCP servers on your account, and the switches that decide which ones AskFRND may use."_ |
+
+A connected plugin shows whether it's **Enabled for AskFRND**, **Disabled — account stays connected**, or needs you to **Reauthorize to reconnect**.
+
+> **Heads-up:** disabling a plugin and disconnecting it are different. **Disabled** keeps your account connected but stops AskFRND using it.
+
+### Adding your own MCP server
+
+The catalogue is on the page itself, not behind a button. Pick a server from **MCP servers**; if it needs credentials, a dialog opens to collect them. Any streamable-HTTP URL can be added, and it's probed before it's saved.
+
+### Taking frndOS with you
+
+At the bottom, a band headed **Take frndOS with you** describes the **frndOS MCP server**:
+
+> _"Hands frndOS's tools to the AI apps you already use, so a brand lookup works from wherever you are. Anything it creates still lands back here."_
+
+It lists **Claude**, **ChatGPT**, **Cursor**, and **Claude Code**, and gives you the server URL with a copy button.
+
+> **Note:** this points the opposite way from everything above it. Plugins bring outside tools *into* frndOS; the MCP server takes frndOS *out* to the apps you already use.
+
+## Skills — Teaching Your Assistant
+
+**Skills** is split into **Added** (what your workspace has) and **Browse** (what you could add). Search the top bar, or narrow the list by source and category.
+
+Each skill card carries where it came from:
+
+| Label | Meaning |
+|---|---|
+| **From frndOS** | A frndOS standard |
+| **From your workspace** | Added by someone in your workspace |
+| **Created by you** | Yours |
+
+frndOS standards rank first — deliberately not by install count. That's the difference between a curated standard and a marketplace.
+
+Toggle a skill in **Added** to turn it on or off. Click **Add** on a card under **Browse** to install it.
+
+### Creating or importing a skill
+
+The **+** beside the search box offers three routes:
+
+| Option | What it does |
+|---|---|
+| **Create a skill** | _"Write the instructions here"_ |
+| **Import from GitHub** | _"Pin to a public repo or a folder inside one"_ |
+| **Browse the directory** | _"Skills shared across frndOS"_ |
+
+Skills are grouped into five categories matching the way agency work actually splits: **Research**, **Strategy**, **Creative**, **Content**, **Account**.
+
+## Agents — One Assistant, One Job
+
+The **Agents** tab is the full Agents surface, embedded. An agent is described as: _"One assistant, one job. Give it instructions, skills, and a model, then call it with @ in AskFRND."_
+
+- **Browse** opens the agent directory for a ready-made starting point
+- **Create Agent** builds one from scratch
+
+Below the agents list, **Teams** — _"Several agents under a coordinator. It splits a multi-step request between them, then returns one answer."_ A team needs at least one agent first.
+
+> **Note:** some agents are built by FRnD and exist in every workspace. You can edit those freely, but they can't be turned off, deleted, or shared.
+
+See [Agents (Beta)](../early-access/agents) for the full walkthrough.
+
+## FAQ
+
+**Q: I don't see myFRND in my sidebar.**
+It rides the same workspace Labs toggle as Agents. Ask an admin to enable it — see [Turning On Experimental Features](../settings/experimental-features).
+
+**Q: What's the difference between a plugin and an MCP server?**
+Plugins are built and maintained by frndOS with fine-grained permissions and no setup. MCP servers are remote servers you point frndOS at yourself by URL.
+
+**Q: Why isn't the most popular skill at the top?**
+Ranking is by source, not install count — frndOS standards first, then workspace, then personal. A popular personal skill never outranks a standard.
+
+**Q: What's the frndOS MCP server for?**
+Using frndOS tools from Claude, ChatGPT, Cursor, or Claude Code. Anything created there still lands back in frndOS.
+
+**Q: The setup checklist vanished.**
+That's intended — it disappears once all three steps are done.
+
+---
+
+## Related Articles
+
+- [Navigating frndOS — The Sidebar](./navigating-frndos)
+- [AskFrnd Overview](../askfrnd/overview)
+- [Skills](../askfrnd/skills)
+- [Agents (Beta)](../early-access/agents)
+- [Turning On Experimental Features](../settings/experimental-features)

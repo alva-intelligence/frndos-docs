@@ -325,7 +325,7 @@ When you drop a `.psd` file onto an empty KV Generator canvas:
 
 The result is a board where you can continue editing each layer independently — move, resize, recolor, or replace the text just as if you'd created it inside KV Generator.
 
-> **Text layers stay editable.** Even when the PSD font isn't available on your canvas, the text content and style are preserved and remain editable. You'll see a font-missing prompt before import completes (see below).
+> **Text layers stay editable.** Even when the PSD font isn't available on your canvas, the text content and style are preserved and remain editable. Missing fonts are flagged in the review step before anything is imported (see below).
 
 ### Drop a PSD on an existing board
 
@@ -335,25 +335,56 @@ If you already have boards on the canvas, drop a `.psd` directly onto any board.
 
 1. **Parsing** — The PSD is read entirely on your device. This can take a few seconds for large, highly layered files.
 2. **Font matching** — Text layers are matched against your available fonts (built-in fonts + brand fonts). Unmatched fonts are flagged.
-3. **Upload** — Raster layers are uploaded to frndOS (4 at a time) as overlay image assets.
-4. **Placement** — All layers are placed on the board in their original positions and stacking order.
+3. **Review** — You choose which layers to bring in, and deal with any missing fonts, before anything is uploaded.
+4. **Upload** — Raster layers are uploaded to frndOS (4 at a time) as overlay image assets.
+5. **Placement** — The layers you kept are placed on the board in their original positions and stacking order.
 
 <!-- TODO: add screenshot of the PSD import overlay showing "Importing PSD…" → /img/guides-asset/<name>.jpeg -->
 
-### Missing fonts dialog
+### The review step
 
-If your PSD uses fonts that aren't available on the canvas, a dialog appears listing the missing font names:
+Before anything is imported, a dialog headed **Review PSD import** shows the file name, its pixel dimensions, and the full layer tree.
 
-- **Upload fonts** — Select `.ttf` or `.otf` font files (max 5 MB each) from your computer. Uploaded fonts are added to the brand's font library and registered immediately.
-- **Use default font** — Continue the import without the missing fonts. The text layers stay fully editable but render in the default font.
+<!-- TODO: add screenshot of the Review PSD import dialog — layer tree with checkboxes, warning labels, missing-fonts block, footer count → /img/guides-asset/<name>.jpeg -->
 
-The import resumes automatically after you upload fonts or choose to skip.
+- Untick any layer you don't want. Unticking a group unticks what's inside it
+- **Select all layers** toggles the whole tree at once
+- The footer counts what you're bringing in: **N of M layers · max X**
+
+> **Heads-up:** nothing has been uploaded at this point. Cancelling here costs you nothing.
+
+#### Layer warnings
+
+Layers that can't come across exactly are labelled so you know before you import, not after:
+
+| Warning | What it means |
+|---|---|
+| **Font not available** | The layer's font isn't on your canvas yet |
+| **Blend mode not supported** | The layer's blend mode can't be reproduced |
+| **Layer effect not imported** | A Photoshop layer effect will be dropped |
+| **Group will be flattened** | The group becomes a single layer rather than separate ones |
+
+Some rows also explain how they'll be folded in — **Doesn't produce its own layer — baked into the result**, **Clipped to &lt;layer&gt;**, or **Baked into &lt;layer&gt;**.
+
+#### Missing fonts
+
+If any text layer uses a font you don't have, the dialog says so:
+
+> _"These layers use fonts that aren't available yet. Upload the font files (TTF/OTF) to keep the original look, or continue and unmatched text will use the default font."_
+
+It lists the exact font names. Click **Upload fonts** to pick `.ttf` or `.otf` files — they're added to the brand's font library right away and the layers keep their original look.
+
+Or just import anyway: the text stays fully editable, it simply renders in the default font.
 
 > **Font licensing:** Only upload fonts you have the rights to use. Uploaded fonts become available to other brand members.
 
-### Overlay limit
+### Layer limit
 
-A single KV file supports up to **100 overlays**. If the PSD has more layers than the remaining space, the bottom layers win — the extra top layers are skipped and reported in the completion notice.
+A single KV file supports up to **300 overlays**. The review dialog's footer shows how many you have room for, and if you've selected too many it tells you exactly what to do:
+
+> **Deselect N layers to continue.**
+
+**Import** stays disabled until you're within the limit — so you decide what gets dropped, rather than finding out afterwards.
 
 ### File format tips
 

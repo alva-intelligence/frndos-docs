@@ -1,175 +1,175 @@
 ---
-title: Motion Mode — Animating Your Key Visual
+title: Motion — Animating Your Key Visual
 sidebar_position: 8
-description: Turn a finished Key Visual into a short animated video using Motion Mode — choose a model, pick a preset, and generate in one click.
+description: Animate a finished Key Visual with a real timeline — layers, keyframes, motion presets, audio, and MP4 export.
 ---
 
-# Motion Mode — Animating Your Key Visual
+# Motion — Animating Your Key Visual
 
-**Motion Mode** takes a finished Key Visual and turns it into a short animated video. Select a motion preset or describe how you want the image to move, choose a model, and generate — the AI animates your KV without any manual timeline work.
+**Motion** turns a finished Key Visual into a short video. Instead of describing the movement and hoping, you animate the KV's own layers on a timeline: pick a layer, apply a motion preset or set keyframes yourself, scrub the playhead, add audio, and export an MP4.
 
-> **Experimental feature:** Motion Mode is currently in Labs — it must be enabled per workspace in **Workspace Settings → Labs** before the Motion tab appears.
+> **Experimental feature:** Motion is a Labs feature enabled per workspace. If the **Motion** tab isn't in your KV file, it isn't turned on yet — see [Turning On Experimental Features](../settings/experimental-features).
+
+> **Changed from the old Motion:** Motion used to be a single "describe it and generate" panel. It's now a timeline editor with its own projects, so your work is saved and editable rather than being one-shot output.
 
 ## Before You Start
 
-You need:
-- A finalized Craft board (KV generated or uploaded in Craft mode) — see [Creating Your First Key Visual](./kv-generator)
-- Motion Mode enabled for your workspace (Workspace Settings → Labs → **KV Motion**)
+1. ✅ **A finished board in your KV file** — Motion animates the board you're viewing
+2. ✅ **Motion enabled for your workspace** — see the note above
+3. ✅ **A brand-scoped KV file** — a file not attached to a brand can't open Motion
 
-Motion works on Craft boards only. Concept boards do not have a "Send to Motion" option.
+## Opening Motion
 
-## Opening Motion Mode
+1. Open a KV file in [KV Generator](./kv-generator)
+2. Click the **Motion** tab
+3. The **Motion projects** panel opens, marked **Experimental**
 
-Two ways to enter Motion Mode:
+A **motion project** is one timeline document. A KV file can hold several — different cuts, different sizes — each listed with its name and when it was last updated.
 
-**Via the Motion tab in the top nav**
-1. Open a KV file with at least one Craft board
-2. Click the **Motion** tab in the top nav (film slate icon with an amber dot)
-3. The canvas switches to a first-frame preview of the currently selected board
+<!-- TODO: add screenshot of the Motion projects panel — New motion button, project rows with exports toggle → /img/guides-asset/<name>.jpeg -->
 
-**Via the board context menu**
-1. Right-click any Craft board on the canvas
-2. Select **Send to Motion** from the context menu
-3. The board becomes the Motion source and the mode switches automatically
+If the list is empty it says so: _"No motion projects yet. Animate the board you're viewing with a keyframed timeline."_
 
-> **Note:** The Motion tab appears only when the `show-kv-motion` feature flag is on for your workspace. If you don't see it, ask your workspace admin to enable KV Motion in Labs.
+> **Heads-up:** **New motion** is disabled until there's a board to animate. The tooltip explains why — _"Generate a board first — Motion animates the board you're viewing."_
 
----
+## Creating a Motion Project
 
-## The Motion Panel
+Click **New motion**. A picker opens headed **Choose the video size**, described as _"Motion animates the picture shown in the preview."_
 
-<!-- TODO: add screenshot of the Motion panel — Model, Motion preset chips, Duration/Ratio/Audio sections, prompt textarea, "Generate motion" button → /img/guides-asset/<name>.jpeg -->
+Sizes are grouped:
 
-When Motion Mode is active, a **Motion** panel appears in the **bottom-left corner** of the canvas, anchored at `left: 24px, bottom: 96px`. The panel has a header showing the label **Motion** with an **Experimental** amber badge.
+| Group | What's in it |
+|---|---|
+| **Same as board** | Your board at its own dimensions |
+| **From your resizes** | Sizes you already produced in the [Resizer](./resizer) |
+| Platform groups | The standard platform sizes |
 
-The panel is organized into the following sections:
+Pick one and the project is created and opened.
 
-### Model
+> **Tip:** a size that already exists as a resize carries that resize's own layout, so the motion matches the artwork you actually approved for that platform.
 
-A dropdown lists all available image-to-video models, each identified by its name and provider logo. The default model is pre-selected based on the registry.
+## The Editor
 
-> **Tip:** Different models have different capabilities — the Duration, Ratio, and Audio sections update automatically when you switch models to reflect what that model supports. If a previously selected value is out of range for the new model, the panel adjusts it and shows a one-line amber hint explaining what changed.
+<!-- TODO: add screenshot of the motion editor — layers rail, canvas tiles, properties panel, timeline dock → /img/guides-asset/<name>.jpeg -->
 
-### Motion Preset
+| Area | What's there |
+|---|---|
+| **Top bar** | **Back**, project name, preset + **Stagger**, the focused tile's size, **Export**, exported files, save state, **⋮** |
+| **Layers** (left) | One row per layer in your KV, plus a locked **Base image** row |
+| **Properties** (right) | The selected keyframe's values, and the canvas zoom controls |
+| **Canvas** | Live preview — one stage per output size |
+| **Timeline dock** (bottom) | The playhead, tracks, and transport controls |
 
-Five hardcoded preset chips:
+Your work saves by itself. The top bar shows **Saved**, **Saving…**, or **Failed to save**.
 
-| Preset | What it does |
-|--------|-------------|
-| **Subtle Zoom** | Slow, gentle zoom in or out |
-| **Parallax** | Layered depth movement |
-| **Product Spin** | Rotational animation centered on the product |
-| **Camera Pan** | Horizontal or vertical camera movement |
-| **Cinematic Push-in** | Slow, dramatic push toward the subject |
+### Layers
 
-Click a chip to select it; click again to deselect. You can combine a preset with a written prompt, or use either alone.
+Each layer from your KV appears as a track — text, image, or shape — named after its content. The **Base image** row is locked: it's the artwork underneath, and it doesn't carry keyframes.
 
-### Duration
+Click a layer to select it. The **✨** button on the row applies a motion preset to it.
 
-Chips showing available durations in seconds (e.g. `4s`, `6s`, `8s`). The available options depend on the selected model. The default is set from the model's configuration.
+## Motion Presets
 
-### Ratio
+Rather than keyframing everything by hand, apply a preset:
 
-Chips showing aspect ratios the selected model supports (e.g. `16:9`, `9:16`, `1:1`). The Motion panel tries to match the ratio of the source KV when the model supports it; otherwise it falls back to the model's default ratio.
+| Entrance / exit | Emphasis |
+|---|---|
+| Fade in · Slide in left · Slide in right · Slide in up · Slide in down · Pop in | Pulse · Shake · Spin · Bounce |
+| Fade out · Slide out left · Slide out right | |
 
-### Audio (model-dependent)
+Entrance presets start the layer's move; exit presets land at the end of the timeline; emphasis presets play at the playhead.
 
-Appears when the selected model supports audio generation:
+> **Heads-up:** emphasis presets are disabled when the playhead is too close to the end — the tooltip reads _"Not enough room before the end."_
 
-| Audio mode | What you see |
-|-----------|-------------|
-| **Always on** | "Audio included" label — audio always generated, toggle not shown |
-| **Optional** | **Generate audio** toggle (on by default) — turn off to skip audio |
-| **None** | Audio section not shown |
+### Staggering several layers
 
-### Prompt textarea
+To bring layers in one after another instead of all at once: pick a preset from the **Preset…** dropdown in the top bar, then click **Stagger**. It applies that preset across your layers in sequence.
 
-A free-text field (max 1000 characters) for additional motion direction:
+## The Timeline
 
-> **Placeholder:** _Optional motion detail… (or pick a preset)_
+The dock at the bottom carries the transport and the tracks.
 
-You must provide either a preset or a prompt (or both) before generating — the **Generate motion** button is disabled and a hint appears when both are empty: _"Pick a preset or add a motion detail to generate."_
+| Control | What it does |
+|---|---|
+| **Play / Pause** | Plays the timeline |
+| **Loop** | Repeats playback |
+| Time readout | Playhead position / total duration, plus the frame rate |
+| **Zoom −/+/Fit** | How much timeline fits on screen — this changes the view only, not the video |
+| **Slots** / **Keyframes** | Two ways to look at the same tracks |
+| **Duration** | The video's length in seconds |
 
----
+New projects start at **5 seconds** and **30 fps**.
 
-## Generating a Motion
+### Slots vs Keyframes
 
-Once you've configured the settings:
+**Slots** shows each layer's movement as blocks you can drag and stretch — the quick way to retime an entrance or an exit.
 
-1. Optionally type a motion detail in the textarea (or pick a preset, or both)
-2. Click **Generate motion**
-3. The request is sent; a result row appears in the **Results** section with a spinning indicator
+**Keyframes** shows the individual points, for when you want exact control. Insert, move, and delete keyframes here; the **Properties** panel on the right edits the selected one's values.
 
-The panel polls for updates every 4 seconds while any generation is in progress. Once done, the video renders inline in the result row.
+You can also drag a layer directly on the canvas — that writes a keyframe at the playhead.
 
-> **Note:** The panel is disabled when no board is selected. If you switch away from the board that was the motion source, configure the panel again after selecting a new source board.
+## Audio
 
----
+The timeline has an audio row. Upload an `.mp3`, `.wav`, `.m4a`, or `.ogg` file, then adjust:
 
-## Results
+- **Volume**
+- **Fade in duration**
+- **Fade out duration**
 
-<!-- TODO: add screenshot of the Results section — one done row (video player visible) + metadata line showing model/preset/duration/ratio → /img/guides-asset/<name>.jpeg -->
+Drag the audio block along the row to change when it starts. **Remove audio** takes it off again.
 
-Generated motions appear in a **Results** section in the panel, sorted newest first. Each result row shows:
+> **Heads-up:** there's a size limit — an oversized file is rejected with _"That audio file is too large."_
 
-| Element | Description |
-|---------|-------------|
-| **Video player** | Inline `<video>` element when status is `done` |
-| **Spinner** | "Generating…" placeholder when status is `pending` or `generating` |
-| **Error message** | Red warning icon + error text when status is `failed` |
-| **Metadata line** | Model name · Preset · Duration · Ratio (and audio icon if applicable) |
-| **Timestamp** | Relative time (e.g. _just now_, _3m ago_, _2h ago_) |
+## Resyncing After Editing the KV
 
-### Actions on a result row
+Changed the underlying KV after starting the motion? Open the **⋮** menu and choose **Resync from KV**.
 
-| Action | How |
-|--------|-----|
-| **Download** | Click **Download** link (appears on done rows) — opens the video URL in a new tab and triggers download |
-| **Regenerate** | Click **Regenerate** — pre-fills the panel with that row's settings (model, preset, prompt, duration, ratio, audio), letting you tweak and re-run from the same base |
-| **Delete** | Click the trash icon — removes the result permanently |
+The confirmation states exactly what happens: _"Tracks for overlays deleted in KV will be removed; keyframes for surviving overlays are kept."_
 
----
+## Exporting
 
-## Canvas in Motion Mode
+Click **Export** to open **Export motion** — _"Render this timeline to one MP4 per locked output size."_
 
-<!-- TODO: add screenshot of the canvas in Motion mode — first-frame preview centered, Motion panel bottom-left → /img/guides-asset/<name>.jpeg -->
+1. Tick the sizes you want (or **Select all**)
+2. Click **Export all**
+3. Each row reports its own progress; a failed row can be retried on its own
 
-When Motion Mode is active:
+Finished exports are reachable two ways: the **download icon** in the top bar (**Exported files**), and the exports toggle on the project's row back in the Motion projects panel.
 
-- The canvas shows a **first-frame preview** of the source KV (the board that was selected when you entered Motion Mode), centered with a **"First frame"** caption beneath it
-- If no board is selected: the canvas shows _"Generate or select a KV first to animate it."_
-- The **Chat panel** and **chat toggle** are hidden in Motion Mode — chat is not available here
-- The **Layers panel** (Stack icon) is hidden in Motion Mode — overlays are not editable in this view
-- The **Style pill** and tool cluster are hidden in Motion Mode
-- Share and Download actions in the top-right are hidden in Motion Mode (download is available per-result in the panel)
+> **Heads-up:** exporting needs browser codec support. If yours can't do it, the button is disabled with _"This browser can't export MP4 (missing codec support)."_
 
----
+## Deleting a Motion Project
+
+In the Motion projects panel, click the **trash** icon on a project row and confirm at **Delete this motion project?**
 
 ## FAQ
 
-**Q: Why don't I see the Motion tab?**
-The Motion tab is gated by the `show-kv-motion` experimental flag. It only appears when KV Motion is enabled for your workspace. Contact your workspace admin to turn it on in **Workspace Settings → Labs**.
+**Q: I don't see the Motion tab.**
+Motion is a Labs feature enabled per workspace. Ask an admin to turn it on — see [Turning On Experimental Features](../settings/experimental-features).
 
-**Q: What's the difference between a preset and a prompt?**
-A preset is a named motion style (Subtle Zoom, Parallax, etc.) — a structured instruction the model understands well. A prompt is free text for describing motion behavior the presets don't cover, or for combining with a preset for more specific direction. You need at least one of the two to generate.
+**Q: "New motion" is greyed out.**
+There's no board to animate yet. Generate or open a board first — Motion animates the board you're viewing.
+
+**Q: Motion says the file needs a brand.**
+Motion works on brand-scoped KV files. Open the file inside a brand.
+
+**Q: Can I have several motions for one KV?**
+Yes. Each motion project is its own timeline document, listed under the Motion tab for that file.
+
+**Q: I edited the KV after creating the motion. What now?**
+Use **⋮ → Resync from KV**. Keyframes for layers that still exist are kept; tracks for deleted layers are removed.
+
+**Q: Do I have to keyframe everything by hand?**
+No. Apply a preset per layer with the **✨** button, or use **Stagger** to sequence several layers at once. Keyframe editing is there when you want exact control.
 
 **Q: Can I animate a Concept board?**
-No. Motion works on Craft boards only. The "Send to Motion" option in the context menu is hidden for Concept boards. Promote a concept to Craft first (right-click → **Start designing**), then send it to Motion.
+Motion animates the board you're viewing in the KV file. Promote a concept to Craft first — see [Craft Mode](./craft-mode).
 
-**Q: Why did my Duration or Ratio change when I switched models?**
-Each model has its own set of supported durations, ratios, and audio modes. When you switch models, the panel clamped your previous values to the nearest valid option for the new model and showed a hint describing what changed.
+**Q: What format does it export?**
+MP4, one file per selected output size.
 
-**Q: How long does generation take?**
-It varies by model and duration. The panel polls for updates every 4 seconds while a generation is in progress. There is no maximum wait time listed in the UI — generation time is model-dependent.
-
-**Q: Can I have multiple motions per KV?**
-Yes. You can generate multiple motions for the same board (each with different settings) — all appear in the Results section. Use the Delete action to remove results you no longer need.
-
-**Q: Can I download the generated video?**
-Yes. Click **Download** on any done result row. The video opens in a new browser tab and downloads automatically.
-
-**Q: Is there a chat assistant in Motion Mode?**
-No. Motion Mode does not have an AI chat panel — there is no agent in this mode. All controls are in the Motion panel on the left.
+**Q: Do I need to save?**
+No. The editor autosaves and shows **Saved** in the top bar. If it ever reads **Failed to save**, don't close the tab until it recovers.
 
 ---
 

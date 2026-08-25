@@ -1,0 +1,134 @@
+---
+title: Audience Personas — From Followers to People
+description: Analyse the people who follow a brand's Instagram account, group them into segments, and turn them into personas you can chat with.
+sidebar_position: 9
+---
+
+# Audience Personas — From Followers to People
+
+**Audience Personas** takes the people who actually follow a brand's Instagram account and turns them into something you can use: grouped segments, and named personas with real characteristics behind them. You can also write a persona from scratch when you have someone specific in mind.
+
+> **Beta feature:** Audience Personas is gated per workspace. If **Audience Personas** isn't available in Research, it isn't enabled yet — see [Turning On Experimental Features](../settings/experimental-features).
+
+## Before You Start
+
+1. ✅ **A brand with an Instagram account** — connected, or one you can name
+2. ✅ **The feature enabled for your workspace** — see the note above
+3. ✅ **A customer list** (optional) — customers who are also followers give a richer signal
+
+## Opening It
+
+Inside a brand: **Research → Audience Personas**.
+
+Three tabs:
+
+| Tab | What's in it |
+|---|---|
+| **Audience Table** | Every follower analysed, one row each |
+| **Segments** | The groups the analysis found |
+| **Audience Personas** | The personas built from those groups |
+
+<!-- TODO: add screenshot of the Audience Personas page — three tabs, Segments/Personas metric cards, persona grid → /img/guides-asset/<name>.jpeg -->
+
+## Generating Personas From Followers
+
+The generator is headed **Generate audience personas** — _"Analyze the people who follow an Instagram account and turn them into audience personas."_
+
+1. Check the **Instagram account** field. If the brand has a connected account it's filled in for you (_"Prefilled from the brand's connected Instagram account."_); otherwise type the handle (_"No connected Instagram account — enter the account to analyze."_)
+2. Decide on **Include customer list** — _"Followers who are also customers contribute richer signal."_
+3. Click **Generate personas**
+
+> **Heads-up:** the handle accepts letters, numbers, dots and underscores only, up to 30 characters. An invalid handle blocks the button.
+
+### While it runs
+
+The progress panel names the stage it's in:
+
+| Stage | Message |
+|---|---|
+| Fetching | **Fetching and enriching followers…** |
+| Enriching | **Enriching follower profiles…** |
+| Building | **Building personas from enriched followers…** |
+
+When it finishes you get **Audience segments updated**. If your existing segments already covered the new audience, it says so — _"Existing segments absorbed the new audience — personas kept as-is."_
+
+## Writing a Custom Persona
+
+Have someone specific in mind? Click **Create persona** to open **Create a custom persona** — _"Describe the person you have in mind and generate a single persona from it — no follower analysis involved."_
+
+Describe them in plain language. The box suggests the level of detail:
+
+> _"e.g. A Gen Z college student in Bandung who games after class, follows K-pop comebacks, and buys snacks at the minimarket almost daily"_
+
+You'll see **Custom persona queued** — _"It will appear in the list below once generated (~1 minute)."_ A toast tells you when it's ready: **Custom persona generated**.
+
+## Working With the Personas
+
+Two counters sit at the top: **Segments** and **Personas**.
+
+Below them, controls for the grid:
+
+| Control | Options |
+|---|---|
+| Columns | How many personas per row |
+| Filter | **All personas** · **From followers** · **Custom** |
+| Sort | **Newest** · **Name (A–Z)** |
+
+Follower-derived personas are grouped under the segment they came from, ordered by how much of the audience each segment represents. Custom personas are collected in their own **Custom personas** section.
+
+Click a persona card to open its detail. Once a persona is finished you can also **chat with it** — ask it questions as if it were the person.
+
+> **Note:** a persona still generating shows in place, so you can see it's coming. A failed one tells you why.
+
+## Segments
+
+The **Segments** tab lists the **AI Generated Segments** the analysis found, each with its follower count and a **View Segment** action that opens the people inside it.
+
+Empty until you've run a generation: _"Generate audience personas from the brand's Instagram followers to create segments."_
+
+## The Audience Table
+
+The **Audience Table** is every analysed person, searchable by name, username, or source.
+
+Columns: **Name**, **Platform**, **Username**, **Source**, **Description**, **Followers**, **Passion Points**, **Hobbies**, **SES**, **AI Segment**, **Intent**, **Verification**, **Created**.
+
+The **Source** column tells you where the person came from:
+
+| Value | Meaning |
+|---|---|
+| **Follower** | Found through the Instagram analysis |
+| **Customer** | From your customer list |
+| **Follower + Customer** | Both — the richest signal |
+
+## FAQ
+
+**Q: I don't see Audience Personas in Research.**
+It's gated per workspace. Ask an admin — see [Turning On Experimental Features](../settings/experimental-features).
+
+**Q: Do I need a connected Instagram account?**
+No. If one is connected the handle is prefilled; otherwise type the account you want analysed.
+
+**Q: What does "Include customer list" change?**
+Followers who are also customers contribute richer signal to the analysis. It needs a customer list — see [Importing Customers](./importing-customers).
+
+**Q: How long does it take?**
+Follower analysis runs in stages and reports each one. A single custom persona takes about a minute.
+
+**Q: I re-ran it and no new segments appeared.**
+Your existing segments absorbed the new audience, and your personas were kept as they were. frndOS says so when that happens.
+
+**Q: What's the difference between a follower persona and a custom one?**
+A follower persona is derived from real people the analysis found and belongs to a segment. A custom persona is one you described, with no follower analysis behind it.
+
+**Q: Can I ask a persona questions?**
+Yes — once it's finished generating, open it and chat with it.
+
+---
+
+## Related Articles
+
+- [Research Overview](./overview)
+- [Customer Intelligence Overview](./customer-intelligence-overview)
+- [Importing Customers](./importing-customers)
+- [Exploring Customers & Segments](./exploring-customers-and-segments)
+- [Turning On Experimental Features](../settings/experimental-features)

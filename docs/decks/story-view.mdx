@@ -1,0 +1,130 @@
+---
+title: Writing the Story
+description: Story view lets you write your deck as prose first — in chapters — then build slides from it, rehearse the delivery, and prepare speaking notes.
+sidebar_position: 3
+---
+
+# Writing the Story
+
+Most decks start as a story, not a layout. **Story view** lets you write that story as prose — organised into chapters — and only then turn it into slides. It's also where you rehearse the delivery and prepare the talk track you'll actually say out loud.
+
+## Before You Start
+
+1. ✅ **A deck open in the editor** — see [Decks Overview](./overview)
+2. ✅ **Something to say** — Story works from prose you write, so a blank story has nothing to build from
+
+## Opening Story View
+
+The slide rail carries a **Slides** / **Story** switch. Click **Story**, or press **⌘/** to flip between the two.
+
+Your current slide carries over, so you land on the same part of the deck either way.
+
+<!-- TODO: add screenshot of Story view — chapter rail, prose document, top actions row → /img/guides-asset/<name>.jpeg -->
+
+## The Story Actions
+
+Story view replaces the deck's usual top-bar actions with its own row:
+
+| Action | Shortcut | What it does |
+|---|---|---|
+| **Build** | | Proposes slides from your prose (see below) |
+| **Read back** | | Shows where your words actually go, and what to fix |
+| **Listen** | | Reads the story aloud |
+| **Rehearse** | | Times you as you talk through it |
+| **Focus** | ⌥F | Strips the view back to just the writing |
+| **Present** | | Opens the deck full-screen |
+| **Notes** | ⌥N | Shows or hides notes |
+| **Structure** | | Shows or hides the structure outline |
+
+## Editing While You Write
+
+Select any passage in the story and a small action row appears:
+
+| Action | What it does |
+|---|---|
+| **Tighten** | Rewrites the selection more concisely |
+| **Say it out loud** | Rewrites it the way you'd actually say it |
+| **Ask about this** | Opens a question box — the answer lands in the margin, not in your text |
+| **Make it the heading** | Promotes the selection to the section's heading |
+| **Split into two slides** | Breaks the section in two |
+
+**Tighten** and **Say it out loud** offer their version next to yours — keeping your own wording is a real answer, not a fallback.
+
+**Ask about this** takes a free-text question (the box suggests _"Is this claim strong enough?"_) and puts the reply in the margin so it can never be mistaken for an edit.
+
+## Building Slides From the Story
+
+Click **Build** and frndOS proposes what to create. A modal opens headed **Build N slides from your story**, with the rule stated plainly:
+
+> _"Nothing is created until you approve. Existing slides are never replaced — new ones land after their chapter's last slide."_
+
+Proposals are grouped by chapter, each showing what will be added. Untick anything you don't want.
+
+The panel on the right tells you what you're about to get:
+
+| Readout | Meaning |
+|---|---|
+| **After building** | The new slide count, and what it was before |
+| **Talk time** | Estimated from your prose at 144 words a minute |
+| **Skipped parts** | Sections with a heading or prose, but not both — they're skipped, and the reason is shown per row |
+| **Untouched slides** | Existing slides that stay as they are; their speaker notes update to match the prose you rewrote |
+
+Click **Approve & build N slides** to create them, or **Keep writing** to go back.
+
+> **Heads-up:** if every part of your story is already on a slide, the modal says so — _"Every part of your story is already on a slide. Nothing to build."_
+
+## Read Back — Checking the Balance
+
+**Read back** shows a bar chart of where your words actually go, chapter by chapter, followed by at most three findings. Each finding names a chapter and offers a jump straight to it.
+
+There's deliberately no "fix everything" button — each finding is a decision about what you're going to say, not a text edit.
+
+## Rehearse — Timing Yourself
+
+**Rehearse** turns the story into a teleprompter with a clock. You advance when you've finished saying a slide, and that single act is the measurement.
+
+While running, the header shows:
+- Which chapter you're in
+- Elapsed time
+- Drift — e.g. **+18s vs plan**
+- Your measured pace in **wpm**
+- **Stop ⌘.**
+
+When you finish, a report headed **How that run went** shows your total time, your drift against the estimate, your words-per-minute, and a per-chapter bar comparing what you actually took against what was planned. Below that, **What to fix first** — or, if it went well, _"That ran to plan. Nothing stands out to fix."_
+
+Then **Run it again** or **Back to writing**.
+
+> **Note:** Rehearse never asks for your microphone. It measures by when you advance, not by listening.
+
+> **Heads-up:** a completed run sets your real speaking pace, and every talk-time estimate in the story updates to use it.
+
+If you haven't written a talk track yet, Rehearse tells you: _"There is nothing to rehearse yet — a run needs a talk track. Write something under a heading first."_
+
+## Speaker Notes
+
+The deck's right rail has a **Notes** tab holding the slide's **Talk track**, with a **Generate talk track** action. Notes written as prose in Story view and the slide's speaker notes stay in step — building from the story updates them.
+
+## FAQ
+
+**Q: Will Build overwrite my existing slides?**
+No. New slides land after their chapter's last slide. The only thing that changes on an existing slide is its speaker notes, and the build modal tells you how many will change.
+
+**Q: Why was part of my story skipped?**
+A section needs both a heading and prose. One without the other is skipped, and the reason is shown on the row.
+
+**Q: Where does the talk-time estimate come from?**
+144 words a minute by default. Once you complete a Rehearse run, your own measured pace replaces it.
+
+**Q: Does Rehearse record me?**
+No. It requests no microphone access — it times you by when you advance to the next slide.
+
+**Q: Can I get an AI rewrite without losing my own wording?**
+Yes. **Tighten** and **Say it out loud** show their version beside yours so you can keep your own.
+
+---
+
+## Related Articles
+
+- [Decks Overview](./overview)
+- [Importing a PowerPoint or PDF](./importing-a-deck)
+- [Project Rooms](../projects/project-rooms)

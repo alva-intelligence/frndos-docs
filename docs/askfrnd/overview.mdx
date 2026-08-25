@@ -114,8 +114,46 @@ AskFrnd has access to:
 * Your **active brand** (whichever brand you currently have open — see [Navigating frndOS](../getting-started/navigating-frndos) for how brand context works)
 * The **current page context** (which pillar, which data, which view)
 * Your **conversation history**, scoped to your access point (see above)
+* Any **brand data you @mention** — including brands other than the one you have open
+
+### Pointing AskFrnd at Specific Brand Data
+
+Type **@** in the composer and a picker appears. Its first section is **Brand data**.
+
+You can mention:
+
+| Mention | Scope |
+|---|---|
+| A **brand** by name | That brand's insight data as a whole |
+| A brand's **subpage** — e.g. _Nike's Ads_ | Just that area |
+
+Subpages available per brand: **Overview**, **Campaigns**, **Ads**, **Social Media**, **Influencer**, **ATL**, **Trend Signal**.
+
+The brand you currently have open is listed first with its subpages expanded; other brands you have access to follow. Keep typing after the **@** to filter across all of them.
+
+> **Heads-up:** you only ever see brands you actually have access to — the list is filtered on the server, and every mention is re-checked when the message is sent.
+
+> **Note:** the same picker also lists **Agents**, **Teams**, and **Workflows** when those are enabled for your workspace. If nothing matches what you typed, it says _"No brands, agents, teams, or workflows found."_
+
+> **Tip:** mentioning brand data depends on the **brand data** tool being on. If the **Brand data** section never appears, check **Chat Settings → Tools** — see [AskFrnd Tools](./tools).
 
 > **Heads-up:** Brand IQ (Strategy, Identity, Tone) is currently **only fully consumed by the KV Generator**, not yet by AskFrnd's chat-based generation. This is being worked on. For now, if you need brand-perfect output, use the KV Generator or include brand specifics in your prompt.
+
+## Stopping a Response
+
+Asked the wrong thing, or seen enough? Click the **stop** button — it replaces **Send** in the same spot while a reply is streaming.
+
+What's already been written stays on screen. You don't lose the useful half of an answer just because you stopped the rest.
+
+> **Note:** you can have more than one conversation working at a time. Starting a second thread doesn't discard the first one's answer.
+
+## Seeing Which Conversation Is Working
+
+Because several conversations can run at once, you need to know which one is still going. In the sidebar's **Chat** list, a thread that's still answering has its **title shimmering** — a highlight sweeps across it until the reply finishes.
+
+That's the whole indicator: no spinner, no badge. The title itself carries the state, so the row never changes size and nothing jumps around as threads start and finish.
+
+> **Why it matters:** without it, a conversation you walked away from mid-answer looks exactly like a finished one, and the only way to find out would be to open it.
 
 ## Privacy & History
 

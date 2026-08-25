@@ -1,0 +1,140 @@
+---
+title: Decks Overview — Building Presentations in frndOS
+description: The deck editor in frndOS — where decks come from, what the workspace looks like, and how Slides and Story views fit together.
+sidebar_position: 1
+---
+
+# Decks Overview — Building Presentations in frndOS
+
+A **deck** in frndOS is a presentation you build inside the app: slides on a canvas, a Story view for writing the narrative, an AI assistant beside you, and export to PowerPoint or PDF when you're done.
+
+Decks live in your Library alongside Key Visuals and reports, and can be filed into a project so the rest of your team finds them in context.
+
+> **Beta feature:** the deck editor is gated by the `decking-phase-a` flag. If deck creation isn't available in your workspace yet, it's still rolling out.
+
+## Before You Start
+
+1. ✅ **A workspace with the deck editor enabled** — see the note above
+2. ✅ **A brand or project to file the deck under** (optional) — a deck with neither is "unfiled" and still works
+
+## Where Decks Come From
+
+There are four entry points, and they all land in the same editor:
+
+| Entry point | Where | What it makes |
+|---|---|---|
+| **Create menu → Presentation Deck** | The **+** button in the sidebar footer | Opens the **New deck** chooser |
+| **Library → New file → Deck** | [Library](../library/overview) | Opens the same **New deck** chooser |
+| **New file** | Inside a [project room](../projects/project-rooms) | A deck titled **Untitled deck**, filed into that project |
+| **Handoff → Quick deck** | From project work | A deck scaffolded from existing work |
+
+### The New deck chooser
+
+Both the sidebar Create menu and the Library open a chooser titled **New deck**, described as _"Start blank, bring in a PowerPoint or PDF, or pick a published template."_
+
+| Tile | What it does |
+|---|---|
+| **Start blank** | Creates an empty deck called **Untitled deck** and opens it |
+| **Import a file** | Turns a `.pptx` or `.pdf` into a new deck — see [Importing a PowerPoint or PDF](./importing-a-deck) |
+| **A published template** | Creates a deck pre-loaded with that template's slides |
+
+<!-- TODO: add screenshot of the New deck chooser (Start blank / Import a file / template grid) → /img/guides-asset/<name>.jpeg -->
+
+> **Heads-up:** when you open the chooser from the Library or the sidebar while a brand is active, the new deck is filed under that brand automatically.
+
+## The Editor at a Glance
+
+<!-- TODO: add screenshot of the deck editor — top bar, slide rail, canvas, right rail, bottom dock → /img/guides-asset/<name>.jpeg -->
+
+| Area | What's there |
+|---|---|
+| **Top bar** | Deck menu, the parent link and deck title, search, who else is here, **Export**, **Share**, **Play** |
+| **Slide rail** (left) | Slide thumbnails, and the **Slides** ⇄ **Story** switch |
+| **Canvas** | The slide you're editing |
+| **Right rail** | Four tabs — **Slide**, **Layers**, **Notes**, **Comments** |
+| **Bottom dock** | Insert tools — **Media**, **Shape**, **Chart**, **Table**, **Embed** |
+
+The line under the deck title tells you its state: **Private** (or **Template**), the slide count, and either **saved** or **approved**.
+
+> **Heads-up:** **Chart** is marked Phase A and **Embed** is marked Phase B — Phase B controls are visible but not usable yet.
+
+## Two Views: Slides and Story
+
+The deck rail carries a **Slides** / **Story** switch, and ⌘/ flips between them.
+
+| View | Use it for |
+|---|---|
+| **Slides** | Laying out one slide — placing text, media, shapes, charts, and tables on the canvas |
+| **Story** | Writing the narrative as prose, in chapters, before or instead of arranging boxes |
+
+Story carries its own actions: **Read back**, **Listen**, **Rehearse**, **Present**, and **Structure**. Your current slide carries over when you switch, so you land on the same part of the deck in either view.
+
+See [Writing the Story](./story-view) for how the narrative side works.
+
+## Renaming, Approving, and Version History
+
+The **Deck menu** (top-left) holds the deck-wide actions:
+
+| Action | What it does |
+|---|---|
+| **Rename** | Renames the deck (you can also click the title in the top bar and type) |
+| **Save as template** | Turns the current deck into a reusable template |
+| **Guides & grid** (⌥G) | Shows or hides alignment guides |
+| **Version history** | Opens the deck's history panel |
+| **Approve deck** / **Reopen deck for edits** | Marks the whole deck approved, or reopens it |
+| **Import…** | Brings a PowerPoint or PDF into this deck |
+| **Import report** | Shows what happened on the last import |
+| **Export…** (⇧⌘E) | Opens the export options |
+
+When a deck is approved, the meta line under the title reads **approved** in green.
+
+## Sharing and Exporting
+
+**Share** and **Export** in the top bar open the same dialog, **Share & export deck**, on different tabs.
+
+**Share** offers a **View-only preview link** — click **Enable link**, then **Copy**. **Disable** turns the link off again.
+
+**Export** offers:
+
+| Format | Notes |
+|---|---|
+| **PowerPoint (.pptx)** | _"Editable deck. Some elements may render differently."_ |
+| **PDF** | _"1920×1080 print-ready pages."_ |
+| **Google Slides** | Marked **Soon** — not available yet |
+| **Canva** | Marked **Soon** — not available yet |
+
+> **Heads-up:** **Comment access** and **Edit access** appear in the Share tab labelled **Phase B** — guest comments and per-link roles aren't live yet.
+
+## Presenting
+
+Click **Play** in the top bar to open the deck full-screen. From Story view, **Present** does the same.
+
+## FAQ
+
+**Q: Where do my decks show up afterwards?**
+In the [Library](../library/overview), with **Deck** as the file kind. A deck created inside a project also appears in that project's **Files** section.
+
+**Q: Can someone without a frndOS account see my deck?**
+Yes — enable the **View-only preview link** in the Share tab and send that URL. It's view-only.
+
+**Q: Can I use my brand's colours and fonts?**
+Yes. Build a brand template once and every deck started from it is on brand — see [Brand Deck Templates](../brand-setup/deck-templates). Pick it in the **New deck** chooser rather than starting blank.
+
+**Q: What does "approved" mean?**
+It's a deck-wide state you set from the Deck menu. It marks the deck as final; **Reopen deck for edits** undoes it.
+
+**Q: Why can't I export to Google Slides or Canva?**
+Both are listed with a **Soon** badge and are disabled. PowerPoint and PDF work today.
+
+---
+
+## Next Steps
+
+- [Importing a PowerPoint or PDF](./importing-a-deck)
+- [Writing the Story](./story-view)
+
+## Related Articles
+
+- [Brand Deck Templates](../brand-setup/deck-templates)
+- [Library Overview](../library/overview)
+- [Project Rooms](../projects/project-rooms)
