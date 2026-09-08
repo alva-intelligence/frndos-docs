@@ -2,15 +2,6 @@
 sidebar_position: 2
 title: Creating Your First Key Visual (KV Generator)
 description: Step-by-step guide to generating Key Visuals in frndOS — from initial concept to platform-ready final asset.
-todo:
-  - "add screenshot of the overlay properties panel — Fill section (Solid/Gradient toggle, color swatch, gradient From/To/Angle), Stroke section (toggle, color swatch, width), Opacity slider, text alignment buttons → /img/guides-asset/<name>.jpeg"
-  - "add screenshot of the KV canvas in comment mode — comment tool selected in the bottom nav, a pin on a board, the Comments dock on the right → /img/guides-asset/<name>.jpeg"
-  - "screenshot of the right-click context menu on a Concept board — showing \"Start designing\", copy actions, Duplicate, Rename, Reset position, Remove from canvas → /img/guides-asset/<name>.jpeg"
-  - "screenshot of the right-click context menu on a Craft board — showing craft-only items (Set as master, Version history…, Create variant, Send to Motion, Send to Resize) → /img/guides-asset/<name>.jpeg"
-  - "add screenshot of the PSD import overlay showing \"Importing PSD…\" → /img/guides-asset/<name>.jpeg"
-  - "add screenshot of the Review PSD import dialog — layer tree with checkboxes, warning labels, missing-fonts block, footer count → /img/guides-asset/<name>.jpeg"
-  - "add screenshot of the ruler bars at top and left edges of the viewport, with tick marks and numeric labels → /img/guides-asset/<name>.jpeg"
-  - "add screenshot of the Grid & Ruler popup showing the ruler toggle, opacity slider, and grid size slider → /img/guides-asset/<name>.jpeg"
 ---
 
 # Creating Your First Key Visual (KV Generator)
@@ -228,6 +219,8 @@ Both states are immediately reflected on the canvas and persist across sessions.
 
 > **Tip:** Use Hide to declutter the canvas while editing specific layers, and Lock to protect elements (like logos or footers) from accidental edits.
 
+<!-- TODO: add screenshot of the overlay properties panel — Fill section (Solid/Gradient toggle, color swatch, gradient From/To/Angle), Stroke section (toggle, color swatch, width), Opacity slider, text alignment buttons → /img/guides-asset/<name>.jpeg -->
+
 ---
 **Save as Template**
 If you have a recurring layout (logo placement, footer style), save it as a Template so you don't repeat the setup for every KV.
@@ -272,6 +265,8 @@ Every generation is saved. To browse previous versions:
 
 Feedback goes **on the artwork**. Pick the **Comment** tool in the bottom toolbar (the speech-bubble icon, tooltip _"Comment (C)"_) or press **C**, then click the board, tile, or motion project you want to talk about — a pin lands where you clicked and a composer opens beside it.
 
+<!-- TODO: add screenshot of the KV canvas in comment mode — comment tool selected in the bottom nav, a pin on a board, the Comments dock on the right → /img/guides-asset/<name>.jpeg -->
+
 > **It's a tool, not a panel.** Comment sits in the bottom toolbar beside Cursor, Hand, Frame, Text, and Image — because commenting is a mode you work in, not something you toggle open.
 
 ### While you're in the mode
@@ -308,6 +303,10 @@ File thumbnails carry a small blue **comment badge** with a count — in the Lib
 Right-clicking any board on the canvas opens a context menu with actions for that board. Right-clicking on an empty part of the canvas (no board) does nothing — the browser's native menu is suppressed.
 
 The menu closes when you click anywhere outside it or press **Escape**.
+
+<!-- TODO: screenshot of the right-click context menu on a Concept board — showing "Start designing", copy actions, Duplicate, Rename, Reset position, Remove from canvas → /img/guides-asset/<name>.jpeg -->
+
+<!-- TODO: screenshot of the right-click context menu on a Craft board — showing craft-only items (Set as master, Version history…, Create variant, Send to Motion, Send to Resize) → /img/guides-asset/<name>.jpeg -->
 
 ### On a Concept board
 
@@ -377,9 +376,13 @@ If you already have boards on the canvas, drop a `.psd` directly onto any board.
 4. **Upload** — Raster layers are uploaded to frndOS (4 at a time) as overlay image assets.
 5. **Placement** — The layers you kept are placed on the board in their original positions and stacking order.
 
+<!-- TODO: add screenshot of the PSD import overlay showing "Importing PSD…" → /img/guides-asset/<name>.jpeg -->
+
 ### The review step
 
 Before anything is imported, a dialog headed **Review PSD import** shows the file name, its pixel dimensions, and the full layer tree.
+
+<!-- TODO: add screenshot of the Review PSD import dialog — layer tree with checkboxes, warning labels, missing-fonts block, footer count → /img/guides-asset/<name>.jpeg -->
 
 - Untick any layer you don't want. Unticking a group unticks what's inside it
 - **Select all layers** toggles the whole tree at once
@@ -446,6 +449,8 @@ When enabled, ruler bars appear at the **top** and **left** edges of the viewpor
 
 The tick step adapts to your current zoom level — zoom in for finer subdivisions, zoom out for coarser ones. The ruler sits above the Konva canvas but is **pointer-events-none**, so it never intercepts clicks or drags.
 
+<!-- TODO: add screenshot of the ruler bars at top and left edges of the viewport, with tick marks and numeric labels → /img/guides-asset/<name>.jpeg -->
+
 ### Grid
 
 The background grid is controlled from the same bottom toolbar. Click the ruler icon to open the **Grid & Ruler popup**, where you can:
@@ -459,6 +464,8 @@ The background grid is controlled from the same bottom toolbar. Click the ruler 
 The grid renders as white CSS lines behind the Konva canvas stage at `z-index: 1`. It uses a coarser step than the ruler ticks so cells are large enough to sight against.
 
 > **Grid opacity and size persist** across page reloads and between files (saved to browser localStorage).
+
+<!-- TODO: add screenshot of the Grid & Ruler popup showing the ruler toggle, opacity slider, and grid size slider → /img/guides-asset/<name>.jpeg -->
 
 ### Smart Drag Guides
 
