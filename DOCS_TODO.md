@@ -336,6 +336,23 @@ _Last updated: 2026-09-08_
 | 101 | 📸 screenshot | Add screenshot of the account picker chips in a chat reply |
 
 
+## Integrations
+
+### `docs/integrations/frndos-mcp-server.mdx` — Connecting Your AI App — the frndOS MCP Server
+
+| Line | Type | What to do |
+|---|---|---|
+| 42 | 📸 screenshot | Add screenshot of the "Use frndOS inside your AI" dialog — server URL + Copy button, the 4 numbered steps, the "Where to add it" example image |
+| 58 | 🔒 third-party/iframe | Confirm the exact menu path for adding a remote MCP server inside each AI app (Claude, ChatGPT, Cursor, Claude Desktop, Gemini), then replace the marker with a short per-app list — vendor UI, not in any frndOS repo |
+| 60 | 🔒 third-party/iframe | Same marker as line 58: capture per-app click paths from each vendor's live UI or link to vendor docs — never write them from memory. This section is the intended destination of a "Setup for your app →" link from `McpConnectModal.tsx` (frnd-web), so it must eventually answer the non-Claude cases |
+| 143 | ✍️ confirm from live UI | Confirm whether frndOS has a screen for reviewing/revoking connected AI apps. The connect dialog says "revoke anytime", but no such surface exists in the product code (Passport client-management routes are deliberately not registered) |
+
+### `docs/integrations/what-frndos-mcp-can-do.mdx` — What the frndOS MCP Server Can Do
+
+| Line | Type | What to do |
+|---|---|---|
+| 128 | ✍️ confirm from live UI | Confirm whether the per-tool switches in Chat Settings → Tools / myFRND → Tools also apply to tools called through the frndOS MCP server, or only to AskFRND inside the app |
+
 ## Early Access Features
 
 ### `docs/early-access/agents.mdx` — Agents & Teams (Beta)

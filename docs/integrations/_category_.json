@@ -1,0 +1,8 @@
+{
+  "label": "Integrations",
+  "position": 15,
+  "link": {
+    "type": "generated-index",
+    "description": "Connecting frndOS to the tools outside it — including the frndOS MCP server, which takes frndOS out to the AI apps you already use."
+  }
+}

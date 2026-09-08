@@ -270,6 +270,7 @@ const DocsCollection = {
         { label: "📚 Library", value: "library" },
         { label: "👥 Workspace & Members", value: "workspace" },
         { label: "⚙️ Settings & Administration", value: "settings" },
+        { label: "🔌 Integrations", value: "integrations" },
         { label: "🧪 Early Access Features", value: "early-access" },
       ],
     },

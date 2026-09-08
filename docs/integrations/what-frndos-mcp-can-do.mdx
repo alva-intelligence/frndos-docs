@@ -1,0 +1,140 @@
+---
+title: What the frndOS MCP Server Can Do
+description: The capability areas the frndOS MCP server exposes to your AI app — brand knowledge, insights, customer intelligence, campaigns, workflows, Key Visuals and decks — plus what needs a subscription or credits.
+sidebar_position: 2
+---
+
+# What the frndOS MCP Server Can Do
+
+**Once your AI app is connected, it gets the whole AskFRND tool surface — not a cut-down copy of it.** The connect dialog sums it up as _"Every AskFRND capability, exposed to your AI: brand knowledge, audiences, KV generation, deck compose, workflows."_
+
+And the parity line spells out the difference: _"Same tools as AskFRND — plus agents, teams, and workflow runs. Same workspace, same billing, same permissions."_
+
+Not connected yet? Start with [Connecting Your AI App](./frndos-mcp-server).
+
+## The Short Version
+
+The connect dialog groups it into three headlines:
+
+| Area | What it covers |
+|---|---|
+| **Brand intelligence** | _"Brand knowledge, directories, creative playbooks."_ |
+| **Audience & insights** | _"CI overview, segments, personas, persons."_ |
+| **Create & generate** | _"KV files, artifacts, deck compose."_ |
+
+## The Full Capability List
+
+This is the list the approval screen shows you before you connect, under _"Through the MCP server, [your app] will be able to:"_
+
+- ✓ Read brand knowledge, insights, and reports (owned, paid, earned media, signals, overview)
+- ✓ Read customer intelligence — segments, insights, and audience personas
+- ✓ List, create, and update agents and teams
+- ✓ Create and update campaign plans
+- ✓ Run workflows and read their results
+- ✓ Generate key visuals and compose decks
+- ✓ Browse creative playbooks and post-creative analyses
+- ✓ Only within workspaces you belong to, with your own permissions
+
+## Area by Area
+
+### Finding your way around
+
+Your AI app always starts by listing the workspaces you belong to, then the brands inside the one you pick. Everything else hangs off those two choices.
+
+### Brand knowledge
+
+One brand's knowledge payload: **DNA, identity and tonality** — the same material behind [Brand IQ](../brand-setup/brand-iq).
+
+### Brand insights
+
+Each Insights subpage is readable on its own:
+
+| Subpage | What comes back |
+|---|---|
+| **Overview** | Cross-channel KPIs plus top trend signals |
+| **Owned media (Social Media)** | KPIs, performance, per-platform breakdown, or a post list |
+| **Paid media (Ads)** | Overview and performance, or a creative-asset list |
+| **Earned media (Influencer)** | Overview KPIs, or a post / influencer list |
+| **ATL** | Above-the-line — TV, cinema, radio, DOOH |
+| **Signals** | Trend-signal counts and breakdowns, or the signal list |
+| **Campaigns** | Totals and status breakdown for the brand's campaigns |
+
+See [Insights Overview](../insights/overview) for the same data in the app.
+
+### Customer intelligence and audiences
+
+The AI-generated customer-intelligence overview, customer segments, aggregated customer insights, plus audience segments, personas, and the analysed-followers table. In the app: [Customer Intelligence Overview](../research/customer-intelligence-overview) and [Audience Personas](../research/audience-personas).
+
+### Agents and teams
+
+List the workspace's enabled agents, create a new one from a name and instructions, update an existing one, and list or create agent teams. An agent created this way is immediately usable in chat and workflows — see [Agents (Beta)](../early-access/agents).
+
+> **Heads-up:** updating an agent needs creator or workspace-admin rights, same as in the app.
+
+### Campaigns
+
+Read a brand's campaigns at every stage — drafts, plans awaiting approval, scheduled and finished — open one in full, save a new **draft** plan, or edit a plan that hasn't launched yet. See [Campaign Planner](../insights/campaign-planner).
+
+> **Heads-up:** a launched campaign plan can't be edited through the server, the same rule as the app.
+
+### Creative
+
+Saved creative playbooks and their patterns, plus completed per-post creative analyses.
+
+### Workflows
+
+List workflows, read what one does, see its run history, **start a run**, then poll its status and collect the final output and artifacts. If a run pauses to ask a question, your AI app can answer it and let the run continue. See [Workflows (Beta)](../early-access/workflows).
+
+### Key Visuals
+
+List the workspace's Key Visual files, read a file's recent generations, and **queue a new render or iteration** — it returns immediately and the result appears as a new version. See [KV Generator](../studio/kv-generator).
+
+### Decks
+
+Read the deck composer's manual (available layouts and plan rules), list decks, open one's slide summary, and **compose a deck** from a slide plan. Composition runs in the background and hands back a deck URL. See [Decks Overview](../decks/overview).
+
+### Artifacts
+
+Save an HTML artifact and get back a shareable viewer URL.
+
+## What Needs a Subscription or Credits
+
+Reading is free of both. Making or changing something is not:
+
+| Requirement | Applies to |
+|---|---|
+| **Active workspace subscription** | Creating an agent, updating an agent, creating a team, creating an artifact, composing a deck, generating a Key Visual, running a workflow, answering a paused workflow, creating or updating a campaign plan |
+| **Spendable credits** (on top of a subscription) | Generating a Key Visual, running a workflow |
+
+Credits are spent from the same pool as the rest of frndOS — see [Managing Credits](../workspace/managing-credits).
+
+## What It Will Never Do
+
+- **Reach outside your membership.** Every call re-checks that you belong to the workspace being used. Brand ids from other workspaces read as **not found**.
+- **Exceed your own permissions.** The connection acts as you, with your role.
+- **Work without a workspace.** A tool call with no workspace chosen is refused with an instruction to list your workspaces first.
+
+## FAQ
+
+**Q: Is this a smaller set of tools than AskFRND has?**
+No. The surface is mirrored one-to-one from AskFRND, with one extra tool for listing your workspaces. It currently covers **47** tools.
+
+**Q: Why does my AI app show a huge list of tools?**
+Because the whole surface is offered in one go, so clients that only read the first page of tools still see everything.
+
+**Q: Can I turn individual tools off for the MCP server?**
+The per-tool switches in **Chat Settings → Tools** and **myFRND → Tools** are documented in [How AskFrnd Uses Tools](../askfrnd/tools).
+
+_[TODO: confirm from live UI — whether those switches also apply to tools called through the frndOS MCP server, or only to AskFRND inside the app.]_
+
+**Q: A tool exists in frndOS but my AI app doesn't list it.**
+Reconnect or refresh the server in your AI app so it re-reads the tool list — new tools are added to frndOS regularly.
+
+---
+
+## Related Articles
+
+- [Connecting Your AI App — the frndOS MCP Server](./frndos-mcp-server)
+- [How AskFrnd Uses Tools](../askfrnd/tools)
+- [myFRND — Making Your Assistant More Capable](../getting-started/myfrnd)
+- [Managing Credits](../workspace/managing-credits)
