@@ -1,0 +1,195 @@
+---
+sidebar_position: 7
+title: Shared Connections — Workspace and Brand Accounts
+description: Connect an outside account once for the whole workspace or for one brand, so members and agents don't each have to authorise their own — and control which account a tool or agent uses.
+---
+
+# Shared Connections — Workspace and Brand Accounts
+
+A **connection** is a login to an outside service — a plugin like Lark, or an MCP server. Until now every person connected their own. A connection can now belong to **you**, to your **workspace**, or to a **brand**, so one login serves everyone who needs it.
+
+> **Rolling out gradually:** shared connections are enabled per workspace. If **Plugins** isn't in your Workspace Settings or Brand Settings sidebar, it hasn't reached you yet.
+
+## The Three Scopes
+
+| Scope | Belongs to | Who can use it |
+|---|---|---|
+| **Personal** | You | Only you |
+| **Workspace** | The company | Every member and agent in the workspace |
+| **Brand** | One brand | Anything working on that brand |
+
+**Brand beats workspace.** If a brand has its own account for a service, that's the one used — the workspace account is the fallback for brands that don't.
+
+## Where to Manage Them
+
+| Scope | Where |
+|---|---|
+| **Personal** | **myFRND → Plugins**, or **AskFrnd → Chat Settings → Plugins** |
+| **Workspace** | **Workspace Settings → Plugins** |
+| **Brand** | **Brand Settings → Plugins** |
+
+<!-- TODO: add screenshot of Workspace Settings → Plugins — connected list + Plugins/Connectors tabs → /img/guides-asset/<name>.jpeg -->
+
+### Workspace Plugins
+
+Headed **Plugins** — _"Accounts that belong to this workspace. Every member and agent can use them without connecting their own — unless a brand has its own account, which takes precedence."_
+
+**Every member can see this list**; only admins can change it. That split is deliberate: hiding the list never made those accounts private, it just meant people connected duplicates of an account the workspace already had.
+
+With nothing connected, what you see depends on who you are:
+
+- **Admin:** _"Members are using their own accounts. Connecting one here means nobody has to."_
+- **Member:** _"Nobody has connected an account for the whole workspace yet. A workspace admin can add one."_
+
+> **Team workspaces only.** The page isn't available in a Personal workspace.
+
+### Brand Plugins
+
+Headed **Plugins** — _"Accounts that belong to this brand. Agents working on this brand use these first — an agent set to brand scope uses only these, and pauses to ask rather than falling back to the workspace account."_
+
+Brand **Viewers** see the list read-only; **brand settings write** is what unlocks connecting and removing.
+
+With nothing connected: _"Agents working on this brand will use the workspace connection instead — unless the agent is set to brand scope, in which case the run pauses and asks."_
+
+## Choosing Which Account an Agent Uses
+
+An agent's settings carry a section headed **Which account to use** — _"Pick a scope, not an account. One agent can then serve every brand — the brand that is open decides which login runs."_
+
+Each capability the agent can reach gets its own dropdown:
+
+| Option | What it means |
+|---|---|
+| **Auto** | _"Brand first, then workspace, then personal"_ |
+| **Brand** | _"Only the open brand's account — pauses if it has none"_ |
+| **Workspace** | _"Only the company account"_ |
+| **Personal** | _"Only the account of whoever is running it"_ |
+
+Under each dropdown is a **read-only trace** of what will actually happen — which account gets used, which is checked next, and which is never checked at all.
+
+> **Declaring a scope removes the fallback.** Pick anything other than **Auto** and the panel warns: _"Not connected? The run pauses and asks — it will not fall back."_ That's the point — a brand-scoped agent meeting an unconnected brand should stop, not quietly succeed against the wrong account.
+
+> **A scope, never a specific account.** That's what lets one agent serve thirty brands instead of being cloned per brand.
+
+## Seeing Exactly What You're Granting
+
+When you connect an MCP server, its detail view lists **every tool the server exposes**, each with its own name, description, and switch — so "what am I granting" is answered by a list, not a guess. Turn off any tool you don't want reachable.
+
+The connection row summarises it: **N of M tools enabled**.
+
+Where a server exposes more tools than can be offered at once, it says so plainly rather than silently truncating:
+
+> _"This server exposes N tools; only the first M are available in chat."_
+
+If nothing has been discovered yet: _"No tools discovered yet — try Refresh tools."_
+
+<!-- TODO: add screenshot of a connector's detail view — the tool list with per-tool toggles → /img/guides-asset/<name>.jpeg -->
+
+A connection whose authorization has lapsed says so on the row — _"Authorization expired — reauthorize to keep using this"_ — with a **Reauthorize** action.
+
+## When You Have Two Accounts for the Same Service
+
+A second account for a service used to be a problem — a call had no way to say which one it meant. Now AskFrnd asks you once, then remembers.
+
+### It asks, in chips
+
+When more than one connected account could serve a call, the answer comes as buttons, not a question in the reply:
+
+> **Which &lt;service&gt; account should this use?**
+
+Each chip is one account, labelled, with its scope (`personal`, `workspace`, `brand`) beside it. Underneath: _"Asked once — remembered next time."_
+
+<!-- TODO: add screenshot of the account picker chips in a chat reply → /img/guides-asset/<name>.jpeg -->
+
+> **The AI never picks for you and never reads your answer.** The chips are chrome, not a prompt — so an account can't be chosen by inference.
+
+> **The answer is remembered per person, per service, per brand.** Your colleague still gets asked, and the same service on a different brand asks again.
+
+> **Chat and scheduled runs are separate lanes.** An answer you give in chat doesn't steer a background run, and vice versa.
+
+### It tells you which account it used
+
+Under a tool's result sits a quiet line: **ran as: &lt;account&gt;**, with a **change** link.
+
+It's provenance, not an alert — but it's the only thing standing between you and a perfectly normal-looking answer full of the wrong account's data.
+
+**change** clears your saved choice so the picker comes back next time.
+
+### When nothing can run
+
+A call with no usable account fails with the specific reason rather than disappearing:
+
+| Reason | What it means | The action offered |
+|---|---|---|
+| **No connection** | Nothing is connected for this service at any scope | **Connect &lt;service&gt;** |
+| **Missing access** | An account *is* connected, but without the permission this call needs | **Re-authorise with the missing access**, and the missing permissions are named |
+
+> **The tool isn't hidden when this happens.** Hiding it would read as "the feature was removed" and leave you nothing to act on.
+
+## Runs That Would Fail on a Missing Connection
+
+A run that would hit a missing connection is **stopped before it starts** rather than failing partway. A background run **pauses and notifies** you instead of erroring out.
+
+## Removing a Shared Connection
+
+Deleting someone else's connection isn't always allowed — and the refusal comes with the action you actually want.
+
+If the person who set it up is still in the workspace, frndOS stops and explains:
+
+> **&lt;Name&gt; still owns this connection**
+>
+> _"Deleting it would wipe the stored token, and only &lt;Name&gt; can authorise a new one. You can make it private instead — they keep working, and nobody else in the workspace can use it."_
+
+**Make private** takes it out of the shared pool without breaking it for its owner. **Cancel** backs out.
+
+## FAQ
+
+**Q: Which account will a tool actually use?**
+Brand first, then workspace, then personal — unless an agent declares a scope, in which case only that scope is checked. After a call runs, the **ran as:** line under the result names the account that was actually used.
+
+**Q: I picked the wrong account in the chips.**
+Click **change** on the **ran as:** line under any result for that tool. Your saved choice is cleared and the picker returns.
+
+**Q: Why was I asked which account to use, but my colleague wasn't?**
+The answer is remembered per person, per service, per brand. Their choice is their own.
+
+**Q: A tool says access is missing, but I'm definitely connected.**
+Those are two different problems. **No connection** means nothing is connected; **missing access** means the connected account was authorised without the permission this call needs — re-authorise it and the missing permissions are listed for you.
+
+**Q: I revoked a connector and now I can't reconnect it.**
+Reconnecting a revoked connector works. If it still refuses, the account may have been revoked on the provider's side too — authorise it there first.
+
+**Q: Someone connected an account and my saved account choice changed.**
+It shouldn't, and no longer does — connecting a new account leaves everyone's saved choices alone. If yours looks wrong, clear it with **change** on the **ran as:** line and pick again.
+
+**Q: A workspace plugin or connected tool isn't available in chat.**
+Workspace-level plugins and connectors do reach chat. If one is missing, check it's enabled on the connection itself — the row shows how many of its tools are switched on.
+
+**Q: I'm a member and Workspace Settings → Plugins is read-only.**
+That's expected. Every member can see which shared accounts exist so they don't connect duplicates; only admins can add or remove them.
+
+**Q: I connected a brand account and my agent still used the workspace one.**
+Check the agent's **Which account to use** setting. On **Auto** the brand account wins, but a capability explicitly set to **Workspace** only ever checks the workspace.
+
+**Q: My agent run paused instead of running.**
+It's set to a specific scope and that scope has no connection. Either connect an account at that scope, or set the capability back to **Auto**.
+
+**Q: I can't delete a connection someone else made.**
+While its owner is still in the workspace, deleting it would destroy a token only they can replace. Use **Make private** instead.
+
+**Q: How do I know what a connection can actually do?**
+Open it. Every tool the server exposes is listed by name with its own switch, and the row shows how many of them are enabled.
+
+**Q: A connector says only the first N tools are available.**
+That server exposes more tools than can be offered in chat at once. The message names both numbers rather than quietly dropping the rest.
+
+**Q: Can an admin see which personal accounts my colleagues connected?**
+Only a **count** per service, and only admins see even that — it answers "is a shared account worth setting up". Identities are deliberately not exposed.
+
+---
+
+## Related Articles
+
+- [Connecting Lark (AskFrnd Plugins)](../askfrnd/lark-plugins)
+- [How AskFrnd Uses Tools](../askfrnd/tools)
+- [Agents & Teams (Beta)](../early-access/agents)
+- [Settings & Administration Overview](./overview)

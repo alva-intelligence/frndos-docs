@@ -28,18 +28,34 @@ AskFrnd's tools are grouped into sections:
 
 | Section | Tool | What it lets AskFrnd do |
 |---------|------|-------------------------|
-| **Creation** | **Image generation & editing** | Create and edit images |
-| | **Video generation** | Create videos from a prompt |
-| | **Key Visuals** | Generate brand key visuals for campaigns |
-| **Knowledge** | **Brand Knowledge** | Look up the workspace's brand knowledge |
-| **Research** | **Customer Intelligence** | Access customer segments, insights, and AI-generated overviews for your brands |
 | **Agents & Automation**¹ | **Workspace agents** | Orchestrate and delegate to workspace agents |
 | | **Agent teams** | Coordinate multi-agent teams on complex tasks |
 | | **Agent workflows** | Trigger and run agent workflows |
+| **Creation** | **Image generation & editing** | Create and edit images |
+| | **Video generation** | Create videos from a prompt |
+| | **Key Visuals** | Generate brand key visuals for campaigns |
+| **Knowledge** | **Brand Knowledge** | Look up a brand's DNA, identity, and tonality |
+| | **Brand Data** | Retrieve a brand's insight dashboards (overview, campaigns, media, signals) — and power @mentioning brand data in chat |
+| **Research** | **Customer Intelligence** | Access customer segments, insights, and AI-generated overviews for your brands |
+| | **Audience Personas** | Look up a brand's audience segments, personas, and analysed followers — and role-play as a persona |
+| | **Creative Playbooks** | Look up a brand's Creative Playbooks — what works vs what doesn't across its content |
+| | **Creative Analysis** | Read completed per-post creative analyses (verdict + what to improve) for a brand's content |
+| **Custom tools** | **Decking** | Compose presentation decks from your conversation |
+| | **Campaign Planner** | Read your campaigns at every stage — planned, live, finished — and draft a new campaign plan |
 
 ¹ The **Agents & Automation** section only appears when the experimental [Agents](../early-access/agents) feature is enabled for your workspace.
 
 > **Always-on tools:** **Web search** and **file downloads** are always available to AskFrnd — there's no toggle for them, and they can't be turned off.
+
+> **A tool you've never heard of:** new tools are added to frnd faster than this list is rewritten. If one shows up with a plain name and the note _"Added to frnd after this version of the app. It works — there is just nothing to say about it here yet."_, that's what it is. It still gets a switch, because a tool nobody has documented can still read your workspace.
+
+### Managing campaigns from chat
+
+The **Campaign Planner** tool is what lets you work on campaigns without leaving AskFrnd — it reads your campaigns at every stage (planned, live, finished) and can **draft a new campaign plan** from the conversation.
+
+> **Heads-up:** it reads **every** campaign in the workspace, which is why it's filed as a read tool rather than a creation one. Grant it deliberately.
+
+See [Campaign Planner](../insights/campaign-planner) for the dedicated surface.
 
 ## Choosing Which Tools AskFrnd Uses
 
@@ -54,6 +70,21 @@ You can turn individual tools on or off for yourself in **Chat Settings → Tool
 > **Shortcut:** the composer has a **sliders** button that opens the Chat Settings tab list directly — **Customization**, **Memory**, **Skills**, **Tools**, **Plugins** — so you can jump straight to the one you want.
 
 > **Also in myFRND:** plugins, MCP servers, skills, and agents all have a bigger home at **myFRND** in the sidebar, where you can browse and add rather than just toggle what you already have. Same underlying settings, more room — see [myFRND](../getting-started/myfrnd).
+
+### The same tools, in myFRND
+
+**myFRND → Tools** is the other place to control this, and it's the same setting underneath — but grouped differently. Chat Settings groups by **kind of work**; myFRND groups by **reach**, because the question there is what AskFRND may get at:
+
+| Group | Means |
+|---|---|
+| **What frnd can look at** | Tools that read your data |
+| **What frnd can make** | Tools that create something |
+| **What frnd can hand off** | Tools that delegate to agents, teams, and workflows |
+| **More tools** | Anything this version of the app doesn't have a description for yet |
+
+myFRND → Tools has no search or filter row — the list is short enough to read — and its toggles **save instantly**, unlike the save-on-confirm Chat Settings tab.
+
+At the top sits the cascade control: follow your workspace's tool settings, or keep your own overrides.
 
 The tab reads _"Choose which tools AskFRND can use in this chat."_ Each tool has its own toggle, grouped into the sections above.
 

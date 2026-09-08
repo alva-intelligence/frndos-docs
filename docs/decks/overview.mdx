@@ -51,7 +51,7 @@ Both the sidebar Create menu and the Library open a chooser titled **New deck**,
 | **Top bar** | Deck menu, the parent link and deck title, search, who else is here, **Export**, **Share**, **Play** |
 | **Slide rail** (left) | Slide thumbnails, and the **Slides** ⇄ **Story** switch |
 | **Canvas** | The slide you're editing |
-| **Right rail** | Four tabs — **Slide**, **Layers**, **Notes**, **Comments** |
+| **Right rail** | Three tabs — **Slide**, **Layers**, **Notes** |
 | **Bottom dock** | Insert tools — **Media**, **Shape**, **Chart**, **Table**, **Embed** |
 
 The line under the deck title tells you its state: **Private** (or **Template**), the slide count, and either **saved** or **approved**.
@@ -70,6 +70,34 @@ The deck rail carries a **Slides** / **Story** switch, and ⌘/ flips between th
 Story carries its own actions: **Read back**, **Listen**, **Rehearse**, **Present**, and **Structure**. Your current slide carries over when you switch, so you land on the same part of the deck in either view.
 
 See [Writing the Story](./story-view) for how the narrative side works.
+
+## Commenting on a Slide
+
+Feedback goes **on the slide**, pinned to the exact element you mean.
+
+<!-- TODO: add screenshot of the deck editor in comment mode — the top-bar toggle, a pin on a slide element, the Comments dock → /img/guides-asset/<name>.jpeg -->
+
+Click the **💬 speech bubble** in the top bar, or press **C**. Then click what you want to talk about — a pin lands there and a composer opens beside it. For a note about the deck as a whole, use the composer at the bottom of the dock: _"Comment on this deck…"_.
+
+On an empty deck the dock says: _"Press C and click the slide to leave one."_
+
+**Keys:** **C** arms comment mode, **V** leaves it, and **Escape** steps out one level per press — composer, then open thread, then the mode.
+
+### Finding feedback across slides
+
+The deck shows only one slide at a time, so the dock is how you see the rest. **Slide thumbnails in the left rail carry a count** of open threads on that slide, so you can tell where feedback is waiting without clicking through. Select a thread in the dock and the editor **takes you to its slide**.
+
+A thread whose slide or element has been deleted is marked **No longer in the deck** — _"The slide or element this thread points at has been deleted."_ It stays readable rather than disappearing with the object.
+
+### In the dock
+
+Search threads, filter by **All / Open / Done / @me** (plus author and "has image"), hide the pins with the 👁 eye, and per comment: **@mention**, **reply**, **react** (👍 ❤️ 🎉 😄 😢 👀), **attach an image**, **edit** or **delete** your own, and **resolve** or reopen.
+
+> **Who you can mention:** the suggestion list for a deck is resolved from the deck's own audience — including the room it sits in — not from a brand's member list.
+
+> **Rolling out:** deck commenting ships behind its own switch. Until it's on for your workspace, the deck has **no commenting at all** — the old per-slide Comments tab in the right rail was replaced by this, not kept alongside it.
+
+**Desktop only.** Comment mode is aim-and-click and isn't offered on the phone layout.
 
 ## Renaming, Approving, and Version History
 
@@ -120,6 +148,12 @@ Yes — enable the **View-only preview link** in the Share tab and send that URL
 **Q: Can I use my brand's colours and fonts?**
 Yes. Build a brand template once and every deck started from it is on brand — see [Brand Deck Templates](../brand-setup/deck-templates). Pick it in the **New deck** chooser rather than starting blank.
 
+**Q: There's no speech bubble in the top bar and no Comments tab either.**
+Deck commenting is rolled out per workspace. Until it's switched on, the deck has no commenting surface — the old right-rail Comments tab was replaced by the pinned version, not kept next to it.
+
+**Q: How do I find a comment on another slide?**
+Open the dock and select the thread — the editor jumps to its slide. Slide thumbnails also show a count of open threads.
+
 **Q: What does "approved" mean?**
 It's a deck-wide state you set from the Deck menu. It marks the deck as final; **Reopen deck for edits** undoes it.
 
@@ -138,3 +172,4 @@ Both are listed with a **Soon** badge and are disabled. PowerPoint and PDF work 
 - [Brand Deck Templates](../brand-setup/deck-templates)
 - [Library Overview](../library/overview)
 - [Project Rooms](../projects/project-rooms)
+- [Collaboration Overview](../collaboration/overview)

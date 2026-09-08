@@ -139,6 +139,22 @@ The brand you currently have open is listed first with its subpages expanded; ot
 
 > **Heads-up:** Brand IQ (Strategy, Identity, Tone) is currently **only fully consumed by the KV Generator**, not yet by AskFrnd's chat-based generation. This is being worked on. For now, if you need brand-perfect output, use the KV Generator or include brand specifics in your prompt.
 
+## Attaching Files
+
+Attach a file to a message and AskFrnd works from it.
+
+| Limit | Value |
+|---|---|
+| **Max file size** | **20 MB** per file (raised from 10 MB) |
+| **Files per message** | 5 |
+| **Types** | JPG, PNG, WebP, PDF, DOC, DOCX, CSV, XLSX, TXT |
+
+An unsupported type is refused with: _"File type tidak didukung. Gunakan JPG, PNG, WebP, PDF, DOC, DOCX, CSV, XLSX, atau TXT."_ Too large gets **File size too large. Maximum is 20MB.**
+
+> **Video is different.** On the chat models that accept video, the cap is **200 MB** — video files are checked against that instead.
+
+> **A message is required with an upload.** Sending a file with an empty composer says so: _"A message is required when uploading files."_
+
 ## Stopping a Response
 
 Asked the wrong thing, or seen enough? Click the **stop** button — it replaces **Send** in the same spot while a reply is streaming.
@@ -146,6 +162,33 @@ Asked the wrong thing, or seen enough? Click the **stop** button — it replaces
 What's already been written stays on screen. You don't lose the useful half of an answer just because you stopped the rest.
 
 > **Note:** you can have more than one conversation working at a time. Starting a second thread doesn't discard the first one's answer.
+
+## Queueing Follow-Ups While AskFrnd Is Answering {#queueing-follow-ups-while-askfrnd-is-answering}
+
+You don't have to wait for a reply to finish before typing the next thing. Type your follow-up and press Enter while a turn is still streaming, and instead of being dropped it's **parked as a chip** above the composer:
+
+> _"Queued — sends when this turn finishes. Double-click to edit."_
+
+When the current answer completes, everything you parked is **sent automatically**, in order, as one message.
+
+<!-- TODO: add screenshot of the AskFRND composer with one or two queued chips above it → /img/guides-asset/<name>.jpeg -->
+
+### What you can do with a queued chip
+
+| Action | How |
+|---|---|
+| **Edit it** | Double-click the chip (or click its edit button) — the text drops back into the composer. A draft you'd already typed is kept, with the chip's text appended on a new line. |
+| **Remove it** | Click the **✕** on the chip |
+
+### Limits
+
+- **Files can't be queued.** Submitting with an attachment mid-stream shows: _"Files can't be queued — wait for this turn to finish or remove the file."_ Send it as its own turn instead.
+- **Queues are per conversation.** A follow-up parked on one thread never drains into another one.
+- **They survive closing the panel.** Parked chips are kept for the browser session, so closing AskFrnd doesn't lose them. Logging out clears them.
+
+> **Rolling out:** the follow-up queue rides its own flag (`show-askfrnd-message-queue`) and is off until it's enabled for you. If it's switched off after you've already parked something, those chips still render and still send — nothing gets stranded.
+
+You can also queue a follow-up **by voice** — see [Talking to AskFRND with Voice](./voice-input#speaking-while-askfrnd-is-still-answering).
 
 ## Seeing Which Conversation Is Working
 
@@ -185,6 +228,9 @@ History scope depends on your access point. Sidebar Chat shows history scoped to
 **Q: I can't find a chat I had last week — where should I look?**
 If you're not sure which brand it happened in, use the **FAB's history** (bottom-right corner) — it searches across all your brands and pillars at once, so you don't have to check each brand individually.
 
+**Q: How big a file can I attach?**
+**20 MB** per file, up to 5 files — raised from the old 10 MB limit. Video, on models that take it, goes up to 200 MB.
+
 **Q: Can AskFrnd use custom brand fonts in generated visuals?**
 Not yet — the fonts from Brand IQ → Identity are currently only used by the KV Generator. For chat-based generation, you can upload custom fonts directly into your prompt or context.
 
@@ -193,6 +239,7 @@ Not yet — the fonts from Brand IQ → Identity are currently only used by the 
 ## Related Articles
 
 * [Generating Images & Videos via AskFrnd](./generating-with-chat)
+* [Talking to AskFRND with Voice](./voice-input)
 * [How AskFrnd Uses Tools](./tools)
 * [Using AskFrnd Skills](./skills)
 * [Agents & Teams (Beta)](../early-access/agents)

@@ -73,7 +73,56 @@ The Owned Media post table includes these standard metric columns:
 | **Comments** | Total comments | |
 | **Shares** | Total shares | |
 | **Clicks** | Link clicks (Facebook only) | New — other platforms don't expose per-post click data; those rows show "—" |
-| **ER (%)** | Engagement Rate = (Likes + Comments + Shares) / Reach | |
+| **ER (%)** | Engagement Rate — total engagements ÷ reach | Uses the platform's own engagement total, which **includes saves** |
+| **Views** | Video views | Counted differently per platform — see below |
+| **Saves** | Times the post was saved | Instagram reports these; Facebook and YouTube show "—" |
+
+### Video and Instagram metrics
+
+More columns sit after **Saves**. Most are platform-specific, and a dash means *that platform doesn't report it* — never that the number is zero.
+
+| Column | What it is | Which platform |
+|---|---|---|
+| **New Follows** | Follows the post drove | Instagram |
+| **Reposts** | Instagram reposts — a different action from **Shares**, which stays its own column | Instagram |
+| **Avg Watch Time** | Mean watch time per viewer, in seconds | Instagram Reels |
+| **Total Watch Time** | All watch time added up, in minutes | Instagram Reels |
+| **3s Skip Rate (%)** | Share of views that skipped inside the first 3 seconds | Instagram Reels |
+| **Retained Views (3s, est.)** | Views that did **not** skip in the first 3 seconds | Instagram Reels |
+| **3s Retention (est. %)** | The same thing as a percentage | Instagram Reels |
+| **3s VTR (%)** | 3-second view rate — views ÷ impressions | Facebook video only |
+| **Completion Rate (%)** | Share of views that watched to the end | TikTok |
+| **Duration** | Video length (m:ss) | All except Instagram |
+
+> **"Retention" and "Completion" are not the same thing.** **3s Retention** means *didn't bail in the first three seconds* — someone who watched 4 seconds of a 60-second reel counts as retained. **Completion Rate** means *watched to the end*. They come from different platforms and measure different things, so don't read one as the other.
+
+> **"est." is doing real work.** **Retained Views** and **3s Retention** are calculated from the skip rate, not counted directly — the platform doesn't publish the underlying count. Facebook's **Views** column *is* a measured ≥3-second count, so comparing the two across platforms is comparing an estimate with a measurement.
+
+> **Views mean different things per platform.** Facebook counts a view at ≥3 seconds, TikTok at 0 seconds, YouTube at around 10. Safe to compare **within** a platform; misleading across them.
+
+> **A dash is not a zero.** Where a platform declined to measure something, the cell shows `—`. Rendering it as 0 would sort the least-measured post as the worst-performing one.
+
+> **A rate only appears where it applies.** A post with no video shows a dash for **3s VTR**, not `0.0%` — claiming none of its impressions became a 3-second view would be a measurement of a video that doesn't exist.
+
+> **Engagement totals include saves.** ER is calculated from the platform's own engagement figure rather than adding up likes + comments + shares, because that sum leaves saves out — and on Instagram saves are often the largest component. Totals that previously read as zero on content lists now display correctly.
+
+### Totals rows are recomputed, not averaged
+
+The totals row under a rate column isn't the average of the rates above it. Rates are recomputed from the underlying counts, weighted by views — so a post with 40 views doesn't count as much as one with 400,000. Averaging the per-post rates instead can be several times wrong, in the flattering direction.
+
+### Opening a single post
+
+Click any post row to open its **detail view**:
+
+- The creative itself, full size
+- Its title and meta lines
+- **Link to post** — opens the original on the platform
+- Every metric with a **typical** value beside it, plus a benchmark score with a quartile band: **Top 25%**, **Above Avg**, **Below Avg**, or **Bottom 25%**
+- An **Export metrics as CSV** button
+
+<!-- TODO: add screenshot of the post detail view — creative on the left, metric list with quartile band on the right → /img/guides-asset/<name>.jpeg -->
+
+Paid ads open the same way from the paid tables — see [Connecting Paid Media](./connecting-paid-media).
 
 ### Filtering by Content Format
 
@@ -84,6 +133,78 @@ Use the **Content Format** filter above the table to narrow down to specific for
 The **Clicks** column measures link clicks on Facebook posts. It is **Facebook-only** — Instagram, TikTok, and YouTube don't expose a comparable per-post metric, so those rows show a dash (`—`).
 
 > **Tip:** Use Clicks alongside Content Format to compare which formats drive the most link traffic — you may find that Carousels outperform Reels on click-through even while Reels generate more impressions.
+
+## How Posts Get Ranked
+
+Where frndOS ranks posts — a Creative Playbook's top and bottom picks, or a per-post analysis — it shows the **weights behind the ranking** rather than leaving you to guess.
+
+### Ranking follows the objective
+
+A playbook is generated **against an objective** — **Awareness**, **Consideration**, or **Conversion** — and the metrics it weighs are the ones that match it. Chasing conversions is not the same job as building reach, so the same posts rank differently under a different objective.
+
+The playbook's name carries all of it: objective, scope, and time window — e.g. `awareness · Promo · 30d`. A playbook with no grouping dimensions is named for its whole pool instead: **All owned content**.
+
+Time windows: **Last 30 days**, **Last 60 days**, **Last 90 days**. A different window is a different playbook, even for the same filter.
+
+> **Rankings use base metrics too, not only derived rates.** A rate alone can flatter a post nobody saw; the counts underneath it are what say whether the reach was real.
+
+
+A panel headed **How this playbook scored its top and bottom posts** lists each scoring metric with its percentage, heaviest first, then explains the method:
+
+> _"Each metric is scored as a percentile within the pool, then weighted — so posts are compared against each other, not against a fixed target."_
+
+Where a metric comparison table follows, it adds: _"Metrics outside this list are shown below for context but did not affect the ranking."_
+
+> **The weights are computed, not fixed.** They're derived from the posts actually scored. If a pool doesn't fully report a metric, that metric drops out and the remaining weights grow to fill the gap — so the same brand can see different percentages on different playbooks.
+
+### The comparison table
+
+A per-post analysis compares the post against its pool: **This post** · **Pool avg** · **vs avg**, ordered best to worst.
+
+Underneath, the table states the basis it used:
+
+- Raw counts scale with audience — a post reaching 3× the pool average also gets roughly 3× the likes — so a high count reflects distribution, while the matching **rate** shows whether the creative earned it.
+- **ER%** is measured against impressions (falling back to views, then reach); **3s VTR** against views; save, share, comment, like and follow rates against reach.
+- Scoring is **Instagram-only** for now.
+- **3s VTR** and watch time are **Reels-only**, so they count towards the ranking only when every post being compared reports them.
+
+Some rows are shown **for context only** and had no effect on the ranking — comment rate and like rate always, plus click rate, completion rate, and average % watched where the platform reports them. The weights panel above the table is what names the metrics that *did* count.
+
+## Analyzing Posts With AI
+
+Instead of tagging by hand, you can have AI read your posts and suggest labels. Select posts and click **Analyze with AI**.
+
+<!-- TODO: add screenshot of the Analyze with AI confirmation — Scope and Estimated cost panels side by side → /img/guides-asset/<name>.jpeg -->
+
+### It asks before it spends
+
+Analyze is a **paid action**, so it never fires on a single click. A confirmation opens first, with two panels:
+
+| Panel | Shows |
+|---|---|
+| **Scope** | How many posts — _"N selected posts"_ or _"N unanalyzed posts"_, with the oldest post's date |
+| **Estimated cost** | `~N credits`, and your **workspace balance before → after** |
+
+The confirm button names the job: **Analyze 42 posts**.
+
+> **The estimate is deliberately an estimate.** _"Billed on what the AI actually reads, so the final cost is usually lower than this estimate. Analysis runs in the background — you can keep working."_ Every figure with a `~` is a quote, not an invoice.
+
+> **It bills the workspace pool**, not your personal allocation — which is why the balance shown is the workspace's.
+
+### Not enough credits
+
+If the estimate exceeds the balance, the cost panel turns red and states the gap: **Short by N credits**.
+
+| You are | What you see | Button |
+|---|---|---|
+| An admin with billing access | _"Analyze fewer posts, or top up your workspace to continue."_ | **Top up credits** |
+| Anyone else | _"Analyze fewer posts, or ask a workspace admin to top up."_ | **Request credits** |
+
+### While it runs
+
+Analysis runs in the background — switching tabs or leaving the page doesn't strand it, and billing settles from actual usage when it finishes.
+
+The button is unavailable in two situations, and the tooltip says which: **All posts analyzed**, or **An analysis is already running**.
 
 ## Applying Tags to Posts
 
@@ -153,6 +274,48 @@ Once your posts are tagged, the **Campaign tab** in Insights uses those tags to:
 See: [Creating & Managing Campaigns in Insights](./campaigns)
 
 ## FAQ
+
+**Q: Why is a metric column all dashes for my brand?**
+That platform doesn't report it. Several columns are Instagram-only, one is Facebook-only, and Completion Rate is TikTok-only — a brand without those accounts sees dashes, which is correct rather than broken.
+
+**Q: Is a dash the same as zero?**
+No. A dash means the platform didn't measure it. A zero would be a claim that the thing was measured and came out at nothing.
+
+**Q: Completion Rate and 3s Retention look like they should match.**
+They measure different things on different platforms — "watched to the end" (TikTok) versus "didn't skip in the first three seconds" (Instagram). Don't compare them directly.
+
+**Q: The totals row doesn't match the average of the column.**
+It isn't meant to. Rates are recomputed from the underlying counts and weighted by views, because averaging per-post rates would let a 40-view post count as much as a 400,000-view one.
+
+**Q: Engagement was showing as zero on my content list.**
+Fixed. ER now reads the platform's own engagement total, which includes saves — the older derived sum omitted them and understated Instagram posts.
+
+**Q: Why does a photo post show a dash for 3s VTR instead of 0%?**
+Because there's no video on it. A 0% would assert that thousands of impressions failed to become a 3-second view of something that was never there.
+
+**Q: A Facebook post shows an absurd Duration.**
+That row hasn't been reprocessed since the fix that corrected the unit. It means "not backfilled yet", not "long video".
+
+**Q: Why is Duration always blank on Instagram?**
+Instagram doesn't expose a per-media duration, so there's nothing to show.
+
+**Q: Why does Analyze with AI ask me to confirm now?**
+It spends credits. An accidental tick-and-click would have charged you with no way out, so the cost and scope are shown first.
+
+**Q: I was charged less than the estimate said.**
+Expected. The estimate is quoted up front; the charge is computed from what the AI actually read, which is usually less.
+
+**Q: I switched tabs mid-analysis — did I lose the batch?**
+No. It runs in the background and settles its billing when it completes.
+
+**Q: Where do the ranking weights come from?**
+They're derived from the posts actually scored, not from a fixed table — which is why they differ between playbooks.
+
+**Q: The same post ranks well in one playbook and badly in another.**
+Check their objectives. An awareness playbook and a conversion playbook weigh different metrics, so they legitimately disagree.
+
+**Q: A metric is in the comparison table but not in the weights panel.**
+It's shown for context and had no effect on the ranking. The weights panel is the definitive list of what counted.
 
 **Q: What's the difference between Attributes and Tags?**
 - **Attribute** = the label category (e.g., "Campaign")

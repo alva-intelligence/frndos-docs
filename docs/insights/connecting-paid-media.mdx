@@ -85,6 +85,27 @@ Once connected, your Paid Media dashboard will populate with:
 - **Ad links to live posts** — Individual ad rows now link directly to the live post on the platform (e.g. Facebook, Instagram). Click the link icon on any row to open the actual ad post.
 - **Ad detail popup** — Click any ad row to open a detail popup with a fuller view of the ad's performance, including its thumbnail, metrics breakdown, and a direct link to the live creative.
 
+### Video cost metrics
+
+The ad table carries two video-cost columns alongside the standard ones (Cost, Impressions, Clicks, CTR, CPM, ROAS, Reach, CPC, CPP, Frequency, Leads, CPL):
+
+| Column | What it is |
+|---|---|
+| **Thruplays** | Video plays that reached the platform's ThruPlay threshold |
+| **Cost / Thruplay (IDR)** | Total spend ÷ total thruplays |
+
+More video-engagement columns — **Views**, **View Rate**, **Avg Watch %**, **Completion**, **Hook Rate** — plus Meta's auction rankings (**Meta Quality**, **Meta Engagement**, **Meta Conversion**) are available but **hidden by default**. Turn them on from the column picker.
+
+> **Link Clicks is hidden on purpose.** On current data it reports the same numbers as **Clicks** — all three ad platforms write one source column into both. It's kept because the two will diverge the moment a platform reports a distinct total-click figure, but hidden so nobody reads a second column of identical numbers as corroboration.
+
+> **Cost per ThruPlay is spend over thruplays**, recomputed from the totals — not the average of the per-ad rates.
+
+### The ad detail view
+
+Clicking an ad row opens its detail: the creative full size, its meta lines, **Link to post**, and every metric with a **typical** value beside it plus a quartile band — **Top 25%**, **Above Avg**, **Below Avg**, or **Bottom 25%**. An **Export metrics as CSV** button sits in the corner.
+
+<!-- TODO: add screenshot of the ad detail view — creative on the left, metrics with quartile band on the right → /img/guides-asset/<name>.jpeg -->
+
 ## Reconnecting or Removing a Connection
 
 To **remove a connection**:

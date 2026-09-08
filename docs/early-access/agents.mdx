@@ -15,7 +15,9 @@ A **Team** groups several agents under a coordinator that delegates each step of
 ## Before You Start
 
 1. ✅ **Agents enabled for your workspace** — an admin turns it on in **Workspace Settings → Experimental** (see [Turning It On](#turning-it-on))
-2. ✅ **You're in the workspace** where you want the agents to live — agents are workspace-scoped and shared with everyone in that workspace
+2. ✅ **You're in the workspace** where you want the agents to live — an agent belongs to the workspace it was created in
+
+> **New agents are private.** An agent you create is visible to **you only** — not to your teammates, and not to workspace admins — until you share it. See [Who Can See Your Agent](#visibility).
 
 ## Turning It On
 
@@ -114,6 +116,38 @@ The **Overview rail** gives you:
 
 > **Deleting an agent can't be undone.** You'll be asked to confirm first.
 
+## Who Can See Your Agent {#visibility}
+
+The manage page carries a **Visibility** block with a badge showing the current state.
+
+<!-- TODO: add screenshot of the Visibility block — badge, explanation, Share with workspace button → /img/guides-asset/<name>.jpeg -->
+
+### Private (the default)
+
+> _"Private by default — only you can see and use this agent, not even workspace admins. Nothing is shared unless you share it explicitly, and you can make it private again later."_
+
+### Sharing it
+
+Click **Share with workspace**. A confirmation states what happens: _"Everyone in your workspace will be able to see and use this agent. You can make it private again later."_
+
+**Only the creator can share.** Anyone else sees: _"Only the creator can share this agent."_
+
+> **Sharing a team needs its members shared first.** If a team contains private agents, the button is disabled and each blocking member is named and linked: _"Share member agents first: …"_
+
+> **Sharing an agent that carries connected accounts exposes those accounts too.** The confirmation warns you when that applies — see [Shared Connections](../settings/shared-connections).
+
+### Making it private again
+
+A shared agent gets a **Make private** button. If nothing depends on it, the confirmation is simply: _"Only you will see it — not even workspace admins."_
+
+If it's in use elsewhere, the first attempt **doesn't** go through — instead frndOS lists the shared surfaces it sits on: _"This agent is in use on shared surfaces. Continuing removes it from them."_ Only then does **Remove and make private** confirm it.
+
+> **You see the damage before you do it.** The first click deliberately asks the server what would break rather than confirming blind.
+
+> **FRnD default agents** are exempt — _"FRnD default agents are available to everyone in your workspace."_ They were never private, so there's nothing to share.
+
+> **Sharing is not the same as Discoverable.** Sharing makes an agent usable inside **your** workspace. **Discoverable** lists it in the cross-workspace Agent Directory so people elsewhere can install a copy — sharing doesn't turn that on.
+
 ## Browsing & Installing Shared Agents
 
 Click **Browse Agents** on the Agents page to open the **Agent Directory** — discoverable agents shared across workspaces.
@@ -177,7 +211,22 @@ A **skill** is a reusable instruction pack (see [Using AskFrnd Skills](../askfrn
 By default AskFRND may auto-delegate to any enabled agent. Turn on **Require Mention** (on the agent's Overview rail) to make it run only when someone explicitly `@mentions` it.
 
 **Q: Who can use an agent I create?**
-Agents are workspace-scoped — everyone in your workspace can use an enabled agent. To share it beyond your workspace, turn on **Discoverable** so others can install a copy from the Agent Directory.
+Only you, until you share it. New agents are **private** — invisible even to workspace admins. Click **Share with workspace** on the agent's manage page to let your team use it. To reach *other* workspaces, additionally turn on **Discoverable** so they can install a copy from the Agent Directory.
+
+**Q: My teammate can't see the agent I built.**
+It's still private. Open it and click **Share with workspace**.
+
+**Q: An admin told me they can't see my agent — is that a bug?**
+No. Private means private: admins don't see it either.
+
+**Q: I can't share a team — the button is disabled.**
+One or more of its member agents is still private. The block names each one and links to it; share those first.
+
+**Q: Can I un-share an agent?**
+Yes — **Make private**. If it's in use on shared surfaces, frndOS lists them first and asks again before removing it from them.
+
+**Q: If I make a shared agent private, do copies people installed disappear?**
+No. An installed copy came from the cross-workspace directory and belongs to whoever installed it — it stays theirs.
 
 **Q: Can I edit the built-in FRnD agent?**
 You can edit its settings, but it can't be turned off, deleted, or shared — it ships with every workspace.
@@ -191,6 +240,7 @@ You can edit its settings, but it can't be turned off, deleted, or shared — it
 
 - [Workflows (Beta)](./workflows)
 - [Pitch (Beta)](./pitch)
+- [Shared Connections](../settings/shared-connections)
 - [AskFrnd Overview](../askfrnd/overview)
 - [Using AskFrnd Skills](../askfrnd/skills)
 - [Generating Images & Videos via AskFrnd](../askfrnd/generating-with-chat)

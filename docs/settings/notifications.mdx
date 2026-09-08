@@ -70,6 +70,18 @@ Defaults are **22:00** to **07:00** when you first switch it on.
 
 Changes save as you make them. If one doesn't go through, a message says so: _"That change didn't save. Your previous settings are still active."_
 
+## Reading a Notification From Another Workspace
+
+If you're in more than one workspace, the inbox shows them all — and each row **says which workspace it belongs to** with a small chip on its bottom line, next to the category and the time.
+
+Opening a row from a different workspace **switches you there first**, then lands you on the item. A toast confirms it: **Switched to workspace &lt;name&gt;**.
+
+> **Why the switch matters:** everything in frndOS is scoped to your active workspace, so a link into another one would simply not resolve without it. Rows from your current workspace navigate directly, with no switch and no toast.
+
+If the workspace has since been deleted, or your membership was removed, nothing navigates and you get **Workspace no longer available**.
+
+Rows that belong to no workspace — system notifications — carry no chip.
+
 ## FAQ
 
 **Q: Do these settings affect my teammates?**
@@ -86,6 +98,15 @@ Neither is connected yet. They're shown disabled rather than hidden so you can s
 
 **Q: Where do the in-app notifications appear?**
 In the bell popover in the sidebar header.
+
+**Q: I clicked a notification and my whole workspace changed.**
+That's intentional. The item lives in another workspace, and frndOS scopes everything by the active one — so it switches you there and tells you it did.
+
+**Q: How do I tell which workspace a notification is from before clicking?**
+The chip on the row's bottom line names it. No chip means it's a system notification with no workspace.
+
+**Q: A notification says "Workspace no longer available".**
+The workspace was deleted, or you're no longer a member. Nothing is opened.
 
 **Q: I turned everything on and it's still quiet.**
 Check what you actually follow. Notifications come from brands and views you've followed — see [Collaborating on Insights](../insights/collaborating-on-insights).

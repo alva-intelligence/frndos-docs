@@ -94,6 +94,11 @@ Each workspace operates independently. Switching workspaces changes:
 - Which projects you can access
 - Which credit pool is being used
 - Which team members are listed
+- **Your role and permissions** — you can be an admin in one workspace and an ordinary member in another
+
+> **The switch is complete before the next page loads.** Actions used to be able to land in the workspace you logged into rather than the one you'd switched to, and live activity from one workspace could leak into another. Both are fixed — switching now clears the stale data behind it, so what you see and what you act on are the same workspace.
+
+You can also arrive in another workspace **without** using the switcher: opening a notification that belongs to one moves you there first, and says so. See [Notification Settings](../settings/notifications#reading-a-notification-from-another-workspace).
 
 ## A Note on Sub-Workspaces
 
@@ -116,6 +121,12 @@ Your contributions stay in the workspace (they belong to the workspace, not your
 
 **Q: Can I rename a workspace later?**
 Yes — workspace owners and admins can change the name in workspace settings.
+
+**Q: I switched workspace but still saw the old one's data.**
+That was a real bug and it's fixed — switching now clears what it replaced. If you still see something stale, refresh the page.
+
+**Q: Why do I have different permissions in each workspace?**
+Roles are per workspace. Being an admin in one grants you nothing in another, and switching applies the new workspace's role before the page loads.
 
 **Q: Can two different workspaces share brands or projects?**
 Not directly. Brands and projects belong to their workspace. If you need shared access, the workspace admin can invite the relevant people as members or guests.

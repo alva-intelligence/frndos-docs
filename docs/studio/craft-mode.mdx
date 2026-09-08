@@ -178,6 +178,105 @@ If it fails, the panel says **Separation failed.** with a **Try again** action.
 
 ---
 
+## Removing a Layer's Background
+
+A product shot on a white plate, a logo on its own square — **Remove background** cuts the subject out with AI and hands back a transparent PNG.
+
+> **Rolling out gradually:** background removal is enabled per workspace. If the menu item isn't there, it hasn't reached you yet — see [Turning On Experimental Features](../settings/experimental-features).
+
+It only applies to **image layers**. Two ways in:
+
+| Entry point | Where |
+|---|---|
+| **Remove background** | The **⋮** menu on an image row in the **Layers** panel |
+| **Remove background** | Right-click an image layer on the canvas |
+
+<!-- TODO: add screenshot of the Remove background dialog — Cutout engine dropdown, Before/After panes, estimated cost, Run → /img/guides-asset/<name>.jpeg -->
+
+### The dialog
+
+**Remove background** opens with your layer side by side: **Before** on the left, **After** on the right (over a checkerboard, so transparent reads as transparent).
+
+1. Pick a **Cutout engine** — see below
+2. Click **Run**. The button reads **Removing…** while the job runs
+3. When it lands, **After** fills in — with the engine's name beside the label
+4. **Save** applies the cutout to that layer. **Run again** tries once more; **Cancel** discards
+
+The estimated credit cost sits in the bottom-left before you run: _"Estimated cost: ~N credits"_. It scales with the layer's own pixel size, and the real charge is calculated when the run finishes.
+
+### Choosing an engine
+
+| Engine | When |
+|---|---|
+| **BiRefNet** | _"Recommended. Sharpest detail — hair, fabric folds, fine edges."_ — the default |
+| **Bria** | _"A different engine. Try this if BiRefNet cuts off part of the image."_ |
+
+> **Why the picker matters:** the dialog says it plainly — _"Same engine always gives the same result. If the cutout misses part of your image, switch engines and run again."_ Re-running the **same** engine on the same layer returns identical pixels, so switching engines is the only thing "Run again" can actually change.
+
+Switch the dropdown after a result has landed and a nudge appears: **Run again to try &lt;engine&gt;** — the picker only takes effect on the next run.
+
+### If it fails
+
+The dialog reports what happened rather than a generic error — for example _"This is taking longer than expected. Try again."_ when the job is still running server-side past the wait window. The button turns into **Run again**.
+
+> **Heads-up:** closing mid-run abandons a job you've already waited on, so a stray click on the overlay won't close the dialog while it's working. Use **Cancel** deliberately.
+
+---
+
+## Changing the Camera Angle
+
+**Angles** re-renders a whole board as though the camera had moved — orbit around it, tilt over or under it, push in or pull back.
+
+> **Rolling out gradually:** the Angles panel is enabled per workspace. If the menu item isn't there, it hasn't reached you yet.
+
+Two ways in:
+
+| Entry point | Where |
+|---|---|
+| **Change camera angle** | Right-click a board on the canvas |
+| **Camera angle** tool | The perspective icon in the canvas bottom toolbar — then click a board |
+
+<!-- TODO: add screenshot of the Angles panel — 3D preview box with labelled faces, orbit pad, Rotation / Tilt / Zoom rows, estimated cost → /img/guides-asset/<name>.jpeg -->
+
+### The panel
+
+At the top is a **live preview**: your actual board rendered as a box in 3D, so you can see the move before spending anything. Its non-front faces are labelled **Back**, **Left**, **Right**, **Top**, **Bottom** — you can read off which way it's facing as you drag.
+
+Under it, three ways to dial the same thing:
+
+| Control | What it moves |
+|---|---|
+| **Orbit pad** | Drag the handle around the circle to swing the camera. A crosshair marks the centre — centre means unchanged |
+| **Orbit left / Orbit right** | Nudge the rotation a step at a time |
+| **Rotation** / **Tilt** / **Zoom** | Sliders and number fields, for an exact value |
+
+### Applying it
+
+The footer shows the estimate — _"Estimated cost: ~7 credits"_ — with two actions:
+
+- **Reset** returns the dial to neutral
+- **Save** stages the angle. It doesn't generate on its own — one chat turn fires it, the same as the other staged edits
+
+Both are disabled while the camera is still neutral, since there'd be nothing to apply.
+
+> **Reopening starts neutral.** The panel doesn't remember the last angle you dialled — every open begins from the unchanged camera. The angle you applied to the board stays applied.
+
+> **A full turn is not a change.** Rotation runs **0–360**, and 360 is the same camera as 0 — so **Save** stays disabled there rather than charging you for a render that would come back identical.
+
+### What each dial can reach
+
+| Axis | Range | Why it stops there |
+|---|---|---|
+| **Rotation** | 0–360°, in 5° steps | A full circle — 0 and 360 are the same camera |
+| **Tilt** | −30° to 90° | −30 is as far under the subject as the renderer goes; 90 is straight down |
+| **Zoom** | −5 to +5, in whole steps | Eleven distinct framings — every notch produces a different result |
+
+> **Every position you can reach does something.** The dials stop where the renderer stops, so you never spend a generation discovering the last part of a slider was ignored.
+
+> **It moves the whole frame, not one object.** A real camera move changes the environment around a subject too, so Angles re-renders the entire artboard rather than cutting the subject out and pasting it back.
+
+---
+
 ## The Transform Panel
 
 When the **Layers panel** is open, a **Transform** panel appears anchored to the **bottom-right corner** of the canvas. It lets you read and edit an overlay's exact position, size, and rotation numerically — without guessing from the canvas.
@@ -218,6 +317,27 @@ When no overlay is selected, or when multiple overlays are selected at once, all
 ---
 
 ## FAQ
+
+**Q: "Remove background" isn't in the layer menu.**
+Three things to check: the layer is an **image** layer (text and shapes have no background to cut), you're on a panel that offers it (the Resize tile-scoped panel doesn't), and the feature is enabled for your workspace.
+
+**Q: I ran background removal twice and got the same imperfect cutout.**
+That's by design — each engine is deterministic, so the same engine on the same layer always returns the same pixels. Switch the **Cutout engine** dropdown and run again.
+
+**Q: Does removing a background change my layer's size or position?**
+No. Only the image is replaced; the layer keeps its geometry.
+
+**Q: I dialled a camera angle and nothing happened.**
+**Save** stages the angle — it doesn't generate by itself. Send a chat turn to fire it.
+
+**Q: Can I change the angle of just one object in the board?**
+No. Angles moves the camera on the whole artboard. Moving one object while its background stays put never looked right, so the whole-frame re-render replaced that approach.
+
+**Q: Save is greyed out even though I moved the dial.**
+You're back at a neutral camera — all three axes at 0, or rotation at a full 360°, which is the same thing. There's nothing to render.
+
+**Q: I reopened the panel and my angle was gone.**
+The panel always opens neutral; that's the dial resetting, not your board. The angle you applied is still applied.
 
 **Q: What is the Creativity control and what do its levels mean?**
 The Creativity control (bottom bar, Craft mode only) sets how far the AI may drift from the source image when polishing or creating a variant. Raw = closest to original; Low = faithful polish (default); Medium = moderate reinterpretation; High = significant creative departure. The setting resets to Low each session.

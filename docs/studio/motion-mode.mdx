@@ -81,9 +81,54 @@ Entrance presets start the layer's move; exit presets land at the end of the tim
 
 > **Heads-up:** emphasis presets are disabled when the playhead is too close to the end — the tooltip reads _"Not enough room before the end."_
 
+### Previewing before you apply
+
+Presets are shown as **cards that animate**. Hover one and it plays the motion in miniature, so you can tell Pop in from Slide in up without applying either.
+
+> The preview is indicative — it shows the shape of the movement, not your layer at its real size or position.
+
 ### Staggering several layers
 
 To bring layers in one after another instead of all at once: pick a preset from the **Preset…** dropdown in the top bar, then click **Stagger**. It applies that preset across your layers in sequence.
+
+## Saved Motions — Reusing an Animation
+
+Built a move you'll want again? Save it as a **template** and apply it to any layer, in any project on the same brand.
+
+<!-- TODO: add screenshot of the ✨ preset menu — Default / Saved tabs, "Save as template…", animated preset cards → /img/guides-asset/<name>.jpeg -->
+
+### Where the menu is
+
+Every layer row in the left rail carries a **✨** button — _"Apply motion preset to &lt;layer&gt;"_. Right-clicking a timeline row opens the same panel.
+
+It has two tabs:
+
+| Tab | What's in it |
+|---|---|
+| **Default** | The built-in entrance and exit presets, plus an **Emphasis** section |
+| **Saved** | Your brand's saved motions |
+
+### Saving one
+
+With a layer animated, open the **✨** menu and click **Save as template…**.
+
+> **Heads-up:** the button is disabled on a layer with no animation yet — the tooltip says _"This layer has no animation yet."_
+
+### Applying one
+
+Open the **Saved** tab and click a card. Each card previews on hover like a built-in preset, and carries the duration it was built for — e.g. _"Built for 5s"_, with _"· by you"_ on your own.
+
+> **It replaces the layer's whole animation.** The panel says so above the cards: _"Replaces this layer's whole animation."_
+
+With nothing saved yet, the tab explains how to get there: _"No saved motions yet. Animate a layer, then save it as a template to reuse it."_
+
+### Renaming and deleting
+
+Hover a saved card in the **✨** menu and its rename and delete buttons appear.
+
+> **Templates are brand-wide.** Everyone working on the same brand sees them — and deleting one takes it away from all of them. That's why the same library opens read-only from a timeline block's menu: deleting a brand template from behind a right-click on a block would be a trash icon in the wrong place.
+
+> **A template can be applied to a project of a different length.** The duration on the card is information, not a restriction.
 
 ## The Timeline
 
@@ -107,6 +152,34 @@ New projects start at **5 seconds** and **30 fps**.
 **Keyframes** shows the individual points, for when you want exact control. Insert, move, and delete keyframes here; the **Properties** panel on the right edits the selected one's values.
 
 You can also drag a layer directly on the canvas — that writes a keyframe at the playhead.
+
+### One row per property
+
+A layer's track can be expanded into **one lane per property**, so a move and a fade stop being one block you can only drag together. Click the caret on the layer's name — _"Expand properties"_ / _"Collapse properties"_ — and the row splits into up to four lanes:
+
+| Lane | Covers |
+|---|---|
+| **position** | Horizontal and vertical movement |
+| **scale** | Size |
+| **rotation** | Turning |
+| **opacity** | Fading |
+
+Each lane's bar drags and stretches on its own, so you can hold a layer's move where it is and let the fade run longer.
+
+> **Why properties and not preset names:** a bar is labelled by what it actually animates. A preset name would become a lie the moment you hand-edit the keyframes; a property list stays true because it's read straight off them.
+
+### Snapping
+
+Dragging a bar **snaps** it to the meaningful moments on the timeline, and a guide line shows what it caught:
+
+- The start and end of the video
+- The **playhead**
+- The preview-range brackets
+- Another block's edge — on this layer or any other
+- The audio clip's start or end
+- A gridline on the ruler
+
+A bar never snaps to its own current edges, and a real edge always wins over a gridline, so a tick can't steal a target you were actually aiming for. Snapping is measured in screen distance, so it feels the same at every zoom level.
 
 ## Audio
 
@@ -143,6 +216,21 @@ Finished exports are reachable two ways: the **download icon** in the top bar (*
 In the Motion projects panel, click the **trash** icon on a project row and confirm at **Delete this motion project?**
 
 ## FAQ
+
+**Q: I want the fade to last longer than the move.**
+Expand the layer's properties (the caret on its name) and drag the **opacity** lane on its own.
+
+**Q: A bar keeps jumping to a position I didn't want.**
+That's snapping catching a nearby guide — the playhead, another block's edge, the audio clip, or a gridline. Zoom in and the same pixel distance covers less time, so the pull is finer.
+
+**Q: Can I reuse an animation on another layer or another project?**
+Yes — save it via the layer's **✨** menu → **Save as template…**, then apply it from the **Saved** tab. Templates are shared across the brand.
+
+**Q: I applied a saved motion and lost the animation the layer already had.**
+Applying a saved motion replaces the layer's whole animation — the panel warns before you pick.
+
+**Q: Someone deleted a saved motion I was using.**
+Templates are brand-wide, so anyone on the brand can delete one. Already-applied keyframes stay on your layers; only the reusable card is gone.
 
 **Q: I don't see the Motion tab.**
 Motion is a Labs feature enabled per workspace. Ask an admin to turn it on — see [Turning On Experimental Features](../settings/experimental-features).

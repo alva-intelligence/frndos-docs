@@ -47,6 +47,20 @@ Open the connected Lark plugin to manage it. Under **Permissions**, each Lark se
 
 <!-- TODO: confirm the exact Lark service display names shown in the Permissions list (they come from the server) with a screenshot. -->
 
+## Lark Sheets — One Re-Authorization
+
+AskFrnd can now read, query, and append to **Lark Sheets**, and write richer Lark documents. Sheets rides on the **existing Docs connection** rather than being a service of its own.
+
+If you connected Lark **before** this shipped, your existing grant doesn't cover it yet:
+
+1. Open the Lark plugin
+2. Click **Reauthorize** — one click
+3. Sheets is unlocked
+
+**New connections get everything automatically** — there's nothing extra to do.
+
+> **Why a re-auth at all?** Lark only ever grants what you authorized at the time. A capability added afterwards isn't in your existing token, so the token has to be reissued.
+
 ## Step 3 — Reauthorize After Changing Permissions
 
 Whenever you change permissions — or when your token expires — you need to **Reauthorize** so Lark re-grants access for your current Read/Write choices.
@@ -77,9 +91,16 @@ Open the Lark plugin and click **Revoke Plugin** to disconnect it.
 **Q: A plugin shows "Soon" — can I use it?**
 Not yet. "Soon" means it's listed but not available to install at the moment.
 
+**Q: AskFrnd can't reach my Lark Sheets.**
+If you connected Lark before Sheets shipped, click **Reauthorize** on the Lark plugin once. Sheets rides the existing Docs connection, so there's no separate service to switch on.
+
+**Q: I connected Lark today — do I still need to reauthorize?**
+No. New connections include Sheets from the start.
+
 ---
 
 ## Next Steps
 
 - [AskFrnd Overview →](./overview)
 - [Using AskFrnd Skills →](./skills)
+- [Shared Connections →](../settings/shared-connections)

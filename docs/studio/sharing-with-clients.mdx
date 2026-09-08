@@ -1,0 +1,149 @@
+---
+sidebar_position: 9
+title: Sharing a Key Visual With a Client
+description: Mark the work you want seen, then issue a review link a client can open without signing in — several links per file, each with its own scope, label, and expiry.
+---
+
+# Sharing a Key Visual With a Client
+
+You rarely want a client to see everything on a canvas — the false starts, the half-finished boards, the tile you're still arguing about. So sharing a KV is two steps: **mark what's ready**, then **issue a link**.
+
+The link opens in any browser with no frndOS account: _"Shared for review — view only."_
+
+## Before You Start
+
+1. ✅ **A KV file with something on the canvas** — see [Creating Your First Key Visual](./kv-generator)
+2. ✅ **At least one item marked ready to share** — see below
+
+## Step 1 — Mark What's Ready
+
+A share link never shows a whole stage; it shows whatever inside that stage you've **marked ready to share**.
+
+| Where | How |
+|---|---|
+| A **Sketch** or **Craft** board | Right-click the board → **Set as ready to share** |
+| A **Resize** tile | Right-click the tile → **Set as ready to share** |
+| A **Motion** export | The export's row menu → **Set as ready to share** |
+
+Marked items carry a **Ready to share** badge, so the canvas itself tells you what a client would see. To take something back out, use the same menu — it now reads **Remove from share**.
+
+<!-- TODO: add screenshot of a Craft board with the "Ready to share" badge + the right-click menu showing "Remove from share" → /img/guides-asset/<name>.jpeg -->
+
+> **Marking is a canvas action, not part of issuing the link.** That's deliberate: a link shows whatever is marked **live**, so re-marking updates every link that includes that stage — you don't reissue anything.
+
+## Step 2 — Create the Link
+
+Click **Share** in the top nav to open **Share key visual**.
+
+<!-- TODO: add screenshot of the Share key visual dialog — Active links list with a link card, expiry meta, New link button → /img/guides-asset/<name>.jpeg -->
+
+With nothing shared yet, the panel offers one action — _"Create a link to let clients review this key visual — no sign-in needed."_ Otherwise click **New link**.
+
+The create form has four parts:
+
+### Select stages to include
+
+Pill per stage — **Sketch**, **Craft**, **Resize**, **Motion** — and you can pick more than one. Each pill carries a live count of how many items in that stage are marked ready.
+
+- Only stages that actually have content are offered.
+- **Craft** is preselected when it has something in it — it's the sign-off stage.
+- With an empty canvas the form says so: _"Nothing on the canvas to share yet."_
+
+### Expiration duration
+
+**Never** · **1 day** · **7 days** · **30 days**.
+
+### Link description / label
+
+Free text, up to 60 characters, e.g. _"Client Feedback Round 1"_. This is what you'll recognise the link by in the list — an unnamed one shows as **Untitled link**.
+
+### Require passcode access
+
+Visible but disabled, marked **Soon**.
+
+Click **Create link**. The URL is copied to your clipboard automatically.
+
+## Managing Active Links
+
+Each link is a card in **Active links** showing its label, its URL, and a meta line:
+
+| Meta | Means |
+|---|---|
+| **Expires: Never / N days / N hours / Expired** | Amber inside the last 24 hours, red once expired |
+| The stage list | Which stages this link exposes |
+
+Three icon actions sit on every card:
+
+| Action | What it does |
+|---|---|
+| **Copy link** | Copies the URL — the icon ticks green once the clipboard actually took it |
+| **Preview as client** | Opens the link in a new tab, so you see exactly what they'll see |
+| **Revoke link** | Kills it — see below |
+
+Plus **Extend** (or **Renew** on an expired link) to push the expiry out.
+
+> **Three links per file.** The counter next to **Active links** shows `N/3`. At the limit, **New link** is disabled — _"Revoke a link to create another."_
+
+### Revoking
+
+Revoking replaces the card with a confirmation naming the link, so you always see which one you're about to kill:
+
+> **Revoke "&lt;label&gt;"?**
+>
+> _"Anyone holding this link loses access immediately. This cannot be undone — sharing again creates a new link."_
+
+**Revoke link** confirms; **Keep it** backs out.
+
+## What the Client Sees
+
+A read-only page headed with the file name and _"Shared for review — view only"_, with a tab per stage you included.
+
+- Boards and tiles are drawn **with their overlays**, so text and logos appear exactly as on your canvas.
+- Click any item to open it full size, and step through with **Previous** / **Next**.
+- **Motion** clips play with controls.
+
+> **The client sees the composition you approved.** A resize tile's overlays are projected across the size change using the same code the editor and the export path use — so a guest can't be shown a different arrangement from the one you signed off.
+
+> **Motion thumbnails match their clip.** A vertical clip shows a vertical still. Earlier it borrowed the source board's picture, so a 9:16 clip could appear as a landscape thumbnail labelled `1080 × 1920`; it now uses the clip's own first frame. A shared page also always shows the **newest** render.
+
+A dead link says so plainly: **This link is no longer active.**
+
+> **One message for three cases.** Revoked, expired, and never-existed all say the same thing, on purpose — telling a stranger which one it was would confirm that a file exists.
+
+## FAQ
+
+**Q: I created a link but the client sees nothing in a stage.**
+That stage has nothing **marked ready to share**. The pill count in the create form shows this before you issue the link.
+
+**Q: I marked another board after sending the link. Do I need to resend?**
+No. A link shows what's marked live, so the new board appears in any link that includes that stage.
+
+**Q: Can I share a single board instead of a stage?**
+Not directly — the scope is per stage. Mark only the board you want in that stage, and that's all the link shows.
+
+**Q: Does the client need a frndOS account?**
+No. The link is public to whoever holds it, which is exactly why revoking exists.
+
+**Q: I hit the limit and can't create a new link.**
+Three active links per file is the cap. Revoke one you no longer need.
+
+**Q: Can I put a passcode on a link?**
+Not yet — the control is visible but marked **Soon**.
+
+**Q: My link expired. Do I have to make a new one?**
+No — the card's action becomes **Renew**, which pushes the expiry back out.
+
+**Q: A link I sent weeks ago opened an empty page.**
+Old links resolve correctly now. If a page still looks empty, check that the stages on that link still have items marked ready to share.
+
+**Q: The client says the clip they see is out of date.**
+Shared pages follow the newest render, so re-exporting updates what the link shows. Ask them to reload.
+
+---
+
+## Related Articles
+
+- [Creating Your First Key Visual](./kv-generator)
+- [Resizing Visuals for Different Platforms](./resizer)
+- [Motion Mode](./motion-mode)
+- [Studio Overview](./overview)

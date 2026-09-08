@@ -1,0 +1,123 @@
+---
+sidebar_position: 6
+title: Talking to AskFRND with Voice
+description: Dictate to AskFRND instead of typing — the composer mic, hold-Space push-to-talk, the ⌘⇧V shortcut, and the floating voice bar that keeps listening after you close the panel.
+---
+
+# Talking to AskFRND with Voice
+
+**Voice input** lets you dictate to AskFRND instead of typing. Your words appear in the composer as you speak, and when you stop talking the message **sends by itself** — you never press send.
+
+The session also **outlives the panel**. Close AskFRND or move to another page and a small floating bar stays on screen so you can keep talking.
+
+## Before You Start
+
+1. ✅ **A browser with speech recognition** — frndOS uses your browser's built-in speech recognition. If your browser doesn't have it, the mic simply never appears.
+2. ✅ **Microphone permission** — your browser asks the first time. Blocking it stops voice input.
+3. ✅ **A model that supports voice** — the mic only appears for chat models flagged for voice input. Switch models if you don't see it.
+
+> **Rolling out:** voice input rides a kill switch (`show-voice-command`). It's on by default, but if it has been switched off for your workspace the mic, the floating bar, and the shortcut all disappear together.
+
+## Three Ways to Start Talking
+
+<!-- TODO: add screenshot of the AskFRND composer showing the mic in the send slot → /img/guides-asset/<name>.jpeg -->
+
+| How | What to do | Ends when |
+|---|---|---|
+| **Composer mic** | Click the microphone in the AskFRND composer | You stop speaking (the browser detects end-of-speech) |
+| **Hold Space** | Hold the **Space** bar on an empty composer and talk | You release Space |
+| **⌘⇧V** (`Ctrl⇧V` on Windows/Linux) | Press it anywhere in frndOS | You stop speaking, or press it again |
+
+The mic tooltip says it all: _"Voice input — click, or hold Space to talk. ⌘⇧V toggles it anywhere."_
+
+### When the mic shows up
+
+The mic takes over the **send** slot only when a keystroke couldn't use it — so it appears when:
+
+- the composer is **empty** (no typed draft),
+- **no files** are attached,
+- nothing is currently streaming,
+- the composer isn't disabled (read-only shared chats are disabled).
+
+Type a character or attach a file and the slot goes back to the normal send button.
+
+> **Heads-up:** `⌘⇧V` is normally "paste as plain text". In ordinary text fields frndOS leaves that alone. Inside the AskFRND composer the shortcut starts voice instead — but only while the composer is **empty**, so it never overwrites a draft you're in the middle of. And if a voice round is already live, `⌘⇧V` always stops it.
+
+## What You'll See While It Listens
+
+On an empty thread the panel replaces the greeting with the **listening state**:
+
+- The Ask FRND badge, animated
+- A live **waveform**
+- The heading **Listening…**
+- Your words as they're recognised, or the prompt _"Speak now — your words appear here as you talk."_
+- A **Stop** button
+
+When your message is on its way, the heading becomes **Sending…**.
+
+<!-- TODO: add screenshot of the AskFRND listening state — badge, waveform, "Listening…", live transcript → /img/guides-asset/<name>.jpeg -->
+
+## The Floating Voice Bar
+
+Close the AskFRND panel mid-session and the round doesn't die — a small pill appears at the bottom of the content area:
+
+| State | What the bar shows |
+|---|---|
+| **Listening** | A waveform and your live transcript, or _"Listening…"_ |
+| **Sending** | A spinner and _"Sending: &lt;your message&gt;"_ |
+| **Idle** (between rounds) | **Voice is on — tap to speak** |
+| **Error** | The error message in red |
+
+The **✕** on the bar dismisses the whole voice session.
+
+> **Why it survives:** the session is deliberately kept alive outside the panel, so closing AskFRND or navigating to another page doesn't cut you off mid-sentence.
+
+## Speaking While AskFRND Is Still Answering
+
+If a turn is still streaming, the send slot is a **Stop** button — so voice moves to a **sidecar** mic beside it. Tap it (or hold Space) and dictate your follow-up: instead of interrupting the answer, it's **parked as a queued follow-up** and sent when the current turn finishes.
+
+See [Queueing follow-ups](./overview#queueing-follow-ups-while-askfrnd-is-answering).
+
+## Which Language It Recognises
+
+Voice input uses your **browser's language setting**. There's no language picker in frndOS.
+
+## When Something Goes Wrong
+
+frndOS shows a plain-language message and ends the session shortly after:
+
+| Situation | Message |
+|---|---|
+| Mic permission blocked | _"Microphone access is blocked. Allow mic permission in your browser settings to use voice input."_ |
+| No microphone found | _"No microphone found. Connect a microphone and try again."_ |
+| Speech service unreachable | _"Speech service is unreachable. Check your connection and try again."_ |
+| Nothing was heard | _"Didn't catch that — press the mic and try again."_ |
+| Anything else | _"Voice input isn't available right now. Try again."_ |
+
+## FAQ
+
+**Q: Do I have to press send after dictating?**
+No. When speech ends, the message sends itself. That's why there's no send button during a voice round.
+
+**Q: I stopped talking mid-sentence and it sent anyway.**
+In tap mode the browser decides when speech has ended, so a long pause can end the round. Use **hold Space** instead — capture keeps going through pauses and only ends when you release the key.
+
+**Q: I don't see a microphone anywhere.**
+Check three things: your composer is empty with no attachments, your browser supports speech recognition, and the chat model you've picked supports voice input.
+
+**Q: I closed the panel and it's still listening.**
+That's intentional — the floating bar keeps the session alive. Click the **✕** on the bar to end it.
+
+**Q: Can I use voice on my phone?**
+The mic lives in the composer on the surfaces documented here. <!-- TODO: confirm from live UI whether voice input is offered on the mobile layout — screenshot needed -->
+
+**Q: Nothing was captured and the session just ended.**
+An empty round ends quietly rather than sending a blank message. Press the mic and try again.
+
+---
+
+## Related Articles
+
+- [AskFrnd Overview](./overview)
+- [How AskFrnd Uses Tools](./tools)
+- [Using AskFrnd Skills](./skills)

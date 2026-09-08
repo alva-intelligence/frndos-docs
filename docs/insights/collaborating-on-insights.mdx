@@ -62,56 +62,76 @@ The bell fills in while you're following.
 
 ## Comments
 
-### Commenting on a page
+Commenting on Insights is **anchored**: you aim at the thing you're talking about — a chart, a metric card, a table row, a creator, a post — and drop a pin on it. The thread lives next to the number instead of in a chat somewhere.
 
-Click the **💬 speech bubble** in the top bar. If you've already saved this view, the comment rail opens. If you haven't, frndOS explains what will happen first:
+### Turning comment mode on
 
-> _"Commenting saves this view as &lt;name&gt; so the thread has something to hang on — and you'll follow it."_
->
-> _"Anyone on this brand will be able to see the view and the discussion."_
+Click the **💬 speech bubble** in the top bar, or press **C**.
 
-Click **Comment & save view** to continue.
+> **What that click does:** a tab isn't a row, so there's nothing to hang a thread off until the view is saved. Clicking the speech bubble **saves the current view** for you — in one click, with no confirmation step. The saved view appears in the shared list, you start following it, and it stays even if you never type anything.
 
-### The comment rail
+The button itself tells you what's waiting before you open it:
 
-<!-- TODO: add screenshot of the Insights comment rail — This page / All pages tabs, All / Unresolved / @me filters, a thread → /img/guides-asset/<name>.jpeg -->
-
-The rail opens on the right with two rows of controls:
-
-**Which pages:**
-
-| Tab | Shows |
+| Button state | Means |
 |---|---|
-| **This page** | Threads on the view you're looking at |
-| **All pages** | Every thread on this brand — how you find the one you owe someone an answer to |
+| Plain bubble | No open threads on this tab |
+| Bubble **+ a number** | That many **unresolved threads** on this tab — threads, not comments, so a long discussion still counts as one |
+| Small **orange dot** | An open thread **mentions you** |
 
-**Which threads:**
+Hovering names the surface the count belongs to — e.g. _"Paid Media · 3 open comments"_ — because the number changes as you move between tabs.
 
-| Filter | Shows |
+### Placing a pin
+
+With comment mode armed, your cursor turns into a pin over anything you can comment on. Click it and a composer opens beside the pin.
+
+- Clicking **empty space** places nothing — you stay in the mode.
+- Clicking a **control** (a filter pill, a button) does what that control does. It doesn't leave a comment.
+- After posting, you're **still in comment mode**, so a whole review pass takes no re-arming.
+- **Escape** steps back out one level at a time: composer → open thread → out of the mode.
+
+A thread with no particular target goes at the bottom of the panel instead: the composer there is labelled _"Comment on this page…"_.
+
+When a tab has nothing on it yet, the panel says: _"No comments yet. Press C and click a number to leave one, or comment on the page below."_
+
+### The comment dock
+
+<!-- TODO: add screenshot of the Insights comment dock — search, All / Open / Done / @me pills, Filter popover, a thread with a pin → /img/guides-asset/<name>.jpeg -->
+
+The dock opens on the right, headed **Comments**. It carries:
+
+| Control | What it does |
 |---|---|
-| **All** | Everything — the memory |
-| **Unresolved** | The working queue |
-| **@me** | Threads you were mentioned in, or are part of |
+| **Search comments** | Finds a thread by its text — the fastest route on a busy page |
+| **All / Open / Done / @me** | Filter pills, each with its own count |
+| **Filter** | A popover with the extras — **Has image**, and filtering by author |
+| **👁 eye** | Hide or show the pins on the page (the threads stay listed) |
+| **✕** | Close comments and leave the mode |
 
-Empty states tell you which filter you're in — for example _"Nothing unresolved on this brand"_ or _"You're not in any thread here."_
+> **One right-hand column:** the comment dock and the AskFrnd panel take the same space. Opening one closes the other.
 
-Write in the box at the bottom. The label above it names what you're commenting on: **New comment on this view**, **New comment on this dashboard**, or the specific figure you have selected.
+**Desktop only.** Comment mode is aim-and-click, so it isn't offered on the phone layout.
 
-### Commenting on a single number
+### Finding a thread across the whole brand
 
-Some figures carry their own comment button. Use it and the thread is anchored to that datapoint — clicking the thread later takes you straight back to it, the same way a notification deep link does.
+The **All pages** view lists every discussion on the brand, grouped by the page it was left on — how you find the one you owe someone an answer to. It has its own filters: **All**, **Unresolved**, **@me**. It's read-only; open a thread on its own page to reply.
 
-The rail hints at this when a view has no threads yet: _"Write below, or use a number's comment button to talk about that figure."_
+### Threads whose number is gone
 
-### Mentions, replies, and resolving
+Filters change, ranges roll, rows paginate. A thread whose target has left the page is marked **Not on this page**, with the explanation _"The number this comment was left on isn't on this page — the tab's filters or range may have changed"_. The thread is never hidden or deleted; only its pin can't be drawn.
 
-- **@mention** a colleague to pull them in — mentions drive the notification
-- **Reply** in the thread
-- **React** with an emoji
-- **Resolve** a thread when it's settled, or **reopen** it later
-- **Edit** or **delete** your own comments
+Open a link to such a thread and you get a toast instead of a hunt: **Comment is still here** — _"The item it was left on isn't on this page — open it from the list."_
 
-> **Note:** resolved threads aren't deleted. They drop out of **Unresolved** and stay under **All**.
+### Mentions, replies, reactions, and resolving
+
+- **@mention** a colleague to pull them in — mentions are what drive the notification. The suggestion list is scoped to people who can actually open the page.
+- **Reply** in the thread. The composer hint says it: _"@mention to notify · ⏎ to post"_, and in a reply _"⏎ to reply · Shift+Enter for new line"_.
+- **React** with an emoji — 👍 ❤️ 🎉 😄 😢 👀. Hover a reaction to see who reacted.
+- **Attach an image** to a comment with the paperclip.
+- **Edit** your own comment — it's marked as edited afterwards.
+- **Delete** your own comment. Deleting the first comment of a thread takes the whole thread with it, and the confirmation says how many replies that is.
+- **Resolve** a thread when it's settled, or **reopen** it later.
+
+> **Note:** resolved threads aren't deleted. They drop out of **Open** and stay under **All** and **Done**.
 
 ## Getting Notified
 
@@ -126,16 +146,25 @@ The brand bell subscribes you to everything on the brand. **Follow view** subscr
 A frozen range can never change again, so it could never notify you. frndOS saves the nearest rolling window instead and tells you which one.
 
 **Q: Why does commenting save a view?**
-A thread needs something to hang on. Without a saved view there's nothing to attach the discussion to — or to take a reader back to.
+A thread needs something to hang on. Without a saved view there's nothing to attach the discussion to — or to take a reader back to. That's why the speech bubble saves the view the moment you click it.
 
 **Q: Who can see my comments?**
-Anyone with access to that brand. The confirmation says so before you create the thread.
+Anyone with access to that brand.
 
 **Q: I know there's a thread but I can't find it.**
-Switch the rail from **This page** to **All pages** — that lists every thread on the brand regardless of which tab it started on.
+Use **Search comments** in the dock, or switch to **All pages** — that lists every thread on the brand regardless of which tab it started on.
 
 **Q: Can I comment on one specific number?**
-Yes, where a figure carries its own comment button. The thread anchors to that datapoint, and opening it later brings you back to it.
+Yes. Press **C** (or click the speech bubble) and click the figure — the thread anchors to that datapoint, and opening it later brings you back to it.
+
+**Q: A thread says "Not on this page".**
+The number it was left on isn't rendered right now — the filters, the date range, or the table page changed. The thread is intact; only its pin has nowhere to sit.
+
+**Q: My AskFrnd panel closed when I opened comments.**
+They share the right-hand column, so only one can be open at a time.
+
+**Q: I clicked a filter pill in comment mode and it filtered instead of leaving a comment.**
+That's deliberate — controls keep doing what they do. Pins only land on the data itself.
 
 **Q: Someone shared a link and I see different numbers.**
 Check the date range. A shared link carries the filters and the window it was copied with.
@@ -147,4 +176,5 @@ Check the date range. A shared link carries the filters and the window it was co
 - [Insights Overview](./overview)
 - [Notification Settings](../settings/notifications)
 - [Real-Time Collaboration](../collaboration/real-time-collaboration)
+- [Collaboration Overview](../collaboration/overview)
 - [Core & Extended Connections](./core-extended-connections)

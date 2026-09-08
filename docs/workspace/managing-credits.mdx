@@ -162,6 +162,34 @@ Workspace admins can see usage analytics in workspace settings:
 
 This helps you allocate the budget more accurately over time.
 
+### Filtering the history
+
+The usage table is no longer one long list. Two filters narrow it:
+
+| Filter | Default |
+|---|---|
+| **Date range** | The current month |
+| **Brand** | All brands |
+
+The brand filter includes a **No Brand** option alongside your real brands — for entries that never carried a brand, such as AI chat.
+
+Columns: **Member**, **Tools**, **Action**, **File name**, **Brand**, **Date & Time**, **Credit**.
+
+### The total
+
+Under the table sits **Total usage for current filter** — the net across the **whole filtered result**, not just the page you're looking at. It's colour-coded: green for a net gain, red for net spend.
+
+> **It follows your filters.** Narrow to one brand and one month, and the total is that brand's spend for that month.
+
+### Metered by actual usage
+
+Some AI actions are billed on **what they actually consumed**, not a flat rate quoted up front:
+
+- **Analyze with AI** batches — you confirm an estimate first, then the charge settles from real usage when the batch finishes. See [Understanding Owned Media](../insights/owned-media#analyzing-posts-with-ai).
+- **Trend-signal detection** — metered the same way and labelled in the ledger.
+
+<!-- TODO: confirm the exact label trend-signal detection carries in the credit ledger's Action column — the labels are server-authored and aren't readable from the web code. Screenshot needed. -->
+
 ## Best Practices
 
 **Start conservative, then expand.** Don't allocate your full pool upfront. Leave headroom for unplanned needs and new team members.
@@ -176,6 +204,15 @@ This helps you allocate the budget more accurately over time.
 
 **Q: What happens when our workspace runs out of credits?**
 You have a few options: wait for the next billing cycle when credits reset, upgrade your plan, or — if you're an owner/admin on a paid plan — **buy Extra Credit** as a top-up. See [Buying Extra Credit](#buying-extra-credit-top-up).
+
+**Q: How do I see what one brand cost us last month?**
+Use both filters on the usage table — set the date range and pick the brand. **Total usage for current filter** underneath is that brand's net for that period.
+
+**Q: What does the "No Brand" filter option mean?**
+Entries that were never tied to a brand — AI chat, for example.
+
+**Q: The total under the table doesn't match the rows I can see.**
+It's the net across the entire filtered result, not just the current page.
 
 **Q: Who can buy Extra Credit?**
 Only workspace owners and admins, on a paid plan, in a team workspace. It's also rolled out gradually, so it may not be enabled for your workspace yet.

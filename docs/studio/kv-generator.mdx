@@ -261,6 +261,43 @@ Every generation is saved. To browse previous versions:
 
 ---
 
+## Commenting on the Canvas {#commenting}
+
+Feedback goes **on the artwork**. Pick the **Comment** tool in the bottom toolbar (the speech-bubble icon, tooltip _"Comment (C)"_) or press **C**, then click the board, tile, or motion project you want to talk about — a pin lands where you clicked and a composer opens beside it.
+
+<!-- TODO: add screenshot of the KV canvas in comment mode — comment tool selected in the bottom nav, a pin on a board, the Comments dock on the right → /img/guides-asset/<name>.jpeg -->
+
+> **It's a tool, not a panel.** Comment sits in the bottom toolbar beside Cursor, Hand, Frame, Text, and Image — because commenting is a mode you work in, not something you toggle open.
+
+### While you're in the mode
+
+- The cursor turns into a pin over anything you can comment on.
+- Posting keeps you in the mode, so a whole review pass takes one arming.
+- **Escape** steps out one level per press: the composer, then the open thread, then the mode itself (back to the Cursor tool).
+- The **Comments** dock opens on the right. It shares that column with the chat panel, so opening comments closes chat.
+
+### Threads follow the mode and the version
+
+A thread belongs to the surface it was left on — **Concept**, **Craft**, **Resize**, or **Motion** — and to the **version** of the render it was pinned to. Feedback on a Craft board doesn't leak onto the Resize tiles.
+
+Because of that, a thread can point at a render that has since been superseded. Opening one of those from the list shows the **old render with its pins** in a read-only viewer, headed with the version (e.g. `v2`), so you can see what the comment was actually about instead of guessing against the current picture.
+
+A thread whose artboard is gone stays in the list, marked as no longer present — it isn't deleted with the board.
+
+### In the dock
+
+Search threads, filter by **All / Open / Done / @me** (plus author and "has image"), hide the pins with the 👁 eye, and per comment: **@mention** a teammate, **reply**, **react** (👍 ❤️ 🎉 😄 😢 👀), **attach an image**, **edit** or **delete** your own, and **resolve** or reopen a thread.
+
+### Knowing a file has feedback before you open it
+
+File thumbnails carry a small blue **comment badge** with a count — in the Library grid, in **Continue working**, and on the recent-work cards. It counts **unresolved threads** on that file, so you can see where feedback is waiting without opening anything.
+
+> **Not per-person:** the badge means "this file has open feedback", not "you have unread feedback". There's no read state.
+
+**Desktop only.** Comment mode is aim-and-click and isn't offered on the phone layout.
+
+---
+
 ## Board Actions — The Right-Click Menu {#board-context-menu}
 
 Right-clicking any board on the canvas opens a context menu with actions for that board. Right-clicking on an empty part of the canvas (no board) does nothing — the browser's native menu is suppressed.
@@ -488,6 +525,15 @@ No. Variants are a Craft-mode feature only. To branch from a Concept board, prom
 **Q: Can I create multiple variants at once?**
 No. Variant generation is blocked while any other generation is in progress — finish the current one before starting the next.
 
+**Q: I left a comment in Craft mode and can't see it in Resize.**
+Threads belong to the mode they were left on. Switch back to Craft to see it.
+
+**Q: A comment points at a version that no longer exists on the canvas.**
+Open it from the dock — frndOS shows the old render with its pins, labelled with the version, so you can read the feedback against the artwork it was actually left on.
+
+**Q: What's the blue number on a file thumbnail?**
+Unresolved comment threads on that file. It tells you feedback is waiting there — it doesn't track what you personally have or haven't read.
+
 ---
 
 ## Next Steps
@@ -495,3 +541,4 @@ No. Variant generation is blocked while any other generation is in progress — 
 * [Concepting Mode — AI-Guided Visual Exploration →](./concepting-mode)
 * [Resizing Visuals for Different Platforms →](./resizer)
 * [Creating & Managing Projects →](../projects/managing-projects)
+* [Collaborating in Real-Time →](../collaboration/real-time-collaboration)

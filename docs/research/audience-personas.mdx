@@ -82,7 +82,29 @@ Click a persona card to open its detail. Once a persona is finished you can also
 
 ## Segments
 
-The **Segments** tab lists the **AI Generated Segments** the analysis found, each with its follower count and a **View Segment** action that opens the people inside it.
+The **Segments** tab lists the **AI Generated Segments** the analysis found.
+
+> **Segment names read naturally now.** They used to come out technical, and near-identical groups could appear twice under different wording. Naming has been reworked and duplicate segments are merged, so a re-run gives you fewer, clearer segments rather than a longer list.
+
+<!-- TODO: confirm from live UI — segment naming and duplicate merging happen server-side during generation and aren't readable from the web code, so the before/after wording here can't be quoted from anything. Confirm the current naming style with a screenshot of a real Segments tab. -->
+
+Each card carries the segment's name, its description, and two counts:
+
+| Stat | What it is |
+|---|---|
+| **Followers** | How many analysed people fall in this segment |
+| **Personas** | How many personas have been built from it |
+
+The card's button changes with that second number:
+
+| Button | When | What it does |
+|---|---|---|
+| **Create Persona** | The segment has no persona yet | Queues one on the **Audience Personas** tab |
+| **View Persona** | It already has at least one | Takes you straight to that segment's section on the Personas tab |
+
+> **You won't accidentally generate a second persona for a segment that already has one** — the card offers **View Persona** instead. Add more deliberately with the **+ Persona** button on the segment's own section.
+
+A persona finishing in the background updates the segment's **Personas** count even if you're on another tab.
 
 Empty until you've run a generation: _"Generate audience personas from the brand's Instagram followers to create segments."_
 
@@ -99,6 +121,44 @@ The **Source** column tells you where the person came from:
 | **Follower** | Found through the Instagram analysis |
 | **Customer** | From your customer list |
 | **Follower + Customer** | Both — the richest signal |
+
+## Commenting on Personas and Segments
+
+You can leave feedback **on the exact persona, segment card, or audience row** you're talking about, instead of describing it in a chat somewhere.
+
+<!-- TODO: add screenshot of Audience Personas in comment mode — pin on a persona card + the Comments dock → /img/guides-asset/<name>.jpeg -->
+
+### Turning it on
+
+Click the **💬 speech bubble** in the top-right actions, or press **C**. The button carries what's waiting:
+
+| Button state | Means |
+|---|---|
+| Plain bubble | Nothing open on this tab |
+| Bubble **+ number** | That many **unresolved threads** on this tab |
+| Small **orange dot** | An open thread **mentions you** |
+
+### Leaving one
+
+With the mode armed, your cursor becomes a pin over anything you can comment on. Click a persona card, a segment card, or a table row and a composer opens beside the pin. For a note about the tab as a whole, use the composer at the bottom of the dock — _"Comment on this tab…"_.
+
+An empty tab says so: _"No comments yet. Write one below, or press C and click a card to pin one."_
+
+**Escape** steps out one level per press — composer, then open thread, then out of the mode. Posting keeps you in the mode so a whole review pass takes one arming.
+
+### Threads are per tab
+
+The three tabs — **Audience Table**, **Segments**, **Audience Personas** — each hold their own threads. A comment left on the persona grid doesn't show up on the segment cards.
+
+If the thing a thread points at isn't rendered (filtered out, on another page of the table, or deleted), the thread is marked **Not on this page**: _"The item this comment was left on isn't on this page — it may be filtered out, on another page, or deleted."_ Nothing is hidden or lost — only the pin can't be drawn.
+
+### In the dock
+
+Search, filter by **All / Open / Done / @me**, filter further by author or "has image", hide the pins with the 👁 eye, and per comment: **@mention**, **reply**, **react** (👍 ❤️ 🎉 😄 😢 👀), **attach an image**, **edit** or **delete** your own, and **resolve** or reopen the thread.
+
+> **Heads-up:** commenting here is rolled out per tool. If the speech bubble isn't in the top-right, it hasn't been switched on for you yet — Customer Intelligence's commenting is a separate rollout and doesn't imply this one.
+
+> **One right-hand column:** the comment dock and the AskFrnd panel share it. Opening one closes the other. Desktop only.
 
 ## FAQ
 
@@ -123,12 +183,25 @@ A follower persona is derived from real people the analysis found and belongs to
 **Q: Can I ask a persona questions?**
 Yes — once it's finished generating, open it and chat with it.
 
+**Q: The Segments tab shows "View Persona" but I wanted another one.**
+That button means the segment already has at least one persona. Open it and use the **+ Persona** button on that segment's section to add another.
+
+**Q: The Personas count on a segment card didn't move after generation.**
+It updates when the persona finishes, including while you're on a different tab. If it's still generating, the count is still the old one.
+
+**Q: I left a comment on a persona and can't find it on the Segments tab.**
+Threads belong to the tab they were left on. Switch back to the tab you commented on.
+
+**Q: There's no speech bubble in the top-right.**
+Commenting is enabled per tool. It hasn't been switched on for this one in your workspace yet.
+
 ---
 
 ## Related Articles
 
 - [Research Overview](./overview)
 - [Customer Intelligence Overview](./customer-intelligence-overview)
+- [Collaboration Overview](../collaboration/overview)
 - [Importing Customers](./importing-customers)
 - [Exploring Customers & Segments](./exploring-customers-and-segments)
 - [Turning On Experimental Features](../settings/experimental-features)
