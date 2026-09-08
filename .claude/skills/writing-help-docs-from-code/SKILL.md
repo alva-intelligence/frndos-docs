@@ -217,8 +217,32 @@ Read the page(s), components, types, services. Extract **verbatim** what the end
 ### 3. Classify every piece: readable vs. iframe/unknown
 
 - **Readable from code** → state it as fact in the doc.
-- **Inside a third-party iframe / not in any repo** → write a `<!-- TODO: ... -->` HTML comment and an inline `_[TODO: confirm from live UI — screenshot needed]_`. Never invent the steps.
+- **Inside a third-party iframe / not in any repo** → leave a `<!-- TODO: confirm from live UI — ... -->` HTML comment. Never invent the steps.
 - **Screenshots** → existing guides use `/img/guides-asset/<name>.jpeg`. You cannot produce these; leave a `<!-- TODO: add screenshot ... -->` marker.
+
+**Every TODO marker MUST be an HTML comment `<!-- ... -->`, and nothing else.** A marker is a note to the team, not content — the Help Center is public, and a reader who sees `[TODO: confirm from live UI]` learns the page is unfinished. Markdown emphasis does NOT hide text: `_[TODO: ...]_` renders as visible italics on the published page. Same for `**[TODO]**`, `> TODO`, a `TODO` table row, or a bare bracket line.
+
+Write the gap into the prose instead, then put the instruction in a comment:
+
+```md
+<!-- WRONG — renders to the end user -->
+_[TODO: confirm from live UI — the menu path in each AI app]_
+
+<!-- RIGHT — prose carries what IS known, comment carries the task -->
+The slot sits in a different place in every app, and the wording differs.
+
+<!-- TODO: confirm from live UI — the exact menu path per AI app, then add a per-app list here. -->
+```
+
+If removing the visible marker would leave the section saying nothing, that is the signal to write an honest sentence about what varies — not to leak the marker back in.
+
+Verify before declaring done (expect zero output):
+
+```bash
+cd ../frndos-docs
+grep -rn "TODO" docs/ | grep -v "<!--"     # any hit = a marker that will render
+grep -rl "TODO" build/docs/                 # after a build: any hit = it DID render
+```
 
 ### 4. Study the doc pattern before writing
 
@@ -282,6 +306,12 @@ NODE_OPTIONS=--max-old-space-size=8192 npx docusaurus build
 
 Do not kill the user's running dev server; use the `npx docusaurus build` fallback instead. Confirm `broken=0` and the new pages appear under `build/docs/<module>/`.
 
+Then check no TODO marker leaked into the rendered output — the build is the only place this is provable:
+
+```bash
+grep -rl "TODO" build/docs/    # must be EMPTY; a hit means a marker rendered to readers
+```
+
 ### 9. Update the TODO ledger (updateOrCreate `DOCS_TODO.md`)
 
 Every `TODO` marker you left in a doc is a task only a human can finish (screenshots, third-party/iframe steps, flows the code doesn't reveal). Surface them in one place so the user never has to hunt through `.mdx` files.
@@ -291,7 +321,8 @@ Every `TODO` marker you left in a doc is a task only a human can finish (screens
 1. Re-scan so the ledger matches reality — the re-scan is the **source of truth**, not the old ledger and not memory:
    ```bash
    cd ../frndos-docs
-   grep -rn "TODO" docs/          # current markers: file:line (both <!-- TODO --> and _[TODO ...]_)
+   grep -rn "TODO" docs/          # current markers: file:line (all of them are <!-- TODO --> comments)
+   grep -rn "TODO" docs/ | grep -v "<!--"   # must be EMPTY — a hit is a marker that renders to readers
    ```
    The grep gives you `file:line` only. For any marker you don't already have a row for, **open the doc at that line and read the marker text** to fill the Type and "what to do" columns — the grep line alone isn't enough to write a row.
 2. If `DOCS_TODO.md` doesn't exist, create it. If it exists, **reconcile against the fresh grep**:
@@ -315,6 +346,8 @@ This ledger is the single answer to "what do I still have to do by hand?" Keep i
 | "This label reads better translated to English" | Copy the UI's actual text. The user sees what the code renders. |
 | "The build is slow / a dev server is running, I'll skip it" | Unvalidated links break production. Use the `npx docusaurus build` fallback. |
 | "Close enough on the link path" | `onBrokenLinks: throw` fails the build. Verify the target file exists. |
+| "The italic `_[TODO]_` reads like a note, users will understand" | It renders as visible text on a public page. Readers see an unfinished doc, not a note. HTML comment only. |
+| "Removing the marker leaves the section empty" | Then write the honest sentence about what varies, and move the instruction into `<!-- -->`. An empty gap is not a reason to publish a marker. |
 | "I'll just document all sub-features as live" | Check `isComingSoon` / feature flags. Don't present coming-soon as available. |
 | "The wizard code is rich, so I'll document it" | Rich code ≠ reachable feature. If the route redirects or `isLive: false`, it's retired — STOP and ask the user (see step 1.5). |
 | "The Lark fetch returned *something*, close enough" | A login wall is not the doc. Check for real feature content; if absent, ask the user to paste it. |
@@ -326,6 +359,7 @@ This ledger is the single answer to "what do I still have to do by hand?" Keep i
 - **Filing a pillar-signalling feature under an existing module without offering a new pillar** — a keyword shaped `<Grouping> -> <Feature>`, or a cross-cutting/beta/admin surface, means you PAUSE and ask (step 5a) before writing
 - **Adding a pillar option to `tina/config.jsx` without mirroring it into `tina/tina-lock.json`** — stale lock → Vercel build fails `local Tina schema doesn't match remote`. A passing `build-local` does NOT catch this (see Notes)
 - Describing what happens inside a third-party iframe
+- **Leaving a TODO marker as anything but an HTML comment** — `_[TODO: ...]_`, `**[TODO]**`, a bare bracket line, or a `TODO` table row all render to the reader. Check with `grep -rn "TODO" docs/ | grep -v "<!--"` (must be empty)
 - Documenting a feature whose route redirects away or is `isLive: false` / `isComingSoon` — verify liveness (step 1.5) first
 - **Creating a new file without first checking if an existing doc already covers the feature** (step 1.6)
 - Translating or paraphrasing a UI label instead of copying it
