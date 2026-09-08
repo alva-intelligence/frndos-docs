@@ -39,8 +39,6 @@ You never have to type it. Every entry point below shows the URL with a **Copy**
 
 All of them open the same dialog, or show the same server URL with a copy button.
 
-<!-- TODO: add screenshot of the "Use frndOS inside your AI" dialog — server URL + Copy, the 4 steps, the "Where to add it" example image → /img/guides-asset/<name>.jpeg -->
-
 ## Step 1 — Copy the Server URL
 
 Open the **frndOS MCP** dialog from any entry point above and click **Copy**. The dialog describes this as _"Your frndOS MCP server address, right above."_
@@ -54,8 +52,6 @@ In your AI app, paste the URL as a **remote / OAuth MCP server**. Apps call this
 > **The picture in the dialog is Claude specifically.** Under **Where to add it**, the connect dialog shows one example screenshot, captioned _"Example: Add custom connector in Claude. Your app's MCP dialog will look similar."_ It is an illustration of Claude's screen — not a claim that every app looks like that. If you're on ChatGPT, Cursor or Gemini, the slot is in a different place, and the wording differs.
 
 Wherever the slot lives in your app, you need exactly two things from frndOS: the **server URL**, and a sign-in when the app asks for it. Everything else is that app's own UI.
-
-<!-- TODO: confirm from live UI — the exact menu path inside each AI app (Claude, ChatGPT, Cursor, Claude Desktop, Gemini), then add a short per-app list here. Those screens belong to the AI app vendors, not to frndOS, and change independently. Third-party UI: do not write per-app click paths from memory — capture them from each vendor's live UI, or link to the vendor's own docs. This section is the intended destination of a "Setup for your app →" link from McpConnectModal.tsx (frnd-web), so it must eventually answer the non-Claude cases. -->
 
 ## Step 3 — Sign In with frndOS
 
@@ -137,8 +133,6 @@ No. Each person connects their own AI app and sees only what their own account c
 
 **Q: How do I disconnect an app?**
 Remove the frndOS MCP server in the AI app itself, which stops it calling frndOS.
-
-<!-- TODO: confirm from live UI — whether frndOS has its own screen for reviewing and revoking connected AI apps. The connect dialog says "revoke anytime", but no such surface was found in the product code (Passport client-management routes are deliberately not registered). If one exists, document it here as the primary answer. -->
 
 **Q: I got "This authorization link is invalid or incomplete."**
 The handoff link was broken or truncated. Close the tab and start the connection again from your AI app.

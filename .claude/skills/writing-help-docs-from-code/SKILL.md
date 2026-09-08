@@ -217,31 +217,57 @@ Read the page(s), components, types, services. Extract **verbatim** what the end
 ### 3. Classify every piece: readable vs. iframe/unknown
 
 - **Readable from code** → state it as fact in the doc.
-- **Inside a third-party iframe / not in any repo** → leave a `<!-- TODO: confirm from live UI — ... -->` HTML comment. Never invent the steps.
-- **Screenshots** → existing guides use `/img/guides-asset/<name>.jpeg`. You cannot produce these; leave a `<!-- TODO: add screenshot ... -->` marker.
+- **Inside a third-party iframe / not in any repo** → add a row to `DOCS_TODO.md`. Never invent the steps.
+- **Screenshots** → existing guides use `/img/guides-asset/<name>.jpeg`. You cannot produce these; add a `📸 screenshot` row to `DOCS_TODO.md`.
 
-**Every TODO marker MUST be an HTML comment `<!-- ... -->`, and nothing else.** A marker is a note to the team, not content — the Help Center is public, and a reader who sees `[TODO: confirm from live UI]` learns the page is unfinished. Markdown emphasis does NOT hide text: `_[TODO: ...]_` renders as visible italics on the published page. Same for `**[TODO]**`, `> TODO`, a `TODO` table row, or a bare bracket line.
+**NEVER put a TODO marker inside a `.mdx` body. Not in any form.** `DOCS_TODO.md` at the repo root is the only place TODOs live.
 
-Write the gap into the prose instead, then put the instruction in a comment:
+Two independent reasons:
+
+1. **It breaks the TinaCMS editor.** The doc body is a Tina `rich-text` field parsed by `@tinacms/mdx` (MDX v3). Both `<!-- ... -->` and `{/* ... */}` fail that parser — and the failure is not local to the comment, it invalidates the **entire body**, so the article shows `Unable to parse rich-text` at `/admin` and becomes unviewable and uneditable for content authors. Docusaurus tolerates `<!-- -->` only because it loads `@slorber/remark-comment`; Tina has no equivalent.
+2. **A visible marker leaks to readers.** The Help Center is public. Markdown emphasis does not hide text: `_[TODO: ...]_` renders as italics, and so do `**[TODO]**`, `> TODO`, a `TODO` table row, and a bare bracket line.
+
+Write the gap honestly into the prose, and record the task in the ledger:
 
 ```md
 <!-- WRONG — renders to the end user -->
 _[TODO: confirm from live UI — the menu path in each AI app]_
 
-<!-- RIGHT — prose carries what IS known, comment carries the task -->
-The slot sits in a different place in every app, and the wording differs.
-
-<!-- TODO: confirm from live UI — the exact menu path per AI app, then add a per-app list here. -->
+<!-- ALSO WRONG — breaks the Tina rich-text parser for the whole article -->
+<!-- TODO: confirm from live UI — the exact menu path per AI app -->
+{/* TODO: confirm from live UI — the exact menu path per AI app */}
 ```
 
-If removing the visible marker would leave the section saying nothing, that is the signal to write an honest sentence about what varies — not to leak the marker back in.
+RIGHT — body carries only what IS known:
 
-Verify before declaring done (expect zero output):
+```md
+The slot sits in a different place in every app, and the wording differs.
+```
+
+and `DOCS_TODO.md` carries the task:
+
+```md
+### `docs/askfrnd/tools.mdx` — How AskFrnd Uses Tools
+
+| Section | Type | What to do |
+|---|---|---|
+| Connecting an AI app | ✍️ confirm from live UI | confirm the exact menu path per AI app, then add a per-app list here |
+```
+
+Ledger rows key off the **section heading**, not a line number, so they survive edits. If removing the marker would leave the section saying nothing, that is the signal to write an honest sentence about what varies — not to leak the marker back in.
+
+Also avoid two other constructs the Tina parser rejects, even though Docusaurus accepts them:
+
+- **Explicit heading ids** — `## Heading {#anchor}`. Use the auto-generated slug in links instead (`#heading`).
+- **A list nested inside a blockquote** — close the quote first, then start the list at top level.
+
+Verify before declaring done:
 
 ```bash
 cd ../frndos-docs
-grep -rn "TODO" docs/ | grep -v "<!--"     # any hit = a marker that will render
-grep -rl "TODO" build/docs/                 # after a build: any hit = it DID render
+grep -rn "TODO" docs/        # must be EMPTY — every TODO belongs in DOCS_TODO.md
+grep -rn "{#" docs/          # must be EMPTY — explicit heading ids break Tina
+node verify.mjs              # must report broken=0 — every body parses in Tina
 ```
 
 ### 4. Study the doc pattern before writing
@@ -306,32 +332,32 @@ NODE_OPTIONS=--max-old-space-size=8192 npx docusaurus build
 
 Do not kill the user's running dev server; use the `npx docusaurus build` fallback instead. Confirm `broken=0` and the new pages appear under `build/docs/<module>/`.
 
-Then check no TODO marker leaked into the rendered output — the build is the only place this is provable:
+Then run the two checks that Docusaurus alone will NOT catch:
 
 ```bash
-grep -rl "TODO" build/docs/    # must be EMPTY; a hit means a marker rendered to readers
+grep -rn "TODO" docs/          # must be EMPTY; every TODO belongs in DOCS_TODO.md
+node verify.mjs                # must report broken=0; every body must parse in TinaCMS
 ```
+
+`verify.mjs` parses every `.mdx` body through `@tinacms/mdx` — the same parser the `/admin` editor uses. A Docusaurus build passing does NOT mean the article is editable in Tina; only this check proves that.
 
 ### 9. Update the TODO ledger (updateOrCreate `DOCS_TODO.md`)
 
-Every `TODO` marker you left in a doc is a task only a human can finish (screenshots, third-party/iframe steps, flows the code doesn't reveal). Surface them in one place so the user never has to hunt through `.mdx` files.
+Every outstanding TODO is a task only a human can finish (screenshots, third-party/iframe steps, flows the code doesn't reveal). `DOCS_TODO.md` is the **only** place they live — never in a doc body (see step 3).
 
 **updateOrCreate `frndos-docs/DOCS_TODO.md`** (repo root, NOT under `docs/` — it must not become a published page or trip `onBrokenLinks`):
 
-1. Re-scan so the ledger matches reality — the re-scan is the **source of truth**, not the old ledger and not memory:
+1. Confirm no marker leaked into a body — this must be empty before you touch the ledger:
    ```bash
    cd ../frndos-docs
-   grep -rn "TODO" docs/          # current markers: file:line (all of them are <!-- TODO --> comments)
-   grep -rn "TODO" docs/ | grep -v "<!--"   # must be EMPTY — a hit is a marker that renders to readers
+   grep -rn "TODO" docs/     # must be EMPTY
    ```
-   The grep gives you `file:line` only. For any marker you don't already have a row for, **open the doc at that line and read the marker text** to fill the Type and "what to do" columns — the grep line alone isn't enough to write a row.
-2. If `DOCS_TODO.md` doesn't exist, create it. If it exists, **reconcile against the fresh grep**:
-   - **Marker still present** → keep its row, but **refresh its line number from the grep** (line numbers drift when a doc is edited — the grep's current line wins over whatever the old row said).
-   - **Marker gone** (not in grep) → remove that row; the user resolved it.
-   - **New marker** → add a row (read the doc for its Type + text, per step 1).
-   - Preserve the human-written "what to do" wording on rows you're keeping — only the line number is machine-refreshed.
-3. One section per doc file, **sections ordered by `sidebar_position`** (same order the guides appear in the sidebar) so the ledger reads top-to-bottom like the docs. A table row per marker with **line**, **type** (📸 screenshot · ✍️ confirm-from-live-UI · 🔒 third-party/iframe), and **what to do**. Update the `_Last updated:_` date (get it with `date +%F`; if the shell is unavailable, ask the user).
-4. If the reconcile leaves a doc with zero markers, drop its whole section. If every section is gone, keep the file with a one-line "_All docs complete — no manual follow-ups._" so the user sees the ledger is intentionally empty, not lost.
+2. If `DOCS_TODO.md` doesn't exist, create it. If it exists, reconcile it against the docs you just wrote:
+   - **Gap still open** → keep its row, preserving the human-written "what to do" wording.
+   - **Gap resolved** (you filled it in this run, or the user did) → remove that row.
+   - **New gap** → add a row.
+3. One section per doc file, **sections ordered by category `position`, then `sidebar_position`** (same order the guides appear in the sidebar) so the ledger reads top-to-bottom like the docs. A table row per gap with **section** (the `##`/`###` heading in the article where the gap sits — NOT a line number, which drifts on every edit), **type** (📸 screenshot · ✍️ confirm-from-live-UI · 🔒 third-party/iframe), and **what to do**. Update the `_Last updated:_` date (get it with `date +%F`; if the shell is unavailable, ask the user).
+4. If the reconcile leaves a doc with zero gaps, drop its whole section. If every section is gone, keep the file with a one-line "_All docs complete — no manual follow-ups._" so the user sees the ledger is intentionally empty, not lost.
 
 This ledger is the single answer to "what do I still have to do by hand?" Keep it in sync on every docs run.
 
@@ -341,13 +367,14 @@ This ledger is the single answer to "what do I still have to do by hand?" Keep i
 
 | Rationalization | Reality |
 | ------------------------------------------------- | -------------------------------------------------------------------------- |
-| "I basically know how surveys work, I'll write the steps" | If you didn't read it in frnd-web, you don't know it. Mark `TODO`. |
-| "The iframe steps are probably X, Y, Z" | Vendor UI is in no repo. Guessing = hallucination. `TODO` only. |
+| "I basically know how surveys work, I'll write the steps" | If you didn't read it in frnd-web, you don't know it. Row in `DOCS_TODO.md`. |
+| "The iframe steps are probably X, Y, Z" | Vendor UI is in no repo. Guessing = hallucination. Ledger row only. |
 | "This label reads better translated to English" | Copy the UI's actual text. The user sees what the code renders. |
 | "The build is slow / a dev server is running, I'll skip it" | Unvalidated links break production. Use the `npx docusaurus build` fallback. |
 | "Close enough on the link path" | `onBrokenLinks: throw` fails the build. Verify the target file exists. |
-| "The italic `_[TODO]_` reads like a note, users will understand" | It renders as visible text on a public page. Readers see an unfinished doc, not a note. HTML comment only. |
-| "Removing the marker leaves the section empty" | Then write the honest sentence about what varies, and move the instruction into `<!-- -->`. An empty gap is not a reason to publish a marker. |
+| "The italic `_[TODO]_` reads like a note, users will understand" | It renders as visible text on a public page. Readers see an unfinished doc. Ledger row only. |
+| "An HTML comment `<!-- TODO -->` is invisible, that's safe" | It is invisible to readers but fatal to TinaCMS — it invalidates the whole body, so the article becomes unviewable and uneditable at `/admin`. Same for `{/* ... */}`. Ledger row only. |
+| "Removing the marker leaves the section empty" | Then write the honest sentence about what varies, and put the instruction in `DOCS_TODO.md`. An empty gap is not a reason to publish a marker. |
 | "I'll just document all sub-features as live" | Check `isComingSoon` / feature flags. Don't present coming-soon as available. |
 | "The wizard code is rich, so I'll document it" | Rich code ≠ reachable feature. If the route redirects or `isLive: false`, it's retired — STOP and ask the user (see step 1.5). |
 | "The Lark fetch returned *something*, close enough" | A login wall is not the doc. Check for real feature content; if absent, ask the user to paste it. |
@@ -359,7 +386,10 @@ This ledger is the single answer to "what do I still have to do by hand?" Keep i
 - **Filing a pillar-signalling feature under an existing module without offering a new pillar** — a keyword shaped `<Grouping> -> <Feature>`, or a cross-cutting/beta/admin surface, means you PAUSE and ask (step 5a) before writing
 - **Adding a pillar option to `tina/config.jsx` without mirroring it into `tina/tina-lock.json`** — stale lock → Vercel build fails `local Tina schema doesn't match remote`. A passing `build-local` does NOT catch this (see Notes)
 - Describing what happens inside a third-party iframe
-- **Leaving a TODO marker as anything but an HTML comment** — `_[TODO: ...]_`, `**[TODO]**`, a bare bracket line, or a `TODO` table row all render to the reader. Check with `grep -rn "TODO" docs/ | grep -v "<!--"` (must be empty)
+- **Leaving a TODO marker of ANY kind in a doc body** — `_[TODO: ...]_` and `**[TODO]**` render to the reader; `<!-- TODO -->` and `{/* TODO */}` break the TinaCMS editor for the whole article. Check with `grep -rn "TODO" docs/` (must be empty)
+- **Using an explicit heading id `## Heading {#anchor}`** — Tina's parser rejects the expression and the article becomes uneditable. Check with `grep -rn "{#" docs/` (must be empty)
+- **Nesting a list inside a blockquote** — `> - item` fails Tina's `UnwrapBlock`. Close the quote, then start the list at top level
+- **Declaring done without `node verify.mjs` reporting `broken=0`** — a green Docusaurus build does not prove the docs are editable in Tina
 - Documenting a feature whose route redirects away or is `isLive: false` / `isComingSoon` — verify liveness (step 1.5) first
 - **Creating a new file without first checking if an existing doc already covers the feature** (step 1.6)
 - Translating or paraphrasing a UI label instead of copying it
