@@ -55,9 +55,7 @@ In your AI app, paste the URL as a **remote / OAuth MCP server**. Apps call this
 
 Wherever the slot lives in your app, you need exactly two things from frndOS: the **server URL**, and a sign-in when the app asks for it. Everything else is that app's own UI.
 
-_[TODO: confirm from live UI — the exact menu path inside each AI app (Claude, ChatGPT, Cursor, Claude Desktop, Gemini), then replace this with a short per-app list. Those screens belong to the AI app vendors, not to frndOS, and change independently.]_
-
-<!-- TODO: third-party UI. Do not write per-app click paths from memory — capture them from each vendor's live UI, or link to the vendor's own docs. This section is the intended destination of a "Setup for your app →" link from McpConnectModal.tsx (frnd-web), so it must eventually answer the non-Claude cases. -->
+<!-- TODO: confirm from live UI — the exact menu path inside each AI app (Claude, ChatGPT, Cursor, Claude Desktop, Gemini), then add a short per-app list here. Those screens belong to the AI app vendors, not to frndOS, and change independently. Third-party UI: do not write per-app click paths from memory — capture them from each vendor's live UI, or link to the vendor's own docs. This section is the intended destination of a "Setup for your app →" link from McpConnectModal.tsx (frnd-web), so it must eventually answer the non-Claude cases. -->
 
 ## Step 3 — Sign In with frndOS
 
@@ -140,7 +138,7 @@ No. Each person connects their own AI app and sees only what their own account c
 **Q: How do I disconnect an app?**
 Remove the frndOS MCP server in the AI app itself, which stops it calling frndOS.
 
-_[TODO: confirm from live UI — whether frndOS has its own screen for reviewing and revoking connected AI apps. The connect dialog says "revoke anytime", but no such surface was found in the product code.]_
+<!-- TODO: confirm from live UI — whether frndOS has its own screen for reviewing and revoking connected AI apps. The connect dialog says "revoke anytime", but no such surface was found in the product code (Passport client-management routes are deliberately not registered). If one exists, document it here as the primary answer. -->
 
 **Q: I got "This authorization link is invalid or incomplete."**
 The handoff link was broken or truncated. Close the tab and start the connection again from your AI app.

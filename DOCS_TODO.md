@@ -343,9 +343,8 @@ _Last updated: 2026-09-08_
 | Line | Type | What to do |
 |---|---|---|
 | 42 | 📸 screenshot | Add screenshot of the "Use frndOS inside your AI" dialog — server URL + Copy button, the 4 numbered steps, the "Where to add it" example image |
-| 58 | 🔒 third-party/iframe | Confirm the exact menu path for adding a remote MCP server inside each AI app (Claude, ChatGPT, Cursor, Claude Desktop, Gemini), then replace the marker with a short per-app list — vendor UI, not in any frndOS repo |
-| 60 | 🔒 third-party/iframe | Same marker as line 58: capture per-app click paths from each vendor's live UI or link to vendor docs — never write them from memory. This section is the intended destination of a "Setup for your app →" link from `McpConnectModal.tsx` (frnd-web), so it must eventually answer the non-Claude cases |
-| 143 | ✍️ confirm from live UI | Confirm whether frndOS has a screen for reviewing/revoking connected AI apps. The connect dialog says "revoke anytime", but no such surface exists in the product code (Passport client-management routes are deliberately not registered) |
+| 58 | 🔒 third-party/iframe | Confirm the exact menu path for adding a remote MCP server inside each AI app (Claude, ChatGPT, Cursor, Claude Desktop, Gemini), then add a short per-app list. Vendor UI, not in any frndOS repo — capture from each vendor's live UI or link to their docs, never write from memory. This section is the intended destination of a "Setup for your app →" link from `McpConnectModal.tsx` (frnd-web), so it must eventually answer the non-Claude cases |
+| 141 | ✍️ confirm from live UI | Confirm whether frndOS has a screen for reviewing/revoking connected AI apps. The connect dialog says "revoke anytime", but no such surface exists in the product code (Passport client-management routes are deliberately not registered) |
 
 ### `docs/integrations/what-frndos-mcp-can-do.mdx` — What the frndOS MCP Server Can Do
 
