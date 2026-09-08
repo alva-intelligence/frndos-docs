@@ -284,6 +284,18 @@ const DocsCollection = {
       },
     },
     {
+      label: "Open TODOs",
+      name: "todo",
+      type: "string",
+      list: true,
+      description:
+        "Unfinished bits only a human can fill in: screenshots, third-party/vendor UI steps, flows the code doesn't reveal. Lives here, NOT in the body — an HTML comment in the body makes Tina fail to parse the whole article, and markdown emphasis would render the note to readers.",
+      ui: {
+        component: "list",
+        itemProps: (item) => ({ label: item ?? "TODO" }),
+      },
+    },
+    {
       type: "rich-text",
       name: "body",
       label: "Body",
