@@ -217,60 +217,31 @@ Read the page(s), components, types, services. Extract **verbatim** what the end
 ### 3. Classify every piece: readable vs. iframe/unknown
 
 - **Readable from code** → state it as fact in the doc.
-- **Inside a third-party iframe / not in any repo** → record it in the `todo:` frontmatter list. Never invent the steps.
-- **Screenshots** → existing guides use `/img/guides-asset/<name>.jpeg`. You cannot produce these; add a `todo:` entry.
+- **Inside a third-party iframe / not in any repo** → leave a `<!-- TODO: confirm from live UI — ... -->` HTML comment. Never invent the steps.
+- **Screenshots** → existing guides use `/img/guides-asset/<name>.jpeg`. You cannot produce these; leave a `<!-- TODO: add screenshot ... -->` marker.
 
-**Every TODO marker goes in the `todo:` frontmatter list — NEVER in the body.** Two separate failure modes make the body wrong:
+**Every TODO marker MUST be an HTML comment `<!-- ... -->`, and nothing else.** A marker is a note to the team, not content — the Help Center is public, and a reader who sees `[TODO: confirm from live UI]` learns the page is unfinished. Markdown emphasis does NOT hide text: `_[TODO: ...]_` renders as visible italics on the published page. Same for `**[TODO]**`, `> TODO`, a `TODO` table row, or a bare bracket line.
 
-| Form in the body | What breaks |
-| ---------------- | ----------- |
-| `_[TODO: ...]_`, `**[TODO]**`, a bare bracket line, a `TODO` table row | **Renders to readers.** Markdown emphasis does not hide text — the Help Center is public, and the reader learns the page is unfinished |
-| `<!-- TODO: ... -->` | **Breaks TinaCMS.** `<!-- -->` is HTML, not MDX. Tina's parser rejects it (`Unexpected character !(U+0021) before name`) and marks the WHOLE body `invalid_markdown`, so the article shows up **empty** in the CMS editor and a content author cannot edit it. `{/* ... */}` fails too — Tina rejects that as `Unexpected expression` |
-
-One comment anywhere in the body costs the entire article's editability, not just its own line.
+Write the gap into the prose instead, then put the instruction in a comment:
 
 ```md
----
-title: Connecting Your AI App
-description: ...
-sidebar_position: 1
-todo:
-  - "confirm from live UI — the exact menu path per AI app, then add a per-app list"
-  - "add screenshot of the connect dialog → /img/guides-asset/<name>.jpeg"
----
+<!-- WRONG — renders to the end user -->
+_[TODO: confirm from live UI — the menu path in each AI app]_
 
+<!-- RIGHT — prose carries what IS known, comment carries the task -->
 The slot sits in a different place in every app, and the wording differs.
+
+<!-- TODO: confirm from live UI — the exact menu path per AI app, then add a per-app list here. -->
 ```
 
-The body carries only what you DID verify. If dropping the marker leaves a section saying nothing, that is the signal to write an honest sentence about what varies — not to smuggle the note back into the body.
+If removing the visible marker would leave the section saying nothing, that is the signal to write an honest sentence about what varies — not to leak the marker back in.
 
-Verify before declaring done (both must print nothing):
+Verify before declaring done (expect zero output):
 
 ```bash
 cd ../frndos-docs
-grep -rn "TODO" docs/            # any hit = a marker still in a body
-grep -rn -- "<!--" docs/         # any hit = an article Tina cannot parse
-```
-
-To prove an article is editable in Tina, parse it the way Tina does — `children` should be the real node count and `invalid=0`:
-
-```bash
-npx esbuild src/theme/template.jsx --bundle --loader:.jsx=jsx --format=esm \
-  --platform=node --outfile=tina-templates.mjs --log-level=error
-cat > tina-parse.mjs <<'EOF'
-import { parseMDX } from "@tinacms/mdx";
-import fs from "fs";
-import { MDXTemplates } from "./tina-templates.mjs";
-const field = { type:"rich-text", name:"body", isBody:true, templates:[...MDXTemplates] };
-for (const f of process.argv.slice(2)) {
-  const body = fs.readFileSync(f,"utf8").replace(/^---\n[\s\S]*?\n---\n/,"");
-  const kids = parseMDX(body, field, s=>s)?.children ?? [];
-  const bad = kids.filter(c=>c.type==="invalid_markdown");
-  console.log(f, `children=${kids.length}`, bad.length ? "❌ EMPTY IN CMS" : "✅ EDITABLE");
-}
-EOF
-node ./tina-parse.mjs docs/<module>/<slug>.mdx
-rm -f tina-parse.mjs tina-templates.mjs   # scratch files — do not commit
+grep -rn "TODO" docs/ | grep -v "<!--"     # any hit = a marker that will render
+grep -rl "TODO" build/docs/                 # after a build: any hit = it DID render
 ```
 
 ### 4. Study the doc pattern before writing
@@ -350,19 +321,16 @@ Every `TODO` marker you left in a doc is a task only a human can finish (screens
 1. Re-scan so the ledger matches reality — the re-scan is the **source of truth**, not the old ledger and not memory:
    ```bash
    cd ../frndos-docs
-   # every marker lives in a `todo:` frontmatter list
-   grep -rn -A20 "^todo:" docs/ --include="*.mdx" | grep '^\S*mdx[-:][0-9]*[-:]  - '
-   # both of these must print NOTHING:
-   grep -rn "TODO" docs/       # a marker left in a body
-   grep -rn -- "<!--" docs/    # an article Tina cannot parse
+   grep -rn "TODO" docs/          # current markers: file:line (all of them are <!-- TODO --> comments)
+   grep -rn "TODO" docs/ | grep -v "<!--"   # must be EMPTY — a hit is a marker that renders to readers
    ```
-   Read each `todo:` entry in full to fill the Type and "what to do" columns.
-2. If `DOCS_TODO.md` doesn't exist, create it. If it exists, **reconcile against the fresh scan**:
-   - **Entry still present** → keep its row.
-   - **Entry gone** → remove that row; the user resolved it.
-   - **New entry** → add a row.
-   - Preserve the human-written "what to do" wording on rows you're keeping.
-3. One section per doc file, **sections ordered by `sidebar_position`** (same order the guides appear in the sidebar) so the ledger reads top-to-bottom like the docs. A table row per entry with its **type** (📸 screenshot · ✍️ confirm-from-live-UI · 🔒 third-party/iframe) and **what to do**. No line-number column — markers live in frontmatter now, so there is no line to point at. Update the `_Last updated:_` date (get it with `date +%F`; if the shell is unavailable, ask the user).
+   The grep gives you `file:line` only. For any marker you don't already have a row for, **open the doc at that line and read the marker text** to fill the Type and "what to do" columns — the grep line alone isn't enough to write a row.
+2. If `DOCS_TODO.md` doesn't exist, create it. If it exists, **reconcile against the fresh grep**:
+   - **Marker still present** → keep its row, but **refresh its line number from the grep** (line numbers drift when a doc is edited — the grep's current line wins over whatever the old row said).
+   - **Marker gone** (not in grep) → remove that row; the user resolved it.
+   - **New marker** → add a row (read the doc for its Type + text, per step 1).
+   - Preserve the human-written "what to do" wording on rows you're keeping — only the line number is machine-refreshed.
+3. One section per doc file, **sections ordered by `sidebar_position`** (same order the guides appear in the sidebar) so the ledger reads top-to-bottom like the docs. A table row per marker with **line**, **type** (📸 screenshot · ✍️ confirm-from-live-UI · 🔒 third-party/iframe), and **what to do**. Update the `_Last updated:_` date (get it with `date +%F`; if the shell is unavailable, ask the user).
 4. If the reconcile leaves a doc with zero markers, drop its whole section. If every section is gone, keep the file with a one-line "_All docs complete — no manual follow-ups._" so the user sees the ledger is intentionally empty, not lost.
 
 This ledger is the single answer to "what do I still have to do by hand?" Keep it in sync on every docs run.
@@ -378,8 +346,7 @@ This ledger is the single answer to "what do I still have to do by hand?" Keep i
 | "This label reads better translated to English" | Copy the UI's actual text. The user sees what the code renders. |
 | "The build is slow / a dev server is running, I'll skip it" | Unvalidated links break production. Use the `npx docusaurus build` fallback. |
 | "Close enough on the link path" | `onBrokenLinks: throw` fails the build. Verify the target file exists. |
-| "The italic `_[TODO]_` reads like a note, users will understand" | It renders as visible text on a public page. Readers see an unfinished doc, not a note. Use the `todo:` frontmatter list. |
-| "An HTML comment is invisible, so it's safe in the body" | Invisible to readers, fatal to TinaCMS: one `<!-- -->` makes the whole article parse as `invalid_markdown` and show up **empty** in the editor. `todo:` frontmatter only. |
+| "The italic `_[TODO]_` reads like a note, users will understand" | It renders as visible text on a public page. Readers see an unfinished doc, not a note. HTML comment only. |
 | "Removing the marker leaves the section empty" | Then write the honest sentence about what varies, and move the instruction into `<!-- -->`. An empty gap is not a reason to publish a marker. |
 | "I'll just document all sub-features as live" | Check `isComingSoon` / feature flags. Don't present coming-soon as available. |
 | "The wizard code is rich, so I'll document it" | Rich code ≠ reachable feature. If the route redirects or `isLive: false`, it's retired — STOP and ask the user (see step 1.5). |
@@ -392,7 +359,7 @@ This ledger is the single answer to "what do I still have to do by hand?" Keep i
 - **Filing a pillar-signalling feature under an existing module without offering a new pillar** — a keyword shaped `<Grouping> -> <Feature>`, or a cross-cutting/beta/admin surface, means you PAUSE and ask (step 5a) before writing
 - **Adding a pillar option to `tina/config.jsx` without mirroring it into `tina/tina-lock.json`** — stale lock → Vercel build fails `local Tina schema doesn't match remote`. A passing `build-local` does NOT catch this (see Notes)
 - Describing what happens inside a third-party iframe
-- **Putting a TODO marker in the body at all** — visible forms (`_[TODO]_`, `**[TODO]**`, bracket lines, table rows) render to readers; `<!-- -->` and `{/* */}` break TinaCMS and empty the whole article in the editor. Markers belong in the `todo:` frontmatter list. Check with `grep -rn "TODO" docs/` and `grep -rn -- "<!--" docs/` (both must be empty)
+- **Leaving a TODO marker as anything but an HTML comment** — `_[TODO: ...]_`, `**[TODO]**`, a bare bracket line, or a `TODO` table row all render to the reader. Check with `grep -rn "TODO" docs/ | grep -v "<!--"` (must be empty)
 - Documenting a feature whose route redirects away or is `isLive: false` / `isComingSoon` — verify liveness (step 1.5) first
 - **Creating a new file without first checking if an existing doc already covers the feature** (step 1.6)
 - Translating or paraphrasing a UI label instead of copying it
