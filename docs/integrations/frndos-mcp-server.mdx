@@ -1,14 +1,14 @@
 ---
-title: Connecting Your AI App — the frndOS MCP Server
-description: Add frndOS as a remote MCP server in Claude, ChatGPT, Cursor or any MCP client, sign in once, and use every AskFRND tool from wherever you already work.
 sidebar_position: 1
+title: Connecting Your AI App — the frndOS MCP Server
+description: 'Add frndOS as a remote MCP server in Claude, ChatGPT, Cursor or any MCP client, sign in once, and use every AskFRND tool from wherever you already work.'
 ---
 
 # Connecting Your AI App — the frndOS MCP Server
 
 **The frndOS MCP server hands frndOS's tools to the AI apps you already use.** Instead of coming to frndOS to look up a brand, your AI app asks frndOS directly — and anything it creates still lands back in frndOS.
 
-The connect dialog puts it as: _"Use frndOS inside your AI — frndOS MCP · every AskFRND tool, one server URL."_
+The connect dialog puts it as: *"Use frndOS inside your AI — frndOS MCP · every AskFRND tool, one server URL."*
 
 > **Which direction is this?** Plugins and MCP servers in [myFRND](../getting-started/myfrnd) bring outside tools **into** frndOS. This points the other way: it takes frndOS **out** to your AI app. Same workspace, same billing, same permissions.
 
@@ -26,49 +26,49 @@ https://api.frndos.com/mcp
 
 You never have to type it. Every entry point below shows the URL with a **Copy** button.
 
-> **If Copy is blocked by your browser:** the dialog selects the URL for you and says _"Copy blocked by the browser — the URL is selected, press ⌘C/Ctrl+C."_
+> **If Copy is blocked by your browser:** the dialog selects the URL for you and says *"Copy blocked by the browser — the URL is selected, press ⌘C/Ctrl+C."*
 
 ## Where to Find It in frndOS
 
-| Where | What you see |
-|---|---|
-| **AskFRND composer** | An aqua **frndOS MCP** pill in the toolbar under the message box. Tooltip: _"Connect your AI app to frndOS"_ |
-| **Chat Settings quick menu** | A **frndOS MCP** item at the bottom of the menu (the sliders button beside the composer) |
-| **myFRND → Plugins** | A band at the bottom of the tab, headed **Take frndOS with you** |
-| **myFRND → Discover** | The same band, closing the tab |
+| Where                        | What you see                                                                                                 |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| **AskFRND composer**         | An aqua **frndOS MCP** pill in the toolbar under the message box. Tooltip: *"Connect your AI app to frndOS"* |
+| **Chat Settings quick menu** | A **frndOS MCP** item at the bottom of the menu (the sliders button beside the composer)                     |
+| **myFRND → Plugins**         | A band at the bottom of the tab, headed **Take frndOS with you**                                             |
+| **myFRND → Discover**        | The same band, closing the tab                                                                               |
 
 All of them open the same dialog, or show the same server URL with a copy button.
 
 ## Step 1 — Copy the Server URL
 
-Open the **frndOS MCP** dialog from any entry point above and click **Copy**. The dialog describes this as _"Your frndOS MCP server address, right above."_
+Open the **frndOS MCP** dialog from any entry point above and click **Copy**. The dialog describes this as *"Your frndOS MCP server address, right above."*
 
 ## Step 2 — Add a Remote MCP Server in Your AI App
 
-In your AI app, paste the URL as a **remote / OAuth MCP server**. Apps call this different things — _custom connector_, _remote MCP server_, _add server by URL_ — but it's the same slot, and the frndOS server needs no API key or secret alongside it.
+In your AI app, paste the URL as a **remote / OAuth MCP server**. Apps call this different things — *custom connector*, *remote MCP server*, *add server by URL* — but it's the same slot, and the frndOS server needs no API key or secret alongside it.
 
 **Works with:** claude.ai, ChatGPT, Claude Desktop, Cursor, Gemini, **and any MCP client**. The myFRND band lists **Claude**, **ChatGPT**, **Cursor**, and **Claude Code**.
 
-> **The picture in the dialog is Claude specifically.** Under **Where to add it**, the connect dialog shows one example screenshot, captioned _"Example: Add custom connector in Claude. Your app's MCP dialog will look similar."_ It is an illustration of Claude's screen — not a claim that every app looks like that. If you're on ChatGPT, Cursor or Gemini, the slot is in a different place, and the wording differs.
+![](/img/connect-claude-example.png)
 
 Wherever the slot lives in your app, you need exactly two things from frndOS: the **server URL**, and a sign-in when the app asks for it. Everything else is that app's own UI.
 
 ## Step 3 — Sign In with frndOS
 
-Your AI app opens a frndOS sign-in: _"Your usual frndOS login, scoped to your workspace. Approve once, revoke anytime."_
+Your AI app opens a frndOS sign-in: *"Your usual frndOS login, scoped to your workspace. Approve once, revoke anytime."*
 
 1. If you're already signed in to frndOS, you go straight to the approval screen.
 2. If you're not, frndOS sends you through the normal login page first and then continues automatically. A short interstitial reads **"Connecting your AI app to frndOS…"**.
 
 ### The approval screen
 
-The screen is headed **Connect with frndOS**, with the line _"Grant [your app] access to frndOS through the MCP server."_ It shows three things:
+The screen is headed **Connect with frndOS**, with the line *"Grant \[your app] access to frndOS through the MCP server."* It shows three things:
 
-| Block | What it tells you |
-|---|---|
-| **Your account** | The name and email the connection will act as |
-| **"Workspaces and brands [app] can access on your behalf:"** | Every workspace you belong to, each with its brands listed underneath |
-| **"Through the MCP server, [app] will be able to:"** | A plain-language capability list — see [What the frndOS MCP Server Can Do](./what-frndos-mcp-can-do) |
+| Block                                                         | What it tells you                                                                                    |
+| ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| **Your account**                                              | The name and email the connection will act as                                                        |
+| **"Workspaces and brands \[app] can access on your behalf:"** | Every workspace you belong to, each with its brands listed underneath                                |
+| **"Through the MCP server, \[app] will be able to:"**         | A plain-language capability list — see [What the frndOS MCP Server Can Do](./what-frndos-mcp-can-do) |
 
 Below that, a warning block: **"⚠ Authorization responses will be sent to:"** followed by the app's redirect address.
 
@@ -80,9 +80,9 @@ If you don't belong to a workspace yet, the access box reads **"You don't belong
 
 ## Step 4 — Start Asking
 
-_"Every AskFRND tool lights up inside your AI app."_
+*"Every AskFRND tool lights up inside your AI app."*
 
-One rule to know: **every call is scoped to a workspace.** Your AI app has to pick one before it can do anything else — the server tells it to list your workspaces first. If a tool comes back with _"workspace_id is required. Call list_workspaces to see the workspaces you belong to."_, just tell your app which workspace you mean.
+One rule to know: **every call is scoped to a workspace.** Your AI app has to pick one before it can do anything else — the server tells it to list your workspaces first. If a tool comes back with *"workspace\_id is required. Call list\_workspaces to see the workspaces you belong to."*, just tell your app which workspace you mean.
 
 Brand-scoped requests need a brand as well; the app looks those up from the brand directory of the workspace it's in.
 
@@ -90,29 +90,29 @@ Brand-scoped requests need a brand as well; the app looks those up from the bran
 
 The server refuses in plain sentences rather than error codes:
 
-| Message | What it means |
-|---|---|
-| _"You do not belong to this workspace. Call list_workspaces to see valid workspace ids."_ | The app aimed at a workspace you're not a member of. Brand ids from other workspaces read as **not found** |
-| _"Your role in this workspace does not allow tool access. Tools require an internal-scope role in an organization workspace."_ | Guest / external-scope membership can't use tools |
-| _"This action requires an active subscription plan."_ | Anything that **creates or changes** something needs an active workspace subscription |
-| _"Insufficient credits. The workspace (or your allocation in it) has no spendable credits."_ | Key Visual generation and workflow runs spend credits — see [Managing Credits](../workspace/managing-credits) |
-| _"Tool execution failed unexpectedly. Try again or adjust the arguments."_ | Something broke on the frndOS side; retry or rephrase |
+| Message                                                                                                                        | What it means                                                                                                 |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------- |
+| *"You do not belong to this workspace. Call list\_workspaces to see valid workspace ids."*                                     | The app aimed at a workspace you're not a member of. Brand ids from other workspaces read as **not found**    |
+| *"Your role in this workspace does not allow tool access. Tools require an internal-scope role in an organization workspace."* | Guest / external-scope membership can't use tools                                                             |
+| *"This action requires an active subscription plan."*                                                                          | Anything that **creates or changes** something needs an active workspace subscription                         |
+| *"Insufficient credits. The workspace (or your allocation in it) has no spendable credits."*                                   | Key Visual generation and workflow runs spend credits — see [Managing Credits](../workspace/managing-credits) |
+| *"Tool execution failed unexpectedly. Try again or adjust the arguments."*                                                     | Something broke on the frndOS side; retry or rephrase                                                         |
 
 > **Heads-up:** the connection carries **your** permissions, not extra ones. If you can't see a brand in frndOS, your AI app can't either.
 
 ## Limits and Session Length
 
-- **Rate limit:** 60 tool calls per minute, counted per user.
-- **Access lasts 24 hours**, then your AI app renews it silently in the background for up to **30 days** without asking you again.
-- Reconnecting the same app later usually skips the approval screen, because you already approved it.
+* **Rate limit:** 60 tool calls per minute, counted per user.
+* **Access lasts 24 hours**, then your AI app renews it silently in the background for up to **30 days** without asking you again.
+* Reconnecting the same app later usually skips the approval screen, because you already approved it.
 
 ## Security
 
-The footer of the connect dialog states it: _"OAuth 2.1 + PKCE — tokens scoped to you, validated against your workspace on every call."_
+The footer of the connect dialog states it: *"OAuth 2.1 + PKCE — tokens scoped to you, validated against your workspace on every call."*
 
-- Your frndOS password is never given to the AI app. It gets a token, and the token is tied to you.
-- Every single call re-checks your workspace membership — approval isn't a permanent free pass to data you later lose access to.
-- Connections are only accepted over `https` (a plain `http` callback is rejected unless it's your own machine).
+* Your frndOS password is never given to the AI app. It gets a token, and the token is tied to you.
+* Every single call re-checks your workspace membership — approval isn't a permanent free pass to data you later lose access to.
+* Connections are only accepted over `https` (a plain `http` callback is rejected unless it's your own machine).
 
 ## FAQ
 
@@ -140,15 +140,15 @@ The handoff link was broken or truncated. Close the tab and start the connection
 **Q: I got "Connecting AI apps to frndOS is temporarily disabled."**
 The connection bridge is off for the moment. Try again later.
 
----
+***
 
 ## Next Steps
 
-- [What the frndOS MCP Server Can Do](./what-frndos-mcp-can-do)
+* [What the frndOS MCP Server Can Do](./what-frndos-mcp-can-do)
 
 ## Related Articles
 
-- [myFRND — Making Your Assistant More Capable](../getting-started/myfrnd)
-- [How AskFrnd Uses Tools](../askfrnd/tools)
-- [Shared Connections — Workspace and Brand Accounts](../settings/shared-connections)
-- [Managing Credits](../workspace/managing-credits)
+* [myFRND — Making Your Assistant More Capable](../getting-started/myfrnd)
+* [How AskFrnd Uses Tools](../askfrnd/tools)
+* [Shared Connections — Workspace and Brand Accounts](../settings/shared-connections)
+* [Managing Credits](../workspace/managing-credits)
