@@ -304,6 +304,58 @@ A new pillar is a real cost: it needs `docs/<module>/` + `_category_.json` (with
 - `sidebar_position` orders within the category; overview stays position 1.
 - Cross-link siblings with relative paths.
 - Keep the concise, task-oriented, end-user voice of neighbors.
+- Follow the punctuation contract below.
+
+#### Punctuation contract — where the em dash goes
+
+The em dash (`—`) has **two structural slots** in this house style, plus a **prose budget** outside them.
+
+**Slot 1 — step headings.** `## Step 3 — Configure the Canvas`. Every step heading uses it. That is the house pattern, keep it.
+
+**Slot 2 — definition rows.** A bullet whose job is `term = meaning`:
+
+```md
+* **Concept** — AI-guided creative exploration across territories
+* **Craft** — refined output, closer to production-ready
+```
+
+Use this shape only when the bullets in a group are genuinely term-and-definition pairs. A list of actions or steps is a plain sentence bullet, not a definition row.
+
+**Everything else is prose, and prose punctuation comes from this menu, in this order of preference:**
+
+| Job the dash was doing | Write instead |
+| --- | --- |
+| Two related statements joined | Full stop. Two sentences. |
+| Aside, caveat, or clarification | Comma pair, or parentheses |
+| Introducing a list, expansion, or reason | Colon |
+| Restating the subject in other words | Cut it. Pick one wording. |
+
+```md
+WRONG (three prose dashes in one paragraph)
+Check the correct brand is active — and that its Brand IQ isn't flagged
+**Brand IQ Incomplete** — otherwise output drifts off-brand — sometimes badly.
+
+RIGHT
+Check the correct brand is active, and that its Brand IQ isn't flagged
+**Brand IQ Incomplete**. Otherwise output drifts off-brand.
+```
+
+**Prose budget: at most 3 em dashes per article outside the two structural slots, and never two in the same paragraph.** An article at the cap should read like the dash was saved for the one sentence that needed it.
+
+The same contract covers `description` frontmatter: it takes a period or a colon, not a dash.
+
+Measure it before declaring the article done:
+
+```bash
+cd ../frndos-docs
+f=docs/<module>/<slug>.mdx
+total=$(grep -o "—" "$f" | wc -l | tr -d ' ')
+heads=$(grep -c "^#\{2,\} .*—" "$f" || true)
+defs=$(grep -cE "^[[:space:]]*[*-] \*\*[^*]+\*\* —" "$f" || true)
+echo "prose em dashes = $(( total - heads - defs ))   (budget: 3)"
+```
+
+Over budget means rewrite those sentences. Do not swap `—` for `-` or `–`: a hyphen standing in for a dash is the same shaping failure with worse typography.
 
 ### 7. Fix internal links + update the module overview
 
@@ -336,8 +388,22 @@ Then run the two checks that Docusaurus alone will NOT catch:
 
 ```bash
 grep -rn "TODO" docs/          # must be EMPTY; every TODO belongs in DOCS_TODO.md
+grep -rn "{#" docs/            # must be EMPTY; explicit heading ids break Tina
 node verify.mjs                # must report broken=0; every body must parse in TinaCMS
 ```
+
+Then the em dash budget, for every file you touched this run (contract in step 6):
+
+```bash
+for f in docs/<module>/<slug>.mdx; do
+  total=$(grep -o "—" "$f" | wc -l | tr -d ' ')
+  heads=$(grep -c "^#\{2,\} .*—" "$f" || true)
+  defs=$(grep -cE "^[[:space:]]*[*-] \*\*[^*]+\*\* —" "$f" || true)
+  echo "$(( total - heads - defs ))  prose em dashes  $f"
+done
+```
+
+Over 3 on any file means rewrite those sentences before finishing.
 
 `verify.mjs` parses every `.mdx` body through `@tinacms/mdx` — the same parser the `/admin` editor uses. A Docusaurus build passing does NOT mean the article is editable in Tina; only this check proves that.
 
@@ -372,6 +438,8 @@ This ledger is the single answer to "what do I still have to do by hand?" Keep i
 | "This label reads better translated to English" | Copy the UI's actual text. The user sees what the code renders. |
 | "The build is slow / a dev server is running, I'll skip it" | Unvalidated links break production. Use the `npx docusaurus build` fallback. |
 | "Close enough on the link path" | `onBrokenLinks: throw` fails the build. Verify the target file exists. |
+| "The em dashes read fine to me, no need to count" | The count is the check. Run it (step 6) and report the number; taste is not evidence. |
+| "I'll swap the dash for a hyphen to get under budget" | Same sentence shape, worse typography. Restructure with a period, comma pair, or colon. |
 | "The italic `_[TODO]_` reads like a note, users will understand" | It renders as visible text on a public page. Readers see an unfinished doc. Ledger row only. |
 | "An HTML comment `<!-- TODO -->` is invisible, that's safe" | It is invisible to readers but fatal to TinaCMS — it invalidates the whole body, so the article becomes unviewable and uneditable at `/admin`. Same for `{/* ... */}`. Ledger row only. |
 | "Removing the marker leaves the section empty" | Then write the honest sentence about what varies, and put the instruction in `DOCS_TODO.md`. An empty gap is not a reason to publish a marker. |
@@ -394,6 +462,7 @@ This ledger is the single answer to "what do I still have to do by hand?" Keep i
 - **Creating a new file without first checking if an existing doc already covers the feature** (step 1.6)
 - Translating or paraphrasing a UI label instead of copying it
 - Declaring done without a passing build (`broken=0`)
+- Declaring an article done without running the prose em dash count, or leaving it above 3 (step 6 punctuation contract)
 - A relative link whose target file you haven't confirmed exists
 - Finishing a docs run without updating `DOCS_TODO.md` — the user relies on it to know what's left to fill in by hand
 
