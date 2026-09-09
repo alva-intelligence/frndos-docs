@@ -39,28 +39,34 @@ You never have to type it. Every entry point below shows the URL with a **Copy**
 
 All of them open the same dialog, or show the same server URL with a copy button.
 
-## Step 1 — Copy the Server URL
+## Connecting Claude
+
+The four steps below follow the example the connect dialog itself ships: **Add custom connector in Claude**. Claude is the app the dialog illustrates, so this is the path with a picture attached.
+
+Connecting a different app? The frndOS side is identical — see [Connecting Another AI App](#connecting-another-ai-app).
+
+### Step 1 — Copy the Server URL
 
 Open the **frndOS MCP** dialog from any entry point above and click **Copy**. The dialog describes this as *"Your frndOS MCP server address, right above."*
 
-## Step 2 — Add a Remote MCP Server in Your AI App
+### Step 2 — Add the Server as a Custom Connector in Claude
 
-In your AI app, paste the URL as a **remote / OAuth MCP server**. Apps call this different things — *custom connector*, *remote MCP server*, *add server by URL* — but it's the same slot, and the frndOS server needs no API key or secret alongside it.
+In Claude, paste the URL as a **remote / OAuth MCP server**. In the dialog's own example, that means opening Claude's connector list, opening the **Add** menu, and choosing **Add custom connector**.
 
-**Works with:** claude.ai, ChatGPT, Claude Desktop, Cursor, Gemini, **and any MCP client**. The myFRND band lists **Claude**, **ChatGPT**, **Cursor**, and **Claude Code**.
+The frndOS server needs no API key or secret alongside the URL.
 
-![](/img/connect-claude-example.png)
+![Claude's connector list with the Add menu open — choose 'Add custom connector'](/img/connect-claude-example.png)
 
-Wherever the slot lives in your app, you need exactly two things from frndOS: the **server URL**, and a sign-in when the app asks for it. Everything else is that app's own UI.
+The dialog labels this shot *"Example: Add custom connector in Claude. Your app's MCP dialog will look similar."*
 
-## Step 3 — Sign In with frndOS
+### Step 3 — Sign In with frndOS
 
 Your AI app opens a frndOS sign-in: *"Your usual frndOS login, scoped to your workspace. Approve once, revoke anytime."*
 
 1. If you're already signed in to frndOS, you go straight to the approval screen.
 2. If you're not, frndOS sends you through the normal login page first and then continues automatically. A short interstitial reads **"Connecting your AI app to frndOS…"**.
 
-### The approval screen
+#### The approval screen
 
 The screen is headed **Connect with frndOS**, with the line *"Grant \[your app] access to frndOS through the MCP server."* It shows three things:
 
@@ -78,13 +84,26 @@ Choose **Continue** to approve, or **Cancel** to refuse.
 
 If you don't belong to a workspace yet, the access box reads **"You don't belong to any workspace yet."** — join or create one first, see [Joining or Creating a Workspace](../getting-started/joining-or-creating-workspace).
 
-## Step 4 — Start Asking
+### Step 4 — Start Asking
 
 *"Every AskFRND tool lights up inside your AI app."*
 
 One rule to know: **every call is scoped to a workspace.** Your AI app has to pick one before it can do anything else — the server tells it to list your workspaces first. If a tool comes back with *"workspace\_id is required. Call list\_workspaces to see the workspaces you belong to."*, just tell your app which workspace you mean.
 
 Brand-scoped requests need a brand as well; the app looks those up from the brand directory of the workspace it's in.
+
+## Connecting Another AI App
+
+**Works with:** claude.ai, ChatGPT, Claude Desktop, Cursor, Gemini, **and any MCP client**. The myFRND band lists **Claude**, **ChatGPT**, **Cursor**, and **Claude Code**.
+
+Only **Step 2** changes between apps — the slot goes by different names (*custom connector*, *remote MCP server*, *add server by URL*), and where it lives is that app's own UI. Steps 1, 3 and 4 are the frndOS side and are the same everywhere:
+
+1. Copy the server URL from the **frndOS MCP** dialog — see [Step 1](#step-1--copy-the-server-url)
+2. Paste it into your app's remote / OAuth MCP server slot, with no API key or secret
+3. Sign in and approve — see [Step 3](#step-3--sign-in-with-frndos)
+4. Pick a workspace and start asking — see [Step 4](#step-4--start-asking)
+
+Wherever the slot lives in your app, you need exactly two things from frndOS: the **server URL**, and a sign-in when the app asks for it.
 
 ## What You'll See When Something Is Blocked
 
