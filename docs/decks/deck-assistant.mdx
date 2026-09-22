@@ -1,0 +1,110 @@
+---
+title: The Deck Assistant
+sidebar_position: 4
+description: Chat inside the deck editor to plan, build and edit slides, with a plan you approve before anything changes.
+---
+
+# The Deck Assistant
+
+The deck editor has a chat panel that can read the deck and change it. The important part is that it doesn't change anything until you say so: it proposes a **plan**, you press **Go**, and only then does it build.
+
+## Before You Start
+
+1. ✅ **A deck open in the editor** — see [Decks Overview](./overview)
+2. ✅ **Edit access to the deck** — with read-only access you can follow the chat but not act on it
+
+> **Heads-up:** with read-only access the panel says so: _"You can read this deck's chat; editing the deck needs edit access."_
+
+## What You Can Ask
+
+The panel describes its own scope as: _"Edit this slide, add slides, or plan a section."_
+
+It offers starting points rather than a blank box. For a selected slide:
+
+- _"Make it punchier"_
+- _"Say it more plainly"_
+- _"Draft a talk track for it"_
+
+For the deck as a whole:
+
+- _"What's missing from this deck?"_
+- _"Where does the story sag?"_
+- _"Suggest a closing slide"_
+
+## Talking About One Slide
+
+The panel shows what you're working on as a chip at the top, so a request is never ambiguous about its target. Clear it to talk about the deck as a whole instead — the control is labelled **Talk about the whole slide instead**.
+
+## The Plan
+
+For anything beyond a small edit, the assistant answers with a **plan card** rather than doing it. The card lists the steps it intends to take, each tagged with its kind:
+
+| Tag | What that step does |
+|---|---|
+| **Add** | Adds slides |
+| **Update** | Changes a slide that exists |
+| **Research** | Gathers material first |
+| **Style** | Changes how it looks |
+
+Each step can be ticked or unticked, so you can approve part of a plan and drop the rest.
+
+The card's status tells you where it stands:
+
+| Status | Meaning |
+|---|---|
+| **Awaiting your Go** | Proposed, nothing has happened |
+| **Running** | You approved it and it's building |
+| **Done** | Finished |
+| **Cancelled** | You cancelled it |
+| **Replaced by a newer plan** | You asked for something else instead |
+
+Two buttons: **Go** runs it, **Cancel** drops it.
+
+> **Typing a new message replaces a pending plan.** If you'd rather ask for something different than approve what's on screen, just say so. The old plan is marked **Replaced by a newer plan** rather than running quietly in the background.
+
+## When It Asks You Something First
+
+Sometimes the assistant needs input before it can plan properly, and it asks with a short question card. Options are pre-selected where it has a recommendation, there's a **Something else** row for an answer that isn't listed, and the footer shows how many you've picked.
+
+You don't have to answer. **Skip** tells it to use its own judgement, and the card is then marked **Skipped** rather than left hanging.
+
+## After It Runs
+
+A finished run is summarised on its own card, including what landed. If the result isn't what you wanted, **Undo run** reverses it. The card asks you to confirm first, so a misclick doesn't undo real work.
+
+> **Heads-up:** an undone run is marked **Undone**. Inside the editor it reads **Undone · Restore with ⌘⇧Z**, so you can put it back if you undid it by mistake.
+
+If a run produced research, that research is filed as a Study you can open from the card.
+
+## Quick Edits
+
+Alongside the conversation there's a one-off refine, described as _"A quick refine — not part of the conversation."_ Use it for a small change you don't want cluttering the thread.
+
+## FAQ
+
+**Q: Will it change my deck without asking?**
+No. Anything substantial comes back as a plan you have to approve with **Go**. You can also untick individual steps before approving.
+
+**Q: I approved a plan and don't like the result.**
+Use **Undo run** on the run card. Inside the editor you can also restore with **⌘⇧Z**.
+
+**Q: Can I approve only part of a plan?**
+Yes. Untick the steps you don't want, then press **Go**.
+
+**Q: It asked me questions and I don't know the answers.**
+Press **Skip**. It proceeds on its own judgement and marks the card **Skipped**.
+
+**Q: I can see the chat but can't do anything with it.**
+You have read-only access to that deck. Editing needs edit access.
+
+---
+
+## Next Steps
+
+- [Live Data on Slides →](./live-data-blocks)
+- [Presenting a Deck →](./presenting)
+
+## Related Articles
+
+- [Decks Overview](./overview)
+- [Writing the Story](./story-view)

@@ -131,13 +131,44 @@ The pillars — **Insights**, **Studio**, **Research**, **Growth**, and **Loyalt
 |---|---|---|
 | **Insights** | Performance tracking and dashboards (expands into Overview, Campaigns, Ads, Social Media, Influencer, ATL, Trend Signals, Social Listening) | Available |
 | **Studio** | Creative production (KV Generator, Image Editor, Resizer) | Available |
-| **Research** | Audience understanding and customer intelligence | Available |
+| **Audience** | The brand's people — contacts, followers, segments and personas ([guide](../audience/overview)) | Available |
+| **Research** | Audience surveys | Available |
 | **Growth** | Distribution and campaign tools | Coming soon |
 | **Loyalty** | Loyalty program tools | Coming soon |
 
 Every pillar is scoped to whichever brand is currently active. There's no cross-brand pillar view — switch brands to switch which brand's Studio, Insights, etc. you're looking at.
 
 See: [Welcome to frndOS](./welcome) for an overview of the pillars.
+
+## Quick Search — Cmd+K
+
+Press **⌘K** anywhere to open the quick search, and jump to something instead of navigating to it.
+
+With nothing typed it shows what you opened recently, so the common case is two keystrokes.
+
+### Narrowing the search
+
+A sigil in the **first** character narrows the search to one kind of thing:
+
+| Type | Searches |
+|---|---|
+| `@` | **Brands** — jump to a brand |
+| `/` | **Files** — search your files |
+| `>` | **Commands** — run a command |
+| `?` | **Ask FRnD** — ask anything |
+| no sigil | Everything, merged and ranked |
+
+> **Only the first character scopes the search.** A `/` or `@` later in what you type is treated as ordinary text, so a file called `kv 3/4` still finds itself.
+
+### Creating from the search box
+
+Typing a create intent offers to make the thing rather than look for it. **New**, **Create** or **Buat** all work, as does just naming the type:
+
+**New Key Visual** · **New Presentation Deck** · **New Campaign Report** · **New Survey** · **New Persona** · **New Image Generation**
+
+If what you're creating needs a brand and you aren't on one, it asks which brand first.
+
+> **You only see what you can actually make.** The list is filtered by your permissions and by what's enabled for the workspace, so it never offers something that would fail on the next screen.
 
 ## Appearance — Choosing Light or Dark
 

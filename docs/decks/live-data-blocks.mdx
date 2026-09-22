@@ -1,0 +1,98 @@
+---
+title: Live Data on Slides
+sidebar_position: 5
+description: Put brand performance numbers, audience data and Studio files onto a slide as a linked block that can be refreshed from its source.
+---
+
+# Live Data on Slides
+
+A slide can carry a block that stays connected to where its numbers came from. Instead of pasting a screenshot that is wrong a week later, you link the real source and refresh it when you need to.
+
+## Before You Start
+
+1. ✅ **A deck open in the editor** — see [Decks Overview](./overview)
+2. ✅ **Something to link to** — connected Insights data, an Audience segment, or a Studio file
+
+## What You Can Put on a Slide
+
+| Linked to | What lands |
+|---|---|
+| **Chart** | An Insights chart |
+| **Block** | A named performance block, listed below |
+| **Segment** / **Persona** | Audience data |
+| **KV** / **Studio video** | A file from Studio |
+| **Artifact** | Campaign work such as **4C**, **Big idea**, **GWTB**, **Campaign plan**, **KPI** or **Verbatims** |
+
+The performance blocks available:
+
+**Latest numbers** · **Top posts** · **Worst posts** · **Spend & pacing** · **Trend** · **Channel mix** · **Campaign scorecard** · **Voice of customer** · **Upcoming posts** · **Campaign timeline**
+
+## The Live Chip
+
+A linked block carries a chip reading its state, what it's linked to, and the period it covers, for example `● Live · Top posts · All time`.
+
+| Chip state | What it means |
+|---|---|
+| **Live** | Linked and current |
+| **Updating…** | Fetching from the source |
+| **Source updated · Refresh** | The source moved on; your slide still shows the older pull |
+| **Source removed** | What it pointed at is gone |
+
+> **The chip turns amber when it's stale.** That's the signal the slide is showing numbers the source no longer agrees with.
+
+## Changing the Window
+
+A block covers a period, and you can change it without rebuilding the slide. The options are **Auto**, **7d**, **30d**, **90d**, **This month**, **This year**, **All time** and **Campaign**.
+
+For a block that reads brand data, you can also switch which brand it reads.
+
+## Refreshing, Opening and Detaching
+
+Select the block and the right rail gives you:
+
+| Action | What it does |
+|---|---|
+| **Refresh** | Pulls current values from the source |
+| **Open in Insights** / **Open in Studio** | Opens the source itself in a new tab |
+| **Detach** | _"Keep the elements, drop the link"_ |
+
+**Detach** is how you freeze a slide. The numbers stay exactly as they are and stop tracking the source, which is what you want for a deck that has been signed off and shouldn't move again.
+
+### Your edits survive a refresh
+
+If you've hand-edited values in a linked block, refreshing does not silently overwrite them. The button tells you how many it's keeping, reading **Refresh · N edited kept**, and a tooltip spells out that the edited slots are kept as they are.
+
+> **Heads-up:** that's also the thing to check if a refresh "didn't work". An edited slot is deliberately left alone — use **Reset to source** on that field to hand it back to the source.
+
+## Controlling How It Looks
+
+A linked block isn't locked to one presentation. The right rail carries **Layout**, **Show** (which parts appear), **Title** and **Fit** (**Fill** or **Fit** for images). Turning the title off or rewording it doesn't break the link.
+
+## FAQ
+
+**Q: My slide's numbers are out of date.**
+Look at the chip. **Source updated · Refresh** means the source has newer data. Click **Refresh**.
+
+**Q: I want the numbers to stop changing.**
+**Detach** the block. The values stay on the slide and no longer follow the source.
+
+**Q: I refreshed and my manual edits are still there.**
+That's intended. The button reports how many edited slots it kept. Use **Reset to source** on a field to give it back to the source.
+
+**Q: The chip says Source removed.**
+What the block pointed at has been deleted. The slide keeps what it last had; relink it or detach it.
+
+**Q: Can I change the date range without rebuilding the slide?**
+Yes. Pick a different period on the block, from **Auto** through to **All time**.
+
+---
+
+## Next Steps
+
+- [Presenting a Deck →](./presenting)
+- [The Deck Assistant →](./deck-assistant)
+
+## Related Articles
+
+- [Decks Overview](./overview)
+- [Insights Overview](../insights/overview)

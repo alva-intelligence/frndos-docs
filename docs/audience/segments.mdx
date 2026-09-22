@@ -1,0 +1,92 @@
+---
+title: Segments and Personas
+sidebar_position: 3
+description: Group a brand's audience into segments, read what changed after a rebuild, and turn a segment into a persona you can talk to.
+---
+
+# Segments and Personas
+
+The **Segments** tab is described in the app as _"Ways to group this brand's audience. Every segment lives in one list regardless of whether it came from customers or followers."_
+
+That single list is the point: a segment built from contacts and a segment built from followers sit side by side rather than in two places you have to reconcile.
+
+Two inner tabs:
+
+| Inner tab | What's in it |
+|---|---|
+| **Segments** | The segment cards |
+| **Personas** | The personas built from them |
+
+## Before You Start
+
+1. ✅ **The Segments tab granted for this brand** — a separate permission from Overview and People
+2. ✅ **People to group** — segments need contacts or followers with enough data. See [People](./people)
+
+## Reading a Segment Card
+
+Each card carries the segment's name, a short description, how many **people** are in it, and a label saying where they came from:
+
+* **Contacts** — built from people you uploaded or connected
+* **Followers** — built from a social account
+* **Mixed** — contains both
+
+> **Mixed is named rather than folded into Contacts.** A segment with followers in it that called itself Contacts would hide them.
+
+Underneath sits the segment's persona: its name and tagline, or **No persona yet**, or **Generating persona…** while one is being built. Click a card to open the segment and see the people inside it.
+
+If the brand has nothing yet, the tab says **No segments yet** — _"Segments show up once this brand has customers or followers with enough data to group."_
+
+## Generating Segments
+
+**Generate segments** rebuilds this brand's segments. It's one control with three choices, because the action is the same and only the people it reads differ:
+
+| Choice | What it reads |
+|---|---|
+| **All sources** | _"Read contacts and followers together."_ |
+| **Contacts only** | _"Read contacts; leave follower memberships as they are."_ |
+| **Followers only** | _"Read followers; leave contact memberships as they are."_ |
+
+The button reads **Generating…** while a rebuild runs.
+
+> **The narrow options don't delete anything.** Picking **Contacts only** leaves follower memberships exactly as they were, rather than stripping followers out.
+
+## What Changed in the Last Rebuild
+
+After a rebuild, a summary line sits above the cards reporting what actually changed: how many are **new**, how many **changed**, and how many were **merged**, followed by what triggered the run and how long ago it was.
+
+> **Merged is the one worth reading.** A merged segment is simply gone from the list, so without the summary there's nothing on screen to tell you it happened.
+
+A quiet rebuild shows no line at all, rather than announcing that nothing changed.
+
+If part of the list fails to load, a banner says so and notes the list below is partial and that refreshing may recover it. A very large brand may also see a line saying it's showing the first portion of the total.
+
+## Personas
+
+The **Personas** inner tab holds the personas built from your segments. A persona turns a group into a describable person — a name, a tagline and a character you can reason about instead of a row count.
+
+Personas are generated per segment, so a segment carries its persona on its card as soon as one exists. A segment can have more than one.
+
+## FAQ
+
+**Q: What does a Mixed segment mean?**
+It contains both contacts and followers. It appears in both the contacts and the followers side, because each half belongs to whoever manages that side.
+
+**Q: I ran Contacts only. Did that remove my followers from their segments?**
+No. It reads contacts and leaves follower memberships untouched.
+
+**Q: A segment I had is gone after a rebuild.**
+Check the summary line above the cards. If it reports segments merged, yours was folded into another one rather than deleted.
+
+**Q: Why does a card say "No persona yet"?**
+No persona has been generated for that segment. While one is being built the card says **Generating persona…** instead.
+
+**Q: The list says it's partial.**
+One of the feeds failed to load. Refreshing usually recovers it.
+
+---
+
+## Next Steps
+
+- [People →](./people)
+- [Audience Overview →](./overview)
+- [AskFrnd Overview →](../askfrnd/overview)

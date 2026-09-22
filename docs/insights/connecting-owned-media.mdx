@@ -50,6 +50,16 @@ Connection status moves through:
 
 > **Why does Facebook take longer?** Facebook syncs include comments-on-comments (nested comments), which makes the data pull deeper than Instagram.
 
+## Collab Posts — Connecting a Google Sheet
+
+One kind of post can't arrive through a platform connection: a **collab post published on a partner's account**. Instagram only returns a collab post on the originating account's feed, so when your brand is the invited co-author the post never reaches frndOS through the Instagram connection.
+
+A **Google Sheets** source covers that gap. It appears in the Owned Media connection list alongside the platforms, described as _"Import collab posts from a Google Sheet — for posts published on a partner's account."_
+
+The sheet supplies each post's link and its labels; frndOS fetches the metrics per post from there.
+
+> **Heads-up:** a Google Sheets connection has a mapping step — frndOS reads the sheet's columns, then asks you to match them. See [Reading Data States](./reading-data-states) for what **Discovering schema** and **Setting up Integration** mean, and what happens when a sheet has no columns to read.
+
 ## What Data Gets Pulled
 
 Once connected, Owned Media tracks:

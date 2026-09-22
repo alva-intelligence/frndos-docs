@@ -116,6 +116,27 @@ Open the **Layers** panel (Stack icon, bottom nav) to bring up a **Transform** p
 
 Selecting an overlay (text, shape, or image) on a Craft board opens its properties panel. The available controls depend on the overlay type. The panel sits in the bottom-right area of the canvas, replacing the chat panel when an overlay is selected.
 
+#### Styling Part of a Text Layer
+
+Text styling doesn't have to apply to the whole box. **Select some words inside a text layer and the change lands on just that selection**, so one headline can carry a coloured keyword or an oversized first word without splitting it into separate layers.
+
+What a selection can override:
+
+| Property | Notes |
+|---|---|
+| **Font** | A different family for the selected words |
+| **Bold** and **Italic** | |
+| **Size** | Set relative to the layer's own size, so resizing the layer keeps the proportion |
+| **Colour** | A solid colour |
+
+Everything else stays layer-level, including alignment, line and letter spacing, and paragraph settings.
+
+> **A selection's colour is always solid.** Gradients stay a property of the whole layer, so you can't apply one to part of a text box.
+
+With nothing selected, a change applies to the entire layer as it always did.
+
+> **Heads-up:** when your selection spans words that are styled differently, the control shows as mixed rather than picking one. That's deliberate — a single click would otherwise flatten a multi-coloured selection you never meant to change.
+
 #### Fill Controls (Text & Shape Overlays)
 
 Text and shape overlays have a **Fill** section with two modes:
@@ -222,6 +243,10 @@ Both states are immediately reflected on the canvas and persist across sessions.
 ---
 **Save as Template**
 If you have a recurring layout (logo placement, footer style), save it as a Template so you don't repeat the setup for every KV.
+
+**Save as template** sits in the Layers panel in Concept and Craft only. It is not offered while you're editing a single resize tile, because a template is authored against a board: in tile mode the button saved the Craft board's layers while the list beside it showed the tile's. Switch back to Craft to save one.
+
+Applying a template from the library **adds** its layers on top of what's already on the canvas. Nothing on the board is replaced or deleted, and the whole apply is one step, so a single **Cmd+Z** takes it back off. The layers that just landed are selected for you so you can move them straight away.
 
 ### Creating a Variant
 
@@ -493,6 +518,12 @@ See: [Concepting Mode — AI-Guided Visual Exploration](./concepting-mode) for t
 
 **Q: Can I reuse layouts across multiple KVs?**
 Yes — save your layout as a **Template** in Craft Mode. Apply it to future KVs without repeating the setup.
+
+**Q: Why is there no Save as template button while I'm editing a resize tile?**
+Templates are saved from the Craft canvas only. Switch back to Craft, then save.
+
+**Q: Will applying a template wipe the layers already on my board?**
+No. It adds its layers above what's there. One **Cmd+Z** removes the whole apply if it isn't what you wanted.
 
 **Q: What if the new generation is worse than the previous one?**
 Use the **version history panel** to restore any previous iteration. No work is lost.

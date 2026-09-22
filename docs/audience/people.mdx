@@ -1,0 +1,130 @@
+---
+title: People — Contacts and Followers
+sidebar_position: 2
+description: Browse every person your brand is working with, bring more in from a file, a pasted list or Instagram, and enrich their profiles.
+---
+
+# People — Contacts and Followers
+
+The **People** tab is everyone this brand is working with, described in the app as _"customers you uploaded or connected, and followers from social."_ It splits into two inner tabs, and both behave the same way.
+
+| Inner tab | Who's in it |
+|---|---|
+| **Contacts** | People you uploaded, pasted or connected |
+| **Followers** | People pulled in from a social account |
+
+> **Contacts used to be called customers.** The tab is labelled **Contacts** because a lead-form export and a CRM prospect list are both uploads and neither contains customers. Old `?tab=customers` links still work.
+
+## Before You Start
+
+1. ✅ **The People tab granted for this brand** — it's a separate permission from Overview and Segments
+2. ✅ **Something to import** — a CSV, a list of emails or handles, or an Instagram handle
+3. ✅ **Enough credits** — enrichment is billed per row. See [Managing Workspace Credits](../workspace/managing-credits)
+
+## Relationship — What a Contact Is to You
+
+Every contact carries a **relationship**, and it's a stored value you own rather than something guessed from the import:
+
+* **Customer** — has bought
+* **Lead** — a prospect
+* **Respondent** — came from a survey
+* **Other** — anything else
+
+Filter chips above the table narrow to one of them, and **All** clears the filter. To change several at once, select rows and use **Set relationship** in the bulk bar. A bulk change covers up to 1,000 people at a time.
+
+> **Followers don't have a relationship.** They're labelled **Follower**, derived from the fact that they came from a social account, so it can't be set or filtered the same way.
+
+## Adding People
+
+**Add people** sits on both Overview and People. It opens a flow with four steps: **Where from**, **Pick the data**, **Map & label**, then **Review & enrich**. The last button reads **Add people** rather than Continue.
+
+Three ways in are live today:
+
+| Source | What it takes |
+|---|---|
+| **Upload a file** | _"A CSV export from anywhere. Columns are mapped on the next step."_ |
+| **Paste a list** | _"Emails, phone numbers or @handles, one per line."_ |
+| **Instagram followers** | _"Analyse the followers of a handle and group them into segments."_ |
+
+Also shown, but not selectable yet: **Google Sheet**, **Lark Base**, **TikTok followers**, **Connect a CRM** (HubSpot, Salesforce and Klaviyo) and **From a survey**.
+
+**Review & enrich** is where you choose how many of the new people to enrich right away. You can also choose to do it later, which brings them in without spending credits.
+
+### Mapping your columns
+
+**Map & label** is where your file's columns are matched to frndOS fields, so the header row doesn't have to match anything in particular. The step opens having already done what it could, and says so: _"We matched what we could. At least one of email, phone or a handle is needed to recognise a person."_
+
+Two modes:
+
+* **Map manually** — you pick the field for every column yourself
+* **Auto-detect (AI)** — frndOS reads the headers and resolves them for you
+
+> **At least one way to recognise a person is required.** Email, phone or a handle. Without one of those, an import has nothing to match people on.
+
+In **Auto-detect (AI)**, your own custom attributes are still yours to direct: each column can be pointed at a specific attribute, or left on **Let AI decide**. You can also create a new attribute from this step.
+
+> **Heads-up:** in Auto-detect mode the AI owns the standard fields such as name, email and phone. If you want to set those by hand, use **Map manually**.
+
+> **Every import stays filterable.** The app keeps which import each person arrived in, so a single upload can be found again later on the People tab.
+
+## Enriching Profiles
+
+Enrichment is what fills a thin row out into a profile: social presence, interests, sentiment, lifetime value and purchase intent. It's the part that costs credits.
+
+Open **Settings** on Overview or People, then the **Enrichment** pane. It shows:
+
+- How many people are waiting, as _"N people not yet enriched"_, or **Everyone is enriched** when there's nothing to do
+- The price, as _"N credits per row"_
+- **Run enrichment**, disabled while a run is going or when there's nobody left to enrich
+- A live **Run in progress** bar counting completed against sampled
+- **Recent runs**, each with its date, how many were sampled, and how many enriched versus errored
+
+If nothing has run yet, the list says _"No runs yet. The first run appears here once it starts."_
+
+> **Enrichment samples rather than doing everyone.** You pick how many to process, which is what keeps a large import from spending the whole credit balance in one go.
+
+## Audience Settings
+
+The **Settings** button opens **Audience Settings**, which has three panes:
+
+| Pane | What's in it |
+|---|---|
+| **Connections** | Which accounts are linked |
+| **Sources** | The import history — where your people came from |
+| **Enrichment** | Enrichment runs and their credit cost |
+
+It opens on **Sources** by default. The old `/audience/sources` address and the legacy Integrations tab both land here.
+
+## FAQ
+
+**Q: What's the difference between Contacts and Followers?**
+Contacts are people you brought in: uploaded, pasted or connected. Followers come from a social account. They're listed separately but group into the same segments.
+
+**Q: Why can't I set a relationship on a follower?**
+Followers have no stored relationship field. Their label is derived from where they came from, so it's always **Follower**.
+
+**Q: I imported people but their profiles are empty.**
+They haven't been enriched yet. Open **Settings → Enrichment** and run it, or check whether the run is still going.
+
+**Q: Should I map the columns myself or let the AI do it?**
+Either. **Auto-detect (AI)** reads the headers and resolves the standard fields for you. Use **Map manually** when you want to set those yourself. Your own custom attributes can still be directed by hand in either mode.
+
+**Q: My import won't continue past the mapping step.**
+An import needs at least one way to recognise a person: an email, a phone number or a handle. Map one of those and it will continue.
+
+**Q: Can I import without spending credits?**
+Yes. On **Review & enrich**, choose to enrich later. The people come in and you can run enrichment whenever you want.
+
+**Q: Where did the Integrations tab go?**
+It's the **Sources** pane inside Audience Settings.
+
+**Q: How many people can I change at once?**
+A bulk relationship change covers up to 1,000 at a time.
+
+---
+
+## Next Steps
+
+- [Segments →](./segments)
+- [Audience Overview →](./overview)
+- [Managing Workspace Credits →](../workspace/managing-credits)

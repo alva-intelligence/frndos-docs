@@ -169,6 +169,10 @@ The usage table is no longer one long list. Two filters narrow it:
 
 The brand filter includes a **No Brand** option alongside your real brands — for entries that never carried a brand, such as AI chat.
 
+The brand list is sorted by name and has a **Search brands...** box at the top, so a workspace with a long brand list doesn't mean scrolling. A **Clear all** / **Select all** control sits above the list with a count of how many are currently picked. If the workspace has no brands, the dropdown says _"No brands in this workspace"_.
+
+Because it's a multi-select, you can compare a few brands at once rather than one at a time.
+
 Columns: **Member**, **Tools**, **Action**, **File name**, **Brand**, **Date & Time**, **Credit**.
 
 ### The total
@@ -176,6 +180,22 @@ Columns: **Member**, **Tools**, **Action**, **File name**, **Brand**, **Date & T
 Under the table sits **Total usage for current filter** — the net across the **whole filtered result**, not just the page you're looking at. It's colour-coded: green for a net gain, red for net spend.
 
 > **It follows your filters.** Narrow to one brand and one month, and the total is that brand's spend for that month.
+
+### Credit Usage by Brand
+
+Alongside the history there's a **Credit Usage by Brand** table in **Workspace Settings → Plans & Credits**, which answers "where did our credits actually go" rather than listing every entry.
+
+It starts at the brand and expands down four levels:
+
+**Brand** → **Tool** → **Action** → **Person**
+
+So you can open a brand to see which tools it spent on, open a tool to see which actions, and open an action to see who ran it. Each row carries its share as a percentage of its parent, so you can see what dominates without doing the arithmetic.
+
+The same **Brands** filter and a date range apply here, and the range defaults to **All time**.
+
+> **"No brand" is a real row.** It covers usage not tied to a brand, described in the app as _"Usage not tied to a brand, e.g. AI Chat, workflows and LarkBot"_.
+
+**Export** downloads the whole expanded tree as a CSV, not just the rows you have open. It's admin/owner only and desktop only.
 
 ### Metered by actual usage
 
@@ -201,6 +221,12 @@ You have a few options: wait for the next billing cycle when credits reset, upgr
 
 **Q: How do I see what one brand cost us last month?**
 Use both filters on the usage table — set the date range and pick the brand. **Total usage for current filter** underneath is that brand's net for that period.
+
+**Q: Which brand is burning our credits, and on what?**
+Use **Credit Usage by Brand** in Plans & Credits. Expand a brand to see its tools, then an action, then who ran it. **Export** gives you the whole tree as CSV.
+
+**Q: We have too many brands to scroll through in the filter.**
+Use the **Search brands...** box at the top of the brand dropdown. The list is also sorted by name, and **Select all** / **Clear all** resets it.
 
 **Q: What does the "No Brand" filter option mean?**
 Entries that were never tied to a brand — AI chat, for example.

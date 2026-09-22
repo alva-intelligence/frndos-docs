@@ -1,5 +1,8 @@
 {
   "label": "AskFrnd",
-  "position": 8,
-  "link": { "type": "generated-index", "description": "How to use the AI assistant inside frndOS." }
+  "position": 9,
+  "link": {
+    "type": "generated-index",
+    "description": "How to use the AI assistant inside frndOS."
+  }
 }

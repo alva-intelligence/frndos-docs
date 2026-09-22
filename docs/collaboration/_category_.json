@@ -1,5 +1,8 @@
 {
   "label": "Collaboration",
-  "position": 10,
-  "link": { "type": "generated-index", "description": "Team collaboration features inside frndOS — real time, comments, handover." }
+  "position": 11,
+  "link": {
+    "type": "generated-index",
+    "description": "Team collaboration features inside frndOS \u2014 real time, comments, handover."
+  }
 }

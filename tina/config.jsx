@@ -261,6 +261,7 @@ const DocsCollection = {
         { label: "🏢 Brand Setup & Knowledge", value: "brand-setup" },
         { label: "🎨 Studio", value: "studio" },
         { label: "📊 Insights", value: "insights" },
+        { label: "👥 Audience", value: "audience" },
         { label: "🔍 Research", value: "research" },
         { label: "💬 AskFrnd", value: "askfrnd" },
         { label: "📢 Growth (Coming Soon)", value: "growth" },

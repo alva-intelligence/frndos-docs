@@ -95,12 +95,27 @@ Built a move you'll want again? Save it as a **template** and apply it to any la
 
 Every layer row in the left rail carries a **✨** button — _"Apply motion preset to &lt;layer&gt;"_. Right-clicking a timeline row opens the same panel.
 
-It has two tabs:
+It has three tabs:
 
 | Tab | What's in it |
 |---|---|
 | **Default** | The built-in entrance and exit presets, plus an **Emphasis** section |
+| **Build** | Channel cards for composing your own motion |
 | **Saved** | Your brand's saved motions |
+
+> **Heads-up:** **Build** is offered on the layer rail's menu, not on a timeline segment's right-click menu.
+
+### Composing your own with Build
+
+The **Build** tab lets you pick what animates instead of taking a whole preset. Five channel cards are offered: **Path**, **Move**, **Scale**, **Rotate** and **Opacity**. Tick the ones you want, then click **Add at playhead**.
+
+The panel describes what it writes: _"Pick what animates — a short highlight at the playhead that returns to where it started. Pull them apart in the layer's property lanes."_
+
+> **Path and Move can't be picked together.** Both animate the same position, so ticking one unticks the other.
+
+Picking a channel **adds** it to the block rather than replacing what's there. A channel the block already animates is rewritten in place instead of doubled, so you can layer a Scale onto a block that already moves without losing the movement.
+
+> **Heads-up:** **Add at playhead** is disabled when the playhead is too close to the end — the reason reads _"Not enough room before the end."_
 
 ### Saving one
 
@@ -145,7 +160,23 @@ New projects start at **5 seconds** and **30 fps**.
 
 **Keyframes** shows the individual points, for when you want exact control. Insert, move, and delete keyframes here; the **Properties** panel on the right edits the selected one's values.
 
-You can also drag a layer directly on the canvas — that writes a keyframe at the playhead.
+### Editing on the Canvas
+
+You don't have to work in the timeline. Select a layer and you can **move, rotate and scale it directly on the canvas**; the keyframe is written where you drag, at the current playhead.
+
+A badge on the focused tile tells you what the next change will write, before you make it:
+
+| Badge | What your next move will do |
+|---|---|
+| **Base pose** | Set the layer's starting position, because the playhead is at 0 |
+| **⏺ Keyframe 2.4s** | Rewrite the keyframe already sitting at that moment |
+| **Keyframe @ 2.4s** | Create a new keyframe there |
+
+> **Read the badge before you drag.** It's the difference between changing where a layer starts and adding a new moment mid-animation.
+
+While a layer is selected you also get **ghosts** of its nearest keyframes either side of the playhead, and its motion path drawn on the canvas, so you can see where the layer is coming from and heading to. Both are hidden during playback, so what you watch matches the export exactly.
+
+After a change at any point past the start, the editor plays the short span leading up to the playhead once, so you see the movement you just altered without reaching for Play.
 
 ### One row per property
 
@@ -174,6 +205,29 @@ Dragging a bar **snaps** it to the meaningful moments on the timeline, and a gui
 - A gridline on the ruler
 
 A bar never snaps to its own current edges, and a real edge always wins over a gridline, so a tick can't steal a target you were actually aiming for. Snapping is measured in screen distance, so it feels the same at every zoom level.
+
+## Bumpers — Reusing a Logo Sting
+
+A **bumper** is a short clip or still that plays before or after your animation, typically a brand logo. Store it once and reuse it on any video instead of rebuilding it each time.
+
+There are two slots: **Start bumper** and **End bumper**.
+
+**Upload new** adds one to the library. Both images and video are accepted; a video brings its own natural length.
+
+> **The library is brand-wide.** Everyone working on the same brand sees the same bumpers. That's the point: one approved sting, reused across every cut.
+
+Each slot has its own settings:
+
+| Setting | What it controls |
+|---|---|
+| **Duration in seconds** | How long the bumper holds |
+| **Fit** | How the picture fills the frame |
+| **Background colour** | What shows behind it |
+| **Mute** and **Volume** | Audio, for a video bumper |
+
+### Transitions
+
+Each bumper carries a transition, named for the direction the picture travels: **Fade**, **Pop**, or a slide. A start bumper slides *from* a side (**Slide from left**, **Slide from top**), and an end bumper slides *to* one (**Slide to left**, **Slide to bottom**).
 
 ## Audio
 

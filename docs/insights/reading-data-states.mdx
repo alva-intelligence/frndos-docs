@@ -39,6 +39,16 @@ For a Google Sheets connection you may also see:
 
 > **Heads-up:** **Setting up…** and **First syncing** both mean *data is still on its way*. A dashboard that looks empty during either is not broken — it hasn't been filled yet.
 
+### When a sheet has no columns to read
+
+Sometimes frndOS finishes reading a sheet and finds nothing usable. Rather than leaving the mapping step loading forever, the panel stops and shows the reason, which is typically one of:
+
+- The named range doesn't exist in the sheet
+- The range exists but is empty
+- The sheet isn't shared with the connected Google account
+
+Waiting won't fix any of those, so nothing is retried until you act. Fix the sheet and the connection picks it up by itself, with no need to reconnect.
+
 ## Core vs Extended Warnings
 
 Some platforms have a **Core** connection and one or more **Extended** ones. When the Core connection breaks, the dashboard says so inline rather than silently showing less:
@@ -84,6 +94,20 @@ Warning types:
 
 > **Note:** for a connection shared from another brand, warnings come from the original connection — the panel says which brand.
 
+## When a Block Can't Follow a Filter
+
+On a custom dashboard, a block sometimes can't honour a filter you've set. Instead of quietly showing numbers from a different range, the block says so and names the reason. You'll see wording like:
+
+- _"Channel Performance reads the channels' year-to-date KPI cards, which take none of this dashboard's filter rules — it can't follow this dashboard's date range or filter rules yet."_
+- _"This block can't follow the dashboard's Objective filter: it selects more than one funnel stage, and the paid endpoint narrows by one stage at a time."_
+- _"ATL's source reports media (TV, Radio, Cinema, DOOH) and accepts no platform filter, so a selection here couldn't narrow an ATL block."_
+
+The rule behind all of them: a number is either from the source you asked for, or the block tells you it isn't. A figure that silently ignored your filter would be the worse outcome.
+
+> **This is not an error.** The block is working. It's reporting that the data behind it can't be sliced the way the rest of the page is.
+
+If a figure looks wrong for the range you picked, read the block's own note first. See [Insights Overview](./overview#filtering-a-custom-dashboard) for what the dashboard filters can narrow.
+
 ## No Brand Yet
 
 If Insights shows **You haven't been added to a brand yet**:
@@ -105,6 +129,12 @@ A sync that previously skipped data may have filled it in since. Check the **Syn
 
 **Q: It says "Data pipeline issue" — what do I do?**
 Nothing. That's the catch-all for faults on the frndOS side. It carries no infrastructure detail on purpose, because it isn't yours to fix.
+
+**Q: My Google Sheet has been on the mapping step forever.**
+It isn't still working. If the panel shows a reason instead of a loading state, discovery found no columns to read: the named range is missing, empty, or the sheet isn't shared with the connected Google account. Fix the sheet and the connection picks it up on its own.
+
+**Q: One block on my dashboard ignores the filters I set.**
+Read the note on the block. Some blocks read a source that can't be sliced by the dashboard's date range or rules, and they say so rather than showing a number from a different range.
 
 **Q: Why does it say "Showing Extended data only"?**
 The platform's Core connection is broken. You're seeing whatever the Extended connections contribute, which is less than the full picture — reconnect the Core one.

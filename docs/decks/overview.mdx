@@ -67,6 +67,25 @@ Story carries its own actions: **Read back**, **Listen**, **Rehearse**, **Presen
 
 See [Writing the Story](./story-view) for how the narrative side works.
 
+## When Text Doesn't Fit
+
+Text that visibly breaks the slide is flagged on the canvas with a small **amber dot**, pinned at the end of the text it belongs to. Click it and a popover says which of two problems it is:
+
+| Message | What it means |
+|---|---|
+| _"This text runs over another text block."_ | The text collides with other text |
+| _"This text runs off the slide."_ | The text leaves the slide edge |
+
+The popover offers **Shrink to fit**, which scales the text down until it fits, and **Select**, which selects the element so you can edit it yourself.
+
+> **The dot is editor-only.** It marks a problem for you to fix; it never appears in an export or a presentation.
+
+If the element has already been shrunk as far as it can go, there's no Shrink button. The popover says so instead: _"Already shrunk as far as the floor allows — shorten the copy or move it."_ At that point the fix is to cut the copy or move the box.
+
+You can also set this per element without waiting for a flag: select a text element and use the **Shrink to fit** toggle in the right rail's **Slide** tab.
+
+> **Heads-up:** shrinking clears a text box that's simply too full, but it doesn't always clear a collision. Two boxes overlapping can still overlap at a smaller size, so a flag that survives a shrink is telling you to move something.
+
 ## Commenting on a Slide
 
 Feedback goes **on the slide**, pinned to the exact element you mean.
@@ -92,6 +111,49 @@ Search threads, filter by **All / Open / Done / @me** (plus author and "has imag
 > **Rolling out:** deck commenting ships behind its own switch. Until it's on for your workspace, the deck has **no commenting at all** — the old per-slide Comments tab in the right rail was replaced by this, not kept alongside it.
 
 **Desktop only.** Comment mode is aim-and-click and isn't offered on the phone layout.
+
+## Building With the Assistant
+
+The editor has a chat panel that can write and edit slides for you. It proposes a plan first and only builds once you press **Go**, so nothing changes without your say-so.
+
+See [The Deck Assistant](./deck-assistant).
+
+## Putting Real Numbers on a Slide
+
+A slide can carry a block linked to its source: an Insights chart, a performance block, an Audience segment or a Studio file. It can then be refreshed instead of re-screenshotted.
+
+See [Live Data on Slides](./live-data-blocks).
+
+## Deck Styles
+
+A deck's look comes from a **style**. The right rail lists the styles available to you, with the rest of the shipped set tucked behind **More frndOS styles**.
+
+Each style's **⋯** menu carries:
+
+| Action | What it does |
+|---|---|
+| **Apply to all slides** | Clears every per-slide override so the whole deck follows this style |
+| **Duplicate** | Copies it as a starting point |
+| **Edit** | Opens it in the style builder |
+| **Publish to workspace** / **Publish to brand** | Shares it beyond this deck |
+| **Delete** | Removes it |
+
+**+ New style** opens the builder on a blank style, so a brand's look can be defined once and offered in every deck after that.
+
+> **A style in use can't be deleted.** The menu reports how many slides are using it and offers a **Select** link to go and look, rather than letting you break those slides.
+
+> **Publishing to the workspace is owner/admin only.** Publishing to a brand is the narrower option when a style belongs to one brand rather than everyone.
+
+## Adding Slides From Layouts and Templates
+
+**Add slide** offers two tabs:
+
+| Tab | What's in it |
+|---|---|
+| **Layouts** | Single slide shapes, grouped as **Deck grammar**, **Mockups**, and the frndOS pitch-native set |
+| **Templates** | Whole multi-slide decks |
+
+A template card opens into its slides, so you can **Add all slides** or take just the one you want. Layouts and templates both render in your deck's own style, so what you preview is what you'll get.
 
 ## Renaming, Approving, and Version History
 
@@ -129,7 +191,9 @@ When a deck is approved, the meta line under the title reads **approved** in gre
 
 ## Presenting
 
-Click **Play** in the top bar to open the deck full-screen. From Story view, **Present** does the same.
+Click **Play** in the top bar to open the deck full-screen. From Story view, **Present** does the same. Arrow keys move slide by slide, **↑** and **↓** jump a chapter at a time, and **Esc** leaves.
+
+See [Presenting a Deck](./presenting) for the full set of controls.
 
 ## FAQ
 
@@ -138,6 +202,12 @@ In the [Library](../library/overview), with **Deck** as the file kind. A deck cr
 
 **Q: Can someone without a frndOS account see my deck?**
 Yes — enable the **View-only preview link** in the Share tab and send that URL. It's view-only.
+
+**Q: What is the small amber dot on my slide?**
+A flag that the text there either runs over another text block or runs off the slide. Click it for the message and a one-click **Shrink to fit**. It never shows up in an export or a presentation.
+
+**Q: I clicked Shrink to fit and the dot is still there.**
+Shrinking fixes a box with too much text in it, not two boxes sitting on top of each other. A flag that survives a shrink means something needs moving.
 
 **Q: Can I use my brand's colours and fonts?**
 Yes. Build a brand template once and every deck started from it is on brand — see [Brand Deck Templates](../brand-setup/deck-templates). Pick it in the **New deck** chooser rather than starting blank.
@@ -160,6 +230,10 @@ Both are listed with a **Soon** badge and are disabled. PowerPoint and PDF work 
 
 - [Importing a PowerPoint or PDF](./importing-a-deck)
 - [Writing the Story](./story-view)
+- [The Deck Assistant](./deck-assistant)
+- [Live Data on Slides](./live-data-blocks)
+- [Video, Embeds and Charts](./media-and-charts)
+- [Presenting a Deck](./presenting)
 
 ## Related Articles
 
