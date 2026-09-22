@@ -16,6 +16,7 @@ _Last updated: 2026-09-22_
 
 | Section | Type | What to do |
 |---|---|---|
+| Pillars | 📸 screenshot | add screenshot of the brand sidebar Pillars section — Insights, Studio (expanded into its tools), Research with its Beta chip, Audience, and the dimmed Growth row with its Soon chip → /img/guides-asset/<name>.jpeg |
 | Home | 📸 screenshot | add screenshot of the redesigned Home — briefing hero with composer, Continue Working, Team activity rail, Recent Campaigns → /img/guides-asset/<name>.jpeg |
 | Quick Search — Cmd+K | 📸 screenshot | add screenshot of the ⌘K palette — the zero state showing recents plus the @ / · > · ? scope hint row → /img/guides-asset/<name>.jpeg |
 | Creating from the search box | 📸 screenshot | add screenshot of ⌘K with a create intent typed (e.g. "new deck") showing the Create rows, and the brand picker that follows → /img/guides-asset/<name>.jpeg |
