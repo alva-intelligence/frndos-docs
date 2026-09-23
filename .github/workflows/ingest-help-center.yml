@@ -14,7 +14,8 @@ name: Ingest Help Center to AskFrnd
 #
 # Required secrets:
 #   staging environment:
-#     AI_SERVICE_URL            base URL of frnd-ai-services (e.g. https://ai-staging.frndos.com)
+#     AI_SERVICE_URL            base URL of frnd-ai-services — https://ai-stg.frndos.com
+#                               (no trailing slash; ai-staging.frndos.com does NOT resolve)
 #     HELP_CENTER_INGEST_TOKEN  shared secret sent as X-Internal-Token
 #   Production environment (SSH — mirror of frnd-ai-services deploy.yml):
 #     HOST, USERNAME, PRIVATE_KEY, PORT (optional, default 22), SERVER_PATH
