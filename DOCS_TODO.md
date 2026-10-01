@@ -8,7 +8,7 @@ Sections follow the sidebar order (category `position`, then `sidebar_position`)
 
 **Types:** 📸 screenshot · ✍️ confirm from live UI · 🔒 third-party/iframe
 
-_Last updated: 2026-10-01_
+_Last updated: 2026-10-01_ (Brand IQ reconcile: brand mismatch, images from files)
 
 ## Getting Started
 
@@ -52,8 +52,10 @@ _Last updated: 2026-10-01_
 | Section | Type | What to do |
 |---|---|---|
 | Step 1 — Add what you have | 📸 screenshot | add screenshot of the setup's first step — stepper (Add sources · Reading · Questions · Look), drop zone, Brand website field, Logo files row, "No files? Talk it through with Ask FRND" → /img/guides-asset/<name>.jpeg |
+| Step 2 — Reading | 📸 screenshot | add screenshot of the Reading step stopped on a file marked Not applied — "This reads as X's guideline, not Y's." with Apply anyway / Remove → /img/guides-asset/<name>.jpeg |
 | A file that covers several brands | 📸 screenshot | add screenshot of the "This file covers N brands" mapping step with a section's brand picker → /img/guides-asset/<name>.jpeg |
 | Step 4 — Choose how your book looks | 📸 screenshot | add screenshot of the look step — Accent swatches, font pairing, page previews, Create Brand Book → /img/guides-asset/<name>.jpeg |
+| Adding a picture to an empty frame | 📸 screenshot | add screenshot of the "Images from your files" picker — kind filter chips, image tiles with an "In your book" badge, Upload button → /img/guides-asset/<name>.jpeg |
 | How complete it is | 📸 screenshot | add screenshot of the completeness popover — percentage, per-chapter bars, Still missing with Answer, Finish with Ask FRND · N questions → /img/guides-asset/<name>.jpeg |
 | Edit Book — Changing the Look and Pages | 📸 screenshot | add screenshot of Edit book → Style → Colours with the contrast rows (Reads well / Headlines only / Too faint) and Suggest a palette → /img/guides-asset/<name>.jpeg |
 | Editing the Brand From AskFRND | 📸 screenshot | add screenshot of the "Brand IQ updated · N fields" chat card with Show in Brand Book and Undo → /img/guides-asset/<name>.jpeg |
@@ -74,6 +76,13 @@ _Last updated: 2026-10-01_
 |---|---|---|
 | Step 1 — Open Sources | 📸 screenshot | add screenshot of the Sources tab — source rows with Added by · date · pages, a Ready row with Apply, a row with "N questions", and the Show filter in the side panel → /img/guides-asset/<name>.jpeg |
 | Step 4 — See What a Source Filled | 📸 screenshot | add screenshot of a source's detail panel — fields grouped by chapter, Open file / Read again, Remove source → /img/guides-asset/<name>.jpeg |
+| When a file reads as another brand's | 📸 screenshot | add screenshot of a Sources row with the Other brand chip, the amber "This reads as X's guideline, not Y's." line, Remove and Apply anyway → /img/guides-asset/<name>.jpeg |
+
+### `docs/brand-setup/brand-identity.mdx` — Brand IQ Identity
+
+| Section | Type | What to do |
+|---|---|---|
+| How to Set Up Brand Identity | ✍️ confirm from live UI | Steps 2–4 (colors, font upload, visual dos and don'ts) describe the pre-Brand-Book Identity form; with show-brand-book on, these are edited on the Identity pages and in Edit book → Style. Rewrite the steps against the live Identity chapter (page names, which fields each page shows) |
 
 ### `docs/brand-setup/deck-templates.mdx` — Brand Deck Templates
 
