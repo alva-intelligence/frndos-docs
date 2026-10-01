@@ -259,7 +259,7 @@ const DocsCollection = {
       options: [
         { label: "🚀 Getting Started", value: "getting-started" },
         { label: "🏢 Brand Setup & Knowledge", value: "brand-setup" },
-        { label: "🎨 Studio", value: "studio" },
+        { label: "🎨 Creative Tools", value: "studio" },
         { label: "📊 Insights", value: "insights" },
         { label: "👥 Audience", value: "audience" },
         { label: "🔍 Research", value: "research" },

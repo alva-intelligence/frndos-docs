@@ -8,7 +8,7 @@ Sections follow the sidebar order (category `position`, then `sidebar_position`)
 
 **Types:** 📸 screenshot · ✍️ confirm from live UI · 🔒 third-party/iframe
 
-_Last updated: 2026-10-01_ (Brand IQ reconcile: brand mismatch, images from files)
+_Last updated: 2026-10-01_ (Studio removal reconcile: Creative Tools category, canvas file menu, Back, no-access state)
 
 ## Getting Started
 
@@ -19,7 +19,6 @@ _Last updated: 2026-10-01_ (Brand IQ reconcile: brand mismatch, images from file
 | Brand Sidebar | 📸 screenshot | add screenshot of the brand sidebar — brand name with Back to Workspace, Home / Files / Brand IQ rows, Pillars (Insights, Research with Beta, Audience, dimmed Growth with Soon), Projects section → /img/guides-asset/<name>.jpeg |
 | Dropping a File Anywhere | 📸 screenshot | add screenshot of the drop suggestion bar — "What should frndOS do with this?" with its actions → /img/guides-asset/<name>.jpeg |
 | Appearance — Choosing Light or Dark | 📸 screenshot | add screenshot of the Appearance dialog — System / Daylight / Midnight / Aurora previews → /img/guides-asset/<name>.jpeg |
-| Pillars | ✍️ confirm from live UI | written from origin/production (frnd-web `ca96f8e3f`, Studio removed); the local checkout was 24 commits behind. Confirm the brand sidebar matches once deployed |
 | Home | 📸 screenshot | add screenshot of the redesigned Home — briefing hero with composer, Continue Working, Team activity rail, Recent Campaigns → /img/guides-asset/<name>.jpeg |
 | Quick Search — Cmd+K | 📸 screenshot | add screenshot of the ⌘K palette — the zero state showing recents plus the @ / · > · ? scope hint row → /img/guides-asset/<name>.jpeg |
 | Creating from the search box | 📸 screenshot | add screenshot of ⌘K with a create intent typed (e.g. "new deck") showing the Create rows, and the brand picker that follows → /img/guides-asset/<name>.jpeg |
@@ -91,13 +90,15 @@ _Last updated: 2026-10-01_ (Brand IQ reconcile: brand mismatch, images from file
 | Where Templates Live | 📸 screenshot | add screenshot of Brand IQ → Templates — template grid + New template button → /img/guides-asset/<name>.jpeg |
 | Creating a Brand Template | 📸 screenshot | add screenshot of the Start with your brand chooser — Accent swatches, Fonts pairings, live layout grid → /img/guides-asset/<name>.jpeg |
 
-## Studio
+## Creative Tools
 
-### `docs/studio/overview.mdx` — Studio Overview
+### `docs/studio/overview.mdx` — Creative Tools Overview
 
 | Section | Type | What to do |
 |---|---|---|
-| Where to Find the Tools | ✍️ confirm from live UI | Studio was removed from the brand nav in frnd-web `ca96f8e3f` (in origin/production 2026-10-01; not in Lark). Confirm how Motion projects are reached now (written as "from inside their KV") and whether the "Studio" category name in this Help Center should be renamed |
+| The file name menu | 📸 screenshot | add screenshot of the KV canvas top bar with the file name menu open — Favorite, Rename, Version history, Delete → /img/guides-asset/<name>.jpeg |
+| The file name menu | ✍️ confirm from live UI | the **Delete file?** dialog says it "will permanently delete" the file, but the API soft-deletes it (frnd-api-php `StudioFile` uses SoftDeletes and the Library observer moves it to Trash). Check whether a KV deleted from the canvas shows up in Files' Trash; if it does, add a line saying it can be restored for 30 days |
+| No access? | 📸 screenshot | add screenshot of the "You don't have access to this canvas" state with the Go to Files button → /img/guides-asset/<name>.jpeg |
 
 ### `docs/studio/kv-generator.mdx` — Creating Your First Key Visual (KV Generator)
 

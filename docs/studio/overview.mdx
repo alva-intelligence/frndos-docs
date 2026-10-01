@@ -1,28 +1,26 @@
 ---
 sidebar_position: 1
-title: Studio Overview — Your Creative Toolkit
-description: 'A tour of the creative tools in frndOS: the KV Generator, Resizer and Motion, and where to open them now that Studio is no longer a sidebar pillar.'
+title: Creative Tools Overview — KV Generator, Resizer and Motion
+description: 'A tour of the creative tools in frndOS: the KV Generator, Resizer and Motion. Studio is no longer a page of its own; you open these tools from Files and the create menu.'
 ---
 
-# Studio Overview — Your Creative Toolkit
+# Creative Tools Overview — KV Generator, Resizer and Motion
 
-**Studio** is the name for frndOS's creative tools: where you turn ideas into final visual assets, with AI handling the heavy lifting while you stay in creative control.
+frndOS's **creative tools** are where you turn ideas into final visual assets, with AI handling the heavy lifting while you stay in creative control. Every tool opens on its own full-screen **canvas**.
 
-> **Studio is no longer a sidebar pillar.** The tools are still here; you reach them through the brand's **Files** and the create menu. See [Where to Find the Tools](#where-to-find-the-tools).
+> **Studio is gone, the tools are not.** frndOS used to group these tools under a **Studio** pillar with its own home, project folders and file lists. That page has been removed and **Files** replaced it. The canvases themselves are unchanged, and nothing you made was lost. See [What Changed](#what-changed).
 
-## What's in Studio
+## What's Included
 
-Studio is a collection of creative tools, all aware of your Brand IQ:
+All of these tools are aware of your Brand IQ:
 
 | Tool                  | What It Does                                      | Best For                                    |
 | --------------------- | ------------------------------------------------- | ------------------------------------------- |
 | **KV Generator**      | Generate Key Visuals from concept to final        | Campaign hero visuals, social posts         |
 | — Concept mode        | Explore creative territories with the Conceptor agent | Ideation, divergent exploration         |
 | — Craft mode          | Refine one concept into a production-ready KV; create AI variants of any board | Polishing, bounding box edits, variants     |
-| — Motion _(Labs)_ | Animate a finished KV on a timeline — layers, keyframes, audio, MP4 export | Social video, animated ads                |
+| — Motion _(Labs)_ | Animate a finished KV on a timeline: layers, keyframes, audio, MP4 export | Social video, animated ads                |
 | **Resizer**           | Adapt one visual to multiple platform sizes       | Cross-platform delivery                     |
-
-> More Studio tools are rolling out — including Storyboard, Editorial Planner, and Campaign Creator. Stay tuned via the [What's New](/blog) section.
 
 ## Where to Find the Tools
 
@@ -31,49 +29,95 @@ Studio is a collection of creative tools, all aware of your Brand IQ:
 * **Key Visual** — the **+** create menu in the sidebar footer, or **New** on the Files page
 * **Resize** — **New** on the brand's Files page
 
-**To open something you made:** open the brand, click **Files** in the brand sidebar, and open the KV or resize. Motion projects open from inside their KV.
+**To open something you made:** open the brand, click **Files** in the brand sidebar, and open the KV or resize. Motion projects open from inside their KV (the **Motion** button in Craft's bottom toolbar).
 
 > **Why select the brand first?** The tools are brand-aware: they pull from whichever brand is active. Picking the right brand before you start ensures your output inherits the correct Brand IQ.
 
-> **No access?** If your role doesn't include a tool, opening one shows _"You don't have access to this canvas"_. Your files are still in Files.
+## What Changed
 
-> **Heads-up:** if a brand's Brand IQ isn't complete, Studio flags it as **Brand IQ Incomplete** (or **Brand IQ — Not configured** when nothing is set) before you generate. See [Brand IQ](../brand-setup/brand-iq).
+| Before | Now |
+|---|---|
+| **Studio** row under **Pillars** in the brand sidebar | Gone. Pillars are Insights, Research, Audience and Growth (coming soon) |
+| Studio home, **All Files** and the Resizer file list | The brand's **Files** lists every KV and resize |
+| Studio projects (folders every KV lived in) | Removed. KVs don't need a project; see [Creating & Managing Projects](../projects/managing-projects) |
+| Project name in the canvas top bar (`Project / File`) | The top bar shows the file name only |
+| **Move file...** in the canvas file menu | Use **Move to…** on the file in Files instead |
+| **Studio** in ⌘K navigation | Gone. Search for the file, or use the create menu |
 
-## The Studio Workflow
+**Old Studio links still work.** A bookmark to a Studio page (projects, all files, the Resizer list) opens the brand's **Files**. Links straight to a KV, resize or motion project keep opening that canvas.
 
-Most creative work in Studio follows a consistent flow:
+## Working on a Canvas
+
+### The file name menu
+
+The file name sits at the top left of the canvas. Click it for:
+
+| Action | What it does |
+|---|---|
+| **Favorite** / **Unfavorite** | Pins the file to your favorites (shown only when favorites are on for your workspace) |
+| **Rename** | Turns the name into a text field. **Enter** or clicking away saves, **Escape** cancels |
+| **Version history** | Opens the board's version history panel |
+| **Delete** | Asks **Delete file?** first, then takes you to Files |
+
+The browser tab is named after the file too. A new, unsaved canvas shows **Canvas — frndOS**.
+
+### Going back
+
+**Back** returns you to the page you opened the canvas from: Files, brand Home, a project, a chat link. When frndOS can't tell where you came from (a bookmark, a refresh, a link pasted into a new tab), Back takes you to the brand's **Files**. A file that isn't attached to a brand goes back to the workspace **Files**.
+
+### No access?
+
+If your brand role doesn't include a tool, opening its canvas shows _"You don't have access to this canvas"_ with **Go to Files**. Your files are still in Files. Ask a workspace admin to give your brand role access; the permission still sits under **Studio** in the brand role editor (see [Inviting Team Members](../workspace/inviting-team-members)).
+
+## The Creative Workflow
+
+Most creative work follows a consistent flow:
 
 ```
 1. Brand IQ (set once per brand)
         ↓
-2. Create a Project (campaign-level context)
+2. Generate in KV Generator (Concept → Craft)
         ↓
-3. Generate in KV Generator (Concept → Craft)
+3. Resize for platforms (on the Craft canvas)
         ↓
-4. Resize for platforms (on the Craft canvas)
+4. Animate (Motion, optional)
         ↓
-5. Animate (Motion, optional)
-        ↓
-6. Share for review (client links)
+5. Share for review (client links)
 ```
 
-## Why Studio is Different from Standalone AI Tools
+Every file lands in the brand's **Files**, where you can set its status, file it under a project with **Move to…**, or find it again later.
 
-Most standalone AI image tools start from a blank prompt every time. Studio is different:
+## Why These Tools Are Different from Standalone AI Tools
+
+Most standalone AI image tools start from a blank prompt every time. frndOS's creative tools are different:
 
 * **Brand-aware by default** — every generation inherits your Brand IQ
-* **Project-scoped** — campaign context (brief, audience, direction) is baked in
-* **End-to-end workflow** — concept → refine → resize, all in one platform
+* **Conversational** — tell the Conceptor or Crafter in chat what this KV needs
+* **End-to-end workflow** — concept → refine → resize → animate, all in one platform
 
 This means less prompt engineering, more consistent output, and faster turnaround.
 
-## Who Should Use Studio
+## Who Should Use Them
 
-Studio is built for the full creative team:
+The creative tools are built for the full creative team:
 
 * **Designers & Art Directors** — fast ideation, finalization, and platform adaptation
 * **Account Managers & PMs** — explore directions without waiting for design resources
 * **Creative Directors** — review concepts and provide direction in real-time
+
+## FAQ
+
+**Q: Where did Studio go?**
+It's no longer a page. Your KVs and resizes are in the brand's **Files**; start new ones from the **+** create menu or **New** on Files.
+
+**Q: Did I lose any files when Studio was removed?**
+No. Every KV and resize is still there, in Files. Files that used to sit in a Studio project now show no project.
+
+**Q: My old bookmark to Studio opens Files. Is that right?**
+Yes. Studio's pages redirect to the brand's Files. Bookmarks to an individual KV or resize still open that canvas.
+
+**Q: How do I move a KV into a project now?**
+In Files, open the file's **⋯** menu and pick **Move to…**. See [File Actions](../library/overview#file-actions).
 
 ## Your Next Steps
 
@@ -85,6 +129,7 @@ Pick the tool that matches your task:
 * **Need to resize an existing visual?** → [Resizing Visuals for Different Platforms](./resizer)
 * **Need to animate a finished KV?** → [Motion — Animating Your Key Visual](./motion-mode)
 * **Need a client to review the work?** → [Sharing a Key Visual With a Client](./sharing-with-clients)
+* **Looking for a file?** → [Files — Your Team's File Hub](../library/overview)
 
 Make sure you've set up Brand IQ first:
 
