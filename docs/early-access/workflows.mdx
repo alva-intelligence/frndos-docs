@@ -79,7 +79,7 @@ Drag any of these from the palette:
 
 > **Agent and Team nodes need agents.** They run the agents and teams you've built on the [Agents](./agents) page — create those first.
 
-Node configuration varies by type. Common options include a **user message**, an **instructions override**, an **output schema**, **retry on failure** (with a max-retry count), model overrides, and **Require confirmation** — which pauses the run to ask a person before that step proceeds (see [Runs that pause for input](#runs-that-pause-for-input-hitl)).
+Node configuration varies by type. Common options include a **user message**, an **instructions override** (both markdown fields with a **Preview** / **Raw** switch, so you can check how a prompt reads before you run it), an **output schema**, **retry on failure** (with a max-retry count), model overrides, and **Require confirmation** — which pauses the run to ask a person before that step proceeds (see [Runs that pause for input](#runs-that-pause-for-input-hitl)).
 
 ### The action bar
 
@@ -115,7 +115,7 @@ If a step is set to **Require confirmation**, the run pauses at **awaiting input
 
 ### The run detail page
 
-Opening a run shows each step in order with its status, plus cost, token usage, and duration. Any **Artifact** nodes produce documents you can open full-screen, open on their own page, or download.
+Opening a run shows each step in order with its status, plus cost, token usage, and duration. Any **Artifact** nodes produce documents you can open full-screen, open on their own page, or download. A markdown document is shown formatted, not as its source text.
 
 ---
 

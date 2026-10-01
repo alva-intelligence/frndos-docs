@@ -8,7 +8,7 @@ Sections follow the sidebar order (category `position`, then `sidebar_position`)
 
 **Types:** 📸 screenshot · ✍️ confirm from live UI · 🔒 third-party/iframe
 
-_Last updated: 2026-09-22_
+_Last updated: 2026-10-01_
 
 ## Getting Started
 
@@ -16,7 +16,10 @@ _Last updated: 2026-09-22_
 
 | Section | Type | What to do |
 |---|---|---|
-| Pillars | 📸 screenshot | add screenshot of the brand sidebar Pillars section — Insights, Studio (expanded into its tools), Research with its Beta chip, Audience, and the dimmed Growth row with its Soon chip → /img/guides-asset/<name>.jpeg |
+| Brand Sidebar | 📸 screenshot | add screenshot of the brand sidebar — brand name with Back to Workspace, Home / Files / Brand IQ rows, Pillars (Insights, Research with Beta, Audience, dimmed Growth with Soon), Projects section → /img/guides-asset/<name>.jpeg |
+| Dropping a File Anywhere | 📸 screenshot | add screenshot of the drop suggestion bar — "What should frndOS do with this?" with its actions → /img/guides-asset/<name>.jpeg |
+| Appearance — Choosing Light or Dark | 📸 screenshot | add screenshot of the Appearance dialog — System / Daylight / Midnight / Aurora previews → /img/guides-asset/<name>.jpeg |
+| Pillars | ✍️ confirm from live UI | written from origin/production (frnd-web `ca96f8e3f`, Studio removed); the local checkout was 24 commits behind. Confirm the brand sidebar matches once deployed |
 | Home | 📸 screenshot | add screenshot of the redesigned Home — briefing hero with composer, Continue Working, Team activity rail, Recent Campaigns → /img/guides-asset/<name>.jpeg |
 | Quick Search — Cmd+K | 📸 screenshot | add screenshot of the ⌘K palette — the zero state showing recents plus the @ / · > · ? scope hint row → /img/guides-asset/<name>.jpeg |
 | Creating from the search box | 📸 screenshot | add screenshot of ⌘K with a create intent typed (e.g. "new deck") showing the Create rows, and the brand picker that follows → /img/guides-asset/<name>.jpeg |
@@ -32,7 +35,9 @@ _Last updated: 2026-09-22_
 
 | Section | Type | What to do |
 |---|---|---|
-| Opening myFRND | 📸 screenshot | add screenshot of the myFRND page — heading with Experimental badge, four tabs, Discover shelf → /img/guides-asset/<name>.jpeg |
+| Opening myFRND | 📸 screenshot | add screenshot of the myFRND page — heading with Experiment badge, five tabs (Discover · Plugins · Skills · Agents · Tools), Use in your AI apps button, Get started strip → /img/guides-asset/<name>.jpeg |
+| Tools — What AskFRND May Use | 📸 screenshot | add screenshot of the Tools tab — "Your workspace sets the defaults · N changed by you" line, a row with the Changed tag, Reset to workspace button → /img/guides-asset/<name>.jpeg |
+| Plugins — Connecting Your Tools | ✍️ confirm from live UI | confirm the full category chip list shown in your workspace — chips appear only for categories with a count (Productivity, Creative, Data & Research, Communication, CRM, Engineering are possible) |
 
 ## Brand Setup & Brand IQ
 
@@ -40,14 +45,35 @@ _Last updated: 2026-09-22_
 
 | Section | Type | What to do |
 |---|---|---|
-| Pillar cards | 📸 screenshot | add screenshot — Brand IQ Overview tab: status banner with knowledge-chunk count, three pillar cards (Strategy/Identity/Tone), Knowledge Vault card, Brand IQ powers strip → /img/guides-asset/<name>.jpeg |
+| The Four Tabs | 📸 screenshot | add screenshot of the Brand IQ page — Brand Book · Sources · Templates · Business tabs, the side panel with Chapters, and the completeness chip / status / Present / Edit book in the header → /img/guides-asset/<name>.jpeg |
+
+### `docs/brand-setup/brand-book.mdx` — The Brand Book
+
+| Section | Type | What to do |
+|---|---|---|
+| Step 1 — Add what you have | 📸 screenshot | add screenshot of the setup's first step — stepper (Add sources · Reading · Questions · Look), drop zone, Brand website field, Logo files row, "No files? Talk it through with Ask FRND" → /img/guides-asset/<name>.jpeg |
+| A file that covers several brands | 📸 screenshot | add screenshot of the "This file covers N brands" mapping step with a section's brand picker → /img/guides-asset/<name>.jpeg |
+| Step 4 — Choose how your book looks | 📸 screenshot | add screenshot of the look step — Accent swatches, font pairing, page previews, Create Brand Book → /img/guides-asset/<name>.jpeg |
+| How complete it is | 📸 screenshot | add screenshot of the completeness popover — percentage, per-chapter bars, Still missing with Answer, Finish with Ask FRND · N questions → /img/guides-asset/<name>.jpeg |
+| Edit Book — Changing the Look and Pages | 📸 screenshot | add screenshot of Edit book → Style → Colours with the contrast rows (Reads well / Headlines only / Too faint) and Suggest a palette → /img/guides-asset/<name>.jpeg |
+| Editing the Brand From AskFRND | 📸 screenshot | add screenshot of the "Brand IQ updated · N fields" chat card with Show in Brand Book and Undo → /img/guides-asset/<name>.jpeg |
+| Editing the Brand From AskFRND | ✍️ confirm from live UI | the Brand IQ editing switch (`brand_knowledge_write`) has no description in this web build, so in Chat Settings → Tools / myFRND → Tools it may show as a humanised key under "More tools". Confirm how it appears, then name it in this section |
+| Status — Draft, In Review, Approved | ✍️ confirm from live UI | confirm whether a non-admin can still move the book to Approved (the status menu is not admin-gated in the web code; only edits to an approved book are) |
+
+### `docs/brand-setup/business-priorities.mdx` — Business Priorities
+
+| Section | Type | What to do |
+|---|---|---|
+| The Tab at a Glance | 📸 screenshot | add screenshot of the Business tab — Periods + Show filter in the panel, ranked priority rows with Baseline / Current / Target → /img/guides-asset/<name>.jpeg |
+| A Priority's Details | ✍️ confirm from live UI | targets come from Insights → Business, which is not switched on yet; the "Set target in Insights ↗" link only appears once it is. Add the target step here when that dashboard ships |
+| Adding the First Priorities | ✍️ confirm from live UI | quote the text that "Copy request for client" puts on the clipboard (built in BusinessTab, not read for this run) |
 
 ### `docs/brand-setup/brand-iq-sources.mdx` — Brand IQ Sources — Grounding Your Brand
 
 | Section | Type | What to do |
 |---|---|---|
-| Step 3 — Wait for Processing | 📸 screenshot | add screenshot — Brand IQ → Sources tab: coverage strip with per-pillar chips, Add source dropdown open showing Upload files / Add link / Connect Lark (Soon) / From Files (Soon) → /img/guides-asset/<name>.jpeg |
-| Step 4 — Review What Was Extracted | 📸 screenshot | add screenshot — Sources review form: a field showing the "Keep existing" vs "Use AI suggestion" cards side by side with a confidence badge → /img/guides-asset/<name>.jpeg |
+| Step 1 — Open Sources | 📸 screenshot | add screenshot of the Sources tab — source rows with Added by · date · pages, a Ready row with Apply, a row with "N questions", and the Show filter in the side panel → /img/guides-asset/<name>.jpeg |
+| Step 4 — See What a Source Filled | 📸 screenshot | add screenshot of a source's detail panel — fields grouped by chapter, Open file / Read again, Remove source → /img/guides-asset/<name>.jpeg |
 
 ### `docs/brand-setup/deck-templates.mdx` — Brand Deck Templates
 
@@ -58,6 +84,12 @@ _Last updated: 2026-09-22_
 
 ## Studio
 
+### `docs/studio/overview.mdx` — Studio Overview
+
+| Section | Type | What to do |
+|---|---|---|
+| Where to Find the Tools | ✍️ confirm from live UI | Studio was removed from the brand nav in frnd-web `ca96f8e3f` (in origin/production 2026-10-01; not in Lark). Confirm how Motion projects are reached now (written as "from inside their KV") and whether the "Studio" category name in this Help Center should be renamed |
+
 ### `docs/studio/kv-generator.mdx` — Creating Your First Key Visual (KV Generator)
 
 | Section | Type | What to do |
@@ -67,10 +99,13 @@ _Last updated: 2026-09-22_
 | Commenting on the Canvas {#commenting} | 📸 screenshot | add screenshot of the KV canvas in comment mode — comment tool selected in the bottom nav, a pin on a board, the Comments dock on the right → /img/guides-asset/<name>.jpeg |
 | Board Actions — The Right-Click Menu {#board-context-menu} | 📸 screenshot | screenshot of the right-click context menu on a Concept board — showing "Start designing", copy actions, Duplicate, Rename, Reset position, Remove from canvas → /img/guides-asset/<name>.jpeg |
 | Board Actions — The Right-Click Menu {#board-context-menu} | 📸 screenshot | screenshot of the right-click context menu on a Craft board — showing craft-only items (Set as master, Version history…, Create variant, Send to Motion, Send to Resize) → /img/guides-asset/<name>.jpeg |
+| Step 6 — Resize for Multiple Platforms | 📸 screenshot | add screenshot of the Craft bottom toolbar with the Resize and Motion buttons highlighted → /img/guides-asset/<name>.jpeg |
 | What happens during import | 📸 screenshot | add screenshot of the PSD import overlay showing "Importing PSD…" → /img/guides-asset/<name>.jpeg |
 | The review step | 📸 screenshot | add screenshot of the Review PSD import dialog — layer tree with checkboxes, warning labels, missing-fonts block, footer count → /img/guides-asset/<name>.jpeg |
 | Ruler | 📸 screenshot | add screenshot of the ruler bars at top and left edges of the viewport, with tick marks and numeric labels → /img/guides-asset/<name>.jpeg |
 | Grid | 📸 screenshot | add screenshot of the Grid & Ruler popup showing the ruler toggle, opacity slider, and grid size slider → /img/guides-asset/<name>.jpeg |
+| Safe Zones | 📸 screenshot | add screenshot of the safe zones panel — Templates (Tier 1 / Tier 2) and My safe zones, Apply to artboard, Also apply to other matching boards → /img/guides-asset/<name>.jpeg |
+| Safe zone dim | 📸 screenshot | add screenshot of a board with two safe zones dimmed — solid outside both, striped outside one → /img/guides-asset/<name>.jpeg |
 
 ### `docs/studio/concepting-mode.mdx` — Concepting Mode — AI-Guided Visual Exploration
 
@@ -94,7 +129,10 @@ _Last updated: 2026-09-22_
 
 | Section | Type | What to do |
 |---|---|---|
-| Step 3 — (Optional) Add Resize Instructions | 📸 screenshot | add screenshot of the Platform panel — platform list (Social Media expanded) + batch instruction textarea below it → /img/guides-asset/<name>.jpeg |
+| Step 3 — (Optional) Add Instructions | 📸 screenshot | add screenshot of the Size Options panel — Search sizes, Social Media expanded, Custom section, Additional Instructions textarea, Resize · N selected button → /img/guides-asset/<name>.jpeg |
+| The Resizes Strip | 📸 screenshot | add screenshot of the Craft canvas with the "Resizes" divider and a column of tiles under a board, tile header icons visible (Version history / Reset to master / Download) → /img/guides-asset/<name>.jpeg |
+| Tile Version History | 📸 screenshot | add screenshot of the Version History · [size] panel with Created / Regenerated / Restored from vN entries → /img/guides-asset/<name>.jpeg |
+| What a resize costs | ✍️ confirm from live UI | confirm the fixed per-size price shown on the button for a layered KV (it is admin-set and not readable from the web code) |
 | Editing Part of a Tile (Region Edit) | 📸 screenshot | add screenshot of a resize tile with a drawn frame and the "Find objects / Edit this area" pill → /img/guides-asset/<name>.jpeg |
 
 ### `docs/studio/motion-mode.mdx` — Motion — Animating Your Key Visual
@@ -108,6 +146,8 @@ _Last updated: 2026-09-22_
 | Bumpers — Reusing a Logo Sting | ✍️ confirm from live UI | confirm where the bumper slots sit in the motion editor (which panel or tab opens them) — the controls are read from `BumperSlots.tsx`, but the path to reach them is not obvious from the code |
 | Editing on the Canvas | 📸 screenshot | add screenshot of the focused tile with a layer selected — the keyframe badge visible, plus the onion-skin ghosts and the motion path → /img/guides-asset/<name>.jpeg |
 | Composing your own with Build | 📸 screenshot | add screenshot of the ✨ menu's Build tab — the five channel cards (Path, Move, Scale, Rotate, Opacity) with two ticked and the "Add at playhead" button → /img/guides-asset/<name>.jpeg |
+| Working with several bars at once | 📸 screenshot | add screenshot of two bars selected across layers with the right-click menu showing Copy N segments / Delete N segments → /img/guides-asset/<name>.jpeg |
+| Creating a Motion Project | 📸 screenshot | add screenshot of Choose the video size with two sizes ticked and the Cost · Balance footer → /img/guides-asset/<name>.jpeg |
 
 ### `docs/studio/sharing-with-clients.mdx` — Sharing a Key Visual With a Client
 
@@ -135,6 +175,9 @@ _Last updated: 2026-09-22_
 | Section | Type | What to do |
 |---|---|---|
 | Filtering a custom dashboard | 📸 screenshot | add screenshot of the custom dashboard Filters dialog — channel tabs across the top, the Connections row ("Paid Accounts is …"), and a couple of Filter Rules below it → /img/guides-asset/<name>.jpeg |
+| Earned Media summary cards | 📸 screenshot | add screenshot of the Earned Media tab card row — Total Spend / Total Creators / Total Views / Impressions / Reach / ER% → /img/guides-asset/<name>.jpeg |
+| Filters on the Paid and Owned Media Tabs | 📸 screenshot | add screenshot of the Paid Media Filters panel open — Filters · Clear · Apply (n) header, Accounts / Delivery / Campaign / Adset / Ad Name / Funnel / Ad Objective rows → /img/guides-asset/<name>.jpeg |
+| The Funnel View | 📸 screenshot | add screenshot of the Paid Media Performance Breakdown — stepped funnel, All / Awareness / Consideration / Conversion tabs on the title row, Total Spend leading the metrics column → /img/guides-asset/<name>.jpeg |
 | Filtering a custom dashboard | ✍️ confirm from live UI | confirm which channel tabs actually offer the Connections section in your workspace — it is shown for Paid and Owned in the code, and the tab set depends on the brand's connected channels. Verify against a real dashboard before adding a per-channel list. |
 
 ### `docs/insights/owned-media.mdx` — Understanding Owned Media & Content Labels
@@ -143,8 +186,11 @@ _Last updated: 2026-09-22_
 |---|---|---|
 | Opening a single post | 📸 screenshot | add screenshot of the post detail view — creative on the left, metric list with quartile band on the right → /img/guides-asset/<name>.jpeg |
 | Analyzing Posts With AI | 📸 screenshot | add screenshot of the Analyze with AI confirmation — Scope and Estimated cost panels side by side → /img/guides-asset/<name>.jpeg |
-| Filtering by Tags | 📸 screenshot | add screenshot of the Labels pill open — the rule builder with a rule or two, the match-count preview, and the Clear / Apply buttons → /img/guides-asset/<name>.jpeg |
-| Filtering by Tags | ✍️ confirm from live UI | confirm which operators the Labels rule builder offers and how a second rule combines with the first (AND vs OR). The panel chrome is read from `OwnedLabelFilterPill.tsx`; the row-level operator list is built elsewhere and was not read. |
+| Filtering by Tags | 📸 screenshot | add screenshot of the Owned Media Filters panel open — Accounts row, Labels rule builder with a rule or two, the "N of M posts match" line, and the Clear / Apply (n) buttons → /img/guides-asset/<name>.jpeg |
+| Applying Tags to Posts | 📸 screenshot | add screenshot of the Label Posts overlay — "Total N posts · X need labels", Owned accounts picker, a row with an "N out of M" pill, Attribute Settings → /img/guides-asset/<name>.jpeg |
+| Applying Tags to Posts | ✍️ confirm from live UI | Label Posts sits behind `label-posts-overlay` in production. Lark (Sep 2026 Part 3) lists it as shipped; confirm it's on, then drop the rollout note |
+| Key Columns & Metrics | ✍️ confirm from live UI | Lark "Owned content funnel totals" (comment, save, share, view totals per funnel stage) lives in the Content Funnel, which Lark also lists as not switched on yet. Document it in this guide once the Content Funnel ships |
+| Filtering by Tags | ✍️ confirm from live UI | confirm which operators the Labels rule builder offers and how a second rule combines with the first (AND vs OR). The panel chrome is read from `OwnedFilterPanel.tsx`; the row-level operator list is built in `LabelFilterRows` and was not read. |
 
 ### `docs/insights/collaborating-on-insights.mdx` — Collaborating on Insights
 
@@ -168,6 +214,9 @@ _Last updated: 2026-09-22_
 |---|---|---|
 | The AI Summary | 📸 screenshot | add screenshot of the Audience Overview hero — AI summary headline, the four stat tiles (People / Active segments / Avg. lifetime value / Avg. purchase intent), Refresh summary + Settings buttons → /img/guides-asset/<name>.jpeg |
 | What's on the Overview Below the Summary | 📸 screenshot | add screenshot of the card grid — Inbox / Lifecycle / Reach a segment with their Soon labels, and the full-width Add people card with its source count → /img/guides-asset/<name>.jpeg |
+| Using Audience on a Phone | 📸 screenshot | add phone-width screenshot of People → Contacts as stacked cards with the wrapped toolbar and pager → /img/guides-asset/<name>.jpeg |
+| Seeing What Changed | 📸 screenshot | add screenshot of the Audience activity dock — rows with "X updated Y", the field diff and the Contact chip → /img/guides-asset/<name>.jpeg |
+| Following a Brand's Audience | 📸 screenshot | add screenshot of Audience Settings → Notifications — Notify me / Turn off, "What you'll be told about" list, link to workspace notification settings → /img/guides-asset/<name>.jpeg |
 
 ### `docs/audience/people.mdx` — People — Contacts and Followers
 
@@ -178,6 +227,8 @@ _Last updated: 2026-09-22_
 | Adding People | ✍️ confirm from live UI | confirm what the Review & enrich step shows — the sample-size control and how the credit cost is presented. (Map & label is now documented from code: the manual/auto toggle and the "We matched what we could" copy.) |
 | Mapping your columns | 📸 screenshot | add screenshot of the Map & label step — the Map manually / Auto-detect (AI) toggle, the column rows, and the "Let AI decide" default on an attribute column → /img/guides-asset/<name>.jpeg |
 | Enriching Profiles | 📸 screenshot | add screenshot of Audience Settings → Enrichment — the waiting count, credits per row, Run enrichment, and the Recent runs list → /img/guides-asset/<name>.jpeg |
+| Enrichment quality | 📸 screenshot | add screenshot of Audience Settings → Enrichment Quality — High / Low cards with their price per person → /img/guides-asset/<name>.jpeg |
+| Columns that can mean more than one thing | 📸 screenshot | add screenshot of the Map & label step with the "1 column needs an answer" block and its three answers → /img/guides-asset/<name>.jpeg |
 
 ### `docs/audience/segments.mdx` — Segments and Personas
 
@@ -188,6 +239,15 @@ _Last updated: 2026-09-22_
 | Personas | ✍️ confirm from live UI | confirm what the Personas inner tab actually renders (card layout, whether a persona can be generated or edited from there, and the chat/role-play entry point). This guide describes it only at the level the segments page reveals. |
 
 ## Research
+
+### `docs/research/proposal-scorecard.mdx` — Proposal Scorecard
+
+| Section | Type | What to do |
+|---|---|---|
+| Step 2 — Add the Proposal | 📸 screenshot | add screenshot of the scorecard composer — Scorecard template / Reviewer, Upload a file / Paste the text, the two optional pickers, credit estimate and Score proposal → /img/guides-asset/<name>.jpeg |
+| Step 2 — Add the Proposal | ✍️ confirm from live UI | the composer footer still says "about 3–4 min" while scoring now takes ~1.5 min (Lark + frnd-ai-services `1decfb27`). The doc says "about a minute and a half"; confirm and ask frnd-web to update the copy in `ScorecardDesignStep.tsx` |
+| Step 4 — Read the Scorecard | 📸 screenshot | add screenshot of a scored proposal — verdict sentence, Fit / Ambition, the grid, criteria with confidence marks → /img/guides-asset/<name>.jpeg |
+| Running a Scorecard From AskFRND | 📸 screenshot | add screenshot of the Proposal scorecard chat card — Fit / Ambition / Grid, Open study, Create tasks → /img/guides-asset/<name>.jpeg |
 
 ### `docs/research/creating-a-general-survey.mdx` — Creating a General Survey
 
@@ -218,6 +278,7 @@ _Last updated: 2026-09-22_
 | Section | Type | What to do |
 |---|---|---|
 | Queueing Follow-Ups While AskFrnd Is Answering {#queueing-follow-ups-while-askfrnd-is-answering} | 📸 screenshot | add screenshot of the AskFRND composer with one or two queued chips above it → /img/guides-asset/<name>.jpeg |
+| When a file can't be read | ✍️ confirm from live UI | the reply wording is written by the model (it is only told to say the file could not be read), and how the chat UI renders ai-service's `FileExtractionFailed` event was not traced in frnd-web. Confirm what the user actually sees for an unreadable attachment, then quote it here |
 
 ### `docs/askfrnd/skills.mdx` — Using AskFrnd Skills
 
@@ -257,7 +318,39 @@ _Last updated: 2026-09-22_
 | Presence Avatars | 📸 screenshot | screenshot of KV Generator top nav showing 3–4 presence avatar chips + overflow "+N" chip — /img/guides-asset/<name>.jpeg |
 | Live Cursors | 📸 screenshot | screenshot of the canvas showing a live cursor from a remote peer — arrow + colored name pill — /img/guides-asset/<name>.jpeg |
 
+
+### `docs/collaboration/client-approvals.mdx` — Client Approvals
+
+| Section | Type | What to do |
+|---|---|---|
+| Step 2 — Choose Approvers and Say What Changed | 📸 screenshot | add screenshot of the Request approval panel — Approvers chips + suggestions, What changed, Request approval → /img/guides-asset/<name>.jpeg |
+| What the Client Sees | 📸 screenshot | add screenshot of the client decision page on a phone — deck, numbered pins, Approve / Request changes / I need more time bar → /img/guides-asset/<name>.jpeg |
+| Step 1 — Request Approval | ✍️ confirm from live UI | the KV share panel also has a Request approval toggle, but the code hides it in dev/staging because multi-item KV rounds are still being built (frnd-web `99eab75c8`). Confirm whether it's offered in production before adding KV to the table |
+| Following the Decision in frndOS | ✍️ confirm from live UI | confirm where a client's pins show up for the agency on a deck (code adds an "on v{n}" badge to deck comments) and add that here |
+
+### `docs/collaboration/overview.mdx` — Collaboration Overview
+
+| Section | Type | What to do |
+|---|---|---|
+| Comments — Where to Find Them | ✍️ confirm from live UI | the Audience row lists commenting, but Lark (Sep 2026 Part 3) says Audience commenting is built and hidden. Confirm, and drop the row until it's switched on |
+## Files
+
+### `docs/library/overview.mdx` — Files — Your Team's File Hub
+
+| Section | Type | What to do |
+|---|---|---|
+| Finding a File | 📸 screenshot | add screenshot of the Files header — Search files, type chips with counts, Filter · N, Group by, sort, grid/list toggle, Trash button → /img/guides-asset/<name>.jpeg |
+| Opening and Previewing | 📸 screenshot | add screenshot of Quick Look open on a KV — preview, Kind / Brand / Last edited / Comments, arrows → /img/guides-asset/<name>.jpeg |
+| Working with Several Files | 📸 screenshot | add screenshot of the selection bar — N selected · Move to… · Set status · Move to Trash → /img/guides-asset/<name>.jpeg |
+
 ## Projects & Workflows
+
+### `docs/projects/managing-projects.mdx` — Creating & Managing Projects
+
+| Section | Type | What to do |
+|---|---|---|
+| Where to Find Projects | 📸 screenshot | add screenshot of the Projects page — status chips, sort, brand filter, folder cards → /img/guides-asset/<name>.jpeg |
+| Filing Work Into a Project | ✍️ confirm from live UI | rewritten after Studio projects were removed (frnd-web `ca96f8e3f`). Confirm whether Files' Move to… still offers projects for every file kind, and whether project rooms need the Labs flag to be reachable |
 
 ### `docs/projects/project-rooms.mdx` — Project Rooms — Keeping Work Together
 
@@ -298,7 +391,10 @@ _Last updated: 2026-09-22_
 |---|---|---|
 | The Live Chip | 📸 screenshot | add screenshot of a slide with a linked block selected — the `● Live · Top posts · All time` chip, plus an amber stale chip if one can be staged → /img/guides-asset/<name>.jpeg |
 | Refreshing, Opening and Detaching | 📸 screenshot | add screenshot of the right rail for a linked block — Refresh / Open in Insights / Detach, and the Layout, Show, Title and Fit sections → /img/guides-asset/<name>.jpeg |
-| What You Can Put on a Slide | ✍️ confirm from live UI | confirm how a live block is ADDED to a slide in the first place (which insert control or assistant action creates one). The binding types and block names are read from code; the entry point is not. |
+| Inserting a Live Object | 📸 screenshot | add screenshot of the Insert panel — Brand picker, All / Brand IQ / Insights / Audience / Studio / Proposals tabs, cards with Add to slide → /img/guides-asset/<name>.jpeg |
+| Editing a Live Object in Place | 📸 screenshot | add screenshot of a Brand IQ value selected on a slide — the selection bar (Brand IQ · field · In sync · Edit) and the quick edit open, footer "Changes Brand IQ and N decks" → /img/guides-asset/<name>.jpeg |
+| Used in | 📸 screenshot | add screenshot of the quick edit as a panel in the right rail — Used in list with This deck, Brand Book pages, History → /img/guides-asset/<name>.jpeg |
+| Editing a Live Object in Place | ✍️ confirm from live UI | "Refreshing, Opening and Detaching" above describes the older right-rail panel (Refresh / Open in Insights / Detach). With live quick edit on, the rail shows the quick edit panel instead. Confirm which one workspaces see, then merge or drop the older section |
 
 ### `docs/decks/media-and-charts.mdx` — Video, Embeds and Charts
 
@@ -337,14 +433,25 @@ _Last updated: 2026-09-22_
 | Step 1 — Open the People Page | 📸 screenshot | add screenshot — Workspace Settings → People page: header "People", Search box, Invite button, Members/Requests pill tabs, member table → /img/guides-asset/<name>.jpeg |
 | Assign brand access (Member only) | 📸 screenshot | add screenshot — Invite dialog: email chips, "You're inviting N guests as Member", role dropdown, brand access cascade picker open → /img/guides-asset/<name>.jpeg |
 
+### `docs/workspace/tasks.mdx` — Tasks
+
+| Section | Type | What to do |
+|---|---|---|
+| The Board | 📸 screenshot | add screenshot of the Tasks board — six status columns, a card being dragged, Archive all done in the Done column menu → /img/guides-asset/<name>.jpeg |
+| A Task's Details | 📸 screenshot | add screenshot of the task sheet — Status / Due / Assignee / Brand / Project / Source rows, checklist with Work the list, Discussion → /img/guides-asset/<name>.jpeg |
+| A Task's Details | ✍️ confirm from live UI | confirm which sources create tasks in practice (Lark, Google Tasks, scorecard next steps, agent hand-backs) and whether Google Tasks syncs both ways like Lark |
+
 ### `docs/workspace/managing-credits.mdx` — Managing Workspace Credits
 
 | Section | Type | What to do |
 |---|---|---|
 | How to Buy Extra Credit | 📸 screenshot | add screenshot of the Buy Extra Credit modal (packs + custom amount + cost breakdown) → /img/guides-asset/<name>.jpeg |
 | Viewing Your Extra Credit Purchases | 📸 screenshot | add screenshot of the Extra Credit Purchases table in Billing → /img/guides-asset/<name>.jpeg |
+| Reading an Invoice | 📸 screenshot | add screenshot of an invoice PDF — Bill to / Bill from block, plan line with its period, Platform Fee and Total Paid rows → /img/guides-asset/<name>.jpeg |
+| Who it's billed to | ✍️ confirm from live UI | there is no in-app form for workspace billing details (the address is set by the frndOS team via `billing:set-party`). Confirm how a customer asks for their company address to be put on invoices, then add that step here |
 | Metered by actual usage | ✍️ confirm from live UI | confirm the exact label trend-signal detection carries in the credit ledger's Action column — the labels are server-authored and aren't readable from the web code. Screenshot needed. |
 | Credit Usage by Brand | 📸 screenshot | add screenshot of the Credit Usage by Brand table with a brand expanded down through Tool → Action → Person, showing the share percentages and the Export button → /img/guides-asset/<name>.jpeg |
+| Resetting a Member's Limit to 0 | 📸 screenshot | add screenshot of the Reset Limit? confirm — Remaining / Total Monthly Limit → 0, outstanding debt note, Reset to 0 → /img/guides-asset/<name>.jpeg |
 
 ## Settings & Administration
 
@@ -430,4 +537,11 @@ _Last updated: 2026-09-22_
 | Projects and Pitches | 📸 screenshot | add screenshot of the Projects list — folder grid, sort dropdown, New Project button → /img/guides-asset/<name>.jpeg |
 | Creating a Pitch | 📸 screenshot | add screenshot of the New Project modal — name, prospect/brand, deadline, Brief source segmented control (Upload / Paste text / Lark URL) → /img/guides-asset/<name>.jpeg |
 | Reviewing the Pitch | 📸 screenshot | add screenshot of the Review wizard — left "The Pitch" cards (Brief / Audience / Decision-makers / Winning Strategy), right "The Plan" scope strip + preview, Confirm & Start button → /img/guides-asset/<name>.jpeg |
+| The Creative Platform step | 📸 screenshot | add screenshot of the step rail with the Creative Platform step between Big Idea and Master KV, and its artifact (platform options with storyboard + touchpoints) → /img/guides-asset/<name>.jpeg |
 | The Runner — Working Through Deliverables | 📸 screenshot | add screenshot of the runner — left step rail (deliverables grouped by phase), center step canvas, top chrome (back, pipeline toggle, context vault, comments, progress) → /img/guides-asset/<name>.jpeg |
+| The brand look | 📸 screenshot | add screenshot of the Brand look panel — Where the look comes from switch, colours with contrast, Headline / Body fonts, What this changes → /img/guides-asset/<name>.jpeg |
+| Steps that are a decision | 📸 screenshot | add screenshot of a decision step (e.g. Big Idea) — "Which direction do we take?", radio cards with Recommended, Compare, and the header's "Approve · <name>" → /img/guides-asset/<name>.jpeg |
+| Step pages | 📸 screenshot | add screenshot of an editorial step page — headline, Contents rail, "Pitch deck · N" row, "Lands in your pitch deck" strip → /img/guides-asset/<name>.jpeg |
+| Making the Pitch Deck | 📸 screenshot | add screenshot of the "Client look or agency template?" dialog → /img/guides-asset/<name>.jpeg |
+| Step pages | ✍️ confirm from live UI | these surfaces sit behind `show-pitch-slides` (fail-closed in web AND api, no staging bypass). Written as live per Lark; confirm which workspaces have it, and drop the "Rolling out per workspace" note once it's on for everyone |
+| What each step makes | ✍️ confirm from live UI | the step list follows the default Campaign Proposal template (ProposalTemplateV1Seeder). Confirm the template workspaces actually run, and the decision label for Creative Platform and Master Key Visual (no question heading found in code) |

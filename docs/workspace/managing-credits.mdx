@@ -38,6 +38,8 @@ Credits are consumed by AI actions like:
 
 The exact credit cost varies by model and operation type.
 
+Two KV actions have a **fixed price**, shown before you start: creating a [Motion](../studio/motion-mode) (per size), and resizing a KV composed from layers (per size, see [Resizing](../studio/resizer#what-a-resize-costs)). The button carries the total, and it's disabled if you can't cover it.
+
 ### What Happens on Errors
 
 If a generation **fails** (model error, network issue, unsupported aspect ratio), **credits are not consumed**. You only pay for successful outputs.
@@ -51,6 +53,16 @@ If a generation **fails** (model error, network issue, unsupported aspect ratio)
 3. Click **Edit** or **Allocate Credits**
 4. Enter the **credit limit** for that user
 5. Save
+
+### Resetting a Member's Limit to 0
+
+In the **Adjust Limit** dialog, **Reset limit** (next to Cancel and Save) takes a member's limit back to zero. The dialog asks first, **Reset Limit?**:
+
+> _"\{Name\}'s monthly limit and remaining credits drop to 0 straight away, and the limit won't refill next cycle. They can't use credit features until you add more."_
+
+It shows **Remaining** and **Total Monthly Limit** going to 0. If the member has outstanding debt, the dialog says it stays on them, to be paid off from credits you add later, or from Extra Credit if Auto-use is on. Click **Reset to 0** to confirm.
+
+You can't reset the workspace owner's limit, or your own. The reset is listed in the credit history.
 
 ### Real Example
 
@@ -148,6 +160,30 @@ If you haven't bought any Extra Credit yet, the table shows _"No Extra Credit pu
 
 > **Tip:** Use the **PDF** link on a paid row to download the invoice for your records or finance team.
 
+## Reading an Invoice
+
+Subscription invoices live in **Workspace Settings → Billing**, under **Subscription History**. A row with an invoice has a **Download** button for the PDF. When a payment succeeds, the invoice is also emailed to the workspace owner and admins.
+
+### One Platform Fee line
+
+The invoice shows the price of your plan, then a single **Platform Fee** line, then the total:
+
+| Line | What it is |
+|---|---|
+| **Price** | Your plan for the billing period |
+| **Platform Fee** | The transaction fee and VAT, combined into one figure |
+| **Total Paid** | Price plus Platform Fee |
+
+The transaction detail page you land on after paying uses the same wording: the plan with **Billed monthly** or **Billed yearly**, then **Platform Fee**, then **Due Today**.
+
+### Who it's billed to
+
+The **Bill to** block uses your workspace's billing details when a street address is on file for the workspace. Without one, the invoice is addressed to the person who paid.
+
+### The billing period
+
+The plan line states the period it covers, for example `Orbit Plan Monthly Plan (08/07/25 - 08/08/25)`. The period starts on the day that billing cycle started and runs for one month or one year. When the next month is shorter, the period ends on its last day, so a cycle that starts on the 31st still ends inside the following month.
+
 ## Tracking Credit Usage
 
 Workspace admins can see usage analytics in workspace settings:
@@ -192,6 +228,8 @@ It starts at the brand and expands down four levels:
 So you can open a brand to see which tools it spent on, open a tool to see which actions, and open an action to see who ran it. Each row carries its share as a percentage of its parent, so you can see what dominates without doing the arithmetic.
 
 The same **Brands** filter and a date range apply here, and the range defaults to **All time**.
+
+AI Chat usage is split by chat feature at the **Action** level, using the same labels as the history's Action column, instead of one generic "AI Chat" row.
 
 > **"No brand" is a real row.** It covers usage not tied to a brand, described in the app as _"Usage not tied to a brand, e.g. AI Chat, workflows and LarkBot"_.
 
@@ -245,6 +283,12 @@ A toggle that lets frndOS automatically use your Extra Credit once subscription 
 
 **Q: Where do I find invoices for my Extra Credit purchases?**
 In **Workspace Settings → Billing**, under **Extra Credit Purchases**. Each paid purchase has a **PDF** invoice link. See [Viewing Your Extra Credit Purchases](#viewing-your-extra-credit-purchases).
+
+**Q: Why is there only one fee on my invoice?**
+The transaction fee and VAT are added together and shown as one **Platform Fee** line. The amount you pay is the same; it's only presented as one line.
+
+**Q: My invoice is addressed to me, not to the company.**
+**Bill to** uses the workspace's billing details only when a street address is on file for the workspace. Otherwise it shows whoever paid.
 
 **Q: Do credits roll over to the next month?**
 Rollover policy depends on your subscription plan. Check your plan details for specifics.

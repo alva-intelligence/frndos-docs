@@ -14,14 +14,13 @@ Make sure you've completed these prerequisites:
 
 1. ✅ **Open the right brand** — from Home, click it under **Brands** in the sidebar. Everything you generate inherits this brand's context.
 2. ✅ **Brand IQ configured** — see [Brand IQ — Your Brand's Knowledge Home](../brand-setup/brand-iq)
-3. ✅ **A Project created** for your campaign — see [Creating & Managing Projects](../projects/managing-projects)
 
 Without these, the AI won't have the context it needs to generate on-brand visuals.
 
 ## Step 1 — Open Your Brand and Open KV Generator
 
-1. From Home, click the brand you want to work on under **Brands** in the sidebar (if you're already inside a different brand, click **Back to Home** first)
-2. Once inside the brand, open **Studio → KV Generator** from the sidebar
+1. From Home, click the brand you want to work on under **Brands** in the sidebar (if you're already inside a different brand, click **Back to Workspace** first)
+2. Click **+** in the sidebar footer and choose **Key Visual** (or **New** → **Key Visual** on the brand's Files page). To reopen a KV, open it from the brand's **Files**
 
 ****![](/img/guides-asset/20260618-162254.jpeg)
 
@@ -101,7 +100,7 @@ Craft mode isn't limited to images generated inside KV Generator. If you already
 3. Use **Upload Image** to bring in your existing file (drag & drop or browse)
 
 Once uploaded, the image behaves like a generated KV:
-- **Resize it** across platforms via Resize Mode — see [Resizing Visuals for Different Platforms](./resizer)
+- **Resize it** across platforms right on the Craft canvas — see [Resizing Visuals for Different Platforms](./resizer)
 - **Refine or edit it** using the Bounding Box tool, image references, or static elements — same as a generated KV
 
 > **Why this matters:** You no longer need to generate something in frndOS just to use Resizer or Craft's editing tools. Bring in any image you already have and let frndOS handle the adaptation and refinement.
@@ -299,7 +298,7 @@ Feedback goes **on the artwork**. Pick the **Comment** tool in the bottom toolba
 
 ### Threads follow the mode and the version
 
-A thread belongs to the surface it was left on — **Concept**, **Craft**, **Resize**, or **Motion** — and to the **version** of the render it was pinned to. Feedback on a Craft board doesn't leak onto the Resize tiles.
+A thread belongs to the surface it was left on (**Concept**, **Craft**, or **Motion**) and to the **version** of the render it was pinned to. Resize tiles sit on the Craft canvas, so their threads show in Craft. Threads left in the old Resize tab now show in Craft as well.
 
 Because of that, a thread can point at a render that has since been superseded. Opening one of those from the list shows the **old render with its pins** in a read-only viewer, headed with the version (e.g. `v2`), so you can see what the comment was actually about instead of guessing against the current picture.
 
@@ -311,7 +310,7 @@ Search threads, filter by **All / Open / Done / @me** (plus author and "has imag
 
 ### Knowing a file has feedback before you open it
 
-File thumbnails carry a small blue **comment badge** with a count — in the Library grid, in **Continue working**, and on the recent-work cards. It counts **unresolved threads** on that file, so you can see where feedback is waiting without opening anything.
+File thumbnails carry a small blue **comment badge** with a count — in Files, in **Continue working**, and on the recent-work cards. It counts **unresolved threads** on that file, so you can see where feedback is waiting without opening anything.
 
 > **Not per-person:** the badge means "this file has open feedback", not "you have unread feedback". There's no read state.
 
@@ -348,7 +347,7 @@ Craft boards have the same Copy, Duplicate, Rename, and Reset actions above, plu
 | **Version history…** | Opens the version history panel for this board |
 | **Create variant** | Opens the variant prompt popover — see [Creating a Variant](#creating-a-variant) |
 | **Send to Motion** | Switches to Motion mode with this board as the source (requires KV Motion enabled in Labs) |
-| **Send to Resize** | Switches to Resize mode with this board as the source |
+| **Send to Resize** | Pins this board and opens **Size Options** on the Craft canvas — see [Resizing Visuals for Different Platforms](./resizer) |
 
 > **"Start designing" is not shown on Craft boards.** It only appears on Concept boards (Sketch mode).
 
@@ -452,7 +451,7 @@ Two alignment overlays and a drag-time smart guide system help you position over
 
 ### Ruler
 
-Toggle the ruler on/off from the **ruler icon** (`⊥`) in the bottom toolbar, or press **Shift+R** (macOS / Windows) anywhere on the canvas (outside editable text fields).
+Toggle the ruler on/off from the **ruler icon** (`⊥`) in the bottom toolbar, or press **Shift+R** (macOS / Windows) anywhere on the canvas (outside editable text fields). Its tooltip also names the safe zone shortcut, **Shift+S**.
 
 When enabled, ruler bars appear at the **top** and **left** edges of the viewport:
 
@@ -476,6 +475,25 @@ The grid renders as white CSS lines behind the Konva canvas stage at `z-index: 1
 
 > **Grid opacity and size persist** across page reloads and between files (saved to browser localStorage).
 
+The grid and guide lines are drawn on the active board only.
+
+### Safe Zones
+
+A **safe zone** marks the part of a board a platform won't cover with its own interface, such as a Story's top bar or a Reel's caption area. Safe zones are made of guides: drag from the ruler onto the board to add one.
+
+Open the safe zone library with **Manage safe zones** in the Grid & Ruler popup, or press **Shift+S**. It's a floating panel beside the canvas:
+
+* **Templates** — ready-made safe zones that fit the active board, first those for its exact platform size, then those with the same ratio. Templates are read-only. Some are marked **Not an official platform spec**
+* **My safe zones** — your brand's own. **Save current guides** saves the guides on the board as a new one (you need at least one guide)
+
+Click a safe zone and **Apply to artboard**. **Also apply to other matching boards** puts it on every board with the same ratio at once (**Apply to N boards**). An applied safe zone shows **Applied**; remove it from the board with **Remove**, or use **Clear all** to remove every guide from the board (you can undo it).
+
+With no template for the board's ratio, the panel says _"No template matches this board's ratio yet."_ The **?** next to the controls opens **How safe zones work**.
+
+#### Safe zone dim
+
+The Grid & Ruler popup also has a **Safe zone dim** slider that darkens the area outside your safe zones. With several safe zones on a board, the area outside all of them is solid and the area outside only some is striped. The dim is on the canvas only and is never exported. Set the slider to 0 to turn it off.
+
 ### Smart Drag Guides
 
 When you drag an overlay on a Craft board, **smart guides** appear to help you align it:
@@ -497,7 +515,7 @@ The guides are purely visual and never intercept pointer events. They track canv
 
 ## Step 6 — Resize for Multiple Platforms
 
-Once your KV is approved, switch to **Resize Mode** to adapt it across formats — social media feeds, stories, banners, different aspect ratios — all in one step.
+Once your KV is approved, click **Resize** in the bottom toolbar of the Craft canvas to adapt it across formats: social media feeds, stories, banners, different aspect ratios. The sizes appear in a **Resizes** strip under the board.
 
 See: [Resizing Visuals for Different Platforms](./resizer)
 
@@ -507,7 +525,7 @@ See: [Resizing Visuals for Different Platforms](./resizer)
 Currently, angle adjustments are done via prompt + reference image. Describe the desired angle in your prompt and attach a reference image showing it. Example: *"Change camera angle to extreme low-angle view"* + attached reference.
 
 **Q: Can I override the brand tone for a specific KV?**
-Yes, but it's done at the **Project level**, not the KV level. In your Project Brief, set a custom tonality and switch off the **Use Brand Knowledge** toggle. All KVs under that project will use the override.
+Tell the Crafter in chat how this KV should differ, for example a more playful tone. The project-level override that Studio projects used to offer is no longer in the app (see [Creating & Managing Projects](../projects/managing-projects)).
 
 **Q: What's the difference between Concept and Craft mode?**
 
@@ -540,8 +558,8 @@ No. Variants are a Craft-mode feature only. To branch from a Concept board, prom
 **Q: Can I create multiple variants at once?**
 No. Variant generation is blocked while any other generation is in progress — finish the current one before starting the next.
 
-**Q: I left a comment in Craft mode and can't see it in Resize.**
-Threads belong to the mode they were left on. Switch back to Craft to see it.
+**Q: I left a comment in Concept mode and can't see it in Craft.**
+Threads belong to the mode they were left on. Switch back to Concept to see it. Comments on resize tiles are part of Craft, because the tiles live on the Craft canvas.
 
 **Q: A comment points at a version that no longer exists on the canvas.**
 Open it from the dock — frndOS shows the old render with its pins, labelled with the version, so you can read the feedback against the artwork it was actually left on.

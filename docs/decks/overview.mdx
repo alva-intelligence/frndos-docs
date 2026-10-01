@@ -8,7 +8,7 @@ sidebar_position: 1
 
 A **deck** in frndOS is a presentation you build inside the app: slides on a canvas, a Story view for writing the narrative, an AI assistant beside you, and export to PowerPoint or PDF when you're done.
 
-Decks live in your Library alongside Key Visuals and reports, and can be filed into a project so the rest of your team finds them in context.
+Decks live in Files alongside Key Visuals and reports, and can be filed into a project so the rest of your team finds them in context.
 
 > **Beta feature:** the deck editor is gated by the `decking-phase-a` flag. If deck creation isn't available in your workspace yet, it's still rolling out.
 
@@ -24,13 +24,13 @@ There are four entry points, and they all land in the same editor:
 | Entry point | Where | What it makes |
 |---|---|---|
 | **Create menu → Presentation Deck** | The **+** button in the sidebar footer | Opens the **New deck** chooser |
-| **Library → New file → Deck** | [Library](../library/overview) | Opens the same **New deck** chooser |
+| **Files → New → Presentation Deck** | [Files](../library/overview) | Opens the same **New deck** chooser |
 | **New file** | Inside a [project room](../projects/project-rooms) | A deck titled **Untitled deck**, filed into that project |
 | **Handoff → Quick deck** | From project work | A deck scaffolded from existing work |
 
 ### The New deck chooser
 
-Both the sidebar Create menu and the Library open a chooser titled **New deck**, described as _"Start blank, bring in a PowerPoint or PDF, or pick a published template."_
+Both the sidebar Create menu and Files open a chooser titled **New deck**, described as _"Start blank, bring in a PowerPoint or PDF, or pick a published template."_
 
 | Tile | What it does |
 |---|---|
@@ -38,7 +38,7 @@ Both the sidebar Create menu and the Library open a chooser titled **New deck**,
 | **Import a file** | Turns a `.pptx` or `.pdf` into a new deck — see [Importing a PowerPoint or PDF](./importing-a-deck) |
 | **A published template** | Creates a deck pre-loaded with that template's slides |
 
-> **Heads-up:** when you open the chooser from the Library or the sidebar while a brand is active, the new deck is filed under that brand automatically.
+> **Heads-up:** when you open the chooser from Files or the sidebar while a brand is active, the new deck is filed under that brand automatically.
 
 ## The Editor at a Glance
 
@@ -176,7 +176,9 @@ When a deck is approved, the meta line under the title reads **approved** in gre
 
 **Share** and **Export** in the top bar open the same dialog, **Share & export deck**, on different tabs.
 
-**Share** offers a **View-only preview link** — click **Enable link**, then **Copy**. **Disable** turns the link off again.
+**Share** lists the deck's links. Create one with an optional label and an expiry (**Never**, **1 day**, **7 days**, **30 days**), then click **Create**. Each row has a copy button, and the **✕** revokes it after you confirm. A revoked link stops working for everyone and can't be turned back on.
+
+To send the deck to a client for a decision, use **Request approval** in the same tab (see [Client Approvals](../collaboration/client-approvals)). It appears once client approvals are turned on for the workspace; until then the tab shows **Comment access** as coming soon.
 
 **Export** offers:
 
@@ -187,7 +189,7 @@ When a deck is approved, the meta line under the title reads **approved** in gre
 | **Google Slides** | Marked **Soon** — not available yet |
 | **Canva** | Marked **Soon** — not available yet |
 
-> **Heads-up:** **Comment access** and **Edit access** appear in the Share tab labelled **Phase B** — guest comments and per-link roles aren't live yet.
+> **Heads-up:** **Edit access** (inviting people outside the workspace to edit) is shown as coming soon.
 
 ## Presenting
 
@@ -198,7 +200,7 @@ See [Presenting a Deck](./presenting) for the full set of controls.
 ## FAQ
 
 **Q: Where do my decks show up afterwards?**
-In the [Library](../library/overview), with **Deck** as the file kind. A deck created inside a project also appears in that project's **Files** section.
+In [Files](../library/overview), under the **Decks** chip. A deck created inside a project also appears in that project's **Files** section.
 
 **Q: Can someone without a frndOS account see my deck?**
 Yes — enable the **View-only preview link** in the Share tab and send that URL. It's view-only.
@@ -238,6 +240,6 @@ Both are listed with a **Soon** badge and are disabled. PowerPoint and PDF work 
 ## Related Articles
 
 - [Brand Deck Templates](../brand-setup/deck-templates)
-- [Library Overview](../library/overview)
+- [Files](../library/overview)
 - [Project Rooms](../projects/project-rooms)
 - [Collaboration Overview](../collaboration/overview)

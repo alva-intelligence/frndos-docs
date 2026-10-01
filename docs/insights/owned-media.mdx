@@ -35,8 +35,8 @@ You define attributes once, then apply them to posts.
 ### Step 1 — Open Attribute Settings
 
 1. Navigate to **Insights → Owned Media**
-2. Go to the **Tagging** section (or post table view)
-3. Find **Attributes → Add New Attribute**
+2. Click **Label Posts** above the **Content Posts** table
+3. Open **Attribute Settings** and click **Add new attribute**
 
 ### Step 2 — Configure the Attribute
 
@@ -46,7 +46,7 @@ Set up the new attribute:
 |---|---|
 | **Name** | The label name (e.g., "Pillar", "Campaign", "Objective") |
 | **Default Value** | Optional starting value applied to new posts |
-| **Type** | `Single Select` (with defined options) or `Text` (free-form) |
+| **Type** | `Single Select` or `Multi Select` (with defined options), or `Text` (free-form) |
 
 For **Single Select**, define the available options:
 - *Pillar 1, Pillar 2, Pillar 3* — values users can pick from
@@ -68,7 +68,7 @@ The Owned Media post table includes these standard metric columns:
 | **Sentiment** | Majority sentiment (positive/neutral/negative) with count tooltip | See [Sentiment Analysis](./sentiment-analysis) |
 | **Content Format** | Post format (Reels, Story, Carousel, Static Image, Video) | New — filter and group by format to compare, say, Reels against Carousels |
 | **Impressions** | Total impressions | |
-| **Reach** | Unique accounts reached | |
+| **Reach** | Unique accounts reached | Facebook and YouTube don't report it and show "—" (see [Reach on Facebook and YouTube](#reach-on-facebook-and-youtube)) |
 | **Likes** | Total likes | |
 | **Comments** | Total comments | |
 | **Shares** | Total shares | |
@@ -105,6 +105,20 @@ More columns sit after **Saves**. Most are platform-specific, and a dash means *
 > **A rate only appears where it applies.** A post with no video shows a dash for **3s VTR**, not `0.0%` — claiming none of its impressions became a 3-second view would be a measurement of a video that doesn't exist.
 
 > **Engagement totals include saves.** ER is calculated from the platform's own engagement figure rather than adding up likes + comments + shares, because that sum leaves saves out — and on Instagram saves are often the largest component. Totals that previously read as zero on content lists now display correctly.
+
+### Reach on Facebook and YouTube
+
+Facebook and YouTube don't report reach per post. Their rows used to show a reach of `0`, which read as a real result. They now show `—`, like any other metric a platform doesn't measure.
+
+In the post table, **ER (%)** is worked out against reach, so it also shows `—` on those rows.
+
+Brand-level reach numbers count only the platforms that do report reach:
+
+* **Total Reach** and the reach rate leave Facebook and YouTube out
+* For Facebook and YouTube, the **Avg. Reach Per Post** figure and the **Reach** row in the platform metrics are left out rather than shown as zero
+* A brand whose only owned accounts are Facebook or YouTube shows `—` for **Total Reach**
+
+> **Heads-up:** this can move your brand's Total Reach. If a brand used to count Facebook "reach", its total now leaves that out, because that number was never a reach measurement.
 
 ### Totals rows are recomputed, not averaged
 
@@ -203,30 +217,43 @@ The button is unavailable in two situations, and the tooltip says which: **All p
 
 ## Applying Tags to Posts
 
+Click **Label Posts** above the **Content Posts** table. Labelling opens full screen over the page, titled **Label Posts**, so you can label without leaving the dashboard.
+
+The header counts what's left: _"Total N posts · X need labels"_, or **All labelled** once every post is done. A post counts as done when every label switched on in your attribute settings is filled (Content Format doesn't count). A partly labelled post shows an **N out of M** pill.
+
+Pick which **Owned accounts** to label at the top, switch between table and grid view, and use the search to find a post by name, tag or caption.
+
 ### Method 1 — Tag Individually
 
-1. Open the post row in the table
-2. Click the attribute cell
-3. Select or type the value
+1. Click the attribute cell on the post's row
+2. Select or type the value
+
+Click a post to open its details: its **Performance Details** and a **Tagging** panel where you can set every label in one place.
 
 ### Method 2 — Bulk Tag
 
 For tagging many posts at once:
 
-1. Select multiple posts using checkboxes
-2. Choose **Bulk Tag** (or similar action)
-3. Select the attribute and value to apply
-4. Confirm
+1. Select posts with their checkboxes (**Select all (N)** takes every post)
+2. In the bar that appears, pick the attribute and value to apply
+3. Confirm. A toast says how many posts were labelled
+
+> **Heads-up:** **Label Posts** needs write access to Owned Media. It's rolling out, so if the button isn't there yet, labelling isn't on for your workspace.
 
 Example: Select all posts from August, bulk-tag them with `Campaign = Summer Launch`.
 
 ## Filtering by Tags
 
-Once posts are tagged, the **Labels** pill in the Owned Media header is how you narrow the numbers to the posts you mean. It opens a rule builder rather than a flat checklist, so you can combine conditions.
+Once posts are tagged, the **Filters** button in the Owned Media header is how you narrow the numbers to the posts you mean. It replaces the separate **Owned accounts** and **Labels** pills: both now live in one panel, laid out like the Paid Media filters.
 
-As you build, the panel previews how many posts the rules match before you commit. You'll see **Counting matching posts…** while it works, and it starts from _"Add a rule to preview how many posts match"_.
+The panel has two sections:
 
-**Apply** puts the filter on, **Clear** takes it off.
+* **Accounts** — which connected owned accounts the page reads. Shows **All accounts** until you narrow it.
+* **Labels** — a rule builder rather than a flat checklist, so you can combine conditions. Hidden if you only have view access.
+
+As you build, the panel previews how many posts the rules match before you commit, reading `N of M posts match`. You'll see **Counting matching posts…** while it works, and it starts from _"Add a label filter to preview how many posts match"_. The count already uses the accounts you've picked in the same panel.
+
+Nothing changes on the page until you click **Apply**. The button shows how many changes are waiting, for example **Apply (2)**. **Clear** resets both accounts and labels. When filters are on, the **Filters** button shows how many.
 
 > **An unfinished rule isn't applied.** If a rule is missing a value the panel says so, reading **Finish 1 rule to apply**, so a half-written condition can't silently change your numbers.
 
@@ -281,6 +308,12 @@ See: [Creating & Managing Campaigns in Insights](./campaigns)
 **Q: Why is a metric column all dashes for my brand?**
 That platform doesn't report it. Several columns are Instagram-only, one is Facebook-only, and Completion Rate is TikTok-only — a brand without those accounts sees dashes, which is correct rather than broken.
 
+**Q: Why does Reach show a dash on my Facebook and YouTube posts?**
+Those platforms don't report reach per post. A dash means "not measured". The `0` they used to show was not a real reach figure.
+
+**Q: Our Total Reach dropped.**
+It now counts only platforms that report reach, such as Instagram and TikTok. Facebook and YouTube are left out instead of adding a number that wasn't reach.
+
 **Q: Is a dash the same as zero?**
 No. A dash means the platform didn't measure it. A zero would be a claim that the thing was measured and came out at nothing.
 
@@ -319,6 +352,9 @@ Check their objectives. An awareness playbook and a conversion playbook weigh di
 
 **Q: A metric is in the comparison table but not in the weights panel.**
 It's shown for context and had no effect on the ranking. The weights panel is the definitive list of what counted.
+
+**Q: Where did the Owned accounts and Labels pills go?**
+They're combined into one **Filters** button in the Owned Media header. Open it to pick accounts and build label rules together, then click **Apply**.
 
 **Q: What's the difference between Attributes and Tags?**
 - **Attribute** = the label category (e.g., "Campaign")

@@ -65,6 +65,20 @@ In **Auto-detect (AI)**, your own custom attributes are still yours to direct: e
 
 > **Heads-up:** in Auto-detect mode the AI owns the standard fields such as name, email and phone. If you want to set those by hand, use **Map manually**.
 
+### Columns that can mean more than one thing
+
+Some columns, usually a shop or store name, could be where a person works, a shop they own, or a shop they buy from. Instead of guessing, **Map & label** asks above the column table, for example **1 column needs an answer**: _"Some columns can mean more than one thing. Your answer decides whether a shop name may be used as Company — skip it and Company stays empty."_
+
+| Answer | What it does |
+|---|---|
+| **A shop they own** | Fills Company and sets Job level to Owner |
+| **Where they work** | Fills Company; leaves Job level empty |
+| **A shop they buy from** | Fills nothing — a buyer, not a worker |
+
+Once answered, the block shrinks to **Column meanings set**, with **Change** beside each column.
+
+Skipping is allowed, but it's a deliberate choice. **Review & enrich** lists the unanswered columns and says Company stays empty for those rows, and that this can't be changed after the import. The last button then reads **Add without answering**.
+
 > **Every import stays filterable.** The app keeps which import each person arrived in, so a single upload can be found again later on the People tab.
 
 ## Enriching Profiles
@@ -77,21 +91,38 @@ Open **Settings** on Overview or People, then the **Enrichment** pane. It shows:
 - The price, as _"N credits per row"_
 - **Run enrichment**, disabled while a run is going or when there's nobody left to enrich
 - A live **Run in progress** bar counting completed against sampled
-- **Recent runs**, each with its date, how many were sampled, and how many enriched versus errored
+- **Recent runs**, each with its date, how many were sampled, how many enriched versus errored, and the **Quality** it ran at
 
 If nothing has run yet, the list says _"No runs yet. The first run appears here once it starts."_
 
 > **Enrichment samples rather than doing everyone.** You pick how many to process, which is what keeps a large import from spending the whole credit balance in one go.
 
+### Enrichment quality
+
+Each brand chooses how thoroughly its people are enriched, in **Audience Settings → Enrichment Quality**: _"Higher quality finds more of the hard cases and costs more per person; lower quality is faster and cheaper."_
+
+| Quality | What you get |
+|---|---|
+| **High** — Best accuracy | _"Strongest results on names, social accounts and sentiment. Use this when the list matters more than the spend."_ |
+| **Low** — Faster and cheaper | _"Costs less per person, with slightly lower accuracy on hard-to-find people. Good for large or exploratory lists."_ |
+
+Each option shows its price per person. The price in **Add people** and the Enrichment pane follows the brand's quality.
+
+A change applies to the next run: _"A run already in progress finishes at the quality it started with."_ Only a workspace owner or admin can change it.
+
+A person's details panel shows which quality enriched them, in **Details** and in **Activity**.
+
 ## Audience Settings
 
-The **Settings** button opens **Audience Settings**, which has three panes:
+The **Settings** button opens **Audience Settings**, which has five panes:
 
 | Pane | What's in it |
 |---|---|
 | **Connections** | Which accounts are linked |
 | **Sources** | The import history — where your people came from |
 | **Enrichment** | Enrichment runs and their credit cost |
+| **Enrichment Quality** | High or Low quality for this brand (see [Enrichment quality](#enrichment-quality)) |
+| **Notifications** | Whether you're told when this brand's audience changes (see [Audience Overview](./overview#following-a-brands-audience)) |
 
 It opens on **Sources** by default. The old `/audience/sources` address and the legacy Integrations tab both land here.
 
@@ -111,6 +142,12 @@ Either. **Auto-detect (AI)** reads the headers and resolves the standard fields 
 
 **Q: My import won't continue past the mapping step.**
 An import needs at least one way to recognise a person: an email, a phone number or a handle. Map one of those and it will continue.
+
+**Q: A shop column came in empty.**
+The import asked what that column meant and it was left unanswered, so Company stays empty for those rows. Answer the question on **Map & label** next time you import.
+
+**Q: Which enrichment quality should I use?**
+**High** when accuracy on the list matters most; **Low** for large or exploratory lists where cost matters more. You can switch per brand; the next run uses the new setting.
 
 **Q: Can I import without spending credits?**
 Yes. On **Review & enrich**, choose to enrich later. The people come in and you can run enrichment whenever you want.

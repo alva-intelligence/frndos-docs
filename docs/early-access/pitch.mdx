@@ -96,6 +96,20 @@ Each card has an inline **✨ Ask-AI** affordance to refine it.
 
 When the frame and plan look right, click **Confirm & Start**. This locks in the setup and builds the runner.
 
+### What the brief requires
+
+The brief card lists **What the brief requires**: every do, don't, named asset, KPI, date and deliverable the decoder found, one row each, with the page it came from. Fix a row, add one, or **Remove** it here. Every step is checked against this list.
+
+Each step then shows a **Brief check** card: how many of these it meets, with **Missed**, **Partial** and **Conflict** rows at the top.
+
+### The brand look
+
+While the brief decodes, frndOS also reads the brand's look from it: its colours, fonts, logo, pack shots and tone. A card shows it before any step runs, so a wrong colour is fixed once rather than in every render. A low-confidence read says **Please check this look** and isn't applied until you click **Looks right** or edit it. If nothing could be read, the pitch uses the frndOS look until you set one.
+
+After setup, the **Brand look** chip beside the pitch title opens the **Brand look** panel from any step. **Where the look comes from** switches between **From brief**, **Brand IQ kit**, **frndOS** and **Custom**. You can edit the colours (each with a contrast check), the **Headline** and **Body** fonts, **Logo and pack shots** (up to six pack shots) and **Tone**.
+
+**What this changes** lists the impact before you leave: the working deck's slides are re-themed straight away, Master KV renders made with the previous look are flagged, and KV sketches are unaffected because they're monochrome.
+
 ---
 
 ## The Runner — Working Through Deliverables
@@ -115,6 +129,113 @@ After Confirm & Start, the pitch opens in the **runner** — a full-screen works
 | **Approved** | Done — click **Re-open** to revise or re-run |
 
 Some steps let you **Change agent** before running, swapping which agent handles that deliverable.
+
+> **Rolling out per workspace:** the step pages, decisions and pitch deck described below are being switched on workspace by workspace. If your steps still open on a sheet or board, they haven't reached your workspace yet.
+
+### Step pages
+
+Each step reads like a page in a magazine: a headline claim, a short standfirst, then chapters, with diagrams and charts where a section is easier to see than read. A **Contents** list beside the page follows where you are. Sources are listed once at the end, linked from an **N sources** line under the headline.
+
+The chips across the top, **Story so far**, show the pitch's approved decisions, then the step you're deciding now.
+
+Most steps also make slides. **Lands in your pitch deck** shows them under the page, and **Pitch deck · N** in the rail opens all of them.
+
+### Steps that are a decision
+
+Some steps produce options to choose from, not one answer. They open with a question and a radio card per option. The recommended one is selected first, and the selected option's detail is shown below.
+
+Picking a card is a draft. The step's **Approve** button names your pick (**Approve · your pick's name**) and locks it. To change your mind before then, click another card. After approval, the other options fold into a list such as **Routes considered (3)**; **Re-open** the step to change the decision.
+
+| Step | The question |
+|---|---|
+| **GWTB** | **Which proposition do we lock?** |
+| **Big Idea** | **Which direction do we take?** |
+| **Creative Platform** | The platforms to run the idea on |
+| **Master Key Visual** | Which master format to lock |
+| **Brand Architecture** | **Which portfolio model do we run with?** |
+| **Tagline** | **Which line do we run with?** |
+| **Brand Moodboard** | **Which look leads the board?** |
+
+### The Big Idea step
+
+**Big Idea** develops three or four distinct directions from the brief, or up to five when the brief or you ask for more.
+
+Each direction is a card with its idea, the truth it rests on, the brand's superpower, the mechanic, and its risks and confidence. **Compare** sets the directions side by side. The selected direction's walkthrough below covers:
+
+* **The idea** — the hook and the action line
+* **Why it works** — **Because** (the human truth), **Only we** (the brand's superpower), and the evidence with its sources
+* **How it lives** — across the brief's touchpoints
+* **Will it hold?** — confidence (**Early read**, **Fairly confident**, **Confident**) and each risk, with **Ask Copywriter to fix this**
+
+Each direction is also drawn as a short set of slides in your pitch deck: the idea, how it works, and the concept image. **Generate a look** draws the concept image when there isn't one yet. Click a slide, or **Present**, to page through them full screen.
+
+To change a direction, ask the step's agent in the chat; a new direction it suggests shows up as a dashed **Suggested** card with **Add** and **Dismiss**. Each step in the pitch now reads the brand's Brand IQ and the project's documents before it writes, so the directions stay on the brief and the brand.
+
+Big Idea used to fail now and then on a near-miss reply from the AI. It now generates reliably: a direction with one small flaw is repaired or trimmed instead of failing the whole step.
+
+### The Creative Platform step
+
+The step between **Big Idea** and the Master KV is called **Creative Platform**. It picks the device that makes the chosen idea show up everywhere: a set of platform options, each with a storyboard and touchpoints. It used to be called **KV Concepts**.
+
+The rename is applied to every existing pitch as well. If you had already given that step your own title, your title is kept.
+
+### What each step makes
+
+The default **Campaign Proposal** template runs these steps. Your pitch's plan decides which of them are in scope.
+
+**Intake**
+
+* **Brief Intake** and **Review Proposal Setup**: the decoded brief
+* **Proposal Plan** — the confirmed scope
+
+**Brand Platform · Verbal**
+
+* **Brand Research / Diagnostic** — brand context, current perception, category and culture findings, brand truths, distinctive assets, white space
+* **Brand Purpose Canvas** — **Our purpose**, the **Golden circle**, the purpose canvas and **How it shows up**
+* **Brand Positioning** — the target and competitive frame, **Single-minded proposition**, **Benefit ladder**, **Reasons to believe**
+* **Brand Architecture** — the portfolio model (a decision) and the portfolio tree
+* **Archetype & Voice** — the archetype, narrative role, voice register and lexicon (**Say** / **Avoid**), and **In practice**
+* **Brand Manifesto** — **The belief**, **The manifesto** and **Why it holds**
+* **Tagline** — the line (a decision) and **The proposition it ladders from**
+
+**Brand Platform · Visual**
+
+* **Brand Moodboard** — the lead look (a decision), its panels, and **Not this**
+* **Brand Kit** — **Palette**, **Typography**, **Logo and grid** and **Why this system**
+* **Master KV Concept** and **Master KV Design**: the brand's key visual
+* **Social Templates** — the template family, **Templates** and **House rules**
+
+**Brand Platform · Content**
+
+* **Content Strategy** — **Pillars** and **Cadence: hero, hub, hygiene**
+* **Channels & Roles** — the role of each channel and **Why this mix**
+* **Sample Content** — proof pieces as they'd look on each platform
+
+**Launch**
+
+* **Launch Portfolio** — the year's campaign roadmap
+* **Budget & KPI Framework** — **Budget allocation**, **KPI framework** and **Effectiveness**
+
+**Campaign**
+
+* **4C Research** — a research paper: the business mandate, **Competitive landscape**, personas observed, and the proposition. Highlight a passage to ask about it, or **Research this gap**
+* **GWTB (Strategic Statement)** — the route to lock (a decision), **The strategic frame** (**Get · Who · To · By**) and its **Pressure test**
+* **Big Idea** and **Creative Platform**: see above
+* **Master Key Visual** — **Art direction**, **Brand cues**, **Formats** (a decision) and **Must never**. **Render** draws a format
+* **Campaign System** — the campaign in agency terms: its phases on the client's calendar, the campaign elements in each phase (hero content, social, paid media, partners and talent, trade and sales), the activations, the consumer journey and each channel's role
+* **Content Production** — the production plan: pieces, hook bank, creator briefs and calendar
+* **Campaign KPI** — the objective, hypotheses, KPI baselines and targets, **Decision thresholds** and the **Budget split**
+
+## Making the Pitch Deck
+
+When the pitch has a working deck, the runner header offers **Make the pitch deck**. It asks one question first, **Client look or agency template?**:
+
+* **Client look** — _"The pitch kit look your working deck already wears."_
+* **Agency template** — _"Your workspace's own deck style."_
+
+The storyteller then turns the whole pitch into one story and builds the deck from it. The deck opens in a new tab, in Story view, where you build the slides from the story. You can switch the look later in the deck.
+
+Once the deck exists, the button reads **Open the pitch deck**. See [Writing the Story](../decks/story-view).
 
 **Top chrome** (always available):
 
@@ -152,6 +273,24 @@ Steps unlock as their dependencies complete. A **locked** step isn't actionable 
 
 **Q: Can I change which agent handles a step?**
 Yes — a ready step lets you **Change agent** before running it.
+
+**Q: Who can open a step's output?**
+The same people who can open the pitch. A step's output follows the access of the pitch's [project room](../projects/project-rooms#access) and its brand: you need access to the brand and to the room to view it, and **edit** access to the room to change or regenerate it. Opening the output from a direct link doesn't get around that.
+
+**Q: I picked a direction but the step isn't locked.**
+Picking a card is a draft. Click the step's **Approve** button, which names your pick, to lock it.
+
+**Q: How do I change a decision after approving?**
+**Re-open** the step, pick another card, and approve again.
+
+**Q: The pitch's colours are wrong.**
+Open the **Brand look** chip beside the pitch title and fix them there. The working deck re-themes straight away.
+
+**Q: Big Idea failed for me before. Do I need to do anything?**
+No. Run the step again; it now generates reliably and stays on the brief.
+
+**Q: Where did the KV Concepts step go?**
+It's now called **Creative Platform**. Same step, same place in the pitch, new name. A step you renamed yourself keeps the name you gave it.
 
 ---
 

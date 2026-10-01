@@ -1,37 +1,48 @@
 ---
 title: Resizing Visuals for Different Platforms
 sidebar_position: 7
-description: Adapt a single Key Visual to multiple platform sizes and aspect ratios in one step using Resize Mode.
+description: Adapt one Key Visual to many platform sizes right on the Craft canvas. Every size sits under its board in the Resizes strip.
 ---
 
 # Resizing Visuals for Different Platforms
 
-The **Resizer** lets you take a single visual — generated in KV Generator or uploaded directly — and adapt it across multiple platform sizes and aspect ratios, without redoing the work from scratch.
+**Resizing** takes a finished board, generated in KV Generator or uploaded, and adapts it across platform sizes and aspect ratios without redoing the work from scratch.
 
-## When to Use the Resizer
+Resizes live on the **Craft canvas** itself. Every size you make sits in a **Resizes** strip directly under the board it came from, so the canvas shows the original and all of its sizes in one place.
 
-Use the Resizer when:
+> **The Resize tab is gone.** Earlier versions had a separate **Resize** tab in the top nav. Resizing now happens on the Craft canvas, the top nav switches between **Concept** and **Craft**, and Motion keeps its own button in the bottom toolbar. A file last saved in the old tab now opens in Craft.
+
+## When to Use Resizing
+
+Resize when:
 - Your KV (or any image you have) is **approved** and ready for delivery
 - You need to deploy across **multiple platforms** (Instagram, TikTok, banners, etc.)
 - You want consistent visual identity across all sizes
 
-Don't use the Resizer for major concept changes — those belong in the [KV Generator](./kv-generator) refine step.
+Don't resize for major concept changes. Those belong in the [KV Generator](./kv-generator) refine step.
 
 ## Before You Start
 
 You need:
-- A finalized KV from the KV Generator (in Craft mode) **or** your own image uploaded into Craft mode — see [Creating Your First Key Visual](./kv-generator)
+- A finalized KV on the Craft canvas **or** your own image uploaded into Craft mode (see [Creating Your First Key Visual](./kv-generator))
 - Knowledge of which platforms/sizes you're targeting
 
 ## How to Resize
 
-### Step 1 — Open Resize Mode
+### Step 1 — Open Size Options
 
-Switch to the **Resize** tab in the top nav. The canvas switches to a vertical list view showing your source image and any completed resize tiles below it.
+Two ways in, both on the Craft canvas:
 
-### Step 2 — Select Platforms from the Platform Panel
+* **Resize button** — in the bottom toolbar, next to the drawing tools. It opens the size picker for the board you're on.
+* **Send to Resize** — right-click a board and pick it from the board menu. This pins that exact board and opens the picker.
 
-A **Platform** panel appears on the left side of the canvas. Platforms are grouped into three collapsible sections:
+The picker is a floating panel titled **Size Options**, at the bottom left of the canvas.
+
+> **Pick a board first.** If no Craft board is targeted, the panel says _"Select a board on this canvas to resize it."_ Concept boards can't be resized; promote one to Craft first.
+
+### Step 2 — Select Sizes
+
+Sizes are grouped into three collapsible sections:
 
 | Group | Default state |
 |-------|---------------|
@@ -39,93 +50,129 @@ A **Platform** panel appears on the left side of the canvas. Platforms are group
 | **Print** | Collapsed |
 | **Digital** | Collapsed |
 
-Click any platform row to toggle it. Each row shows the platform name and its pixel dimensions. The **Start Resizing** button at the bottom of the panel updates with the count and estimated credit cost as you select:
+Use **Search sizes** at the top of the panel to filter by name; matching groups open on their own. Click any size row to toggle it. Each row shows the size name and its pixel dimensions. The button at the bottom updates with the count and estimated credit cost as you select:
 
 > `Resize · N selected · ~X credits`
 
 #### Adding a custom size
 
-If the size you need isn't in the list, add it yourself. Below the platform groups, enter a **Width** and a **Height**, then click **Add**.
+If the size you need isn't in the list, add it yourself under **Custom**. Enter a **Width** and a **Height**, then click **Add**.
 
 Both sides must be whole numbers between **64** and **8192**. If one isn't, the panel names the offending axis rather than just refusing:
 
 > **Width must be a whole number between 64 and 8192.**
 
-Adding a size you already have says so too — **1080 × 1350 is already added.**
+Adding a size you already have says so too: **1080 × 1350 is already added.**
 
-> **Heads-up:** custom sizes are only available for KVs **composed from layers** — a [PSD import](./kv-generator#import-psd-files) or Magic Layers. For an AI-generated KV the panel says so instead:
+> **Heads-up:** custom sizes are only available for KVs **composed from layers**, meaning a [PSD import](./kv-generator#import-psd-files) or Magic Layers. For an AI-generated KV the panel says so instead:
 >
 > _"Custom sizes are only available for KVs composed from layers (PSD import or Magic Layers)."_
 >
-> The reason is cost and quality: resizing a generated KV goes back through the image model, where an arbitrary size spends credits and degrades at extreme ratios. A layered KV is re-laid out directly, so any size is safe.
+> The reason is cost and quality. Resizing a generated KV goes back through the image model, where an arbitrary size spends credits and degrades at extreme ratios. A layered KV is re-laid out directly, so any size is safe.
 
-### Step 3 — (Optional) Add Resize Instructions
+#### What a resize costs
 
-Below the platform list, a **text area** lets you add a prompt that applies to the entire batch:
+A layered KV has a **fixed price per size**, and the button shows the total before you start. If you can't cover it, the button is disabled and the panel says _"Not enough credits — top up to resize this board."_ An AI-generated KV shows an estimate instead (`~X credits`).
+
+### Step 3 — (Optional) Add Instructions
+
+Under **Additional Instructions**, a text area lets you add a prompt that applies to the entire batch:
 
 > **Placeholder:** _Any specific instructions? (Optional)_
 
-Use this to guide the AI on how to handle the adaptation — for example: _"keep the logo in the top-right and preserve all text"_ or _"extend the sky at the top"_. The instruction is sent alongside every platform in this batch. Maximum 1000 characters.
+Use this to guide the AI on how to handle the adaptation. For example: _"keep the logo in the top-right and preserve all text"_ or _"extend the sky at the top"_. The instruction is sent alongside every size in this batch. Maximum 1000 characters.
 
 If you leave it empty, the AI adapts freely from the source image.
 
 ### Step 4 — Generate
 
-Click **Start Resizing** to kick off the batch. Each selected platform generates independently:
+Click **Start Resizing** (it reads `Resize · N selected` once you've picked sizes) to kick off the batch. Each selected size generates independently:
 
 | Row state | What you see |
 |-----------|-------------|
-| **Queued** | Checkbox checked — will run when you click Start Resizing |
+| **Queued** | Checkbox checked; it will run when you start resizing |
 | **In progress** | Spinner + **Cancel** button |
-| **Done** | Green check — click the row to jump to that tile on the canvas |
-| **Failed** | Red warning icon — click the row to retry immediately; or click **Discard** to remove it |
+| **Done** | Green check; click the row to jump to that tile on the canvas |
+| **Failed** | Red warning icon; click the row to retry, or **Discard** to remove it |
 
-> **Note:** Resize uses a fixed model — no model picker. Just describe what you want and let the AI handle the adaptation.
-
-When a tile is done, a **download** option appears in its tile toolbar on the canvas so you can export that size individually.
+> **Note:** resizing uses a fixed model, so there's no model picker. Just describe what you want and let the AI handle the adaptation.
 
 ---
 
-## Refining a Specific Tile (Per-Tile Regenerate)
+## The Resizes Strip
 
-After a tile is done, you can regenerate it with a new prompt — without touching the other tiles.
+Finished sizes appear below the Craft boards, under a divider labelled **Resizes**. Each board's sizes hang in a column directly under that board, so you can tell which board a tile belongs to from where it sits. Move a board and its column follows.
 
-1. Hover over a completed tile on the canvas — a toolbar appears with action buttons
-2. Click the **Regenerate** button (circular arrows icon, `⟳`) to arm that tile
-3. A chip appears in the chat composer showing the platform name, dimensions, and a thumbnail of the current result
-4. Type your instruction in the chat input and press **Enter** (or click **Send**)
-5. The AI regenerates that tile from the source image, applying your new instruction
+While a size is rendering, its tile shows a skeleton with a **Cancel** button. A failed tile offers **Retry** and **Discard**.
 
-To cancel without regenerating: click **✕** on the chip in the chat composer (or the same Regenerate button again — it toggles).
+### Tile header
 
-> **Example:** After resizing to Stories 9:16, you notice the product is cropped. Click ⟳ on that tile → type _"ensure the full product is visible, don't crop the packaging"_ → Send.
+Above each tile, on the right, are up to three icons:
 
-> **Note:** The chat input in Resize mode does not go to an AI agent — it fires a direct regenerate call on the selected tile. Attachments and model selection are not available in this mode.
+| Icon | What it does |
+|---|---|
+| **Version history** (clock) | Opens this tile's version history. Shown once the tile has a recorded version |
+| **Reset to master** (counter-clockwise arrow) | Drops this tile's own adjustments so it follows its board again. Shown only on a tile you've adjusted |
+| **Download** | Downloads the tile. The menu offers **Tile size**, plus **2K** and **4K** upscales with their price (or **Free** when the tile is already that big) |
+
+> **Upscales are off for layered KVs.** On a board composed from layers, the 2K and 4K rows are disabled.
+
+### Right-click a tile
+
+| Action | What it does |
+|---|---|
+| **Regenerate…** | Makes this tile the chat's target, so your next message regenerates it |
+| **Version history** | Same as the clock icon |
+| **Duplicate** | Makes a copy of this size beside it |
+| **Push master to all tiles…** | Resets every tile of this board to the board's layout (see below) |
+| **Mark ready to share** | Includes the tile in client share links (reads **Remove from share** once marked). See [Sharing a Key Visual With a Client](./sharing-with-clients) |
+| **Separate layers** | Splits a flat tile into editable layers |
+
+**Separate layers** needs both sides of the tile to be at least 512px. On a smaller size the item stays in the menu but is disabled, and hovering it explains why: _"This size is too small to separate — both sides need to be at least 512px."_
+
+**Regenerate…** isn't offered on a tile whose board is composed from layers, since the model can't redraw it.
+
+---
+
+## Refining a Specific Tile (Regenerate)
+
+After a tile is done, you can regenerate it with a new prompt without touching the other tiles.
+
+1. Click the tile (or right-click it → **Regenerate…**). Selecting a tile makes it the chat's target
+2. A chip appears above the chat composer with the size name, its dimensions, and a thumbnail of the current result
+3. Type your instruction and press **Enter** (or click **Send**)
+4. The AI regenerates that tile from the source image, applying your new instruction
+
+To drop the target without regenerating, click **✕** on the chip, or click an empty spot on the canvas (unless you've drawn frames on that tile).
+
+> **Example:** after resizing to Stories 9:16, you notice the product is cropped. Select that tile, type _"ensure the full product is visible, don't crop the packaging"_, and send.
+
+> **Note:** while a tile is the target, the chat doesn't go to an AI agent. It fires a direct regenerate on that tile, so attachments and model selection aren't available.
+
+A tile keeps its current image while a new render is in progress. If you cancel, or the render fails, the tile stays on its last version instead of disappearing.
 
 ---
 
 ## Editing Part of a Tile (Region Edit)
 
-Sometimes a whole regenerate is too blunt — the tile is right except for one thing. **Region edit** lets you draw a box on a tile and prompt an AI edit of just that area.
-
-> **Rolling out gradually:** region editing on Resize tiles is enabled per workspace. If the frame tool isn't offered on a tile, it hasn't reached you yet — see [Turning On Experimental Features](../settings/experimental-features).
+Sometimes a whole regenerate is too blunt: the tile is right except for one thing. **Region edit** lets you draw a box on a tile and prompt an AI edit of just that area.
 
 ### Draw a frame
 
-Pick the **frame** tool and drag a box over the part of the tile you want changed. A pill appears under the frame with two ways forward:
+Pick the **Frame** tool and drag a box over the part of the tile you want changed. A pill appears under the frame with two ways forward:
 
 | Choice | What it does |
 |---|---|
 | **Find objects** | Runs AI detection **inside that frame** and lists what it found, so you can target a real object instead of a rectangle |
-| **Edit this area** | Skips detection — the prompt applies to the rectangle exactly as drawn |
+| **Edit this area** | Skips detection. The prompt applies to the rectangle exactly as drawn |
 
 > **Detection is never automatic.** It's a paid model call, so drawing a frame stops at this choice rather than spending credits on its own.
 
 ### Picking an object
 
-**Find objects** lists what overlaps your frame, **smallest first** — the most specific match leads. Hover a row to outline it on the tile; click to select it. You can pick more than one, and the prompt then covers the group.
+**Find objects** lists what overlaps your frame, **smallest first**, so the most specific match leads. Hover a row to outline it on the tile; click to select it. You can pick more than one, and the prompt then covers the group.
 
-If the automatic pass missed what you meant, the list has a search box: _"Not listed? Describe it"_ — type what you're after in your own words and it re-queries the same frame.
+If the automatic pass missed what you meant, the list has a search box: _"Not listed? Describe it"_. Type what you're after in your own words and it re-queries the same frame.
 
 Found nothing at all? The frame reports **No object found here**, and your hand-drawn rectangle is still there to use with **Edit this area**.
 
@@ -141,31 +188,48 @@ The popover's placeholder tells you what it's aimed at:
 
 **Enter** saves, **Escape** backs out. The secondary action reads **Cancel** for a detected selection (it steps back to the object outlines) and **Delete** for a hand-drawn box (it removes the frame).
 
-> **Save stages, it doesn't generate.** You can set up several regions first — one send fires them all.
+> **Save stages, it doesn't generate.** You can set up several regions first, and one send from the chat fires them all.
+
+If you cancel a region edit while it renders, the chat says _"Region edit cancelled"_ and the tile stays on the version it had.
 
 ---
 
-## Editing the Original Row
+## Tile Version History
 
-The **Original** row at the top of the Resize surface isn't just a reference — you can edit it like any tile. Move a logo, fix a caption, adjust a shape, and the change flows down to every tile that hasn't been adjusted on its own.
+Every render of a tile is kept as a version: the first render, each regenerate, each region edit, separating layers, and each restore.
 
-> **Rolling out gradually:** the editable Original row is enabled per workspace. If your Original row is read-only, it hasn't reached you yet.
+Open it from the tile's clock icon or **Version history** in the tile menu. The panel is titled **Version History · [size name]** and lists entries such as **Created**, **Regenerated**, **Region edit**, **Separated layers**, and **Restored from vN**.
 
-A tile you've already adjusted keeps its own version — editing the Original never overwrites per-tile work.
+* **Preview** — click a version and only that tile shows it on the canvas. Close the panel to go back to the current one.
+* **Restore** — makes the selected version current again. It's added as a new **Restored from vN** entry, so nothing is lost. The tile's layers are left as they are.
+
+Restore is disabled while the tile is still rendering: _"This tile is still rendering — restore when it finishes."_
+
+---
+
+## Editing the Board and Its Tiles
+
+The board above the strip is the **master** for its tiles. Edit a layer on the board (move a logo, fix a caption, adjust a shape) and the change flows down to every tile that hasn't been adjusted on its own.
+
+You can also select a tile and edit its layers directly. That tile then keeps its own version, and editing the board never overwrites it. Use **Reset to master** on the tile header to make it follow the board again.
 
 ### Push to all tiles
 
-To force every tile back to the Original's layout, click **Push to all tiles** above the rows.
+To force every tile of a board back to the board's layout, right-click a tile → **Push master to all tiles…**.
 
 This is destructive, so it asks first. The dialog **Push master to all tiles?** tells you exactly what you're about to lose:
 
-> _"N tile(s) have their own adjustments. They'll be discarded and re-derived from the master. This can't be undone."_
+> _"N tile(s) under this board have their own adjustments. They'll be discarded and re-derived from the master. This can't be undone."_
 
-**Cancel** backs out; **Push to all tiles** confirms.
+**Cancel** backs out; **Push to all tiles** confirms. If some tiles couldn't be updated, a toast says _"Some tiles weren't updated"_ and invites you to try again.
 
-> **Heads-up:** this one genuinely can't be undone. Deleting a single overlay on the Original is an ordinary edit that Cmd+Z restores — clearing every tile's own adjustments in bulk is not.
+> **Heads-up:** this one genuinely can't be undone. Deleting a single layer on the board is an ordinary edit that Cmd+Z restores. Clearing every tile's own adjustments in bulk is not.
 
-> **Note:** the button is disabled when no tile has its own adjustments, because there'd be nothing to discard.
+### AI edits on a board that has resizes
+
+An AI edit to a board that already has sizes, whether from chat, a region edit, or Angles, does **not** replace that board. It lands as a **new variant** beside it ("Variant N"), with a copy of the board's layers. The original board and all of its sizes stay exactly as they were, so the sizes you already shipped are never orphaned.
+
+Before you send, frndOS warns you (under the composer, or as a toast for Angles): _"This board has resizes — the result will be added as a new variant."_ A board with no sizes still gets the edit as a new version, as before.
 
 ---
 
@@ -181,38 +245,44 @@ This is destructive, so it asks first. The dialog **Push master to all tiles?** 
 
 ## FAQ
 
-**Q: Does Resize Mode just crop, or does it intelligently adapt?**
-Resize Mode adapts the visual to the target dimensions — not a simple crop. Important elements stay visible and the composition remains balanced.
+**Q: Where did the Resize tab go?**
+It was retired. Resizes now live on the Craft canvas, under the board they came from. Open the picker with the **Resize** button in the bottom toolbar, or right-click a board → **Send to Resize**.
+
+**Q: Does resizing just crop, or does it intelligently adapt?**
+It adapts the visual to the target dimensions rather than cropping. Important elements stay visible and the composition remains balanced.
 
 **Q: Can I resize an externally-made image?**
-Yes. In Craft mode, use **Upload Image** to bring in any image you already have — no generation required. Once uploaded, it behaves like a generated KV, so you can send it straight to Resize Mode.
+Yes. In Craft mode, use **Upload Image** to bring in any image you already have, no generation required. Once uploaded it behaves like a generated KV, so you can resize it straight away.
 
 **Q: What's the difference between the batch instruction and the per-tile regenerate prompt?**
-The **batch instruction** (textarea in the Platform panel) applies to all selected platforms when you click Start Resizing — it guides the initial adaptation for the whole batch. The **per-tile prompt** (via the ⟳ button on a done tile) regenerates just one tile with a new instruction, without touching the others. Use the batch instruction when you have a general rule for all sizes; use per-tile when a specific format needs an adjustment.
-
-**Q: Can I customize the resize per platform?**
-Yes. Use the per-tile regenerate (⟳ button) to refine any individual tile after the initial batch run. Each tile can be retried with different instructions independently.
+The **batch instruction** (under **Additional Instructions** in Size Options) applies to every size you start in that batch. The **per-tile prompt** (select a tile, then send from chat) regenerates just one tile, without touching the others.
 
 **Q: Can I set a fully custom size?**
-Yes, for a KV composed from layers (a PSD import or Magic Layers) — enter a **Width** and **Height** in the Platform panel and click **Add**. Both sides must be whole numbers between 64 and 8192. For an AI-generated KV the option isn't offered, because that path re-runs the image model where an arbitrary size costs credits and degrades at extreme ratios.
+Yes, for a KV composed from layers (a PSD import or Magic Layers). Enter a **Width** and **Height** under **Custom** and click **Add**. Both sides must be whole numbers between 64 and 8192. For an AI-generated KV the option isn't offered, because that path re-runs the image model where an arbitrary size costs credits and degrades at extreme ratios.
 
 **Q: Why is the custom size field greyed out?**
 The KV you're resizing was generated by AI rather than composed from layers. Import a PSD or use Magic Layers to get a layered KV, and the field becomes available.
 
 **Q: What platforms are supported?**
-Common social and ad platform dimensions are pre-configured under Social Media, Print, and Digital groups. Check inside Resize Mode for the current list. Print-specific specifications (e.g., CMYK, print-ready output) are not part of the current social-media-focused resize flow.
+Common social and ad platform dimensions are pre-configured under Social Media, Print, and Digital. Check **Size Options** for the current list, or use **Search sizes**.
+
+**Q: I edited my board with AI and got a new board instead.**
+That's on purpose. The board already had sizes, so the edit landed as a new variant beside it and your existing sizes stayed intact.
+
+**Q: My regenerate failed. Did I lose the tile?**
+No. A failed or cancelled render keeps the tile's last version. Retry it, or open **Version history** to pick an earlier one.
 
 **Q: What's the difference between a region edit and regenerating the tile?**
-A **regenerate** (⟳) redraws the whole tile from the source with a new instruction. A **region edit** repaints only the area inside the frame you drew and leaves the rest of the tile alone. Use region edit when the tile is nearly right.
+A **regenerate** redraws the whole tile from the source with a new instruction. A **region edit** repaints only the area inside the frame you drew and leaves the rest of the tile alone. Use region edit when the tile is nearly right.
 
 **Q: I drew a frame and nothing was detected.**
-The frame says **No object found here**. Your rectangle still stands — use **Edit this area** to prompt against the area itself, or try the _"Not listed? Describe it"_ search with your own wording.
+The frame says **No object found here**. Your rectangle still stands, so use **Edit this area** to prompt against the area itself, or try the _"Not listed? Describe it"_ search with your own wording.
 
 **Q: Can I edit several regions in one go?**
 Yes. Saving a region prompt stages it; set up as many as you need and one send fires them together.
 
 **Q: Can I download just one resized tile?**
-Yes. Once a tile is done, hover over it on the canvas — a download button appears in its toolbar so you can export that size individually. To download all tiles at once, use the **Download All** option in the canvas toolbar.
+Yes. Use the **Download** icon in that tile's header and pick **Tile size**, or a 2K / 4K upscale.
 
 ---
 
@@ -220,4 +290,5 @@ Yes. Once a tile is done, hover over it on the canvas — a download button appe
 
 - [Creating Your First Key Visual](./kv-generator)
 - [Craft Mode — Refining with the Crafter Agent](./craft-mode)
+- [Sharing a Key Visual With a Client](./sharing-with-clients)
 - [Studio Overview](./overview)

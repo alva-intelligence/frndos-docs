@@ -273,7 +273,7 @@ Both are disabled while the camera is still neutral, since there'd be nothing to
 
 When the **Layers panel** is open, a **Transform** panel appears anchored to the **bottom-right corner** of the canvas. It lets you read and edit an overlay's exact position, size, and rotation numerically — without guessing from the canvas.
 
-> **Available in:** Concept, Craft, and Motion modes. Hidden during Resize mode (Resize has its own per-tile transform controls) and when Version History is open.
+> **Available in:** Concept, Craft, and Motion modes, including a layer you've selected on a resize tile. Hidden when Version History is open.
 
 ### Opening the Transform Panel
 
@@ -369,7 +369,7 @@ Click the **Layers** icon (Stack icon, bottom-left of the bottom nav) to open th
 X and Y show the top-left corner of the overlay's **rotated bounding box** — the same coordinate convention used by Figma and Sketch. If you rotate an overlay, X/Y shift to track the new bounding box origin, not the pre-rotation corner.
 
 **Q: Why is the Transform panel hidden?**
-Two conditions hide it: (1) the Layers panel is closed, or (2) the Version History panel is open. In Resize mode the main Transform panel is also hidden — Resize has its own per-tile transform controls. Reopen the Layers panel to bring it back.
+Two conditions hide it: (1) the Layers panel is closed, or (2) the Version History panel is open. Reopen the Layers panel to bring it back.
 
 **Q: Can I lock the aspect ratio when resizing an overlay?**
 Yes. Click the **lock icon** between W and H in the Size section. While locked, changing W updates H automatically (and vice versa). The lock resets to off on page refresh — it is not saved between sessions.

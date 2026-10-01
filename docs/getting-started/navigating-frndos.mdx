@@ -12,7 +12,7 @@ frndOS navigation lives in a **left sidebar**. This is where you move between yo
 
 ## Two Sidebar States: Home vs. Inside a Brand
 
-This is the most important thing to understand about frndOS navigation: **the sidebar changes shape depending on whether you're at Home or inside a specific brand.** Pillars (Insights, Studio, Research, Audience, Growth) only appear once you've entered a brand. They're not available at the Home level.
+This is the most important thing to understand about frndOS navigation: **the sidebar changes shape depending on whether you're at Home or inside a specific brand.** Pillars (Insights, Research, Audience, Growth) only appear once you've entered a brand. They're not available at the Home level.
 
 ### Home Sidebar
 
@@ -21,17 +21,18 @@ When you log in, you land on **Home** with this sidebar:
 | Item | What It's For |
 |---|---|
 | **Home** | Your overview — all activity and files across the brands you have access to |
-| **Projects** | Your projects and [project rooms](../projects/project-rooms) |
-| **Files** | The files your team has made, scoped to your access — see [Library](../library/overview) |
-| **myFRND** _(beta)_ | Plugins, skills, and agents that extend AskFRND — see [myFRND](./myfrnd) |
+| **Tasks** _(beta)_ | Your tasks as a list or a board — see [Tasks](../workspace/tasks) |
+| **Files** | The files your team has made, scoped to your access — see [Files](../library/overview) |
+| **myFRND** | Plugins, skills, agents, and the tools AskFRND may use — see [myFRND](./myfrnd) |
 | **Workflows** _(beta)_ | The agent workflow builder |
 | **Search** | Find brands, files, projects, and pages across your workspace |
+| **Projects** | A section listing your recent projects and [project rooms](../projects/project-rooms); **See all** opens the Projects page |
 | **Brands** | A list of every brand you have access to — click one to enter it |
 | **Chat** | Your recent AskFrnd conversations not tied to any brand, plus **New Chat** |
 
-> **Note:** There are no pillars (Studio, Insights, etc.) visible at this level. To reach them, click into a brand from the **Brands** list.
+> **Note:** There are no pillars (Insights, Research, etc.) visible at this level. To reach them, click into a brand from the **Brands** list.
 
-> **Heads-up:** **myFRND** and **Workflows** only appear when the experimental Agents toggle is on for your workspace — see [Turning On Experimental Features](../settings/experimental-features). **Playground** is listed but not usable yet.
+> **Heads-up:** **Playground** is listed but not usable yet.
 
 ### Creating Something New
 
@@ -39,7 +40,7 @@ The sidebar footer carries a **New Chat** pill and a **+** button. The **+** ope
 
 | Row | Creates |
 |---|---|
-| **Key Visual** | A KV in [Studio](../studio/overview) |
+| **Key Visual** | A KV in the [KV Generator](../studio/kv-generator) |
 | **Presentation Deck** | A [deck](../decks/overview) |
 | **Campaign Report** | A report in Insights |
 | **Survey** | A [survey](../research/creating-a-general-survey) |
@@ -48,18 +49,24 @@ The sidebar footer carries a **New Chat** pill and a **+** button. The **+** ope
 
 Rows that need a brand ask you to pick one first.
 
+The **New** button on the Files page opens the same menu, without **Campaign Report** (it isn't a file) and with **Resize**, which opens a new [Resizer](../studio/resizer) canvas. It also offers **Import PowerPoint or PDF**.
+
 ### Brand Sidebar
 
 Once you click a brand under **Brands**, the entire sidebar transforms to that brand's context:
 
 | Item | What It's For |
 |---|---|
-| **Brand name + settings gear** | Replaces the frndOS logo at the top — confirms which brand is active |
-| **Back to Home** | Returns you to the Home sidebar |
-| **Pillars** (Insights, Studio, Research, Audience, plus Growth _coming soon_) | The brand's five pillars, always in that order. Only **Studio** expands into a tool list; the rest open a page whose own tabs sit in the bar at the top |
+| **Brand name** | Replaces the workspace name at the top and confirms which brand is active. Click it to switch brands; the gear beside it opens brand settings |
+| **Back to Workspace** | The link under the brand name; returns you to the Home sidebar |
+| **Home**, **Files**, **Brand IQ** | The brand's home, its files, and its [Brand IQ](../brand-setup/brand-iq) (with a completeness ring) |
+| **Pillars** (Insights, Research, Audience, plus Growth _coming soon_) | The brand's pillars, always in that order. Each opens a page whose own tabs sit in the bar at the top |
+| **Projects** | This brand's projects; **See all** opens them |
 | **Chat** | Recent AskFrnd conversations scoped to **this brand only**, plus **New Chat** |
 
-> **Heads-up:** Pillars are **brand-gated**. You must have a brand open to access Insights, Studio, Research, or Audience. There's no "pillar view" that works across all brands at once; each brand has its own Studio, its own Insights, and so on.
+> **Where did Studio go?** The brand sidebar no longer has a **Studio** pillar. Your KVs and resizes are in the brand's **Files**, and you open them from there. Start a new one from the **+** create menu (**Key Visual**) or Files' **New** button (**Key Visual**, **Resize**). Old Studio links open Files.
+
+> **Heads-up:** Pillars are **brand-gated**. You must have a brand open to access Insights, Research, or Audience. There's no "pillar view" that works across all brands at once; each brand has its own Insights, its own Audience, and so on.
 
 > **Coming soon:** **Growth** is still being built. It stays in the sidebar wearing a **Soon** chip, dimmed and not clickable, so the overall map still reads correctly.
 
@@ -76,6 +83,8 @@ Once you click a brand under **Brands**, the entire sidebar transforms to that b
 Home opens with a **briefing** — labelled **Morning briefing**, **Midday briefing**, or **Evening briefing** depending on the time of day. It's a short written summary of what needs your attention, with an ask box directly under it (_"How can I help you today?"_) so you can start working without going anywhere else.
 
 When there's nothing pressing, it says so: _"Nothing needs your attention right now. What are we working on today?"_ If you don't have brand access yet, it explains that instead — _"You don't have access to any brands yet. Ask your workspace admin to grant you brand access."_
+
+> **The briefing covers the workspace you're in.** If you belong to more than one workspace, the briefing only reads out notifications from the active one. The notification bell still lists every workspace's notifications, each labelled with its workspace (see [Notification Settings](../settings/notifications#reading-a-notification-from-another-workspace)).
 
 ### Continue Working
 
@@ -103,11 +112,11 @@ Entering a brand changes your whole context:
 - Which Insights data loads
 - Which credit context is active
 
-**To switch to a different brand**, click **Back to Home** at the top of the Brand Sidebar, then pick another brand from the **Brands** list.
+**To switch to a different brand**, click the brand name at the top of the sidebar and pick another, or click **Back to Workspace** and choose from the **Brands** list.
 
 > **Creating a brand:** the **+** button beside **Brands** opens the **Add New Brand** dialog (name, description, logo — or let Smart Creation fill it from the brand's website). It only appears if your role can create brands. See [Setting Up Your First Brand](./your-first-brand).
 
-> **Brand IQ card:** the brand sidebar carries a **Brand IQ** card showing that brand's readiness at a glance — **Ready · 3 pillars**, **N of 3 pillars set**, or **Not set up yet**. Click it to open the brand's Brand IQ page.
+> **Brand IQ row:** the brand sidebar's **Brand IQ** row shows the brand's completeness under its name, for example `21 of 26 · 5 gaps`. Click it to open the brand's Brand IQ page.
 
 ## Two Ways to Use Chat (AskFrnd)
 
@@ -127,19 +136,20 @@ See: [AskFrnd Overview](../askfrnd/overview) for the full breakdown of history s
 
 ## Pillars
 
-A brand has five pillars, each a workspace for a different kind of work: **Insights**, **Studio**, **Research**, **Audience**, and **Growth**. **You can only access them from inside a brand** (see [Brand Sidebar](#brand-sidebar) above). They always render in that order, whichever ones your role opens:
+A brand has four pillars, each a workspace for a different kind of work: **Insights**, **Research**, **Audience**, and **Growth**. **You can only access them from inside a brand** (see [Brand Sidebar](#brand-sidebar) above). They always render in that order, whichever ones your role opens:
 
 | Pillar | What It's For | Status |
 |---|---|---|
 | **Insights** | Performance tracking and dashboards. Its tabs are Overview, Campaigns, Business, Ads, Social Media, Influencers, ATL, Dashboard, Trends, Listening ([guide](../insights/overview)) | Available |
-| **Studio** | Creative production: KV Generator, Image Editor, Resizer ([guide](../studio/overview)) | Available |
 | **Research** | Surveys, personas, and studies ([guide](../research/overview)) | Available, marked **Beta** |
 | **Audience** | The brand's people: contacts, followers, segments and personas ([guide](../audience/overview)) | Available |
 | **Growth** | Distribution and campaign tools ([guide](../growth/overview)) | Coming soon |
 
 Which tabs you actually see inside a pillar depends on your role and on which features your workspace has switched on, so two people can open the same pillar and get a different tab bar.
 
-Every pillar is scoped to whichever brand is currently active. There's no cross-brand pillar view, so switch brands to switch which brand's Studio, Insights, and so on you're looking at.
+Every pillar is scoped to whichever brand is currently active. There's no cross-brand pillar view, so switch brands to switch which brand's Insights, Audience, and so on you're looking at.
+
+> **Creative tools aren't a pillar any more.** The KV Generator and Resizer open from the brand's **Files** or the create menu. See [Studio Overview](../studio/overview).
 
 See: [Welcome to frndOS](./welcome) for an overview of the pillars.
 
@@ -173,33 +183,55 @@ If what you're creating needs a brand and you aren't on one, it asks which brand
 
 > **You only see what you can actually make.** The list is filtered by your permissions and by what's enabled for the workspace, so it never offers something that would fail on the next screen.
 
+## Dropping a File Anywhere
+
+Drag a file onto any page and drop it. Instead of guessing, frndOS asks _"What should frndOS do with this?"_ and offers up to four actions that fit the file and what you're allowed to do:
+
+| Action | When it's offered |
+|---|---|
+| **Edit on a canvas** | An image, inside a brand |
+| **Start a project** | A document such as a brief |
+| **Import as deck** | A PowerPoint or PDF |
+| **Add to \{project\}** | Inside a project room |
+| **Ask frnd** | Any file; opens AskFRND with the file attached |
+
+Drops on things that take files themselves, such as a chat box, a deck canvas or an upload area, still go there. Folders can't be dropped; drop the files inside instead.
+
 ## Appearance — Choosing Light or Dark
 
-You can choose how frndOS looks on your device. Open your **user menu** (click your avatar or initials in the top-right corner of any page) and select **Appearance**.
+You can choose how frndOS looks on your device. Click the workspace (or brand) name at the top of the sidebar, open **Miscellaneous**, and click **Theme**. The row shows your current theme and a **Beta** tag.
 
-Two themes are available:
+The **Appearance** dialog reads _"Choose how frndOS looks on this device."_ Four options:
 
 | Theme | Description |
 |-------|-------------|
-| **Midnight** | The classic frndOS dark look — full dark background. Default. |
-| **Aurora** | A lighter alternative — glass panels over a blue horizon gradient. |
+| **System** | _"Daylight or Midnight, following your device."_ |
+| **Daylight** | _"Soft white canvas, dark ink."_ The light theme |
+| **Midnight** | _"The classic dark frndOS look."_ |
+| **Aurora** | _"Glass panels over a blue horizon."_ |
 
-Each option shows a miniature preview of how the app will look. Select one and the theme applies instantly.
+Each option shows a miniature preview. Select one and the theme applies instantly.
 
-**Per device:** Your choice is saved on the device you set it on — it does not sync across devices or affect other workspace members. To change how frndOS looks on another device, set it there separately.
+**Per device:** your choice is saved on the device you set it on. It doesn't sync across devices or affect other workspace members.
 
-> The appearance picker is rolling out gradually. If you don't see it in your user menu yet, it will appear once enabled for your workspace.
+> The appearance picker is rolling out gradually. If you don't see **Theme** in the menu yet, it will appear once enabled for your workspace.
 
 ## FAQ
+
+**Q: My Home briefing mentioned a brand that isn't in this workspace.**
+That was a bug, now fixed. The briefing only reads notifications from the workspace you're in. Notifications from your other workspaces stay in the bell, labelled with their workspace.
 
 **Q: I still see the old navigation layout. Why?**
 The new sidebar navigation is now in production. If you see an older layout, try refreshing or clearing your cache. If it persists, report it through your agency support group.
 
-**Q: Where did the brand switcher go?**
-There isn't a quick dropdown switcher — brands live in the **Brands** list on the Home sidebar. Click a brand to enter it; click **Back to Home** to pick a different one.
+**Q: How do I switch brands?**
+Click the brand name at the top of the brand sidebar and pick another one, or go **Back to Workspace** and pick from **Brands**.
 
-**Q: I can't find Studio or Insights in the sidebar. Where are they?**
-Pillars only appear once you're inside a brand. From Home, click a brand under **Brands**, and the sidebar switches to that brand's pillars: Insights, Studio, Research and Audience today, with Growth still coming soon. If a pillar is there but greyed out, your role doesn't grant it for that brand.
+**Q: Where did Studio go?**
+It's no longer a pillar. KVs and resizes are in the brand's **Files**; open one there, or start a new one from the create menu. Old Studio links take you to Files.
+
+**Q: I can't find Insights in the sidebar. Where is it?**
+Pillars only appear once you're inside a brand. From Home, click a brand under **Brands**, and the sidebar switches to that brand's pillars: Insights, Research and Audience today, with Growth still coming soon. If a pillar is there but greyed out, your role doesn't grant it for that brand.
 
 **Q: What's the difference between Chat in the sidebar and the AskFrnd panel?**
 Same assistant, different history scope. The **FAB** (bottom-right) shows history across every brand and pillar. **Sidebar Chat** shows history scoped to where you are — Home-only, or that specific brand only.
@@ -215,4 +247,4 @@ A few areas are still being built out. This guide focuses on the stable navigati
 - [myFRND — Making Your Assistant More Capable](./myfrnd)
 - [AskFrnd Overview](../askfrnd/overview)
 - [Managing Multiple Brands](../brand-setup/multiple-brands)
-- [Library Overview](../library/overview)
+- [Files](../library/overview)

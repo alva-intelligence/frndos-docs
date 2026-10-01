@@ -1,7 +1,7 @@
 ---
 title: Live Data on Slides
 sidebar_position: 5
-description: Put brand performance numbers, audience data and Studio files onto a slide as a linked block that can be refreshed from its source.
+description: Insert brand data, Insights charts, audience data and Studio files onto a slide as live objects, edit them in place, and see every deck that uses the same brand data.
 ---
 
 # Live Data on Slides
@@ -12,6 +12,19 @@ A slide can carry a block that stays connected to where its numbers came from. I
 
 1. ✅ **A deck open in the editor** — see [Decks Overview](./overview)
 2. ✅ **Something to link to** — connected Insights data, an Audience segment, or a Studio file
+
+## Inserting a Live Object
+
+Open the **Insert** panel with **Insert from frndOS** in the bottom dock, the same item in the deck menu, or **⌘⇧I**.
+
+The panel shows the objects one brand has, as cards:
+
+* **Brand** at the top picks whose objects you see
+* Tabs filter by kind: **All**, **Brand IQ**, **Insights**, **Audience**, **Studio**, **Proposals**
+* **Search, or paste any link…** finds an object by name, or inserts whatever link you paste
+* The **Insights** section has its own period picker, starting on **Widest with data**
+
+Each card has one action, **Add to slide** or **New slide**, depending on the object. You can also drag a card onto the slide. A card already used in the deck says which slides it's on, and objects with no data yet fold into one line at the end of their section.
 
 ## What You Can Put on a Slide
 
@@ -39,6 +52,44 @@ A linked block carries a chip reading its state, what it's linked to, and the pe
 | **Source removed** | What it pointed at is gone |
 
 > **The chip turns amber when it's stale.** That's the signal the slide is showing numbers the source no longer agrees with.
+
+## Editing a Live Object in Place
+
+Select a live object on a slide. The selection bar leads with what it's linked to and its status, for example **Brand IQ · Strategy › Mission** · **In sync**, and an **Edit** button. Click **Edit**, press **Enter**, or double-click the object to open its quick edit beside it. **Open as panel** moves the same editor into the right rail.
+
+What Save changes depends on where the object comes from:
+
+| Linked to | Save changes | The footer says |
+|---|---|---|
+| **Brand IQ** (a value, the palette, fonts, the logo) | The brand's value in Brand IQ, everywhere it's used | e.g. _"Changes Brand IQ and 3 decks"_ |
+| **Insights**, **Audience**, **Studio** | How it shows on this slide only | _"Changes this slide, not the source"_ |
+
+For an Insights chart you can set the **Period**, **Show as** (**Bars**, **Line** or **Number**), **Title**, **Legend** and **Source line**. A persona or segment lets you choose its **Layout** and which **Fields** show. A Studio file lets you pick a **Version** (**Latest**, or pinned to one) and **Fill** / **Fit**.
+
+> **Approved Brand Books are protected.** If the brand's Brand Book is approved, only a brand admin can change its values from a deck. Others see _"Approved book — admins can edit"_.
+
+On brand text you're allowed to edit, a double-click keeps the cursor in the text so you can type over it. The slide then shows the value as **Edited here**, with **Reset** to follow the source again.
+
+### Used in
+
+The panel lists **Used in**: every deck that shows this piece of brand data, plus the Brand Book pages it's on. The deck you're in reads **This deck**. Decks you can't open are counted, not named. A Brand IQ change updates all of them.
+
+With no other use, it says _"Not used in any deck yet"_. The panel also shows the field's **History** and **Open in Brand IQ**.
+
+### Detaching one element
+
+**Detach here** _"Keeps the value on this slide and stops following the source."_ The object then reads **Detached · Relink**; **Relink** puts the link back and brings in the source's current value.
+
+### Status at a glance
+
+| Status | Meaning | Action |
+|---|---|---|
+| **In sync** | Matches the source | |
+| **Source changed** | The source has moved on | **Refresh** |
+| **Source removed** | The source is gone | |
+| **Edited here** | Typed over on this slide | **Reset** |
+| **Detached** | No longer follows the source | **Relink** |
+| **Newer version** | A Studio file has a newer version | **Use latest** |
 
 ## Changing the Window
 
@@ -81,6 +132,12 @@ That's intended. The button reports how many edited slots it kept. Use **Reset t
 
 **Q: The chip says Source removed.**
 What the block pointed at has been deleted. The slide keeps what it last had; relink it or detach it.
+
+**Q: I changed the brand's tagline in a deck. Did it change elsewhere?**
+Yes. Brand IQ values are the brand's own, so the change reaches every deck in **Used in** and the Brand Book. Use **Detach here** first if you want the change on this slide only.
+
+**Q: I changed a chart's period. Did the Insights dashboard change?**
+No. Insights, Audience and Studio objects change on this slide only.
 
 **Q: Can I change the date range without rebuilding the slide?**
 Yes. Pick a different period on the block, from **Auto** through to **All time**.

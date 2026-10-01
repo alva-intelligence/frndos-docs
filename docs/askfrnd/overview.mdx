@@ -155,6 +155,12 @@ An unsupported type is refused with: _"File type tidak didukung. Gunakan JPG, PN
 
 > **A message is required with an upload.** Sending a file with an empty composer says so: _"A message is required when uploading files."_
 
+### When a file can't be read
+
+If AskFrnd can't read an attachment, it tells you so in its reply and names the file. It no longer searches for the contents and answers as if your knowledge base were empty. Try a different copy of the file, or paste the part you need into the message.
+
+PDF text also reads more cleanly now. A PDF with an odd character in its text used to fail as a whole; that character is now repaired, so the rest of the document comes through.
+
 ## Stopping a Response
 
 Asked the wrong thing, or seen enough? Click the **stop** button — it replaces **Send** in the same spot while a reply is streaming.
@@ -204,6 +210,9 @@ That's the whole indicator: no spinner, no badge. The title itself carries the s
 - Use the **FAB's global history** (bottom-right) when you're not sure which brand a past conversation happened in
 
 ## FAQ
+
+**Q: AskFrnd said it couldn't read my attachment.**
+The file couldn't be read, so its contents aren't available to AskFrnd. Try another copy (for example, re-export the PDF), or paste the relevant text into the message.
 
 **Q: Is AskFrnd the same as the old chat in frndOS v1?**
 It evolved from that, yes — but it's redesigned. The biggest changes: it's now a persistent panel (not a separate page), and it's context-aware based on which pillar you're using.

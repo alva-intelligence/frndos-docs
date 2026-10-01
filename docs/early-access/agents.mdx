@@ -58,6 +58,12 @@ On the Agents page, click **Create Agent**. You'll configure the agent across a 
 
 The agent's **system prompt** — describe how this agent should behave. This is required.
 
+Instructions are written in markdown. A **Preview** / **Raw** switch above the field lets you read them formatted or edit the source:
+
+* An agent that already has instructions opens on **Preview**, since reading is the common case. Click **Raw** to edit.
+* A new agent, with nothing written yet, opens straight on the editor.
+* If you can only view the agent, you see the formatted preview.
+
 ### Skills
 
 Attach reusable instruction packs (skills) the agent can use:
@@ -165,7 +171,7 @@ A **Team** is a group of agents that work together under a coordinator. Click **
 
 Configure the team across its tabs:
 
-- **Overview** — **Team Name**, **Description**, **Leader Instructions** (how the coordinator should delegate — optional), and an icon
+- **Overview** — **Team Name**, **Description**, **Leader Instructions** (how the coordinator should delegate, optional; has the same **Preview** / **Raw** switch as agent instructions), and an icon
 - **Members** — pick **at least one** agent; the team leader delegates to these members
 - **Tools** — capabilities for the team leader (same list as an agent)
 - **Models** — the model powering the team leader

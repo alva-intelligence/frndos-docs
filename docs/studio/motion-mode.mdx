@@ -8,7 +8,7 @@ description: Animate a finished Key Visual with a real timeline — layers, keyf
 
 **Motion** turns a finished Key Visual into a short video. Instead of describing the movement and hoping, you animate the KV's own layers on a timeline: pick a layer, apply a motion preset or set keyframes yourself, scrub the playhead, add audio, and export an MP4.
 
-> **Experimental feature:** Motion is a Labs feature enabled per workspace. If the **Motion** tab isn't in your KV file, it isn't turned on yet — see [Turning On Experimental Features](../settings/experimental-features).
+> **Experimental feature:** Motion is a Labs feature enabled per workspace. If the **Motion** button isn't in your KV file's bottom toolbar, it isn't turned on yet — see [Turning On Experimental Features](../settings/experimental-features).
 
 > **Changed from the old Motion:** Motion used to be a single "describe it and generate" panel. It's now a timeline editor with its own projects, so your work is saved and editable rather than being one-shot output.
 
@@ -21,7 +21,7 @@ description: Animate a finished Key Visual with a real timeline — layers, keyf
 ## Opening Motion
 
 1. Open a KV file in [KV Generator](./kv-generator)
-2. Click the **Motion** tab
+2. In Craft, click the **Motion** button (film icon) in the bottom toolbar
 3. The **Motion projects** panel opens, marked **Experimental**
 
 A **motion project** is one timeline document. A KV file can hold several — different cuts, different sizes — each listed with its name and when it was last updated.
@@ -42,7 +42,7 @@ Sizes are grouped:
 | **From your resizes** | Sizes you already produced in the [Resizer](./resizer) |
 | Platform groups | The standard platform sizes |
 
-Pick one and the project is created and opened.
+Tick one size or several, then click **Create motion · N sizes**. The footer shows the **Cost** and your **Balance** before you start; creating a motion has a fixed price per size. If you can't cover it, the button is disabled and the picker says _"Not enough credits — top up to create this motion."_
 
 > **Tip:** a size that already exists as a resize carries that resize's own layout, so the motion matches the artwork you actually approved for that platform.
 
@@ -113,7 +113,9 @@ The panel describes what it writes: _"Pick what animates — a short highlight a
 
 > **Path and Move can't be picked together.** Both animate the same position, so ticking one unticks the other.
 
-Picking a channel **adds** it to the block rather than replacing what's there. A channel the block already animates is rewritten in place instead of doubled, so you can layer a Scale onto a block that already moves without losing the movement.
+Picking a channel **adds** it to the block rather than replacing what's there, so you can layer a Scale onto a block that already moves without losing the movement.
+
+A channel the block already animates is marked **Add another**: ticking it adds a second run of that effect after its last one (or at the playhead, when the playhead is past it). For an emphasis such as a spin, pulse, shake or blink, the second run repeats the motion rather than continuing it. If there's no room before the next block or the end of the clip, a toast says so.
 
 > **Heads-up:** **Add at playhead** is disabled when the playhead is too close to the end — the reason reads _"Not enough room before the end."_
 
@@ -190,6 +192,16 @@ A layer's track can be expanded into **one lane per property**, so a move and a 
 | **opacity** | Fading |
 
 Each lane's bar drags and stretches on its own, so you can hold a layer's move where it is and let the fade run longer.
+
+### Working with several bars at once
+
+**⌘-click** bars to select several, on one layer or across layers. Dragging any selected bar moves all of them together, and stretching one stretches them together. **Delete** (or Backspace) removes them all in one undo step.
+
+Right-click a selection for **Copy N segments** and **Delete N segments**. **⇧⌘C** copies the selection.
+
+> **Copying works on one layer at a time.** A selection that spans layers can be moved and deleted, but not copied.
+
+To paste, right-click a bar and choose **Paste N segments at the playhead**: the earliest segment lands at the playhead and the others keep their distance. Right-clicking an empty spot on a lane moves the playhead there and opens the layer's ✨ menu, which pastes the same way and also offers **At original time**, for keeping two layers in sync.
 
 > **Why properties and not preset names:** a bar is labelled by what it actually animates. A preset name would become a lie the moment you hand-edit the keyframes; a property list stays true because it's read straight off them.
 

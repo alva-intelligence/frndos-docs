@@ -26,6 +26,14 @@ Plus two cross-cutting views:
 - **Overview** — high-level summary across all media types
 - **Campaign** — filtered reporting for specific campaigns
 
+### Earned Media summary cards
+
+The **Earned Media** tab opens on a row of summary cards: **Total Spend**, **Total Creators**, **Total Views**, **Impressions**, **Reach**, and **ER%**. **ER%** is the engagement rate for all earned coverage in the period, worked out as one rate from the totals rather than an average of each post's rate. A period with no data reads `0`.
+
+On a custom dashboard, the **Channel Performance** block's **ER** column now has a figure for the Earned Media row too. It used to show `—` there.
+
+> **Not the same as the creator table's rates.** **Avg ER by Followers (%)** and **Avg ER by Reach (%)** in the creator table are post-level figures per creator. The **ER%** card is one rate for the whole period, so the numbers won't match.
+
 ### Custom dashboards
 
 Workspaces that have it enabled get a **Dashboard** entry in the Insights tab bar, for building your own dashboard views.
@@ -77,18 +85,35 @@ Insights is **scoped per brand**. If you handle multiple brands:
 
 1. Create each brand separately in frndOS
 2. Connect data sources independently for each brand
-3. Switch between brands via **Back to Home**, then pick another brand under **Brands**
+3. Switch brands by clicking the brand name at the top of the sidebar, or via **Back to Workspace** and the **Brands** list
 
 See: [Managing Multiple Brands](../brand-setup/multiple-brands)
 
+## Filters on the Paid and Owned Media Tabs
+
+The **Paid Media** and **Owned Media** tabs each have one **Filters** button in the page header, next to the date range. Accounts and the rest of the filters sit in the same panel, so there's no separate accounts pill.
+
+| Tab | What the Filters panel holds |
+|---|---|
+| **Paid Media** | **Accounts**, **Delivery**, **Campaign**, **Adset**, **Ad Name**, **Funnel**, **Ad Objective** |
+| **Owned Media** | **Accounts**, then **Labels** rules (see [Filtering by Tags](./owned-media#filtering-by-tags)) |
+
+On Paid Media, the platform follows the accounts you pick under **Accounts**. Where the **Accounts** row isn't offered (on a public share link, for example), a **Platform** row takes its place.
+
+Everything in the panel is a draft. The page only changes when you click **Apply**, which shows how many changes are waiting (for example **Apply (3)**). **Clear** resets the whole panel. When filters are on, the **Filters** button shows how many.
+
 ## The Funnel View
 
-Across the Paid Media dashboard (and increasingly other tabs), you can filter performance data by **funnel stage**:
+On the Paid Media tab, the **Performance Breakdown** section draws your spend as a stepped funnel, in the same design as the Campaign funnel. Stage tabs sit on the right of the section title:
 
+- **All**
 - **Awareness**
 - **Consideration**
 - **Conversion**
-- **EV** (Engagement Value, where applicable)
+
+The metrics for the selected stage are listed beside the funnel. On **All**, **Total Spend** leads the list. Hover a value to read it in full if it's cut off.
+
+You can also narrow the whole Paid Media page to one stage with the **Funnel** row in **Filters**.
 
 This helps you see how each channel contributes at different stages of the customer journey.
 
