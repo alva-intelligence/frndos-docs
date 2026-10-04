@@ -83,4 +83,103 @@
   --frnd-font-body: "Geist", system-ui, -apple-system, sans-serif;
   --frnd-font-display: var(--frnd-font-body);
   --frnd-font-support: var(--frnd-font-body);
+  --frnd-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+
+  /* Motion — frnd-web `ease-swift` (tailwind.config.ts) */
+  --frnd-ease-swift: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+ * App semantic tokens — mirror frnd-web after-login (src/app/globals.css +
+ * src/app/theme-light.css). Docusaurus `dark` = Midnight, `light` = Daylight.
+ * Keep these values in sync with frnd-web when the app palette changes.
+ *
+ * `--theme-white-rgb` follows the frnd-web trick: a "white film"
+ * (rgb(var(--theme-white-rgb) / α)) is white-on-dark in Midnight and flips
+ * to ink-on-light in Daylight, so one rule covers both modes.
+ * ========================================================================== */
+[data-theme="dark"] {
+  --theme-white-rgb: 255 255 255;
+
+  /* Shell — SIDEBAR_SHELL_BG_FLUSH / _ELEVATED (sidebarShellMotion.ts) */
+  --app-shell-bg: #0a0a0a;
+  --app-card-bg: #121212;
+  --app-card-shadow: none;
+
+  /* Text — --text-inverse-* */
+  --app-text: #ffffff;
+  --app-text-subtle: #b0b0b0;
+  --app-text-subtlest: #6d6d6d;
+
+  /* Icon — --icon-inverse-* */
+  --app-icon-subtle: #d1d1d1;
+  --app-icon-subtlest: #888888;
+
+  /* Surface — --surface-* (solid) */
+  --app-surface-default: #1d1d1d;
+  --app-surface-raised: #292929;
+  --app-surface-overlay: #353535;
+  --app-row-active-bg: var(--app-surface-raised);
+
+  /* Border — what frnd-web components actually render (white film, flips
+   * to ink in Daylight via --theme-white-rgb), not the rarer
+   * --border-* tokens:
+   *   subtle  = border-white/5   (dividers, modal header/footer, rail edge)
+   *   default = border-white/10  (cards, popovers, chips, table rows — 300+ uses)
+   *   strong  = border-white/20  (hover:border-white/[0.2], emphasis) */
+  --app-border-subtle: rgb(var(--theme-white-rgb) / 0.05);
+  --app-border-default: rgb(var(--theme-white-rgb) / 0.1);
+  --app-border-strong: rgb(var(--theme-white-rgb) / 0.2);
+  /* Daylight-only card lift; none in Midnight */
+  --app-card-elevation: none;
+
+  /* Link accent (docs needs a visible link affordance) */
+  --app-link: #4e9ef8;
+  --app-link-hover: #6db0f9;
+
+  /* Inline code — .bubble-chat inline-code (text-pink-300) */
+  --app-code-inline: #f472b6;
+
+  /* Popover / dropdown */
+  --app-popover-bg: #1d1d1d;
+  --app-popover-shadow: 0 16px 24px 0 rgb(0 0 0 / 0.8);
+}
+
+[data-theme="light"] {
+  --theme-white-rgb: 17 17 17;
+
+  --app-shell-bg: #f9f9f9;
+  --app-card-bg: #ffffff;
+  /* [data-shell-content-card] ring (theme-light.css) */
+  --app-card-shadow: 0 0 0 1px rgb(17 17 17 / 0.06),
+    0 1px 3px 0 rgb(17 17 17 / 0.04);
+
+  --app-text: #111111;
+  --app-text-subtle: #666666;
+  --app-text-subtlest: #767676;
+
+  --app-icon-subtle: #5c5c5c;
+  --app-icon-subtlest: #8a8a8a;
+
+  --app-surface-default: #f2f2f2;
+  --app-surface-raised: #eaeaea;
+  --app-surface-overlay: #e2e2e2;
+  --app-row-active-bg: var(--app-surface-overlay);
+
+  --app-border-subtle: rgb(var(--theme-white-rgb) / 0.05);
+  --app-border-default: rgb(var(--theme-white-rgb) / 0.1);
+  --app-border-strong: rgb(var(--theme-white-rgb) / 0.2);
+  /* theme-light.css --card-elevation */
+  --app-card-elevation: 0 1px 2px 0 rgb(17 17 17 / 0.04),
+    0 1px 3px 0 rgb(17 17 17 / 0.03);
+
+  --app-link: #1c6ef5;
+  --app-link-hover: #0d54c4;
+
+  --app-code-inline: #be185d;
+
+  --app-popover-bg: #ffffff;
+  --app-popover-shadow: 0 0 0 1px rgb(17 17 17 / 0.06),
+    0 8px 20px -6px rgb(17 17 17 / 0.12);
 }
