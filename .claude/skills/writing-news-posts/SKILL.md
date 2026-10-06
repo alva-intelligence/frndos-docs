@@ -54,12 +54,18 @@ grep -h "^slug:" blog/*.mdx
 
 Done when: each Live feature has a link target or an explicit "no doc".
 
-### 3.5 Video from the Lark release doc
+### 4. Confirm the frontmatter and outline
+
+One `ask_user_question` call covering: title, slug, date (default `date +%F`, or the release date from the brief), author key, thumbnail, and the outline (sections in order). Recommend the `frndos-team` author and `/img/blog/frndos.webp` as the fallback thumbnail.
+
+Done when: the user has approved all six.
+
+### 4.5 Video from the Lark release doc
 
 The monthly Lark release doc ("FRNDOS Product Update — <Month YYYY>") already carries the recap video as a file block. Do not ask the user for a video that is in the brief:
 
 ```bash
-node .claude/skills/writing-news-posts/fetch-lark-video.mjs "<lark doc URL>" <slug>
+node .claude/skills/writing-news-posts/fetch-lark-video.mjs "<lark doc URL>" <slug>   # the slug approved in step 4
 ```
 
 It downloads the video to the OS temp dir (never into the repo), re-muxes it with `+faststart`, and prints the S3 key and the `<S3Video>` block. Convention, as in `blog/2026-10-06-frndos-october-2026.mdx`: key `frndos-update/<slug>.mp4` in bucket `frnd`, caption `frndos update <month> <yyyy>`.
@@ -69,12 +75,6 @@ It downloads the video to the OS temp dir (never into the repo), re-muxes it wit
 - No video block in the doc → fall back to the existing rule (ask, or 🎬 row).
 
 Done when: the post has a working `<S3Video>` block, or a 🎬 row explains why not.
-
-### 4. Confirm the frontmatter and outline
-
-One `ask_user_question` call covering: title, slug, date (default `date +%F`, or the release date from the brief), author key, thumbnail, and the outline (sections in order). Recommend the `frndos-team` author and `/img/blog/frndos.webp` as the fallback thumbnail.
-
-Done when: the user has approved all six.
 
 ### 5. Write the post
 
@@ -139,7 +139,7 @@ A new author needs all three places updated in one go: `authors.yml`, `config.js
 |---|---|
 | Callout | `<Admonition type="tip" title="...">...</Admonition>` |
 | Uploaded video | `<Video src="/img/blog/<kebab-name>.mp4" poster="/img/blog/<still>.webp" caption="..." />`. `.mp4`/`.webm` under `static/img/` (git, Tina limit 100 MB); `poster` and `caption` optional. You cannot produce the file: if the user has none, add a 🎬 video row to `DOCS_TODO.md` and leave the block out |
-| S3 video | `<S3Video url="https://<bucket>.s3.<region>.amazonaws.com/<key>.mp4" poster="/img/blog/<still>.webp" caption="..." />`. Public https object on S3 or CloudFront, `.mp4`/`.webm`. Use the URL the user gives, never a pre-signed one (`X-Amz-Signature` expires) |
+| S3 video | `<S3Video url="https://<bucket>.s3.<region>.amazonaws.com/<key>.mp4" poster="/img/blog/<still>.webp" caption="..." />`. Public https object on S3 or CloudFront, `.mp4`/`.webm`. Use the URL from step 4.5 (or one the user gives), never a pre-signed one (`X-Amz-Signature` expires) |
 | YouTube | `<YouTube url="https://www.youtube.com/watch?v=..." title="..." caption="..." />`. Preferred for anything long |
 
 Only the props listed above: an extra prop fails Tina's parse, and a lowercase `<video>` / `<iframe>` becomes an uneditable HTML blob.
