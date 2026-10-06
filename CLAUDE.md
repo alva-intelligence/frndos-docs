@@ -118,7 +118,7 @@ When adding a new module category, keep the folder name, `_category_.json` label
 ### Adding content
 - **New guide:** create `docs/<module>/<slug>.mdx` with frontmatter (`title`, `description`, `sidebar_position`). Use a relative link like `./other-doc` for cross-references.
 - **New category:** create `docs/<module>/` + `_category_.json` (`label`, `position`, `link.type: "generated-index"`), and add the matching option to the `frndOS Module` select in `tina/config.jsx`.
-- **New changelog entry:** create `blog/YYYY-MM-DD-<slug>.mdx`, reference an author key from `blog/authors.yml`, and put a `<!-- truncate -->` after the summary line.
+- **New changelog entry:** create `blog/YYYY-MM-DD-<slug>.mdx`, reference an author key from `blog/authors.yml`. Do NOT add a `<!-- truncate -->` / `{/* truncate */}` marker: both break the Tina rich-text parser. Use the `writing-news-posts` skill.
 
 ### Image assets — no spaces / unsafe chars in names
 Docusaurus' mdx-loader resolves **absolute** image paths (`/img/...`) without `decodeURIComponent`, so a space in a folder or file name becomes `%20` and the loader fails with `Image ... not found` — breaking the build. TinaCMS lets authors create spaced folders / upload spaced filenames (e.g. `DEV local/alva logo.jpeg`), and dragged macOS screenshots (`Screenshot at ....png`) hit the same trap.
@@ -152,6 +152,7 @@ Without both, builds fall back to `build:local` (admin is built but read-only in
 ## Skills
 
 - **`writing-help-docs-from-code`** (`.claude/skills/`) — use when given a frndOS feature keyword (e.g. "research surveys") and asked to create/update Help Center guides. It reads real feature behavior from the `frnd-web` codebase, marks anything unreadable (third-party iframes, retired routes) as `TODO` instead of guessing, and validates with a build. Invoke it before writing docs from a keyword.
+- **`writing-news-posts`** (`.claude/skills/`, command `/make-news`) — use when asked for a news / announcement / What's New post on `/blog`. Verifies each claim is live in `frnd-web`, writes a Tina-editable `blog/*.mdx`, and validates with `check-post.mjs` + `verify.mjs` + a build.
 
 ## Rules
 
