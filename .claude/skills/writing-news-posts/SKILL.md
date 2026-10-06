@@ -54,6 +54,22 @@ grep -h "^slug:" blog/*.mdx
 
 Done when: each Live feature has a link target or an explicit "no doc".
 
+### 3.5 Video from the Lark release doc
+
+The monthly Lark release doc ("FRNDOS Product Update — <Month YYYY>") already carries the recap video as a file block. Do not ask the user for a video that is in the brief:
+
+```bash
+node .claude/skills/writing-news-posts/fetch-lark-video.mjs "<lark doc URL>" <slug>
+```
+
+It downloads the video to the OS temp dir (never into the repo), re-muxes it with `+faststart`, and prints the S3 key and the `<S3Video>` block. Convention, as in `blog/2026-10-06-frndos-october-2026.mdx`: key `frndos-update/<slug>.mp4` in bucket `frnd`, caption `frndos update <month> <yyyy>`.
+
+- Upload is a human step: hand the user the file path and key, and wait until they confirm it is uploaded (public-read, `video/mp4`). `check-post.mjs` then proves the URL with an anonymous HEAD.
+- If the user can't upload yet, leave the block out and add a 🎬 row to `DOCS_TODO.md`, as for any missing video. Don't commit the file to `static/img/` instead: release videos are ~20 MB a month and the checker warns above 20 MB.
+- No video block in the doc → fall back to the existing rule (ask, or 🎬 row).
+
+Done when: the post has a working `<S3Video>` block, or a 🎬 row explains why not.
+
 ### 4. Confirm the frontmatter and outline
 
 One `ask_user_question` call covering: title, slug, date (default `date +%F`, or the release date from the brief), author key, thumbnail, and the outline (sections in order). Recommend the `frndos-team` author and `/img/blog/frndos.webp` as the fallback thumbnail.
