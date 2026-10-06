@@ -8,7 +8,7 @@ Sections follow the sidebar order (category `position`, then `sidebar_position`)
 
 **Types:** 📸 screenshot · ✍️ confirm from live UI · 🔒 third-party/iframe
 
-_Last updated: 2026-10-06_ (October 2026 product update: Story writing mode, KV approval requests, scorecard parts/report/rubric, Calendar, Home v2, tool activation, workflow build in chat)
+_Last updated: 2026-10-06_ (October 2026 product update: Story writing mode, KV approval requests, scorecard parts/report/rubric, Calendar, Home v2, tool activation, workflow build in chat; blog post frndos-october-2026)
 
 ## Getting Started
 
@@ -586,3 +586,13 @@ _Last updated: 2026-10-06_ (October 2026 product update: Story writing mode, KV 
 | Making the Pitch Deck | 📸 screenshot | add screenshot of the "Client look or agency template?" dialog → /img/guides-asset/<name>.jpeg |
 | Step pages | ✍️ confirm from live UI | these surfaces sit behind `show-pitch-slides` (fail-closed in web AND api, no staging bypass). Written as live per Lark; confirm which workspaces have it, and drop the "Rolling out per workspace" note once it's on for everyone |
 | What each step makes | ✍️ confirm from live UI | the step list follows the default Campaign Proposal template (ProposalTemplateV1Seeder). Confirm the template workspaces actually run, and the decision label for Creative Platform and Master Key Visual (no question heading found in code) |
+
+## What's New (blog)
+
+### `blog/2026-10-06-frndos-october-2026.mdx` — What's New in frndOS: October 2026
+
+| Section | Type | What to do |
+|---|---|---|
+| (frontmatter `image`) | 📸 screenshot | replace placeholder `/img/blog/frndos.webp` with an October 2026 thumbnail → `static/img/blog/<kebab-name>.webp` |
+| Score a Proposal Part by Part | ✍️ confirm from live UI | PostHog `show-scorecard-v3` (one-page report, Share/Export, `/s/{token}` scorecard) is at 0%, but no code in frnd-web or frnd-api-php reads that key; the report ships behind `show-research-hub` + `show-proposal-scorecard` (both 100%). Confirm in prod that Share link, PDF and Present as slides are visible |
+| AskFRND Builds Workflows in Chat | ✍️ confirm from live UI | the in-chat workflow chip is ungated, but the `/workflows` builder sits behind the Agents/Workflows early-access enrollment. Confirm a non-enrolled workspace can reach "Open builder canvas" |
