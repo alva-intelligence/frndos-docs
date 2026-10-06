@@ -5,6 +5,7 @@ import Details from "@theme/Details";
 import Tabs from "@theme-original/Tabs";
 import TabItem from "@theme-original/TabItem";
 import DocCardList from "@theme-original/DocCardList";
+import { Video, S3Video, YouTube } from "@site/src/components/MediaEmbed";
 
 export default {
   ...MDXComponents,
@@ -14,4 +15,7 @@ export default {
   TabItem: TabItem,
   Admonition: MDXComponents.admonition,
   DocCardList: DocCardList,
+  Video: Video,
+  S3Video: S3Video,
+  YouTube: YouTube,
 };

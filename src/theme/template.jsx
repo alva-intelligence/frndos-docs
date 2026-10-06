@@ -168,6 +168,85 @@ const DocCardListTemplate = {
   ],
 };
 
+// Video templates for the What's New post body only (rendered by
+// src/components/MediaEmbed). Newsletter bodies become email, where video
+// does not play, so they are not part of the shared MDXTemplates.
+const VideoTemplate = {
+  name: "Video",
+  label: "Video (upload)",
+  ui: {
+    itemProps: (item) => ({ label: item?.caption || item?.src || "Video" }),
+  },
+  fields: [
+    {
+      name: "src",
+      label: "Video file",
+      type: "image",
+      description:
+        "Upload or pick an .mp4 / .webm from the Media Manager (keep it small, it is stored in git; max 100 MB). For long videos use the YouTube block.",
+      required: true,
+    },
+    {
+      name: "poster",
+      label: "Poster image",
+      type: "image",
+      description: "Optional still shown before the video plays.",
+    },
+    { name: "caption", label: "Caption", type: "string" },
+  ],
+};
+
+const S3VideoTemplate = {
+  name: "S3Video",
+  label: "Video (S3 link)",
+  ui: {
+    itemProps: (item) => ({ label: item?.caption || item?.url || "S3 video" }),
+  },
+  fields: [
+    {
+      name: "url",
+      label: "S3 video URL",
+      type: "string",
+      description:
+        "Public https link to an .mp4 / .webm on AWS S3 or CloudFront, e.g. https://frnd.s3.ap-southeast-3.amazonaws.com/path/demo.mp4. The object must be public. Do not paste a pre-signed link (?X-Amz-Signature=…): it expires and the video breaks.",
+      required: true,
+    },
+    {
+      name: "poster",
+      label: "Poster image",
+      type: "image",
+      description: "Optional still shown before the video plays.",
+    },
+    { name: "caption", label: "Caption", type: "string" },
+  ],
+};
+
+const YouTubeTemplate = {
+  name: "YouTube",
+  label: "YouTube",
+  ui: {
+    itemProps: (item) => ({ label: item?.title || item?.url || "YouTube" }),
+  },
+  fields: [
+    {
+      name: "url",
+      label: "YouTube URL",
+      type: "string",
+      description: "e.g. https://www.youtube.com/watch?v=… or https://youtu.be/…",
+      required: true,
+    },
+    {
+      name: "title",
+      label: "Title",
+      type: "string",
+      description: "Accessible title for the player.",
+    },
+    { name: "caption", label: "Caption", type: "string" },
+  ],
+};
+
+export const VideoTemplates = [VideoTemplate, S3VideoTemplate, YouTubeTemplate];
+
 export const MDXTemplates = [
   AdmonitionTemplate,
   DetailsTemplate,

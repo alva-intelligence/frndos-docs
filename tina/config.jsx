@@ -4,7 +4,7 @@ import { ReferenceField } from "tinacms";
 import { FeaturesBlockTemplate } from "../src/components/Features/template";
 import { HeroBlockTemplate } from "../src/components/Hero/template";
 import { YouTubeEmbedBlockTemplate } from "../src/components/YouTubeEmbed/template";
-import { MDXTemplates } from "../src/theme/template";
+import { MDXTemplates, VideoTemplates } from "../src/theme/template";
 import { docusaurusDate, titleFromSlug } from "../util";
 import title from "title";
 
@@ -133,7 +133,7 @@ const PostCollection = {
       name: "body",
       label: "Body",
       isBody: true,
-      templates: [...MDXTemplates],
+      templates: [...MDXTemplates, ...VideoTemplates],
     },
   ],
 };
