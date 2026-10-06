@@ -92,6 +92,16 @@ const config = {
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
+  markdown: {
+    // TinaCMS writes `image: ''` when an author clears the Thumbnail field.
+    // Docusaurus validates `image` as a URL and fails the whole build on an
+    // empty string, so treat empty as "no thumbnail".
+    parseFrontMatter: async (params) => {
+      const result = await params.defaultParseFrontMatter(params);
+      if (result.frontMatter.image === "") delete result.frontMatter.image;
+      return result;
+    },
+  },
   favicon: "img/favicon.ico",
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want

@@ -109,8 +109,9 @@ const PostCollection = {
       type: "image",
       name: "image",
       label: "Thumbnail",
+      required: true,
       description:
-        "Shown as the thumbnail on the frndOS app home 'What's New' list. Recommended ~16:9 (e.g. 800x450).",
+        "Required. Shown as the thumbnail on the frndOS app home 'What's New' list. Recommended ~16:9 (e.g. 800x450). No image yet? Use /img/blog/frndos.webp.",
     },
     {
       label: "Tags",
