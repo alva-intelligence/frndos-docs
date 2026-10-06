@@ -22,6 +22,7 @@ When you log in, you land on **Home** with this sidebar:
 |---|---|
 | **Home** | Your overview — all activity and files across the brands you have access to |
 | **Tasks** _(beta)_ | Your tasks as a list or a board — see [Tasks](../workspace/tasks) |
+| **Calendar** _(beta)_ | Your meetings, tasks and campaign dates in one calendar. See [Calendar](../workspace/calendar) |
 | **Files** | The files your team has made, scoped to your access — see [Files](../library/overview) |
 | **myFRND** | Plugins, skills, agents, and the tools AskFRND may use — see [myFRND](./myfrnd) |
 | **Workflows** _(beta)_ | The agent workflow builder |
@@ -40,7 +41,7 @@ The sidebar footer carries a **New Chat** pill and a **+** button. The **+** ope
 
 | Row | Creates |
 |---|---|
-| **Key Visual** | A KV in the [KV Generator](../studio/kv-generator) |
+| **Canvas** | A KV canvas in the [KV Generator](../studio/kv-generator) |
 | **Presentation Deck** | A [deck](../decks/overview) |
 | **Campaign Report** | A report in Insights |
 | **Survey** | A [survey](../research/creating-a-general-survey) |
@@ -60,11 +61,11 @@ Once you click a brand under **Brands**, the entire sidebar transforms to that b
 | **Brand name** | Replaces the workspace name at the top and confirms which brand is active. Click it to switch brands; the gear beside it opens brand settings |
 | **Back to Workspace** | The link under the brand name; returns you to the Home sidebar |
 | **Home**, **Files**, **Brand IQ** | The brand's home, its files, and its [Brand IQ](../brand-setup/brand-iq) (with a completeness ring) |
-| **Pillars** (Insights, Research, Audience, plus Growth _coming soon_) | The brand's pillars, always in that order. Each opens a page whose own tabs sit in the bar at the top |
+| **Modules** (Insights, Research, Audience, plus Growth _coming soon_) | The brand's pillars, always in that order. Each opens a page whose own tabs sit in the bar at the top |
 | **Projects** | This brand's projects; **See all** opens them |
 | **Chat** | Recent AskFrnd conversations scoped to **this brand only**, plus **New Chat** |
 
-> **Where did Studio go?** The brand sidebar no longer has a **Studio** pillar. Your KVs and resizes are in the brand's **Files**, and you open them from there. Start a new one from the **+** create menu (**Key Visual**) or Files' **New** button (**Key Visual**, **Resize**). Old Studio links open Files.
+> **Where did Studio go?** The brand sidebar no longer has a **Studio** pillar. Your KVs and resizes are in the brand's **Files**, and you open them from there. Start a new one from the **+** create menu (**Canvas**) or Files' **New** button (**Canvas**, **Resize**). Old Studio links open Files.
 
 > **Heads-up:** Pillars are **brand-gated**. You must have a brand open to access Insights, Research, or Audience. There's no "pillar view" that works across all brands at once; each brand has its own Insights, its own Audience, and so on.
 
@@ -76,31 +77,44 @@ Once you click a brand under **Brands**, the entire sidebar transforms to that b
 
 ## Home
 
-**Home** is your starting point. It shows all the activity and files related to the brands you have access to — so even if you've just joined a workspace, you can see what's happening across your brands at a glance.
+**Home** is your starting point: a calm, centred page that tells you what today holds and lets you pick up where you left off.
 
-### The Briefing Hero
+### The Greeting and Your Brief
 
-Home opens with a **briefing** — labelled **Morning briefing**, **Midday briefing**, or **Evening briefing** depending on the time of day. It's a short written summary of what needs your attention, with an ask box directly under it (_"How can I help you today?"_) so you can start working without going anywhere else.
+Home opens with the date, a greeting (_"Good morning, Dina."_), and one line of brief under it: what needs your attention, across the brands you can see. The ask box underneath (_"How can I help you today?"_) lets you start working without going anywhere else. Press **/** to jump into it.
 
-When there's nothing pressing, it says so: _"Nothing needs your attention right now. What are we working on today?"_ If you don't have brand access yet, it explains that instead — _"You don't have access to any brands yet. Ask your workspace admin to grant you brand access."_
+Your brief loads instantly. If a fresher one is being written, the page shows the last one first and then refreshes it quietly. While the brief is being read it says _"Reading your day…"_; if it can't load, it says _"Your brief isn't ready yet."_ with **Try again**.
 
-> **The briefing covers the workspace you're in.** If you belong to more than one workspace, the briefing only reads out notifications from the active one. The notification bell still lists every workspace's notifications, each labelled with its workspace (see [Notification Settings](../settings/notifications#reading-a-notification-from-another-workspace)).
+> **The briefing covers the workspace you're in.** If you belong to more than one workspace, the brief only reads out notifications from the active one. The notification bell still lists every workspace's notifications, each labelled with its workspace (see [Notification Settings](../settings/notifications#reading-a-notification-from-another-workspace)).
+
+In a brand-new workspace, Home greets you instead: _"Welcome. Start with a brief, a brand or a file."_ and a **Set up your day** card offers **Connect your calendar** and **Add your first task**.
+
+### Today
+
+Two cards side by side:
+
+| Card | Shows |
+|---|---|
+| **Your tasks** | Your open tasks, with how many are overdue. Tick a task to mark it done. **Tasks →** opens [Tasks](../workspace/tasks) |
+| **Schedule** | Today's meetings from your connected calendar. **Calendar →** opens [Calendar](../workspace/calendar) |
+
+With nothing due, **Your tasks** reads **Nothing due** and tells you what's next. With no tasks yet, it offers **New task** and **Draft from a brief**, which starts a message in the ask box asking AskFRND to draft tasks from a brief you paste. If your calendar isn't connected, **Schedule** offers to connect it.
 
 ### Continue Working
 
-A row of cards for the work you touched most recently — KVs, decks, research, workflows. Click one to pick up where you left off. **See all** takes you to **Files**.
+The work you touched most recently: canvases, decks, research, workflows. Click one to pick up where you left off. **Files →** takes you to **Files**.
+
+### Live campaigns
+
+Campaigns that are running right now, each with its run rate and its headline numbers. A number that hasn't reported yet shows a dash.
 
 ### Team activity
 
-A rail beside Continue Working showing who changed what, and when. Empty states are explicit: _"No activity yet — edits from your team will show up here"_, and _"Team activity shows up in an organization workspace"_ if you're in a personal one.
+Who changed what, and when, over the last two weeks. Filter it by person, or click **See all →** for the full feed. It only appears in an organization workspace.
 
-### Recent Campaigns
+Each section only shows when it has something in it, so a quiet day makes for a short page.
 
-A band of campaign cards, each showing the brand, an **On Track** or **Needs Attention** pill, and its key numbers. Search the band to narrow it down.
-
-> **Automatic suggestion cards are gone.** Home used to push a grid of AI-generated brand and meeting suggestions at you. Those have been **retired** — the briefing and its ask box replace them. If you're looking for the suggestion cards, that's why they aren't there.
-
-> **Note:** the Home redesign rolls out per workspace. If your Home looks different from this, it hasn't reached your workspace yet.
+> **Automatic suggestion cards are gone.** Home used to push a grid of AI-generated brand and meeting suggestions at you. Those have been **retired**. The brief and its ask box replace them.
 
 ## Entering and Switching Brands
 
@@ -136,7 +150,7 @@ See: [AskFrnd Overview](../askfrnd/overview) for the full breakdown of history s
 
 ## Pillars
 
-A brand has four pillars, each a workspace for a different kind of work: **Insights**, **Research**, **Audience**, and **Growth**. **You can only access them from inside a brand** (see [Brand Sidebar](#brand-sidebar) above). They always render in that order, whichever ones your role opens:
+A brand has four pillars, each a workspace for a different kind of work: **Insights**, **Research**, **Audience**, and **Growth**. They sit under **Modules** in the brand sidebar. **You can only access them from inside a brand** (see [Brand Sidebar](#brand-sidebar) above). They always render in that order, whichever ones your role opens:
 
 | Pillar | What It's For | Status |
 |---|---|---|
@@ -213,6 +227,8 @@ The **Appearance** dialog reads _"Choose how frndOS looks on this device."_ Four
 Each option shows a miniature preview. Select one and the theme applies instantly.
 
 **Per device:** your choice is saved on the device you set it on. It doesn't sync across devices or affect other workspace members.
+
+> **A cleaner look.** frndOS has a cleaner type and colour style across the app, with calmer notices. Midnight is now a softer charcoal, and new users start on **System**.
 
 > The appearance picker is rolling out gradually. If you don't see **Theme** in the menu yet, it will appear once enabled for your workspace.
 

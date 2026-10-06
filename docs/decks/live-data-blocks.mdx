@@ -1,7 +1,7 @@
 ---
 title: Live Data on Slides
 sidebar_position: 5
-description: Insert brand data, Insights charts, audience data and Studio files onto a slide as live objects, edit them in place, and see every deck that uses the same brand data.
+description: Insert brand data, Insights charts, audience data and canvas files onto a slide as live objects, edit them in place, and see every deck that uses the same brand data.
 ---
 
 # Live Data on Slides
@@ -11,7 +11,7 @@ A slide can carry a block that stays connected to where its numbers came from. I
 ## Before You Start
 
 1. ✅ **A deck open in the editor** — see [Decks Overview](./overview)
-2. ✅ **Something to link to** — connected Insights data, an Audience segment, or a Studio file
+2. ✅ **Something to link to** — connected Insights data, an Audience segment, or a canvas file
 
 ## Inserting a Live Object
 
@@ -20,7 +20,7 @@ Open the **Insert** panel with **Insert from frndOS** in the bottom dock, the sa
 The panel shows the objects one brand has, as cards:
 
 * **Brand** at the top picks whose objects you see
-* Tabs filter by kind: **All**, **Brand IQ**, **Insights**, **Audience**, **Studio**, **Proposals**
+* Tabs filter by kind: **All**, **Brand IQ**, **Insights**, **Audience**, **Canvas**, **Proposals**
 * **Search, or paste any link…** finds an object by name, or inserts whatever link you paste
 * The **Insights** section has its own period picker, starting on **Widest with data**
 
@@ -33,7 +33,7 @@ Each card has one action, **Add to slide** or **New slide**, depending on the ob
 | **Chart** | An Insights chart |
 | **Block** | A named performance block, listed below |
 | **Segment** / **Persona** | Audience data |
-| **KV** / **Studio video** | A KV or video file from the creative tools |
+| **Canvas** / **Video** | A KV or video file from the creative tools |
 | **Artifact** | Campaign work such as **4C**, **Big idea**, **GWTB**, **Campaign plan**, **KPI** or **Verbatims** |
 
 The performance blocks available:
@@ -62,9 +62,9 @@ What Save changes depends on where the object comes from:
 | Linked to | Save changes | The footer says |
 |---|---|---|
 | **Brand IQ** (a value, the palette, fonts, the logo) | The brand's value in Brand IQ, everywhere it's used | e.g. _"Changes Brand IQ and 3 decks"_ |
-| **Insights**, **Audience**, **Studio** | How it shows on this slide only | _"Changes this slide, not the source"_ |
+| **Insights**, **Audience**, **Canvas** | How it shows on this slide only | _"Changes this slide, not the source"_ |
 
-For an Insights chart you can set the **Period**, **Show as** (**Bars**, **Line** or **Number**), **Title**, **Legend** and **Source line**. A persona or segment lets you choose its **Layout** and which **Fields** show. A Studio file lets you pick a **Version** (**Latest**, or pinned to one) and **Fill** / **Fit**.
+For an Insights chart you can set the **Period**, **Show as** (**Bars**, **Line** or **Number**), **Title**, **Legend** and **Source line**. A persona or segment lets you choose its **Layout** and which **Fields** show. A canvas file lets you pick a **Version** (**Latest**, or pinned to one) and **Fill** / **Fit**.
 
 > **Approved Brand Books are protected.** If the brand's Brand Book is approved, only a brand admin can change its values from a deck. Others see _"Approved book — admins can edit"_.
 
@@ -89,7 +89,7 @@ With no other use, it says _"Not used in any deck yet"_. The panel also shows th
 | **Source removed** | The source is gone | |
 | **Edited here** | Typed over on this slide | **Reset** |
 | **Detached** | No longer follows the source | **Relink** |
-| **Newer version** | A Studio file has a newer version | **Use latest** |
+| **Newer version** | A canvas file has a newer version | **Use latest** |
 
 ## Changing the Window
 
@@ -104,7 +104,7 @@ Select the block and the right rail gives you:
 | Action | What it does |
 |---|---|
 | **Refresh** | Pulls current values from the source |
-| **Open in Insights** / **Open in Studio** | Opens the source itself in a new tab |
+| **Open in Insights** / **Open in Canvas** | Opens the source itself in a new tab |
 | **Detach** | _"Keep the elements, drop the link"_ |
 
 **Detach** is how you freeze a slide. The numbers stay exactly as they are and stop tracking the source, which is what you want for a deck that has been signed off and shouldn't move again.
@@ -137,7 +137,7 @@ What the block pointed at has been deleted. The slide keeps what it last had; re
 Yes. Brand IQ values are the brand's own, so the change reaches every deck in **Used in** and the Brand Book. Use **Detach here** first if you want the change on this slide only.
 
 **Q: I changed a chart's period. Did the Insights dashboard change?**
-No. Insights, Audience and Studio objects change on this slide only.
+No. Insights, Audience and Canvas objects change on this slide only.
 
 **Q: Can I change the date range without rebuilding the slide?**
 Yes. Pick a different period on the block, from **Auto** through to **All time**.

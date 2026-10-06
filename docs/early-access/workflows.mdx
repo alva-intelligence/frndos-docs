@@ -6,7 +6,7 @@ description: Chain agents, teams, and logic into an automated pipeline on a visu
 
 # Workflows (Beta)
 
-**Workflows** let you chain agents, teams, and logic steps into one automated pipeline. You build a workflow on a visual canvas — dragging in nodes and connecting them, or describing what you want to the AI copilot — then run it manually, on a schedule, or by calling it from AskFRND.
+**Workflows** let you chain agents, teams, and logic steps into one automated pipeline. You build a workflow on a visual canvas — dragging in nodes and connecting them, or describing what you want to the AI copilot — then run it manually, on a schedule, or by calling it from AskFRND. You can also ask AskFRND to build one for you in the chat.
 
 Think of it as wiring several [Agents](./agents) together (plus branching, loops, and document generation) so a multi-step job runs end to end on its own.
 
@@ -136,6 +136,22 @@ Workflows can also be called straight from AskFRND. Type **`@`** in the AskFRND 
 
 > **Only enabled workflows appear** in the `@` list. Toggle a workflow on from the Workflows list or its canvas.
 
+## Building a Workflow in Chat
+
+You can also ask AskFRND to create a workflow, for example _"Create a workflow that drafts a weekly report from our campaign data."_
+
+1. AskFRND shows a **Building Workflow** step while it works
+2. A read-only preview of the canvas opens beside the chat, and you watch the nodes appear as they're added
+3. When it's done, AskFRND tells you whether the workflow is ready, and what it built
+
+Under the step, a card reads **Open builder canvas**, with the workflow's name and how many nodes it has. Click it to open the full builder and keep editing there.
+
+Follow-up requests change the same workflow, for example _"Add an approval step before the report goes out."_ Ask for a new workflow when you want another one. Building never runs the workflow; ask AskFRND to run it when you're ready.
+
+This uses the **Agent workflows** tool in **Chat Settings → Tools**. If it's off, AskFRND offers to turn it on (see [Turning a Tool On From the Chat](../askfrnd/tools#turning-a-tool-on-from-the-chat)).
+
+> **On a phone**, the card only says **Workflow saved**. The builder canvas opens on a larger screen.
+
 ---
 
 ## FAQ
@@ -154,6 +170,9 @@ A workflow needs at least one Agent, Team, or Function node — a node that actu
 
 **Q: My workflow saved but shows validation issues — is that a problem?**
 Saving keeps a draft regardless. Validation issues only block **Run**, not Save. Fix the listed errors (via **Validate**) before running.
+
+**Q: Can AskFRND build a workflow for me?**
+Yes. Ask it in the chat and it builds the workflow on the canvas while you watch. See [Building a Workflow in Chat](#building-a-workflow-in-chat).
 
 **Q: Can a workflow ask me something mid-run?**
 Yes. A node set to **Require confirmation** pauses the run at **awaiting input** — open the run, answer, and **Resume run** to continue.

@@ -203,7 +203,9 @@ The usage table is no longer one long list. Two filters narrow it:
 | **Date range** | The current month |
 | **Brand** | All brands |
 
-The brand filter includes a **No Brand** option alongside your real brands — for entries that never carried a brand, such as AI chat.
+The brand filter includes a **No Brand** option alongside your real brands, for entries that never carried a brand, such as a chat started outside any brand.
+
+> **AI Chat follows the brand.** An AskFrnd chat started inside a brand bills its credits to that brand. Chats started outside a brand stay under **No Brand**, and so do the chats inside a KV canvas and inside workflows.
 
 The brand list is sorted by name and has a **Search brands...** box at the top, so a workspace with a long brand list doesn't mean scrolling. A **Clear all** / **Select all** control sits above the list with a count of how many are currently picked. If the workspace has no brands, the dropdown says _"No brands in this workspace"_.
 
@@ -232,6 +234,8 @@ The same **Brands** filter and a date range apply here, and the range defaults t
 AI Chat usage is split by chat feature at the **Action** level, using the same labels as the history's Action column, instead of one generic "AI Chat" row.
 
 > **"No brand" is a real row.** It covers usage not tied to a brand, described in the app as _"Usage not tied to a brand, e.g. AI Chat, workflows and LarkBot"_.
+
+The tables refresh as soon as an AI Chat is billed, so you don't need to reload to see it.
 
 **Export** downloads the whole expanded tree as a CSV, not just the rows you have open. It's admin/owner only and desktop only.
 
@@ -267,7 +271,7 @@ Use **Credit Usage by Brand** in Plans & Credits. Expand a brand to see its tool
 Use the **Search brands...** box at the top of the brand dropdown. The list is also sorted by name, and **Select all** / **Clear all** resets it.
 
 **Q: What does the "No Brand" filter option mean?**
-Entries that were never tied to a brand — AI chat, for example.
+Entries that were never tied to a brand, for example a chat started outside any brand. A chat started inside a brand counts under that brand.
 
 **Q: The total under the table doesn't match the rows I can see.**
 It's the net across the entire filtered result, not just the current page.

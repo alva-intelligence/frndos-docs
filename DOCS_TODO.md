@@ -8,7 +8,7 @@ Sections follow the sidebar order (category `position`, then `sidebar_position`)
 
 **Types:** 📸 screenshot · ✍️ confirm from live UI · 🔒 third-party/iframe
 
-_Last updated: 2026-10-01_ (Studio removal reconcile: Creative Tools category, canvas file menu, Back, no-access state)
+_Last updated: 2026-10-06_ (October 2026 product update: Story writing mode, KV approval requests, scorecard parts/report/rubric, Calendar, Home v2, tool activation, workflow build in chat)
 
 ## Getting Started
 
@@ -16,10 +16,11 @@ _Last updated: 2026-10-01_ (Studio removal reconcile: Creative Tools category, c
 
 | Section | Type | What to do |
 |---|---|---|
-| Brand Sidebar | 📸 screenshot | add screenshot of the brand sidebar — brand name with Back to Workspace, Home / Files / Brand IQ rows, Pillars (Insights, Research with Beta, Audience, dimmed Growth with Soon), Projects section → /img/guides-asset/<name>.jpeg |
+| Brand Sidebar | 📸 screenshot | add screenshot of the brand sidebar — brand name with Back to Workspace, Home / Files / Brand IQ rows, Modules (Insights, Research with Beta, Audience, dimmed Growth with Soon), Projects section → /img/guides-asset/<name>.jpeg |
 | Dropping a File Anywhere | 📸 screenshot | add screenshot of the drop suggestion bar — "What should frndOS do with this?" with its actions → /img/guides-asset/<name>.jpeg |
 | Appearance — Choosing Light or Dark | 📸 screenshot | add screenshot of the Appearance dialog — System / Daylight / Midnight / Aurora previews → /img/guides-asset/<name>.jpeg |
-| Home | 📸 screenshot | add screenshot of the redesigned Home — briefing hero with composer, Continue Working, Team activity rail, Recent Campaigns → /img/guides-asset/<name>.jpeg |
+| Home | 📸 screenshot | add screenshot of the calmer Home — date line, greeting with the one-line brief, ask box, Today (Your tasks + Schedule), Continue working, Live campaigns, Team activity → /img/guides-asset/<name>.jpeg |
+| The Greeting and Your Brief | 📸 screenshot | add screenshot of the first-run Home — "Welcome. Start with a brief, a brand or a file." and the Set up your day card → /img/guides-asset/<name>.jpeg |
 | Quick Search — Cmd+K | 📸 screenshot | add screenshot of the ⌘K palette — the zero state showing recents plus the @ / · > · ? scope hint row → /img/guides-asset/<name>.jpeg |
 | Creating from the search box | 📸 screenshot | add screenshot of ⌘K with a create intent typed (e.g. "new deck") showing the Create rows, and the brand picker that follows → /img/guides-asset/<name>.jpeg |
 
@@ -164,7 +165,7 @@ _Last updated: 2026-10-01_ (Studio removal reconcile: Creative Tools category, c
 | Section | Type | What to do |
 |---|---|---|
 | Step 1 — Mark What's Ready | 📸 screenshot | add screenshot of a Craft board with the "Ready to share" badge + the right-click menu showing "Remove from share" → /img/guides-asset/<name>.jpeg |
-| Step 2 — Create the Link | 📸 screenshot | add screenshot of the Share key visual dialog — Active links list with a link card, expiry meta, New link button → /img/guides-asset/<name>.jpeg |
+| Step 2 — Create the Link | 📸 screenshot | add screenshot of the Share key visual dialog — Approval requests section on top, View links list with a link card, expiry meta, New link button → /img/guides-asset/<name>.jpeg |
 
 ## Insights
 
@@ -254,10 +255,21 @@ _Last updated: 2026-10-01_ (Studio removal reconcile: Creative Tools category, c
 
 | Section | Type | What to do |
 |---|---|---|
-| Step 2 — Add the Proposal | 📸 screenshot | add screenshot of the scorecard composer — Scorecard template / Reviewer, Upload a file / Paste the text, the two optional pickers, credit estimate and Score proposal → /img/guides-asset/<name>.jpeg |
-| Step 2 — Add the Proposal | ✍️ confirm from live UI | the composer footer still says "about 3–4 min" while scoring now takes ~1.5 min (Lark + frnd-ai-services `1decfb27`). The doc says "about a minute and a half"; confirm and ask frnd-web to update the copy in `ScorecardDesignStep.tsx` |
-| Step 4 — Read the Scorecard | 📸 screenshot | add screenshot of a scored proposal — verdict sentence, Fit / Ambition, the grid, criteria with confidence marks → /img/guides-asset/<name>.jpeg |
-| Running a Scorecard From AskFRND | 📸 screenshot | add screenshot of the Proposal scorecard chat card — Fit / Ambition / Grid, Open study, Create tasks → /img/guides-asset/<name>.jpeg |
+| Step 1 — Start a Scorecard | 📸 screenshot | add screenshot of the scorecard composer — What it is (Detect it / Proposal / Creative material / Media plan), Scorecard template / Reviewer, What to score, the two optional pickers, credit estimate and Score it → /img/guides-asset/<name>.jpeg |
+| Step 3 — Confirm the Parts (Mixed Files) | 📸 screenshot | add screenshot of the parts confirm screen — "This file has two parts", the coloured page strip, part rows, Adjust pages / Add a part / Score as one, Score N parts · X credits → /img/guides-asset/<name>.jpeg |
+| Step 5 — Read the Scorecard | 📸 screenshot | add screenshot of a scored proposal (verdict, Strategy / Ambition, the grid) and of a scored creative (Overall with band, After the changes, What to change first, Mandatory checks) → /img/guides-asset/<name>.jpeg |
+| Reading a File Scored in Parts | 📸 screenshot | add screenshot of the parts answer — Scorecard · N parts, Overall readiness chip set by the weakest part, part cards with Re-score this part → /img/guides-asset/<name>.jpeg |
+| Running a Scorecard From AskFRND | 📸 screenshot | add screenshot of the scorecard chat card — scores, Open study, Create tasks → /img/guides-asset/<name>.jpeg |
+
+### `docs/research/scorecard-report-and-rubric.mdx` — Scorecard Reports and Rubrics
+
+| Section | Type | What to do |
+|---|---|---|
+| Building the Full Report | 📸 screenshot | add screenshot of the report build card in AskFRND — the four steps, then Your report is ready with Open report / PDF / Slides and the steering chips → /img/guides-asset/<name>.jpeg |
+| What's in the report | 📸 screenshot | add screenshot of the report page — masthead with takeaway, Where it stands charts, evidence page thumbnails in the margin → /img/guides-asset/<name>.jpeg |
+| Customizing in minutes | 📸 screenshot | add screenshot of the rubric setup — the three starts (Import your scorecard / What matters most here? / Adjust weights by hand), the share bars, and the no-credit preview above Save → /img/guides-asset/<name>.jpeg |
+| Customizing in minutes | ✍️ confirm from live UI | Lark (Oct 2026) says the scorecard can be set up by asking AskFRND ("ask AskFRND to build it for you"), but develop has no AskFRND rubric tool. Confirm with PM whether that means running the scorecard (already documented) or a rubric builder still to come, and update the FAQ "Can AskFRND set up the rubric for me?" |
+| Building the Full Report | ✍️ confirm from live UI | confirm who receives the report's PDF download link and how long it stays valid (code comment says a 24-hour link); add it to the PDF section if it's user-visible |
 
 ### `docs/research/creating-a-general-survey.mdx` — Creating a General Survey
 
@@ -288,6 +300,7 @@ _Last updated: 2026-10-01_ (Studio removal reconcile: Creative Tools category, c
 | Section | Type | What to do |
 |---|---|---|
 | Queueing Follow-Ups While AskFrnd Is Answering {#queueing-follow-ups-while-askfrnd-is-answering} | 📸 screenshot | add screenshot of the AskFRND composer with one or two queued chips above it → /img/guides-asset/<name>.jpeg |
+| Rich Answers | 📸 screenshot | add screenshot of an AskFRND answer with a rich card — e.g. a chart or KPI row with action buttons under it → /img/guides-asset/<name>.jpeg |
 | When a file can't be read | ✍️ confirm from live UI | the reply wording is written by the model (it is only told to say the file could not be read), and how the chat UI renders ai-service's `FileExtractionFailed` event was not traced in frnd-web. Confirm what the user actually sees for an unreadable attachment, then quote it here |
 
 ### `docs/askfrnd/skills.mdx` — Using AskFrnd Skills
@@ -310,6 +323,7 @@ _Last updated: 2026-10-01_ (Studio removal reconcile: Creative Tools category, c
 | Section | Type | What to do |
 |---|---|---|
 | Choosing Which Tools AskFrnd Uses | ✍️ confirm from live UI | confirm the exact way to open Chat Settings from the AskFrnd panel (button/menu location) and add a screenshot of the Tools tab → /img/guides-asset/<name>.jpeg |
+| Turning a Tool On From the Chat | 📸 screenshot | add screenshot of the tool activation card — "Turn on Brand Data to continue" with its reason and Turn on & continue, and a two-tool card with checkboxes → /img/guides-asset/<name>.jpeg |
 
 ### `docs/askfrnd/voice-input.mdx` — Talking to AskFRND with Voice
 
@@ -335,7 +349,11 @@ _Last updated: 2026-10-01_ (Studio removal reconcile: Creative Tools category, c
 |---|---|---|
 | Step 2 — Choose Approvers and Say What Changed | 📸 screenshot | add screenshot of the Request approval panel — Approvers chips + suggestions, What changed, Request approval → /img/guides-asset/<name>.jpeg |
 | What the Client Sees | 📸 screenshot | add screenshot of the client decision page on a phone — deck, numbered pins, Approve / Request changes / I need more time bar → /img/guides-asset/<name>.jpeg |
-| Step 1 — Request Approval | ✍️ confirm from live UI | the KV share panel also has a Request approval toggle, but the code hides it in dev/staging because multi-item KV rounds are still being built (frnd-web `99eab75c8`). Confirm whether it's offered in production before adding KV to the table |
+| Step 2 — Send the Request | 📸 screenshot | add screenshot of the KV request form — Phases chips with counts, "N artboards in this request", Approvers, Message, Decide by, Send request → /img/guides-asset/<name>.jpeg |
+| What the Client Sees | 📸 screenshot | add screenshot of a KV request on the client page — artboards grouped by phase with ✓ / comment buttons and an Approve all bar → /img/guides-asset/<name>.jpeg |
+| The Email Check | 📸 screenshot | add screenshot of the Confirm it's you sheet with the six code boxes → /img/guides-asset/<name>.jpeg |
+| Following the Request in frndOS | 📸 screenshot | add screenshot of the KV canvas — Ready for client bar, a verdict chip on a board, and the top-bar status popover → /img/guides-asset/<name>.jpeg |
+| Following the Request in frndOS | ✍️ confirm from live UI | the decision digest is sent by the api's request notifier; confirm who receives it (the requester only, or brand members too) and the 15-minute batching, then say so here |
 | Following the Decision in frndOS | ✍️ confirm from live UI | confirm where a client's pins show up for the agency on a deck (code adds an "on v{n}" badge to deck comments) and add that here |
 
 ### `docs/collaboration/overview.mdx` — Collaboration Overview
@@ -432,7 +450,9 @@ _Last updated: 2026-10-01_ (Studio removal reconcile: Creative Tools category, c
 
 | Section | Type | What to do |
 |---|---|---|
-| Opening Story View | 📸 screenshot | add screenshot of Story view — chapter rail, prose document, top actions row → /img/guides-asset/<name>.jpeg |
+| The Page | 📸 screenshot | add screenshot of Story view — chapter headings, cards with the slide on the left and the talk track on the right, the slim bar with Chapter B of 7 → /img/guides-asset/<name>.jpeg |
+| Ask FRND Drafts Your Talk Tracks | 📸 screenshot | add screenshot of the talk-track panel (Tone / Length per slide / Language, Write N talk tracks) and a card with a Suggested by Ask FRND draft (Keep / Edit / Try another / Dismiss) → /img/guides-asset/<name>.jpeg |
+| Building a Slide for a Card | 📸 screenshot | add screenshot of a card's slot suggestion open — headline, three layouts, Build this slide / Other layouts / Not now → /img/guides-asset/<name>.jpeg |
 
 ## Workspace & Members
 
@@ -447,7 +467,8 @@ _Last updated: 2026-10-01_ (Studio removal reconcile: Creative Tools category, c
 
 | Section | Type | What to do |
 |---|---|---|
-| The Board | 📸 screenshot | add screenshot of the Tasks board — six status columns, a card being dragged, Archive all done in the Done column menu → /img/guides-asset/<name>.jpeg |
+| Opening Tasks | 📸 screenshot | add screenshot of the Tasks toolbar — All / Mine / Today / Overdue tabs, Filter, and the View menu open with Synced N min ago · Sync now at the bottom → /img/guides-asset/<name>.jpeg |
+| The Board | 📸 screenshot | add screenshot of the Tasks board — status columns with an empty one folded to a strip, a card being dragged, Archive all done in the Done column menu → /img/guides-asset/<name>.jpeg |
 | A Task's Details | 📸 screenshot | add screenshot of the task sheet — Status / Due / Assignee / Brand / Project / Source rows, checklist with Work the list, Discussion → /img/guides-asset/<name>.jpeg |
 | A Task's Details | ✍️ confirm from live UI | confirm which sources create tasks in practice (Lark, Google Tasks, scorecard next steps, agent hand-backs) and whether Google Tasks syncs both ways like Lark |
 
@@ -462,6 +483,15 @@ _Last updated: 2026-10-01_ (Studio removal reconcile: Creative Tools category, c
 | Metered by actual usage | ✍️ confirm from live UI | confirm the exact label trend-signal detection carries in the credit ledger's Action column — the labels are server-authored and aren't readable from the web code. Screenshot needed. |
 | Credit Usage by Brand | 📸 screenshot | add screenshot of the Credit Usage by Brand table with a brand expanded down through Tool → Action → Person, showing the share percentages and the Export button → /img/guides-asset/<name>.jpeg |
 | Resetting a Member's Limit to 0 | 📸 screenshot | add screenshot of the Reset Limit? confirm — Remaining / Total Monthly Limit → 0, outstanding debt note, Reset to 0 → /img/guides-asset/<name>.jpeg |
+
+### `docs/workspace/calendar.mdx` — Calendar
+
+| Section | Type | What to do |
+|---|---|---|
+| Connecting Your Calendar | 📸 screenshot | add screenshot of the first-run card — "Your work already has dates. Bring your meetings in.", Lark Connect, Google / Microsoft marked Soon, Add without connecting → /img/guides-asset/<name>.jpeg |
+| The Side Rail | 📸 screenshot | add screenshot of the rail in Plan mode — date line, Up next with Join, Needs a reply with Yes / No, To schedule, Sync now at the bottom → /img/guides-asset/<name>.jpeg |
+| Reading the Calendar | 📸 screenshot | add screenshot of the Week view — meeting cards, a brand-tinted client meeting, routine strips, Tasks lane, campaign bars in All day, a folded weekend → /img/guides-asset/<name>.jpeg |
+| Connecting Your Calendar | ✍️ confirm from live UI | the first-run card also lists "Calendars on this Mac" (iCloud, Exchange, macOS Calendar), described as available in a desktop app. Confirm how and where that is offered before documenting it |
 
 ## Settings & Administration
 
@@ -539,6 +569,7 @@ _Last updated: 2026-10-01_ (Studio removal reconcile: Creative Tools category, c
 |---|---|---|
 | The Workflows List | 📸 screenshot | add screenshot of the Workflows list page — table with the Experiment badge + New Workflow button → /img/guides-asset/<name>.jpeg |
 | Building a Workflow on the Canvas | 📸 screenshot | add screenshot of the workflow canvas builder — node palette, a few connected nodes, top action bar (Notify / Schedule / Validate / Save / Run) → /img/guides-asset/<name>.jpeg |
+| Building a Workflow in Chat | 📸 screenshot | add screenshot of AskFRND building a workflow — the Building Workflow row, the Open builder canvas card, and the read-only canvas preview docked beside the chat → /img/guides-asset/<name>.jpeg |
 
 ### `docs/early-access/pitch.mdx` — Pitch (Beta)
 

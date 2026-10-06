@@ -1,20 +1,21 @@
 ---
 title: Client Approvals
 sidebar_position: 3
-description: Send a client one link to approve a deck or campaign plan. They decide on a page of their own, with no frndOS account, and you see the decision in frndOS.
+description: Send a client one link to approve a deck, a campaign plan, or a set of KV artboards. They decide on a page of their own, with no frndOS account, and you see the decision in frndOS.
 ---
 
 # Client Approvals
 
-**Client approvals** let you send a deck or a campaign plan to the client for a decision with one link. The client opens it on a decision page, leaves notes, and approves or asks for changes. They don't need a frndOS account. You see their decision back in frndOS.
+**Client approvals** let you send a deck, a campaign plan, or a set of KV artboards to the client for a decision with one link. The client opens it on a decision page, leaves notes, and approves or asks for changes. They don't need a frndOS account. You see their decision back in frndOS.
 
-> **Experimental feature:** client approvals are turned on per workspace in **Workspace Settings → Experimental**. If **Request approval** isn't in your share options, it isn't on yet. See [Turning On Experimental Features](../settings/experimental-features).
+Decks and campaign plans are covered first. Key visuals work a little differently, because one request carries many artboards: see [Approving Key Visual Artboards](#approving-key-visual-artboards).
+
+> **Rolling out:** features may reach workspaces gradually. If **Request approval** isn't in your share options, refresh the page.
 
 ## Before You Start
 
-1. ✅ **Client approvals on for your workspace** — see the note above
-2. ✅ **A deck or a saved campaign plan** to send
-3. ✅ **The client's email addresses**, if you want named approvers (optional)
+1. ✅ **A deck, a saved campaign plan, or KV artboards marked ready to share** to send
+2. ✅ **The client's email addresses**, if you want named approvers (optional)
 
 ## Step 1 — Request Approval
 
@@ -87,6 +88,61 @@ The item's share options show the round's status: **Approval · round N**, with 
 
 When the client decides, the person who requested approval gets an email, and brand members get a notification. On a campaign plan, every round and its decisions are listed under **Decisions** on the plan.
 
+## Approving Key Visual Artboards
+
+A KV file usually holds many pieces: Sketch and Craft boards, resize tiles, motion clips. An **approval request** sends a whole set of them in one link, and each artboard gets its own decision.
+
+### Step 1 — Mark What's Ready
+
+On the KV canvas, mark the boards, tiles or motion exports you want the client to see with **Mark ready to share** (see [Sharing a Key Visual With a Client](../studio/sharing-with-clients#step-1--mark-whats-ready)).
+
+While something is marked that no request holds yet, the canvas shows a **Ready for client** bar with the marked artboards and **Request approval**. The top bar shows **Ready for client** with a count too.
+
+### Step 2 — Send the Request
+
+Click **Request approval**, from the **Ready for client** bar, the top bar, or **Share** → **Approval requests**. The form has four parts:
+
+| Field | What it does |
+|---|---|
+| **Phases** | **Sketch**, **Craft**, **Resize**, **Motion**, each with a count of what's ready. Turn off a phase to leave it out. Below, the request lists how many artboards it holds |
+| **Approvers · optional** | Type an email and press **Enter**. _"No names: anyone with the link can decide. Named approvers get a personal link by email."_ |
+| **Message · optional** | Up to 500 characters, prefilled with what's in the request |
+| **Decide by · optional** | A deadline for the client |
+
+Artboards already approved, or still waiting in another request, are listed under **Already approved** and **Waiting** and aren't sent again. An artboard that replaces one still waiting in an earlier request is tagged **Replaces Request N**.
+
+Click **Send request**. The panel confirms **Request N is out for approval** and gives you the link to copy or send.
+
+> **Limit:** a request holds up to 50 artboards. Pick fewer phases if you hit it.
+
+### What the Client Sees
+
+The link opens the artboards grouped by phase. Each card shows a finished preview, its state, and two quick buttons: approve, or comment. A request with one artboard opens straight on it.
+
+On an artboard, the client can:
+
+* **Pin a note** by tapping the artwork. The note uses the same comment card your team uses in frndOS
+* **Approve** it
+* **Request new version**, saying what should change
+
+**Approve all N** approves every artboard that has no decision yet. An artboard the client pinned a note on keeps its own decision, so the button reads, for example, **Approve 7 · 1 has pins**.
+
+### The Email Check
+
+Before a client's first decision on a device, the page asks them to **Confirm it's you**: _"We'll email you a 6-digit code. Looking and pinning never need one — only decisions do."_ They enter the code and their decision goes through.
+
+It's once per device: _"Once per device — your decisions here count for 30 days."_ Pins placed before the check still count.
+
+### Following the Request in frndOS
+
+On the canvas, each artboard carries its client verdict: **Waiting**, **Feedback, no decision yet**, **Approved**, **Approved with fixes**, or **New version asked**, with its pin count.
+
+The top bar shows the open request's status, for example **Waiting on Dina · 0/6**. Click it to see every request and each artboard's decision. Click an artboard row to jump to it on the canvas.
+
+**Share** → **Approval requests** lists every request on the file as **Request N · N artboards**. Open a request to see its link, each artboard with its decisions and pins, and each named approver. A request's **•••** menu has **Copy link**, **Open link**, **Resend** and **Withdraw**.
+
+You get one digest email with the decisions rather than one email per click.
+
 ## FAQ
 
 **Q: Does the client need a frndOS account?**
@@ -103,6 +159,15 @@ The status shows the date they picked. Nothing is decided until they come back.
 
 **Q: Can I take a request back?**
 Yes. **Withdraw** it from the share options. The link stays open for comments, but nobody can decide on it.
+
+**Q: Why does my client have to enter a code for a KV request?**
+Decisions on a KV request are confirmed by email once per device. Looking and pinning notes never need the code.
+
+**Q: Does a client have to decide on every artboard at once?**
+No. Each artboard has its own decision. **Approve all** only covers the artboards without a decision and without the client's own pins.
+
+**Q: I marked more artboards after sending a request.**
+The top bar shows a count of the new ones beside the status. Send another request; artboards already approved or waiting aren't sent twice.
 
 ---
 

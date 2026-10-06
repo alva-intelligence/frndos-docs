@@ -17,17 +17,25 @@ description: See every task across your workspace as a list or a kanban board, m
 
 ## Opening Tasks
 
-Click **Tasks** in the sidebar (marked **Beta**). The page title shows how many tasks are open.
+Click **Tasks** in the sidebar (marked **Beta**).
 
-The header has **Search tasks** and **New task**. Below it:
+The header has **Search tasks** and **New task**. Below it, the toolbar keeps to three controls:
 
-* **Scope chips** — **All**, **Assigned to me**, **Today**, **Overdue**
-* **Group by** — **Due date**, **Brand**, **Project** or **Status**
-* **All brands** / **All projects** filters
-* **Show done** and **Show archived** switches
-* **List** / **Board** view
+* **Scope tabs**: **All**, **Mine**, **Today**, **Overdue**. Each shows a count when it has tasks; Overdue's count is red
+* **Filter**: narrow by brand and project. It reads **Filter · 1** when one is on
+* **View**: pick **List** or **Board**, how the list is grouped (**Due date**, **Brand**, **Project** or **Status**), and the **Show done** and **Show archived** switches. The button names what you're looking at, for example **View · Due date**
 
 The view you pick is remembered and kept in the page link, so sharing it shows the same list.
+
+### Reading a row
+
+A row only says what's true. The line under the title shows a status other than the default, the due date with how late it is (for example **12 Jun · 16 wk late** in red), where the task came from, and its checklist steps. A task with no assignee shows no "Unassigned" label. Its **•••** menu appears when you point at the row.
+
+### Keeping Tasks in sync
+
+Tasks refresh by themselves when you come back to the page, and every couple of minutes while it's open.
+
+When your tasks come from Lark, the bottom of the **View** menu shows when they were last synced (for example **Synced 2 min ago**) and **Sync now**. Click it to pull your Lark tasks straight away. If you've just synced, it reads **Synced a moment ago**.
 
 ## The Board
 
@@ -45,6 +53,8 @@ The view you pick is remembered and kept in the page link, so sharing it shows t
 Drag a card to another column to change its status. You can't drop a card on **Waiting for review**; agents put work there.
 
 **Keyboard:** focus a card and press **Space** to pick it up, **←** / **→** to choose a column, then **Space** to drop it or **Esc** to cancel. **Enter** opens the card.
+
+A column with no cards folds into a narrow strip so the board stays readable. It still takes a dropped card, and opens while you drag over it.
 
 Each column has **+** to add a task straight into it. The **Done** column's menu has **Archive all done**.
 
@@ -86,6 +96,9 @@ No. That column is where agents hand work back for you to check.
 **Q: Will changes sync back to Lark or Google Tasks?**
 Tasks are kept in sync with Lark when your Lark account is connected; a task that came from Lark or Google Tasks says so under **Source**.
 
+**Q: I just added a task in Lark and it isn't here yet.**
+Open **View** and click **Sync now**.
+
 **Q: Where did the old project-room checklist go?**
 A project room's Tasks section still works, and its tasks also appear on this page.
 
@@ -98,4 +111,5 @@ Turn on **Show archived** and restore it.
 
 - [Project Rooms — Keeping Work Together](../projects/project-rooms)
 - [Proposal Scorecard](../research/proposal-scorecard)
+- [Calendar](./calendar)
 - [Agents & Teams (Beta)](../early-access/agents)

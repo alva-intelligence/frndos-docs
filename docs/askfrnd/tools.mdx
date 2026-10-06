@@ -30,11 +30,11 @@ AskFrnd's tools are grouped into sections:
 |---------|------|-------------------------|
 | **Agents & Automation**¹ | **Workspace agents** | Orchestrate and delegate to workspace agents |
 | | **Agent teams** | Coordinate multi-agent teams on complex tasks |
-| | **Agent workflows** | Trigger and run agent workflows |
+| | **Agent workflows** | Trigger, run, create and edit agent workflows. See [Building a workflow in chat](../early-access/workflows#building-a-workflow-in-chat) |
 | **Creation** | **Image generation & editing** | Create and edit images |
 | | **Video generation** | Create videos from a prompt |
 | | **Key Visuals** | Generate brand key visuals for campaigns |
-| **Knowledge** | **Brand Knowledge** | Look up a brand's DNA, identity, and tonality |
+| **Knowledge** | **Brand IQ** | Look up a brand's strategy, identity, and tone of voice |
 | | **Brand Data** | Retrieve a brand's insight dashboards (overview, campaigns, media, signals) — and power @mentioning brand data in chat |
 | **Research** | **Audience** | Look up a brand's people — contacts and followers — along with their segments, personas and audience overview |
 | | **Creative Playbooks** | Look up a brand's Creative Playbooks — what works vs what doesn't across its content |
@@ -102,6 +102,25 @@ Your workspace admin sets a **default tool set** for everyone (see [Setting the 
 
 > **Changes save when you save.** Unlike the workspace admin page (which saves instantly), the Tools tab is a save-on-confirm surface — your changes apply when you save Chat Settings.
 
+## Turning a Tool On From the Chat
+
+You don't have to leave the chat when a tool you need is off. AskFrnd shows a card naming the tool and why it would help, and you turn it on right there.
+
+The card comes in two forms:
+
+| Card | When | Button |
+|---|---|---|
+| **Turn on … to continue** | Your request can't be answered without the tool | **Turn on & continue** |
+| **… could help here** | AskFrnd answered, but a switched-off tool would do the job better | **Turn on …** |
+
+When the card names more than one tool, each has a checkbox, and the button counts them (for example **Turn on 2 tools & continue**).
+
+Click the button and the tools are switched on in your own Tools settings, then your request is sent again with them. The card then reads **Turned on**: _"Saved to your Chat Settings → Tools. You can turn them off there anytime."_
+
+A suggestion card also offers **Not now**. Nothing changes until you click the button.
+
+> **Personal workspaces:** tool settings live in a team workspace's Chat Settings, so in a personal workspace the card only points you there.
+
 ## FAQ
 
 **Q: What does it mean when AskFrnd shows a tool running?**
@@ -118,6 +137,9 @@ The **Agents & Automation** section only appears when the experimental Agents fe
 
 **Q: What's the difference between this and the workspace AskFRND Tools page?**
 The [workspace page](../settings/askfrnd-tools) is admin-only and sets the **default** for everyone. **Chat Settings → Tools** is your **personal** override on top of that default.
+
+**Q: AskFrnd showed a card asking me to turn a tool on. Does that change it for everyone?**
+No. The card saves the tool to your own Tools settings, the same as switching it on in **Chat Settings → Tools**.
 
 **Q: Do my tool changes affect other people?**
 No. Chat Settings → Tools is personal to you. The workspace-wide default is set by an admin on the [AskFRND Tools](../settings/askfrnd-tools) page.
