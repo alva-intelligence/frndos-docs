@@ -60,6 +60,22 @@ One `ask_user_question` call covering: title, slug, date (default `date +%F`, or
 
 Done when: the user has approved all six.
 
+### 4.5 Video from the Lark release doc
+
+The monthly Lark release doc ("FRNDOS Product Update — <Month YYYY>") already carries the recap video as a file block. Do not ask the user for a video that is in the brief:
+
+```bash
+node .claude/skills/writing-news-posts/fetch-lark-video.mjs "<lark doc URL>" <slug>   # the slug approved in step 4
+```
+
+It downloads the video to the OS temp dir (never into the repo), re-muxes it with `+faststart`, and prints the S3 key and the `<S3Video>` block. Convention, as in `blog/2026-10-06-frndos-october-2026.mdx`: key `frndos-update/<slug>.mp4` in bucket `frnd`, caption `frndos update <month> <yyyy>`.
+
+- Upload is a human step: hand the user the file path and key, and wait until they confirm it is uploaded (public-read, `video/mp4`). `check-post.mjs` then proves the URL with an anonymous HEAD.
+- If the user can't upload yet, leave the block out and add a 🎬 row to `DOCS_TODO.md`, as for any missing video. Don't commit the file to `static/img/` instead: release videos are ~20 MB a month and the checker warns above 20 MB.
+- No video block in the doc → fall back to the existing rule (ask, or 🎬 row).
+
+Done when: the post has a working `<S3Video>` block, or a 🎬 row explains why not.
+
 ### 5. Write the post
 
 File: `blog/YYYY-MM-DD-<slug>.mdx`, same `<slug>` as the frontmatter.
@@ -123,7 +139,7 @@ A new author needs all three places updated in one go: `authors.yml`, `config.js
 |---|---|
 | Callout | `<Admonition type="tip" title="...">...</Admonition>` |
 | Uploaded video | `<Video src="/img/blog/<kebab-name>.mp4" poster="/img/blog/<still>.webp" caption="..." />`. `.mp4`/`.webm` under `static/img/` (git, Tina limit 100 MB); `poster` and `caption` optional. You cannot produce the file: if the user has none, add a 🎬 video row to `DOCS_TODO.md` and leave the block out |
-| S3 video | `<S3Video url="https://<bucket>.s3.<region>.amazonaws.com/<key>.mp4" poster="/img/blog/<still>.webp" caption="..." />`. Public https object on S3 or CloudFront, `.mp4`/`.webm`. Use the URL the user gives, never a pre-signed one (`X-Amz-Signature` expires) |
+| S3 video | `<S3Video url="https://<bucket>.s3.<region>.amazonaws.com/<key>.mp4" poster="/img/blog/<still>.webp" caption="..." />`. Public https object on S3 or CloudFront, `.mp4`/`.webm`. Use the URL from step 4.5 (or one the user gives), never a pre-signed one (`X-Amz-Signature` expires) |
 | YouTube | `<YouTube url="https://www.youtube.com/watch?v=..." title="..." caption="..." />`. Preferred for anything long |
 
 Only the props listed above: an extra prop fails Tina's parse, and a lowercase `<video>` / `<iframe>` becomes an uneditable HTML blob.
