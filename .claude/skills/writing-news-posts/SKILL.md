@@ -60,19 +60,24 @@ One `ask_user_question` call covering: title, slug, date (default `date +%F`, or
 
 Done when: the user has approved all six.
 
-### 4.5 Video from the Lark release doc
+### 4.5 Video to S3
 
-The monthly Lark release doc ("FRNDOS Product Update — <Month YYYY>") already carries the recap video as a file block. Do not ask the user for a video that is in the brief:
+The monthly Lark release doc ("FRNDOS Product Update — <Month YYYY>") already carries the recap video as a file block. Do not ask the user for a video that is in the brief. A video the user points at on their device (`/Users/.../clip.mov`) goes through the same script:
 
 ```bash
-node .claude/skills/writing-news-posts/fetch-lark-video.mjs "<lark doc URL>" <slug>   # the slug approved in step 4
+# the slug approved in step 4
+node .claude/skills/writing-news-posts/news-video.mjs "<lark doc URL>" <slug>
+node .claude/skills/writing-news-posts/news-video.mjs --file "<local path>" <slug> [--caption "..."]
 ```
 
-It downloads the video to the OS temp dir (never into the repo), re-muxes it with `+faststart`, and prints the S3 key and the `<S3Video>` block. Convention, as in `blog/2026-10-06-frndos-october-2026.mdx`: key `frndos-update/<slug>.mp4` in bucket `frnd`, caption `frndos update <month> <yyyy>`.
+It fetches the video into the OS temp dir (never into the repo), makes it a browser-safe MP4 (H.264/AAC is re-muxed with `+faststart`, anything else such as HEVC `.mov` is re-encoded), uploads it to `s3://frnd/frndos-update/<slug>.mp4` with ACL `public-read`, proves the public URL with an anonymous HEAD, and prints the `<S3Video>` block. Convention, as in `blog/2026-10-06-frndos-october-2026.mdx`: caption `frndos update <month> <yyyy>`; pass `--caption` for non-monthly posts.
 
-- Upload is a human step: hand the user the file path and key, and wait until they confirm it is uploaded (public-read, `video/mp4`). `check-post.mjs` then proves the URL with an anonymous HEAD.
-- If the user can't upload yet, leave the block out and add a 🎬 row to `DOCS_TODO.md`, as for any missing video. Don't commit the file to `static/img/` instead: release videos are ~20 MB a month and the checker warns above 20 MB.
-- No video block in the doc → fall back to the existing rule (ask, or 🎬 row).
+- **Credentials:** `FRNDOS_NEWS_S3_KEY_ID` / `FRNDOS_NEWS_S3_SECRET` in the environment or `frndos-docs/.env` (gitignored). The IAM user must be scoped by `s3-uploader-policy.json` (PutObject + PutObjectAcl on `frnd/frndos-update/*` only). Never borrow the `frnd-api-php` AWS key.
+- **No credentials** → the script still prepares the file and prints `upload MANUAL`: hand the user the file path and key, wait until they confirm the upload (public-read, `video/mp4`).
+- **Key already exists** → the script refuses. Pick another slug, or pass `--force` only when the user confirmed replacing the live video.
+- **Over 50 MB** warns, **over 200 MB** refuses: use `<YouTube>` instead.
+- Nobody can upload yet → leave the block out and add a 🎬 row to `DOCS_TODO.md`. Don't commit the file to `static/img/` instead: release videos are ~20 MB a month and the checker warns above 20 MB.
+- No video block in the doc and no file from the user → fall back to the existing rule (ask, or 🎬 row).
 
 Done when: the post has a working `<S3Video>` block, or a 🎬 row explains why not.
 
