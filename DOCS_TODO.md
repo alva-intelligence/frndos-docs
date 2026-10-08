@@ -8,7 +8,7 @@ Sections follow the sidebar order (category `position`, then `sidebar_position`)
 
 **Types:** 📸 screenshot · ✍️ confirm from live UI · 🔒 third-party/iframe
 
-_Last updated: 2026-10-06_ (October 2026 product update: Story writing mode, KV approval requests, scorecard parts/report/rubric, Calendar, Home v2, tool activation, workflow build in chat; blog post frndos-october-2026)
+_Last updated: 2026-10-08_ (blog post frndos-september-2026-part-2; October 2026 product update: Story writing mode, KV approval requests, scorecard parts/report/rubric, Calendar, Home v2, tool activation, workflow build in chat; blog post frndos-october-2026)
 
 ## Getting Started
 
@@ -596,3 +596,12 @@ _Last updated: 2026-10-06_ (October 2026 product update: Story writing mode, KV 
 | (frontmatter `image`) | 📸 screenshot | replace placeholder `/img/blog/frndos.webp` with an October 2026 thumbnail → `static/img/blog/<kebab-name>.webp` |
 | Score a Proposal Part by Part | ✍️ confirm from live UI | PostHog `show-scorecard-v3` (one-page report, Share/Export, `/s/{token}` scorecard) is at 0%, but no code in frnd-web or frnd-api-php reads that key; the report ships behind `show-research-hub` + `show-proposal-scorecard` (both 100%). Confirm in prod that Share link, PDF and Present as slides are visible |
 | AskFRND Builds Workflows in Chat | ✍️ confirm from live UI | the in-chat workflow chip is ungated, but the `/workflows` builder sits behind the Agents/Workflows early-access enrollment. Confirm a non-enrolled workspace can reach "Open builder canvas" |
+
+### `blog/2026-09-23-frndos-september-2026-part-2.mdx` — What's New in frndOS: September 2026 (Part 2)
+
+| Section | Type | What to do |
+|---|---|---|
+| Decks / KV Studio | ✍️ confirm from live UI | Style builder (`show-deck-style-builder`), templates (`show-deck-templates`), per-selection text styling (`show-kv-text-runs`) and region edit (`show-kv-resize-region-edit`) are flag-gated in frnd-web `origin/production` (`f727338d2`). PostHog was not reachable when writing, so rollout was not checked; written as live per Lark. Confirm they are on, or move them to What's Next |
+| Decks | ✍️ confirm from live UI | Lark lists a presenter window, autoplay and transitions; only keyboard/chapter navigation and fullscreen are readable in `PresenterClient.tsx`, so the post claims only those |
+| (dropped) Research | ✍️ confirm from live UI | quick/thorough search, preferred/excluded domains, document upload and Import past research all live under `/research/new`, which is behind `show-research-hub` (fail-closed). Left out of the post; only "deck research filed as a Study" is announced |
+| (dropped) Audience per-tab access rules | ✍️ confirm from live UI | no per-tab access UI found in frnd-web production. Left out of the post |
