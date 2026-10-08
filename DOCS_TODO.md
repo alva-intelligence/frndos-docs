@@ -8,7 +8,7 @@ Sections follow the sidebar order (category `position`, then `sidebar_position`)
 
 **Types:** 📸 screenshot · ✍️ confirm from live UI · 🔒 third-party/iframe
 
-_Last updated: 2026-10-08_ (blog post frndos-september-2026-part-2; October 2026 product update: Story writing mode, KV approval requests, scorecard parts/report/rubric, Calendar, Home v2, tool activation, workflow build in chat; blog post frndos-october-2026)
+_Last updated: 2026-10-08_ (blog post frndos-september-2026-part-2; October 2026 Part 2, New: Social Listening guide, Client Portal guide, sidebar with Modules + page-title brand switcher (and every guide's "open the brand" steps), AskFRND floating/docked/fullscreen panel with steps, Reply and Branch, KV Motion preset library + Tune panel + Animate all style packs, Project Room v2 (header details, tabs, milestones, Needs you, project chip), Research Overview v2 + answer-first scorecard + Competitor and Desk Studies guide. Fixed: Story kept on open, sheets mapping locks after save, low-credit alert counts Extra Credit, menus inside dialogs, Resize tile edits. Changed + Improved: calmer Tasks, scorecard band names, Brand Settings in the main app, Brand IQ Summary, Studies table, study notifications, 200-artboard approvals, deck slide strip. Also blog post frndos-october-2026-part-2: no recap video, help articles to refresh for Social Listening, client portal, sidebar, AskFRND, Brand IQ summary, KV Motion presets. Previous: 2026-10-06, October 2026 product update: Story writing mode, KV approval requests, scorecard parts/report/rubric, Calendar, Home v2, tool activation, workflow build in chat; blog post frndos-october-2026)
 
 ## Getting Started
 
@@ -16,7 +16,10 @@ _Last updated: 2026-10-08_ (blog post frndos-september-2026-part-2; October 2026
 
 | Section | Type | What to do |
 |---|---|---|
-| Brand Sidebar | 📸 screenshot | add screenshot of the brand sidebar — brand name with Back to Workspace, Home / Files / Brand IQ rows, Modules (Insights, Research with Beta, Audience, dimmed Growth with Soon), Projects section → /img/guides-asset/<name>.jpeg |
+| The Sidebar | 📸 screenshot | add screenshot of the sidebar — Search + Create, New chat, Home / Tasks / Calendar with their indicators, Files, myFRND, Workflows, Modules (Insights, Research with Beta and N ready, Audience), Projects, Chats, and the Getting started / Brands / Settings block at the bottom → /img/guides-asset/<name>.jpeg |
+| Getting started | 📸 screenshot | add screenshot of the Getting started popover — progress ring, the four steps with the next one expanded, Hide this checklist → /img/guides-asset/<name>.jpeg |
+| Switching Brands | 📸 screenshot | add screenshot of the page-title brand switcher open — Search brands, Recent, Brand IQ / Brand settings / Manage brands / New brand — and of the Brands page → /img/guides-asset/<name>.jpeg |
+| The Sidebar | ✍️ confirm from live UI | the Modules sidebar, page-title switcher, Brands page, Brand Settings in the main app and the retired Brand Home are all behind the `show-modules-nav` PostHog flag (fail-closed in production). Confirm it's on for customers before publishing; until then they still see the brand sidebar this guide no longer describes |
 | Dropping a File Anywhere | 📸 screenshot | add screenshot of the drop suggestion bar — "What should frndOS do with this?" with its actions → /img/guides-asset/<name>.jpeg |
 | Appearance — Choosing Light or Dark | 📸 screenshot | add screenshot of the Appearance dialog — System / Daylight / Midnight / Aurora previews → /img/guides-asset/<name>.jpeg |
 | Home | 📸 screenshot | add screenshot of the calmer Home — date line, greeting with the one-line brief, ask box, Today (Your tasks + Schedule), Continue working, Live campaigns, Team activity → /img/guides-asset/<name>.jpeg |
@@ -46,6 +49,7 @@ _Last updated: 2026-10-08_ (blog post frndos-september-2026-part-2; October 2026
 | Section | Type | What to do |
 |---|---|---|
 | The Four Tabs | 📸 screenshot | add screenshot of the Brand IQ page — Brand Book · Sources · Templates · Business tabs, the side panel with Chapters, and the completeness chip / status / Present / Edit book in the header → /img/guides-asset/<name>.jpeg |
+| The Brand Summary | 📸 screenshot | add screenshot of the Summary at the top of the Strategy chapter — heading, Written by frnd tag, Regenerate, and the "frnd keeps this up to date…" line → /img/guides-asset/<name>.jpeg |
 
 ### `docs/brand-setup/brand-book.mdx` — The Brand Book
 
@@ -159,6 +163,9 @@ _Last updated: 2026-10-08_ (blog post frndos-september-2026-part-2; October 2026
 | Composing your own with Build | 📸 screenshot | add screenshot of the ✨ menu's Build tab — the five channel cards (Path, Move, Scale, Rotate, Opacity) with two ticked and the "Add at playhead" button → /img/guides-asset/<name>.jpeg |
 | Working with several bars at once | 📸 screenshot | add screenshot of two bars selected across layers with the right-click menu showing Copy N segments / Delete N segments → /img/guides-asset/<name>.jpeg |
 | Creating a Motion Project | 📸 screenshot | add screenshot of Choose the video size with two sizes ticked and the Cost · Balance footer → /img/guides-asset/<name>.jpeg |
+| Motion Presets | 📸 screenshot | add screenshot of the ✨ menu's Default tab — Entrance / Exit / Emphasis / Loop sections with family cards (e.g. Slide in · 4 directions) → /img/guides-asset/<name>.jpeg |
+| Tuning a preset | 📸 screenshot | add screenshot of the Tune panel pinned at the top of the preset menu — Direction, Distance, Duration and Easing rows → /img/guides-asset/<name>.jpeg |
+| Animate All With a Style Pack | 📸 screenshot | add screenshot of the top bar's Animate all menu with the five packs and their descriptions → /img/guides-asset/<name>.jpeg |
 
 ### `docs/studio/sharing-with-clients.mdx` — Sharing a Key Visual With a Client
 
@@ -180,6 +187,12 @@ _Last updated: 2026-10-08_ (blog post frndos-september-2026-part-2; October 2026
 | Section | Type | What to do |
 |---|---|---|
 | The ad detail view | 📸 screenshot | add screenshot of the ad detail view — creative on the left, metrics with quartile band on the right → /img/guides-asset/<name>.jpeg |
+
+### `docs/insights/connecting-earned-atl.mdx` — Connecting Earned Media & ATL via Google Sheets
+
+| Section | Type | What to do |
+|---|---|---|
+| When the mapping locks | 📸 screenshot | add screenshot of a locked Google Sheets mapping — read-only rows (saved columns, Unmapped for the rest), the "Edit isn't supported yet" note and the Reauthorize section → /img/guides-asset/<name>.jpeg |
 
 ### `docs/insights/overview.mdx` — Insights Overview
 
@@ -217,6 +230,19 @@ _Last updated: 2026-10-08_ (blog post frndos-september-2026-part-2; October 2026
 | When a sheet has no columns to read | ✍️ confirm from live UI | the exact wording of each reason is written by the API, not the web code — capture the real strings for a missing named range, an empty range, and an unshared sheet, then quote them here |
 | When a Block Can't Follow a Filter | 📸 screenshot | add screenshot of a custom-dashboard block showing its "can't follow this filter" note in place of a number → /img/guides-asset/<name>.jpeg |
 
+### `docs/insights/social-listening.mdx` — Social Listening
+
+| Section | Type | What to do |
+|---|---|---|
+| The Topic List | 📸 screenshot | add screenshot of the Listening topic list — the four summary tiles, FRnD spotted these signals cards (Critical/Watch, Open/Resolved), filter + Search topics…, and a topic card with its ••• menu → /img/guides-asset/<name>.jpeg |
+| The War Room | 📸 screenshot | add screenshot of a war room — status tag with Updated time, Edit topic / Share & export, the tabs and the date picker, the Since you were last here strip → /img/guides-asset/<name>.jpeg |
+| Voices and Sources | 📸 screenshot | add screenshot of the Voices tab (Curated / Show all, Platform / Sentiment / Theme facets, Include low relevance) and of the amplifier network with one account focused → /img/guides-asset/<name>.jpeg |
+| Watchlist | 📸 screenshot | add screenshot of the Watchlist card with pinned accounts (mentions in 7d, last post) and the Watchlist activity list on Spikes & Alerts → /img/guides-asset/<name>.jpeg |
+| Alerts and the Daily Recap | 📸 screenshot | add screenshot of Listening settings → Alerts & sync — Pull frequency, Daily recap, Spike alerts in Simple mode, Quiet hours, a destination with its three switches → /img/guides-asset/<name>.jpeg |
+| Alerts and the Daily Recap | ✍️ confirm from live UI | confirm what a Daily Recap and a Spike Alert look like in email and in Lark (the cards are rendered by the api), and add a short description or screenshot |
+| Voices and Sources | ✍️ confirm from live UI | the AskFRND action labels in the war room come from the api per topic; capture one or two real examples (e.g. on a signal or a voice) and name them in the article |
+| Opening Listening | ✍️ confirm from live UI | the tab is fail-closed behind the `show-social-listening` PostHog flag in production; confirm which workspaces have it before announcing broadly |
+
 ## Audience
 
 ### `docs/audience/overview.mdx` — Audience Overview
@@ -251,13 +277,25 @@ _Last updated: 2026-10-08_ (blog post frndos-september-2026-part-2; October 2026
 
 ## Research
 
+### `docs/research/overview.mdx` — Research Overview
+
+| Section | Type | What to do |
+|---|---|---|
+| The Studies Tab | 📸 screenshot | add screenshot of the Studies tab — header line (N studies · N running · credits this month), All / Ready / Running / Drafts / Archived chips, Search studies + filters, the five-column table with a running survey's progress → /img/guides-asset/<name>.jpeg |
+| Starting With a Question | 📸 screenshot | add screenshot of the Research Overview — What do you want to find out? box with Who should answer? and Suggest a study, the starter buttons, Your studies, and the Or choose a method shelf → /img/guides-asset/<name>.jpeg |
+| Research Sources | 📸 screenshot | add screenshot of the Research sources panel — Always used (Web search), Your plugins, Suggested for research with Connect, Survey panel → /img/guides-asset/<name>.jpeg |
+| Choosing a method | ✍️ confirm from live UI | Creative Lab and Conversation deep-dive show on the method shelf and launch (api `launchSynthetic` / agent run), but the method registry still marks them `soon`. Confirm with PM they're meant to be offered, and write their guides if so |
+| Starting With a Question | ✍️ confirm from live UI | the Overview v2 is behind `show-research-overview-v2` (fail-closed in production). Confirm it's on for customers before publishing |
+| Knowing when a study is done | 📸 screenshot | add screenshot of a running study page with "You'll be notified when it's ready · Turn off", and of a Study ready notification in the bell → /img/guides-asset/<name>.jpeg |
+
 ### `docs/research/proposal-scorecard.mdx` — Proposal Scorecard
 
 | Section | Type | What to do |
 |---|---|---|
-| Step 1 — Start a Scorecard | 📸 screenshot | add screenshot of the scorecard composer — What it is (Detect it / Proposal / Creative material / Media plan), Scorecard template / Reviewer, What to score, the two optional pickers, credit estimate and Score it → /img/guides-asset/<name>.jpeg |
+| Step 2 — Add the Work | 📸 screenshot | add screenshot of the Review a proposal setup — Drop a proposal, deck or creative zone, What it is (Let us check / Proposal / Creative material / Media plan), the Judged against line, Add context (optional), the About 3 min footer → /img/guides-asset/<name>.jpeg |
 | Step 3 — Confirm the Parts (Mixed Files) | 📸 screenshot | add screenshot of the parts confirm screen — "This file has two parts", the coloured page strip, part rows, Adjust pages / Add a part / Score as one, Score N parts · X credits → /img/guides-asset/<name>.jpeg |
-| Step 5 — Read the Scorecard | 📸 screenshot | add screenshot of a scored proposal (verdict, Strategy / Ambition, the grid) and of a scored creative (Overall with band, After the changes, What to change first, Mandatory checks) → /img/guides-asset/<name>.jpeg |
+| Step 5 — Read the Scorecard | 📸 screenshot | add screenshot of the answer-first scorecard — the answer card with score, band, Close to the line and after the changes, the Ask FRND rewrite chips, and What to fix first with owners, pages, gains and Create N tasks → /img/guides-asset/<name>.jpeg |
+| Step 5 — Read the Scorecard | ✍️ confirm from live UI | the answer-first page is behind `show-scorecard-v3` (fail-closed in production). Confirm it's on for customers before publishing |
 | Reading a File Scored in Parts | 📸 screenshot | add screenshot of the parts answer — Scorecard · N parts, Overall readiness chip set by the weakest part, part cards with Re-score this part → /img/guides-asset/<name>.jpeg |
 | Running a Scorecard From AskFRND | 📸 screenshot | add screenshot of the scorecard chat card — scores, Open study, Create tasks → /img/guides-asset/<name>.jpeg |
 
@@ -265,6 +303,7 @@ _Last updated: 2026-10-08_ (blog post frndos-september-2026-part-2; October 2026
 
 | Section | Type | What to do |
 |---|---|---|
+| Exporting a Scorecard | 📸 screenshot | add screenshot of the scorecard header's Export menu — Summary PDF, Full review PDF, Slides, Client summary, Copy the fixes → /img/guides-asset/<name>.jpeg |
 | Building the Full Report | 📸 screenshot | add screenshot of the report build card in AskFRND — the four steps, then Your report is ready with Open report / PDF / Slides and the steering chips → /img/guides-asset/<name>.jpeg |
 | What's in the report | 📸 screenshot | add screenshot of the report page — masthead with takeaway, Where it stands charts, evidence page thumbnails in the margin → /img/guides-asset/<name>.jpeg |
 | Customizing in minutes | 📸 screenshot | add screenshot of the rubric setup — the three starts (Import your scorecard / What matters most here? / Adjust weights by hand), the share bars, and the no-credit preview above Save → /img/guides-asset/<name>.jpeg |
@@ -293,6 +332,15 @@ _Last updated: 2026-10-08_ (blog post frndos-september-2026-part-2; October 2026
 |---|---|---|
 | Assigning a Brand | 📸 screenshot | add screenshot of the Brand dropdown on the Detail tab → /img/guides-asset/<name>.jpeg |
 
+### `docs/research/competitor-and-desk-studies.mdx` — Competitor and Desk Studies
+
+| Section | Type | What to do |
+|---|---|---|
+| Step 2 — Design It | 📸 screenshot | add screenshot of a competitor study's Design step — the competitor field, Where to look, and Web search (Search depth, Market, Prefer / Exclude these domains) → /img/guides-asset/<name>.jpeg |
+| Reading the Results | 📸 screenshot | add screenshot of an answer-first competitor study — the answer with its confidence, the Ask FRND chips, Side by side, What we found with a source hover card → /img/guides-asset/<name>.jpeg |
+| Reading the Results | ✍️ confirm from live UI | the answer-first results are behind `show-study-results-v2` (fail-closed in production); with it off the old results page shows. Confirm before publishing |
+| Reading the Results | ✍️ confirm from live UI | the What to do next list is static in this release (B1). Confirm what it shows and whether its items do anything when clicked |
+
 ## AskFrnd
 
 ### `docs/askfrnd/overview.mdx` — AskFrnd Overview
@@ -301,6 +349,8 @@ _Last updated: 2026-10-08_ (blog post frndos-september-2026-part-2; October 2026
 |---|---|---|
 | Queueing Follow-Ups While AskFrnd Is Answering {#queueing-follow-ups-while-askfrnd-is-answering} | 📸 screenshot | add screenshot of the AskFRND composer with one or two queued chips above it → /img/guides-asset/<name>.jpeg |
 | Rich Answers | 📸 screenshot | add screenshot of an AskFRND answer with a rich card — e.g. a chart or KPI row with action buttons under it → /img/guides-asset/<name>.jpeg |
+| Floating, Docked or Full Screen | 📸 screenshot | add screenshot of the AskFRND panel docked beside a page with the More options menu open (Dock to side / Float / Fullscreen, Generated files, Chat settings) → /img/guides-asset/<name>.jpeg |
+| Reading an Answer | 📸 screenshot | add screenshot of an answer with "Answered in Ns" expanded to its steps, the hover actions (Reply, Branch from here, Copy, Regenerate), and the suggested-answer chips under it → /img/guides-asset/<name>.jpeg |
 | When a file can't be read | ✍️ confirm from live UI | the reply wording is written by the model (it is only told to say the file could not be read), and how the chat UI renders ai-service's `FileExtractionFailed` event was not traced in frnd-web. Confirm what the user actually sees for an unreadable attachment, then quote it here |
 
 ### `docs/askfrnd/skills.mdx` — Using AskFrnd Skills
@@ -361,6 +411,18 @@ _Last updated: 2026-10-08_ (blog post frndos-september-2026-part-2; October 2026
 | Section | Type | What to do |
 |---|---|---|
 | Comments — Where to Find Them | ✍️ confirm from live UI | the Audience row lists commenting, but Lark (Sep 2026 Part 3) says Audience commenting is built and hidden. Confirm, and drop the row until it's switched on |
+
+### `docs/collaboration/client-portal.mdx` — The Client Portal
+
+| Section | Type | What to do |
+|---|---|---|
+| Adding a Client | 📸 screenshot | add screenshot of the Invite a client dialog — Name / Title / Email / WhatsApp, Can chips with the hint line, Access ends, Send checkboxes and Message → /img/guides-asset/<name>.jpeg |
+| Managing Clients | 📸 screenshot | add screenshot of Brand Settings → Members → Clients tab — a client row with status, added line, access-level menu and the ••• menu open → /img/guides-asset/<name>.jpeg |
+| Signing in | 📸 screenshot | add screenshot of the portal sign-in on a phone — Sign in to your approvals, the email step and the 6-digit code step → /img/guides-asset/<name>.jpeg |
+| Approvals | 📸 screenshot | add screenshot of the portal Approvals page — summary sentence, Waiting on you cards with Review, Waiting on others, Decided with Show older → /img/guides-asset/<name>.jpeg |
+| Sharing Insights With Clients | 📸 screenshot | add screenshot of Brand Settings → Insights tabs with the Clients ticks and Preview as client, and of the portal's Insights view → /img/guides-asset/<name>.jpeg |
+| What the Client Sees | ✍️ confirm from live UI | confirm the portal URL a client lands on (`/s/<workspace>/<brand>`) is something agencies should share directly, or only through Copy portal link / the invite email, and say so in Adding a Client |
+| Sharing Insights With Clients | ✍️ confirm from live UI | Business and Listening tabs show a "Sample data" pill to clients where their data is illustrative. Confirm when Listening shows it, then mention it here |
 ## Files
 
 ### `docs/library/overview.mdx` — Files — Your Team's File Hub
@@ -377,14 +439,18 @@ _Last updated: 2026-10-08_ (blog post frndos-september-2026-part-2; October 2026
 
 | Section | Type | What to do |
 |---|---|---|
-| Where to Find Projects | 📸 screenshot | add screenshot of the Projects page — status chips, sort, brand filter, folder cards → /img/guides-asset/<name>.jpeg |
+| Where to Find Projects | 📸 screenshot | add screenshot of the Projects page — status tabs, type and brand filters, Needs you / Active groups, cards with cover, health and N new → /img/guides-asset/<name>.jpeg |
+| Starting a Project | 📸 screenshot | add screenshot of the New project type step — Pitch, Campaign, Always-on social, Design job, General with their stages → /img/guides-asset/<name>.jpeg |
 | Filing Work Into a Project | ✍️ confirm from live UI | rewritten after Studio projects were removed (frnd-web `ca96f8e3f`). Confirm whether Files' Move to… still offers projects for every file kind, and whether project rooms need the Labs flag to be reachable |
 
 ### `docs/projects/project-rooms.mdx` — Project Rooms — Keeping Work Together
 
 | Section | Type | What to do |
 |---|---|---|
-| Opening a Room | 📸 screenshot | add screenshot of a project room — title row, composer, Tasks, Proposal Assistants, Files, right rail → /img/guides-asset/<name>.jpeg |
+| The Room Header | 📸 screenshot | add screenshot of the room header — type and stage, health, lead and due chips, people with Share, the New menu, and the Overview / Work / Tasks / Calendar tabs → /img/guides-asset/<name>.jpeg |
+| Overview | 📸 screenshot | add screenshot of the room Overview — N new since you looked, Key work covers, Assistants, Chats, Activity, and the rail (Next up with milestones, Tasks · yours first, Meetings, Team, What frnd knows) → /img/guides-asset/<name>.jpeg |
+| Asking frnd About the Project | 📸 screenshot | add screenshot of the AskFRND panel on a project room with the project chip in the composer → /img/guides-asset/<name>.jpeg |
+| The Room Header | ✍️ confirm from live UI | the room described is behind `show-project-room-v2` (fail-closed in production); with it off customers still see the old room with its top composer. Confirm it's on before publishing |
 
 ## Decks
 
@@ -467,9 +533,10 @@ _Last updated: 2026-10-08_ (blog post frndos-september-2026-part-2; October 2026
 
 | Section | Type | What to do |
 |---|---|---|
-| Opening Tasks | 📸 screenshot | add screenshot of the Tasks toolbar — All / Mine / Today / Overdue tabs, Filter, and the View menu open with Synced N min ago · Sync now at the bottom → /img/guides-asset/<name>.jpeg |
+| Opening Tasks | 📸 screenshot | add screenshot of the Tasks header and toolbar — "Lark · synced N min ago" with the refresh button beside the title, All / Mine / Today / Overdue tabs, Filter, the List / Board switch, and View options open (Group by, Show done, Show archived) → /img/guides-asset/<name>.jpeg |
+| Reading a row | 📸 screenshot | add screenshot of one-line task rows showing several status circles (ring, half fill, dashed, bar, dotted, check) and an Overdue group folded behind Show all N → /img/guides-asset/<name>.jpeg |
 | The Board | 📸 screenshot | add screenshot of the Tasks board — status columns with an empty one folded to a strip, a card being dragged, Archive all done in the Done column menu → /img/guides-asset/<name>.jpeg |
-| A Task's Details | 📸 screenshot | add screenshot of the task sheet — Status / Due / Assignee / Brand / Project / Source rows, checklist with Work the list, Discussion → /img/guides-asset/<name>.jpeg |
+| A Task's Details | 📸 screenshot | add screenshot of the task card beside the list — Work with frnd / Copy link / ⋯ bar, status circle by the title, Assignee / Due / Status / Brand / Project / Source rows, checklist with Work the list, Discussion → /img/guides-asset/<name>.jpeg |
 | A Task's Details | ✍️ confirm from live UI | confirm which sources create tasks in practice (Lark, Google Tasks, scorecard next steps, agent hand-backs) and whether Google Tasks syncs both ways like Lark |
 
 ### `docs/workspace/managing-credits.mdx` — Managing Workspace Credits
@@ -483,6 +550,7 @@ _Last updated: 2026-10-08_ (blog post frndos-september-2026-part-2; October 2026
 | Metered by actual usage | ✍️ confirm from live UI | confirm the exact label trend-signal detection carries in the credit ledger's Action column — the labels are server-authored and aren't readable from the web code. Screenshot needed. |
 | Credit Usage by Brand | 📸 screenshot | add screenshot of the Credit Usage by Brand table with a brand expanded down through Tool → Action → Person, showing the share percentages and the Export button → /img/guides-asset/<name>.jpeg |
 | Resetting a Member's Limit to 0 | 📸 screenshot | add screenshot of the Reset Limit? confirm — Remaining / Total Monthly Limit → 0, outstanding debt note, Reset to 0 → /img/guides-asset/<name>.jpeg |
+| Low-credit alerts | ✍️ confirm from live UI | the threshold is a server setting (`CREDIT_LOW_THRESHOLD`, default 50 credits). Confirm the production value with the team before stating a number in the article |
 
 ### `docs/workspace/calendar.mdx` — Calendar
 
@@ -494,6 +562,12 @@ _Last updated: 2026-10-08_ (blog post frndos-september-2026-part-2; October 2026
 | Connecting Your Calendar | ✍️ confirm from live UI | the first-run card also lists "Calendars on this Mac" (iCloud, Exchange, macOS Calendar), described as available in a desktop app. Confirm how and where that is offered before documenting it |
 
 ## Settings & Administration
+
+### `docs/settings/overview.mdx` — Settings & Administration Overview
+
+| Section | Type | What to do |
+|---|---|---|
+| Brand Settings | 📸 screenshot | add screenshot of Brand Settings in the main app — Brands / Brand / Settings title, the side panel (General · Customizations: Insights tabs, Review rubric, Plugins · Access: Members) → /img/guides-asset/<name>.jpeg |
 
 ### `docs/settings/askfrnd-tools.mdx` — Setting the Workspace AskFRND Tools
 
@@ -605,3 +679,16 @@ _Last updated: 2026-10-08_ (blog post frndos-september-2026-part-2; October 2026
 | Decks | ✍️ confirm from live UI | Lark lists a presenter window, autoplay and transitions; only keyboard/chapter navigation and fullscreen are readable in `PresenterClient.tsx`, so the post claims only those |
 | (dropped) Research | ✍️ confirm from live UI | quick/thorough search, preferred/excluded domains, document upload and Import past research all live under `/research/new`, which is behind `show-research-hub` (fail-closed). Left out of the post; only "deck research filed as a Study" is announced |
 | (dropped) Audience per-tab access rules | ✍️ confirm from live UI | no per-tab access UI found in frnd-web production. Left out of the post |
+
+### `blog/2026-10-08-frndos-october-2026-part-2.mdx` — What's New in frndOS: October 2026 (Part 2)
+
+| Section | Type | What to do |
+|---|---|---|
+| (top of body) | 🎬 video | the Lark brief has no recap video. When one exists, upload it with `news-video.mjs --file <path> frndos-october-2026-part-2 --caption "frndos update october 2026 part 2"` and add the `<S3Video>` block above the hero image |
+| Social Listening | ✍️ confirm from live UI | the help article now exists at [`docs/insights/social-listening.mdx`](docs/insights/social-listening.mdx). Add the 👉 link to `/docs/insights/social-listening` here and in Get Started |
+| A Redesigned AskFRND | ✍️ confirm from live UI | `docs/askfrnd/overview.mdx` now covers the unified panel ([Floating, Docked or Full Screen](docs/askfrnd/overview.mdx#floating-docked-or-full-screen), [Reading an Answer](docs/askfrnd/overview.mdx#reading-an-answer)). Add the 👉 link to `/docs/askfrnd/overview#reading-an-answer` here |
+| A Simpler Sidebar | ✍️ confirm from live UI | `docs/getting-started/navigating-frndos.mdx` is refreshed (Modules, page-title brand switcher, indicators, Getting started). Add the 👉 link to `/docs/getting-started/navigating-frndos` here |
+| Client Portal and Approvals | ✍️ confirm from live UI | the portal, Clients tab and Insights only access are now in [`docs/collaboration/client-portal.mdx`](docs/collaboration/client-portal.mdx); deck and plan requests were already in `client-approvals.mdx`. Add the 👉 link to `/docs/collaboration/client-portal` here |
+| Also New | ✍️ confirm from live UI | KV motion presets, Tune and Animate all are now in [`docs/studio/motion-mode.mdx`](docs/studio/motion-mode.mdx#motion-presets), and the Brand IQ Summary in [`docs/brand-setup/brand-iq.mdx`](docs/brand-setup/brand-iq.mdx#the-brand-summary). Add the 👉 links from the post |
+| Research That Answers First | ✍️ confirm from live UI | answer-first competitor and desk studies are in the new [`docs/research/competitor-and-desk-studies.mdx`](docs/research/competitor-and-desk-studies.mdx). Add it to the section's 👉 links |
+

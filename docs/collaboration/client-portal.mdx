@@ -1,0 +1,130 @@
+---
+title: The Client Portal
+sidebar_position: 4
+description: Give clients one place to see their approvals and the insights you share. Add clients from Brand Settings, choose what each one can do, and preview the portal as a client.
+---
+
+# The Client Portal
+
+**The client portal** gives each client one page for a brand: the approvals waiting on them, the ones waiting on others, and everything already decided. If you open Insights tabs to clients, the portal shows those too. Clients sign in with a short code sent to their email, so they never need a frndOS account or a password.
+
+You manage who gets in from the brand's **Clients** tab. For how a single approval request works, see [Client Approvals](./client-approvals).
+
+> **Rolling out:** features may reach workspaces gradually. If the **Clients** tab isn't in the brand's Members settings, refresh the page.
+
+## Before You Start
+
+1. ✅ **Brand settings access** for the brand, to open its Members page
+2. ✅ **Brand settings write access**, to add clients, change their access and resend invites
+3. ✅ **The client's email address**
+
+## Adding a Client
+
+Clients join a brand in two ways:
+
+* **From an approval request.** Name someone as an approver and they become a client of the brand. In the approvers field they're tagged **New client**
+* **From the Clients tab.** Invite them yourself, as below
+
+To invite a client:
+
+1. Open the brand's **Brand settings** and go to **Members** (see [Brand Settings](../settings/overview#brand-settings))
+2. Click the **Clients** tab, then **+ Add client**
+3. Fill in **Invite a client**:
+   * **Name · optional**, **Title · optional**, **Email**, and **WhatsApp · optional**
+   * **Can**: what the client can do (see [Access Levels](#access-levels))
+   * **Access ends**: **Never**, **90 days**, or **Pick a date**
+4. Under **Send**, tick **Send the invite by email**, **Also open WhatsApp with the link**, or both. A **Message** box opens with a draft you can edit
+5. Click **Send invite**, or **Add client** if you're not sending anything yet
+
+The invite email is the client's sign-in: _"No password: this email is your link."_ The link is personal to the client, and their phone or laptop remembers them for 30 days.
+
+A client is a free seat on the brand, not a workspace member. Someone who is already a member of your workspace can't be added: they see the brand inside frndOS.
+
+## Access Levels
+
+| Level | What the client can do |
+|---|---|
+| **Own requests** | Sees and decides only the requests that name them |
+| **All requests + approve** | Sees every request for the brand and decides the ones that name them |
+| **All requests, view only** | Sees every request for the brand. Can comment, can't decide |
+| **Insights only** | Sees only the Insights tabs you open to clients. No approvals |
+
+Naming an **Insights only** client as an approver changes their access to **Own requests**, so they can decide. A toast tells you when that happens.
+
+A view-only client is tagged **view only** in the approvers field, with **Change to All requests + approve?** to let them decide.
+
+## Managing Clients
+
+The **Clients** tab lists everyone with access to the brand. Search with **Search clients…**. Each row shows the client's email and details, whether they've opened the portal (**Not opened yet** or when they last did), when and how they were added, and when their access ends.
+
+Change a client's level from the menu on their row. The row's **•••** menu has:
+
+* **Copy portal link**, to send it yourself
+* **Resend invite**, which emails the link again
+* **Remove access**, after you confirm. The client can no longer open the brand's links, and decisions they made stay on record
+
+## What the Client Sees
+
+### Signing in
+
+A client who opens the portal without being signed in sees **Sign in to your approvals**. They enter their email and click **Send code**, and frndOS emails a 6-digit code. They enter it and click **Sign in**.
+
+The code expires after 10 minutes. **Resend code** sends a new one after a short wait, and **Use another email** starts over. Once signed in, the device remembers them for up to 30 days.
+
+### Approvals
+
+The **Approvals** page opens with one sentence on what needs them: how many things are waiting on them and by when, how many are waiting on others, and whether everything else is decided. Below it:
+
+| Section | What it holds |
+|---|---|
+| **Waiting on you** | Requests that need their decision, each with its deadline, how much is decided, and **Review** |
+| **Waiting on others** | Requests other approvers still have to decide |
+| **Decided** | Everything decided, with who decided and their note. **Show older** loads more |
+
+**Review** opens the request on its decision page, where they decide as described in [Client Approvals](./client-approvals#what-the-client-sees). A view-only client sees every request with a note that they can't approve.
+
+### Insights
+
+When at least one Insights tab is open to clients, the top bar shows **Insights** beside **Approvals**. An **Insights only** client sees Insights alone. If nothing is shared yet, the page says so.
+
+### Brands and account
+
+A client of more than one brand switches between them from the top bar. The account menu has **Appearance** (**Midnight**, **Aurora**, **Daylight** or **System**) and **Sign out this device**.
+
+## Sharing Insights With Clients
+
+Choose which Insights tabs clients can see, per brand:
+
+1. Open **Brand settings** → **Insights tabs** (see [Customizing Insights Tabs](../settings/insights-tabs))
+2. Tick **Clients** on each tab you want in the portal. Every tab starts unticked, and **Visible** is set on its own
+3. Save your changes
+4. Click **Preview as client** to see the portal's Insights the way a client sees it. Save first: the button is off while you have unsaved changes
+
+## FAQ
+
+**Q: Does a client need a frndOS account?**
+No. They sign in with a code sent to their email, or open the link in their invite.
+
+**Q: My client says the code didn't work.**
+Codes expire after 10 minutes. Ask them to click **Resend code** and use the newest one.
+
+**Q: Can I add a client who is already in my workspace?**
+No. Workspace members see the brand inside frndOS instead.
+
+**Q: I removed a client by mistake.**
+Add them again from **+ Add client**. Decisions they made before stay on record.
+
+**Q: Why does my client only see Insights?**
+Their access is **Insights only**. Change it on the **Clients** tab, or name them as an approver, which changes it to **Own requests**.
+
+**Q: A client can see the portal but no Insights.**
+No Insights tab is open to clients yet. Tick **Clients** on a tab in the brand's Insights tabs settings.
+
+---
+
+## Related Articles
+
+- [Client Approvals](./client-approvals)
+- [Customizing Insights Tabs](../settings/insights-tabs)
+- [Settings & Administration Overview](../settings/overview)
+- [Collaboration Overview](./overview)

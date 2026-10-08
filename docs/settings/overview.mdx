@@ -20,7 +20,7 @@ The sidebar groups them into sections — **Workspace**, **Customizations**, **P
 | | **People** | Invite members, manage roles and access | See [Workspace & Members](../workspace/inviting-team-members) |
 | | **Permission Role** | Define what each role can reach per brand | _Guide coming_ |
 | **Customizations** | **Insights Tabs** | Rename and show/hide Insights tabs across the workspace | [Customizing Insights Tabs](./insights-tabs) |
-| | **Scorecard Rubric** | The rubric every brand's Proposal Scorecard inherits | [Scorecard Reports and Rubrics](../research/scorecard-report-and-rubric#setting-the-rubric) |
+| | **Review Rubrics** | The rubric every brand's Proposal Scorecard inherits | [Scorecard Reports and Rubrics](../research/scorecard-report-and-rubric#setting-the-rubric) |
 | | **Chat Tools** | Set the default AskFRND tool set for the workspace | [Setting the Workspace AskFRND Tools](./askfrnd-tools) |
 | | **Plugins** | Connect an account once for the whole workspace, so members and agents don't each connect their own | [Shared Connections](./shared-connections) |
 | **Plans** | **Credit Usage** | Track and allocate credits, buy Extra Credit | See [Managing Workspace Credits](../workspace/managing-credits) |
@@ -31,7 +31,7 @@ The sidebar groups them into sections — **Workspace**, **Customizations**, **P
 
 > **Renamed:** the workspace tool baseline is listed as **Chat Tools** in the sidebar. It's the same page the [AskFRND Tools guide](./askfrnd-tools) covers.
 
-> **Brand Settings mirrors this.** A brand's own settings carry a **Customizations** section too — with its own **Insights Tabs**, **Scorecard Rubric** and **Plugins**, scoped to that brand.
+> **Brand Settings mirrors this.** A brand's own settings carry a **Customizations** section too, with its own **Insights tabs**, **Review rubric** and **Plugins**, scoped to that brand. See [Brand Settings](#brand-settings).
 
 > **Agents and Workflows moved out of Labs.** They used to sit under Settings → Labs with a beta badge; they're primary navigation now — **myFRND** and **Workflows** in the sidebar. Their links are unchanged.
 
@@ -44,6 +44,28 @@ The sidebar groups them into sections — **Workspace**, **Customizations**, **P
 3. Pick the area you need from the settings sidebar — for example, **Chat Tools** under **Customizations**, or **Experimental** under **Labs**
 
 > **Why it's admin-only:** Most settings apply to the entire workspace, so they're gated to owners and admins. If you don't see a page, you likely don't have the permission — or you're in a Personal workspace.
+
+## Brand Settings
+
+Each brand has its own settings. They open inside the main app, so the sidebar and AskFRND stay where they are, and the page title reads **Brands / \{brand\} / Settings**.
+
+To open them, click the brand name in the page title and pick **Brand settings**, or click the gear beside a brand on the **Brands** page. Both appear only if you can manage the brand's settings.
+
+A panel on the left lists the sections:
+
+| Section | Area | What it's for |
+|---|---|---|
+| | **General** | The brand's name, logo and industry |
+| **Customizations** | **Insights tabs** | Rename or hide Insights tabs for this brand ([guide](./insights-tabs)) |
+| | **Review rubric** | This brand's own Proposal Scorecard rubric ([guide](../research/scorecard-report-and-rubric#setting-the-rubric)) |
+| | **Plugins** | Accounts connected for this brand ([guide](./shared-connections)) |
+| **Access** | **Members** | Who can work on the brand, and its clients ([guide](../collaboration/client-portal#managing-clients)). Admins only |
+
+You only see the sections your role lets you open. On a small screen, the panel becomes a **Section** picker at the top of the page. If you switch brands from the page title while in settings, you stay in the same section when the new brand lets you open it, and land on **General** otherwise.
+
+> **Where did the brand description go?** frnd now writes it from the brand's Strategy. It's the **Summary** at the top of Strategy in Brand IQ. See [The Brand Summary](../brand-setup/brand-iq#the-brand-summary).
+
+> **Assets and Talents** were marked coming soon and are no longer in Brand Settings. Old links to them open **General**.
 
 ## Admin-Only & Team-Only
 
@@ -69,6 +91,9 @@ It's listed as **Chat Tools**, under **Customizations**.
 
 **Q: Agents and Workflows used to be in Settings → Labs.**
 They're primary navigation now — **myFRND** and **Workflows** in the sidebar. The routes didn't change.
+
+**Q: Brand settings used to open full screen, with a back button.**
+They now open inside the main app. Leave through the sidebar or the page title.
 
 **Q: I don't see a Dashboard option in Insights.**
 Custom dashboards are rolled out to eligible workspaces only. If the entry isn't there, it isn't enabled for you — and a pasted dashboard link won't resolve either.

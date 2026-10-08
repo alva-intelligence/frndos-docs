@@ -50,7 +50,7 @@ Tick one size or several, then click **Create motion · N sizes**. The footer sh
 
 | Area | What's there |
 |---|---|
-| **Top bar** | **Back**, project name, preset + **Stagger**, the focused tile's size, **Export**, exported files, save state, **⋮** |
+| **Top bar** | **Back**, project name, preset + **Stagger**, **Animate all**, the focused tile's size, **Export**, exported files, save state, **⋮** |
 | **Layers** (left) | One row per layer in your KV, plus a locked **Base image** row |
 | **Properties** (right) | The selected keyframe's values, and the canvas zoom controls |
 | **Canvas** | Live preview — one stage per output size |
@@ -66,16 +66,51 @@ Click a layer to select it. The **✨** button on the row applies a motion prese
 
 ## Motion Presets
 
-Rather than keyframing everything by hand, apply a preset:
+Rather than keyframing everything by hand, apply a preset. The **Default** tab of the **✨** menu holds a library of 50 presets in four sections:
 
-| Entrance / exit | Emphasis |
+| Section | Examples | Where it plays |
+|---|---|---|
+| **Entrance** | Fade in, Slide in, Rise, Pop in, Zoom in, Stomp, Bounce in, Drop in, Rotate in, Jack-in-the-box | Brings the layer in |
+| **Exit** | Fade out, Slide out, Rise out, Zoom out, Pop out, Bounce out, Fall | Takes the layer out at the end |
+| **Emphasis** | Pulse, Shake, Spin, Bounce, Heartbeat, Tada, Swing, Wobble, Flash, Hop | A short highlight at the playhead |
+| **Loop** | Float, Breathe, Sway, Twinkle, Turn | Repeats between the layer's entrance and exit |
+
+Presets that only differ by direction share one card. **Slide in**, for example, reads **Slide in · 4 directions**, and you pick the direction in the Tune panel.
+
+> **Heads-up:** emphasis presets are disabled when the playhead is too close to the end: _"Not enough room before the end."_ Loop presets need at least 0.4 seconds free before the layer's exit or its next motion, and say so when there isn't room.
+
+### Tuning a preset
+
+After you pick a preset, the menu stays open and a **Tune** panel appears at the top, so you can adjust the motion without starting over:
+
+| Row | Options |
 |---|---|
-| Fade in · Slide in left · Slide in right · Slide in up · Slide in down · Pop in | Pulse · Shake · Spin · Bounce |
-| Fade out · Slide out left · Slide out right | |
+| **Direction** | The preset's directions, for example Rise, Sink, Drift left or Drift right |
+| **Distance** / **Intensity** | **Subtle**, **Normal** or **Big**: how far it travels, or how strong the effect is |
+| **Duration** | How long it lasts |
+| **Easing** | **Auto**, **Linear**, **In**, **Out** or **In-out** |
 
-Entrance presets start the layer's move; exit presets land at the end of the timeline; emphasis presets play at the playhead.
+Rows only appear when they apply. A spin has no intensity to tune, and a loop has no duration.
 
-> **Heads-up:** emphasis presets are disabled when the playhead is too close to the end — the tooltip reads _"Not enough room before the end."_
+Every change replaces the motion you just picked rather than adding another block, and the whole pick and tune is one undo step.
+
+The Tune panel also appears when you pick a preset from an empty **In**, **Emphasis** or **Out** slot in the timeline, from a block's **Change motion**, and from a track's right-click menu. A block changed with **Change motion** keeps its length, so its Duration row is hidden.
+
+### Animate All With a Style Pack
+
+To animate every layer in one click, use **Animate all** in the top bar. Pick a style pack:
+
+| Pack | What it does |
+|---|---|
+| **Cascade** | Every layer rises in, top to bottom, 150ms apart |
+| **Bloom** | Layers zoom in from the centre outward |
+| **Punchy** | Headline stomps in, the rest bounce, CTA pulses at the end |
+| **Elegant** | Slow fades and gentle rises, 300ms apart. Fits premium launches |
+| **Minimal** | Only the headline and CTA rise in; everything else stays still |
+
+It animates the layers you've selected, or every visible, unlocked layer when nothing is selected. frndOS picks the headline (the largest text) and the CTA (the smallest shape) for you.
+
+A pack writes ordinary preset blocks, so you can drag, retime or swap any of them afterwards. Picking another pack replaces the previous pack's entrances instead of stacking on them. Your own emphasis, loops, exits and hand keyframes stay. One pack is one undo step.
 
 ### Previewing before you apply
 
@@ -99,7 +134,7 @@ It has three tabs:
 
 | Tab | What's in it |
 |---|---|
-| **Default** | The built-in entrance and exit presets, plus an **Emphasis** section |
+| **Default** | The preset library: **Entrance**, **Exit**, **Emphasis** and **Loop**, with the Tune panel after a pick |
 | **Build** | Channel cards for composing your own motion |
 | **Saved** | Your brand's saved motions |
 
@@ -310,7 +345,13 @@ Yes. Each motion project is its own timeline document, listed under the Motion t
 Use **⋮ → Resync from KV**. Keyframes for layers that still exist are kept; tracks for deleted layers are removed.
 
 **Q: Do I have to keyframe everything by hand?**
-No. Apply a preset per layer with the **✨** button, or use **Stagger** to sequence several layers at once. Keyframe editing is there when you want exact control.
+No. Apply a preset per layer with the **✨** button, use **Stagger** to sequence several layers at once, or **Animate all** to animate every layer with a style pack. Keyframe editing is there when you want exact control.
+
+**Q: I picked a preset and tuned it several times. How do I undo it?**
+One **Undo** takes back the pick and every tune after it.
+
+**Q: Animate all picked the wrong layer as the headline.**
+The headline is the largest text and the CTA is the smallest shape. Swap the motion on those layers afterwards: a pack's blocks are ordinary presets you can change.
 
 **Q: Can I animate a Concept board?**
 Motion animates the board you're viewing in the KV file. Promote a concept to Craft first — see [Craft Mode](./craft-mode).

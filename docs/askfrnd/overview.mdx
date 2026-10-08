@@ -12,34 +12,28 @@ If you used the old standalone chat page in v1, AskFrnd is what replaces it — 
 
 ## Where to Find AskFrnd — and What History You'll See
 
-There are two ways to open AskFrnd, and **the chat history you see depends on where you access it from**:
+Open AskFrnd with the **Ask FRND** button in the bottom-right corner of any page, with **New chat** in the sidebar (**⌘O**), or by clicking a chat under **Chats** in the sidebar.
 
-### 1. From the Sidebar — Scoped to Your Current Context
+### Floating, Docked or Full Screen
 
-Click **Chat** in the left sidebar. What you see depends on where you are:
+The panel opens in one of three ways, and you can move between them from its **More options** menu:
 
-- **From Home** → clicking **See all** shows chat history that **isn't tied to any specific brand** — chats created while you were in Home context. These are tagged **Home**.
-- **From inside a Brand** → clicking **See all** shows chat history **tied to that specific brand only**. Each entry is tagged with the brand name (and the module it came from, e.g. "Insights").
+| Mode | What it looks like |
+|---|---|
+| **Float** | A card floating over the page |
+| **Dock to side** | A panel beside the page. Drag its edge to make it wider or narrower |
+| **Fullscreen** | The whole window. **Exit fullscreen** goes back to the way you had it |
 
-In other words, sidebar history is **scoped to wherever you currently are** — Home or a specific brand.
+AskFrnd remembers whether you prefer it floating or docked, and opens that way next time. The panel's header also has **New chat** and **Chat history**. The **More options** menu adds **Generated files** (once the chat has made something) and **Chat settings**.
 
-### 2. From the Floating AskFrnd Button (FAB) — Everything, Everywhere
+### Chat History
 
-The sparkle icon in the **bottom-right corner** is available from any page. Open it and check its history — it shows **every chat you've had, across every brand and every pillar**, regardless of where you currently are.
+**Chat history** lists your past chats, with **Search chats...** and filters for the chat type and the module it came from.
 
-> **Why does the FAB show everything?** If you manage several brands, you might not remember which brand a past conversation happened in. Rather than opening each brand one by one to search, the FAB's history gives you one place to find any chat across your whole account.
+* **Floating or docked** — a brand menu, starting on **All Brands**, so you can find a chat whichever brand it happened in
+* **Full screen** — scoped to the brand you're on, or to chats with no brand when you're not on a brand page
 
-### Quick Reference
-
-| Access Point | History Scope | Tagged By |
-|---|---|---|
-| Sidebar Chat → Home | Chats not tied to a brand | "Home" |
-| Sidebar Chat → inside a Brand | Chats tied to that brand only | Brand name + module |
-| FAB (bottom-right, anywhere) | All chats, every brand, every pillar | Brand name or "Home" + module |
-
-> **Filter tip:** All history views let you filter by **Your chat** and **Your module**. The FAB's global view adds a third filter, **Your Brand**, since it spans multiple brands — the sidebar-scoped views don't need it.
-
-See: [Navigating frndOS — The Sidebar](../getting-started/navigating-frndos) for more on the sidebar layout.
+The sidebar's **Chats** list shows your recent chats that aren't tied to a brand. **See all** opens the full history. See [Navigating frndOS — The Sidebar](../getting-started/navigating-frndos) for more on the sidebar layout.
 
 ## What Makes AskFrnd Different
 
@@ -57,7 +51,7 @@ This means:
 
 ### Conversation History
 
-AskFrnd **saves your chat history** — but what you see depends on your access point. See [Where to Find AskFrnd](#where-to-find-askfrnd--and-what-history-youll-see) above for the full breakdown: Home-scoped, brand-scoped, or everything via the FAB.
+AskFrnd **saves your chat history** — but what you see depends on your access point. See [Chat History](#chat-history) above for how the history is scoped.
 
 ### Model Choice
 
@@ -99,6 +93,22 @@ See: [Generating Images & Videos via AskFrnd](./generating-with-chat)
 *"Create a workflow that drafts a weekly report from our campaign data."*
 
 AskFrnd builds it while you watch. See [Building a workflow in chat](../early-access/workflows#building-a-workflow-in-chat).
+
+## Reading an Answer
+
+While AskFrnd works, the answer shows _"Answering your questions…"_ and then the step it's on. When it's done, the top of the answer says how long it took, for example **Answered in 8s**. Click it to open the steps behind the answer, such as reading a page, retrieving Brand IQ or asking an agent.
+
+Point at an answer for its actions:
+
+* **Reply** quotes that answer in the composer, so your next message answers it specifically. Click the quote to jump back to the answer, or remove it to cancel
+* **Branch from here** starts a new chat that continues from that answer, leaving the original chat as it was. The composer shows **Start new branch** until you send
+* **Copy message**, and **Regenerate** on the latest answer
+
+Your own messages show when you sent them, with **Edit message** and copy when you point at them.
+
+### Suggested answers
+
+Under the latest answer, AskFrnd offers a few suggested replies. Tap one to send it and keep going. In a new chat, cards such as **Summarise this page** or **What changed this week?** help you start.
 
 ## Rich Answers
 
@@ -216,8 +226,8 @@ That's the whole indicator: no spinner, no badge. The title itself carries the s
 
 - Your AskFrnd conversations are stored in your account
 - Workspace admins can see usage analytics (how many credits, which features), but **not the content** of your conversations
-- Where you can **see** a given conversation depends on your access point — see [Where to Find AskFrnd](#where-to-find-askfrnd--and-what-history-youll-see) above
-- Use the **FAB's global history** (bottom-right) when you're not sure which brand a past conversation happened in
+- Where you can **see** a given conversation depends on how the panel is open: see [Chat History](#chat-history) above
+- Open the history in the floating or docked panel and pick **All Brands** when you're not sure which brand a past conversation happened in
 
 ## FAQ
 
@@ -239,14 +249,17 @@ Yes, when you open AskFrnd from inside the Insights pillar — it can analyze th
 **Q: Can I switch models mid-conversation?**
 Check the model selector in the AskFrnd panel. Behavior may vary based on the specific implementation.
 
-**Q: My AskFrnd panel is gone — where did it go?**
-The FAB (floating button) is always available in the bottom-right corner — click it to reopen the panel. You can also open **Chat** from the left sidebar for the full-screen view.
+**Q: My AskFrnd panel is gone. Where did it go?**
+Click the **Ask FRND** button in the bottom-right corner to reopen it, or **New chat** in the sidebar.
 
 **Q: Why does my chat history look different depending on where I open it?**
-History scope depends on your access point. Sidebar Chat shows history scoped to where you are (Home-only or that specific brand). The FAB (bottom-right) always shows everything — every brand, every pillar. See [Where to Find AskFrnd](#where-to-find-askfrnd--and-what-history-youll-see) above.
+Floating or docked, the history starts on **All Brands**. Full screen, it's scoped to the brand you're on. See [Chat History](#chat-history) above.
 
-**Q: I can't find a chat I had last week — where should I look?**
-If you're not sure which brand it happened in, use the **FAB's history** (bottom-right corner) — it searches across all your brands and pillars at once, so you don't have to check each brand individually.
+**Q: What's the difference between Reply and Branch?**
+**Reply** stays in the same chat and points your next message at one answer. **Branch from here** starts a new chat from that answer, so you can try another direction without changing the original.
+
+**Q: I can't find a chat I had last week. Where should I look?**
+Open **Chat history** in the floating or docked panel, keep **All Brands**, and use **Search chats...**. It searches across all your brands at once.
 
 **Q: How big a file can I attach?**
 **20 MB** per file, up to 5 files — raised from the old 10 MB limit. Video, on models that take it, goes up to 200 MB.

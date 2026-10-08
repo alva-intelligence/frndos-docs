@@ -213,6 +213,8 @@ The board above the strip is the **master** for its tiles. Edit a layer on the b
 
 You can also select a tile and edit its layers directly. That tile then keeps its own version, and editing the board never overwrites it. Use **Reset to master** on the tile header to make it follow the board again.
 
+Edits on a tile stay on that tile: moving or resizing a layer, changing its fill, stroke, opacity or text style, pasting a layer, or dropping a PSD onto it. A dropped PSD fits inside the tile without stretching, and its layers show in the tile's Layers panel.
+
 ### Push to all tiles
 
 To force every tile of a board back to the board's layout, right-click a tile → **Push master to all tiles…**.
@@ -268,6 +270,9 @@ Common social and ad platform dimensions are pre-configured under Social Media, 
 
 **Q: I edited my board with AI and got a new board instead.**
 That's on purpose. The board already had sizes, so the edit landed as a new variant beside it and your existing sizes stayed intact.
+
+**Q: Edits on a resize size used to flicker, or land on the master board. Is that fixed?**
+Yes. A layer you move on a size stays where you put it, and style changes, pastes and PSD drops stay on the size you're working on instead of going to the master.
 
 **Q: My regenerate failed. Did I lose the tile?**
 No. A failed or cancelled render keeps the tile's last version. Retry it, or open **Version history** to pick an earlier one.

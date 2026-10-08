@@ -1,0 +1,220 @@
+---
+title: Social Listening
+sidebar_position: 12
+description: See what people say about your brand, its people and its topics. Mentions, sentiment, spikes and the voices behind them, with alerts and a daily recap by email or Lark.
+---
+
+# Social Listening
+
+**Social Listening** shows what people are saying about your brand, its people and the topics around it. Each topic has its own war room with mentions, sentiment, spikes, and the voices and sources behind them. Alerts and a daily recap reach you by email or in Lark, so you hear about a spike without keeping the page open.
+
+> **Set up by your frndOS team.** Topics and their keywords are connected for your brand by the frndOS team. Until they are, the tab says _"Your frndOS team connects it for this brand."_
+
+## Before You Start
+
+1. ✅ **A brand with Social Listening connected** by your frndOS team
+2. ✅ **Social Listening access** on your brand role, to read topics
+3. ✅ **Social Listening write access** to change alerts, edit topics, pause listening and pin sources
+
+## Opening Listening
+
+Open the brand, go to **Insights** and click the **Listening** tab. A workspace or brand can rename this tab (see [Customizing Insights Tabs](../settings/insights-tabs)).
+
+The tab opens on the topic list. Click a topic to open its war room.
+
+## The Topic List
+
+The top of the page sums up every topic: **Active Topics**, **Total Mentions · 24h**, **Critical** and **Watching**.
+
+**FRnD spotted these signals** lists the latest signals across your topics. Each card shows:
+
+* Its severity, **Critical** or **Watch**, and whether it's still **Open** or **Resolved**
+* What happened and why it matters
+* The platforms in the spike, and the topic when you have more than one
+
+Click a signal to open its topic. The **?** on a card explains the labels.
+
+Below the signals, filter the list with **All topics**, **Critical**, **Watch** or **Calm**, or use **Search topics…**.
+
+Each topic card shows its status, how many mentions it had in the last 24 hours and how that changed, the sentiment split with its **Net** score, the time of the last spike, and the topic's keywords. A topic that isn't listening right now also shows **Syncing**, **Paused** or **Sync paused**.
+
+With write access, a card's **•••** menu has:
+
+* **Open war room**
+* **Pause listening** / **Resume listening**
+* **Edit configuration** (see [Editing a Topic](#editing-a-topic))
+
+## The War Room
+
+A topic's war room opens with its name, its status tag (**Critical**, **Watch** or **Calm**) and when it was last updated. The **?** beside the status explains what each one means:
+
+| Status | Meaning |
+|---|---|
+| **Critical** | At least one category is at or above the Critical threshold today, and alerts are being sent |
+| **Watch** | At least one category is above the Watch threshold today. Watch sends no alert |
+| **Calm** | Every category is under its Watch threshold today |
+
+When a topic is Critical, a **War Room Active** ribbon says how many critical alerts need attention.
+
+With write access, the header also has **Edit topic** and **Share & export**.
+
+### Tabs
+
+| Tab | What it shows |
+|---|---|
+| **Overview** | Sentiment (**Positive**, **Neutral**, **Negative**), the top conversation platforms, and each category's status |
+| **Themes & Clusters** | What people talk about, as a **List** sorted by mentions or by most negative, or as a **Cluster** of bubbles |
+| **Spikes & Alerts** | Mention volume over time, critical and watch alerts, and activity from your watchlist |
+| **Voices** | The posts and people behind the conversation |
+| **Sources & Amplifiers** | Who drives the conversation, and the network of accounts that spread it |
+
+The **Spikes & Alerts** tab shows a count when there are critical alerts. A notification about a topic opens the war room on the right tab.
+
+### Date range
+
+By default the war room shows **Live** data. To look back, open the date picker beside the tabs and pick **Today**, **Yesterday**, **Last 7 days**, **Last 30 days**, or **Custom** with your own dates and **Apply**.
+
+While a range is set, a line under the tabs says which days you're looking at, in WIB. Click **Back to live** to return.
+
+### Since you were last here
+
+Above the tabs, **Since you were last here** lists what changed since your last visit: new alerts, sentiment shifts, new top voices and volume changes. On your first visit it says changes will show from your next one.
+
+## Voices and Sources
+
+**Voices** shows the posts behind the conversation, curated by FRnD. Switch to **Show all** to see every mention, then narrow by **Platform**, **Sentiment** and **Theme**. Low-relevance mentions are left out of the counts. Tick **Include low relevance** to see them too. Each post links to the original.
+
+**Sources & Amplifiers** ranks the accounts by reach, grouped as **All sources**, **Influencers**, **Media**, **Communities** and **Bot-suspected**. The list shows the top 10, with **Show all** for the rest.
+
+The amplifier network draws how accounts reply to and spread each other's posts. Click a circle to focus on one account and its links, and click it again, or **All accounts**, to go back.
+
+AskFRND is built into the war room. Actions next to signals, themes, voices and the network open AskFRND with that context already attached, for example to explain the network or the account you're looking at.
+
+## Watchlist
+
+The watchlist follows the accounts you care about. With write access, click the star on a source in **Sources & Amplifiers** to pin it to the watchlist.
+
+The **Watchlist** card lists each pinned account with its mentions in the last 7 days and its last post. A pinned account raises an alert when it posts about the topic, and those posts appear under **Watchlist activity** on the **Spikes & Alerts** tab. They don't count toward the spike totals.
+
+Click the filled star to unpin an account.
+
+## Alerts and the Daily Recap
+
+Alert rules are set per brand, and every topic in the brand follows them. With write access, open the settings gear at the top of the Listening tab and go to **Alerts & sync**.
+
+| Setting | What it does |
+|---|---|
+| **Pull frequency** | How often new mentions sync: **Every 15m**, **Every 30m**, **Every 1h** or **Every 2h** |
+| **Daily recap** | A **Morning** and an **Afternoon** recap, each switched on or off with its own time. Morning covers the time since the afternoon recap |
+| **Spike alerts** | The master switch, and the thresholds (see below) |
+| **CSV export** | Lets anyone with Social Listening read access download a topic's mentions |
+| **Card language** | **EN** or **ID**, for recap and alert cards and emails |
+| **Quiet hours** | Holds non-Critical alerts (see below) |
+| **Destinations** | Where recaps and alerts go (see below) |
+
+Changes are drafts until you click **Save changes**. Leaving with unsaved edits asks first: **Discard** or **Keep editing**.
+
+### Spike alerts
+
+Spikes are measured against the topic's 14 day baseline. **Simple** sets two thresholds:
+
+* **Watch threshold** — lifts a category to Watch on the board and in the recap. Watch sends no alert. Default +50%
+* **Critical threshold** — opens a Critical alert and sends it to your destinations. Default +200%
+
+**Advanced** sets them as multipliers (**Critical multiplier**, **Watch multiplier**), plus a **Volume floor** below which nothing alerts (default 15 mentions), **Viral views** and **Viral comments** for a single post, and **Depth scoring**, where AI reads mentions for criticism, sensitive topics and credible accounts. Depth scoring uses AI credits.
+
+### Quiet hours
+
+Turn on **Hold non-Critical alerts** and set a **Window** in the brand's timezone. Watch alerts and reports wait until the window ends. Critical alerts always send.
+
+### Destinations
+
+Add a destination as **Email** (pick a brand member, or type an external address) or **Lark webhook** (paste the webhook URL and its signature key). Click **Add destination**, or save and send a test right away.
+
+Each destination has its own switches for **Morning recap**, **Afternoon recap** and **Spike alerts**. Until it has received a test message it reads **Not verified yet · send a test**. A test send asks first, then sends one live message.
+
+People with Social Listening access on the brand also get in-app notifications for spikes, watchlist hits and recaps. In the notification inbox they're filed under **Listening**.
+
+## Editing a Topic
+
+With write access, click **Edit topic** in the war room, or **Edit configuration** on its card:
+
+| Section | What it holds |
+|---|---|
+| **Name** | The topic's name |
+| **Card name** | A short name for Lark cards, up to 60 characters |
+| **Topic description** | Who or what the topic tracks, and why. It's shown on the topic card and shared pages, and given to the AI as context |
+| **Categories** | Up to 6 groups for the topic's themes, used in recap cards. **Add category** adds one |
+| **Themes** | Assign each theme to a category |
+| **Alerts** | **Inherit from brand** destinations, or **Custom** to pick this topic's own. **Custom alert thresholds** override the brand's for this topic. Off inherits the brand values |
+
+Click **Save changes**. When categories change, mentions are re-sorted into them and the counts update.
+
+## Sharing and Exporting
+
+Click **Share & export** in the war room.
+
+**Export file** downloads the topic's mentions as a CSV, for the **Last 24h**, **Last 7d** or **Last 30d**, or for the date range you're looking at. The filename is previewed first. If CSV export is off for the brand, the tab says to turn it on under **Settings › Alerts & sync › Export**.
+
+**Shareable link** creates a view-only link to this topic only: _"Recipients can't see other topics or Insights tabs."_ You can set:
+
+* **Access**: **Anyone with the link can view**
+* **Expires**: **24 hours**, **7 days**, **30 days** or **Never**. An expired link can be renewed
+* **Protection**: **Require password**, at least 8 characters with one uppercase letter and one number
+
+Click **Copy link** to share it. **Regenerate** makes a new URL and stops the old one working at once, after you confirm.
+
+People opening a shared topic see it read-only, without the **Since you were last here** strip.
+
+## When Credits Run Out
+
+If the workspace runs out of credits, a banner says _"AI analysis is paused: this workspace is out of credits."_ New mentions are still collected but not labelled, so themes, categories, spike alerts and headlines stop updating. Runs skipped while paused are not retried.
+
+People who manage billing get **Top up credits**. Everyone else is asked to contact the workspace owner. When credits are back, the banner says AI analysis resumed and can be dismissed. See [Managing Workspace Credits](../workspace/managing-credits).
+
+## Coming Soon
+
+These are shown in the war room but not available yet:
+
+| Area | Status |
+|---|---|
+| **Risk Scenarios** and **Playbook** tabs | Coming soon |
+| **Briefing** in the War Room Active ribbon | Coming soon |
+| **Send report** in Share & export | Coming soon |
+| **PDF** and image export | Coming soon. CSV is available |
+| **Duplicate** and **Archive or delete…** on a topic | Coming soon |
+| **AI context** files and instructions on a topic | Coming soon |
+| **Integration**, **Plan & usage**, **Demo mode** and **Data & reset** in settings | Not editable yet |
+
+## FAQ
+
+**Q: How do I add a new topic?**
+Topics are set up by your frndOS team. Contact them with what you want to track.
+
+**Q: Why didn't I get an alert when a topic went to Watch?**
+Watch shows on the board and in the recap but sends no alert. Only Critical sends one.
+
+**Q: I set quiet hours. Will I miss a crisis?**
+No. Quiet hours hold Watch alerts and reports only. Critical alerts always send.
+
+**Q: Can I send alerts to a Lark group?**
+Use a **Lark webhook** destination for the group. Email works for brand members and for external addresses.
+
+**Q: Why are some mentions missing from the counts?**
+Low-relevance mentions are left out of the counts. Tick **Include low relevance** on the Voices tab to see them.
+
+**Q: The topic says Sync paused.**
+Listening for that topic has stopped syncing for now. When a date range covers it, the war room also says since when.
+
+**Q: Can someone outside frndOS see a topic?**
+Yes, with a shareable link from **Share & export**. They see only that topic, read-only.
+
+---
+
+## Related Articles
+
+- [Insights Overview](./overview)
+- [Customizing Insights Tabs](../settings/insights-tabs)
+- [Notification Settings](../settings/notifications)
+- [Managing Workspace Credits](../workspace/managing-credits)
+- [Inviting Team Members](../workspace/inviting-team-members)

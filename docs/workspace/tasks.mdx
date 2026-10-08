@@ -19,23 +19,41 @@ description: See every task across your workspace as a list or a kanban board, m
 
 Click **Tasks** in the sidebar (marked **Beta**).
 
-The header has **Search tasks** and **New task**. Below it, the toolbar keeps to three controls:
+The header has **Search tasks** and **New task**. Below it, the toolbar has:
 
 * **Scope tabs**: **All**, **Mine**, **Today**, **Overdue**. Each shows a count when it has tasks; Overdue's count is red
-* **Filter**: narrow by brand and project. It reads **Filter · 1** when one is on
-* **View**: pick **List** or **Board**, how the list is grouped (**Due date**, **Brand**, **Project** or **Status**), and the **Show done** and **Show archived** switches. The button names what you're looking at, for example **View · Due date**
+* **Filter**: narrow by brand and project
+* **List / Board switch**: two icons on the bar, so changing the layout is one click
+* **View options** (the sliders icon): **Group by** (**Due**, **Brand**, **Project** or **Status**, in the list only), and the **Show done** and **Show archived** switches
 
 The view you pick is remembered and kept in the page link, so sharing it shows the same list.
 
 ### Reading a row
 
-A row only says what's true. The line under the title shows a status other than the default, the due date with how late it is (for example **12 Jun · 16 wk late** in red), where the task came from, and its checklist steps. A task with no assignee shows no "Unassigned" label. Its **•••** menu appears when you point at the row.
+Each task is one line: the status circle, the title, its checklist steps (for example **1/4**), where it came from while there's room, then the brand mark, the assignee and the due date. A row only says what's true, so a task with no assignee shows no "Unassigned" label.
+
+The circle shows the status inside it:
+
+| Circle | Status |
+|---|---|
+| Empty ring | **Not started** |
+| Half filled | **Doing** |
+| Dashed ring | **Waiting for review** |
+| A bar | **Blocked** |
+| Dotted ring | **Later** |
+| A check | **Done** |
+
+Click the circle to mark the task complete, or click it again to reopen it. To move a task to another status, use the row's **•••** menu, which appears when you point at the row.
+
+In the list, only **Today** is red. Under the red **Overdue** heading a late date stays plain, and pointing at it shows how late it is. Grouped any other way, a late date is red and says how late, for example **12 Jun · 16 wk late**. Tasks that came from Lark carry a small mark by the date.
+
+When more than five tasks are overdue, the group folds behind **Show all** with the count. **Show less** folds it again.
 
 ### Keeping Tasks in sync
 
 Tasks refresh by themselves when you come back to the page, and every couple of minutes while it's open.
 
-When your tasks come from Lark, the bottom of the **View** menu shows when they were last synced (for example **Synced 2 min ago**) and **Sync now**. Click it to pull your Lark tasks straight away. If you've just synced, it reads **Synced a moment ago**.
+When your tasks come from Lark, the line beside the **Tasks** title says when they were last synced, for example **Lark · synced 2 min ago**. Click the refresh button next to it to pull your Lark tasks straight away. While it works the line reads **Syncing…**, and right after a sync it reads **Lark · synced a moment ago**.
 
 ## The Board
 
@@ -60,21 +78,25 @@ Each column has **+** to add a task straight into it. The **Done** column's menu
 
 ## A Task's Details
 
-Click a task to open its details on the right:
+Click a task to open its details. On a wide screen they open as a card beside the list, so the list stays in view. On a narrow screen the card floats over the list.
+
+The status circle sits beside the title, and works the same as on the row. Below it:
 
 | Field | What it holds |
 |---|---|
-| **Status** | Where it stands |
-| **Due** | When it's due. Type a date in plain words, such as _"tomorrow"_, or pick a day |
 | **Assignee** | A person or an agent. Suggested agents for the step are listed first |
+| **Due** | When it's due. Type a date in plain words, such as _"tomorrow"_, or pick a day |
+| **Status** | Where it stands |
 | **Brand** / **Project** | Where the task belongs |
 | **Source** | Where it came from, such as **Lark** or **Google Tasks** |
 
-Below the fields are the **Description**, a checklist, and the task's **Discussion**.
+Below the fields are the description (**Add description**), a checklist, and the task's **Discussion**.
 
-* **Mark complete** (or **Reopen**) changes it in one click
-* **Work on this task with frnd** opens AskFRND on the task
-* The **⋯** menu has **Copy link**, **Archive task** and **Delete task**
+The bar at the top of the card has:
+
+* **Work with frnd**, which opens AskFRND on the task
+* **Copy link**, which copies a link straight to this task
+* The **⋯** menu, with **Archive task** and **Delete task**
 
 Edits save when you leave a field, not on every keystroke.
 
@@ -97,7 +119,10 @@ No. That column is where agents hand work back for you to check.
 Tasks are kept in sync with Lark when your Lark account is connected; a task that came from Lark or Google Tasks says so under **Source**.
 
 **Q: I just added a task in Lark and it isn't here yet.**
-Open **View** and click **Sync now**.
+Click the refresh button beside the **Tasks** title to sync now.
+
+**Q: Where did the View menu go?**
+The **List** / **Board** switch now sits on the toolbar. Grouping and the **Show done** / **Show archived** switches are under **View options**, the sliders icon.
 
 **Q: Where did the old project-room checklist go?**
 A project room's Tasks section still works, and its tasks also appear on this page.

@@ -1,121 +1,145 @@
 ---
 title: Project Rooms — Keeping Work Together
-description: A project room holds the chats, files, campaigns, context, and people for one piece of work — so nothing lives in someone's private history.
+description: A project room holds the overview, work, tasks, calendar and people for one piece of work, with its type, stage, health and milestones, and an Ask FRND that knows the project.
 sidebar_position: 2
 ---
 
 # Project Rooms — Keeping Work Together
 
-A **project room** is the page for one project: the chats about it, the files made for it, the campaigns it reports on, the sources frnd learned it from, and the people who work on it — all on one screen instead of scattered across private chat histories and personal folders.
+A **project room** is the page for one project: where it stands, the work made for it, its tasks and meetings, what frnd knows about it, and the people on it. All on one page instead of scattered across private chat histories and personal folders.
 
-> **Beta feature:** project rooms are gated per workspace (`show-project-rooms-web`). If you open a project and don't see the composer or the **Chats** card, the room features aren't enabled for your workspace yet — see [Turning On Experimental Features](../settings/experimental-features).
+> **Rolling out:** the room described here may reach workspaces gradually. If your project looks different, refresh the page.
 
 ## Before You Start
 
 1. ✅ **A project to open** — see [Creating & Managing Projects](./managing-projects)
-2. ✅ **Room features enabled for your workspace** — see the note above
-3. ✅ **Edit access to the project** — viewers see everything but can't change it
+2. ✅ **Edit access to the project** — viewers see everything but can't change it
 
 ## Opening a Room
 
 Click **Projects** in the sidebar, then open a project. That page is the room.
 
-Its URL is `/projects/folder/<id>` — or, inside a brand, `/brands/<brand>/projects/folder/<id>`.
+Its URL is `/projects/folder/<id>`, or `/brands/<brand>/projects/folder/<id>` from a brand's projects.
 
-The header shows the project name, its status, the brand it belongs to (or **Pitch · &lt;prospect name&gt;** for a project with no brand yet), and two buttons: **New file** and **New proposal**.
+## The Room Header
+
+The header names the project and the brand it belongs to (or **Pitch · &lt;prospect name&gt;** for a project with no brand yet), with its status. Below the name sit the project's details, which you can change in place if you can edit the project:
+
+| Detail | What it holds |
+|---|---|
+| **Type and stage** | What kind of project it is, and where it stands. Pick **No stage** to clear it |
+| **Health** | **On track**, **At risk**, **Off track** or **Not set**, with when it was last updated |
+| **Lead** | The person leading the project. Pick **No lead** to clear it |
+| **Due** | The due date. With none set, the chip shows the proposal's deadline |
+
+Each type has its own stages:
+
+| Type | Stages |
+|---|---|
+| **Pitch** | Brief → Strategy → Concept → Pitch → Won / Lost |
+| **Campaign** | Plan → Produce → Live → Report → Done |
+| **Always-on social** | Plan → Create → Approve → Scheduled → Report, for each month |
+| **Design job** | Brief → Draft → Review → Final → Delivered |
+| **General** | To do → Doing → Done |
+
+A pitch's stage can follow its proposal assistant's progress. Hovering the chip then says _"From the assistant's progress"_.
+
+The header also shows the project's people, with **Share** (or **People** if you can't manage access), and one **New** menu.
 
 > **Heads-up:** if you only have view access, a **Viewer · read-only** badge appears next to the title and every edit control is disabled with the tooltip _"You have view-only access to this project"_.
 
-## Chatting in the Room
+### The New menu
 
-The composer at the top of the room is an ordinary AskFRND chat, bound to this project. Its placeholder reads **Ask &lt;project name&gt;…**.
+**New** creates something straight into this project:
 
-The chip below it is a **selector**, not a label — pick a different project there and the composer retargets without leaving the page.
+* **Proposal assistant…** (start from a brief)
+* **Deck**, **Deck from template…**, **Import PowerPoint or PDF**
+* **Canvas**, **Resize**
+* **Campaign report**
+* **Upload files**
+* **Task**, **Meeting**
 
-**Chats started here are shared with the room.** That's the point: a private chat inside a shared room is invisible to everyone but its author. You can still flip one of your own to **Only you**.
+The order depends on the project's type. Uploads are limited to 25MB per file.
 
-### The Chats card
+> **The sidebar's Create files into the room too.** While you're in a project room you can edit, the sidebar's **Create** reads **Create · In &lt;project&gt;**, and what you make lands in the project.
 
-The right rail's **Chats** card lists the conversations filed into this room, newest first. Each row shows a **🌐 globe** for a shared chat or a **🔒 lock** for a private one, plus when it was last touched. Click a row to open it.
+### Dropping a brief
 
-When it's empty it explains the rule: _"Chats started here are shared with the room — flip any of yours to Only you."_
+You can drop a file anywhere on the room. If it looks like a brief, the room asks _"This looks like a brief. Start a proposal assistant?"_ Click **Start assistant**, or **Just add to Work** to keep it as a file. Anything else uploads to the project.
 
-### Filing an existing chat
+## The Tabs
 
-Already had the conversation somewhere else? Use the **+** on the Chats card to open **Link existing chats**:
+The room has four tabs: **Overview**, **Work**, **Tasks** and **Calendar**.
 
-1. Search your chats
-2. Tick the ones to file here
-3. Choose **Shared with the project** or **Only you**
-4. Click **Link to project**
+### Overview
 
-> **Note:** two people in the same room can legitimately see different chat lists — you see the shared chats plus your own.
+The main column shows:
 
-## Tasks
-
-The **Tasks** section is a simple checklist. Click **Add task**, type a title, press Enter or click **Add**. Tick a task to complete it.
-
-## Proposal Assistants
-
-If the project runs a [Pitch](../early-access/pitch) proposal, each assistant appears as a card with the outputs it owns nested underneath. Live work sorts first; resolved and archived work sinks to the bottom. When there are more than a few, **Show all N** expands the list.
-
-Click **New proposal** in the header to start another.
-
-## Files
-
-**Files** holds the decks, key visuals, and documents that belong to this project but aren't owned by an assistant.
-
-| Action | What it does |
+| Section | What it shows |
 |---|---|
-| **New file** | Creates a new deck in this project and opens it |
-| **Add existing** | Pulls a deck or studio file made elsewhere into this room |
-| **Remove from project** | Unlinks an adopted file — it isn't deleted, just removed from the room |
+| **N new since you looked** | How much happened since your last visit. Click it to jump to the activity |
+| **Key work** | The project's main files, with their covers. **All work →** opens the Work tab |
+| **Assistants** | The proposal assistants running in this project, with their progress |
+| **Chats** | The project's chats, marked **Project** (shared) or **Only you** |
+| **Recent files** | What was made or changed lately |
+| **Activity** | Who did what, by day. **Show all** opens the full log |
 
-**Add existing** opens **Add existing work**, described as _"Pull a deck or studio file into &lt;project name&gt;."_ Search, tick what you want, then click **Add N to room**.
+In an empty project, Key work offers to start from the client's brief: _"Drop the client's brief anywhere on this page, or choose one."_
 
-> **Heads-up:** adopting a file into a room is a link, not a move. Removing it from the room never deletes the file.
+The rail on the right shows:
 
-## Project Knowledge (the right rail)
-
-Everything under the **PROJECT KNOWLEDGE** heading is what frnd knows about this project.
-
-| Card | What it holds |
+| Block | What it shows |
 |---|---|
-| **Members** | Who's on the project, and the **Share** sheet |
-| **Context** | Sources — files, pasted text, and Lark folders |
-| **Instructions** | Free text that tailors how frnd works on this project |
-| **Memory** | What frnd has built up from the sources, marked **Team** |
-| **Chats** | Conversations filed into the room |
-| **Campaigns** | Campaign reports linked to the project |
-| **Decisions & meetings** | Minutes of meetings and decision notes |
+| **Next up** | The deadline, the next meeting, and the project's milestones |
+| **Tasks · yours first** | Open tasks, yours on top. **All tasks →** opens the Tasks tab |
+| **Meetings** | What's scheduled. **Calendar →** opens the Calendar tab |
+| **Team** | The project's people. **Manage** opens the Share sheet |
+| **What frnd knows** | Whether the project has sources, instructions, memory and meeting notes. **Manage** opens it (see [What frnd Knows](#what-frnd-knows)) |
 
-### Adding context
+### Milestones
 
-Click **+** on the **Context** card, or one of the shortcut buttons — **Files**, **Google Drive**, or **Lark folder**. A sheet titled **Add a source** opens with three methods:
+Milestones live under **Next up**. Click **+ Add milestone**, type a name, and optionally pick a date. Tick a milestone when it's done. Open milestones come first, and a long list collapses behind **Show fewer**.
 
-| Method | Use for |
+### Work
+
+**Work** lists everything in the project:
+
+| Group | What it holds |
 |---|---|
-| **Upload** | `.pdf`, `.doc`, `.docx`, `.ppt`, `.pptx`, `.txt`, `.md` |
-| **Paste** | Text pasted straight in |
-| **Link** | A Lark document or folder URL |
+| **Assistants** | The proposal assistants, with a button to start another from a brief |
+| **Decks, visuals and files** | Decks, key visuals and documents. **Add existing** pulls in work made elsewhere, and **New deck** makes one |
+| **Uploads** | Files uploaded to the project. Removing one asks first, and it's permanent |
 
-Once frnd has processed them, a line shows **Digested N sources**.
+**Add existing** opens **Add existing work**, described as _"Pull a deck or studio file into &lt;project name&gt;."_ Search, tick what you want, then click **Add N to room**. Adopting a file is a link, not a move: removing it from the project never deletes the file.
 
-> **Heads-up:** the **Google Drive** button is present but disabled — the Drive picker isn't integrated yet.
+### Tasks
 
-### Decisions & meetings
+**Open tasks** lists the project's tasks. Add one from the box at the top. These are the same tasks you see on the [Tasks](../workspace/tasks) page.
 
-Same **+**, different sheet: **Add a decision or meeting**, with **Upload MoM** and **Write note**. Its empty state explains why it exists — _"Add a minutes-of-meeting or a decision note so frnd tracks how the project moves."_
+### Calendar
 
-### Instructions
+**Upcoming** lists the project's meetings, with who's invited. **Past · last 30 days** shows the ones already held.
 
-A plain text box on the **Instructions** card: _"Add instructions to tailor how frnd works on this project."_ It saves when you click away.
+## Asking frnd About the Project
 
-### Campaigns
+Open AskFRND while you're in a project room and the panel shows a chip with the project's name. While it's there, your next new chat is filed in the project as a private chat (**Only you**): frnd works with the project's files, people and plans, and the chat doesn't show for the team. Remove the chip to send without it.
 
-The **Campaigns** card links campaign reports to the project. A campaign you don't have brand access to still appears — as a locked row labelled **You don't have access to this campaign** — so the room's contents don't silently differ per person.
+A chat that already exists is never moved into the project by the chip.
 
-> **Note:** linking a campaign is a reference. Removing it from the room never deletes the campaign, and one campaign can serve several rooms.
+Chats from the room's **Chats** list open in the AskFRND panel.
+
+## What frnd Knows
+
+**What frnd knows** is the project's knowledge: the sheet that opens from **Manage** on the Overview rail.
+
+| Part | What it holds |
+|---|---|
+| **Context** | Sources: files, pasted text, Lark links, meeting notes and research, each with its status (**Processing**, **Ready**, **Failed**…). **Add source** adds one |
+| **Instructions** | Free text that tailors how frnd works on this project, for example _"always answer in Bahasa."_ It saves when you close the sheet |
+| **Memory** | What frnd has built up from the sources |
+| **Decisions and meeting notes** | Minutes and decision notes. **Add notes** adds one, so frnd tracks how the project moves |
+
+Removing a source asks first, and it's permanent.
 
 ## Who Can See the Room
 
@@ -151,20 +175,20 @@ Every member, whatever their role, gets a **Leave project** action on their own 
 
 ## FAQ
 
-**Q: I opened a project and there's no composer or Chats card.**
-Room features are gated per workspace. Ask an admin to enable them — see [Turning On Experimental Features](../settings/experimental-features).
+**Q: Where did the composer at the top of the room go?**
+Ask frnd from the AskFRND panel instead. On a project room it shows the project's chip, and your next new chat is filed in the project.
 
-**Q: Is a chat I start in the room private?**
-No — chats started in a room are shared with the room by default, so the room can actually show them. You can flip one of your own to **Only you**.
+**Q: Is a chat I start from the project chip private?**
+Yes. It's filed in the project as **Only you**, so it keeps the project's context without showing it to the team.
 
 **Q: My teammate sees a different list of chats.**
 That's expected. Everyone sees the room's shared chats plus their own private ones.
 
 **Q: Does "Add existing" move the file into the project?**
-No, it links it. **Remove from project** unlinks it again and never deletes anything.
+No, it links it. Removing it from the project unlinks it again and never deletes anything.
 
-**Q: Why is a campaign row locked?**
-You don't have access to that campaign's brand. The row is still shown, deliberately — a room whose contents silently differ per person is worse than one that says a row is locked.
+**Q: What does the project's type change?**
+Its stages, and the order of the **New** menu. A pitch also gets a proposal assistant from its brief.
 
 **Q: Everything is greyed out and says "You have view-only access".**
 You're a viewer on this project, or the room's audience capability is set to **view**. An owner can change either from the **Share** sheet.

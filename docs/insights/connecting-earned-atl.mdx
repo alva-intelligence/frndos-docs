@@ -85,6 +85,14 @@ If your column names don't match frndOS conventions, you can map them manually:
 
 After this, data syncs **daily** along with your other connections.
 
+### When the mapping locks
+
+The column mapping stays editable until the first sync with your saved mapping finishes. After that it's read-only, and the panel says that editing isn't supported yet. To change the mapping, delete the connection and add it again.
+
+If that first sync fails, the mapping stays editable and the button reads **Retry sync**, so you can fix the mapping and try again.
+
+A locked mapping shows only the columns you saved. A field you didn't map reads **Unmapped**.
+
 ## Adding New Rows Later
 
 Once the range is set up, you don't need to reconnect when adding new data:
@@ -111,6 +119,12 @@ Use the manual mapping in Step 3. As long as all **Required** fields are mapped,
 
 **Q: How often does the data sync?**
 Daily, alongside other Insights connections (starts 7 PM, completes by early morning).
+
+**Q: My sheet's columns locked before I saved the mapping. Is that fixed?**
+Yes. The mapping now locks only after you save it and the first sync finishes. See [When the mapping locks](#when-the-mapping-locks).
+
+**Q: Can I change the mapping after the first sync?**
+Not yet. Delete the connection and add it again to remap.
 
 **Q: Can I update past data?**
 Yes — edit your sheet, and the next sync will pull the updated values.

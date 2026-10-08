@@ -16,16 +16,23 @@ Once a [Proposal Scorecard](./proposal-scorecard) is scored, you can turn it int
 
 ## Exporting a Scorecard
 
-Click **Export report** on the scorecard's header. You get two choices:
+The scorecard's header has **Share** and **Export**.
+
+**Share** makes a link to the scorecard itself (see [Share link](#share-link) for how links work).
+
+**Export** offers:
 
 | Choice | What you get |
 |---|---|
-| **Full report** | _"Built in Ask FRND beside the scorecard: the answer, charts and page evidence. Share, PDF or slides from there."_ |
-| **One-page summary** | _"The score, the overview and the top changes on one slide."_ It opens as a deck in a new tab, where you can edit it or download it as PDF or PPTX |
+| **Summary PDF** | _"The scorecard as it reads here, ready to send."_ |
+| **Full review PDF** | _"Every fix with its reasons and the pages it's about. For the team or a client review."_ |
+| **Slides** | _"A short deck in the brand's look. Opens in a new tab."_ Present it, or download PDF or PPTX from there |
+| **Client summary** | _"A one-page document saved to Files, ready to edit."_ |
+| **Copy the fixes** | _"A checklist with owners and pages, to paste into email or Lark."_ |
 
-Once a full report exists, the menu also offers **Open the report**.
+**Slides** and **Client summary** need permission to change the brand's scorecards.
 
-**Copy link** beside it copies the scorecard's own address, for people in your workspace who can open this brand's research.
+> **Rolling out:** this Share and Export header comes with the answer-first scorecard, which may reach workspaces gradually. On an older scorecard page, **Export report** offers **Full report** and **One-page summary** instead.
 
 ## Building the Full Report
 
@@ -76,14 +83,18 @@ Click **Present as slides** to build a deck from the report in the brand's look.
 
 The rubric decides what a scorecard looks at and how much each part counts. It's set at two levels:
 
-* **Workspace Settings → Scorecard Rubric** is the standard every brand in the workspace inherits
-* **Brand Settings → Scorecard Rubric** holds only what one brand does differently. Anything left alone keeps following the workspace
+* **Workspace Settings → Review Rubrics** is the standard every brand in the workspace inherits
+* **Brand Settings → Review rubric** holds only what one brand does differently. Anything left alone keeps following the workspace
 
 Each review type (**Proposal**, **Creative material**, **Media plan**) has its own rubric. Pick one from the tabs.
 
+The workspace page also lists your **Brands**: _"Each brand uses the workspace rubric unless it's customised."_ Each row says **Customised** or **Uses the workspace rubric**, and opens that brand's rubric. **Show all N brands** expands a long list.
+
+When you set up a scorecard, **See how it's judged** shows the rubric it will use, and a scored scorecard's **How this was judged** shows the rubric as that run used it. See [Proposal Scorecard](./proposal-scorecard#step-2--add-the-work).
+
 ### What you see first
 
-A card sums up the rubric, for example **Using the frndOS default**, how many criteria or dimensions it scores, and its scale. For a proposal: _"Strategy and Ambition each run 0–100."_ For a creative or a media plan, the card lists the frndOS bands: **85+ Ready**, **70–84 Minor revision**, **50–69 Major revision**, **below 50 Rework**.
+A card sums up the rubric, for example **Using the frndOS default**, how many criteria or dimensions it scores, and its scale. For a proposal: _"Strategy and Ambition each run 0–100."_ For a creative or a media plan, the card lists the frndOS bands: **85+ Ready**, **70–84 Nearly ready**, **50–69 Needs work**, **below 50 Not ready**.
 
 Below it, **What counts toward the score** shows each part's share.
 
@@ -107,7 +118,7 @@ To undo your changes, click **Reset to frndOS** (workspace) or **Reset to worksp
 
 ### Which review types people can pick
 
-In **Workspace Settings → Scorecard Rubric**, an admin can also choose:
+In **Workspace Settings → Review Rubrics**, an admin can also choose:
 
 * **Default when the reviewer isn't sure**, the type preselected when a file could be more than one type, or none. People still confirm it with the brief
 * **Offer creative material reviews** / **Offer media plan reviews**. Turning one off hides that type when people start a scorecard. _"A file detected as this type still shows it, so the review can be confirmed."_
@@ -121,7 +132,7 @@ Anyone who has the link. They need no frndOS account and see no source file. Rev
 The charts and numbers stay live with the scorecard. The written parts don't change by themselves; rebuild the report to rewrite them.
 
 **Q: Can AskFRND set up the rubric for me?**
-No. AskFRND can run a scorecard and build its report, but the rubric is set in **Scorecard Rubric** settings. To start from the scorecard you already use, pick **Import your scorecard**.
+No. AskFRND can run a scorecard and build its report, but the rubric is set in **Review Rubrics** settings. To start from the scorecard you already use, pick **Import your scorecard**.
 
 **Q: Does previewing a rubric change cost credits?**
 No. The preview re-totals scores you already have.
