@@ -18,6 +18,12 @@
       "label": "What's New",
       "link": "blog",
       "position": "left"
+    },
+    {
+      "label": "llms.txt",
+      "link": "external",
+      "externalLink": "https://help.frndos.com/llms.txt",
+      "position": "right"
     }
   ],
   "footer": {
