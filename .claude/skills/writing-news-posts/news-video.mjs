@@ -14,33 +14,24 @@
  * Steps: fetch the video (Lark doc file block, Lark token, or local file) into
  * the OS temp dir, make it a browser-safe MP4 (H.264/AAC streams are re-muxed
  * with +faststart; anything else is re-encoded), then PUT it to
- * s3://frnd/frndos-update/<slug>.mp4 with ACL public-read via curl --aws-sigv4
- * and prove the public URL with an anonymous HEAD.
+ * s3://frnd/frndos-update/<slug>.mp4 with ACL public-read and prove the
+ * public URL with an anonymous HEAD (s3-upload.mjs).
  *
- * Upload credentials: FRNDOS_NEWS_S3_KEY_ID / FRNDOS_NEWS_S3_SECRET, from the
- * environment or the frndos-docs .env (gitignored). Scope them to
- * frnd/frndos-update/* only (see s3-uploader-policy.json). Without them the
- * script stops after preparing the file and prints the manual upload step.
+ * Without FRNDOS_NEWS_S3_KEY_ID / FRNDOS_NEWS_S3_SECRET the script stops after
+ * preparing the file and prints the manual upload step.
  *
  * Needs ffmpeg/ffprobe and curl; `lark-cli` (logged in) for Lark sources.
  * Never writes into the repo.
  */
 import { execFileSync } from "child_process";
-import crypto from "crypto";
 import fs from "fs";
-import os from "os";
 import path from "path";
+import {
+  BUCKET, PREFIX, credentials, die, downloadLarkMedia, existingKeys, fetchLarkDoc, publicUrlFor, putPublic, tempDir,
+} from "./s3-upload.mjs";
 
-const BUCKET = "frnd";
-const REGION = "ap-southeast-3";
-const PREFIX = "frndos-update";
 const WARN_MB = 50;
 const MAX_MB = 200;
-
-const die = (msg, code = 1) => {
-  console.error(msg);
-  process.exit(code);
-};
 const USAGE =
   "usage: news-video.mjs (<lark doc URL> | --token <file token> | --file <path>) <slug> [--caption <text>] [--force] [--no-upload]";
 
@@ -65,20 +56,17 @@ if (!slug || positional.length || (!docUrl && !opts.token && !opts.file)) die(US
 if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(slug)) die(`slug "${slug}" must be kebab-case [a-z0-9-]`, 2);
 
 const key = `${PREFIX}/${slug}.mp4`;
-const publicUrl = `https://${BUCKET}.s3.${REGION}.amazonaws.com/${key}`;
+const publicUrl = publicUrlFor(key);
 const caption = (opts.caption ?? `frndos update ${slug.replace(/^frndos-/, "").replace(/-/g, " ")}`).replace(/"/g, "'");
 const block = `<S3Video url="${publicUrl}" caption="${caption}" />`;
-const dir = fs.mkdtempSync(path.join(os.tmpdir(), "news-video-"));
 
-// ---- 0. existing object guard (anonymous HEAD; objects under the prefix are public-read)
-const head = async () => {
-  const res = await fetch(publicUrl, { method: "HEAD", signal: AbortSignal.timeout(15000) });
-  return { status: res.status, type: res.headers.get("content-type") || "", length: res.headers.get("content-length") };
-};
-const before = await head();
-if (before.status === 200 && !opts.force) {
-  die(`${publicUrl} already exists (${before.length} bytes). Pick another slug or pass --force to overwrite`);
+// ---- 0. existing object guard (before any download)
+if (!opts.force) {
+  const found = await existingKeys([key]);
+  if (found.length) die(`${found[0]} already exists. Pick another slug or pass --force to overwrite`);
 }
+
+const dir = tempDir("news-video");
 
 // ---- 1. source
 let raw;
@@ -88,25 +76,14 @@ if (opts.file) {
 } else {
   let token = opts.token;
   if (!token) {
-    const doc = execFileSync(
-      "lark-cli",
-      ["docs", "+fetch", "--doc", docUrl, "--doc-format", "markdown", "-q", ".data.document.content"],
-      { encoding: "utf8", maxBuffer: 32 * 1024 * 1024 }
-    );
-    const videos = [...doc.matchAll(/<source\b[^>]*>/g)]
+    const videos = [...fetchLarkDoc(docUrl).matchAll(/<source\b[^>]*>/g)]
       .map((m) => m[0])
       .filter((s) => /name="[^"]+\.(mp4|mov|webm|m4v)"/i.test(s));
     token = videos[0]?.match(/token="([^"]+)"/)?.[1];
     if (!token) die("no video file block found in the Lark doc; ask the user for the video (or use --file)");
     if (videos.length > 1) console.error("warn: the doc has more than one video; using the first one");
   }
-  // lark-cli only accepts an output path relative to its cwd
-  execFileSync("lark-cli", ["docs", "+media-download", "--token", token, "--output", "./raw", "--overwrite"], {
-    cwd: dir,
-    stdio: ["ignore", "ignore", "inherit"],
-  });
-  raw = fs.readdirSync(dir).map((f) => path.join(dir, f)).find((f) => path.basename(f).startsWith("raw"));
-  if (!raw) die("Lark download produced no file");
+  raw = downloadLarkMedia(token, dir, "raw");
 }
 
 // ---- 2. browser-safe MP4: re-mux H.264/AAC, re-encode anything else
@@ -134,69 +111,27 @@ const sizeMb = fs.statSync(out).size / 1024 / 1024;
 if (sizeMb > MAX_MB) die(`video is ${sizeMb.toFixed(1)} MB (> ${MAX_MB} MB); use a <YouTube> block instead. File: ${out}`);
 if (sizeMb > WARN_MB) console.error(`warn: video is ${sizeMb.toFixed(1)} MB (> ${WARN_MB} MB); slow on mobile, consider YouTube`);
 
-// ---- 4. credentials (env first, then frndos-docs/.env)
-const readDotEnv = () => {
-  const env = {};
-  const file = path.join(process.cwd(), ".env");
-  if (!fs.existsSync(file)) return env;
-  for (const line of fs.readFileSync(file, "utf8").split("\n")) {
-    const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*?)\s*$/);
-    if (m) env[m[1]] = m[2].replace(/^(['"])(.*)\1$/, "$2");
-  }
-  return env;
-};
-const dotEnv = readDotEnv();
-const keyId = process.env.FRNDOS_NEWS_S3_KEY_ID || dotEnv.FRNDOS_NEWS_S3_KEY_ID;
-const secret = process.env.FRNDOS_NEWS_S3_SECRET || dotEnv.FRNDOS_NEWS_S3_SECRET;
-
+// ---- 3. upload (or hand over)
 const manual = (why) => {
   console.log(`file     ${out} (${sizeMb.toFixed(1)} MB)`);
   console.log(`upload   MANUAL (${why}): s3://${BUCKET}/${key}, ACL public-read, Content-Type video/mp4`);
   console.log(`block    ${block}`);
 };
+const creds = credentials();
 if (!opts.upload) {
   manual("--no-upload");
   process.exit(0);
 }
-if (!keyId || !secret) {
+if (!creds) {
   manual("FRNDOS_NEWS_S3_KEY_ID / FRNDOS_NEWS_S3_SECRET not set");
   process.exit(0);
 }
-
-// ---- 5. upload: curl --aws-sigv4, secret passed via stdin config (not argv)
-const sha256 = crypto.createHash("sha256").update(fs.readFileSync(out)).digest("hex");
-const respFile = path.join(dir, "put-response.xml");
-let status;
-try {
-  status = execFileSync(
-    "curl",
-    [
-      "-sS", "-K", "-", "-w", "%{http_code}", "-o", respFile,
-      "--aws-sigv4", `aws:amz:${REGION}:s3`,
-      "-X", "PUT", "-T", out,
-      "-H", "Content-Type: video/mp4",
-      "-H", "x-amz-acl: public-read",
-      "-H", `x-amz-content-sha256: ${sha256}`,
-      publicUrl,
-    ],
-    { input: `user = "${keyId}:${secret}"\n`, encoding: "utf8", stdio: ["pipe", "pipe", "inherit"] }
-  ).trim();
-} catch {
-  status = "curl error";
-}
-if (status !== "200") {
-  const body = fs.existsSync(respFile) ? fs.readFileSync(respFile, "utf8") : "";
-  const s3err = [body.match(/<Code>(.*?)<\/Code>/)?.[1], body.match(/<Message>(.*?)<\/Message>/)?.[1]].filter(Boolean).join(": ");
-  console.error(`S3 PUT failed (${status}${s3err ? `, ${s3err}` : ""})`);
+const res = await putPublic(out, key, "video/mp4", creds);
+if (!res.ok) {
+  console.error(res.error);
   manual("automatic upload failed");
   process.exit(1);
 }
-
-// ---- 6. prove the public URL
-const after = await head();
-if (after.status !== 200 || !after.type.startsWith("video/")) {
-  die(`uploaded, but anonymous HEAD ${publicUrl} returned ${after.status} "${after.type}"; check the object ACL / bucket settings`);
-}
 fs.rmSync(dir, { recursive: true, force: true });
-console.log(`uploaded ${publicUrl} (${after.type}, ${after.length} bytes)`);
+console.log(`uploaded ${res.url} (${res.type}, ${res.length} bytes)`);
 console.log(`block    ${block}`);

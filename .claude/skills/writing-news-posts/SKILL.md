@@ -56,7 +56,7 @@ Done when: each Live feature has a link target or an explicit "no doc".
 
 ### 4. Confirm the frontmatter and outline
 
-One `ask_user_question` call covering: title, slug, date (default `date +%F`, or the release date from the brief), author key, thumbnail, and the outline (sections in order). Recommend the `frndos-team` author and `/img/blog/frndos.webp` as the fallback thumbnail.
+One `ask_user_question` call covering: title, slug, date (default `date +%F`, or the release date from the brief), author key, thumbnail, and the outline (sections in order). Recommend the `frndos-team` author. Thumbnail: an image from the brief or the user (uploaded in step 4.6), else `/img/blog/frndos.webp` as the fallback.
 
 Done when: the user has approved all six.
 
@@ -80,6 +80,26 @@ It fetches the video into the OS temp dir (never into the repo), makes it a brow
 - No video block in the doc and no file from the user → fall back to the existing rule (ask, or 🎬 row).
 
 Done when: the post has a working `<S3Video>` block, or a 🎬 row explains why not.
+
+### 4.6 Images to S3
+
+Same approach as 4.5, for the thumbnail and body images. Images in the Lark doc and image paths the user gives (`/Users/.../screen.png`, `.heic` from a phone) are uploaded, never committed:
+
+```bash
+# Lark doc images, numbered 1..N in document order, plus local files after them
+node .claude/skills/writing-news-posts/news-image.mjs "<lark doc URL>" <slug> [--file "<path>"]... [--thumbnail <path | N>]
+# local files only
+node .claude/skills/writing-news-posts/news-image.mjs <slug> --file a.png --file b.jpg --thumbnail cover.png
+```
+
+- **Processing:** stills become WebP (q 82, max 1600 px wide); animated GIFs stay GIF. HEIC goes through macOS `sips`. The thumbnail is cropped to 16:9 (1280x720).
+- **Keys:** `frndos-update/img/<slug>-thumb.webp` and `frndos-update/img/<slug>-<n>.webp` (or `.gif`), public-read. Same credentials and IAM policy as 4.5 (`frndos-update/*` already covers `img/`).
+- **Output:** per image, an `image: <url>` line (thumbnail) or `![alt](<url>)` line (body). Lark images print the nearest heading so you know which section each belongs to; drop the ones that don't fit the outline, and rewrite the alt text into a short description.
+- **Thumbnail:** `--thumbnail N` reuses body image N; `--thumbnail <path>` uses a separate file. No thumbnail image anywhere → keep `/img/blog/frndos.webp` and add a row to `DOCS_TODO.md`.
+- Existing keys are refused (`--force` only when the user confirmed replacing live images). Over 2 MB warns, over 15 MB refuses. No credentials → files are prepared and `upload MANUAL` lines are printed, as in 4.5.
+- Tina's media picker cannot browse S3: the S3 URL shows as text in the Thumbnail field, and authors replace it by pasting a URL or uploading a new `/img/` file. The RSS feed and app home list accept the absolute URL.
+
+Done when: every image in the post is an `/img/...` file or a `frndos-update/img/` URL that `check-post.mjs` proves (HEAD 200 + `image/*`).
 
 ### 5. Write the post
 
@@ -132,13 +152,13 @@ Shape (matches `blog/Brand-Insights-Goes-Self-Serve.mdx`): bold one-line hook �
 | `authors` | list of keys present in `blog/authors.yml` AND the `authors` options in `tina/config.jsx` AND `tina/tina-lock.json` |
 | `date` | quoted `'YYYY-MM-DD'` (what Tina's date field writes) |
 | `description` | one sentence, plain text, SEO only |
-| `image` | `/img/...` path to a file under `static/img/` (Tina media root). New uploads go to `static/img/blog/<kebab-name>.webp` |
+| `image` | S3 URL from step 4.6 (`https://frnd.s3.ap-southeast-3.amazonaws.com/frndos-update/img/<slug>-thumb.webp`), or an `/img/...` path to a file under `static/img/` (Tina media root), e.g. the fallback `/img/blog/frndos.webp` |
 | `tags` | list of strings, lowercase |
 | `related_doc` | `''` or `docs/<module>/<file>.mdx` (Tina reference format) |
 
 A new author needs all three places updated in one go: `authors.yml`, `config.jsx` options, `tina-lock.json` options (same order). A stale lock fails the Vercel build.
 
-**Body**: build it from `##`/`###` headings, paragraphs, `**bold**`, `_italic_`, `*` bullet lists, numbered lists, links, images `![alt](/img/blog/x.webp)`, tables, `***` rules, blockquotes with plain paragraphs, and the registered blocks below. Everything else is out, and these specifically break Tina:
+**Body**: build it from `##`/`###` headings, paragraphs, `**bold**`, `_italic_`, `*` bullet lists, numbered lists, links, images `![alt](<frndos-update/img S3 URL from step 4.6>)` (or `/img/...`), tables, `***` rules, blockquotes with plain paragraphs, and the registered blocks below. Everything else is out, and these specifically break Tina:
 
 | Block | Form |
 |---|---|
@@ -166,7 +186,7 @@ npm run build-local          # or, if a dev server holds the Tina ports:
 NODE_OPTIONS=--max-old-space-size=8192 npx docusaurus build
 ```
 
-`check-post.mjs` covers frontmatter vs the Tina schema, author keys in all three places, date format, image file, `related_doc`, Tina body parse against the real `post` templates, raw HTML, `<Video>`/`<S3Video>`/`<YouTube>` props and files (S3 URLs get an anonymous HEAD: must be 200 + `video/*`), truncate/TODO/`{#`, internal link targets, and the em dash budget. Fix every ERROR and rerun. The build must reach `Generated static files` with no broken links, and `build/blog/<slug>/index.html` must exist.
+`check-post.mjs` covers frontmatter vs the Tina schema, author keys in all three places, date format, thumbnail (`/img/` file or `frndos-update/img/` S3 URL), `related_doc`, Tina body parse against the real `post` templates, raw HTML, `<Video>`/`<S3Video>`/`<YouTube>` props and files and S3 body images (S3 URLs get an anonymous HEAD: must be 200 + `video/*` or `image/*`), truncate/TODO/`{#`, internal link targets, and the em dash budget. Fix every ERROR and rerun. The build must reach `Generated static files` with no broken links, and `build/blog/<slug>/index.html` must exist.
 
 Done when: all three commands are green on the final file.
 

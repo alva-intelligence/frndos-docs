@@ -40,6 +40,9 @@ const docExists = (route) => {
   return ["", "/index"].some((s) => fs.existsSync(`docs/${rel}${s}.mdx`) || fs.existsSync(`docs/${rel}${s}.md`));
 };
 
+// Images may live in git (/img/...) or on S3 under frnd/frndos-update/img/ (news-image.mjs).
+const S3_IMG = /^https:\/\/frnd\.s3\.ap-southeast-3\.amazonaws\.com\/frndos-update\/img\/[^?#\s]+\.(webp|png|jpe?g|gif)$/i;
+
 let errors = 0;
 const s3Checks = [];
 for (const file of targets) {
@@ -73,7 +76,8 @@ for (const file of targets) {
   if (!/^date: '\d{4}-\d{2}-\d{2}'$/m.test(fmRaw)) err(`date must be a quoted string: date: 'YYYY-MM-DD'`);
 
   if (!fm.image) err(`image (thumbnail) missing; the app home "What's New" list needs it`);
-  else if (!/^\/img\//.test(fm.image)) err(`image must be a site path under /img/ (Tina media root)`);
+  else if (S3_IMG.test(fm.image)) s3Checks.push({ file, url: fm.image, kind: "image" });
+  else if (!/^\/img\//.test(fm.image)) err(`image must be /img/... (Tina media root) or an S3 URL under frnd/frndos-update/img/`);
   else if (!fs.existsSync(`static${fm.image}`)) err(`image file static${fm.image} does not exist`);
 
   if (fm.description !== undefined && /—/.test(fm.description)) warn(`description contains an em dash; use a period or colon`);
@@ -109,7 +113,7 @@ for (const file of targets) {
           err(`<S3Video> host ${u.hostname} is not S3 or CloudFront`);
         if (/X-Amz-(Signature|Credential|Expires)/i.test(u.search)) err(`<S3Video> URL is pre-signed; it expires, use the public object URL`);
         if (!/\.(mp4|webm)$/i.test(decodeURIComponent(u.pathname))) warn(`<S3Video> URL does not end in .mp4/.webm`);
-        s3Checks.push({ file, url: p.url });
+        s3Checks.push({ file, url: p.url, kind: "video" });
       }
       if (p.poster && /^\/img\//.test(p.poster) && !fs.existsSync(`static${p.poster}`)) err(`poster file static${p.poster} does not exist`);
     }
@@ -129,6 +133,11 @@ for (const file of targets) {
       if (![...slugs.values()].includes(s)) err(`broken link ${url}`);
     } else if (url.startsWith("/img/")) { if (!fs.existsSync(`static${url}`)) err(`missing image ${url}`); }
   }
+  for (const [, url] of body.matchAll(/!\[[^\]]*\]\((https?:\/\/[^)\s]+)\)/g)) {
+    if (S3_IMG.test(url)) s3Checks.push({ file, url, kind: "image" });
+    else if (/amazonaws\.com|cloudfront\.net/.test(url)) err(`image ${url} is on S3 but not under frnd/frndos-update/img/ (or is pre-signed); upload it with news-image.mjs`);
+    else warn(`external image ${url}; it can disappear, prefer news-image.mjs`);
+  }
   for (const [, url] of body.matchAll(/\]\((\.{1,2}\/[^)\s]+)\)/g)) warn(`relative link ${url}; use an absolute /docs/... or /blog/... URL`);
 
   // ---- em dash budget (structural slots: headings and "**term** — meaning" / "[link](...) — meaning" rows)
@@ -142,13 +151,13 @@ for (const file of targets) {
   if (out.length) console.log(out.join("\n"));
 }
 
-// ---- S3 videos must be publicly readable video objects (anonymous HEAD)
-for (const { file, url } of s3Checks) {
+// ---- S3 videos/images must be publicly readable objects of the right type (anonymous HEAD)
+for (const { file, url, kind } of s3Checks) {
   try {
     const res = await fetch(url, { method: "HEAD", signal: AbortSignal.timeout(15000) });
     const type = res.headers.get("content-type") || "";
-    if (!res.ok) { errors++; console.log(`  ERROR ${file}: S3 video ${url} returned HTTP ${res.status} (object missing or not public)`); }
-    else if (!/^video\//.test(type)) { errors++; console.log(`  ERROR ${file}: S3 video ${url} has Content-Type "${type}", expected video/*`); }
+    if (!res.ok) { errors++; console.log(`  ERROR ${file}: S3 ${kind} ${url} returned HTTP ${res.status} (object missing or not public)`); }
+    else if (!type.startsWith(`${kind}/`)) { errors++; console.log(`  ERROR ${file}: S3 ${kind} ${url} has Content-Type "${type}", expected ${kind}/*`); }
     else console.log(`  S3 OK ${url} (${type}, ${res.headers.get("content-length") || "?"} bytes)`);
   } catch (e) {
     console.log(`  WARN  ${file}: could not reach ${url} (${e.name}); check it manually`);
