@@ -21,9 +21,20 @@
     },
     {
       "label": "llms.txt",
-      "link": "external",
-      "externalLink": "https://help.frndos.com/llms.txt",
-      "position": "right"
+      "link": "none",
+      "position": "right",
+      "items": [
+        {
+          "label": "llms.txt (index)",
+          "link": "external",
+          "externalLink": "https://help.frndos.com/llms.txt"
+        },
+        {
+          "label": "llms-full.txt (full text)",
+          "link": "external",
+          "externalLink": "https://help.frndos.com/llms-full.txt"
+        }
+      ]
     }
   ],
   "footer": {
