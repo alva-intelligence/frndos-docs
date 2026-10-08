@@ -180,6 +180,8 @@ const config = {
   ],
 
   plugins: [
+    // Emits /llms.txt + /llms-full.txt (AI-readable Markdown of the docs) on build.
+    require.resolve("./plugins/llms-txt"),
     // Suppress a cosmetic webpack warning from @easyops-cn/docusaurus-search-local:
     // its `proxiedGenerated` barrel re-exports via `export *` from a virtual
     // `@generated` module, which webpack's static analysis can't see through, so it
