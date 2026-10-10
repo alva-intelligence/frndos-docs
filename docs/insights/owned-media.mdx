@@ -66,7 +66,7 @@ The Owned Media post table includes these standard metric columns:
 |--------|-------------|-------|
 | **Post** | Thumbnail, caption, platform icon, date | |
 | **Sentiment** | Majority sentiment (positive/neutral/negative) with count tooltip | See [Sentiment Analysis](./sentiment-analysis) |
-| **Content Format** | Post format (Reels, Story, Carousel, Static Image, Video) | New — filter and group by format to compare, say, Reels against Carousels |
+| **Format** | The post's format, shown as an icon. Hover it for the name | Filter and group by format to compare, say, Reels against Carousels. See [Format icons](#format-icons) |
 | **Impressions** | Total impressions | |
 | **Reach** | Unique accounts reached | Facebook and YouTube don't report it and show "—" (see [Reach on Facebook and YouTube](#reach-on-facebook-and-youtube)) |
 | **Likes** | Total likes | |
@@ -129,22 +129,157 @@ The totals row under a rate column isn't the average of the rates above it. Rate
 Click any post row to open its **detail view**:
 
 - The creative itself, full size
-- Its title and meta lines
+- Its title and meta lines, including the post's **Format** icon
 - **Link to post** — opens the original on the platform
 - Every metric with a **typical** value beside it, plus a benchmark score with a quartile band: **Top 25%**, **Above Avg**, **Below Avg**, or **Bottom 25%**
 - An **Export metrics as CSV** button
 
 Paid ads open the same way from the paid tables — see [Connecting Paid Media](./connecting-paid-media).
 
-### Filtering by Content Format
+### Format icons
 
-Use the **Content Format** filter above the table to narrow down to specific formats. Combined with other filters (Campaign, Pillar, date range), this helps you compare performance across content types — for example, "Show me all Reels from Campaign X."
+**Format** used to be called **Content Format**, and showed the name as text. It now shows one icon per format, with the name in a tooltip when you hover. The same icon appears in the Content Posts table, in a post's detail view, and in the **Label Posts** table.
+
+The formats are **Reels**, **Story**, **Short**, **Carousel**, **Image**, **Video**, **Live**, **Text** and **Other**. A format frndOS has no icon for shows the **Other** icon, but its tooltip still gives the post's own format name. A post with no format shows a dash.
+
+### Filtering by Format
+
+Use the **Format** filter above the table (it starts on **All formats**) to narrow down to specific formats. Combined with other filters (Campaign, Pillar, date range), this helps you compare performance across content types. For example: "Show me all Reels from Campaign X."
+
+The filter only appears once your posts carry a format.
+
+### Grouping Posts
+
+**Group by** in the table toolbar puts posts under group headers. You can nest up to three levels: the first field is the outermost group.
+
+Open it to see **Group by fields**:
+
+1. Click **Choose field** and pick a field. Fields are listed under headings such as **Post**, **Date** and **Label attribute**
+2. Click **Choose field** again to nest another level inside it
+3. Drag a level by its handle to reorder it, or focus the handle and use ↑ / ↓
+4. Click **×** on a level to remove it. Removing every level ungroups the table
+
+Each level has its own order:
+
+| Field kind | Order choices |
+|---|---|
+| Text (format, a label) | **A → Z** or **Z → A** |
+| Dates | **Newest → Oldest** or **Oldest → Newest** |
+| A fixed order, such as label status | **Default** or **Reversed** |
+
+On the Content Posts table you can group by **Format**, **Year**, **Month**, **Week**, and any label attribute that's a **Single Select**. Multi Select labels aren't offered, because one post would belong to several groups.
+
+Once grouped, the button reads **Group by: Format › Month**. Each group header shows its name and how many posts it holds. Click a header to collapse or expand it. Months read like **June 2026** and weeks like **Week of 1 Jun 2026**. Posts with no value for a level go in a last group named **Unknown**.
+
+A fourth level isn't allowed. **Choose field** then says **Up to 3 levels**, and a toast explains: _"Group by supports up to 3 levels"_.
+
+The other benchmark tables that offer **Group by** use the same panel, and so does **Label Posts** (see [Grouping in Label Posts](#grouping-in-label-posts)).
 
 ### Clicks Column
 
 The **Clicks** column measures link clicks on Facebook posts. It is **Facebook-only** — Instagram, TikTok, and YouTube don't expose a comparable per-post metric, so those rows show a dash (`—`).
 
-> **Tip:** Use Clicks alongside Content Format to compare which formats drive the most link traffic — you may find that Carousels outperform Reels on click-through even while Reels generate more impressions.
+> **Tip:** Use Clicks alongside Format to compare which formats drive the most link traffic. You may find that Carousels outperform Reels on click-through even while Reels generate more impressions.
+
+## The Playbook
+
+The **Playbook** card on Owned Media reads your labelled posts and says what works and what doesn't, with the numbers behind it. A brand has one playbook. It has a chapter per objective (**Awareness**, **Consideration**, **Conversion**), and a chapter per content pillar if the brand has a **Content Pillar** or **Pillar** label.
+
+The playbook doesn't update on its own: you create it once, then refresh it when you've posted more. Creating and refreshing need write access to Owned Media. Without it you can read the playbook but not change it, and you only see the card once a playbook exists.
+
+### The card
+
+The card shows two panels side by side, **What's working** and **What's not working**, with one line per chapter: the strongest lesson on that side. A chapter without enough posts reads _"Not enough posts yet"_. Hover a cut-off line to read all of it.
+
+Above the panels:
+
+* **By objective** / **By pillar** switches the card between objective chapters and pillar chapters. It only appears when the brand has pillar chapters; otherwise the card is headed **All owned content**
+* When it was made, for example **Generated Oct 8 · last 30 days**
+* **View playbook** opens the full playbook
+
+By pillar, the card lists three pillars (those with enough posts first) and ends with **+N more pillars in the playbook**.
+
+### Reading it
+
+**View playbook** opens the playbook over the page, headed **Playbook**: _"What works and what doesn't, from the hook to the call to action, for each objective and pillar."_ It opens on the tab the card was showing, and **By objective** / **By pillar** switch tabs here too.
+
+**At a glance** gives one line per chapter: its main finding, or why it has none yet (for example **Needs more labelled posts**, **Not read yet**, **Too few recent posts**, **Reading your posts…**).
+
+Each chapter then has:
+
+1. **Ranked by**: the objective's score (for example **Awareness score**), or **Reach and engagement** for a pillar. **How posts were picked** opens the weights behind the ranking: _"Every post got a score built from the things below. The 3 highest are the top posts and the 3 lowest are the bottom posts. A bigger percentage counted for more."_
+2. A short summary
+3. **The 6 posts studied**: **Top posts** and **Bottom posts**, three each, each thumbnail showing the metric the chapter ranks on
+4. **What's working and what's not**: the lessons, with a count. The first is open; **Expand all** opens the rest
+
+Each lesson is written as an instruction, tagged with the part of the post it's about (**Hook**, **Visual**, **Copy**, **Story**, **Format** or **Call to action**). Open it to see what the top posts did (✓) and what the bottom posts did (✗), each with the posts that show it (some lessons have only one side), then why it matters and how to apply it to a **Video**, **Image** or **Carousel**. A **Copy** lesson quotes the captions. Hovering a lesson highlights its posts among the six.
+
+A chapter read on an earlier date than the rest says so under its title, for example **Read Oct 3 · last 30 days**.
+
+The ticks on the right edge are the outline. Hover them to see every chapter and lesson section, and click one to jump there.
+
+At the top of the playbook:
+
+| Control | What it does |
+|---|---|
+| **Refresh** | Reads your posts again (see [Refreshing it](#refreshing-it)). Only with write access |
+| **Share** | **Share with your team**: _"Anyone with access to this brand can open this playbook."_ **Copy link** copies a link that opens Owned Media with the playbook open |
+| **More** | **Generate deck** and **Download PDF** |
+| View | **Center** or **Full page** |
+
+From a post's Creative Analysis, **View chapter** opens the playbook at that post's objective chapter.
+
+### Generate deck
+
+**More** → **Generate deck** closes the playbook, opens AskFRND, and asks frnd to build a presentation deck from it, one section per objective and pillar.
+
+It only appears when your workspace has both the **Decking** and **Creative Playbooks** tools switched on (see [How AskFrnd Uses Tools](../askfrnd/tools)). If the chat can't start, a toast says _"Couldn't start the deck"_.
+
+### Download PDF
+
+**More** → **Download PDF** opens a print-ready page of the whole playbook, both objective and pillar chapters, and your browser's print dialog. Choose **Save as PDF** there. If nothing opens, your browser blocked the new window; allow pop-ups for frndOS and try again.
+
+### On a shared dashboard
+
+On a public share of the dashboard the playbook can be read, but not created, refreshed, shared or turned into a deck.
+
+### Creating it
+
+With no playbook yet, the card reads **No playbook yet**: _"Creating it reads your posts and writes all three chapters, Awareness, Consideration and Conversion, together. A chapter without enough posts fills in when you refresh."_
+
+1. Click **Create playbook**
+2. Under **How much history?**, pick **30 days**, **60 days** or **90 days** (30 is the default)
+3. Click **Create**
+
+**How should it stay up to date?** is marked **Coming soon** and can't be picked yet.
+
+### Refreshing it
+
+1. Click **View playbook** on the card
+2. Click **Refresh** at the top of the playbook
+3. Pick how much history to read, then click **Refresh**
+
+The dialog warns: _"This reads your posts again and replaces the current playbook. It uses AI credits."_
+
+A refresh rewrites the three objective chapters, plus each pillar chapter that already has enough labelled posts.
+
+While it runs, each chapter shows **Waiting**, **Reading…**, **Done**, **Not enough posts**, **Out of AI credits** or **Couldn't finish**. _"This can take several minutes. You can close this window; the playbook keeps updating."_
+
+The card and the playbook show when it was made and over how much history, for example **Generated Oct 8 · last 30 days**.
+
+### When it needs a longer history
+
+A chapter needs at least 6 labelled posts in the window. When no chapter could be written because the window was too short, the dialog stays open and says so: _"Not enough labelled posts in the last 30 days. Try a longer history."_ Click **Change history** to go back and pick 60 or 90 days. At 90 days there's no longer window to offer, so only **Close** remains. If some chapters were written and others came up short, the dialog closes and the short ones say so in the playbook.
+
+Inside the playbook, a chapter says what happened to it:
+
+| What you see | What it means |
+|---|---|
+| _"Not enough posts in the last N days to refresh this chapter. Showing the previous version."_ | The refresh came back short. The older version stays |
+| _"Too few of its labelled posts are from the last N days. Try a longer history."_ | The chapter has never been written. Refresh with more history |
+| _"There aren't enough posts labelled X to learn from yet."_ | Label more posts first. It shows how many are labelled, for example **4 of 6 posts labelled** |
+| _"N posts are labelled X, enough to read. Refresh the playbook to write this chapter."_ | The chapter is ready. Refresh to write it |
+| _"Couldn't refresh this chapter."_, _"Couldn't create this chapter."_ or _"Your workspace is out of AI credits. Ask an admin to add more."_ | Click **Try again** once it's sorted |
 
 ## How Posts Get Ranked
 
@@ -215,13 +350,39 @@ Analysis runs in the background — switching tabs or leaving the page doesn't s
 
 The button is unavailable in two situations, and the tooltip says which: **All posts analyzed**, or **An analysis is already running**.
 
+In **Label Posts** it's also unavailable while more than one account is ticked: _"Analyze runs on one account at a time. Check a single account to analyze."_
+
 ## Applying Tags to Posts
 
-Click **Label Posts** above the **Content Posts** table. Labelling opens full screen over the page, titled **Label Posts**, so you can label without leaving the dashboard.
+Click **Label Posts** above the **Content Posts** table. Labelling opens full screen over the page, titled **Label Post**, so you can label without leaving the dashboard.
 
-The header counts what's left: _"Total N posts · X need labels"_, or **All labelled** once every post is done. A post counts as done when every label switched on in your attribute settings is filled (Content Format doesn't count). A partly labelled post shows an **N out of M** pill.
+The header counts what's left: _"Total N posts · X need labels"_, or **All labelled** once every post is done. A post counts as done when every label switched on in your attribute settings is filled (Format doesn't count). A partly labelled post shows an **N out of M** pill.
 
-Pick which **Owned accounts** to label at the top, switch between table and grid view, and use the search to find a post by name, tag or caption.
+Switch between table and grid view, and use the search to find a post by name, tag or caption.
+
+### Picking accounts
+
+The account picker at the top lists your **Core Connections** and **Extended Connections**. Every Core connection is ticked when you open it. Tick or untick accounts, and the button reads the account's name, or **N accounts** when several are ticked.
+
+Every ticked account loads, all in one table. The table shows who posted each post in its **Author** column: the account's avatar and name, or a row of avatars for a collab post. In grid view the avatar sits on each card, with the platform logo on it. The **Format** column shows each post's format icon.
+
+### Grouping in Label Posts
+
+The toolbar has **Sort**, **Group by**, **Filter** and **Analyze with AI**. **Group by** uses the same panel as the Content Posts table (see [Grouping Posts](#grouping-posts)), up to three levels, with these fields:
+
+| Field | Offered when |
+|---|---|
+| **Account** | Two or more accounts are ticked |
+| **Label status** | At least one label is switched on. Groups are **Not labelled**, **Incomplete**, **Labelled** |
+| **Format** | Your posts carry a format |
+| **Published year**, **Published month**, **Published week** | Always |
+| Each **Single Select** label | It's switched on |
+
+With two or more accounts ticked, posts are grouped by **Account** until you change it. Once grouped, the button reads **Grouped by** and the levels, for example **Grouped by Account › Label status**.
+
+Each group header shows how many posts it holds and how many still need labels (**N need labels**, or **All labelled**). Account headers also show the platform icon and a **Core** or **Extended** tag. Posts without a value for a level go in a last group, such as **No value**, **No format** or **Unknown date**.
+
+If you untick down to one account, the **Account** level drops out. It comes back when you tick a second account again.
 
 ### Method 1 — Tag Individually
 
@@ -238,7 +399,7 @@ For tagging many posts at once:
 2. In the bar that appears, pick the attribute and value to apply
 3. Confirm. A toast says how many posts were labelled
 
-> **Heads-up:** **Label Posts** needs write access to Owned Media. It's rolling out, so if the button isn't there yet, labelling isn't on for your workspace.
+> **Heads-up:** **Label Posts** needs write access to Owned Media. Without it the button isn't shown.
 
 Example: Select all posts from August, bulk-tag them with `Campaign = Summer Launch`.
 
@@ -352,6 +513,21 @@ Check their objectives. An awareness playbook and a conversion playbook weigh di
 
 **Q: A metric is in the comparison table but not in the weights panel.**
 It's shown for context and had no effect on the ranking. The weights panel is the definitive list of what counted.
+
+**Q: Where did the Content Format column go?**
+It's now called **Format**, and shows an icon instead of text. Hover the icon for the format's name.
+
+**Q: Label Posts only showed one account before. Has that changed?**
+Yes. Every account you tick in the picker loads, in one table, and the **Author** column says whose post each one is. Group by **Account** to keep them apart.
+
+**Q: Why is Analyze with AI greyed out in Label Posts?**
+If more than one account is ticked, it is. Analysis runs on one account at a time, so tick a single account to analyze.
+
+**Q: Why can't I group by one of my labels?**
+Only **Single Select** labels that are switched on can group posts. A Multi Select label would put one post in several groups.
+
+**Q: My playbook says it needs a longer history.**
+Too few labelled posts fall inside the window you picked. Refresh the playbook and choose 60 or 90 days, or label more posts first.
 
 **Q: Where did the Owned accounts and Labels pills go?**
 They're combined into one **Filters** button in the Owned Media header. Open it to pick accounts and build label rules together, then click **Apply**.

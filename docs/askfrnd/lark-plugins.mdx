@@ -22,6 +22,7 @@ The tab is headed **Plugins** — _"Connect external accounts so AskFRND can act
 
 - **Active** — connected and working
 - **Action needed** — installed but needs attention (e.g. reconnect)
+- **Disabled** — connected, but switched off for chats
 - **Soon** — listed but not available yet
 
 ## Step 1 — Install & Connect Lark
@@ -90,6 +91,9 @@ If you connected Lark before Sheets shipped, click **Reauthorize** on the Lark p
 
 **Q: I connected Lark today — do I still need to reauthorize?**
 No. New connections include Sheets from the start.
+
+**Q: My Lark plugin switched itself off, but I didn't touch it.**
+That was a bug, now fixed. When Lark renewed its login in the background, a plugin that still worked could be switched off. Now a renewal only stops a plugin when the login has really expired, and a plugin switched off this way comes back on by itself at its next successful renewal. If a plugin you didn't turn off still reads **Disabled**, open it and turn its switch back on. If it says **Token Expired**, click **Reauthorize**. A plugin you switched off yourself stays off.
 
 ---
 

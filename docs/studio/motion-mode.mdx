@@ -296,6 +296,45 @@ The confirmation states exactly what happens: _"Tracks for overlays deleted in K
 
 Resync keeps every size of a multi-size project. Each size picks up its latest finished artwork: sizes that follow a board take the board's current image, and sizes made from a resize take that resize's finished export.
 
+## Commenting on a Clip
+
+Feedback on a motion clip is pinned to a **moment**: every comment sits at a time on the timeline, which all sizes share. A comment can also say which size and which layer it's about.
+
+### Turning comment mode on
+
+Click the speech-bubble button at the left of the top-right pill (tooltip _"Comment on Motion (C)"_), or press **C**. The button shows how many comments are open. While comment mode is on, nothing on the canvas or the timeline can be dragged, so a click places feedback instead of moving something.
+
+A **Comments** row appears under the timeline ruler, with the open comments as markers along it.
+
+### Placing a comment
+
+Where you click decides what the comment is about:
+
+| Click | The comment is about |
+|---|---|
+| The **Comments** row or a track lane | The moment under the pointer, all sizes |
+| A size on the canvas | That size and the layer under the pointer, at the playhead |
+| A row in the layers rail | That layer, on the size you're editing, at the playhead |
+| **Comment at playhead** on the Comments row (or **C**) | The playhead, all sizes |
+
+Above the composer, tags show what you're commenting on:
+
+* The time, for example **⏱ 00:07.24**. Click its **×** to make it a **Whole video** note instead; **Pin to** brings the time back
+* The size: pick one, or **All sizes**
+* The layer, if there is one. Click its **×** to drop it
+
+Comments themselves work as everywhere else: reply, @mention, react, resolve (see [Commenting on the Canvas](./kv-generator#commenting-on-the-canvas)).
+
+### Finding comments
+
+Each size on the canvas shows how many comments are open on it. Click that count to open the newest one.
+
+The comment dock has two filters, **All sizes** and **All layers**. They narrow the list, the markers and the timeline together, and dim the sizes you filtered out. Filtered to one size, the list splits into **… only** and **Also applies · all sizes**, because an all-size comment applies to that size too.
+
+### Notes from the client
+
+A client's notes on a shared or approval clip (see [Client Approvals](../collaboration/client-approvals#what-the-client-sees)) appear here too, as yellow numbered pins on that size around the moment they were left, and in the dock with the export they were left on, for example **Export v2**.
+
 ## Exporting
 
 Click **Export** to open **Export motion** — _"Render this timeline to one MP4 per locked output size."_
@@ -358,6 +397,12 @@ Motion animates the board you're viewing in the KV file. Promote a concept to Cr
 
 **Q: What format does it export?**
 MP4, one file per selected output size.
+
+**Q: Where do I comment on a motion clip?**
+Turn on comment mode with the speech-bubble button or **C**, then click the **Comments** row, a track, a size on the canvas, or a layer. See [Commenting on a Clip](#commenting-on-a-clip).
+
+**Q: Export hung or failed in Safari.**
+Fixed. Motion now exports in Safari. Reload the editor if it was open before the fix. If **Export** is greyed out with _"This browser can't export MP4 (missing codec support)"_, that browser can't encode video at all.
 
 **Q: Do I need to save?**
 No. The editor autosaves and shows **Saved** in the top bar. If it ever reads **Failed to save**, don't close the tab until it recovers.

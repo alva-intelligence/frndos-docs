@@ -8,8 +8,6 @@ sidebar_position: 2
 
 A **project room** is the page for one project: where it stands, the work made for it, its tasks and meetings, what frnd knows about it, and the people on it. All on one page instead of scattered across private chat histories and personal folders.
 
-> **Rolling out:** the room described here may reach workspaces gradually. If your project looks different, refresh the page.
-
 ## Before You Start
 
 1. ✅ **A project to open** — see [Creating & Managing Projects](./managing-projects)
@@ -80,9 +78,7 @@ The main column shows:
 | **N new since you looked** | How much happened since your last visit. Click it to jump to the activity |
 | **Key work** | The project's main files, with their covers. **All work →** opens the Work tab |
 | **Assistants** | The proposal assistants running in this project, with their progress |
-| **Chats** | The project's chats, marked **Project** (shared) or **Only you** |
-| **Recent files** | What was made or changed lately |
-| **Activity** | Who did what, by day. **Show all** opens the full log |
+| **Updates & discussion** | The team's posts, updates and decisions, with what changed in the room. See [Updates & Discussion](#updates--discussion) |
 
 In an empty project, Key work offers to start from the client's brief: _"Drop the client's brief anywhere on this page, or choose one."_
 
@@ -94,7 +90,72 @@ The rail on the right shows:
 | **Tasks · yours first** | Open tasks, yours on top. **All tasks →** opens the Tasks tab |
 | **Meetings** | What's scheduled. **Calendar →** opens the Calendar tab |
 | **Team** | The project's people. **Manage** opens the Share sheet |
+| **Client side** | The client's decision-makers. See [The Client's Decision-Makers](#the-clients-decision-makers) |
+| **Chats** | Up to five of the project's chats: yours and the shared ones |
 | **What frnd knows** | Whether the project has sources, instructions, memory and meeting notes. **Manage** opens it (see [What frnd Knows](#what-frnd-knows)) |
+
+## Updates & Discussion
+
+**Updates & discussion**, last on the Overview, is where the team talks inside the room instead of in a side chat. It also lists what changed in the room (files edited, sources added, people added), grouped by day: **Today**, **Yesterday**, then the date.
+
+### Writing to the team
+
+Click **Write to the team…** and pick what to write:
+
+| Kind | What it is | Who can write it |
+|---|---|---|
+| **Post** | A message to the team | Anyone who can open the room |
+| **Update** | Where the project stands: a health, plus **Done**, **Blocked** and **Next**, and an optional **Note** | Editors |
+| **Decision** | A decision, logged so the team and frnd remember it | Editors |
+
+A post or decision needs some text. An update needs at least one of **Done**, **Blocked** or **Next**, or a note; until then it reads _"Add what's done, blocked or next"_. Click **Post**, **Post update** or **Log decision** (in a post, **⏎** posts and **⇧⏎** starts a new line).
+
+Type **@** to mention someone who can open the room. They get a notification, and so does everyone in a thread when someone replies in it. Links in a post open in a new tab.
+
+> **An update sets the project's health.** The health you pick in an update becomes the room's **Health**. You can also start one from the **Health** chip in the header: **Post an update…** opens the composer as an update on the current health.
+
+### Replies, edits and filters
+
+* **Reply** under a post starts or continues its thread. A thread shows its last two replies; **Show N more replies** opens the rest
+* The **…** menu on your own post has **Edit** and **Delete**. An edited post says **edited**; a deleted one that has replies reads **Post removed**. The project owner can delete anyone's post
+* **Everything** / **Decisions** switches between the whole stream and decisions only
+* New posts from teammates appear as they're written. If you've scrolled down, a **N new posts** button takes you back to the top
+
+A notification about a post opens the room at that post and highlights it. If it was deleted, a toast says _"That post is no longer here"_.
+
+### What frnd picks up
+
+When you ask frnd about the project, it knows the latest update (health, Done, Blocked, Next) and the last five decisions. A decision is also added to the project's memory (see [What frnd Knows](#what-frnd-knows)).
+
+## The Client's Decision-Makers
+
+**Client side**, in the Overview rail under **Team**, lists the people at the client who decide on the project. The list belongs to the project, not to one proposal: every proposal assistant in the room reads and edits the same list, so a person added in one proposal is there for the rest.
+
+Each row shows the person's name, role and company, and what drives their decision. Click a row to open their profile:
+
+| Part | What it holds |
+|---|---|
+| Influence | **High influence**, **Medium influence** or **Low influence** |
+| **Background** | Their tenure, past companies, notable work |
+| **What drives their decision** | What they weigh: cost, risk, brand fit, speed |
+| **Hook that wins them** | The one line they'd say yes to |
+| **Profiles** and **Sources** | Links to their public profiles, and the pages the profile came from |
+
+A person with nothing filled in reads _"No profile yet. Research fills it in from public sources."_
+
+### Adding and editing
+
+If you can edit the project:
+
+1. Click **+ Add decision-maker**
+2. Under **Background check**, paste a LinkedIn or profile link, or a name and company, and click **Research**. It takes 15 to 30 seconds and fills in what it finds
+3. Check the fields (**Name**, **Role**, **Influence**, **Background**, **What drives their decision**, **Hook that wins them**, profile links) and click **Add decision-maker**
+
+On a profile, **Research** looks the person up again and replaces the fields it finds; **Edit** opens the same form. **Remove from project** asks to confirm, and removes the person from the whole project and every proposal in it.
+
+Viewers can read the list but not change it. With no decision-makers yet, viewers don't see **Client side** at all.
+
+> **frnd uses this list.** When you ask frnd about the project, and when a proposal assistant works, they read the room's decision-makers.
 
 ### Milestones
 
@@ -174,6 +235,15 @@ Owners can **Add member** — pick a person, pick a role, add them. Three roles 
 Every member, whatever their role, gets a **Leave project** action on their own row.
 
 ## FAQ
+
+**Q: Where did Activity, Recent files and the Chats list go on the Overview?**
+Activity is part of **Updates & discussion** now, which shows what changed alongside the team's posts. **Chats** moved to the rail on the right. Recent files are covered by **Key work** and the **Work** tab.
+
+**Q: I added a decision-maker in one proposal. Why is it in the other proposals too?**
+In a project room, decision-makers belong to the project. Every proposal in the room shares one list, and the room shows it under **Client side**.
+
+**Q: Why can't I post an update or a decision?**
+Those need edit access to the project. Anyone who can open the room can write a post and reply.
 
 **Q: Where did the composer at the top of the room go?**
 Ask frnd from the AskFRND panel instead. On a project room it shows the project's chip, and your next new chat is filed in the project.

@@ -1,0 +1,45 @@
+---
+title: October 2026 Release (Part 3) — Help Center Docs Coverage
+created: 2026-10-11
+source: https://fcn.sg.larksuite.com/wiki/VTc9wK4uvid8XPkr5wVlrCQrg6g
+---
+
+# October 2026 Release (Part 3) — Docs Coverage Track
+
+Cakupan: seluruh Lark doc (Changed, Improved, Fixed, lalu New).
+
+**Sumber kebenaran: branch production.** Docs awalnya ditulis dari checkout `develop`; pada 2026-10-11 semua klaim diverifikasi ulang langsung ke `origin/production` (`git show` / `git grep`, tanpa checkout): `frnd-web` `8cfe3b572` (2026-10-08), `frnd-api-php` `74ff966d1` (2026-10-08). `frnd-ai-services` tidak punya branch `production`; yang dipakai sebagai acuan `origin/frndos-main` (`5e78ff85`, merge rilis 2026-10-08), belum terkonfirmasi sebagai branch deploy. Liveness via PostHog production.
+
+Hasil verifikasi ulang: 56 dari 60 file sumber `frnd-web` identik antara `develop` dan production; 13 file sumber `frnd-api-php` identik. Empat yang berbeda tidak mengubah klaim di docs: `Menu.tsx` (tooltip baris, kelas surface), `KvMotionEditor.tsx` (Motion AI chat dan dock kanan, hanya di develop), `TimelineDock.tsx` (span draft AI), `featureFlags/constants.ts` (`show-kv-motion-ai`). Setiap string UI yang dikutip docs dicek ada di file production.
+
+| # | Fitur | Kategori | Module | Status | Doc |
+|---|-------|----------|--------|--------|-----|
+| 1 | **Content Format → Format**, ikon + tooltip (posts table, detail, labelling table) | 🔄 Changed | `insights` | ✅ Done | `docs/insights/owned-media.mdx` — Key Columns, "Format icons", "Filtering by Format", FAQ |
+| 2 | **Label Posts**: semua akun yang dicentang, Author, Group by 3 level | 🔄 Changed | `insights` | ✅ Done | `owned-media.mdx` — "Picking accounts", "Grouping in Label Posts", "Grouping Posts", Analyze multi-account, FAQ |
+| 3 | **Menus**: workspace & brand switcher satu menu baru, sama di 3 tema | 🔄 Changed | `getting-started` | ✅ Done | `navigating-frndos.mdx` — "Switching Brands" (keyboard), "The Workspace Menu" (baru); `joining-or-creating-workspace.mdx` |
+| 4 | **Faster pages** (cache flag + CORS preflight) | ⚡ Improved | — | ⏭️ Skip | Backend only (`frnd-api-php` #663). Tidak ada perilaku yang terlihat user |
+| 5 | **Playbook keeps up** (Refresh, butuh history lebih panjang) | ⚡ Improved | `insights` | ✅ Done | `owned-media.mdx` — "Creating and Refreshing the Playbook" |
+| 6 | **Lark plugins mematikan diri** | 🔧 Fixed | `askfrnd` | ✅ Done | `docs/askfrnd/lark-plugins.mdx` — status **Disabled** + FAQ |
+| 7 | **Motion clip hitam / gagal export di Safari** | 🔧 Fixed | `studio`, `collaboration` | ✅ Done | FAQ `motion-mode.mdx`, FAQ `sharing-with-clients.mdx`, `client-approvals.mdx` — "What the Client Sees" (tombol play) |
+| 8 | **Gemini image model baru gagal** | 🔧 Fixed | `askfrnd` | ✅ Done | `docs/askfrnd/generating-with-chat.mdx` — "The model says it's not available" |
+| 9 | Insights **Playbook** (card, objective/pillar, reading view, Generate deck, share, PDF) | ✨ New | `insights` | ✅ Done | `owned-media.mdx` — "The Playbook": The card, Reading it, Generate deck, Download PDF, On a shared dashboard (+ Creating/Refreshing dari #5) |
+| 10a | Projects **updates & discussion** | ✨ New | `projects` | ✅ Done | `docs/projects/project-rooms.mdx` — "Updates & Discussion" (baru), tabel Overview & rail, FAQ |
+| 10b | Projects **client decision-makers** | ✨ New | `projects` | ✅ Done | `docs/projects/project-rooms.mdx` — "The Client's Decision-Makers" (baru), rail table, FAQ; cross-link di `docs/early-access/pitch.mdx` — "Reviewing the Pitch" |
+| 11 | KV Studio **comments on a clip** | ✨ New | `studio` | ✅ Done | `docs/studio/motion-mode.mdx` — "Commenting on a Clip" (baru) + FAQ |
+
+## Notes
+
+- **Liveness:** `label-posts-overlay`, `show-creative-analysis`, `show-modules-nav`, `show-home-redesign`, `show-sidebar-shell`, `show-appearance-themes` semua 100% di PostHog. Nama flag `label-posts-overlay` masih bilang "0% in prod" — stale, filter-nya 100% dan `active: true`.
+- **Koreksi di luar Lark:** judul overlay Label Posts di code adalah **Label Post** (singular, `LabelPostsOverlay.tsx`); doc lama menulis "Label Posts". Picker akun tidak berlabel "Owned accounts".
+- **Analyze with AI** kini nonaktif saat >1 akun dicentang (konsekuensi #2) — ditambahkan.
+- **Konflik terbuka:** "Ranking follows the objective" di `owned-media.mdx` masih menyebut window **Last 30/60/90 days** sebagai playbook berbeda dan nama `awareness · Promo · 30d`. Tidak diubah; dicatat di `DOCS_TODO.md`.
+- **New → KV comments on a clip (2026-10-11):** `17657956f`, `762dd8d96`, `7197b8916`, `a69379a6e` ada di `frnd-web` `origin/production`; kode comment (adapter, filter, chips, CommentModeToggle) identik develop vs production. Gate = `show-kv-motion-editor` (100%); `show-kv-motion-comments` (0%) sudah tidak dibaca sejak `7197b8916`. `c9661666a` (pin klien di kartu canvas) dan refactor toolbar `dc65bce27` belum di production, jadi tidak didokumentasikan; posisi tombol comment (paling kiri pill kanan atas) sama di kedua branch.
+- **New → Projects decision-makers (2026-10-11):** satu daftar per folder adalah sumber kebenaran (`ProjectStakeholderService`, `stakeholders_on_folder` default true di production). UI `RoomClientSide.tsx` + `StakeholderEditModal.tsx`: Add/Edit/Research/Remove hanya editor (`authorizeFiling`), viewer tidak melihat Client side bila kosong. Research menimpa field yang ditemukan (`mergedAttributes(..., 'overwrite')`). Remove berlaku untuk seluruh project dan semua proposal. frnd membaca daftar ini (`ProjectChatContextAssembler::clientStakeholders`, `effectiveOverrides` untuk pipeline proposal).
+- **New → Projects updates (2026-10-11):** `frnd-web` #911 (`fe573444f`) dan `frnd-api-php` #648 (`420f64cba`) ada di `origin/production`. `show-project-room-v2` punya grup 100% tanpa kondisi, jadi live untuk semua (grup kedua 0% tidak berpengaruh); catatan "Rolling out" di `project-rooms.mdx` dan baris confirm flag di ledger dihapus. Aturan yang dicek ke code: post untuk semua pembaca room, Update/Decision hanya editor (`composerModes`); health di Update menjadi health project (`ProjectPostService`); edit hanya penulis, hapus penulis atau owner (`ProjectStreamService` `can_edit` / `can_delete`); notifikasi mention + reply thread; frnd membaca update terakhir + 5 decision terakhir (`ProjectChatContextAssembler`); decision masuk memory project. Overview R3: Activity diganti stream, Chats pindah ke rail (maks 5), Recent files hilang.
+- **New → Insights (2026-10-11):** kode Playbook identik `develop` vs `origin/production`; `decking-phase-a` dan `show-creative-analysis` 100%. Pillar chapter hanya ada bila brand punya label attribute bernama **Content Pillar** atau **Pillar** (`LabelDimensionService::pillarAttributeId`). Generate deck butuh flag Decking + tool **Decking** dan **Creative Playbooks** aktif (`useGenerateDeck`). Section lama "Ranking follows the objective" tidak diubah (masih baris confirm di ledger). Heading `## Creating and Refreshing the Playbook` diganti `## The Playbook`; anchor di `DOCS_TODO.md` disesuaikan. Blog `2026-10-09-frndos-october-2026-part-3.mdx` (sesi lain) masih memakai teks link "Creating and Refreshing the Playbook →" tanpa anchor, jadi tidak rusak.
+- **Audit Improved (2026-10-11):** code Playbook identik di `frnd-web` `develop` dan `origin/production` (commit Create/Refresh/longer-history ada di production, `ENABLE_REAL_REFRESH = true`). Koreksi: contoh "12 of 20 posts labelled" salah, minimum API = 6 (`PlaybookPoolSelectionService::MIN_TOTAL`), diganti "4 of 6". Ditambah "Couldn't create this chapter." dan kapan dialog tetap terbuka (hanya bila tidak ada chapter yang selesai). Faster pages (#663) ada di `frnd-api-php` `origin/production`; tetap Skip karena tidak ada perilaku yang terlihat user.
+- **Lark #6:** "All 17 plugins are back on" dari Lark + `plugins:restore-broken`; tidak bisa diverifikasi apakah command sudah dijalankan di production. Doc menulis umum tanpa angka.
+- **Audit Fixed (2026-10-11):**
+  - Lark (#663) ada di `frnd-api-php` `origin/production`. Klaim "Plugins switched off this way were switched back on" diganti dengan perilaku yang terbukti di code: plugin yang dimatikan oleh bug kembali on sendiri saat renewal berikutnya berhasil (`restoreAfterRecovery`), kecuali user mengubah switch-nya sendiri. Status **Disabled** / **Token Expired** cocok dengan `PluginsTab.tsx` dan `PluginController`.
+  - Safari (`a1688be6f`, `60baa6776`) ada di `frnd-web` `origin/production` (PR #929). Teks codec cocok (`KvMotionEditor.tsx`). Clip hitam terjadi di semua halaman klien KV (view link `KvLinkGallery`, approval request, round) karena semuanya memakai `KvItemArtwork`. Kalimat tombol play di `client-approvals.mdx` dikoreksi: strip kontrol clip di bawah tidak menaruh pin.
+  - Gemini (`8b91df16`) ada di `frnd-ai-services` `development` dan `frndos-main` (merge rilis 2026-10-08), tidak di `main` (stale, April). Deploy workflow hanya memetakan `development` → staging; branch production ai-services tidak terdokumentasi di repo. Teks error cocok dengan `generate_image.py` / `edit_image.py`.
