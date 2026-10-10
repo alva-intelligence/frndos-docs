@@ -1,6 +1,6 @@
 ---
 name: writing-help-docs-from-code
-description: Use when the user gives a frndOS feature keyword (e.g. "research surveys", "kv generator", "insights paid media") and wants Help Center guides created or updated in frndos-docs. Grounds every claim in the frnd-web codebase, marks anything unreadable as TODO instead of guessing, and validates with a build.
+description: Use when the user gives a frndOS feature keyword (e.g. "research surveys", "kv generator", "insights paid media") or a Lark release note and wants Help Center guides created or updated in frndos-docs. Grounds every claim in the production branch of frnd-web (and frnd-api-php), never the local develop checkout, marks anything unreadable as TODO instead of guessing, and validates with a build.
 metadata:
   author: claude
   version: "1.0.0"
@@ -19,6 +19,41 @@ The frndOS repos are the source of truth in this order:
 2. **`frnd-api-php`** (`../frnd-api-php`) — OPTIONAL. Only to confirm API field names or business rules when frnd-web is ambiguous.
 
 **Ignore third-party iframes/vendors** (e.g. Populix survey builder). Code inside frnd-web stops at "open the iframe" — the steps inside are NOT in any repo. Mark them `TODO`, never guess.
+
+## Read the Production Branch, Never the Working Tree
+
+**Every fact in a Help Center doc comes from the `production` branch** (`origin/production`) of `frnd-web` and `frnd-api-php`. Not `develop`, not whatever branch is checked out locally.
+
+Why: the Help Center describes what customers can use today. `develop` runs ahead of production with unreleased work, so a label, button, or rule read from `develop` can describe something no customer has. The local checkout is usually `develop` (or a feature branch), so plain `grep` / `cat` / `read` on `../frnd-web/src` reads the wrong code.
+
+**Fetch first, then read through git, without checking anything out** (the working tree belongs to whoever is developing in it):
+
+```bash
+# Once per run, in each repo you read
+git -C ../frnd-web fetch -q origin production
+git -C ../frnd-api-php fetch -q origin production
+P=origin/production
+
+# Record which commit the docs are based on (goes in the track file)
+git -C ../frnd-web log -1 --format='%h %ad' --date=short $P
+
+# Search      →  git grep, not grep
+git -C ../frnd-web grep -n "<label>" $P -- src
+# Read a file →  git show, not cat / read
+git -C ../frnd-web show "$P:src/components/<path>.tsx"
+# List files  →  git ls-tree, not find
+git -C ../frnd-web ls-tree -r --name-only $P -- "src/app/(dashboard)" | grep -i "<keyword>"
+```
+
+Rules:
+
+- **A file missing from production** (`git cat-file -e "$P:<path>"` fails) means the feature isn't released. Don't document it. A function can move between files, so search for it with `git grep` before deciding.
+- **A commit not in production** (`git merge-base --is-ancestor <sha> $P` fails) is unreleased. A Lark note or a commit message saying "shipped" does not override this.
+- **When production and `develop` differ**, production wins. Note the unreleased difference in the track file; don't write it into the doc.
+- **A repo with no `production` branch** (today: `frnd-ai-services`, which has `main` and `frndos-main`): name the branch you read and say plainly in the report that it isn't confirmed as the deployed one. Ask the user before documenting a fix that only that repo carries.
+- **Branch ≠ deploy.** A commit on `origin/production` is the best evidence available, not proof that the server runs it. Pair it with the liveness checks in step 1.5 (flags are read from PostHog production).
+
+The commands in the steps below are written against `$P`. If you catch yourself typing `cd ../frnd-web && grep … src`, stop: that reads the checkout, not production.
 
 ## Lark Doc as Navigation Map
 
@@ -91,7 +126,7 @@ Steps:
    - **Feature keywords** to search for in frnd-web (routes, components, labels).
    - **File hints** if the doc mentions specific directories or files.
    - **Changed behavior** — note these as hypotheses to verify.
-3. Continue from **Step 1** (locate in frnd-web) — treat the Lark doc output as clues only.
+3. Continue from **Step 1** (locate in frnd-web) — treat the Lark doc output as clues only. A Lark item whose code is not on `origin/production` yet is not released: report it, don't document it.
 4. **Never copy-paste** Lark doc content into the help doc. Every sentence must still trace to code.
 
 The existing workflow (Steps 1 → 9, 1.5, 1.6) is unchanged — this is simply an **alternative entry** when a Lark doc URL is provided.
@@ -141,14 +176,20 @@ digraph flow {
 Search from the keyword. High-signal sources:
 
 ```bash
-cd ../frnd-web
+cd ../frnd-web && git fetch -q origin production && P=origin/production
 # Routes = the feature map (URLs, sub-features)
-find "src/app/(dashboard)" -type d -iname "*<keyword>*"
+git ls-tree -r -d --name-only $P -- "src/app/(dashboard)" | grep -i "<keyword>"
 # Everything referencing it
-grep -ril "<keyword>" src --include="*.tsx" --include="*.ts"
+git grep -il "<keyword>" $P -- "src/*.tsx" "src/*.ts"
 # Services (API surface), types (data shape), permissions/flags (gating)
-grep -n "<keyword>" src/services/query.ts src/services/mutate.ts
-grep -rn "<keyword>" src/types/ src/lib/featureFlags/
+git grep -n "<keyword>" $P -- src/services/query.ts src/services/mutate.ts
+git grep -n "<keyword>" $P -- src/types src/lib/featureFlags
+```
+
+Lark notes and commit messages can name a commit. Confirm it is released before you trust it:
+
+```bash
+git merge-base --is-ancestor <sha> $P && echo released || echo "NOT in production"
 ```
 
 ### 1.5. Verify the feature is actually LIVE (gate — do this before writing anything)
@@ -156,14 +197,18 @@ grep -rn "<keyword>" src/types/ src/lib/featureFlags/
 Code existing ≠ feature shipped. A feature can be **retired, hidden, coming-soon, or route-redirected** while its rich UI code still sits in the repo. Documenting a phantom feature is the same failure as guessing. Check liveness explicitly:
 
 ```bash
-cd ../frnd-web
+cd ../frnd-web && P=origin/production
+# Is the feature in production at all? (missing file = unreleased)
+git cat-file -e "$P:src/app/(dashboard)/<feature-path>/page.tsx" && echo in-prod || echo "NOT in production"
 # Does the route redirect away? (retired/disabled features do this)
-grep -rn "redirect(" "src/app/(dashboard)"/**/<feature-path>/layout.tsx "src/app/(dashboard)"/**/<feature-path>/page.tsx
+git grep -n "redirect(" $P -- "src/app/(dashboard)/<feature-path>/layout.tsx" "src/app/(dashboard)/<feature-path>/page.tsx"
 # Is it flagged live in the tool/launcher registry?
-grep -n -A12 "<keyword>" src/lib/tool-registry.ts        # isLive: false / isComingSoon → NOT live
+git grep -n -A12 "<keyword>" $P -- src/lib/tool-registry.ts   # isLive: false / isComingSoon → NOT live
 # Hub cards carry their own status
-grep -rn "isComingSoon" src/helpers/dummy-data.ts        # near the feature's card
+git grep -n "isComingSoon" $P -- src/helpers/dummy-data.ts   # near the feature's card
 ```
+
+Feature flags: read the flag's key and its fail-open / fail-closed behavior from **production's** `src/lib/featureFlags/`, then read its rollout in PostHog production. A flag that gates the feature in `develop` may not exist yet in production, and the reverse.
 
 Then classify the feature's **liveness state**:
 
@@ -200,7 +245,7 @@ Jika memutuskan update: baca dulu isi file yang ada secara penuh sebelum lanjut 
 
 ### 2. Read behavior from the code (facts only)
 
-Read the page(s), components, types, services. Extract **verbatim** what the end user sees and does:
+Read the page(s), components, types, services **from `origin/production`** (`git show "$P:<path>"`; see [Read the Production Branch](#read-the-production-branch-never-the-working-tree)). Extract **verbatim** what the end user sees and does:
 
 | Extract | Where |
 | ------------------------------ | ------------------------------------------- |
@@ -213,6 +258,19 @@ Read the page(s), components, types, services. Extract **verbatim** what the end
 | Actions & their conditions | mutations + the `if`/status checks that gate them |
 
 **Copy UI labels exactly as written.** If the metric card says `Responden`, the doc says `Responden` — the end user sees Indonesian, so the doc matches.
+
+Business rules from `frnd-api-php` (minimums, who can edit or delete, what a job overwrites) come from its `origin/production` too: `git -C ../frnd-api-php show "origin/production:app/<path>.php"`.
+
+**Before declaring done, check every quoted label against production.** For each UI string the doc quotes, it must be found there:
+
+```bash
+git -C ../frnd-web grep -lF "<exact label>" origin/production -- src \
+  ':!*.test.*' ':!*.stories.*' ':!src/wireframes'   # must print a product file
+```
+
+The exclusions matter: a label that only appears in a test, a Storybook story or a wireframe is not shipped UI.
+
+A label that only exists on `develop` means the doc describes unreleased UI. Remove the sentence or wait for the release.
 
 ### 3. Classify every piece: readable vs. iframe/unknown
 
@@ -434,6 +492,9 @@ This ledger is the single answer to "what do I still have to do by hand?" Keep i
 | Rationalization | Reality |
 | ------------------------------------------------- | -------------------------------------------------------------------------- |
 | "I basically know how surveys work, I'll write the steps" | If you didn't read it in frnd-web, you don't know it. Row in `DOCS_TODO.md`. |
+| "The checkout is `develop`, it's close enough to production" | `develop` carries unreleased work. Read `origin/production` with `git show` / `git grep`. Close enough is how a doc describes a button nobody has. |
+| "Lark says it shipped, so `develop` is fine" | A release note is a claim. `git merge-base --is-ancestor <sha> origin/production` is the evidence. |
+| "I'll check out production to read it" | Never switch the developer's branch. `git show` and `git grep` read production without touching the working tree. |
 | "The iframe steps are probably X, Y, Z" | Vendor UI is in no repo. Guessing = hallucination. Ledger row only. |
 | "This label reads better translated to English" | Copy the UI's actual text. The user sees what the code renders. |
 | "The build is slow / a dev server is running, I'll skip it" | Unvalidated links break production. Use the `npx docusaurus build` fallback. |
@@ -450,6 +511,9 @@ This ledger is the single answer to "what do I still have to do by hand?" Keep i
 ## Red Flags — STOP
 
 - Writing a UI step you did not read in frnd-web
+- **Reading `frnd-web` or `frnd-api-php` through the working tree** (`cd ../frnd-web && grep …`, `cat`, the read tool on `src/…`) instead of `origin/production`. The checkout is usually `develop`, which runs ahead of what customers have
+- **Running `git checkout` / `git switch` in `frnd-web` or `frnd-api-php`** to reach production. Use `git show` / `git grep` against `origin/production`; the working tree is not yours
+- **Quoting a label you have not found in a product file on `origin/production`** (the step 2 label check prints nothing, or only tests / stories / wireframes)
 - **Acting on a Lark fetch that returned a login/permission page or empty shell** — use the `lark` MCP server first (step 0); a plain web fetch of a Lark URL is the fallback, not the default. If the fallback is auth-walled, STOP and ask the user for the content
 - **Filing a pillar-signalling feature under an existing module without offering a new pillar** — a keyword shaped `<Grouping> -> <Feature>`, or a cross-cutting/beta/admin surface, means you PAUSE and ask (step 5a) before writing
 - **Adding a pillar option to `tina/config.jsx` without mirroring it into `tina/tina-lock.json`** — stale lock → Vercel build fails `local Tina schema doesn't match remote`. A passing `build-local` does NOT catch this (see Notes)
@@ -468,7 +532,8 @@ This ledger is the single answer to "what do I still have to do by hand?" Keep i
 
 ## Notes
 
-- **No git operations** unless the user asks — write/update files; the user runs `npm run publish`.
+- **No git operations** unless the user asks — write/update files; the user runs `npm run publish`. Read-only git in `frnd-web` / `frnd-api-php` (`fetch`, `show`, `grep`, `ls-tree`, `merge-base`) is how this skill reads production, and is always allowed; never `checkout`, `switch`, `pull` or `reset` there.
+- **Record the production commit** the docs were checked against (`git log -1 --format='%h %ad' --date=short origin/production`) in the run's track file or report, so a later run knows which release the docs describe.
 - Sidebar is autogenerated from folder structure + `_category_.json`; there is no sidebar file to edit.
 - New module category: create `docs/<module>/` + `_category_.json`, add the matching option to the `frndOS Module` select in `tina/config.jsx`, AND mirror that same option into `tina/tina-lock.json` (see next note).
 - **`tina/tina-lock.json` MUST mirror the new pillar option — else Vercel deploy fails.** `tina-lock.json` is the schema snapshot TinaCloud validates the build against; the `module` field's `options` array is part of it. Adding a pillar to `config.jsx` alone leaves the lock stale → build error `The local Tina schema doesn't match the remote Tina schema`. Normally `tinacms build` (cloud mode) regenerates the lock automatically, but that needs valid `TINA_TOKEN` + `NEXT_PUBLIC_TINA_CLIENT_ID` in `.env` — which are often empty locally. When they are, patch the lock by hand: insert the identical `{"label":"<emoji Label>","value":"<slug>"}` into the `module` options array at the **same position** as in `config.jsx` (e.g. after `projects`, before `workspace`). Verify config ↔ lock option order matches exactly:

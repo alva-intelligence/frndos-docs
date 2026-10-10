@@ -25,21 +25,24 @@ Two contracts make a post shippable, and both are checked by a script, not by ey
 
 - **Lark URL** → read it via the `lark` MCP server exactly as in `writing-help-docs-from-code` step 0. Auth wall or empty → stop and ask the user to paste it.
 - **Track file / pasted text** → read it in full.
-- **Keyword only** → ask the user (via `ask_user_question`) for the release brief or the date range; offer "derive from frnd-web git log" as an option.
+- **Keyword only** → ask the user (via `ask_user_question`) for the release brief or the date range; offer "derive from frnd-web git log" as an option (the log of `origin/production`, not `develop`).
 
 Done when: you hold a numbered **claim list**, one line per feature the post would announce.
 
 ### 2. Verify every claim in frnd-web
 
-For each claim: locate it in `../frnd-web`, run the liveness gate (`writing-help-docs-from-code` step 1.5, plus the PostHog flag rollout when the feature is flagged), and copy the user-visible label verbatim from the JSX.
+Read the **production branch**, exactly as in `writing-help-docs-from-code` ("Read the Production Branch, Never the Working Tree"): `git fetch -q origin production`, then `git grep` / `git show` against `origin/production`. Never the local checkout (usually `develop`, ahead of what customers have), and never `git checkout`.
+
+For each claim: locate it on `origin/production` of `../frnd-web` (and `../frnd-api-php` for business rules), run the liveness gate (`writing-help-docs-from-code` step 1.5, plus the PostHog flag rollout when the feature is flagged), and copy the user-visible label verbatim from the production JSX. A claim whose commit isn't in production (`git merge-base --is-ancestor <sha> origin/production` fails) is not released, whatever the brief says.
 
 | Verdict | Goes in the post as |
 |---|---|
 | Live | A section or bullet, with its real UI label |
 | Flag partial / coming soon | A `## What's Next` bullet, only if the brief itself frames it as upcoming |
 | Retired, 0% flag, or not found in code | Left out. List it in your report to the user |
+| Only on `develop`, not on `origin/production` | Left out. List it in your report as not released yet |
 
-Done when: every claim in the list carries a verdict and, for Live ones, the file path that proves it.
+Done when: every claim in the list carries a verdict and, for Live ones, the production file path that proves it (`origin/production:<path>`).
 
 ### 3. Check what already exists
 
