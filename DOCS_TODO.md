@@ -713,3 +713,12 @@ _Last updated: 2026-10-13_ (October 2026 Part 3, from Changed onward: Format ico
 | Comments on a Motion Clip | ✍️ confirm from live UI | comments are gated by `show-kv-motion-editor` (100% in PostHog); the old `show-kv-motion-comments` flag was removed from `frnd-web` in `7197b8916`, so its 0% has no effect. Documented in [`docs/studio/motion-mode.mdx`](docs/studio/motion-mode.mdx#commenting-on-a-clip); link it from the post |
 | Clearer Tables and One New Menu | ✍️ confirm from live UI | Format icon is covered in `docs/insights/owned-media.mdx#format-icons`. The shared menu look in Midnight, Aurora and Daylight is stated from the Lark brief and the v2 menu code only |
 | Improved and Fixed | ✍️ confirm from live UI | "All 17 plugins are back on", the cached flag and CORS checks, and the Gemini fix come from the Lark brief and `frnd-api-php` / `frnd-ai-services` history, not from `frnd-web` code |
+
+### `blog/2026-10-13-frndos-october-2026-part-4.mdx` — What's New in frndOS: October 2026 (Part 4)
+
+| Section | Type | What to do |
+|---|---|---|
+| Thumbnail | 🖼️ image | the Lark brief has no image, so the post uses the fallback `/img/blog/frndos.webp`. Upload a cover with `news-image.mjs frndos-october-2026-part-4 --file <path> --thumbnail <path>` |
+| Recap video | 🎬 video | the Lark brief has no recap video. Add one with `news-video.mjs --file <path> frndos-october-2026-part-4`, then place the `<S3Video>` block under the lede |
+| Listening and Google Sheets | ✍️ confirm from live UI | "day windows line up" comes from `frnd-api-php` commit `8825ced62`, not from a UI label. Row delete and dedup for Google Sheets is not claimed in the post; see the `docs/insights/connecting-owned-media.mdx` row |
+| Files, Campaigns and Fixes | ✍️ confirm from live UI | "Steadier share pages" comes from `frnd-api-php` throttles (`share-resolve`, `share-password`), not from a UI label. The 200-row report totals fix lives in `frnd-clickhouse-api` (no `production` branch) and is left out of the post |
