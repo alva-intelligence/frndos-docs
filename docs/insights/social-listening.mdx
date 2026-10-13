@@ -41,7 +41,7 @@ Each topic card shows its status, how many mentions it had in the last 24 hours 
 With write access, a card's **•••** menu has:
 
 * **Open war room**
-* **Pause listening** / **Resume listening**
+* **Pause listening** / **Resume listening**. Pausing asks you to confirm first (**Pause listening?**), and the confirmation says what is pending: either that new mentions are not collected while paused and can't be recovered later, or that syncing, recaps and spike alerts stop until you resume. Then the card reads **Pausing…** or **Resuming…** while it settles. A toast then says **Listening paused** or **Listening resumed**. If it fails, a toast says **Couldn't pause listening** or **Couldn't resume listening**, and the topic stays as it was
 * **Edit configuration** (see [Editing a Topic](#editing-a-topic))
 
 ## The War Room
@@ -160,7 +160,9 @@ Click **Share & export** in the war room.
 
 * **Access**: **Anyone with the link can view**
 * **Expires**: **24 hours**, **7 days**, **30 days** or **Never**. An expired link can be renewed
-* **Protection**: **Require password**, at least 8 characters with one uppercase letter and one number
+* **Protection**: **Require password**, 8 to 72 characters, with one uppercase letter and one number. A longer password gets the message _"Password must be at most 72 characters."_
+
+Shared links limit how fast they can be opened, so one heavy caller can't slow them down for others. Opening a link too often is refused for a short while.
 
 Click **Copy link** to share it. **Regenerate** makes a new URL and stops the old one working at once, after you confirm.
 
@@ -202,6 +204,9 @@ Use a **Lark webhook** destination for the group. Email works for brand members 
 
 **Q: Why are some mentions missing from the counts?**
 Low-relevance mentions are left out of the counts. Tick **Include low relevance** on the Voices tab to see them.
+
+**Q: A mention showed up days after it was posted. Is that a bug?**
+No. Every active topic is rechecked over a wider window every few hours, so mentions the source adds late are still caught and counted on the day they were posted.
 
 **Q: The topic says Sync paused.**
 Listening for that topic has stopped syncing for now. When a date range covers it, the war room also says since when.

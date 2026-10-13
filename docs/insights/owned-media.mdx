@@ -364,7 +364,7 @@ Switch between table and grid view, and use the search to find a post by name, t
 
 The account picker at the top lists your **Core Connections** and **Extended Connections**. Every Core connection is ticked when you open it. Tick or untick accounts, and the button reads the account's name, or **N accounts** when several are ticked.
 
-Every ticked account loads, all in one table. The table shows who posted each post in its **Author** column: the account's avatar and name, or a row of avatars for a collab post. In grid view the avatar sits on each card, with the platform logo on it. The **Format** column shows each post's format icon.
+Every ticked account loads, all in one table. The table shows who posted each post in its **Author** column: the account's avatar only, or a row of avatars for a collab post. A post whose account has no profile picture shows its handle instead. In grid view the avatar sits on each card, with the platform logo on it. The **Format** column shows each post's format icon.
 
 ### Grouping in Label Posts
 
@@ -389,7 +389,25 @@ If you untick down to one account, the **Account** level drops out. It comes bac
 1. Click the attribute cell on the post's row
 2. Select or type the value
 
+If the value you type differs from an existing one only by capital letters or spacing, the dropdown shows **Already exists as** that value instead of adding a second one. Select it to reuse the existing label.
+
 Click a post to open its details: its **Performance Details** and a **Tagging** panel where you can set every label in one place.
+
+### Copy, Paste and Undo
+
+In the table view, click a label cell to select it, or select a block of cells. Press **⌘C** (**Ctrl+C**) to copy them, and **⌘V** (**Ctrl+V**) to paste into the cells you selected. The data copies as tab-separated text, so you can paste to and from a spreadsheet. A cell with several values (a Multi Select label) separates them with commas.
+
+* **Only existing options are written.** A pasted value that differs from an option only by capital letters or spacing becomes that option. Any other new value is never created by the paste itself
+* **New values open a review.** The **Paste N cells into M columns** dialog lists the values that aren't options yet, with **Will be written**, **Will be skipped** and **Unregistered values** counts. Click **Register** on the ones you want to keep, then **Apply paste**. Anything left unregistered is skipped and those cells keep what they had. Nothing is saved until you apply
+* **Undo.** A toast says **Paste applied** with the number of cells updated. Click **Undo** to restore the cells. Only the latest paste can be undone
+* **Limits.** One paste writes up to 500 cells. Columns past the right edge of the table are dropped, and the toast says so
+* **Access.** Registering new options and pasting need write access. Without it you can still copy, and pasting shows **Read-only access**
+
+### Adding a Label in the Cell
+
+If the value you want isn't in a label's dropdown, add it without leaving the grid. Type the value, pick **Register** followed by your text, then click **Add option** to confirm. The new option is added for everyone labelling this brand. It isn't offered for Text labels or without write access. If what you typed differs from an existing option only by capital letters or spacing, the dropdown shows **Already exists as** that option instead, and you select it.
+
+In grid view, each post's thumbnail shows its format. A post with no labels yet has an **Add label** button that opens its details.
 
 ### Method 2 — Bulk Tag
 

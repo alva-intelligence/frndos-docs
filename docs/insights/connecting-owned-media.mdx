@@ -50,15 +50,20 @@ Connection status moves through:
 
 > **Why does Facebook take longer?** Facebook syncs include comments-on-comments (nested comments), which makes the data pull deeper than Instagram.
 
-## Collab Posts — Connecting a Google Sheet
+## Posts From a Google Sheet
 
-One kind of post can't arrive through a platform connection: a **collab post published on a partner's account**. Instagram only returns a collab post on the originating account's feed, so when your brand is the invited co-author the post never reaches frndOS through the Instagram connection.
+Some posts can't arrive through a platform connection. The first case is a **collab post published on a partner's account**: Instagram only returns a collab post on the originating account's feed, so when your brand is the invited co-author the post never reaches frndOS through the Instagram connection.
 
-A **Google Sheets** source covers that gap. It appears in the Owned Media connection list alongside the platforms, described as _"Import collab posts from a Google Sheet — for posts published on a partner's account."_
+A **Google Sheets** source covers that gap, and any other content you can't sync from the platform itself. It appears in the Owned Media connection list alongside the platforms, described as _"Import posts from a Google Sheet — for content you can't sync from the platform itself."_
 
-The sheet supplies each post's link and its labels; frndOS fetches the metrics per post from there.
+A social sheet can carry posts from **Instagram**, **TikTok**, **Facebook**, **YouTube** and **X**.
 
-> **Heads-up:** a Google Sheets connection has a mapping step — frndOS reads the sheet's columns, then asks you to match them. See [Reading Data States](./reading-data-states) for what **Discovering schema** and **Setting up Integration** mean, and what happens when a sheet has no columns to read.
+* **Instagram and TikTok:** the sheet supplies each post's link and its labels, and frndOS fetches the metrics per post from there
+* **Facebook, YouTube and X:** frndOS does not fetch metrics for these. The numbers are the ones you type into the sheet, and a row with no numbers at all is left out instead of being loaded empty
+
+Paste the full post link. In the mapping step, the **Link Post** field has a **Which links work** hint: the link is how frndOS spots posts already synced from the platform, so nothing is counted twice. Short or share links (such as `vt.tiktok.com` or `facebook.com/share/…`) still import, but can't be checked for duplicates.
+
+> **Heads-up:** a Google Sheets connection has a mapping step. frndOS reads the sheet's columns, then asks you to match them. See [Reading Data States](./reading-data-states) for what **Discovering schema** and **Setting up Integration** mean, and what happens when a sheet has no columns to read.
 
 ## What Data Gets Pulled
 

@@ -1,308 +1,138 @@
 ---
 name: writing-help-docs-from-code
-description: Use when the user gives a frndOS feature keyword (e.g. "research surveys", "kv generator", "insights paid media") or a Lark release note and wants Help Center guides created or updated in frndos-docs. Grounds every claim in the production branch of frnd-web (and frnd-api-php), never the local develop checkout, marks anything unreadable as TODO instead of guessing, and validates with a build.
+description: Use when the user gives a frndOS feature keyword (e.g. "research surveys", "kv generator") or a Lark release note / wiki URL (e.g. "buatkan docs dari release note ini", "mulai dari section changed") and wants Help Center guides in frndos-docs created or updated. Every claim is verified on origin/production of frnd-web and frnd-api-php (never the local checkout), feature-flagged or unfound items are skipped and reported instead of guessed, and the result is validated with a build and the Tina parse check.
 metadata:
   author: claude
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # Writing Help Center Docs from Code
 
-## Overview
+Turn a **feature keyword** or a **release note** into accurate end-user guides (`frndos-docs/docs/<module>/*.mdx`) by reading real behavior from code.
 
-Turn a **feature keyword** into accurate end-user Help Center guides (`frndos-docs/docs/<module>/*.mdx`) by reading the real behavior out of the **frnd-web** codebase — not from memory, not from guessing.
+**Core principle: every sentence must trace to code on `origin/production`. What you cannot trace is skipped and reported, or recorded in `DOCS_TODO.md`. A guessed button, step, or message is the one failure this skill exists to prevent.**
 
-**Core principle: every sentence in the doc must trace to something in the code, or be marked as a `TODO` for a human. Inventing UI steps, button names, or flows you did not read is the one failure this skill exists to prevent.**
+Sources of truth, in order:
+1. **`frnd-web`** (`../frnd-web`): routes, UI labels, buttons, gating.
+2. **`frnd-api-php`** (`../frnd-api-php`): business rules, limits, validation messages, schedules.
+3. **Other repos** (`../frnd-clickhouse-api`, `../frnd-ai-services`) only when a change lives there (see Release notes).
 
-The frndOS repos are the source of truth in this order:
-1. **`frnd-web`** (`../frnd-web`) — PRIMARY. Routes, UI labels, buttons, tabs, gating, entry points all live here.
-2. **`frnd-api-php`** (`../frnd-api-php`) — OPTIONAL. Only to confirm API field names or business rules when frnd-web is ambiguous.
+Third-party iframes (e.g. the Populix survey builder) stop at "open the iframe". Their inner steps are in no repo: ledger row, never prose.
 
-**Ignore third-party iframes/vendors** (e.g. Populix survey builder). Code inside frnd-web stops at "open the iframe" — the steps inside are NOT in any repo. Mark them `TODO`, never guess.
+## Read production, never the working tree
 
-## Read the Production Branch, Never the Working Tree
-
-**Every fact in a Help Center doc comes from the `production` branch** (`origin/production`) of `frnd-web` and `frnd-api-php`. Not `develop`, not whatever branch is checked out locally.
-
-Why: the Help Center describes what customers can use today. `develop` runs ahead of production with unreleased work, so a label, button, or rule read from `develop` can describe something no customer has. The local checkout is usually `develop` (or a feature branch), so plain `grep` / `cat` / `read` on `../frnd-web/src` reads the wrong code.
-
-**Fetch first, then read through git, without checking anything out** (the working tree belongs to whoever is developing in it):
+The Help Center describes what customers have today. The checkout is usually `develop`, which runs ahead. Fetch, then read through git without checking anything out:
 
 ```bash
-# Once per run, in each repo you read
 git -C ../frnd-web fetch -q origin production
 git -C ../frnd-api-php fetch -q origin production
 P=origin/production
-
-# Record which commit the docs are based on (goes in the track file)
-git -C ../frnd-web log -1 --format='%h %ad' --date=short $P
-
-# Search      →  git grep, not grep
-git -C ../frnd-web grep -n "<label>" $P -- src
-# Read a file →  git show, not cat / read
-git -C ../frnd-web show "$P:src/components/<path>.tsx"
-# List files  →  git ls-tree, not find
+git -C ../frnd-web log -1 --format='%h %ad' --date=short $P          # record in the report
+git -C ../frnd-web grep -n "<label>" $P -- src                        # search
+git -C ../frnd-web show "$P:src/components/<path>.tsx"                # read
 git -C ../frnd-web ls-tree -r --name-only $P -- "src/app/(dashboard)" | grep -i "<keyword>"
 ```
 
-Rules:
+- A file missing from production (`git cat-file -e "$P:<path>"` fails) is unreleased. Search with `git grep` first, since functions move.
+- A commit not in production (`git merge-base --is-ancestor <sha> $P` fails) is unreleased, whatever a note or commit message says.
+- Production wins over `develop`. Never `checkout`, `switch`, `pull` or `reset` in these repos.
+- A repo with no `production` branch (`frnd-ai-services`, `frnd-clickhouse-api`): list its remote branches, test the commit against each (`git merge-base --is-ancestor <sha> origin/<branch>`), name the branch you used, and say in the report that it is not confirmed as deployed. Write the fix only with that caveat, or ask.
+- Branch is not deploy. `origin/production` is the best evidence, not proof.
 
-- **A file missing from production** (`git cat-file -e "$P:<path>"` fails) means the feature isn't released. Don't document it. A function can move between files, so search for it with `git grep` before deciding.
-- **A commit not in production** (`git merge-base --is-ancestor <sha> $P` fails) is unreleased. A Lark note or a commit message saying "shipped" does not override this.
-- **When production and `develop` differ**, production wins. Note the unreleased difference in the track file; don't write it into the doc.
-- **A repo with no `production` branch** (today: `frnd-ai-services`, which has `main` and `frndos-main`): name the branch you read and say plainly in the report that it isn't confirmed as the deployed one. Ask the user before documenting a fix that only that repo carries.
-- **Branch ≠ deploy.** A commit on `origin/production` is the best evidence available, not proof that the server runs it. Pair it with the liveness checks in step 1.5 (flags are read from PostHog production).
+If you catch yourself running `grep`/`cat` on `../frnd-web/src`, stop: that reads the checkout.
 
-The commands in the steps below are written against `$P`. If you catch yourself typing `cd ../frnd-web && grep … src`, stop: that reads the checkout, not production.
+## Reading a release note (Lark)
 
-## Lark Doc as Navigation Map
+Lark docs are auth-gated. Use the `lark` MCP server, not a web fetch.
 
-When the user provides a **Lark doc URL** (e.g. `https://*.larksuite.com/docx/...`) alongside a feature keyword, the Lark doc should be treated as a **navigation map / changelog** — it tells you what changed and where to look, but **every claim must still be verified against the code**.
+1. For a `/wiki/<token>` URL, resolve it: `lark_wiki_v2_space_getNode` with `params: { token }`, `useUAT: true`, then take `obj_token`. A `/docx/<id>` URL gives the id directly.
+2. Read it: `lark_docx_v1_document_rawContent` with `path: { document_id }`, `useUAT: true`.
+3. Empty, permission error, or login page means the read failed. Stop and ask the user to share or paste the content. Never rebuild a note from the URL slug or memory.
 
-**Workflow when a Lark doc URL is given:**
+The note is a **navigation map**, not a source. Its wording ("Waiting", "Add a label in the cell") may differ from the code. The doc uses the code's label.
 
-```dot
-digraph lark {
-  rankdir=LR;
-  "0a. Lark MCP available?" [shape=diamond];
-  "0b. Read doc via lark_docx_v1_document_rawContent" [shape=box];
-  "0c. Fallback: web fetch" [shape=box];
-  "0d. Auth wall / empty?" [shape=diamond];
-  "0e. STOP - ask user to paste content" [shape=box];
-  "0f. Extract changed features + file hints" [shape=box];
-  "1. Locate & verify in frnd-web" [shape=box];
-  "2. Write docs (grounded in code)" [shape=box];
+**Walk the note item by item.** Scope to the sections the user names ("mulai dari section changed" means Changed, then Improved, then Fixed, then New, unless told otherwise). Keep a status table and report it at the end of every turn: item, doc file, status (written / already covered / skipped with reason).
 
-  "0a. Lark MCP available?" -> "0b. Read doc via lark_docx_v1_document_rawContent" [label="yes (normal)"];
-  "0a. Lark MCP available?" -> "0c. Fallback: web fetch" [label="no"];
-  "0b. Read doc via lark_docx_v1_document_rawContent" -> "0f. Extract changed features + file hints";
-  "0c. Fallback: web fetch" -> "0d. Auth wall / empty?";
-  "0d. Auth wall / empty?" -> "0e. STOP - ask user to paste content" [label="yes"];
-  "0d. Auth wall / empty?" -> "0f. Extract changed features + file hints" [label="no"];
-  "0e. STOP - ask user to paste content" -> "0f. Extract changed features + file hints";
-  "0f. Extract changed features + file hints" -> "1. Locate & verify in frnd-web";
-  "1. Locate & verify in frnd-web" -> "2. Write docs (grounded in code)";
-}
-```
-
-Steps:
-
-0. **Read the doc through the Lark MCP server.** Lark docs are auth-gated — an anonymous web fetch returns a login wall or an empty shell, and treating that as "the doc" is a silent failure. This repo ships a `lark` MCP server (`.pi/mcp.json`, OAuth, lazy-started), so the MCP path is the norm and the web fetch is only a fallback.
-
-   ```
-   mcp({ server: "lark" })        # confirm it's connected; if absent, mcp({ search: "lark" }) / "feishu"
-   ```
-
-   **Extract the document ID from the URL** — it's the segment after `/docx/`:
-   `https://<tenant>.larksuite.com/docx/`**`Abc123XyzDoc456`**`?from=...` → `document_id = Abc123XyzDoc456`.
-   For a `/wiki/<node_token>` URL, resolve it first with `lark_wiki_v2_space_getNode` → use the returned `obj_token`.
-
-   Then fetch the content:
-
-   ```
-   mcp({ tool: "lark_docx_v1_document_rawContent",
-         args: { path: { document_id: "<doc-id>" }, useUAT: true } })
-   ```
-
-   | Tool | Use for |
-   | ---- | ------- |
-   | `lark_docx_v1_document_rawContent` | **Default.** Plain text of the whole doc — enough to extract feature names + file hints. |
-   | `lark_docx_v1_documentBlock_list` | Only when you need block structure (tables, nesting) that raw text flattens away. |
-   | `lark_wiki_v2_space_getNode` | Turn a `/wiki/` URL into the underlying doc token. |
-   | `lark_docx_builtin_search` / `lark_wiki_v1_node_search` | User names a doc by title instead of URL. |
-
-   `useUAT: true` runs as the signed-in user (OAuth) rather than the app — needed for docs shared with a person, not with the bot. First call opens a browser consent flow; that's expected.
-
-   | Result | Action |
-   | ------ | ------ |
-   | **Content returned** | Continue to step 2 (extract clues). |
-   | **Permission error / empty** | The app or your account lacks access. Don't retry blindly — tell the user and ask them to share the doc or paste the content. |
-   | **`lark` server missing/unreachable** | Fall back to a generic web fetch (step 1), then apply the auth-wall check below. |
-
-1. **Fetch** the Lark doc URL to get the list of feature changes. Use whichever web-fetch tool the harness exposes — `ninerouter_web_fetch` (pi) or `WebFetch` (Claude Code).
-
-   **Verify the fetch actually returned document content.** Login/permission page, an empty app shell, or a body with no feature text = **fetch failed**. Do NOT proceed on it and do NOT reconstruct the doc from the URL slug or memory. Tell the user the doc is auth-gated and ask them to paste the content (or install a Lark MCP). Working from a failed fetch is the same class of error as guessing UI steps.
-2. From the content, extract:
-   - **Feature keywords** to search for in frnd-web (routes, components, labels).
-   - **File hints** if the doc mentions specific directories or files.
-   - **Changed behavior** — note these as hypotheses to verify.
-3. Continue from **Step 1** (locate in frnd-web) — treat the Lark doc output as clues only. A Lark item whose code is not on `origin/production` yet is not released: report it, don't document it.
-4. **Never copy-paste** Lark doc content into the help doc. Every sentence must still trace to code.
-
-The existing workflow (Steps 1 → 9, 1.5, 1.6) is unchanged — this is simply an **alternative entry** when a Lark doc URL is provided.
-
-## When to Use
-
-- User gives a feature keyword and asks to create/update Help Center docs
-- User says "document <feature> in the help center" / "buatkan docs untuk <fitur>"
-- Adding or revising guides under `frndos-docs/docs/`
-
-**When NOT to use:** changelog/blog "What's New" entries (different voice, `blog/`), or pure config/chrome edits (`config/*.json`).
-
-## The Workflow
-
-```dot
-digraph flow {
-  rankdir=TB;
-  "1. Locate feature in frnd-web" [shape=box];
-  "1.5. Liveness gate" [shape=diamond];
-  "1.6. Cek existing docs (update vs create)" [shape=diamond];
-  "2. Read behavior from code" [shape=box];
-  "3. Classify: readable vs iframe/unknown" [shape=diamond];
-  "4. Study doc pattern (neighbor module)" [shape=box];
-  "5. Propose doc structure, confirm split" [shape=box];
-  "5a. Module placement (offer new pillar?)" [shape=diamond];
-  "6. Write .mdx grounded in code" [shape=box];
-  "7. Fix internal links + update overview" [shape=box];
-  "8. Validate build (0 broken links)" [shape=box];
-  "9. updateOrCreate DOCS_TODO.md" [shape=box];
-
-  "1. Locate feature in frnd-web" -> "1.5. Liveness gate";
-  "1.5. Liveness gate" -> "1.6. Cek existing docs (update vs create)";
-  "1.6. Cek existing docs (update vs create)" -> "2. Read behavior from code";
-  "2. Read behavior from code" -> "3. Classify: readable vs iframe/unknown";
-  "3. Classify: readable vs iframe/unknown" -> "4. Study doc pattern (neighbor module)";
-  "4. Study doc pattern (neighbor module)" -> "5. Propose doc structure, confirm split";
-  "5. Propose doc structure, confirm split" -> "5a. Module placement (offer new pillar?)";
-  "5a. Module placement (offer new pillar?)" -> "6. Write .mdx grounded in code";
-  "6. Write .mdx grounded in code" -> "7. Fix internal links + update overview";
-  "7. Fix internal links + update overview" -> "8. Validate build (0 broken links)";
-  "8. Validate build (0 broken links)" -> "9. updateOrCreate DOCS_TODO.md";
-}
-```
-
-### 1. Locate the feature in frnd-web
-
-Search from the keyword. High-signal sources:
+Locate each item by searching commit history, then confirm in code:
 
 ```bash
-cd ../frnd-web && git fetch -q origin production && P=origin/production
-# Routes = the feature map (URLs, sub-features)
+for r in frnd-web frnd-api-php frnd-clickhouse-api; do
+  git -C ../$r log origin/<branch> --since=<note month start> --format='%h %ad %s' --date=short | grep -iE "<keywords>"
+done
+git -C ../frnd-web show --stat --format='%h %s%n%b' <sha>      # what the change really touched
+```
+
+Skip, and say why, when an item is:
+- **Visual only** (the diff restyles colors, sizes, layout and adds no label or behavior).
+- **Backend or invisible** (fonts self-hosted, internal retries) with no user-facing effect, unless the user asks for a one-line mention.
+- **Behind a flag that is not confirmed on** (see step 1.5), or listed in the note's "ready but not switched on" section.
+- **Not found** in any repo after a wider search (other repos, other keywords). Report the search; do not guess.
+- **Already covered** by an existing doc: add only the delta.
+
+Take a few turns per batch: when the note is large, ask via `ask_user_question` which sections or groups to do first, and do exactly those.
+
+## Workflow
+
+### 1. Locate the feature
+
+```bash
 git ls-tree -r -d --name-only $P -- "src/app/(dashboard)" | grep -i "<keyword>"
-# Everything referencing it
 git grep -il "<keyword>" $P -- "src/*.tsx" "src/*.ts"
-# Services (API surface), types (data shape), permissions/flags (gating)
-git grep -n "<keyword>" $P -- src/services/query.ts src/services/mutate.ts
-git grep -n "<keyword>" $P -- src/types src/lib/featureFlags
+git grep -n "<keyword>" $P -- src/services src/types src/lib/featureFlags
 ```
 
-Lark notes and commit messages can name a commit. Confirm it is released before you trust it:
+Done when you can name the production files that render the feature.
+
+### 1.5. Liveness gate (before writing anything)
+
+Code existing is not the feature shipped. Check all three:
 
 ```bash
-git merge-base --is-ancestor <sha> $P && echo released || echo "NOT in production"
-```
-
-### 1.5. Verify the feature is actually LIVE (gate — do this before writing anything)
-
-Code existing ≠ feature shipped. A feature can be **retired, hidden, coming-soon, or route-redirected** while its rich UI code still sits in the repo. Documenting a phantom feature is the same failure as guessing. Check liveness explicitly:
-
-```bash
-cd ../frnd-web && P=origin/production
-# Is the feature in production at all? (missing file = unreleased)
 git cat-file -e "$P:src/app/(dashboard)/<feature-path>/page.tsx" && echo in-prod || echo "NOT in production"
-# Does the route redirect away? (retired/disabled features do this)
 git grep -n "redirect(" $P -- "src/app/(dashboard)/<feature-path>/layout.tsx" "src/app/(dashboard)/<feature-path>/page.tsx"
-# Is it flagged live in the tool/launcher registry?
-git grep -n -A12 "<keyword>" $P -- src/lib/tool-registry.ts   # isLive: false / isComingSoon → NOT live
-# Hub cards carry their own status
-git grep -n "isComingSoon" $P -- src/helpers/dummy-data.ts   # near the feature's card
+git grep -n -A12 "<keyword>" $P -- src/lib/tool-registry.ts      # isLive:false / isComingSoon
 ```
 
-Feature flags: read the flag's key and its fail-open / fail-closed behavior from **production's** `src/lib/featureFlags/`, then read its rollout in PostHog production. A flag that gates the feature in `develop` may not exist yet in production, and the reverse.
-
-Then classify the feature's **liveness state**:
+**Feature flags.** Search the keyword in production's `src/lib/featureFlags/` and read three things: the flag key, its hook (fail-open kill switch, or `value === true`, and whether dev/staging force it on), and where the flag gates the UI. Gate by branch: a control rendered in both flag branches is safe to document; one rendered only when the flag is on is not. Then read the rollout in PostHog production. If the PostHog tool errors or you cannot read the rollout, the rollout is **unknown**: do not write the feature as live. Report it and ask the user (`ask_user_question`) whether to write it with a "rolling out gradually" caveat or skip it.
 
 | State | Signal | Action |
-| ---------------- | ------------------------------------------------------ | ------------------------------------------------- |
-| **Live** | Route renders, `isLive: true`, no redirect, not coming-soon | Document normally |
-| **Coming soon** | `isComingSoon: true` on its hub card / registry | List as "Coming soon" (e.g. in an overview table); do NOT write a how-to |
-| **Retired / disabled** | `layout.tsx`/`page.tsx` does `redirect(...)`, `isLive: false`, "hidden from launcher" comments | **STOP. Do not write a guide.** Report to the user that the feature is user-inaccessible and ask how to proceed (default: no doc) |
+|---|---|---|
+| Live | renders, no redirect, flag on or ungated | document |
+| Coming soon | `isComingSoon: true` | list in an overview table only |
+| Retired / disabled / flag-gated unknown | redirect, `isLive: false`, unconfirmed flag | stop, report, ask |
 
-**When in doubt, ask the user rather than assume live.** A wizard full of readable steps is worthless as a guide if the user can't reach the feature.
+Done when every item is classified, and each classification cites the evidence.
 
-### 1.6. Cek existing docs untuk fitur ini (sebelum menulis apapun)
-
-Sebelum membuat file baru, cari dulu apakah doc sudah ada:
+### 1.6. Check existing docs
 
 ```bash
-cd ../frndos-docs
-# Cari file yang sudah cover fitur ini
-find docs/ -name "*<keyword>*"
-grep -ril "<keyword>" docs/ --include="*.mdx"
+find docs/ -name "*<keyword>*"; grep -ril "<keyword>" docs/ --include="*.mdx"
 ```
 
-Klasifikasi hasilnya:
+Existing coverage means **update that file** (read it fully first; it is also your voice pattern). Create a new file only when nothing covers it, or an update would bloat a single-topic file. Done when you can say update-or-create per item.
 
-| Temuan | Action |
-| ------- | ------ |
-| **Tidak ada file relevan** | Buat file baru (lanjut ke step 2) |
-| **Ada file yang sudah cover fitur ini** | **Default: UPDATE file itu**, bukan buat baru |
-| **Ada file tapi scope terlalu kecil / akan bloat jika di-update** | Buat file baru + cross-link dari file yang ada |
+### 2. Read behavior from code (facts only)
 
-**Update adalah default.** Buat file baru hanya jika fitur benar-benar belum ada coverage-nya, atau jika menambahkan ke file yang ada akan membuat satu file terlalu panjang dan multi-topik.
+Extract verbatim from production: titles, menu path and URL, button/tab/column labels, prerequisites and gating (permission hooks, credit hooks, flags), status values, entry points (check each resolves, not redirects), and the conditions that gate each action. Business rules (limits, validation messages, schedules) come from `frnd-api-php` production.
 
-Jika memutuskan update: baca dulu isi file yang ada secara penuh sebelum lanjut ke step 2 — ini menjadi "doc pattern" sekaligus target update.
-
-### 2. Read behavior from the code (facts only)
-
-Read the page(s), components, types, services **from `origin/production`** (`git show "$P:<path>"`; see [Read the Production Branch](#read-the-production-branch-never-the-working-tree)). Extract **verbatim** what the end user sees and does:
-
-| Extract | Where |
-| ------------------------------ | ------------------------------------------- |
-| Page title, subtitle, taglines | JSX in `page.tsx` / feature component |
-| Menu location, URL | route path under `src/app/(dashboard)/...` |
-| Button/tab/column labels | JSX (copy exactly — including if it's Bahasa Indonesia) |
-| Prerequisites & gating | permission hooks (`hasFullAccess`, `usePermissions`), credit hooks, workspace guards, feature flags |
-| Status / lifecycle values | `src/types/*.ts` |
-| Entry points | Research/tool hub cards, global search registry, AskFrnd AI suggestion maps — **cross-check each entry point resolves, not redirects** (a registry `href` can still point at a retired route) |
-| Actions & their conditions | mutations + the `if`/status checks that gate them |
-
-**Copy UI labels exactly as written.** If the metric card says `Responden`, the doc says `Responden` — the end user sees Indonesian, so the doc matches.
-
-Business rules from `frnd-api-php` (minimums, who can edit or delete, what a job overwrites) come from its `origin/production` too: `git -C ../frnd-api-php show "origin/production:app/<path>.php"`.
-
-**Before declaring done, check every quoted label against production.** For each UI string the doc quotes, it must be found there:
+Copy labels exactly, including Bahasa Indonesia ones. Then verify every label you quoted:
 
 ```bash
 git -C ../frnd-web grep -lF "<exact label>" origin/production -- src \
-  ':!*.test.*' ':!*.stories.*' ':!src/wireframes'   # must print a product file
+  ':!*.test.*' ':!*.stories.*' ':!src/wireframes'      # must print a product file
 ```
 
-The exclusions matter: a label that only appears in a test, a Storybook story or a wireframe is not shipped UI.
+Done when every quoted string prints a product file. A string only in tests, stories, wireframes, or `develop` is unshipped: remove the sentence.
 
-A label that only exists on `develop` means the doc describes unreleased UI. Remove the sentence or wait for the release.
+**Quote only what the user sees.** An API message string is not proof it reaches the UI; describe the behavior in your own words instead of quoting it. State a number or limit only when you read it in code, and avoid exact figures that change often (rate limits).
 
-### 3. Classify every piece: readable vs. iframe/unknown
+### 3. Classify: readable vs unknown
 
-- **Readable from code** → state it as fact in the doc.
-- **Inside a third-party iframe / not in any repo** → add a row to `DOCS_TODO.md`. Never invent the steps.
-- **Screenshots** → existing guides use `/img/guides-asset/<name>.jpeg`. You cannot produce these; add a `📸 screenshot` row to `DOCS_TODO.md`.
+- Readable from code: write it as fact.
+- Third-party iframe or not in any repo: `DOCS_TODO.md` row.
+- Screenshots (`/img/guides-asset/<name>.jpeg`): you cannot make them; `📸` row in `DOCS_TODO.md`.
 
-**NEVER put a TODO marker inside a `.mdx` body. Not in any form.** `DOCS_TODO.md` at the repo root is the only place TODOs live.
-
-Two independent reasons:
-
-1. **It breaks the TinaCMS editor.** The doc body is a Tina `rich-text` field parsed by `@tinacms/mdx` (MDX v3). Both `<!-- ... -->` and `{/* ... */}` fail that parser — and the failure is not local to the comment, it invalidates the **entire body**, so the article shows `Unable to parse rich-text` at `/admin` and becomes unviewable and uneditable for content authors. Docusaurus tolerates `<!-- -->` only because it loads `@slorber/remark-comment`; Tina has no equivalent.
-2. **A visible marker leaks to readers.** The Help Center is public. Markdown emphasis does not hide text: `_[TODO: ...]_` renders as italics, and so do `**[TODO]**`, `> TODO`, a `TODO` table row, and a bare bracket line.
-
-Write the gap honestly into the prose, and record the task in the ledger:
-
-```md
-<!-- WRONG — renders to the end user -->
-_[TODO: confirm from live UI — the menu path in each AI app]_
-
-<!-- ALSO WRONG — breaks the Tina rich-text parser for the whole article -->
-<!-- TODO: confirm from live UI — the exact menu path per AI app -->
-{/* TODO: confirm from live UI — the exact menu path per AI app */}
-```
-
-RIGHT — body carries only what IS known:
-
-```md
-The slot sits in a different place in every app, and the wording differs.
-```
-
-and `DOCS_TODO.md` carries the task:
+**Never put a TODO marker in an `.mdx` body, in any form** (`_[TODO]_`, `<!-- -->`, `{/* */}`). Visible markers leak to the public page. Comments invalidate the whole body for the TinaCMS rich-text parser, making the article unviewable and uneditable at `/admin`. Write the honest sentence about what varies, and put the task in `DOCS_TODO.md`, keyed by section heading (not line number):
 
 ```md
 ### `docs/askfrnd/tools.mdx` — How AskFrnd Uses Tools
@@ -312,100 +142,36 @@ and `DOCS_TODO.md` carries the task:
 | Connecting an AI app | ✍️ confirm from live UI | confirm the exact menu path per AI app, then add a per-app list here |
 ```
 
-Ledger rows key off the **section heading**, not a line number, so they survive edits. If removing the marker would leave the section saying nothing, that is the signal to write an honest sentence about what varies — not to leak the marker back in.
+Also avoid constructs Tina rejects though Docusaurus accepts them: explicit heading ids (`## Heading {#anchor}`) and a list nested inside a blockquote.
 
-Also avoid two other constructs the Tina parser rejects, even though Docusaurus accepts them:
+### 4. Study the pattern
 
-- **Explicit heading ids** — `## Heading {#anchor}`. Use the auto-generated slug in links instead (`#heading`).
-- **A list nested inside a blockquote** — close the quote first, then start the list at top level.
+Read a mature neighbor in the same module (`docs/studio/overview.mdx`, `docs/insights/overview.mdx`). House pattern: frontmatter (`title`, `description`, `sidebar_position`), bold intro, `## Before You Start` (numbered ✅), `## Step N —` sections, `> **Heads-up:**`, `## FAQ` (bold **Q:**), `---`, `## Next Steps` / `## Related Articles` with relative links.
 
-Verify before declaring done:
+### 5. Structure and placement
 
-```bash
-cd ../frndos-docs
-grep -rn "TODO" docs/        # must be EMPTY — every TODO belongs in DOCS_TODO.md
-grep -rn "{#" docs/          # must be EMPTY — explicit heading ids break Tina
-node verify.mjs              # must report broken=0 — every body parses in Tina
-```
-
-### 4. Study the doc pattern before writing
-
-Read a mature neighbor in the SAME module family so voice/structure match:
+Propose the file list (fact vs ledger) and let the user pick the split. Then decide module placement and say why. **Pause and ask about a new pillar** when the keyword is shaped `<Grouping> -> <Feature>` or the feature is cross-cutting (beta, admin, reachable from several pillars). A new pillar needs four things in sync: `docs/<module>/`, `_category_.json` (with `position`), the option in `tina/config.jsx`, and the same option mirrored into `tina/tina-lock.json`. Missing the lock fails the Vercel build with `The local Tina schema doesn't match the remote Tina schema`, and `build-local` does not catch it. Verify order:
 
 ```bash
-cd ../frndos-docs
-cat docs/studio/overview.mdx docs/studio/kv-generator.mdx   # tool-family pattern
-cat docs/insights/overview.mdx                              # pillar/overview pattern
+grep -A15 'frndOS Module' tina/config.jsx | grep -oE 'value: "[a-z-]+"'
+python3 -c "
+import json
+d=json.load(open('tina/tina-lock.json'))
+for c in d['schema']['collections']:
+    if c['name']=='doc':
+        for f in c['fields']:
+            if f['name']=='module': print(' '.join(o['value'] for o in f['options']))"
 ```
 
-The house pattern (match it): frontmatter (`title`, `description`, `sidebar_position`) → bold intro → `## Before You Start` (numbered ✅ prerequisites) → `## Step N —` sections → `> **Heads-up:**` blockquotes → `## FAQ` (bold **Q:** + answer) → `---` → `## Next Steps` / `## Related Articles` with **relative** links (`./sibling`, `../module/doc`).
+Existing modules: `getting-started`, `brand-setup`, `studio`, `insights`, `research`, `askfrnd`, `growth`, `collaboration`, `projects`, `workspace`, `settings` (plus any pillar added since). Place by the user's mental area, not frnd-web's folder layout.
 
-### 5. Propose structure, confirm the split
+### 6. Write the `.mdx`
 
-Map readable behavior to docs. A feature with a big native surface usually splits into: create/start, manage/track, and configure/share. Show the user the proposed file list + what's fact vs. TODO, and let them pick the split granularity before writing.
+URL-safe filenames, relative cross-links, concise task-oriented voice, overview at `sidebar_position` 1.
 
-**5a. Decide module placement — and offer a new pillar when the keyword signals one.** Before writing, state which docs module the guide will live in and why. Two triggers mean you must PAUSE and ask the user whether they want a **new pillar** instead of filing under an existing one:
-
-- **The keyword names a pillar-level grouping.** A keyword shaped like `<Grouping> -> <Feature>` (e.g. `Early Access Feature -> Agents`, `Labs -> Motion`) is a hint that `<Grouping>` may be its own pillar. Don't silently absorb `<Feature>` into the module where it happens to be _invoked_ — surface the choice.
-- **The feature is a cross-cutting surface, not a natural child of one module.** Beta/experimental features, admin-only surfaces, or things reachable from several pillars often read better as their own category than buried under the nearest existing one.
-
-When either trigger fires, present both options with the trade-off, and let the user pick:
-
-> "Agents is invoked inside AskFRND, so it could live under the **askfrnd** module. But your keyword frames it as an **Early Access Feature** — that could be its own pillar (🧪 Early Access Features) grouping all beta features. Which do you want?"
-
-A new pillar is a real cost: it needs `docs/<module>/` + `_category_.json` (with a `position`) + a matching option in `tina/config.jsx` + the **same option mirrored into `tina/tina-lock.json`**, **all four in sync** (see step 6 + Notes). Miss the `tina-lock.json` mirror and the Vercel build fails with `The local Tina schema doesn't match the remote Tina schema` — this is the single most common pillar mistake. Worth it when a grouping will hold several guides or is a distinct user-facing concept; overkill for a one-off that fits an existing module. Default to an existing module ONLY when neither trigger fires; otherwise ask.
-
-### 6. Write the `.mdx`, grounded in code
-
-- **Pick the docs module by user-facing area, not frnd-web's folder grouping.** frnd-web's code layout (`tools/`, `research/`, `studio/`) does NOT map 1:1 to the docs modules. The **existing** docs modules are: `getting-started`, `brand-setup`, `studio`, `insights`, `research`, `askfrnd`, `growth`, `collaboration`, `projects`, `workspace`, `settings` (plus any pillar the user has since added). Place the doc where an end user would look for it (e.g. a survey tool under frnd-web `research/surveys` → docs `research/`). **This list is not immutable** — if the keyword signals a pillar-level grouping or the feature is cross-cutting, you should already have offered a new pillar in step 5a. Never silently invent a new category, and never silently bury a pillar-signalling feature under an existing module — resolve the placement with the user in step 5a first. A new module means a new `docs/<module>/` folder + `_category_.json` + a matching option in `tina/config.jsx` + the same option mirrored into `tina/tina-lock.json` (all four in sync — see Notes for the `tina-lock.json` step).
-- One `.mdx` file per guide; filename is a URL-safe slug (no spaces).
-- `sidebar_position` orders within the category; overview stays position 1.
-- Cross-link siblings with relative paths.
-- Keep the concise, task-oriented, end-user voice of neighbors.
-- Follow the punctuation contract below.
-
-#### Punctuation contract — where the em dash goes
-
-The em dash (`—`) has **two structural slots** in this house style, plus a **prose budget** outside them.
-
-**Slot 1 — step headings.** `## Step 3 — Configure the Canvas`. Every step heading uses it. That is the house pattern, keep it.
-
-**Slot 2 — definition rows.** A bullet whose job is `term = meaning`:
-
-```md
-* **Concept** — AI-guided creative exploration across territories
-* **Craft** — refined output, closer to production-ready
-```
-
-Use this shape only when the bullets in a group are genuinely term-and-definition pairs. A list of actions or steps is a plain sentence bullet, not a definition row.
-
-**Everything else is prose, and prose punctuation comes from this menu, in this order of preference:**
-
-| Job the dash was doing | Write instead |
-| --- | --- |
-| Two related statements joined | Full stop. Two sentences. |
-| Aside, caveat, or clarification | Comma pair, or parentheses |
-| Introducing a list, expansion, or reason | Colon |
-| Restating the subject in other words | Cut it. Pick one wording. |
-
-```md
-WRONG (three prose dashes in one paragraph)
-Check the correct brand is active — and that its Brand IQ isn't flagged
-**Brand IQ Incomplete** — otherwise output drifts off-brand — sometimes badly.
-
-RIGHT
-Check the correct brand is active, and that its Brand IQ isn't flagged
-**Brand IQ Incomplete**. Otherwise output drifts off-brand.
-```
-
-**Prose budget: at most 3 em dashes per article outside the two structural slots, and never two in the same paragraph.** An article at the cap should read like the dash was saved for the one sentence that needed it.
-
-The same contract covers `description` frontmatter: it takes a period or a colon, not a dash.
-
-Measure it before declaring the article done:
+**Em dash contract.** `—` has two structural slots: step headings (`## Step 3 — Title`) and definition rows (`* **Term** — meaning`). Everywhere else use a full stop, comma pair, parentheses, or colon; at most 3 prose dashes per article, never two in one paragraph, and the `description` frontmatter takes none. Never swap in a hyphen.
 
 ```bash
-cd ../frndos-docs
 f=docs/<module>/<slug>.mdx
 total=$(grep -o "—" "$f" | wc -l | tr -d ' ')
 heads=$(grep -c "^#\{2,\} .*—" "$f" || true)
@@ -413,142 +179,61 @@ defs=$(grep -cE "^[[:space:]]*[*-] \*\*[^*]+\*\* —" "$f" || true)
 echo "prose em dashes = $(( total - heads - defs ))   (budget: 3)"
 ```
 
-Over budget means rewrite those sentences. Do not swap `—` for `-` or `–`: a hyphen standing in for a dash is the same shaping failure with worse typography.
+If an article was already over budget before your edit, add no new prose dashes, leave the old ones, and report the count.
 
-### 7. Fix internal links + update the module overview
+### 7. Links and overview
 
-`onBrokenLinks: "throw"` — a wrong relative link fails the build. Verify each target file exists:
+`onBrokenLinks: "throw"`. Link slugs are filenames. Confirm every target exists (`test -f docs/<module>/<slug>.mdx`) and wire new docs into `docs/<module>/overview.mdx`.
 
-```bash
-cd ../frndos-docs
-for f in docs/<module>/<slug>.mdx docs/<other>/<target>.mdx; do
-  test -f "$f" && echo "OK  $f" || echo "MISS $f"
-done
-```
-
-Common trap: link slugs are the **filename**, not a prettified title (`../workspace/managing-credits`, not `../workspace/credits-billing`). Then wire the new docs into `docs/<module>/overview.mdx`.
-
-### 8. Validate with a build (mandatory)
-
-The build IS the test. It must reach `Generated static files` with **zero broken links**.
+### 8. Validate (mandatory)
 
 ```bash
 cd ../frndos-docs
-# Preferred, but Tina holds ports 9000/9393 if a dev server is running:
-npm run build-local
-# If a dev server is up (port in use error), bypass Tina — still runs the link check:
-NODE_OPTIONS=--max-old-space-size=8192 npx docusaurus build
+NODE_OPTIONS=--max-old-space-size=8192 npx docusaurus build   # or npm run build-local when no dev server runs
+grep -rn "TODO" docs/        # must be EMPTY
+grep -rn "{#" docs/          # must be EMPTY
+node verify.mjs              # must report broken=0
 ```
 
-Do not kill the user's running dev server; use the `npx docusaurus build` fallback instead. Confirm `broken=0` and the new pages appear under `build/docs/<module>/`.
+Do not kill the user's dev server; use the `npx docusaurus build` form. Re-run after every edit round, including edits that only remove a sentence. Done when the build reaches `Generated static files`, `verify.mjs` reports `broken=0`, and the em dash count is reported per touched file. A green Docusaurus build does not prove the article is editable in Tina; only `verify.mjs` does.
 
-Then run the two checks that Docusaurus alone will NOT catch:
+### 9. Update `DOCS_TODO.md`
 
-```bash
-grep -rn "TODO" docs/          # must be EMPTY; every TODO belongs in DOCS_TODO.md
-grep -rn "{#" docs/            # must be EMPTY; explicit heading ids break Tina
-node verify.mjs                # must report broken=0; every body must parse in TinaCMS
-```
+Repo root, never under `docs/`. Reconcile it every run: keep still-open rows with their human wording, remove resolved ones, add new gaps. One section per doc file ordered by category `position` then `sidebar_position`; rows have section heading, type (📸 screenshot, ✍️ confirm-from-live-UI, 🔒 third-party/iframe) and what to do. Update `_Last updated:_` from `date +%F`. With no gaps left keep the file with "_All docs complete — no manual follow-ups._". Done when `grep -rn "TODO" docs/` is empty and the ledger matches the docs.
 
-Then the em dash budget, for every file you touched this run (contract in step 6):
+## Report at the end of each turn
 
-```bash
-for f in docs/<module>/<slug>.mdx; do
-  total=$(grep -o "—" "$f" | wc -l | tr -d ' ')
-  heads=$(grep -c "^#\{2,\} .*—" "$f" || true)
-  defs=$(grep -cE "^[[:space:]]*[*-] \*\*[^*]+\*\* —" "$f" || true)
-  echo "$(( total - heads - defs ))  prose em dashes  $f"
-done
-```
+Give: the production commits read (web and api, with dates), a table of items written (file, what), items skipped with the reason, claims you could not verify (flag rollout unknown, branch not confirmed deployed, item not found), pre-existing em dash overshoot, and the build and `verify.mjs` results. Offer the next batch.
 
-Over 3 on any file means rewrite those sentences before finishing.
-
-`verify.mjs` parses every `.mdx` body through `@tinacms/mdx` — the same parser the `/admin` editor uses. A Docusaurus build passing does NOT mean the article is editable in Tina; only this check proves that.
-
-### 9. Update the TODO ledger (updateOrCreate `DOCS_TODO.md`)
-
-Every outstanding TODO is a task only a human can finish (screenshots, third-party/iframe steps, flows the code doesn't reveal). `DOCS_TODO.md` is the **only** place they live — never in a doc body (see step 3).
-
-**updateOrCreate `frndos-docs/DOCS_TODO.md`** (repo root, NOT under `docs/` — it must not become a published page or trip `onBrokenLinks`):
-
-1. Confirm no marker leaked into a body — this must be empty before you touch the ledger:
-   ```bash
-   cd ../frndos-docs
-   grep -rn "TODO" docs/     # must be EMPTY
-   ```
-2. If `DOCS_TODO.md` doesn't exist, create it. If it exists, reconcile it against the docs you just wrote:
-   - **Gap still open** → keep its row, preserving the human-written "what to do" wording.
-   - **Gap resolved** (you filled it in this run, or the user did) → remove that row.
-   - **New gap** → add a row.
-3. One section per doc file, **sections ordered by category `position`, then `sidebar_position`** (same order the guides appear in the sidebar) so the ledger reads top-to-bottom like the docs. A table row per gap with **section** (the `##`/`###` heading in the article where the gap sits — NOT a line number, which drifts on every edit), **type** (📸 screenshot · ✍️ confirm-from-live-UI · 🔒 third-party/iframe), and **what to do**. Update the `_Last updated:_` date (get it with `date +%F`; if the shell is unavailable, ask the user).
-4. If the reconcile leaves a doc with zero gaps, drop its whole section. If every section is gone, keep the file with a one-line "_All docs complete — no manual follow-ups._" so the user sees the ledger is intentionally empty, not lost.
-
-This ledger is the single answer to "what do I still have to do by hand?" Keep it in sync on every docs run.
-
-## Honesty Rules (do not rationalize past these)
-
-**Violating the letter of these rules is violating the spirit.** The whole value of this skill is a doc a user can trust — one invented step destroys that.
+## Honesty rules
 
 | Rationalization | Reality |
-| ------------------------------------------------- | -------------------------------------------------------------------------- |
-| "I basically know how surveys work, I'll write the steps" | If you didn't read it in frnd-web, you don't know it. Row in `DOCS_TODO.md`. |
-| "The checkout is `develop`, it's close enough to production" | `develop` carries unreleased work. Read `origin/production` with `git show` / `git grep`. Close enough is how a doc describes a button nobody has. |
-| "Lark says it shipped, so `develop` is fine" | A release note is a claim. `git merge-base --is-ancestor <sha> origin/production` is the evidence. |
-| "I'll check out production to read it" | Never switch the developer's branch. `git show` and `git grep` read production without touching the working tree. |
-| "The iframe steps are probably X, Y, Z" | Vendor UI is in no repo. Guessing = hallucination. Ledger row only. |
-| "This label reads better translated to English" | Copy the UI's actual text. The user sees what the code renders. |
-| "The build is slow / a dev server is running, I'll skip it" | Unvalidated links break production. Use the `npx docusaurus build` fallback. |
-| "Close enough on the link path" | `onBrokenLinks: throw` fails the build. Verify the target file exists. |
-| "The em dashes read fine to me, no need to count" | The count is the check. Run it (step 6) and report the number; taste is not evidence. |
-| "I'll swap the dash for a hyphen to get under budget" | Same sentence shape, worse typography. Restructure with a period, comma pair, or colon. |
-| "The italic `_[TODO]_` reads like a note, users will understand" | It renders as visible text on a public page. Readers see an unfinished doc. Ledger row only. |
-| "An HTML comment `<!-- TODO -->` is invisible, that's safe" | It is invisible to readers but fatal to TinaCMS — it invalidates the whole body, so the article becomes unviewable and uneditable at `/admin`. Same for `{/* ... */}`. Ledger row only. |
-| "Removing the marker leaves the section empty" | Then write the honest sentence about what varies, and put the instruction in `DOCS_TODO.md`. An empty gap is not a reason to publish a marker. |
-| "I'll just document all sub-features as live" | Check `isComingSoon` / feature flags. Don't present coming-soon as available. |
-| "The wizard code is rich, so I'll document it" | Rich code ≠ reachable feature. If the route redirects or `isLive: false`, it's retired — STOP and ask the user (see step 1.5). |
-| "The Lark fetch returned *something*, close enough" | A login wall is not the doc. Check for real feature content; if absent, ask the user to paste it. |
+|---|---|
+| "I basically know how this works" | If you did not read it on production, you do not know it. Ledger row. |
+| "The checkout is `develop`, close enough" | `develop` carries unreleased work. Use `git show` / `git grep` on `origin/production`. |
+| "The note says it shipped" | A note is a claim. `merge-base --is-ancestor <sha> origin/production` is the evidence. |
+| "I'll check out production to read it" | Never switch the developer's branch. |
+| "The flag is probably on" | Unknown rollout means not documented as live. Report it. |
+| "The note's wording is fine to quote" | The user sees the code's label. Copy that. |
+| "I couldn't find it, so I'll describe it generally" | Not found means skipped and reported, with the search you ran. |
+| "The API returns this message, so users see it" | Only quote what the UI renders. |
+| "The iframe steps are probably X, Y, Z" | Vendor UI is in no repo. Ledger row. |
+| "A TODO comment is invisible, so it's safe" | It is invisible to readers and fatal to TinaCMS. Ledger only. |
+| "The build is slow, skip it" | Unvalidated links break production. Use the `npx docusaurus build` form. |
+| "The dashes read fine" | The count is the check. Run it and report the number. |
 
-## Red Flags — STOP
+## Red flags — stop
 
-- Writing a UI step you did not read in frnd-web
-- **Reading `frnd-web` or `frnd-api-php` through the working tree** (`cd ../frnd-web && grep …`, `cat`, the read tool on `src/…`) instead of `origin/production`. The checkout is usually `develop`, which runs ahead of what customers have
-- **Running `git checkout` / `git switch` in `frnd-web` or `frnd-api-php`** to reach production. Use `git show` / `git grep` against `origin/production`; the working tree is not yours
-- **Quoting a label you have not found in a product file on `origin/production`** (the step 2 label check prints nothing, or only tests / stories / wireframes)
-- **Acting on a Lark fetch that returned a login/permission page or empty shell** — use the `lark` MCP server first (step 0); a plain web fetch of a Lark URL is the fallback, not the default. If the fallback is auth-walled, STOP and ask the user for the content
-- **Filing a pillar-signalling feature under an existing module without offering a new pillar** — a keyword shaped `<Grouping> -> <Feature>`, or a cross-cutting/beta/admin surface, means you PAUSE and ask (step 5a) before writing
-- **Adding a pillar option to `tina/config.jsx` without mirroring it into `tina/tina-lock.json`** — stale lock → Vercel build fails `local Tina schema doesn't match remote`. A passing `build-local` does NOT catch this (see Notes)
-- Describing what happens inside a third-party iframe
-- **Leaving a TODO marker of ANY kind in a doc body** — `_[TODO: ...]_` and `**[TODO]**` render to the reader; `<!-- TODO -->` and `{/* TODO */}` break the TinaCMS editor for the whole article. Check with `grep -rn "TODO" docs/` (must be empty)
-- **Using an explicit heading id `## Heading {#anchor}`** — Tina's parser rejects the expression and the article becomes uneditable. Check with `grep -rn "{#" docs/` (must be empty)
-- **Nesting a list inside a blockquote** — `> - item` fails Tina's `UnwrapBlock`. Close the quote, then start the list at top level
-- **Declaring done without `node verify.mjs` reporting `broken=0`** — a green Docusaurus build does not prove the docs are editable in Tina
-- Documenting a feature whose route redirects away or is `isLive: false` / `isComingSoon` — verify liveness (step 1.5) first
-- **Creating a new file without first checking if an existing doc already covers the feature** (step 1.6)
-- Translating or paraphrasing a UI label instead of copying it
-- Declaring done without a passing build (`broken=0`)
-- Declaring an article done without running the prose em dash count, or leaving it above 3 (step 6 punctuation contract)
-- A relative link whose target file you haven't confirmed exists
-- Finishing a docs run without updating `DOCS_TODO.md` — the user relies on it to know what's left to fill in by hand
+- Writing a UI step, label, limit, or message you did not read on production.
+- Reading the working tree, or running `checkout`/`switch` in `frnd-web` / `frnd-api-php`.
+- Acting on a Lark read that returned a login page or empty shell.
+- Documenting a retired, coming-soon, or flag-gated-unknown feature as live.
+- A new pillar in `tina/config.jsx` without the `tina/tina-lock.json` mirror.
+- Creating a file before checking existing coverage.
+- Finishing without `verify.mjs` at `broken=0`, a passing build, the em dash count, or the `DOCS_TODO.md` update.
 
 ## Notes
 
-- **No git operations** unless the user asks — write/update files; the user runs `npm run publish`. Read-only git in `frnd-web` / `frnd-api-php` (`fetch`, `show`, `grep`, `ls-tree`, `merge-base`) is how this skill reads production, and is always allowed; never `checkout`, `switch`, `pull` or `reset` there.
-- **Record the production commit** the docs were checked against (`git log -1 --format='%h %ad' --date=short origin/production`) in the run's track file or report, so a later run knows which release the docs describe.
-- Sidebar is autogenerated from folder structure + `_category_.json`; there is no sidebar file to edit.
-- New module category: create `docs/<module>/` + `_category_.json`, add the matching option to the `frndOS Module` select in `tina/config.jsx`, AND mirror that same option into `tina/tina-lock.json` (see next note).
-- **`tina/tina-lock.json` MUST mirror the new pillar option — else Vercel deploy fails.** `tina-lock.json` is the schema snapshot TinaCloud validates the build against; the `module` field's `options` array is part of it. Adding a pillar to `config.jsx` alone leaves the lock stale → build error `The local Tina schema doesn't match the remote Tina schema`. Normally `tinacms build` (cloud mode) regenerates the lock automatically, but that needs valid `TINA_TOKEN` + `NEXT_PUBLIC_TINA_CLIENT_ID` in `.env` — which are often empty locally. When they are, patch the lock by hand: insert the identical `{"label":"<emoji Label>","value":"<slug>"}` into the `module` options array at the **same position** as in `config.jsx` (e.g. after `projects`, before `workspace`). Verify config ↔ lock option order matches exactly:
-  ```bash
-  # config.jsx order
-  grep -A15 'frndOS Module' tina/config.jsx | grep -oE 'value: "[a-z-]+"'
-  # tina-lock.json order (doc collection, module field)
-  python3 -c "
-  import json
-  d = json.load(open('tina/tina-lock.json'))
-  for c in d['schema']['collections']:
-      if c['name'] == 'doc':
-          for f in c['fields']:
-              if f['name'] == 'module':
-                  print(' '.join(o['value'] for o in f['options']))
-  "
-  ```
-  `build-local` does NOT write the lock (it runs `--local --skip-cloud-checks`), so the local build passing does not prove the lock is correct — check the option order explicitly.
+- No git writes in `frndos-docs` unless asked; the user runs `npm run publish`. Read-only git in `frnd-web` / `frnd-api-php` is always allowed.
+- Sidebar is autogenerated from folders plus `_category_.json`; there is no sidebar file to edit.
+- Never change dependencies without approval.
