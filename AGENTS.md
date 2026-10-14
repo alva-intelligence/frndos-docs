@@ -87,3 +87,4 @@ Module folders: `getting-started`, `brand-setup`, `studio`, `insights`, `researc
 - Communicate in Bahasa Indonesia (proper nouns / technical terms stay original) — monorepo `.claude/rules/language.md`.
 - Don't add/remove dependencies without user approval.
 - Broken internal links break the build — verify cross-references.
+- **Read product code from `origin/production`, never the local checkout.** Any question about how a feature works, where it lives, or which endpoint it calls (`frnd-web`, `frnd-api-php`, and other sibling repos) is answered from the production branch: `git -C ../frnd-web fetch origin production`, then `git ls-tree -r --name-only origin/production`, `git show origin/production:<path>`, `git grep <pattern> origin/production -- <path>`. Local working trees may be on another branch or carry unreleased changes. State the commit (`git log -1 --format='%h %cs' origin/production`) in the answer.
