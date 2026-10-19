@@ -68,6 +68,8 @@ With write access, the header also has **Edit topic** and **Share & export**.
 | **Voices** | The posts and people behind the conversation |
 | **Sources & Amplifiers** | Who drives the conversation, and the network of accounts that spread it |
 
+Under the category statuses, a line such as _"3 relevant mentions aren't in any category."_ says how many relevant mentions no category holds. It shows on **Overview** and **Spikes & Alerts**, and only when the count is above zero.
+
 The **Spikes & Alerts** tab shows a count when there are critical alerts. A notification about a topic opens the war room on the right tab.
 
 ### Date range
@@ -80,11 +82,31 @@ While a range is set, a line under the tabs says which days you're looking at, i
 
 Above the tabs, **Since you were last here** lists what changed since your last visit: new alerts, sentiment shifts, new top voices and volume changes. On your first visit it says changes will show from your next one.
 
+### Tracked keywords
+
+Next to the topic's name, **Keywords · N** opens **Tracked keywords**: _"Mentions that match any of these keywords are collected."_ It lists each keyword with two counts for the period you picked, **Relevant** and **Low relevance**. A keyword can carry **Exact match** or **Paused**. When every keyword must appear with other terms, or never with some, the popover says so (_"Each keyword must appear with any of:"_ or _"Never with:"_). Keyword changes made at the source show up in frndOS within the hour.
+
 ## Voices and Sources
 
-**Voices** shows the posts behind the conversation, curated by FRnD. Switch to **Show all** to see every mention, then narrow by **Platform**, **Sentiment** and **Theme**. Low-relevance mentions are left out of the counts. Tick **Include low relevance** to see them too. Each post links to the original.
+**Voices** shows the posts behind the conversation, curated by FRnD. Switch to **Show all** to see every mention, then narrow by **Platform**, **Sentiment** and **Theme**. Each mention shows a relevance chip (for example **Rel 82%**, or **Low 30%**). Point at it to read how closely the mention matches the topic. Low-relevance mentions, and mentions not scored yet, are hidden unless you tick **Include low relevance**, and they never count in the totals. **Sort** can order by relevance. Each post links to the original.
 
-**Sources & Amplifiers** ranks the accounts by reach, grouped as **All sources**, **Influencers**, **Media**, **Communities** and **Bot-suspected**. The list shows the top 10, with **Show all** for the rest.
+### Translating Mentions
+
+When someone with write access turns on **Mention translation** under **Alerts & sync**, each mention gets a **Translate** button with a menu headed **Translate to**. Pick **English**, **Indonesian** or **Simplified Chinese · 中文** and the translation shows under the mention, tagged with the language. The language you used last is marked **Last used**. **Hide translation** goes back to the original. While it works the button reads **Translating…**.
+
+* **It uses credits.** Translation never takes the workspace's last 20 credits, so labelling keeps running on what's left. Mentions skipped for that reason are picked up after a top-up
+* **Already in that language.** A mention in the language you pick says so, for example _"This mention is already in English."_
+* **Not enough credits.** You see _"Not enough credits to translate."_
+* **Off for the brand.** You see _"Mention translation is turned off for this brand."_
+* **Reports.** The same setting adds a translation line under quoted mentions in email and Lark reports, one per language picked under **Mention languages in report**
+
+**Sources & Amplifiers** ranks the accounts behind the topic and groups them as **All sources**, **Influencers**, **Media**, **Communities** and **Bot-suspected**. **Brand** (the brand's own accounts) and **Critics** get a tab once the list has accounts for them. The list shows the top 10, with **Show all** for the rest.
+
+Use **Ranked by** to switch the order between **Engagement** and **Reach**. Each row shows the account's role under its name, plus its engagement and followers.
+
+### Correcting an account's role
+
+The automatic role needs evidence. Known bots and the brand's own accounts are named as such, and an account without evidence is not given a bot, brand or media label. With write access, a menu beside a row lets you correct it: pick **Influencer**, **Media**, **Community**, **Critic**, **Bot-suspected** or **Brand**. A corrected row reads **set by your team**. **Clear override** hands the account back to the automatic role.
 
 The amplifier network draws how accounts reply to and spread each other's posts. Click a circle to focus on one account and its links, and click it again, or **All accounts**, to go back.
 
@@ -109,6 +131,8 @@ Alert rules are set per brand, and every topic in the brand follows them. With w
 | **Spike alerts** | The master switch, and the thresholds (see below) |
 | **CSV export** | Lets anyone with Social Listening read access download a topic's mentions |
 | **Card language** | **EN** or **ID**, for recap and alert cards and emails |
+| **Mention translation** | Off by default. Turn it on to show a **Translate** button on mentions in the dashboard and a translation line under quoted mentions in email and Lark reports. It uses credits (see [Translating Mentions](#translating-mentions)) |
+| **Mention languages in report** | Shown once translation is on. Pick **ID**, **EN** and **CN** (Simplified Chinese). Reports get one line per language you pick, and at least one stays on |
 | **Quiet hours** | Holds non-Critical alerts (see below) |
 | **Destinations** | Where recaps and alerts go (see below) |
 
@@ -171,6 +195,7 @@ People opening a shared topic see it read-only, without the **Since you were las
 ## When Credits Run Out
 
 If the workspace runs out of credits, a banner says _"AI analysis is paused: this workspace is out of credits."_ New mentions are still collected but not labelled, so themes, categories, spike alerts and headlines stop updating. Runs skipped while paused are not retried.
+
 
 People who manage billing get **Top up credits**. Everyone else is asked to contact the workspace owner. When credits are back, the banner says AI analysis resumed and can be dismissed. See [Managing Workspace Credits](../workspace/managing-credits).
 

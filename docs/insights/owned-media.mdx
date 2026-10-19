@@ -400,6 +400,7 @@ In the table view, click a label cell to select it, or select a block of cells. 
 * **Only existing options are written.** A pasted value that differs from an option only by capital letters or spacing becomes that option. Any other new value is never created by the paste itself
 * **New values open a review.** The **Paste N cells into M columns** dialog lists the values that aren't options yet, with **Will be written**, **Will be skipped** and **Unregistered values** counts. Click **Register** on the ones you want to keep, then **Apply paste**. Anything left unregistered is skipped and those cells keep what they had. Nothing is saved until you apply
 * **Undo.** A toast says **Paste applied** with the number of cells updated. Click **Undo** to restore the cells. Only the latest paste can be undone
+* **Blank paste clears.** Copy a blank row, or a single blank cell, and paste it over a selection to clear those cells. A full-width blank row clears a whole block
 * **Limits.** One paste writes up to 500 cells. Columns past the right edge of the table are dropped, and the toast says so
 * **Access.** Registering new options and pasting need write access. Without it you can still copy, and pasting shows **Read-only access**
 
@@ -414,7 +415,7 @@ In grid view, each post's thumbnail shows its format. A post with no labels yet 
 For tagging many posts at once:
 
 1. Select posts with their checkboxes (**Select all (N)** takes every post)
-2. In the bar that appears, pick the attribute and value to apply
+2. In the bar that appears, which counts the selection (for example _"3 data selected"_) and has **Clear selection**, pick the attribute and value to apply
 3. Confirm. A toast says how many posts were labelled
 
 > **Heads-up:** **Label Posts** needs write access to Owned Media. Without it the button isn't shown.

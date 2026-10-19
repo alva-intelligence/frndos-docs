@@ -28,7 +28,7 @@ The header names the project and the brand it belongs to (or **Pitch · &lt;pros
 | **Type and stage** | What kind of project it is, and where it stands. Pick **No stage** to clear it |
 | **Health** | **On track**, **At risk**, **Off track** or **Not set**, with when it was last updated |
 | **Lead** | The person leading the project. Pick **No lead** to clear it |
-| **Due** | The due date. With none set, the chip shows the proposal's deadline |
+| **Due** | The due date. With none set, the chip shows the proposal's deadline. A proposal deadline reads the same calendar day for everyone, whatever their timezone |
 
 Each type has its own stages:
 
@@ -180,6 +180,40 @@ Milestones live under **Next up**. Click **+ Add milestone**, type a name, and o
 ### Calendar
 
 **Upcoming** lists the project's meetings, with who's invited. **Past · last 30 days** shows the ones already held.
+
+### Asking @frnd in the room
+
+Type **@** in a post or reply and pick **frnd** at the top of the list (_"Ask frnd · everyone in the room sees the answer"_). When you post, frnd answers in the stream, under your post, with its sources as chips. Everyone who can open the room sees the answer, so don't ask anything you'd keep from the team.
+
+* **While it works,** the reply reads _"frnd is thinking…"_. If it takes too long, it reads _"frnd is taking longer than usual"_ with a **Retry** link
+* **Sources** under an answer are chips. Click one to open what frnd used. Chips that have nowhere to go, such as a milestone or a document, stay plain
+* **If it can't answer,** the reply says _"frnd couldn't answer this"_. The person who asked is told why, for example **Not enough credits**. Everyone else only sees that frnd couldn't answer. The person who asked and room editors can **Retry**
+* **You hear back.** The person who asked gets a notification when frnd answers or can't answer
+* **Hourly limit.** Each room limits how often a person can ask frnd per hour. Past it, your post still saves and a toast says _"frnd's hourly limit for this room is reached"_ and _"Your post was saved."_ frnd skips that ask
+
+### Credits for frnd in the room
+
+* **The person who asks pays.** An @frnd answer uses credits from the person who asked, not from the room or the project.
+* **You pay only for an answer you get.** The credit is taken when the answer arrives. If frnd can't answer, nothing is charged.
+* **A failed draft is refunded.** If **Draft with frnd** fails on frnd's side, the toast says _"You weren't charged."_
+* **Not enough credits.** A draft shows _"Not enough credits"_ with _"Top up to draft with frnd."_
+* **The catch-up is free.**
+
+See [Managing Workspace Credits](../workspace/managing-credits).
+
+### Since you looked
+
+When you open a room you've visited before, the Overview starts with **Since you looked** and when that was: _earlier today_, _yesterday_, a weekday, or a date. frnd sums up what happened in two or three sentences (_"frnd is writing a summary…"_ while it works), then chips list the facts: posts, replies, decisions and updates, a **Health** change, decks edited, tasks done, people added and frnd answers.
+
+Click a chip to jump to the stream, **Work** or **Tasks**. A chip that has nowhere to go stays plain. **Mark as read** hides the recap until something new happens. If a catch-up isn't available, the room shows a plain line counting what's new.
+
+### Draft with frnd
+
+Open an **Update** and click **Draft with frnd**. frnd fills in the health and **Done**, **Blocked** and **Next** from what it knows about the project, and a line under the fields gives its reason, such as _"Drafted by frnd"_. Edit anything before you post. The button then reads **Redraft**.
+
+Text you already typed stays. If a redraft would change a field you edited, the composer says _"frnd's draft differs from what you wrote in"_ and the fields, then asks _"Replace it?"_: **Keep mine** or **Replace**.
+
+Drafting is limited per hour in each room. Past it, a toast says _"Too many drafts"_ and _"Try again in a little while."_ Only editors can draft updates; others see _"You can't draft updates here."_
 
 ## Asking frnd About the Project
 

@@ -43,11 +43,17 @@ See: [Understanding Owned Media & Content Labels](./owned-media)
 
 The wizard's channel steps list every account connected to the brand, the same accounts you see on that channel's Integrations page.
 
-* **Select owned media channels**: choose the accounts to include, per brand
+* **Select owned media channels**: choose the accounts to include, per brand. A connected **Google Sheets** social sheet is a channel too, shown by its named range with the brand underneath. When two sheets share a named range, the second reads _"Brand name · Sheet 2"_
 * **Select paid media channels**: one tile per paid platform. **TikTok Ads** is separate from Meta, and **Google Ads** and **Paid placements** (Google Sheets) can be picked too
 * **Select earned media sources** and **Select ATL sources**: one Google Sheet per brand
 
 An account that can't be picked yet is listed greyed out with the reason on hover. An account still syncing reads **Still setting up**. A brand with nothing connected says so and points you to that channel's **Integrations** page.
+
+### Narrowing a Report to Google Sheets
+
+When a Google Sheets channel is picked, the owned filters step adds a **Google Sheets** group for that brand. Its **Sheet** field (_"Select sheets…"_) narrows the report to the sheets you choose. Leave it empty and the report uses every sheet of the brand. A sheet group is narrowed by sheet, **Caption** and labels, not by handle. A sheet that was disconnected later shows _"Sheet N is no longer connected"_ with **Remove**. Picking or clearing a sheet in the channels step keeps this group in step.
+
+A campaign launched from a plan reports on the right sheet from day one: each connected Google Sheets channel becomes its own sheet group, so the report covers that sheet only.
 
 If an account in a saved report was disconnected later, it stays on the list marked **No longer connected**. Click it to remove it from the report.
 

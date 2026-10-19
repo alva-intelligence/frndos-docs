@@ -8,7 +8,7 @@ Sections follow the sidebar order (category `position`, then `sidebar_position`)
 
 **Types:** 📸 screenshot · ✍️ confirm from live UI · 🔒 third-party/iframe
 
-_Last updated: 2026-10-13_ (October 2026 Part 3, from Changed onward: Format icon column, Label Posts multi-account + Author + Group by, shared Group by panel, workspace menu + brand switcher menu, Playbook Create/Refresh + longer history, fixes for Lark plugins switching off, Safari motion export/playback, Gemini image models. Resolved: `show-modules-nav` and `label-posts-overlay` confirmed 100% in PostHog. Previous: 2026-10-08_ (blog post frndos-september-2026-part-2; October 2026 Part 2, New: Social Listening guide, Client Portal guide, sidebar with Modules + page-title brand switcher (and every guide's "open the brand" steps), AskFRND floating/docked/fullscreen panel with steps, Reply and Branch, KV Motion preset library + Tune panel + Animate all style packs, Project Room v2 (header details, tabs, milestones, Needs you, project chip), Research Overview v2 + answer-first scorecard + Competitor and Desk Studies guide. Fixed: Story kept on open, sheets mapping locks after save, low-credit alert counts Extra Credit, menus inside dialogs, Resize tile edits. Changed + Improved: calmer Tasks, scorecard band names, Brand Settings in the main app, Brand IQ Summary, Studies table, study notifications, 200-artboard approvals, deck slide strip. Also blog post frndos-october-2026-part-2: no recap video, help articles to refresh for Social Listening, client portal, sidebar, AskFRND, Brand IQ summary, KV Motion presets. Previous: 2026-10-06, October 2026 product update: Story writing mode, KV approval requests, scorecard parts/report/rubric, Calendar, Home v2, tool activation, workflow build in chat; blog post frndos-october-2026))
+_Last updated: 2026-10-19_ (October 2026 Part 5, from Changed onward: Files Copy link, Listening sources Brand/Critics tabs + role override + Ranked by, AskFRND images/videos/diagrams only from trusted places, KV Studio arrow-key nudge + Replace image keeps aspect, Project Room @frnd + Since you looked + Draft with frnd + credits, Research share/export/slides/next-step tasks + why a scorecard stopped, Social Listening translation + tracked keywords + relevance, Reports Google Sheets channel, selection bar wording. Previous: 2026-10-13_ (October 2026 Part 3, from Changed onward: Format icon column, Label Posts multi-account + Author + Group by, shared Group by panel, workspace menu + brand switcher menu, Playbook Create/Refresh + longer history, fixes for Lark plugins switching off, Safari motion export/playback, Gemini image models. Resolved: `show-modules-nav` and `label-posts-overlay` confirmed 100% in PostHog. Previous: 2026-10-08_ (blog post frndos-september-2026-part-2; October 2026 Part 2, New: Social Listening guide, Client Portal guide, sidebar with Modules + page-title brand switcher (and every guide's "open the brand" steps), AskFRND floating/docked/fullscreen panel with steps, Reply and Branch, KV Motion preset library + Tune panel + Animate all style packs, Project Room v2 (header details, tabs, milestones, Needs you, project chip), Research Overview v2 + answer-first scorecard + Competitor and Desk Studies guide. Fixed: Story kept on open, sheets mapping locks after save, low-credit alert counts Extra Credit, menus inside dialogs, Resize tile edits. Changed + Improved: calmer Tasks, scorecard band names, Brand Settings in the main app, Brand IQ Summary, Studies table, study notifications, 200-artboard approvals, deck slide strip. Also blog post frndos-october-2026-part-2: no recap video, help articles to refresh for Social Listening, client portal, sidebar, AskFRND, Brand IQ summary, KV Motion presets. Previous: 2026-10-06, October 2026 product update: Story writing mode, KV approval requests, scorecard parts/report/rubric, Calendar, Home v2, tool activation, workflow build in chat; blog post frndos-october-2026))
 
 ## Getting Started
 
@@ -225,6 +225,13 @@ _Last updated: 2026-10-13_ (October 2026 Part 3, from Changed onward: Format ico
 | Key Columns & Metrics | ✍️ confirm from live UI | Lark "Owned content funnel totals" (comment, save, share, view totals per funnel stage) lives in the Content Funnel, which Lark also lists as not switched on yet. Document it in this guide once the Content Funnel ships |
 | Filtering by Tags | ✍️ confirm from live UI | confirm which operators the Labels rule builder offers and how a second rule combines with the first (AND vs OR). The panel chrome is read from `OwnedFilterPanel.tsx`; the row-level operator list is built in `LabelFilterRows` and was not read. |
 
+### `docs/insights/campaigns.mdx` — Campaigns
+
+| Section | Type | What to do |
+|---|---|---|
+| Narrowing a Report to Google Sheets | 📸 screenshot | add screenshot of the owned channels step with a Google Sheets card selected, and of the Google Sheets group with its Sheet field (Select sheets…) → /img/guides-asset/<name>.jpeg |
+| Narrowing a Report to Google Sheets | ✍️ confirm from live UI | a Google Sheets card is selectable only after the connector's first sync (api `report_selectable`); confirm the greyed-out reason a new sheet shows before it syncs, and add it to the article |
+
 ### `docs/insights/collaborating-on-insights.mdx` — Collaborating on Insights
 
 | Section | Type | What to do |
@@ -251,6 +258,10 @@ _Last updated: 2026-10-13_ (October 2026 Part 3, from Changed onward: Format ico
 | Alerts and the Daily Recap | ✍️ confirm from live UI | confirm what a Daily Recap and a Spike Alert look like in email and in Lark (the cards are rendered by the api), and add a short description or screenshot |
 | Voices and Sources | ✍️ confirm from live UI | the AskFRND action labels in the war room come from the api per topic; capture one or two real examples (e.g. on a signal or a voice) and name them in the article |
 | Opening Listening | ✍️ confirm from live UI | the tab is fail-closed behind the `show-social-listening` PostHog flag in production; confirm which workspaces have it before announcing broadly |
+| Tracked keywords | 📸 screenshot | add screenshot of the Keywords · N popover: Relevant and Low relevance columns, an Exact match or Paused chip → /img/guides-asset/<name>.jpeg |
+| Translating Mentions | 📸 screenshot | add screenshot of a mention with the Translate menu open (Translate to, Last used, Hide translation) and of Alerts & sync → Mention translation with Mention languages in report → /img/guides-asset/<name>.jpeg |
+| Translating Mentions | ✍️ confirm from live UI | no PostHog flag gates translation; it is a per-brand setting (default off) plus a server switch. Confirm in prod that Translate shows once a brand turns it on, and what a translated line looks like in the email and Lark reports |
+| Correcting an account's role | ✍️ confirm from live UI | confirm the role menu beside a source row is visible to a user with write access, and that Clear override appears only after a correction |
 
 ## Audience
 
@@ -307,6 +318,8 @@ _Last updated: 2026-10-13_ (October 2026 Part 3, from Changed onward: Format ico
 | Step 5 — Read the Scorecard | ✍️ confirm from live UI | the answer-first page is behind `show-scorecard-v3` (fail-closed in production). Confirm it's on for customers before publishing |
 | Reading a File Scored in Parts | 📸 screenshot | add screenshot of the parts answer — Scorecard · N parts, Overall readiness chip set by the weakest part, part cards with Re-score this part → /img/guides-asset/<name>.jpeg |
 | Running a Scorecard From AskFRND | 📸 screenshot | add screenshot of the scorecard chat card — scores, Open study, Create tasks → /img/guides-asset/<name>.jpeg |
+| When a scorecard doesn't finish | 📸 screenshot | add screenshot of the stopped card for a provider failure (This scorecard didn’t finish, Try again) and for an unreadable file (We couldn’t read this file., Upload a different file) → /img/guides-asset/<name>.jpeg |
+| When a scorecard doesn't finish | ✍️ confirm from live UI | `show-scorecard-flow-v2` is at 0% in PostHog, so the v2 variant of the stopped card is not live. Confirm which card variant production shows |
 
 ### `docs/research/scorecard-report-and-rubric.mdx` — Scorecard Reports and Rubrics
 
@@ -349,6 +362,9 @@ _Last updated: 2026-10-13_ (October 2026 Part 3, from Changed onward: Format ico
 | Reading the Results | 📸 screenshot | add screenshot of an answer-first competitor study — the answer with its confidence, the Ask FRND chips, Side by side, What we found with a source hover card → /img/guides-asset/<name>.jpeg |
 | Reading the Results | ✍️ confirm from live UI | the answer-first results are behind `show-study-results-v2` (fail-closed in production); with it off the old results page shows. Confirm before publishing |
 | Reading the Results | ✍️ confirm from live UI | the What to do next list is static in this release (B1). Confirm what it shows and whether its items do anything when clicked |
+| Sharing and Exporting a Study | 📸 screenshot | add screenshot of the Share this study popover (Create link, Copy, Turn off link) and of the Export menu (Summary PDF, Full report PDF, Slides, Open as a doc in Files) → /img/guides-asset/<name>.jpeg |
+| Turn next steps into tasks | 📸 screenshot | add screenshot of What to do next with a checkbox and an Assign pill, and of the assign popover (Search people, Due, Assign) → /img/guides-asset/<name>.jpeg |
+| Sharing and Exporting a Study | ✍️ confirm from live UI | slides auto-dock beside the study chat only when the compose was started from the study page (commit 27067d770); confirm that and what the chat shows after Slides ready |
 
 ## AskFrnd
 
@@ -361,6 +377,7 @@ _Last updated: 2026-10-13_ (October 2026 Part 3, from Changed onward: Format ico
 | Floating, Docked or Full Screen | 📸 screenshot | add screenshot of the AskFRND panel docked beside a page with the More options menu open (Dock to side / Float / Fullscreen, Generated files, Chat settings) → /img/guides-asset/<name>.jpeg |
 | Reading an Answer | 📸 screenshot | add screenshot of an answer with "Answered in Ns" expanded to its steps, the hover actions (Reply, Branch from here, Copy, Regenerate), and the suggested-answer chips under it → /img/guides-asset/<name>.jpeg |
 | When a file can't be read | ✍️ confirm from live UI | the reply wording is written by the model (it is only told to say the file could not be read), and how the chat UI renders ai-service's `FileExtractionFailed` event was not traced in frnd-web. Confirm what the user actually sees for an unreadable attachment, then quote it here |
+| Images and Videos in Answers | 📸 screenshot | add screenshot of an answer where an outside image is shown as the grey Image from <site> line → /img/guides-asset/<name>.jpeg |
 
 ### `docs/askfrnd/skills.mdx` — Using AskFrnd Skills
 
@@ -441,6 +458,7 @@ _Last updated: 2026-10-13_ (October 2026 Part 3, from Changed onward: Format ico
 | Finding a File | 📸 screenshot | add screenshot of the Files header — Search files, type chips with counts, Filter · N, Group by, sort, grid/list toggle, Trash button → /img/guides-asset/<name>.jpeg |
 | Opening and Previewing | 📸 screenshot | add screenshot of Quick Look open on a KV — preview, Kind / Brand / Last edited / Comments, arrows → /img/guides-asset/<name>.jpeg |
 | Working with Several Files | 📸 screenshot | add screenshot of the selection bar — N selected · Move to… · Set status · Move to Trash → /img/guides-asset/<name>.jpeg |
+| File Actions | 📸 screenshot | add screenshot of a file's ⋯ menu with Open, Quick Look, Copy link, Rename, Duplicate, Set status, Move to… and Move to Trash → /img/guides-asset/<name>.jpeg |
 
 ## Projects & Workflows
 
@@ -461,6 +479,10 @@ _Last updated: 2026-10-13_ (October 2026 Part 3, from Changed onward: Format ico
 | Asking frnd About the Project | 📸 screenshot | add screenshot of the AskFRND panel on a project room with the project chip in the composer → /img/guides-asset/<name>.jpeg |
 | Updates & Discussion | 📸 screenshot | add screenshot of the stream — the composer open on Update (health, Done / Blocked / Next, Note), a decision row, a thread with replies, and the Everything / Decisions switch → /img/guides-asset/<name>.jpeg |
 | The Client's Decision-Makers | 📸 screenshot | add screenshot of Client side in the rail with two decision-makers, and a profile sheet open with Research / Edit and the Background, What drives their decision and Hook that wins them fields → /img/guides-asset/<name>.jpeg |
+| Asking @frnd in the room | 📸 screenshot | add screenshot of an @frnd answer in the stream: frnd mark, asked by, answer with source chips, and the failed state with Retry → /img/guides-asset/<name>.jpeg |
+| Since you looked | 📸 screenshot | add screenshot of the Since you looked recap: frnd's summary, fact chips and Mark as read → /img/guides-asset/<name>.jpeg |
+| Draft with frnd | 📸 screenshot | add screenshot of the Update composer after Draft with frnd (Drafted by frnd, Redraft) and of the Keep mine / Replace prompt → /img/guides-asset/<name>.jpeg |
+| Credits for frnd in the room | ✍️ confirm from live UI | the per-answer and per-draft cost and the hourly limits are config values (defaults 1 credit; 10 asks and 6 drafts per hour) and are not named in the article. Confirm the production values before naming any number |
 
 ## Decks
 
