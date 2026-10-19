@@ -75,7 +75,7 @@ for (const file of targets) {
 
   if (!/^date: '\d{4}-\d{2}-\d{2}'$/m.test(fmRaw)) err(`date must be a quoted string: date: 'YYYY-MM-DD'`);
 
-  if (!fm.image) err(`image (thumbnail) missing; the app home "What's New" list needs it`);
+  if (!fm.image) warn(`image (thumbnail) missing; optional, but the app home "What's New" list shows no thumbnail`);
   else if (S3_IMG.test(fm.image)) s3Checks.push({ file, url: fm.image, kind: "image" });
   else if (!/^\/img\//.test(fm.image)) err(`image must be /img/... (Tina media root) or an S3 URL under frnd/frndos-update/img/`);
   else if (!fs.existsSync(`static${fm.image}`)) err(`image file static${fm.image} does not exist`);
