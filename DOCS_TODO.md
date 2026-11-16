@@ -1055,3 +1055,12 @@ _Last updated: 2026-11-16_ (blog post frndos-november-2026 added. November 2026,
 | The campaign's thumbnail | 📸 screenshot | add screenshot of Change Thumbnail with Creatives, Upload and Generate → /img/guides-asset/<name>.jpeg |
 | AI summaries | ✍️ confirm from live UI | the release note lists this as new in November, but the code is older (`NarrativeGenerationService` from 2026-05, `ChangeThumbnailModal` from 2026-07). It is on in production unless `AI_NARRATIVES_ENABLED` is false on the server, which I could not read. Confirm summaries appear on a live campaign |
 | The campaign's thumbnail | ✍️ confirm from live UI | whether "Generate" spends credits (not shown in the modal) |
+
+### `docs/insights/owned-media.mdx` — Numbers as of a Past Day
+
+| Section | Type | What to do |
+|---|---|---|
+| Picking a day | 📸 screenshot | add screenshot of the Numbers as of menu with post counts and a greyed day → /img/guides-asset/<name>.jpeg |
+| What changes while a day is picked | 📸 screenshot | add screenshot of the active bar with Back to latest and a follower ⓘ → /img/guides-asset/<name>.jpeg |
+| Picking a day | ✍️ confirm from live UI | the date format in the chip (`formatAsOfDay`) is paraphrased as "7 Nov 2026"; confirm. Flag `show-social-snapshot-filter` is 100% |
+| What changes while a day is picked | ✍️ confirm from live UI | the em dash for an uncaptured post comes from the bar's copy ("posts not captured yet show —"); confirm cells render it |
