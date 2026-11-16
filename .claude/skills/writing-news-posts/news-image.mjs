@@ -154,7 +154,9 @@ if (!opts.force) {
 
 // ---- 4. upload (or hand over)
 const line = (it, url) =>
-  it.role === "thumbnail" ? `image: ${url}` : `![${(it.alt || "").replace(/[[\]]/g, "")}](${url})`;
+  it.role === "thumbnail"
+    ? `image: ${url}\n           body (first line, under the title): ![<post title>](${url})`
+    : `![${(it.alt || "").replace(/[[\]]/g, "")}](${url})`;
 const report = (why) => {
   for (const it of items) {
     console.log(`${it.role.padEnd(9)} ${it.label}`);

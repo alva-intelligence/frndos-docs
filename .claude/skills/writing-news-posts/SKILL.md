@@ -99,6 +99,7 @@ node .claude/skills/writing-news-posts/news-image.mjs <slug> --file a.png --file
 - **Keys:** `frndos-update/img/<slug>-thumb.webp` and `frndos-update/img/<slug>-<n>.webp` (or `.gif`), public-read. Same credentials and IAM policy as 4.5 (`frndos-update/*` already covers `img/`).
 - **Output:** per image, an `image: <url>` line (thumbnail) or `![alt](<url>)` line (body). Lark images print the nearest heading so you know which section each belongs to; drop the ones that don't fit the outline, and rewrite the alt text into a short description.
 - **Thumbnail:** `--thumbnail N` reuses body image N; `--thumbnail <path>` uses a separate file. No thumbnail image anywhere → keep `/img/blog/frndos.webp` and add a row to `DOCS_TODO.md`.
+- **The thumbnail goes in two places.** The `image:` frontmatter only feeds `og:image`, RSS and the app home list: the Docusaurus theme never draws it on `/blog` or on the post. So the post body also opens with it, right under the title (step 5). Never "fix" a missing cover by swizzling `BlogPostItem` or other theme code: that restyles every post on the site.
 - Existing keys are refused (`--force` only when the user confirmed replacing live images). Over 2 MB warns, over 15 MB refuses. No credentials → files are prepared and `upload MANUAL` lines are printed, as in 4.5.
 - Tina's media picker cannot browse S3: the S3 URL shows as text in the Thumbnail field, and authors replace it by pasting a URL or uploading a new `/img/` file. The RSS feed and app home list accept the absolute URL.
 
@@ -116,12 +117,14 @@ authors:
   - frndos-team
 date: '2026-04-24'
 description: Connect Paid, Owned, Earned and ATL data to Insights yourself, in minutes.
-image: /img/blog/frndos.webp
+image: https://frnd.s3.ap-southeast-3.amazonaws.com/frndos-update/img/brand-insights-self-serve-thumb.webp
 tags:
   - insights
   - announcement
 related_doc: docs/insights/overview.mdx
 ---
+
+![Brand Insights Goes Self-Serve](https://frnd.s3.ap-southeast-3.amazonaws.com/frndos-update/img/brand-insights-self-serve-thumb.webp)
 
 **Your data, your brand, your insights, on demand.**
 
@@ -142,7 +145,15 @@ One or two short paragraphs: what changed and why it matters to the user.
 * 📖 [Insights Overview](/docs/insights/overview) — the full picture of what Insights can do
 ```
 
-Shape (matches `blog/Brand-Insights-Goes-Self-Serve.mdx`): bold one-line hook → 1–2 paragraph lede → `***` → `## ` sections → optional `## What's Next` → `## Get Started` link list. Write it as news for end users: benefit first, present tense, no implementation detail, no step-by-step instructions (that is the help article's job).
+Shape: **lead media** → bold one-line hook → 1–2 paragraph lede → `***` → `## ` sections → optional `## What's Next` → `## Get Started` link list. Write it as news for end users: benefit first, present tense, no implementation detail, no step-by-step instructions (that is the help article's job).
+
+**Lead media** is the first line of the body, under the title the theme prints from `title`:
+
+* Thumbnail in `image:` (step 4.6) → `![<post title>](<same URL as image:>)`. This is the only way the cover shows on the post and in the `/blog` list (as in `blog/2026-11-16-frndos-november-2026.mdx`).
+* A recap video (step 4.5) → the `<S3Video>` block takes that spot instead (as in `blog/2026-10-19-frndos-october-2026-part-5.mdx`); add the thumbnail image after it only if the user asks.
+* Only the placeholder `/img/blog/frndos.webp` → no lead image.
+
+`check-post.mjs` fails a dated post whose body does not open with an image or a video block while `image:` is set to a real thumbnail.
 
 #### Tina-editability contract
 
@@ -189,7 +200,7 @@ npm run build-local          # or, if a dev server holds the Tina ports:
 NODE_OPTIONS=--max-old-space-size=8192 npx docusaurus build
 ```
 
-`check-post.mjs` covers frontmatter vs the Tina schema, author keys in all three places, date format, thumbnail (`/img/` file or `frndos-update/img/` S3 URL), `related_doc`, Tina body parse against the real `post` templates, raw HTML, `<Video>`/`<S3Video>`/`<YouTube>` props and files and S3 body images (S3 URLs get an anonymous HEAD: must be 200 + `video/*` or `image/*`), truncate/TODO/`{#`, internal link targets, and the em dash budget. Fix every ERROR and rerun. The build must reach `Generated static files` with no broken links, and `build/blog/<slug>/index.html` must exist.
+`check-post.mjs` covers frontmatter vs the Tina schema, author keys in all three places, date format, thumbnail (`/img/` file or `frndos-update/img/` S3 URL), `related_doc`, Tina body parse against the real `post` templates, raw HTML, lead media under the title when `image:` is a real thumbnail, `<Video>`/`<S3Video>`/`<YouTube>` props and files and S3 body images (S3 URLs get an anonymous HEAD: must be 200 + `video/*` or `image/*`), truncate/TODO/`{#`, internal link targets, and the em dash budget. Fix every ERROR and rerun. The build must reach `Generated static files` with no broken links, and `build/blog/<slug>/index.html` must exist.
 
 Done when: all three commands are green on the final file.
 
@@ -209,3 +220,5 @@ Done when: all three commands are green on the final file.
 | "New author key is just a line in authors.yml" | Tina's select won't offer it and the lock goes stale. Three places. |
 | "Docusaurus build passed, so it's editable" | The build ignores Tina. `check-post.mjs` and `verify.mjs` prove editability. |
 | "I'll explain how to use it step by step" | That is a help article. Link to it. |
+| "`image:` is set, so the cover shows" | The theme never draws it. Open the body with `![<title>](<image URL>)`. |
+| "The cover is missing, I'll swizzle the blog theme" | That changes every post on the site. Fix the post body, not the theme. |

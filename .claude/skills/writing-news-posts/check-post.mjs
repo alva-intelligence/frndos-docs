@@ -95,6 +95,20 @@ for (const file of targets) {
   for (const n of nodes.filter((n) => n.type === "html"))
     err(`raw HTML / unregistered component (Tina shows it as an uneditable HTML blob): ${String(n.value || "").split("\n")[0].slice(0, 80)}`);
 
+  // ---- lead media: the theme never draws `image` (it only feeds og:image, RSS and the
+  // app home list), so the body must open with a lead image (the thumbnail by default)
+  // or the recap video, right under the title.
+  if (fm.image && fm.image !== "/img/blog/frndos.webp") {
+    const first = nodes[0];
+    const isVideo = first?.type === "mdxJsxFlowElement" && ["S3Video", "Video", "YouTube"].includes(first.name);
+    const isImg = first?.type === "p" && first.children?.length === 1 && first.children[0].type === "img";
+    if (!isVideo && !isImg) {
+      const msg = `body must open with a lead image under the title, by default the thumbnail: ![<title>](${fm.image}) (or the recap <S3Video>/<Video>/<YouTube>); the theme does not render \`image\``;
+      // undated posts predate this rule
+      /^\d{4}-\d{2}-\d{2}-/.test(path.basename(file)) ? err(msg) : warn(msg);
+    }
+  }
+
   // ---- video blocks
   for (const n of nodes.filter((n) => n.type === "mdxJsxFlowElement")) {
     const p = n.props || {};
