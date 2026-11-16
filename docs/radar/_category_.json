@@ -1,0 +1,8 @@
+{
+  "label": "Radar",
+  "position": 5.5,
+  "link": {
+    "type": "generated-index",
+    "description": "Radar shows what is moving in your market: trends, what people say about your brand, and what your industry and competitors did."
+  }
+}

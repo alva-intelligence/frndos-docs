@@ -1,0 +1,79 @@
+---
+title: Customizing Radar Tabs
+sidebar_position: 7
+description: How admins rename and show or hide the Radar tabs for a whole workspace, and how a single brand can override those defaults.
+---
+
+# Customizing Radar Tabs
+
+**Radar Tabs** lets you rename the tabs along the top of Radar and choose which of them show. You set **workspace defaults** that every brand inherits, and a single brand can then override them. It works the same way as [Customizing Insights Tabs](../settings/insights-tabs).
+
+## Before You Start
+
+1. ✅ You can change settings. For workspace defaults you need permission to change workspace settings (owners and admins). For a brand you need access to that brand's settings, and write access to edit them. Without write access the form is read-only.
+2. ✅ You're in a **team workspace**. The page isn't available in a Personal workspace.
+
+## Which Tabs Appear in the List
+
+The rows follow the Radar tab strip: **Overview**, **Explore**, **Prediction**, **Trends**, **Listening** and **Industry**. A tab only gets a row when it is switched on for your workspace. A tab that isn't live for you has no row to rename or hide.
+
+Each row shows the tab's own name, so you still recognise it after you rename it.
+
+## Setting Workspace Defaults
+
+1. Go to **Workspace Settings** and open **Radar Tabs** in the settings sidebar, under **Customizations**.
+2. You'll see **Radar tab labels & visibility**, with the note: _"Set workspace-wide default Radar tab labels and visibility. Brands in this workspace inherit these unless they override individually."_
+3. For each tab you can:
+   * **Rename it.** Type a **label** of up to **24 characters**. A counter shows how many you've used. Leave it empty to keep the default name.
+   * **Show or hide it.** Flip the **Visible** toggle. A hidden tab doesn't appear in Radar.
+4. When you've changed something, save. A notice reads **Workspace Radar tab defaults saved**. If it fails, you see **Failed to save** and **Please try again.**
+
+A label can't be blank while its tab is visible. If you clear a label but keep the tab shown, you're asked to enter one.
+
+## Overriding a Brand
+
+A brand can use its own labels and visibility instead of the workspace's.
+
+1. Open the brand's settings and choose **Radar Tabs**.
+2. The section reads **Radar tab labels & visibility**, with the note: _"Customize how Radar tabs appear for this brand. Empty fields inherit the workspace default."_
+3. Rename or hide tabs as above, then save. A notice reads **Radar tab settings saved**.
+
+A field you leave empty keeps following the workspace default. The placeholder shows what it would use. A brand that sets nothing keeps following the workspace.
+
+## Resetting
+
+* **Reset** appears on a row only when it differs from what it inherits. It clears that row's custom label and visibility.
+* **Reset all** at the top reverts every tab. It's only available when at least one tab has changed.
+
+## When Every Tab Is Hidden
+
+If you hide every Radar tab for a brand, opening Radar shows **No Radar tabs are visible**, with the note that all Radar tabs are hidden in the brand's settings. If you can edit settings, it offers **Open Radar Tabs settings** and says you can re-enable tabs from the brand Radar Tabs settings. If you can't, it tells you to ask a workspace admin.
+
+## What Renaming Changes
+
+The label you set is the tab's name in the Radar strip and the title at the top of its page. Hiding a tab doesn't delete its data; turn **Visible** back on to bring it back.
+
+## FAQ
+
+**Q: I don't see Radar Tabs in Workspace Settings.**
+You need permission to change workspace settings, and the page isn't shown in a Personal workspace or where Radar isn't switched on.
+
+**Q: I renamed a tab but one brand still shows the old name.**
+That brand has its own override in its **Radar Tabs** settings, which wins over the workspace default.
+
+**Q: How long can a label be?**
+Up to 24 characters.
+
+**Q: Why is there no row for Explore or Prediction?**
+A tab only gets a row when it is switched on for you.
+
+**Q: Is the data gone when I hide a tab?**
+No. Hiding only removes the tab from view.
+
+---
+
+## Related Articles
+
+- [Radar Overview](./overview)
+- [Customizing Insights Tabs](../settings/insights-tabs)
+- [Settings & Administration Overview](../settings/overview)

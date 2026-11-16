@@ -1,0 +1,165 @@
+---
+title: Radar Explore
+sidebar_position: 4
+description: How the Radar Explore tab maps who drives a conversation, how to use the timeline replay, the three map lenses, the full-screen view, who drives it, communities and themes, the AI analysis, and the CSV export.
+---
+
+# Radar Explore
+
+**Explore** turns the mentions that **Listening** already collects into a map of the accounts behind a conversation, and the groups they form. Use it to see who starts a conversation, who connects groups, and how it grew over time.
+
+## Before You Start
+
+1. ✅ You are working on a **brand** with at least one **Listening topic**. Explore maps those topics.
+2. ✅ Your role can read **Explore** for that brand.
+3. ✅ The topic has enough activity. A conversation needs about 30 interactions before its map is worth reading.
+
+Open it from **Radar**, then the **Explore** tab. See [Radar Overview](./overview).
+
+## The Header
+
+The page title is followed by status badges and when the map was built, for example **Updated 15 min ago**. A badge can read **Paused** (the topic is paused) or **Updating…** (a new map is being built).
+
+| Control | What it does |
+|---|---|
+| **Topic scope** | Maps one topic, or **All topics** together |
+| **Window** | **24h**, **7d** or **30d**: the period the map covers |
+| **Export CSV** | Downloads the raw data behind the map for the current scope and window |
+| **Open in Listening** | Goes to the same topic in Listening |
+
+Below the header, one headline sentence states the main finding, with the key numbers behind it and a row of suggested questions for AskFRND. A strip compares **this period with the one before**, for example mentions against the previous span.
+
+### Exporting
+
+**Export CSV** shows **Exporting…** while it works. It isn't offered when the brand has no topic. If it fails, a notice reads **Export failed**, for example **Too many exports. Wait a minute and try again.** when you hit the limit.
+
+## At a Glance
+
+A row of tiles gives the size of the conversation:
+
+* **Accounts in the conversation**
+* **People who posted**
+* **News & web sites**
+* **Conversations**, one thread per reply, quote, mention or repost link between two accounts. The map draws only the top accounts, so its own graph holds fewer threads
+* **Mentions**
+
+## The Timeline
+
+Above the map, a chart called **How the conversation grew** shows the mood of the conversation over the window. It is also the scrubber for the map.
+
+* **Replay the window** plays the map as it grew, and **Pause the replay** stops it. **Replay speed** is **1×**, **2×** or **4×**.
+* Drag the **Replay position** handle, or use the left and right arrow keys, to move to a moment. The map redraws as it was then, and a **Replaying** button appears in the header. Click **Replaying**, or **Show the whole window**, to go back to the full picture.
+* Marks on the chart show peaks and alerts (**Critical alert** and **Watch**). Click one to jump to it.
+* The caption names the step size, for example "3-hour buckets". Where emotion readings only start later, it says earlier buckets are unmeasured.
+
+## The Map
+
+The map, titled **Who talks to whom**, draws each account as a point and each reply, quote or mention as a link.
+
+### Lens
+
+Switch what the map shows with **Lens**:
+
+| Lens | What it shows |
+|---|---|
+| **People** | The accounts and who links to whom. Click an account to see who is driving it |
+| **Communities** | Groups of accounts that mostly talk to each other |
+| **Themes** | Hashtags and themes that tie accounts together. If the snapshot has no tagged themes yet, the lens says so |
+
+You can also choose what colours the map: **Community**, **Emotion** or **Platform**.
+
+### Moving around
+
+| Do this | To |
+|---|---|
+| Click or press **Enter** | Focus a community or an account |
+| Drag, or the arrow keys | Pan |
+| Scroll, pinch, **+** or **−** | Zoom |
+| **0** | Reset the camera |
+| **Esc** | Clear the selection |
+
+A **Map controls** button lists these keys, and the **Full screen** button sits beside it. **Zoom in**, **Zoom out** and **Reset the camera** are also buttons on the map.
+
+### Details
+
+Click an account, community or theme to open its details beside the map, with a button to **Show on map** when the map is off screen and **Close details (Esc)**. Details have their own **Ask FRND** buttons.
+
+### Full screen
+
+The **Full screen** button on the map (tooltip **Full screen (F)**) shows the same map, replay and **Who drives it** list framed for a large screen or a presentation. The header reads the topic name and, for example, how many accounts and mentions it covers. Leave it with the close button.
+
+### What the map covers
+
+A line under the map says how much it draws, for example **Map shows the 80 most-connected of 342 accounts**, and what share of mentions link two accounts. Paused topics are listed as not on the map. For platforms that don't expose replies, it says there are no links to draw, and the map follows shared hashtags and themes instead.
+
+## Who Drives It
+
+Beside the map, **Who drives it** ranks the accounts by role. Pick a role with the **Role** tabs:
+
+| Role | Meaning |
+|---|---|
+| **Hubs** | Most replied to |
+| **Bridges** | Link communities |
+| **Starters** | Start threads |
+| **Reposters** | Spread by reposting. Empty for topics where reposts aren't collected yet |
+
+Click an account to focus it on the map.
+
+## What Stands Out
+
+Under the map, **What stands out** gives three answers: **The spark** (the account that started it), **The turn** (the moment it shifted, with a button to replay from there) and **The spread** (how it travelled). It reads from the AI analysis below, and says when that analysis isn't ready.
+
+## Communities
+
+**Communities** lists each group with its size and top emotion (**size = accounts · colour = top emotion**). Sort it by **Size**, **Mentions**, **Anger**, **Joy** or **Growth**. Growth reads **—** when there is no earlier window to compare. Select a community to focus it on the map.
+
+## What Ties Them Together
+
+**What ties them together** ranks the hashtags and themes by how many accounts use each one. Open a row to see its mentions, its **Top accounts** and the communities it **Bridges to**. A **Show all** button reveals the rest.
+
+## Analysis
+
+**Analysis** is an AI-written reading of the window, written in the brand's language and updated once per map update, which takes about a minute. It has:
+
+* **Key actors:** pick one to focus the account on the map
+* **How information spreads:** the share of links that are replies, quotes and mentions
+* **Sentiment & emotion shifts:** pick a time to move the replay head
+* **Chronology**
+
+If it can't be written, the section says why: it isn't available for the window, it is turned off for the workspace, writing didn't finish and will be retried, or the workspace is **out of AI credit**.
+
+## States You Might See
+
+| You see | What it means |
+|---|---|
+| **Explore maps who drives the conversation** | No topic yet. Set one up in Listening |
+| **Building your network** | The topic needs about 30 interactions. A meter shows progress, and new posts land every 15 minutes |
+| **No mentions in this period** | Nothing was collected in this window. **Widen the window** |
+| **Building the first map** | The first map is being built, usually under a minute |
+| **A small network** | Few accounts interacted. **Widen the window**, or add keywords to the topic |
+| **This topic is paused** | The map shows the last snapshot. **Resume in Listening** |
+| **The last good map** | The latest rebuild didn't finish. Everything shown is the previous snapshot |
+| **Shared hashtags and themes** | The platforms don't expose replies, so the map follows hashtags and themes |
+
+## FAQ
+
+**Q: Why are so few accounts on the map?**
+The map draws the most-connected accounts only. A line under it says how many of how many it shows.
+
+**Q: What is a community?**
+A group of accounts that mostly interact with each other, found from the reply, quote and mention links.
+
+**Q: Can I use Explore without Listening?**
+No. Explore maps your Listening topics, so set up a topic first.
+
+**Q: Does the analysis cost credits?**
+It runs on your workspace's AI credit. If the workspace is out of credit, the analysis isn't written, and the map still works.
+
+---
+
+## Related Articles
+
+- [Radar Overview](./overview)
+- [Social Listening](../insights/social-listening)
+- [Radar Prediction](./prediction)
+- [Asking AskFRND About Radar](./askfrnd)

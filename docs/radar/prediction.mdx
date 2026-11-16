@@ -1,0 +1,117 @@
+---
+title: Radar Prediction
+sidebar_position: 3
+description: How the Radar Prediction tab ranks what to do in the next 30 days, how to read an action, its dates and confidence level, the 30-day chart, and what data each action was scored from.
+---
+
+# Radar Prediction
+
+**Prediction** is the Radar tab that looks ahead. It looks up to 30 days forward and turns what **Listening**, **Explore**, **Trends**, **Industry** and the calendar already show into a short, ranked list of **actions**, each with a date and a confidence score.
+
+## Before You Start
+
+1. ✅ You are working on a **brand** that has at least one **Listening topic**. Prediction is built per topic.
+2. ✅ Your role can read **Prediction** for that brand. The **Ask FRND** buttons also need write access on one supported Radar or Insight tab for that brand.
+
+Open it from **Radar**, then the **Prediction** tab. See [Radar Overview](./overview).
+
+## The Page at a Glance
+
+The page is titled **What's coming, and what to do**. Under it a line names the topic and the period, for example the topic's name, **next 30 days** and when it was **updated**. The **i** beside the title explains what Prediction does.
+
+| Control | What it does |
+|---|---|
+| **Topic** | Switches the topic the page is about. Each topic has its own actions and chart |
+| **Refresh predictions** | Reloads the page. The icon spins while it works |
+
+If collection is behind, a warning says that "now" is the last collected day, with its date.
+
+## Actions
+
+**Actions** is the heart of the page. It lists things to do, ranked by severity and then by time, for example **4 ranked · click one to see why**. Each action card shows:
+
+* A rank (**#1**, **#2** and so on) and a severity badge
+* A title that says what to do and about what, and a short summary
+* **What to do**: up to three dated steps
+* The **drivers** behind it, tagged by source
+* A **confidence** bar from 1 to 10
+
+### Severity
+
+| Badge | Meaning |
+|---|---|
+| **Critical** | Act now |
+| **Watch** | Prepare for the next few days |
+| **Attention** | Check it |
+| **Normal** | Nothing unusual is expected. This is not a guarantee |
+
+### Confidence
+
+Confidence is a number from 1 to 10 with a label. It is a **rule-based score**: how much history backs the action, how many past waves match, and whether a dated moment falls in the window. It is **not a validated accuracy**, so treat it as a guide for how much evidence stands behind the action.
+
+### Opening an action
+
+Click a card to open its detail. The detail has these blocks, each with an **i** that explains how to read it and an **Ask** button:
+
+* **What to do**: dated steps, each saying what it was based on (a date people name, where the topic is loudest, linked issues, the tone)
+* **What's predicted**: the peak the model expects, the range it thinks is likely, and whether the topic **Crosses the Critical line**, **Crosses the Watch line** or **Stays below the Watch line**. A wider range means a less certain read, not a safe value
+* **How it will happen**: the order things are expected to unfold, from the first rise to the return towards normal
+* **Why**: the evidence that raised the action, each with its source
+* **Confidence**: the score and how it was built
+
+Use the arrow buttons (**Previous action** and **Next action**) to move between actions, or the left and right arrow keys. **Copy brief** copies the action and its evidence to your clipboard, and shows **Brief copied**.
+
+When no action clears the bar, the page says **No action clears the bar right now**. That is not the same as an all-clear, and it gives the last collected day and the Watch and Critical lines in mentions per day.
+
+### Suggestions
+
+Below the actions, **Suggestions** lists lower-stakes ideas the same data supports. They are not tied to a predicted risk, so they carry no severity or deadline.
+
+## The 30-Day Chart
+
+The chart shows daily mentions for the **next 30 days**. A solid line is what happened, a dashed line is the prediction, and the shaded band is its likely range. Flags mark calendar and news dates. Press **Play the story** to walk through it day by day. In an action's detail, the chart is zoomed to that action.
+
+## What the Data Shows
+
+A card on the right (below the chart on a narrow screen) lists the facts every action was scored from, grouped by source: **Listening**, **Calendar**, **Industry**, **Publish** and **Trends**. Nothing there is inferred. A note says when a source was not run or not used. **Ask about this data** opens a chat about it.
+
+## Today, Hour by Hour
+
+A collapsed section at the bottom, **Today, hour by hour**, keeps the earlier hour-by-hour forecast. It is a stored snapshot, not a live estimate. Open it to see the snapshot, and **Ask about today** to ask about it. If you open an older snapshot, the page says **You are reading an older evaluation** and offers **Show the latest**. A snapshot that is past its expiry says so and treats its numbers as history.
+
+## Asking FRND
+
+The **Ask FRND** buttons open a new AskFRND chat about the thing next to them: all actions, one action, the suggestions, the chart or a single day on it, or the data. If your role can read Prediction but has no write access on a supported Radar or Insight tab for the brand, a notice says **Ask FRND is read-only here**.
+
+## When There's Nothing to Show
+
+* **No topics yet:** the page asks you to **Set up Listening**, because Prediction reads from Listening topics.
+* **No actions for this topic yet:** the page gives the reason and the last collected day, and nothing is made up to fill the gap. Use **Ask what is missing** or **Refresh**.
+* **Actions couldn't be loaded:** click **Try again**.
+
+## FAQ
+
+**Q: How far ahead does it look?**
+Up to 30 days.
+
+**Q: Is the confidence score a probability?**
+No. It is a rule-based score from history, past waves and dated moments, not a validated accuracy.
+
+**Q: Why does an action say Normal?**
+It means nothing unusual is expected for that topic. It is not a promise.
+
+**Q: Why is my Prediction tab empty?**
+Prediction needs a Listening topic with data. Set one up in **Listening**, then come back after a few hours.
+
+**Q: Which times does the page use?**
+Jakarta time (WIB).
+
+---
+
+## Related Articles
+
+- [Radar Overview](./overview)
+- [Social Listening](../insights/social-listening)
+- [Radar Industry](./industry)
+- [Radar Explore](./explore)
+- [Asking AskFRND About Radar](./askfrnd)
