@@ -1,0 +1,8 @@
+{
+  "label": "Docs and Sheets",
+  "position": 8.5,
+  "link": {
+    "type": "generated-index",
+    "description": "Write documents and work in spreadsheets inside frndOS, and use them with Ask FRND."
+  }
+}

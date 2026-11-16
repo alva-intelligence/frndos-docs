@@ -1,0 +1,148 @@
+---
+title: Sheets
+sidebar_position: 2
+description: How to work in a spreadsheet inside frndOS, add columns that you fill and columns frnd fills, generate copy and visuals for many rows at once, check the cost first, review rows, and share the result.
+---
+
+# Sheets
+
+A **Sheet** is a spreadsheet for making many things at once. Each **row** is one deliverable, such as an ad. The **columns** hold your inputs (a product, an audience) and columns that **frnd fills** for each row (copy, an image, a translation). You review the rows, approve what you like, and share the result.
+
+## Before You Start
+
+1. ✅ Sheets is switched on for your workspace. The create menu shows **Sheet** when it is.
+2. ✅ You can see Files. Sheets live there with your other files.
+3. ✅ To edit you need edit access. With **Can comment** or **View only** access you can read and, where allowed, comment.
+
+## Creating a Sheet
+
+Open the create menu (**New** or **+**) and choose **Sheet**. frndOS makes a blank sheet and opens it with Ask frnd beside it. You can also start from a template or from a file:
+
+* **New sheet** shows **Blank sheet** (_Set it up yourself, or tell frnd what to make_) and your **Saved templates** from this workspace.
+* **Open as sheet** on a CSV or Excel file in Files turns the file into a sheet. Name it, then keep **Its own columns**, or match each of the file's columns onto a template's columns (or choose **Leave out**). The first rows of each column show beside it so the match is easy to judge. If the file can't be read, it says to save it as CSV or .xlsx and try again.
+
+If making the sheet fails, a notice reads **Couldn't make the sheet**.
+
+## Columns
+
+A sheet starts with a Name column. Click **+ Column** (or **Insert column left** and **Insert column right** from a header) to add one. Give it a name, pick a **Type**, and fill in its settings.
+
+| Type | What goes in it | Who fills it |
+|---|---|---|
+| **Text** | Words you type | You |
+| **Select** | One option from a list | You |
+| **Asset** | An image or file you add | You |
+| **Link** | A web address | You |
+| **Person** | Someone in the workspace | You |
+| **Date** | A day | You |
+| **Doc** | A frndOS doc, such as an article or a script | You, or frnd |
+| **Copy** | Written by frnd from your prompt | frnd |
+| **Image** | A visual frnd makes from your prompt | frnd |
+| **Translate** | Another column, translated by frnd | frnd |
+
+The column header shows its type. Its menu has **Edit field**, **Run this column**, **Rename**, **Sort A → Z**, **Sort Z → A**, **Filter by this field**, **Group by this field** (or **Ungroup**), **Hide field**, **Insert column left**, **Insert column right**, **Duplicate column** (same type and settings, with empty cells) and **Delete column**, which asks first.
+
+### Columns that frnd fills
+
+For **Copy** and **Image**, you write a prompt:
+
+* **What to write** (Copy) or **What to show** (Image). Type **@** to pick another column, so each row's own facts go into its prompt. For example: _A one-line hook for @product, for @audience_.
+* A **preview** shows the prompt filled with the first row.
+* For Image, you can choose a column that holds the **format**, such as _Feed 4:5, Story 9:16_. With none chosen, images are **Square**.
+* You can choose an **agent**, which writes in its own voice and style from its instructions. The price per cell stays the same.
+* A column can **run only when a condition is met**, comparing another column's value, or **Always run**.
+
+A **Translate** column asks which column to translate and into which language, such as **Indonesian**. **Copy** and **Translate** columns can also set a **Max length (characters, optional)**, with **No limit** as the default.
+
+A **Doc** column can have a prompt too, called **Article frnd writes (optional)**. With one, **Run** writes each row's article into a new doc from the row's own facts and sources. Without one, you pick or write each row's doc yourself. **Length (words)** sets how long each article is.
+
+## Working in the Grid
+
+* Click a cell and press **Enter** to edit it. Arrow keys, **Home** and **End** move around.
+* Right-click a cell for its menu: **Edit** (Enter), **Open details**, **Generate** or **Regenerate**, **Copy** (⌘C), **Paste** (⌘V), **Clear** (Del), **Expand row**, **Comment** (⌘⌥M, or Ctrl+Alt+M) and the row's status. You can paste from a spreadsheet.
+* A cell's details open beside the grid. For a made cell they show its **Versions**, labelled by where each came from (**Generated**, **From chat**, **From Studio**, **Edited**), and say that regenerating makes a new version of that cell only, so other rows aren't affected.
+* A **Doc** cell opens the doc, or starts one for the row: frnd plans it from the row and asks before writing.
+
+If a column needs something that isn't there, the sheet says what, rather than failing silently.
+
+## Generating
+
+The **Generate** control in the toolbar writes copy and makes visuals for the rows you choose, in your brand voice. Click it to pick the scope:
+
+* **Try 3 first** (a small sample, so you can judge before spending more)
+* **All** the rows
+* The rows you **selected**
+* The rows **in this view**
+
+It works out the cost first (**Working out the cost…**) and shows a breakdown: the copy cells, the visuals, and an **Estimated total** in credits. The button then reads **Generate** with the credits. If you don't have enough credits, it says so and doesn't run. If the cost can't be worked out, you see **Couldn't estimate this run.**
+
+With no column that frnd fills, the button explains what to add: a **Copy**, **Image** or **Translate** column, or a **Doc** column with a prompt.
+
+You can also run one column (**Run this column**), or one cell (**Generate** in its menu).
+
+While it runs, the toolbar shows **Generating** with a progress meter, for example **6 of 24**, and a count of failed cells. **Stop** ends the run. A cell shows **Queued**, **Generating…** or **Failed**. When it's done it reads, for example, **All 24 written**.
+
+## Rows and Status
+
+Each row has a status: **Draft**, **Drafting**, **Needs review**, **Approved**, **Scheduled**, **Published** or **Rejected**. In a row's menu, choose **Approve**, **Needs review** or **Reject**. **Space** approves the selected row.
+
+## Views
+
+Switch the look with **View**: **Table** (the grid) and **Gallery**. Gallery shows the rows as a **Profile grid** or as **Cards**, and filters by status. **Calendar** appears when the sheet has a **Date** column. The view bar has:
+
+* **Fields**, to hide or show columns and reorder them (Status always shows)
+* **Filter**, **Sort** and **Group**
+* **Short rows**, **Medium rows** or **Tall rows**
+
+Changes you make here are yours until you **Save view**, which saves it for everyone who opens the sheet. A small note reads _This view has changes only you see_. **Reset** goes back to the saved view. A named view can be saved, renamed and deleted from the views menu.
+
+## Ask frnd
+
+**Ask frnd** (tooltip **Show Ask frnd**) opens a chat beside the sheet. It reads the sheet and the starters change with it:
+
+* On a blank sheet: **Set it up for bulk ads**, **Set it up as a content plan**, **Add the first 10 rows**.
+* On a sheet with gaps: fill in a column's empty cells, add rows, write a column, and ask what a run would cost.
+* If you can only comment or view: **Summarize this sheet** and **What still needs review?**
+
+It says: _Tell me what to change in_ the sheet's name. _Every change can be undone from History._ You can pin one of its answers to the sheet.
+
+## History and Undo
+
+The **Activity** button opens the sheet's history. Filter it by **Edits**, **Status**, **Runs** and **Sharing**. Days are grouped as **Today**, **Yesterday** or the date, and changes by a client through the review link are labelled **Client, via the review link**. You can undo the last change, with notices **Undone**, **Nothing to undo** or **Can't undo the last change**.
+
+## Sharing and Exporting
+
+Click **Share**:
+
+* **Share with people…** sets who can **edit**, **comment** or **view**, like a doc.
+* **Client review link…** (editors only) gives a link where **clients approve rows, no account** needed. You can set **Link expiry**, and copy the link (**Link copied**, _Send it to your client_).
+* **Download** as **CSV**, **Excel (.xlsx)**, or **Visuals (.zip)** with each file named by its row. Visuals is disabled when there are none yet.
+* **Turn into deck** makes a presentation with **a slide for each row**, or for each approved row when some are approved.
+* **Save as template…** (editors only) saves the sheet's setup. **New sheet offers it to everyone in the workspace**, and shows as **Saved as a template**.
+
+The menu beside **Share** has **Present**, which shows the sheet alone in browser full screen.
+
+## FAQ
+
+**Q: Why can't I generate anything?**
+The sheet needs a column that frnd fills, such as **Copy**, **Image** or **Translate**. Add one first.
+
+**Q: Does generating cost credits?**
+Yes. It shows an **Estimated total** before it runs, and **Try 3 first** lets you check a small sample.
+
+**Q: I regenerated one cell. Did it change the others?**
+No. Regenerating makes a new version of that cell only. You can go back to a version in the cell's details.
+
+**Q: Can clients review without an account?**
+Yes, with the **Client review link**. They approve rows without signing up.
+
+**Q: Where is my sheet?**
+In **Files**, under **Sheets**.
+
+---
+
+## Related Articles
+
+- [Docs](./docs)
+- [Files](../library/overview)
+- [Managing Workspace Credits](../workspace/managing-credits)
