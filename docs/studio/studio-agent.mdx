@@ -1,0 +1,146 @@
+---
+title: Studio Agent
+sidebar_position: 11
+description: How the Ask FRND agent on the Studio canvas builds and changes nodes for you, how plans quote credits before anything runs, how it asks which nodes you mean, and how to undo what it did.
+---
+
+# Studio Agent
+
+The **Studio agent** is Ask FRND inside a [Studio canvas](./studio-canvas). You describe what you want, and it adds, wires, renames, moves and groups nodes for you, so you don't need to know the node names. It can also **propose** steps that cost credits, but it never spends anything until you say so.
+
+## Before You Start
+
+1. ✅ You have a Studio canvas file open, with access to it. See [Studio Canvas](./studio-canvas#opening-a-canvas).
+2. ✅ The agent is switched on for you. If it isn't, the dock says **The assistant is not available on this canvas yet.**
+3. ✅ To let it change the canvas you need edit access to the file. With view-only access it can read the canvas to answer questions, but it is never offered tools that write.
+
+## Opening the Agent
+
+Click the round **Open AskFRND** button on the canvas (tooltip **Show chat**). The agent opens in a dock beside the canvas. The dock shows two chips above the box: **Studio** with the file's name, and, when you've selected nodes, the number of nodes selected (for example **2 nodes**). The agent reads the canvas as it is right now, and works on your selection when you have one.
+
+A Studio file has **one chat thread**, shared by everyone on the file. There is no **New chat** here, because a second thread would hide the history the next person expects to see. **History** opens your full chat history.
+
+On a new canvas the dock greets you (**Good morning**, **Good afternoon** or **Good evening**, with your first name) and asks **What do you want to make?** The box reads **Describe what you want on the canvas**. You can attach files to a message, and pick the model with the model picker.
+
+### Starters
+
+You can click a starter instead of typing. Each is phrased as an outcome:
+
+| Starter | What it asks for |
+|---|---|
+| **Make a KV from this brief** | Read the brief on the canvas, write three directions from it, and set up an image for the strongest one |
+| **Write some concept directions** | Write six concept directions to choose from |
+| **Try a few variations** | Set up three variations of the master to compare side by side |
+| **Resize to every format** | Resize the master to every format you need |
+| **Tidy this canvas up** | Group what is on the canvas into Sections that make sense, and name them |
+
+## What the Agent Can Do
+
+The agent changes the canvas with a small set of actions:
+
+| It says | What it did |
+|---|---|
+| **Added** | Put a new node on the canvas |
+| **Wired** and **Unwired** | Connected or disconnected two nodes |
+| **Changed** | Edited a node's settings |
+| **Renamed** | Gave a node a new name |
+| **Moved** | Moved a node |
+| **Grouped** | Put nodes into a Section |
+| **Deleted** | Removed a node |
+| **Placed** | Placed a template |
+
+It can create the same six nodes the Add panel offers: **File**, **Text**, **Text generator**, **Image**, **Resize** and **Section**. It can't create anything else, such as a **Video** node, because a file can't run one yet.
+
+Every action names its target. The agent doesn't act on "everything" at once. A batch that names something not on the canvas is refused as a whole, rather than half applied. Changes appear on the canvas as the reply arrives, because the agent writes through the same canvas you see.
+
+It also looks at a limited amount of the canvas at a time (up to 120 nodes, 200 wires and 30 Sections), and says so when it left something out.
+
+## Plans: Quote First, Spend on Go
+
+When a request needs steps that cost credits, such as generating images or resizing, the agent doesn't run them. It shows a **Plan** card instead:
+
+* The goal, in a sentence.
+* The steps, each with the node's name (the name you can see on the canvas) and its price, for example **16 cr**. A step that can't run shows a warning with the reason instead of a price.
+* A line with the total, for example **~40 credits · balance 1,200**.
+* If some steps can't run yet, a note lists why.
+
+Then you choose:
+
+* **Go** runs the plan. Click it once; it stays busy while the turn is sent, so a second click can't start the same plan twice.
+* **Cancel** drops the plan without spending anything.
+
+If you don't have enough credits, **Go** is disabled and the card says **Not enough credits.**
+
+After you answer, the card shows what happened instead of the buttons: **Running.**, **Cancelled.**, or **Replaced by a newer plan.** A plan that has waited too long is marked **Expired**, and you ask again for a fresh quote. A plan card stays in the thread, so you can scroll back to it.
+
+> **Nothing is spent until you press Go.** Proposing a plan only prices it. Credits come out when the steps run.
+
+## When It Asks You Something
+
+If it isn't sure which nodes you mean, the agent shows a question card (**Which nodes?**) with options to tick:
+
+* Pick one option, or several when the question allows it. A card may ask more than one thing.
+* Click **Continue** to answer.
+* Or click **Skip** to say _use your judgement_. The agent then decides itself.
+
+Once answered, the card locks and reads **Answered.** If you reopen the chat later, an old question isn't shown again, because its answer was already sent and the agent has moved on.
+
+## What Changed, and Undo
+
+After the agent changes the canvas, a short list sits under its reply, headed by what happened, for example **Added 2 nodes · Wired 2**. Hover it for the full list of nodes. While a run is still settling it says **Applying…**, and if nothing was changed it says **Nothing was changed.**
+
+Some actions may be refused, and the list says why in plain words next to the node:
+
+| Reason | Meaning |
+|---|---|
+| **not on the canvas** | The node is gone |
+| **ports do not match** | Those two nodes can't be wired |
+| **would make a loop** | The wire would make a circle |
+| **that input is taken** | The input already has a wire |
+| **already wired** | They were already connected |
+| **still running** | The node is busy |
+| **you may not change this canvas** | You have view-only access |
+| **that node cannot run yet** | That kind of node isn't supported |
+| **no nodes named** | The request didn't say which nodes |
+
+### Undoing a run
+
+Under each run there is an **Undo** button.
+
+1. Click **Undo**.
+2. It asks you to confirm: **Undo it** or **Keep it**.
+3. After **Undo it**, the card reads **Undone.**
+
+Undo reverses the whole run. If you edited something the agent changed after it ran, that edit is kept, and the card tells you how many changes were kept because you edited them afterwards. You can't undo a run that has already been undone.
+
+## Tips
+
+* Ask for an outcome, not a node name: "Set up three variations of this image" works better than "add three Image nodes".
+* Select the nodes you mean before you ask. The agent sees your selection.
+* Check the **Plan** total before **Go**.
+* Use **Undo** on a whole run if you don't like it, and ask again.
+
+## FAQ
+
+**Q: Does the agent spend my credits on its own?**
+No. It proposes a plan with a price, and credits only come out when you press **Go**.
+
+**Q: Can everyone on the file use the agent?**
+Everyone with access can open it and read the one shared thread. Only people with edit access can have it change the canvas.
+
+**Q: Why can't it make a video?**
+A Studio canvas file can't run a video step yet, so the agent never creates one.
+
+**Q: I closed the chat. Is my history gone?**
+No. The file keeps one thread. Plan and change cards come back when you reopen it, but an old question card does not.
+
+**Q: The agent wasn't available.**
+Check that Studio and the agent are switched on for your workspace, and that you have access to the file.
+
+---
+
+## Related Articles
+
+- [Studio Canvas](./studio-canvas)
+- [Finding Objects](./find-objects)
+- [Managing Workspace Credits](../workspace/managing-credits)

@@ -1,0 +1,101 @@
+---
+title: Finding Objects in an Image
+sidebar_position: 12
+description: How to mark areas on a Studio image with Region edit, use Find objects to outline what is in an area, give each area its own instruction, and run one edit for all of them.
+---
+
+# Finding Objects in an Image
+
+**Region edit** lets you change just part of a picture. You mark one or more areas, say what should change in each, and run a single edit. **Find objects** makes marking easier: instead of drawing the exact shape, Studio outlines the objects in your area and you pick one.
+
+## Before You Start
+
+1. ✅ You have a [Studio canvas](./studio-canvas) with an **Image** node that already has a picture.
+2. ✅ You can edit the file. With view-only access the tools are not available.
+3. ✅ For **Find objects** specifically, the picture must be a key visual (KV) image made in Studio, you must be on the **master** tab, and Find objects must be switched on for your workspace. Otherwise you can still draw rectangles with Region edit.
+4. ✅ You have credits for the edit. The price is shown before it runs.
+
+## Marking an Area
+
+1. Open an **Image** node with a result (double-click it, or choose **Edit**) to enter focus mode.
+2. Choose **Region edit** in the tool strip (key **M**).
+3. Drag on the image to draw a frame. The bar at the bottom reads **Drag on the image to mark an area** until you do, then **1 area**, **2 areas**, and so on.
+4. A small box opens under the frame to write what should change. Press **Enter** or **Save**.
+
+Each frame is numbered. Click one to select it again and edit its text.
+
+> **Region edit runs on the master.** If you try to draw an area on a size tab, Studio says **Region edit runs on the master in P2**. Switch to the **Master** tab first.
+
+You can mark up to **50 areas**. Past that it says **At most 50 areas**. Every area runs in one edit.
+
+## Using Find objects
+
+When a frame is selected, a **Find objects** button appears above it.
+
+1. Click **Find objects**. Studio looks for objects inside your frame and outlines them in blue.
+2. Hover an outline to highlight it, then click the one you want.
+3. Your frame becomes that object's exact outline. It is still one area, so you give it its own instruction.
+4. Write what should change. The box asks **What should happen to this?** and names the object it found. Press **Enter** or **Save**. Use **Cancel** to step back to the outlines.
+
+If you picked text in the image, the selection follows the letters themselves.
+
+If nothing is found, a notice reads **No objects found in this area**. Draw a bigger or different frame, or keep the rectangle you drew.
+
+A few things to know:
+
+* Finding objects only happens when you click the button. Studio never searches on its own as you view an image.
+* Each area is searched once. Asking again about the same area, at about the same size, shows the same answer straight away.
+* If the search can't be completed, you simply keep your rectangle. You see no error, and nothing is lost. A search that finds nothing shows the notice above.
+* Once a frame has been turned into an object, there is nothing more to find in it, so the button goes away. Its label shows the object's name.
+
+## Giving Each Area an Instruction
+
+Every area needs its own instruction. The placeholder reads **Add prompt...** for a drawn rectangle, **What should happen to this?** for an object, and **What should happen to these 3?** when a selection groups several. Each area is limited to **2,000 characters**.
+
+You can also use the eyedropper in the box to put a colour from the screen into your instruction.
+
+To remove an area, use **Delete** in its box, or the unmark control on the frame.
+
+## Running the Edit
+
+The bar at the bottom shows the number of areas and, once quoted, the price. Click **Run edit**.
+
+* The button shows it is working while it asks for the price. If the quote can't be made, you see a message and nothing runs. The areas you drew stay.
+* While it runs, a loading surface covers the picture and a **Cancel** button replaces **Run edit**. A cancelled run reads **Run cancelled. Credits refunded.**
+* When it finishes, the new version lands on the picture, and the areas clear.
+
+Studio checks before it charges, and tells you plainly if it can't run:
+
+| You see | What to do |
+|---|---|
+| **Draw an area on the image** | Mark at least one area first |
+| **Say what should change in each area** | Write an instruction for every area |
+| **An area is outside the image** | Move or redraw the frame inside the picture |
+| **At most 50 areas** | Remove some areas |
+
+If the run fails afterwards, the message tells you whether credits were refunded, for example **Couldn't generate this time. Credits refunded.** or **This took too long, so we stopped it. Credits refunded.**, or **Not enough credits for this run.**
+
+## FAQ
+
+**Q: I don't see Find objects.**
+It needs a key visual image made in Studio, the **Master** tab, and an editable file, and it must be switched on for your workspace. Otherwise only the rectangle tool shows.
+
+**Q: Can I edit just a size, not the master?**
+Not with Region edit. It works on the master, and the change flows to the sizes. See [Studio Canvas](./studio-canvas#working-on-an-image).
+
+**Q: Does Find objects cost credits?**
+The search itself shows no price. The edit you run afterwards does, and its price is shown before it runs.
+
+**Q: Why can't I click an outline?**
+Outlines belong to the frame you searched. If you select a different frame, search again for that one.
+
+**Q: Can the agent do this for me?**
+The [Studio agent](./studio-agent) works with nodes on the canvas. Marking areas on a picture is something you do in focus mode.
+
+---
+
+## Related Articles
+
+- [Studio Canvas](./studio-canvas)
+- [Studio Agent](./studio-agent)
+- [KV Generator](./kv-generator)

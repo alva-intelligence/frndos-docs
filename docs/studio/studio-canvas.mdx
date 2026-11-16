@@ -1,0 +1,188 @@
+---
+title: Studio Canvas
+sidebar_position: 10
+description: How to build an image step by step on the Studio canvas, with nodes you wire together, the Ask FRND agent that builds and changes the steps for you, the Add panel, running nodes and their cost, and finding objects in an image.
+---
+
+# Studio Canvas
+
+The **Studio canvas** is a node-based canvas for building an image step by step. Instead of one prompt, you lay out the steps as **nodes** (a brief, a text generator, an image, a size set) and wire them together. You can also ask **Ask FRND** to build and change the steps for you.
+
+This is separate from the [KV Generator](./kv-generator). It is one more tool, opened from the create menu.
+
+## Before You Start
+
+1. ✅ Your role has access to Studio for at least one brand, and Studio is switched on for your workspace. An admin can turn it off under **Workspace Settings → Apps** (see [Apps](../settings/apps)).
+2. ✅ You know which **brand** the canvas belongs to. A canvas spends that brand's assets and credits.
+3. ✅ You have credits for the steps that cost them. See [Managing Workspace Credits](../workspace/managing-credits).
+
+## Opening a Canvas
+
+Open the create menu and choose **Studio**. It asks you to pick a brand first, then creates a new file and opens it (**Creating your Studio file…**). If it fails, it says **Couldn't create the Studio file. Reload to try again.**
+
+Studio files live in **Files**. The top bar's back arrow (**Back to the library**) returns there. A file name sits in the top bar. Click it to rename.
+
+Two chips can sit beside the name: **View only** when you can't edit, and **Not syncing** when your changes aren't reaching the server right now. Your credit balance is shown at the right, as **Credits left**.
+
+> **A file made with a newer version.** If a file was made with a newer version of Studio, the canvas says **This file was made with a newer version of Studio. Reload to edit.**
+
+## Starting a Canvas
+
+An empty canvas asks **What are we making today?** (with your first name when it knows it). You can:
+
+* **Describe what you need**, or drop files here, then press **Enter** or **Generate**.
+* Choose the output, shown as **Static** with a ratio: **4:5**, **1:1**, **9:16** or **16:9**.
+* Pick a **template**. Today only **KV from a brief** is ready: your brief as text, concepts from it, sketches, a refined image with your overlays, and its sizes (shown as a 4-node template). **Product in a scene**, **Resize a KV to every format** and **Mood board to video** are marked **coming soon**.
+
+## Nodes
+
+A node is one step. Each has input ports on its left and an output on its right, coloured by what they carry (text, image, board, layered KV, video, audio, regions). You wire an output to an input that accepts it.
+
+The **Add** button (tooltip **Add to canvas (N)**), the **N** key, or ⌘**/** (Ctrl+**/**) opens the **Add to canvas** panel. It has a **Nodes** tab with a search field (**Search nodes**), and a **Files** tab to drop one of your files in. When you drag a wire out and let go, the panel lists only the nodes that accept it, or says **No node takes this wire.**
+
+On a real file the panel offers six nodes. These are the ones that can actually run today:
+
+| Group | Node | What it does | Cost |
+|---|---|---|---|
+| **Inputs** | **File** | An image, a PSD as a layered KV, or a brief PDF whose text it reads | Free |
+| | **Text** | A note or a typed brief. Its text goes to what it is wired into | Free |
+| **Generate** | **Text generator** | Writes text, or a list of cards. Presets pre-fill the instruction: **Concepts**, **Taglines**, **Captions**. In the Add panel, **Concept directions** adds it with the Concepts preset | About 2 credits (estimate) |
+| | **Image** | Makes an image from a prompt and references | The model's price per image |
+| **Edit** | **Size set** (panel name **Resize**) | One board becomes every format at once | Per size |
+| **Organise** | **Section** | A frame to group nodes. They move with it | Free |
+
+Each node's tooltip in the panel lists what it takes in and what it **Puts out**, and its price.
+
+> **Other nodes are not available on a file yet.** The design also describes **Video**, **Change angle**, **Upscale**, **Remove background**, **Expand**, **Decompose** and **Motion** nodes, but a real file can't run them, so the Add panel hides them. Where you see tools with those names inside an image (see [Working on an Image](#working-on-an-image)), they are tools on the picture, not nodes.
+
+Prices marked as an estimate can change.
+
+You can also place a **Sticky note**, free **Text**, or a **Comment** pin from the tool strip at the bottom of the canvas: **Select** (V), **Hand** (H), **Sticky note** (S), **Text** (T) and **Comment** (C). Hover a tool to see its key.
+
+### Sections
+
+Select several nodes and choose **Group**, or press ⌘**G**, to put them in a **Section**. They move together. A selected Section has **Tidy** (lays its nodes out in rows and fits the frame), **Ungroup** (⇧⌘**G**) and **Delete section**.
+
+## Running Nodes
+
+A node costs credits only when you run it. The **Run** menu lets you choose the scope:
+
+* **This node only**
+* **Run from here**
+* **Whole workflow**
+
+Its button shows the price before you press it, for example **Generate** with the cost. For a text generator that already has concepts, it warns first: **Write new concepts? Your edits stay in version** (the version number), so a rerun doesn't throw away your work.
+
+A **Tasks** list in the top bar shows running steps with progress and **Cancel**.
+
+### Size sets
+
+**Resize to** makes a new size set from a master, and **Add sizes** adds to one. You pick sizes from presets (a short list first, then **Show all**), or enter your own width and height. A set holds **1 to 20 sizes**, each side between **32 and 8192 px**. The picker also has a **Resize mode**:
+
+* **Keep layers:** every layer carries over onto the master's picture, cropped to fit. You reposition by hand, and master edits keep flowing to the sizes.
+* **AI regenerate:** reframes the picture for each size with AI. If you later edit the master's layout, the size is flagged **Out of date** and **Update** reruns it at its price.
+
+The picker shows an estimate before you run. When the master image changes, the bar offers **Re-run** with the number of sizes, and nothing is spent until you click it.
+
+## Working on an Image
+
+Double-click an **Image** node that has a result, or choose **Edit**, to open it over a dimmed canvas. The header has **← Canvas**, the node's name, the **Master** chip, a tab per size, and **Done**. **Esc** or **Done** goes back.
+
+The tool strip has: **Move** (V), **Hand** (H), **Text** (T), **Shape** (S), **Logo / image** (I), **Region edit** (M), **Camera angle** (A), **Separate layers** (L), **Eyedropper** (E) and **Crop** (C). Hover a tool to see its key. **Camera angle** and **Separate layers** only show where those features are switched on for your workspace; the others are always there.
+
+The layers list is on the left (overlays first, then the base image), and **Properties** on the right. On a size tab, an edit overrides only the property you touched, and a ghost shows the master's position. On the **Master** tab, an edit flows to every size that hasn't overridden that layer. Drag to move a layer, drag a corner handle to resize it, double-click text to edit it.
+
+At the bottom, **Zoom out**, **Zoom in**, **Fit to screen** and the zoom percentage control the view, and a strip switches between **Versions** and **Sizes**, with **Previous** and **Next** buttons.
+
+### Properties
+
+The panel on the right changes with what you select.
+
+**An Image node** has:
+
+* **Model**, the model that makes the picture. For a refine from a sketch the model is fixed to GPT Image 2.
+* **Output**: **Ratio**, **Variants** (1 to 4), and for a refine, **Creativity** (**Medium** or **High**).
+* **Inputs**: what is wired in (each shown as typed on the node, **Wire one in**, or **Optional**), and a **Prompt** box (**Describe the image**) when nothing is wired.
+* **Advanced**: **Quality** (**Standard** or **High**), a **Seed** (random if empty) and a **Negative prompt**.
+* A **Generate** button with the price.
+
+**A Text generator** has an **Output** choice (**Text** or **List**) and shows how many inputs are wired.
+
+**A Size set** lists its sizes with their pixels, and says whether the sizes use mixed or layer resize. It reads: _One master becomes every format at once. Each size follows the master except the layers you override._ Its button is **Run**.
+
+**The master** reads: _The master. Edits flow to every size that has not overridden that layer._ It has the **Headline**, **Logo position** (for example **Bottom**), **Layers** (how many, and to open it to edit them), **Output**, and **Sizes**. With no size set yet it says to use **Resize** on the floating bar.
+
+**A layer** has **Position** (**X**, **Y**, **W**, **H**, and **Align left**, **Align centre**, **Align right**, **Align top**, **Align middle**, **Align bottom**), **Size**, **Content**, **Style** (with **Opacity**) and **Visibility**. A small dot and the tooltip **Overridden on this size** mark a property that no longer follows the master. Overrides are per property, so only what you change stops following the master.
+
+### Motion
+
+Motion is not available on a Studio canvas file yet. The **Motion timeline** isn't shown on a real file, and **Motion** is not one of the nodes a file can run. For motion, use [Motion](./motion-mode) in the KV Generator.
+
+### Finding objects in an image
+
+With **Region edit**, draw a frame on the master and click **Find objects** to outline what is inside it, then give that area its own instruction and run one edit. See [Finding Objects](./find-objects).
+
+## Shortcuts and Menus
+
+### Right-click a node
+
+Right-click a node (with the **Select** tool) to open its menu. If the node isn't selected, it becomes the selection first, so the menu always acts on what it shows.
+
+| Row | What it does |
+|---|---|
+| **Duplicate** (**Duplicate 3 nodes**) | Copies the node |
+| **Copy image to clipboard**, **Copy image link**, **Download** | For a node that holds an image. A notice reads **Copied**, or **Couldn't download the picture** |
+| **Rename** | Renames the node |
+| **Group into Section** | Groups the selection |
+| **Delete** (**Delete 3 nodes**) | Removes the selection |
+
+### Keyboard
+
+| Keys | What they do |
+|---|---|
+| **V**, **H**, **S**, **T**, **C** | Select, Hand, Sticky note, Text, Comment |
+| **N**, or ⌘**/** | Open or close the Add panel |
+| ⌘**A** | Select every node |
+| ⌘**G** | Group the selection into a Section |
+| ⇧⌘**G** | Take a Section apart |
+| ⇧**T** | **Tidy up**: lay the nodes out in rows |
+| ⌘**Z**, ⇧⌘**Z**, ⌘**Y** | Undo, redo |
+| **Delete**, **Backspace** | Remove the selection |
+| **Esc** | Step back: closes the Add panel or a side panel, switches to Select, or clears the selection |
+
+On Windows and Linux use **Ctrl** in place of ⌘. A **Tidy up** button and the zoom percentage sit in the bottom-left view controls. Shortcuts don't fire while you are typing in a field.
+
+## The Ask FRND Agent
+
+On a real file, Ask FRND opens in a dock beside the canvas (the round **Open AskFRND** button). It **builds and changes the steps for you**, so you don't need to know the node names. It quotes anything that costs credits as a **Plan** first, and only spends when you press **Go**. Every run can be reversed with **Undo**. See [Studio Agent](./studio-agent).
+
+## Comments and Presence
+
+Others on the canvas appear live. The **Comment** tool drops a pin with a note, and the top bar has a button for the comment dock.
+
+## FAQ
+
+**Q: Where is the Studio I used to have?**
+The old **Studio** page, with its projects and file lists, is gone; your KVs and resizes are in **Files**. The **Studio** entry in the create menu is the new node canvas.
+
+**Q: Does it cost credits?**
+Only when you run a step that costs credits. Each node and the **Run** button show the price first, and **Credits left** shows your balance.
+
+**Q: Why don't I see Studio in the create menu?**
+It needs Studio access on a brand and for the workspace to have it on. An admin can switch it off in **Workspace Settings → Apps**.
+
+**Q: Can the agent make a video?**
+No. A Studio canvas file can't run a video step yet, so the agent doesn't create one and the Add panel doesn't offer it. See [Studio Agent](./studio-agent).
+
+**Q: Can I undo what the agent did?**
+Yes. Each run has an **Undo** button. See [Studio Agent](./studio-agent#what-changed-and-undo).
+
+---
+
+## Related Articles
+
+- [Studio Agent](./studio-agent)
+- [Finding Objects](./find-objects)
+- [Creative Tools Overview](./overview)
+- [Apps](../settings/apps)
+- [Managing Workspace Credits](../workspace/managing-credits)
