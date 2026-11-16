@@ -76,6 +76,31 @@ A finished run is summarised on its own card, including what landed. If the resu
 
 If a run produced research, that research is filed as a Study you can open from the card.
 
+## When a Turn Fails
+
+If frnd can't finish a reply, the chat says so under your message instead of going quiet. It says what happened in plain words and never shows the AI provider's own text.
+
+| You see | What it means |
+|---|---|
+| **frnd can't reply right now.** | The AI provider isn't available. It adds that this isn't about your message and to try again in a few minutes |
+| **frnd stopped before finishing this reply.** | Part of the reply arrived before it failed |
+| **This is a billing problem on our side, not your message. Trying again won't help until it's fixed.** | A billing failure on our side. The retry is shown quietly, for after it's fixed |
+| **That model isn't available right now.** | Pick another model and try again |
+| **This conversation is too long for frnd to continue.** | Start a new chat |
+| **The connection dropped before frnd finished.** | It may still be working, so reload in a moment to see |
+
+Where sending again is safe, a **Try again** button sits under the message, and the failed message is replaced rather than added twice. Only the most recent turn offers it.
+
+If frnd may already have changed the deck before it stopped, the notice says so (_frnd may have changed the deck before it stopped, so check it before asking again._) and offers no retry. For a plan you answered with **Go** or **Cancel**, it points you back to the plan card (**Press Go on the plan to run it again.** or **Press Cancel on the plan to cancel it.**), because the plan card answers it.
+
+## Stopping a Reply
+
+The **stop** button halts a reply that is still streaming. It now also reaches a step that is already running: when you stop a plan that is building slides, the writing stops, the copy still being written is cancelled, and the placeholders the build added are taken back off the deck. A change that was already written to a slide stays.
+
+## The Language of Replies
+
+The assistant replies in the language you last typed in, English or Bahasa Indonesia, even when the tools or the deck's own names are in the other language. Pressing **Go**, **Skip** or **Cancel** doesn't count as typing, and neither do slide contents or text you quoted. On a button press with nothing else to go on, it follows the language of the plan's goal. This is about the chat reply only. What goes on a slide still follows your request and the deck.
+
 ## Quick Edits
 
 Alongside the conversation there's a one-off refine, described as _"A quick refine — not part of the conversation."_ Use it for a small change you don't want cluttering the thread.

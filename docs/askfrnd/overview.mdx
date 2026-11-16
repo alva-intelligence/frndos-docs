@@ -60,6 +60,8 @@ You can choose which **AI model** powers your conversation. Different models hav
 
 > **Tip:** Credit cost can vary by model. See [Managing Workspace Credits](../workspace/managing-credits) for how credits work.
 
+**The default model.** A new chat starts on the first model in the list, which is **DeepSeek V4.1 Flash** (_Fast, low-cost_). If a model you had picked is later retired or switched off by an admin, AskFrnd moves you to the first available model, so a chat is never left on a model that fails every send.
+
 ## What You Can Do with AskFrnd
 
 AskFrnd is a general-purpose AI surface inside frndOS. Common uses include:
@@ -69,6 +71,16 @@ AskFrnd is a general-purpose AI surface inside frndOS. Common uses include:
 *"What were my top 3 posts last month?"*
 *"Why did the summer campaign perform better than the winter one?"*
 *"Show me the engagement breakdown for owned media in Q1."*
+
+### The Language of Replies
+
+AskFrnd answers in the language you last typed in. Write in Indonesian and it replies in Indonesian. Switch to English in your next message and the reply switches too. A few things don't count as "typing": pressing buttons such as **Go**, **Skip** or **Cancel**, text inside slides, and quoted copy. If you ask for a different language, it follows what you asked.
+
+### Answers About Current Events
+
+When AskFrnd searches the web for something current, it is asked to back each claim with the link to the actual result and its date, and to tell publication time apart from the time of the event. It labels evidence that comes only from a snippet or a second-hand source, and says when the period you asked about, or a primary source, isn't covered. Check the links it gives before you rely on a claim.
+
+AskFrnd also doesn't assume a social account belongs to your brand just because it posts a lot about it. It says ownership is unverified until your connected data shows it.
 
 ### Generate Images
 
@@ -201,6 +213,8 @@ PDF text also reads more cleanly now. A PDF with an odd character in its text us
 Asked the wrong thing, or seen enough? Click the **stop** button — it replaces **Send** in the same spot while a reply is streaming.
 
 What's already been written stays on screen. You don't lose the useful half of an answer just because you stopped the rest.
+
+> **Stopping now reaches a step that is still running.** On a deck, the stop button also halts a build that is already writing slides. See [Stopping a Reply](../decks/deck-assistant#stopping-a-reply).
 
 > **Note:** you can have more than one conversation working at a time. Starting a second thread doesn't discard the first one's answer.
 

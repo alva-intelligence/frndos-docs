@@ -120,6 +120,20 @@ Brand-level reach numbers count only the platforms that do report reach:
 
 > **Heads-up:** this can move your brand's Total Reach. If a brand used to count Facebook "reach", its total now leaves that out, because that number was never a reach measurement.
 
+### Average ER per Post
+
+On Owned Media, the engagement rate you see at brand and platform level is the **average of each post's own rate**, and the figures are labelled **Avg. ER per Post**. It is worked out the same way everywhere it appears: the hero card, **Performance by Platform** with its **Total**, a custom dashboard's engagement-rate KPI, chart and donut, and the report tables. The post table's **ER (%)** column is each post's own rate.
+
+* **A platform with nothing to count is skipped.** A platform that has no per-post data to count, such as LinkedIn, doesn't pull the average toward zero.
+* **No data shows a dash, not 0.** When there are too few counted posts, or a figure isn't available, the card shows `—` rather than a false 0. A real rate of 0 stays 0.
+* **On a shared dashboard,** the raw rate and counted-post figures are hidden. Only the finished rate shows, and `—` where it can't be worked out.
+
+> **Not the same as a totals row.** This average is per post. The totals row under a rate column in the post table is recomputed from the underlying counts, as described below.
+
+### Metrics a channel doesn't report
+
+On Social and Paid tabs, a number the connected channel never reports now shows `—`, not `0`. A real zero still shows `0`. When you select several channels, the total adds up only the channels that report that metric, and shows `—` only when none do. This also applies to Paid Media tables (the platform tables, the funnel and the creative list) and the KPI cards.
+
 ### Totals rows are recomputed, not averaged
 
 The totals row under a rate column isn't the average of the rates above it. Rates are recomputed from the underlying counts, weighted by views — so a post with 40 views doesn't count as much as one with 400,000. Averaging the per-post rates instead can be several times wrong, in the flattering direction.
