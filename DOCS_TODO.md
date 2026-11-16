@@ -1037,3 +1037,12 @@ _Last updated: 2026-11-16_ (blog post frndos-november-2026 added. November 2026,
 | Unfinished report drafts shown to colleagues | ⛔ not written | api sets `seen_at` and keeps drafts out of Files for others; I found no user-visible label to quote. Add one line to `report-generator.mdx` once a screen confirms it |
 | Safer (share links, sign-in, error messages) / Steadier chat provider fallback | ⛔ not written | security and backend changes, no user action. Failed-message and Stop were written earlier in `askfrnd/overview.mdx` and `deck-assistant.mdx` |
 | Newer AI models | ⛔ not written | model swaps with no UI wording; default model line is already in `askfrnd/overview.mdx` |
+
+### `docs/brand-setup/brand-iq.mdx` — Competitors (Radar competitors)
+
+| Section | Type | What to do |
+|---|---|---|
+| Competitors | 📸 screenshot | add screenshot of the Competitors tab with a Tracking and a Collecting data row → /img/guides-asset/<name>.jpeg |
+| Adding a competitor | 📸 screenshot | add screenshot of the Add competitor form with Website and Accounts → /img/guides-asset/<name>.jpeg |
+| Reading the list | ✍️ confirm from live UI | per-account status labels (Queued, Collecting, Tracking, Paused, Not collected) come from `socialStatus.ts`; confirm where they appear on the row (aria-label "Social data collection per account") |
+| Competitors | ✍️ confirm from live UI | flag `show-brand-competitors` is 100%; the pillar header calls the page "Brand Knowledge" (`BrandKnowledgeHeaderTabs.tsx`) while docs say Brand IQ: check which name the sidebar shows |
