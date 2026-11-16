@@ -1046,3 +1046,12 @@ _Last updated: 2026-11-16_ (blog post frndos-november-2026 added. November 2026,
 | Adding a competitor | 📸 screenshot | add screenshot of the Add competitor form with Website and Accounts → /img/guides-asset/<name>.jpeg |
 | Reading the list | ✍️ confirm from live UI | per-account status labels (Queued, Collecting, Tracking, Paused, Not collected) come from `socialStatus.ts`; confirm where they appear on the row (aria-label "Social data collection per account") |
 | Competitors | ✍️ confirm from live UI | flag `show-brand-competitors` is 100%; the pillar header calls the page "Brand Knowledge" (`BrandKnowledgeHeaderTabs.tsx`) while docs say Brand IQ: check which name the sidebar shows |
+
+### `docs/insights/campaigns.mdx` — AI summaries and thumbnail (Custom Reports)
+
+| Section | Type | What to do |
+|---|---|---|
+| AI summaries | 📸 screenshot | add screenshot of a section summary (headline and elaboration) and of **No AI summary yet** → /img/guides-asset/<name>.jpeg |
+| The campaign's thumbnail | 📸 screenshot | add screenshot of Change Thumbnail with Creatives, Upload and Generate → /img/guides-asset/<name>.jpeg |
+| AI summaries | ✍️ confirm from live UI | the release note lists this as new in November, but the code is older (`NarrativeGenerationService` from 2026-05, `ChangeThumbnailModal` from 2026-07). It is on in production unless `AI_NARRATIVES_ENABLED` is false on the server, which I could not read. Confirm summaries appear on a live campaign |
+| The campaign's thumbnail | ✍️ confirm from live UI | whether "Generate" spends credits (not shown in the modal) |
