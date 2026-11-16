@@ -59,7 +59,8 @@
     "webpack": "~5.105.0"
   },
   "overrides": {
-    "webpack": "~5.105.0"
+    "webpack": "~5.105.0",
+    "better-sqlite3": "^12.11.1"
   },
   "pnpm": {
     "overrides": {
