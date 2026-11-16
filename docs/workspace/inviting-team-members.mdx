@@ -91,6 +91,14 @@ The invitation email links to an invitation page in frndOS. What happens next de
 4. **Accept invitation** → toast **Invitation accepted**, and they land on Home already switched into your workspace
 5. **Reject invitation** → toast **Invitation declined**, and they stay in their current workspace
 
+#### Invited from inside frndOS
+
+If the person already has an account, the invitation also arrives as a **Workspace invite** in their notifications, besides the email. Opening it takes them to an invitation page that shows **\{Inviter\} invited you to join \{workspace\}** (or **You're invited to join \{workspace\}**), the role they would join as, and two buttons: **Accept invitation** and **Decline invitation**. Accepting switches them into the workspace.
+
+* If they're signed in with a different email than the one invited, the page says **This invite is for another email** and offers **Switch account**.
+* If the invitation was withdrawn or no longer exists, it says **This invite is no longer available**, and **Go to Home** takes them back.
+* If you resend an invitation they declined, it shows up again as a pending invite.
+
 ### They don't have an account yet
 
 1. The invitation page detects there's no account and sends them straight to the sign-up form
@@ -106,7 +114,7 @@ Back on **People**, the table has these columns:
 | Column | What it shows |
 |---|---|
 | **Member** | Avatar and email address |
-| **Status** | **Owner**, **Invited**, **Expired**, or **Active** |
+| **Status** | **Owner**, **Invited**, **Declined**, **Expired**, or **Active** |
 | **Role** | Owner, Admin, or Member |
 | **Brand access** | The brand name, **N+ access** for several brands, or **—** for none |
 | **Last Active** | Relative time since their last activity |
@@ -115,7 +123,7 @@ Click any row to open the member detail panel — **Status**, **Role**, **Brand 
 
 From that panel, if you can manage the team and the row isn't the Owner:
 
-- **Resend invitation** — shown for **Invited** and **Expired** rows. Resending an expired invitation issues a fresh link.
+- **Resend invitation** — shown for **Invited**, **Declined** and **Expired** rows. Resending an expired invitation issues a fresh link, and resending a declined one reopens it so the person can accept this time. If the invitation was already accepted or removed, a notice reads **Invitation not resent**: refresh the list and try again.
 - **Remove member** — opens the **Remove Team Member** confirmation. The dialog warns that the action can't be undone; confirm with **Remove Member**.
 
 Role, brand access, and job title are editable in this panel for **Active** members who aren't the Owner.
@@ -179,6 +187,9 @@ Yes. Open the **Invited** row and use **Remove member** — that clears the pend
 
 **Q: Someone's invitation link opens a screen saying it's expired or invalid.**
 The invitation expired (after 24 hours) or was revoked. Either way the old link can't be used, including to sign up. For an expired one, use **Resend invitation**. For a revoked one, invite them again; that sends a new invitation.
+
+**Q: I invited an address with capital letters, and accepting failed.**
+That was a bug, now fixed. Accepting or declining an invitation matches the email address whatever its capitalisation, for example `Rina@Company.co` and `rina@company.co`. A genuinely different address is still refused, so the person must be signed in with the invited email.
 
 **Q: They never got the email.**
 Check the address on the **Invited** row, have them look in spam, then use **Resend invitation**. If their mail server blocks it, invite a different address instead.

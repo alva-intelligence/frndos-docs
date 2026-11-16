@@ -1,0 +1,94 @@
+---
+title: Trials, Plans and Read-Only Workspaces
+sidebar_position: 7
+description: What happens when a workspace has no active plan or its free trial ends, how to keep a workspace, and who can choose a plan.
+---
+
+# Trials, Plans and Read-Only Workspaces
+
+AI features and anything that spends credits need an **active plan**. A new team workspace starts on a free trial. This guide explains what you see during the trial, what changes when it ends without a plan, and how to keep your workspace.
+
+## Before You Start
+
+1. ✅ You are in a **team workspace**. A personal workspace cannot have a plan, and AI is not available in it.
+2. ✅ To choose or change a plan, your role needs billing access (owners and admins have it). Everyone else sees **Ask your workspace owner or an admin to change the plan.**
+
+## During the Trial
+
+Open **Workspace Settings → Plans & Credits**. The trial panel at the top shows how long you have left, for example **Trial · 9 days left · 4,000 credits left**.
+
+The panel tells you what happens on the day the trial ends:
+
+* **A plan and a card are set:** the trial renews automatically into that plan, charged to the card shown. Everything from the trial stays.
+* **A plan but no card:** the title reads **Add a payment method to start** followed by the plan name.
+* **No plan yet:** the title reads **Choose a plan before the trial ends**. Nothing is charged until you add a payment method.
+
+What you can do here:
+
+| Action | What it does |
+|---|---|
+| **Add payment method** or **Change payment method** | Opens the card dialog |
+| **Choose** or **Switch to** a plan | Picks which plan renews when the trial ends. The trial itself stays the same |
+| **Cancel trial** | Opens **Cancel the trial?**. Choose **Yes, cancel the trial** or **Keep my trial** |
+
+Cancelling does not charge you. You keep everything until the trial end date, and after that the workspace becomes read-only until you choose a plan.
+
+## When a Trial Ends Without a Plan
+
+A workspace whose trial ended with no plan, or whose first payment failed, becomes **view only**. You can open and read your work, but you cannot edit or create, and features that spend credits are closed. Scheduled background work for the workspace, such as scheduled syncs, is skipped too.
+
+You see this in several places:
+
+* **A banner on Home.** It reads **Your trial ended without a plan**, or **Your payment didn't go through** when the charge failed. It gives the date the workspace will be deleted. Owners and admins get **Choose a plan**, plus **Update payment method** after a failed payment.
+* **A card at the bottom of the sidebar.** It reads **View only** and counts down, for example **Deleted in 12 days**. Owners and admins can click it to open the plans page.
+* **The same message on Plans & Credits**, above the empty plan details, with the same buttons.
+* **The credits badge in the top bar.** It reads **No active subscription · Choose plan**, or **Frozen** when credits are frozen for an ended plan.
+
+Members without billing access only read the message: **Ask your workspace owner or an admin to choose a plan.**
+
+### The deletion warning
+
+In the last 7 days before deletion, owners and admins also get a dialog when they open frndOS: **This workspace will be deleted on** the date shown. Deletion is permanent, with no recovery after that date.
+
+* **Choose a plan and keep it** goes to the plans page.
+* **Not now** closes it. It comes back the next day.
+
+Owners and admins are also emailed a warning. Dates are shown in Jakarta time (Asia/Jakarta), so the same day appears everywhere.
+
+## When an Action Needs a Plan
+
+If you start an AI action in a workspace with no active plan, frndOS opens a dialog instead of running it. What you typed stays where it is.
+
+| You see | What it means |
+|---|---|
+| **Choose a plan to use AI** | No plan has ever been picked. **Choose a plan** opens the plans page |
+| **Choose a plan to keep using AI** | The plan ended, so AI is paused. Choose a plan and everything is back |
+| **Finish setup to start your 14-day trial** | Setup is not finished. Owners get **Continue setup**. Others are told the owner is finishing setup |
+| **AI is available in team workspaces** | You are in a personal workspace. Switch to a team workspace or create one |
+
+## How to Keep a Workspace
+
+1. Open **Workspace Settings → Plans & Credits**, or click **Choose a plan** on the banner.
+2. Pick a plan.
+3. Add or update a payment method if asked.
+
+When the plan starts, the workspace is editable again and nothing from the trial is lost.
+
+## FAQ
+
+**Q: Can a member choose a plan?**
+Only someone with billing access to the workspace. Owners and admins have it. A member can be given it.
+
+**Q: Will I lose my work when the trial ends?**
+Not right away. The workspace turns view only until the deletion date. Choose a plan before that date to keep everything.
+
+**Q: Why does the date look a day off?**
+Deletion dates use Jakarta time, in the app and in the email.
+
+---
+
+## Related Articles
+
+- [Managing Workspace Credits](./managing-credits)
+- [Inviting Team Members](./inviting-team-members)
+- [Joining or Creating a Workspace](../getting-started/joining-or-creating-workspace)

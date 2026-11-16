@@ -39,6 +39,41 @@ At the bottom of the sidebar:
 
 > **Coming from the brand sidebar?** Opening a brand used to replace the whole sidebar with a brand sidebar, with **Back to Workspace** to return. That swap is gone. Modules are in the main sidebar, and the brand switcher sits in the page title.
 
+### The Chat-First Sidebar
+
+The sidebar is built around chat. Your projects and chats sit in the sidebar itself, and the top of the sidebar is a single compact row. From top to bottom:
+
+| Item | What It's For |
+|---|---|
+| **Your workspace** | The workspace tile and name at the top. Click it to open the [workspace menu](#the-workspace-menu), which also holds **Workspace Settings**. |
+| **Bell, Search, collapse** | Beside the workspace name: your notifications, **Search or ask** (tooltip **Search ⌘K**), and a button that collapses the sidebar |
+| **New** | Click it to start a chat. The small arrow beside it, labelled **New file** and hinting _"New doc, sheet, deck…"_, opens the [create menu](#creating-something-new). Resting the pointer on **New** opens that menu too |
+| **Home**, **Tasks**, **Calendar**, **Files** | The same rows as before |
+| **Customize** | One place for **myFRND** and **Workflows**. See [Customize](#customize) |
+| **Apps** | The apps you've pinned (**Insights**, **Radar**, **Research**, **Audience**), for the brand you're working on. **See all** opens **All apps**. See [Apps](../settings/apps). Where the workspace hasn't switched to Apps yet, this section is called **Modules** |
+| **Projects** | Your projects, each with its own chats inside. See [Projects and chats](#projects-and-chats) |
+| **Chats** | Your recent chats that aren't inside a project. **See all** opens your full history |
+| **Getting started** | A one-line checklist, for example **1 of 4**. It goes away when you hide it |
+| **Brands** | The Brands page: every brand you can open |
+
+There is no **Settings** row at the bottom any more. Open **Workspace Settings** from the workspace menu at the top.
+
+A small blue dot beside a chat or project means frnd is working on it right now.
+
+#### Projects and chats
+
+Under **Projects**, each project shows its **name** and a small arrow. The first project starts open and the rest are folded. Open a project to see up to two of your chats inside it. **More chats** opens the project when it has more. Only your own chats are listed there. A teammate's shared chat opens from the project room.
+
+* **See all** (on the **Projects** header) lists every project.
+* The **+** on the header, labelled **Create new project**, starts a new project.
+* With no projects yet, the section says **No projects yet**.
+
+A chat that doesn't belong to a project stays under **Chats**.
+
+#### Customize
+
+**Customize** replaces the separate **myFRND** and **Workflows** rows. It opens the myFRND page, titled **Customize**, with **Workflows** as one of its tabs. A workflow's builder still lights up the **Customize** row, and an old **Workflows** link opens the **Workflows** tab. See [myFRND](./myfrnd).
+
 ### Sidebar indicators
 
 Some rows tell you when something needs you, without opening the page:
@@ -138,10 +173,10 @@ Each section only shows when it has something in it, so a quiet day makes for a 
 
 The brand you're working on is named in the page title, with its logo, for example **Acme ⌄ / Insights**. Click it to switch:
 
-* **Search brands** finds a brand by name. With nothing typed, the menu lists your **Recent** brands
+* **Search brands** finds a brand by name. With nothing typed, the menu lists your **Pinned** brands first, then your **Recent** ones (see [Pinning Brands](#pinning-brands))
 * **Brand IQ** opens the current brand's [Brand IQ](../brand-setup/brand-iq)
 * **Brand settings** opens its settings, if you can manage the brand (see [Brand Settings](../settings/overview#brand-settings))
-* **Manage brands** opens the Brands page
+* **More brands** opens the Brands page
 * **New brand** creates one, if your role allows it (see [Setting Up Your First Brand](./your-first-brand))
 
 The search field is ready to type in as soon as the menu opens. Use ↑ and ↓ to move through the list, and **Esc** to close it. The brand you're on carries a check mark.
@@ -153,6 +188,18 @@ Switching brands changes your whole context:
 - Which Brand IQ applies
 - Which Insights data loads
 - Which credit context is active
+
+### Pinning Brands
+
+Pin the brands you use most so they stay at the top of every list.
+
+* **In the page-title switcher:** point at a brand row and click the pin that appears at its right edge. A pinned brand keeps its pin showing, and a filled pin means it is pinned. Click it again to unpin. The menu stays open, so you can pin several in a row.
+* **In the sidebar:** the **Brands** list in the sidebar's brand flyout (**See all**) has the same pins, with a **Pinned** group over an **All Brands** group.
+* **On the Brands page:** each brand card and list row has a pin button, and a pinned brand wears a small pin mark. Pinned brands sit in a **Pinned** group above **All brands**. While you search, the groups give way to one flat list.
+
+The menu names the control **Pin** followed by the brand's name, or **Unpin** followed by the name.
+
+A pinned brand is never listed twice: the switcher shows **Pinned** and **Recent** as separate groups, and **Recent** holds the next 5 most recently active brands. Pins are yours alone and are saved to your account, so they follow you across devices.
 
 ### The Brands page
 
@@ -242,26 +289,60 @@ Drag a file onto any page and drop it. Instead of guessing, frndOS asks _"What s
 
 Drops on things that take files themselves, such as a chat box, a deck canvas or an upload area, still go there. Folders can't be dropped; drop the files inside instead.
 
-## Appearance — Choosing Light or Dark
+## Appearance — Choosing a Theme and a Mode
 
-You can choose how frndOS looks on your device. Click the workspace name at the top of the sidebar, open **Miscellaneous**, and click **Theme**. The row shows your current theme and a **Beta** tag.
+You choose how frndOS looks on your device with two settings: a **Theme** (the style of panels and colours) and a **Mode** (light or dark).
 
-The **Appearance** dialog reads _"Choose how frndOS looks on this device."_ Four options:
+**Where to find it**
+
+* **Chat-first sidebar:** open the account menu, then **Appearance** under **You**. It opens a flyout that shows your current choice, for example **Orion · Daylight**. A pick applies at once and the menu stays open, so you see the result before leaving
+* **Classic sidebar:** click the workspace name at the top of the sidebar, open **Miscellaneous**, and click **Theme**. The row shows your current choice and a **Beta** tag, and opens the **Appearance** dialog: _"Choose how frndOS looks on this device."_
+
+### Theme
 
 | Theme | Description |
 |-------|-------------|
-| **System** | _"Daylight or Midnight, following your device."_ |
-| **Daylight** | _"Soft white canvas, dark ink."_ The light theme |
-| **Midnight** | _"The classic dark frndOS look."_ |
+| **frndOS** | _"The classic frndOS look."_ |
 | **Aurora** | _"Glass panels over a blue horizon."_ |
+| **Orion** | _"Calm, precise panels with one signal colour."_ |
 
-Each option shows a miniature preview. Select one and the theme applies instantly.
+Each card has a miniature preview. Aurora has no Daylight version yet: with Daylight on, it shows frndOS Daylight and the card says **Daylight coming later**.
 
-**Per device:** your choice is saved on the device you set it on. It doesn't sync across devices or affect other workspace members.
+### Mode
 
-> **A cleaner look.** frndOS has a cleaner type and colour style across the app, with calmer notices. Midnight is now a softer charcoal, and new users start on **System**.
+| Mode | Description |
+|-------|-------------|
+| **System** | _"Daylight or Midnight, following your device."_ |
+| **Daylight** | _"Soft white canvas, dark ink."_ |
+| **Midnight** | _"Dark canvas, light ink."_ |
 
-> The appearance picker is rolling out gradually. If you don't see **Theme** in the menu yet, it will appear once enabled for your workspace.
+The menu reads **Midnight** for the classic theme with dark mode, and joins the theme and mode for the others, for example **Orion · Daylight**.
+
+### What Orion changes
+
+Orion keeps the same pages, layout and controls. It changes the look:
+
+* The sidebar and the page sit flush against each other, divided by one thin line, and every page has a header bar
+* Cards on **Home** are flat panels with one hairline border, the composer is one panel, and numbers use evenly spaced digits
+* One warm signal colour (orange-red) marks what is active. The Daylight version is a white canvas with ink text
+* Calendar and Publish pages draw their rail dividers edge to edge
+
+**Per device:** your choice is saved on this device only (_"Saved on this device only."_). It doesn't sync across devices or change other members' view.
+
+> **A cleaner look.** frndOS has a cleaner type and colour style across the app, with calmer notices. Midnight is a softer charcoal, and new users start on **System**.
+
+## Rating Prompts
+
+Now and then frndOS asks you to rate what you just made. One survey is used everywhere, for example for visuals, decks, campaign plans, reports, Insights, Social Listening, Pitch and AskFRND answers.
+
+* A small prompt shows five faces, from **Very dissatisfied** to **Very satisfied**. Click one.
+* A low rating asks what went wrong, and a high rating asks what worked, each with a few quick options.
+* You can add a note in **Tell us more (any language)** and click **Send**. Closing the prompt is fine too.
+* If you leave it alone it shrinks to a small **Rate this** pill, so it never blocks your work.
+
+It waits until you stop typing or dragging, and it is limited to one prompt per feature group a day, with at least 30 minutes between prompts.
+
+> Rating prompts are rolling out gradually. If you never see one, it is not enabled for you yet.
 
 ## FAQ
 
