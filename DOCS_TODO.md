@@ -8,7 +8,7 @@ Sections follow the sidebar order (category `position`, then `sidebar_position`)
 
 **Types:** 📸 screenshot · ✍️ confirm from live UI · 🔒 third-party/iframe
 
-_Last updated: 2026-10-19_ (October 2026 Part 5, from Changed onward: Files Copy link, Listening sources Brand/Critics tabs + role override + Ranked by, AskFRND images/videos/diagrams only from trusted places, KV Studio arrow-key nudge + Replace image keeps aspect, Project Room @frnd + Since you looked + Draft with frnd + credits, Research share/export/slides/next-step tasks + why a scorecard stopped, Social Listening translation + tracked keywords + relevance, Reports Google Sheets channel, selection bar wording. Previous: 2026-10-13_ (October 2026 Part 3, from Changed onward: Format icon column, Label Posts multi-account + Author + Group by, shared Group by panel, workspace menu + brand switcher menu, Playbook Create/Refresh + longer history, fixes for Lark plugins switching off, Safari motion export/playback, Gemini image models. Resolved: `show-modules-nav` and `label-posts-overlay` confirmed 100% in PostHog. Previous: 2026-10-08_ (blog post frndos-september-2026-part-2; October 2026 Part 2, New: Social Listening guide, Client Portal guide, sidebar with Modules + page-title brand switcher (and every guide's "open the brand" steps), AskFRND floating/docked/fullscreen panel with steps, Reply and Branch, KV Motion preset library + Tune panel + Animate all style packs, Project Room v2 (header details, tabs, milestones, Needs you, project chip), Research Overview v2 + answer-first scorecard + Competitor and Desk Studies guide. Fixed: Story kept on open, sheets mapping locks after save, low-credit alert counts Extra Credit, menus inside dialogs, Resize tile edits. Changed + Improved: calmer Tasks, scorecard band names, Brand Settings in the main app, Brand IQ Summary, Studies table, study notifications, 200-artboard approvals, deck slide strip. Also blog post frndos-october-2026-part-2: no recap video, help articles to refresh for Social Listening, client portal, sidebar, AskFRND, Brand IQ summary, KV Motion presets. Previous: 2026-10-06, October 2026 product update: Story writing mode, KV approval requests, scorecard parts/report/rubric, Calendar, Home v2, tool activation, workflow build in chat; blog post frndos-october-2026))
+_Last updated: 2026-11-16_ (November 2026, Changed section: trial/plan/read-only guide, rating prompts. Previous: 2026-10-19_ (October 2026 Part 5, from Changed onward: Files Copy link, Listening sources Brand/Critics tabs + role override + Ranked by, AskFRND images/videos/diagrams only from trusted places, KV Studio arrow-key nudge + Replace image keeps aspect, Project Room @frnd + Since you looked + Draft with frnd + credits, Research share/export/slides/next-step tasks + why a scorecard stopped, Social Listening translation + tracked keywords + relevance, Reports Google Sheets channel, selection bar wording. Previous: 2026-10-13_ (October 2026 Part 3, from Changed onward: Format icon column, Label Posts multi-account + Author + Group by, shared Group by panel, workspace menu + brand switcher menu, Playbook Create/Refresh + longer history, fixes for Lark plugins switching off, Safari motion export/playback, Gemini image models. Resolved: `show-modules-nav` and `label-posts-overlay` confirmed 100% in PostHog. Previous: 2026-10-08_ (blog post frndos-september-2026-part-2; October 2026 Part 2, New: Social Listening guide, Client Portal guide, sidebar with Modules + page-title brand switcher (and every guide's "open the brand" steps), AskFRND floating/docked/fullscreen panel with steps, Reply and Branch, KV Motion preset library + Tune panel + Animate all style packs, Project Room v2 (header details, tabs, milestones, Needs you, project chip), Research Overview v2 + answer-first scorecard + Competitor and Desk Studies guide. Fixed: Story kept on open, sheets mapping locks after save, low-credit alert counts Extra Credit, menus inside dialogs, Resize tile edits. Changed + Improved: calmer Tasks, scorecard band names, Brand Settings in the main app, Brand IQ Summary, Studies table, study notifications, 200-artboard approvals, deck slide strip. Also blog post frndos-october-2026-part-2: no recap video, help articles to refresh for Social Listening, client portal, sidebar, AskFRND, Brand IQ summary, KV Motion presets. Previous: 2026-10-06, October 2026 product update: Story writing mode, KV approval requests, scorecard parts/report/rubric, Calendar, Home v2, tool activation, workflow build in chat; blog post frndos-october-2026))
 
 ## Getting Started
 
@@ -744,3 +744,284 @@ _Last updated: 2026-10-19_ (October 2026 Part 5, from Changed onward: Files Copy
 | Recap video | 🎬 video | the Lark brief has no recap video. Add one with `news-video.mjs --file <path> frndos-october-2026-part-4`, then place the `<S3Video>` block under the lede |
 | Listening and Google Sheets | ✍️ confirm from live UI | "day windows line up" comes from `frnd-api-php` commit `8825ced62`, not from a UI label. Row delete and dedup for Google Sheets is not claimed in the post; see the `docs/insights/connecting-owned-media.mdx` row |
 | Files, Campaigns and Fixes | ✍️ confirm from live UI | "Steadier share pages" comes from `frnd-api-php` throttles (`share-resolve`, `share-password`), not from a UI label. The 200-row report totals fix lives in `frnd-clickhouse-api` (no `production` branch) and is left out of the post |
+
+### `docs/workspace/trial-and-plans.mdx` — Trials, Plans and Read-Only Workspaces
+
+| Section | Type | What to do |
+|---|---|---|
+| During the Trial | 📸 screenshot | add screenshot of the trial panel on Plans & Credits → /img/guides-asset/<name>.jpeg |
+| When a Trial Ends Without a Plan | 📸 screenshot | add screenshot of the Home lapse banner and the sidebar View only card → /img/guides-asset/<name>.jpeg |
+| When an Action Needs a Plan | ✍️ confirm from live UI | confirm the paywall dialog wording on production |
+
+### `docs/getting-started/navigating-frndos.mdx` — Navigating frndOS — The Sidebar
+
+| Section | Type | What to do |
+|---|---|---|
+| Rating Prompts | 📸 screenshot | add screenshot of the five-face rating prompt and its follow-up → /img/guides-asset/<name>.jpeg |
+
+### `docs/insights/social-listening.mdx` — Social Listening
+
+| Section | Type | What to do |
+|---|---|---|
+| The Overview tab | 📸 screenshot | add screenshot of the Overview tab: tiles, Alerts, What's changing, What people are saying, Where it's happening → /img/guides-asset/<name>.jpeg |
+
+### `docs/getting-started/navigating-frndos.mdx` — Navigating frndOS — The Sidebar (chat-first)
+
+| Section | Type | What to do |
+|---|---|---|
+| The Chat-First Sidebar | 📸 screenshot | add screenshot of the chat-first sidebar: workspace row, New with its arrow, Projects with chats inside, Chats, Getting started, Brands → /img/guides-asset/<name>.jpeg |
+| Customize | 📸 screenshot | add screenshot of the Customize page with its Workflows tab → /img/guides-asset/<name>.jpeg |
+
+
+### `docs/settings/apps.mdx` — Apps: Choosing What Your Workspace Uses
+
+| Section | Type | What to do |
+|---|---|---|
+| All Apps | 📸 screenshot | add screenshot of the All apps launcher with pins → /img/guides-asset/<name>.jpeg |
+| Turning Apps On or Off (Admins) | 📸 screenshot | add screenshot of Workspace Settings → Apps and the turn-off dialog → /img/guides-asset/<name>.jpeg |
+| Pinning Brands | 📸 screenshot | add screenshot of the brand switcher with Pinned and Recent groups and the pin on a row → /img/guides-asset/<name>.jpeg |
+
+### `docs/workspace/inviting-team-members.mdx` — Inviting Team Members
+
+| Section | Type | What to do |
+|---|---|---|
+| Invited from inside frndOS | 📸 screenshot | add screenshot of the invitation page with Accept invitation and Decline invitation → /img/guides-asset/<name>.jpeg |
+| Invited from inside frndOS | ✍️ confirm from live UI | the inline Accept / Decline on notification rows and Home is behind `show-inapp-workspace-invite`, which is not in PostHog (off in production). Add it to the guide once the flag is on |
+
+### `docs/radar/overview.mdx` — Radar Overview
+
+| Section | Type | What to do |
+|---|---|---|
+| The Daily Briefing | 📸 screenshot | add screenshot of the Overview: briefing, front page, and the side column → /img/guides-asset/<name>.jpeg |
+| Radar Overview (not written) | ✍️ confirm from live UI | the Ops layout (map of Indonesia with province ranking, KPI strip, action items) is on only for one workspace (`show-radar-ops-overview`); write it when it is on for everyone |
+| Radar Overview (not written) | ✍️ confirm from live UI | "What's next" (topic outlook) is behind `show-radar-outlook`, which is not in PostHog; write it once the rollout is known |
+
+### `docs/radar/industry.mdx` — Radar Industry
+
+| Section | Type | What to do |
+|---|---|---|
+| Competitor Moves | 📸 screenshot | add screenshot of the Industry page: briefing, front page, competitor timeline → /img/guides-asset/<name>.jpeg |
+| Opening a Story | 📸 screenshot | add screenshot of a story pop-up with summary, What it means, Sources → /img/guides-asset/<name>.jpeg |
+| Industry Settings | 📸 screenshot | add screenshot of Industry settings with its three tabs → /img/guides-asset/<name>.jpeg |
+| Radar Industry | ✍️ confirm from live UI | the Show menu (All sources, Local, International) is disabled with "Coming soon"; document it when it ships. Whether news collection and AI summaries are on in production was confirmed by the user, not read from config (MARKET_COLLECT_ENABLED and MARKET_AI_ENABLED default off) |
+| Radar Industry (not written) | ✍️ confirm from live UI | the Admin › Radar › Industry pages (superadmin) are internal and not documented here |
+
+### `docs/radar/prediction.mdx` — Radar Prediction
+
+| Section | Type | What to do |
+|---|---|---|
+| Actions | 📸 screenshot | add screenshot of the Prediction page: action cards with severity and confidence → /img/guides-asset/<name>.jpeg |
+| Opening an action | 📸 screenshot | add screenshot of an action's detail: What to do, What's predicted, Why → /img/guides-asset/<name>.jpeg |
+| The 30-Day Chart | 📸 screenshot | add screenshot of the 30-day chart with the dashed forecast and shaded range → /img/guides-asset/<name>.jpeg |
+| What the Data Shows | ✍️ confirm from live UI | the card lists Publish as a source, but Publish is off in production (`show-publish` 0%); confirm what that row shows to a real user |
+
+### `docs/radar/explore.mdx` — Radar Explore
+
+| Section | Type | What to do |
+|---|---|---|
+| The Map | 📸 screenshot | add screenshot of the Explore page: header, tiles, timeline, map with Who drives it → /img/guides-asset/<name>.jpeg |
+| The Timeline | 📸 screenshot | add screenshot of "How the conversation grew" with the replay controls → /img/guides-asset/<name>.jpeg |
+| Full screen | 📸 screenshot | add screenshot of the full-screen map → /img/guides-asset/<name>.jpeg |
+| Radar Explore (not written) | ✍️ confirm from live UI | "Coordination signals" (groups that post nearly the same text) is behind `show-market-explore-coordination`, which is not in PostHog (off in production); write it once the rollout is known |
+| Full screen | ✍️ confirm from live UI | confirm whether Esc and the F key leave or open full screen; the code shows a tooltip "Full screen (F)" but I found no handler |
+
+### `docs/radar/sharing.mdx` — Sharing Radar
+
+| Section | Type | What to do |
+|---|---|---|
+| Sharing a Page | 📸 screenshot | add screenshot of the Share Overview dialog with the Team link and Public link → /img/guides-asset/<name>.jpeg |
+| What an Outsider Sees | 📸 screenshot | add screenshot of a shared Radar page as an outsider sees it (Shared via frndOS, link expiry) → /img/guides-asset/<name>.jpeg |
+| Sharing a Page | ✍️ confirm from live UI | confirm where the Share button sits on each tab and when it appears (it is hidden until a page is ready, and for Industry until a covered industry exists) |
+
+### `docs/radar/comments.mdx` — Comments on Radar
+
+| Section | Type | What to do |
+|---|---|---|
+| Commenting on a Section | 📸 screenshot | add screenshot of Overview in comment mode with a pin and the comment dock → /img/guides-asset/<name>.jpeg |
+| Commenting on a Story | 📸 screenshot | add screenshot of a story pop-up with its Discussion column → /img/guides-asset/<name>.jpeg |
+| The Radar Activity Feed | 📸 screenshot | add screenshot of the Market activity feed → /img/guides-asset/<name>.jpeg |
+| Where Comments Work | ✍️ confirm from live UI | the guide says Trends and Listening use the Insights comment rail; confirm what a user sees there. Also confirm that no comment mode exists on Explore and Prediction (the code only declares a comment scope for Overview and Industry) |
+
+### `docs/radar/radar-tabs.mdx` — Customizing Radar Tabs
+
+| Section | Type | What to do |
+|---|---|---|
+| Setting Workspace Defaults | 📸 screenshot | add screenshot of Workspace Settings → Radar Tabs with the label and Visible rows → /img/guides-asset/<name>.jpeg |
+| Overriding a Brand | 📸 screenshot | add screenshot of a brand's Radar Tabs settings with inherited placeholders → /img/guides-asset/<name>.jpeg |
+| Which Tabs Appear in the List | ✍️ confirm from live UI | confirm which tabs get a row in production (rows follow the Overview, Industry, Explore and Prediction flags) |
+
+### `docs/studio/studio-canvas.mdx` — Studio Canvas
+
+| Section | Type | What to do |
+|---|---|---|
+| Starting a Canvas | 📸 screenshot | add screenshot of the empty canvas: "What are we making today?", the ratio, and the template → /img/guides-asset/<name>.jpeg |
+| Nodes | 📸 screenshot | add screenshot of the Add to canvas panel and a wired graph of nodes → /img/guides-asset/<name>.jpeg |
+| Nodes | ✍️ confirm from live UI | the Text generator price (about 2 credits) is marked (est.) in the code; confirm the real price. Size set quotes use estimates of about 5 credits per size (Keep layers) and 20 (AI regenerate) |
+| Motion | ✍️ confirm from live UI | the Motion timeline is hidden on a real file and the motion node has no runner; document motion on the canvas once it ships |
+| Working on an Image | ✍️ confirm from live UI | Camera angle needs `show-kv-object-angle` (100%) and Separate layers needs `show-kv-layer-decompose` (limited to the production environment); confirm what a user sees |
+| Opening a Canvas | ✍️ confirm from live UI | the Studio entry in the create menu depends on `show-studio-canvas` plus brand access; confirm what a user without a brand sees |
+
+### `docs/studio/studio-agent.mdx` — Studio Agent
+
+| Section | Type | What to do |
+|---|---|---|
+| Opening the Agent | 📸 screenshot | add screenshot of the agent dock with the greeting, the starters, and the Studio and selection chips → /img/guides-asset/<name>.jpeg |
+| Plans: Quote First, Spend on Go | 📸 screenshot | add screenshot of a Plan card with its steps, total, Go and Cancel → /img/guides-asset/<name>.jpeg |
+| What Changed, and Undo | 📸 screenshot | add screenshot of a run summary ("Added 2 nodes · Wired 2") with Undo and the confirm → /img/guides-asset/<name>.jpeg |
+| When It Asks You Something | ✍️ confirm from live UI | confirm the Which nodes? card wording; the code shows the button as "Skip" followed by "use your judgement" with an em dash |
+| What the Agent Can Do | ✍️ confirm from live UI | the tool list also includes Deleted and Placed (templates); confirm they reach users, and confirm whether deletes ask for confirmation first |
+
+### `docs/studio/find-objects.mdx` — Finding Objects in an Image
+
+| Section | Type | What to do |
+|---|---|---|
+| Marking an Area | 📸 screenshot | add screenshot of Region edit with a numbered frame and the bottom bar → /img/guides-asset/<name>.jpeg |
+| Using Find objects | 📸 screenshot | add screenshot of the blue outlines and the "What should happen to this?" box → /img/guides-asset/<name>.jpeg |
+| Marking an Area | ✍️ confirm from live UI | the warning "Region edit runs on the master in P2" is a leftover phase label; confirm the wording users see |
+| Before You Start | ✍️ confirm from live UI | Find objects needs `show-studio-object-detect` (100%), a KV-generation image, the master tab, and an editable file; confirm which Studio images qualify |
+
+### `docs/docs-sheets/docs.mdx` — Docs
+
+| Section | Type | What to do |
+|---|---|---|
+| Starting Points | 📸 screenshot | add screenshot of the empty doc with the Start with templates → /img/guides-asset/<name>.jpeg |
+| The slash menu | 📸 screenshot | add screenshot of the slash menu with its blocks → /img/guides-asset/<name>.jpeg |
+| Ask frnd | 📸 screenshot | add screenshot of a doc with the Ask frnd chat and the Suggest frnd's edits switch → /img/guides-asset/<name>.jpeg |
+| Version History | 📸 screenshot | add screenshot of the version history panel → /img/guides-asset/<name>.jpeg |
+| Docs (not written) | ✍️ confirm from live UI | behind flags that are off in production: Publish to website (`show-blog-channels` 0%), Find a photo for covers (`show-doc-web-images`), wide blocks (`show-doc-wide-blocks`), moments (`show-doc-moments`), live objects (`show-doc-live-objects`), doc tasks (`show-doc-tasks`), margin sources (`show-doc-margin-sources`); write them when on |
+| Docs | ✍️ confirm from live UI | `show-docs` has a 100% group with no conditions plus smaller groups; confirm it applies to every user |
+
+### `docs/docs-sheets/sheets.mdx` — Sheets
+
+| Section | Type | What to do |
+|---|---|---|
+| Columns | 📸 screenshot | add screenshot of a sheet with Text, Copy and Image columns → /img/guides-asset/<name>.jpeg |
+| Generating | 📸 screenshot | add screenshot of the Generate card with the scope choices and the Estimated total → /img/guides-asset/<name>.jpeg |
+| Views | 📸 screenshot | add screenshot of the Gallery view and the view bar → /img/guides-asset/<name>.jpeg |
+| Sharing and Exporting | 📸 screenshot | add screenshot of the Share menu and the Client review link → /img/guides-asset/<name>.jpeg |
+| Sheets (not written) | ✍️ confirm from live UI | the Publish plan (Approvals, Add channel, Publish column), the Board view and blog channels are behind `show-publish`, `show-sheet-board` and `show-blog-channels` (all 0%); write them when on |
+| Sheets | ✍️ confirm from live UI | `show-sheets` has a 100% group with no conditions; confirm it applies to every user, and confirm the row statuses Scheduled and Published appear on a plain (non-Publish) sheet |
+
+### `docs/radar/askfrnd.mdx` — Asking AskFRND About Radar
+
+| Section | Type | What to do |
+|---|---|---|
+| Asking From a Radar Page | 📸 screenshot | add screenshot of AskFRND on a Radar tab with the starter questions → /img/guides-asset/<name>.jpeg |
+| What a Radar Answer Looks Like | 📸 screenshot | add screenshot of a short Radar answer with bold numbers and the icon bullets → /img/guides-asset/<name>.jpeg |
+| Maps in a Reply | 📸 screenshot | add screenshot of an Explore map card and an Indonesia map card in a reply → /img/guides-asset/<name>.jpeg |
+| Turning the Radar Tools On | ✍️ confirm from live UI | confirm the tools show under Knowledge in Chat Settings → Tools and that they default off (the API's TOOL_TOGGLE_DEFAULTS sets radar_industry, radar_explore and radar_prediction to false) |
+| Maps in a Reply | ✍️ confirm from live UI | the Indonesia map reads the province counts of Overview's map section, which comes from the Ops map layout (a single workspace in production, `show-radar-ops-overview`); confirm whether other workspaces get province rows |
+| What a Radar Answer Looks Like | ✍️ confirm from live UI | the short answer style and the map instructions are in frnd-ai-services `frndos-main` (promoted 2026-11-15); the style is model-guided, so exact wording varies |
+
+### `docs/insights/owned-media.mdx` — Owned Media (Improved, Clearer numbers)
+
+| Section | Type | What to do |
+|---|---|---|
+| Average ER per Post | ✍️ confirm from live UI | the label **Avg. ER per Post** is in code (`OwnedMediaContent` renames the API's "ER%" card), but confirm it on every screen listed, and that LinkedIn is skipped in production |
+| Metrics a channel doesn't report | ✍️ confirm from live UI | the dash rule (`formatMetric`, `sumReported`) is in code and the web and API commits are in production; the visual check against a Facebook-only and a Google-only selection was not run (task 13 of the track is open), so confirm it in the UI |
+
+### `docs/decks/deck-assistant.mdx` — Deck assistant (Improved, Steadier chat)
+
+| Section | Type | What to do |
+|---|---|---|
+| When a Turn Fails | ✍️ confirm from live UI | the failed-turn notice (Try again, billing, provider, model, too long, connection) is shown in the deck chat; confirm whether the same notice appears in the main AskFRND chat, which the code does not show |
+| Stopping a Reply | ✍️ confirm from live UI | only the deck's compose_deck build is known to be stopped mid-run; confirm what the stop button does for other tools |
+
+### `docs/askfrnd/overview.mdx` — AskFrnd (Improved, Newer AI models)
+
+| Section | Type | What to do |
+|---|---|---|
+| Model Choice | ✍️ confirm from live UI | the default chat model is DeepSeek V4.1 Flash only where no superadmin model order overrides it (the API says a superadmin's model settings override the order per environment); confirm what the first model in the production picker is |
+| Model Choice (not written) | ✍️ confirm from live UI | the release note says AskFRND and the AI features run on the newest Claude and OpenAI models. In code, FRnD system agents default to Claude Opus 5.5 and Sonnet 5.5, and legacy OpenAI defaults moved to gpt-6.1-terra, gpt-6.1-sol and gpt-6-luna. These are backend choices with no user-facing label, so they are not in the guide |
+| Safer (not written) | ✍️ confirm from live UI | public share links hardened against guessing, the sign-in token kept on the API, error messages hiding internal details: all are in code (`79a7b7c44`, `30aa8019d`), but there is no on-screen wording or step to document |
+
+### `docs/insights/report-generator.mdx` — Report Generator
+
+| Section | Type | What to do |
+|---|---|---|
+| Starting a Report | 📸 screenshot | add screenshot of the Generate report button in an Insights tab's toolbar → /img/guides-asset/<name>.jpeg |
+| The Confirm Card | 📸 screenshot | add screenshot of the confirm card: Report, Covers, This report covers, Numbers as of, Style → /img/guides-asset/<name>.jpeg |
+| The Outline | 📸 screenshot | add screenshot of the docked outline with its chips and the slide rows → /img/guides-asset/<name>.jpeg |
+| When it's ready | 📸 screenshot | add screenshot of the ready card with Open in Slides, Share and More → /img/guides-asset/<name>.jpeg |
+| Making It Automatic | 📸 screenshot | add screenshot of the automation card with Report day, Repeat and Tell me when it's ready → /img/guides-asset/<name>.jpeg |
+| Starting a Report | ✍️ confirm from live UI | the PRD is still marked draft; this guide follows the web code on origin/production. `show-report-generator` has a 100% group with no conditions, so confirm it applies to every user |
+| The Confirm Card | ✍️ confirm from live UI | **Campaign…** is rendered disabled (`disabled: ... t === "campaign"` in ReportConfirmCard); confirm whether campaign reports exist anywhere in production and update the guide when they do |
+| Where Reports Live | ✍️ confirm from live UI | the API sets `language` to `en` and the timezone to Asia/Jakarta (`No brand or workspace language/time-zone setting exists yet`); the PRD says reports follow a brand or workspace language. The guide follows the code. Re-check when a language setting ships |
+| Writing | ✍️ confirm from live UI | the PRD describes a Stop button in the composer while writing; the code only notes that Stop cannot reach a running `write_report` tool, so the guide leaves it out |
+| Making It Automatic | ✍️ confirm from live UI | confirm the Quarterly cadence label, the report-day menu text for weekly, and whether the schedule-permission copy appears on the card |
+
+### `docs/research/study-page.mdx` — The Study Page
+
+| Section | Type | What to do |
+|---|---|---|
+| The Three Parts | 📸 screenshot | add screenshot of Ask frnd, Scorecard and The file side by side with pins → /img/guides-asset/<name>.jpeg |
+| Focus on the file | 📸 screenshot | add screenshot of the focus rail → /img/guides-asset/<name>.jpeg |
+| Run History and Score Again | 📸 screenshot | add screenshot of the run chip and the read-only older-run banner → /img/guides-asset/<name>.jpeg |
+| Sharing a Study | 📸 screenshot | add screenshot of the Share panel with expiry, PDF and approve options → /img/guides-asset/<name>.jpeg |
+| Sharing a Study | ✍️ confirm from live UI | the exact permission needed to create a view-only link (code gates on `canWrite`) and whether a scorecard offers its own link rules (several live links, report share links) |
+| Run History and Score Again | ✍️ confirm from live UI | credit cost of Score again is not shown in the code read; the guide does not mention credits |
+| Comparing Two Scorecards | 📸 screenshot | add screenshot of the Compare with… sheet and the side-by-side page → /img/guides-asset/<name>.jpeg |
+| (not written) Video check | ⛔ flag off | `show-video-check` is at 0% in PostHog; method card, pretest, shared page and Compare for video checks are not documented |
+| (not written) Competitor ads | ⛔ flag off | `show-competitor-ads` is at 0%; positioning map, ad wall and CSV are not documented |
+| (not written) Write it up | ⛔ not on scorecards | `Write it up` is only in the video check and competitor ads export menu, so no scorecard guide mention |
+| (not written) Study in Docs | ✍️ confirm from live UI | a doc can show a live Research study (`Live · Research`, `Open in Research`, doc Insert tab Research); only commit messages were read, UI wording not verified |
+
+### (not written) Dashboards from chat (artifact dashboard)
+
+| Item | Type | What to do |
+|---|---|---|
+| Build a dashboard in AskFRND, `/dashboards/<id>` page, Files Dashboards chip, Insight "Build with frnd" / "Open dashboard from Files" / "Remove from Insight", Overview "Open as dashboard", per-dashboard icon, undo/redo, card removal confirmation | ⛔ flag off | `useArtifactDashboardEnabled` needs `show-artifact-dashboard` (100%) AND chat-first shell (100%) AND `canvas-ai-builder`, which in PostHog is on only for `environment=staging`. So production users get none of it, and `/dashboards/<id>` redirects away. Write the guide when `canvas-ai-builder` opens to everyone (check `system.feature_flags` again). Read from frnd-web `origin/production` (`9efabceda`): `DashboardArtifactWorkspace.tsx`, `DashboardChatPanel.tsx`, `DashboardArtifactDialogs.tsx`, PRD `docs/prd/artifact-dashboard-askfrnd/` |
+| frnd summary block on a composed dashboard (`ai_summary`) | ✍️ confirm from live UI | gated by `show-artifact-dashboard` alone (100%), so it would show on any composed dashboard attached to Insight, but composed dashboards can only be made through the gated builder. Check with the user whether any exist in production; covers the "AI summary in Insights" item too |
+
+### `docs/early-access/pitch.mdx` — Working With a Team
+
+| Section | Type | What to do |
+|---|---|---|
+| Owner, Reviewer and Request review | 📸 screenshot | add screenshot of a step's toolbar with Owner, Reviewer, Request review and the Review requested badge → /img/guides-asset/<name>.jpeg |
+| The pitch panel | 📸 screenshot | add screenshot of the right panel with Session, Comments and History tabs and the Activity feed → /img/guides-asset/<name>.jpeg |
+| What the team chose | 📸 screenshot | add screenshot of the Decisions tab with What the team chose and a Changed badge → /img/guides-asset/<name>.jpeg |
+| Owner, Reviewer and Request review | ✍️ confirm from live UI | the exact position of the Owner/Reviewer menus on the step (code: StepTeamReview in StepCanvas toolbar); "above the step's page" is a paraphrase |
+| The pitch panel | ✍️ confirm from live UI | the panel only mounts in the chat-first canvas frame at md width and above (`framed`); confirm the narrower-window fallback wording |
+| (not written) Decision block | ⛔ flag off | `show-pitch-decision-block` 0%: Compare, Lock / Change, Ready to lock? on Proposition and Big Idea |
+| (not written) Upstream update | ⛔ flag off | `show-pitch-upstream-update` 0%: out-of-sync steps update as a preview, before/after sections, **Update** marks in the rail |
+| (not written) Intake screen | ⛔ flag off | `show-pitch-intake` 0%: one-screen "Here's what I understood" and the intake chat cards |
+
+### `docs/getting-started/navigating-frndos.mdx` — Appearance (Orion)
+
+| Section | Type | What to do |
+|---|---|---|
+| Where to find it | 📸 screenshot | add screenshot of the chat-first Appearance flyout with Theme and Mode → /img/guides-asset/<name>.jpeg |
+| Theme | 📸 screenshot | add screenshot of the three theme cards (frndOS, Aurora, Orion) → /img/guides-asset/<name>.jpeg |
+| What Orion changes | 📸 screenshot | add Orion Home in Midnight and Daylight → /img/guides-asset/<name>.jpeg |
+| What Orion changes | ✍️ confirm from live UI | "orange-red" is read from the preview palette (#FF5533 dark, #E5401F light); the bullets come from commit messages (#1271, #1281, #1296, #1561, #1500); confirm what a user sees. The Orion Radar Ops province map is NOT written (one workspace, `show-radar-ops-overview`) |
+| Where to find it | ✍️ confirm from live UI | whether a workspace still shows the **Beta** tag and the classic Miscellaneous path alongside the chat-first flyout |
+
+### `docs/getting-started/setting-up-your-workspace.mdx` — Onboarding and trial
+
+| Section | Type | What to do |
+|---|---|---|
+| Before the Setup | 📸 screenshot | add screenshot of the email screen and the Check your email code screen → /img/guides-asset/<name>.jpeg |
+| Step by Step | 📸 screenshot | add screenshots of Workspace, Team, Brand and Data steps → /img/guides-asset/<name>.jpeg |
+| Trial started | 📸 screenshot | add screenshot of the trial pass with Download and Share → /img/guides-asset/<name>.jpeg |
+| Leaving and Coming Back | 📸 screenshot | add screenshot of the Finish setup banner with the progress ring → /img/guides-asset/<name>.jpeg |
+| Leaving and Coming Back | ✍️ confirm from live UI | the exact dot count and ring for each case, and the refusal flow (second workspace while the first waits) were read from code and commit messages only |
+| If You Were Invited | ✍️ confirm from live UI | that an invited person skips the workspace setup entirely; read from `invitation.ts` and the ownership guard, not walked through |
+| Before the Setup | ✍️ confirm from live UI | the Resend timer is 30 seconds in code (`RESEND_SECONDS`); the old guide said the code lasts 2 minutes and sign-up expires in 24 hours: both removed from creating-account.mdx because the new screen does not say them. Confirm real code expiry with the backend |
+| creating-account.mdx | ✍️ confirm from live UI | the old guide described Email + Password sign-up; the code has no password field on the sign-up path (0 mentions in EmailStep and SignupClient). Confirm no password sign-up still exists anywhere |
+
+### Fixed and Improved (November 2026 release note), what was and was not written
+
+| Item | Type | Result |
+|---|---|---|
+| Your language (AskFRND replies in the language you last typed) | ✅ written | `docs/askfrnd/overview.mdx` "The Language of Replies"; basis: `frnd-ai-services` `frndos-main` `service.py` prompt ("Reply in the language the person last typed in … Button presses such as Go, Skip and Cancel don't count") |
+| Research answers cite their sources | ✅ written | `docs/askfrnd/overview.mdx` "Answers About Current Events"; basis `1b63dd5f`, `3d13b9c6` (prompt asks for result link and date, labels snippet-only evidence, ownership unverified). This is a prompt instruction, not a guarantee: the wording says "is asked to" |
+| New brand can take its logo from the website icon | ✅ written | `setting-up-your-workspace.mdx` Brand step; basis `de0199003`. The Radar story favicon fallback (`979b6007a`) is a different, Radar-only change, not written |
+| A trial changed or cancelled mid-way could charge twice or lose the picked plan | ✅ already covered | `trial-and-plans.mdx` already says Cancel keeps everything to the end date with nothing charged; api `2484b6141` also drops the picked plan, now stated in the existing wording only |
+| Setup resumes at the right step / no second workspace | ✅ written | `setting-up-your-workspace.mdx` "Leaving and Coming Back" |
+| Muse Spark models show the Meta logo | ⛔ not written | `modelProviderLogo.ts`; the Model Choice list names no individual models and Muse Spark is on 9router only (internal tier). No user-facing page to change |
+| Custom Reports AI summaries and thumbnails | ⛔ not written | no UI wording found in production for a "Custom Reports" surface; only the Sunlight demo thumbnails (`e242059df`) and safe-thumbnail fixes. Needs the exact screen from the release owner |
+| Radar stories naming the competitor, job boards left out; story pictures | ⛔ not written | backend collection rules, no wording a user reads; the Radar docs already describe stories without those details |
+| Top posts and top creators counting a post twice; false zero counters; dash for unreported metrics | ⛔ not written (dash covered earlier) | no new on-screen behaviour beyond the dash already in `owned-media.mdx`; counter fixes are data corrections |
+| Unfinished report drafts shown to colleagues | ⛔ not written | api sets `seen_at` and keeps drafts out of Files for others; I found no user-visible label to quote. Add one line to `report-generator.mdx` once a screen confirms it |
+| Safer (share links, sign-in, error messages) / Steadier chat provider fallback | ⛔ not written | security and backend changes, no user action. Failed-message and Stop were written earlier in `askfrnd/overview.mdx` and `deck-assistant.mdx` |
+| Newer AI models | ⛔ not written | model swaps with no UI wording; default model line is already in `askfrnd/overview.mdx` |
