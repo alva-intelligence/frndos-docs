@@ -8,7 +8,7 @@ Sections follow the sidebar order (category `position`, then `sidebar_position`)
 
 **Types:** 📸 screenshot · ✍️ confirm from live UI · 🔒 third-party/iframe
 
-_Last updated: 2026-11-16_ (blog post frndos-november-2026 added. November 2026, Changed section: trial/plan/read-only guide, rating prompts. Previous: 2026-10-19_ (October 2026 Part 5, from Changed onward: Files Copy link, Listening sources Brand/Critics tabs + role override + Ranked by, AskFRND images/videos/diagrams only from trusted places, KV Studio arrow-key nudge + Replace image keeps aspect, Project Room @frnd + Since you looked + Draft with frnd + credits, Research share/export/slides/next-step tasks + why a scorecard stopped, Social Listening translation + tracked keywords + relevance, Reports Google Sheets channel, selection bar wording. Previous: 2026-10-13_ (October 2026 Part 3, from Changed onward: Format icon column, Label Posts multi-account + Author + Group by, shared Group by panel, workspace menu + brand switcher menu, Playbook Create/Refresh + longer history, fixes for Lark plugins switching off, Safari motion export/playback, Gemini image models. Resolved: `show-modules-nav` and `label-posts-overlay` confirmed 100% in PostHog. Previous: 2026-10-08_ (blog post frndos-september-2026-part-2; October 2026 Part 2, New: Social Listening guide, Client Portal guide, sidebar with Modules + page-title brand switcher (and every guide's "open the brand" steps), AskFRND floating/docked/fullscreen panel with steps, Reply and Branch, KV Motion preset library + Tune panel + Animate all style packs, Project Room v2 (header details, tabs, milestones, Needs you, project chip), Research Overview v2 + answer-first scorecard + Competitor and Desk Studies guide. Fixed: Story kept on open, sheets mapping locks after save, low-credit alert counts Extra Credit, menus inside dialogs, Resize tile edits. Changed + Improved: calmer Tasks, scorecard band names, Brand Settings in the main app, Brand IQ Summary, Studies table, study notifications, 200-artboard approvals, deck slide strip. Also blog post frndos-october-2026-part-2: no recap video, help articles to refresh for Social Listening, client portal, sidebar, AskFRND, Brand IQ summary, KV Motion presets. Previous: 2026-10-06, October 2026 product update: Story writing mode, KV approval requests, scorecard parts/report/rubric, Calendar, Home v2, tool activation, workflow build in chat; blog post frndos-october-2026))
+_Last updated: 2026-11-23_ (new Publish pillar: overview, planning & approving, scheduling & publishing, marking published & results. Previous: 2026-11-16, blog post frndos-november-2026 added. November 2026, Changed section: trial/plan/read-only guide, rating prompts. Previous: 2026-10-19_ (October 2026 Part 5, from Changed onward: Files Copy link, Listening sources Brand/Critics tabs + role override + Ranked by, AskFRND images/videos/diagrams only from trusted places, KV Studio arrow-key nudge + Replace image keeps aspect, Project Room @frnd + Since you looked + Draft with frnd + credits, Research share/export/slides/next-step tasks + why a scorecard stopped, Social Listening translation + tracked keywords + relevance, Reports Google Sheets channel, selection bar wording. Previous: 2026-10-13_ (October 2026 Part 3, from Changed onward: Format icon column, Label Posts multi-account + Author + Group by, shared Group by panel, workspace menu + brand switcher menu, Playbook Create/Refresh + longer history, fixes for Lark plugins switching off, Safari motion export/playback, Gemini image models. Resolved: `show-modules-nav` and `label-posts-overlay` confirmed 100% in PostHog. Previous: 2026-10-08_ (blog post frndos-september-2026-part-2; October 2026 Part 2, New: Social Listening guide, Client Portal guide, sidebar with Modules + page-title brand switcher (and every guide's "open the brand" steps), AskFRND floating/docked/fullscreen panel with steps, Reply and Branch, KV Motion preset library + Tune panel + Animate all style packs, Project Room v2 (header details, tabs, milestones, Needs you, project chip), Research Overview v2 + answer-first scorecard + Competitor and Desk Studies guide. Fixed: Story kept on open, sheets mapping locks after save, low-credit alert counts Extra Credit, menus inside dialogs, Resize tile edits. Changed + Improved: calmer Tasks, scorecard band names, Brand Settings in the main app, Brand IQ Summary, Studies table, study notifications, 200-artboard approvals, deck slide strip. Also blog post frndos-october-2026-part-2: no recap video, help articles to refresh for Social Listening, client portal, sidebar, AskFRND, Brand IQ summary, KV Motion presets. Previous: 2026-10-06, October 2026 product update: Story writing mode, KV approval requests, scorecard parts/report/rubric, Calendar, Home v2, tool activation, workflow build in chat; blog post frndos-october-2026))
 
 ## Getting Started
 
@@ -365,6 +365,45 @@ _Last updated: 2026-11-16_ (blog post frndos-november-2026 added. November 2026,
 | Sharing and Exporting a Study | 📸 screenshot | add screenshot of the Share this study popover (Create link, Copy, Turn off link) and of the Export menu (Summary PDF, Full report PDF, Slides, Open as a doc in Files) → /img/guides-asset/<name>.jpeg |
 | Turn next steps into tasks | 📸 screenshot | add screenshot of What to do next with a checkbox and an Assign pill, and of the assign popover (Search people, Due, Assign) → /img/guides-asset/<name>.jpeg |
 | Sharing and Exporting a Study | ✍️ confirm from live UI | slides auto-dock beside the study chat only when the compose was started from the study page (commit 27067d770); confirm that and what the chat shows after Slides ready |
+
+## Publish
+
+### `docs/publish/overview.mdx` — Publish Overview
+
+| Section | Type | What to do |
+|---|---|---|
+| The Plan | 📸 screenshot | add screenshot of a brand's Publish plan in Table: brand / Publish title, the view tabs (Table · Board · Gallery · Calendar · Approvals), and the Post / Date / Channel / Format / Creative / Caption / Publish columns → /img/guides-asset/<name>.jpeg |
+| Views | 📸 screenshot | add screenshot of the Board with status lanes and of the views menu open (Default view, Pipeline, Calendar, Social, Articles, Published) → /img/guides-asset/<name>.jpeg |
+| Connecting Your Accounts | ✍️ confirm from live UI | which platforms frndOS actually posts to on production depends on the api environment (Zernio platforms), which code can't show. Confirm the list (Instagram, Facebook, TikTok, YouTube) and add it if useful |
+| Starting an Empty Plan | 📸 screenshot | add screenshot of the empty plan: Nothing planned yet, Plan the week with FRND, New post, and the No channels connected yet card → /img/guides-asset/<name>.jpeg |
+
+### `docs/publish/planning-and-approving.mdx` — Planning & Approving Posts
+
+| Section | Type | What to do |
+|---|---|---|
+| Step 2 — Choose the Accounts | 📸 screenshot | add screenshot of a post with Add an account open, and of an account's caption (Caption · same as Main / Use Main's) → /img/guides-asset/<name>.jpeg |
+| Step 3 (optional) — Hand the Creative to a Designer | 📸 screenshot | add screenshot of the Hand to a designer form (Brief, References, Sizes, Text on the image, Designer, Due) → /img/guides-asset/<name>.jpeg |
+| Step 4 — Send for Approval | 📸 screenshot | add screenshot of the Send for approval form (Approver, They'll be told, note, Planned for, Where) → /img/guides-asset/<name>.jpeg |
+| Step 5 — Approve or Request Changes | 📸 screenshot | add screenshot of the Approvals tab: Waiting on me / Sent by me, a picked post with Suggest edit, Request changes and Approve → /img/guides-asset/<name>.jpeg |
+| Approval Settings | 📸 screenshot | add screenshot of the Approval settings dialog: the three kinds with Needs approval / Optional and the Creators can approve their own posts switch → /img/guides-asset/<name>.jpeg |
+
+### `docs/publish/scheduling-and-publishing.mdx` — Scheduling & Publishing Posts
+
+| Section | Type | What to do |
+|---|---|---|
+| Setting the Plan's Time Zone | 📸 screenshot | add screenshot of the Publish column's settings panel (Column · Publish) with the Time zone picker open → /img/guides-asset/<name>.jpeg |
+| Step 2 — Read the Check | 📸 screenshot | add screenshot of a post's Publish tab check: When, Where with each account's time and its source (Its Thursday slot / Set for this post / Default time), What goes out, and Schedule for … / Publish now → /img/guides-asset/<name>.jpeg |
+| Scheduling several posts at once | 📸 screenshot | add screenshot of the selection bar's Schedule check, with the posts that go and the Won't go list → /img/guides-asset/<name>.jpeg |
+| Step 4 — Follow Each Account's Result | 📸 screenshot | add screenshot of a Publish cell after a send: account logos with result dots and a mixed summary (1 live · 2 scheduled) → /img/guides-asset/<name>.jpeg |
+| frndOS confirms scheduled posts went live | ✍️ confirm from live UI | the read-back and the "not scheduled" notice run only where Zernio is switched on in the api environment; confirm it is on in production |
+
+### `docs/publish/marking-published-and-results.mdx` — Marking Posts Published & Results
+
+| Section | Type | What to do |
+|---|---|---|
+| Step 2 — Pick the Post or Paste Its Link | 📸 screenshot | add screenshot of the Where did it go live? dialog with Posts around its date listing the brand's posts and the Live link field → /img/guides-asset/<name>.jpeg |
+| Results | 📸 screenshot | add screenshot of the Published view with Reach, Views, Eng. rate and Comments filled in → /img/guides-asset/<name>.jpeg |
+| The Live Post | 📸 screenshot | add screenshot of a live post's Publish tab: Where with View, How it's doing, Latest comments → /img/guides-asset/<name>.jpeg |
 
 ## AskFrnd
 

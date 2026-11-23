@@ -264,6 +264,7 @@ const DocsCollection = {
         { label: "📡 Radar", value: "radar" },
         { label: "👥 Audience", value: "audience" },
         { label: "🔍 Research", value: "research" },
+        { label: "📤 Publish", value: "publish" },
         { label: "💬 AskFrnd", value: "askfrnd" },
         { label: "📢 Growth (Coming Soon)", value: "growth" },
         { label: "🤝 Collaboration", value: "collaboration" },
